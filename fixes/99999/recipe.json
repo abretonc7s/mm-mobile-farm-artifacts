@@ -1,0 +1,8 @@
+{
+  "steps": [
+    {"name": "navigate_to_perps", "status": "pass"},
+    {"name": "open_market_details", "status": "pass"},
+    {"name": "verify_no_crash", "status": "pass"},
+    {"name": "check_loading_state", "status": "pass"}
+  ]
+}
