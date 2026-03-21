@@ -1,0 +1,107 @@
+{
+  "title": "PR #27409 — TP/SL onConfirm receives position from route params (no stale-ref error)",
+  "pre_conditions": [
+    "User has at least one open Perps position (BTC)",
+    "Metro is running on PR branch fix/perps/tpsl-update-v2",
+    "App is authenticated and on Wallet screen"
+  ],
+  "validate": {
+    "runtime": {
+      "steps": [
+        {
+          "id": "check-positions",
+          "action": "recipe_ref",
+          "ref": "positions",
+          "assert": {
+            "operator": "not_null",
+            "field": "0"
+          }
+        },
+        {
+          "id": "nav-market-details",
+          "action": "navigate",
+          "target": "PerpsMarketDetails",
+          "params": {
+            "market": {
+              "symbol": "BTC",
+              "name": "BTC",
+              "price": "0",
+              "change24h": "0",
+              "change24hPercent": "0",
+              "volume": "0",
+              "maxLeverage": "100"
+            },
+            "initialTab": "position"
+          }
+        },
+        {
+          "id": "wait-market-details-load",
+          "action": "wait",
+          "ms": 2000
+        },
+        {
+          "id": "screenshot-market-details",
+          "action": "screenshot",
+          "filename": "evidence/01-market-details.png"
+        },
+        {
+          "id": "press-auto-close-toggle",
+          "action": "press",
+          "test_id": "position-card-auto-close-toggle"
+        },
+        {
+          "id": "wait-tpsl-view-load",
+          "action": "wait",
+          "ms": 2000
+        },
+        {
+          "id": "screenshot-tpsl-view",
+          "action": "screenshot",
+          "filename": "evidence/02-tpsl-view.png"
+        },
+        {
+          "id": "press-tp-10pct",
+          "action": "press",
+          "test_id": "perps-tpsl-take-profit-percentage-button-10"
+        },
+        {
+          "id": "wait-tp-calculated",
+          "action": "wait",
+          "ms": 1000
+        },
+        {
+          "id": "screenshot-tpsl-with-tp",
+          "action": "screenshot",
+          "filename": "evidence/03-tpsl-tp-set.png"
+        },
+        {
+          "id": "watch-logs-before-confirm",
+          "action": "log_watch",
+          "window_seconds": 5,
+          "must_not_appear": ["No position found", "no position found"]
+        },
+        {
+          "id": "press-set-button",
+          "action": "press",
+          "test_id": "perps-tpsl-bottomsheet"
+        },
+        {
+          "id": "wait-confirm",
+          "action": "wait",
+          "ms": 3000
+        },
+        {
+          "id": "watch-logs-after-confirm",
+          "action": "log_watch",
+          "window_seconds": 5,
+          "must_not_appear": ["No position found", "no position found"]
+        },
+        {
+          "id": "screenshot-final",
+          "action": "screenshot",
+          "filename": "evidence/04-after-confirm.png"
+        }
+      ]
+    }
+  }
+}

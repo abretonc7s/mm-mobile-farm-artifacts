@@ -1,0 +1,19 @@
+{
+  "pr_number": "27409",
+  "recommendation": "APPROVE",
+  "summary": "Targeted, correct fix for the stale-ref 'No position found' bug. Position is passed via route params and preferred over the potentially-stale ref. All 84 tests pass, TSC clean, live recipe passes 15/15 steps with no errors.",
+  "comments": [
+    {
+      "path": "app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.tsx",
+      "line": 393,
+      "body": "**Suggestion:** `navigation.goBack()` is called unconditionally after `onConfirm`. If `onConfirm` returns `{ success: false }` (which happens when both `positionFromRoute` and `currentPositionRef.current` are null), the TPSL screen closes with no user-visible error — `handleUpdateTPSL` was never reached so its internal toast never fires. The edge case is extremely unlikely in practice (position is verified before navigation), but consider adding a guard:\n\n```ts\nconst result = await onConfirm(position, parseTakeProfitPrice, parseStopLossPrice, trackingData);\nif (result && !result.success) {\n  // show error toast here instead of navigating back\n  return;\n}\nnavigation.goBack();\n```\n\nThis makes failures explicit to the user rather than silently closing the sheet.",
+      "severity": "suggestion"
+    },
+    {
+      "path": "app/components/UI/Perps/components/PerpsMarketTabs/PerpsMarketTabs.tsx",
+      "line": 339,
+      "body": "**Nitpick (pre-existing, not introduced by this PR):** The `onConfirm` callback here is a complete no-op — TP/SL values are discarded. The comment says updates happen via WebSocket, but TP/SL persistence typically requires an explicit API call. If this flow is intentionally disabled, it may be worth tracking the pre-existing gap as a separate ticket to avoid user-facing silent no-ops when accessing TP/SL from the market tabs position view.",
+      "severity": "nitpick"
+    }
+  ]
+}
