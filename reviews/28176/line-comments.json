@@ -1,0 +1,25 @@
+{
+  "pr_number": "28176",
+  "recommendation": "APPROVE",
+  "summary": "Well-targeted fix for rate limit exhaustion during rapid market switching. Four complementary changes (debounce, lighter fetch, abort, race guards) address all root causes with good test coverage.",
+  "comments": [
+    {
+      "path": "app/components/UI/Perps/providers/channels/CandleStreamChannel.ts",
+      "line": 279,
+      "body": "Hardcoded `200` duplicates `PERFORMANCE_CONFIG.NavigationParamsDelayMs`. Consider using the named constant to keep them in sync if the intent is the same delay.",
+      "severity": "nitpick"
+    },
+    {
+      "path": "app/controllers/perps/services/HyperLiquidSubscriptionService.ts",
+      "line": 2667,
+      "body": "The `as Promise<void>` cast is needed because `.then()` returns `void | undefined`. Consider adding an explicit `return undefined as void;` at the end of the `.then()` chain to avoid the cast, or type the map as `Map<string, Promise<void | undefined>>`.",
+      "severity": "nitpick"
+    },
+    {
+      "path": "app/controllers/perps/services/HyperLiquidSubscriptionService.ts",
+      "line": 3731,
+      "body": "This file is at 3,731 lines — well above the 2,500 line guideline. While this PR only adds ~50 lines, consider planning a split (e.g., extracting market data subscriptions, order book subscriptions, and fills into separate service classes).",
+      "severity": "suggestion"
+    }
+  ]
+}
