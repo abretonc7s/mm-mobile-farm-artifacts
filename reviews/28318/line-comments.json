@@ -1,0 +1,13 @@
+{
+  "pr_number": "28318",
+  "recommendation": "APPROVE",
+  "summary": "Clean, focused fix that bridges the perps custom pay flow with standard confirmation blocking alerts. Hooks are context-safe and the change is no-op for the standard Perps balance flow.",
+  "comments": [
+    {
+      "path": "app/components/UI/Perps/Views/PerpsOrderView/PerpsOrderView.test.tsx",
+      "line": 429,
+      "body": "The new mocks return `[]` which prevents test breakage, but no test exercises the blocking alert path (e.g., mocking the hooks to return a blocking alert and asserting the button is disabled / error message is rendered). Consider adding at least one test that validates `hasBlockingPayAlerts` actually disables the button.",
+      "severity": "suggestion"
+    }
+  ]
+}
