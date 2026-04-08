@@ -1,0 +1,13 @@
+{
+  "pr_number": "28511",
+  "recommendation": "APPROVE",
+  "summary": "Clean fix that removes a redundant conditional toast branch. The deposit progress is tracked separately by usePerpsDepositStatus, so no user feedback is lost. All tests pass.",
+  "comments": [
+    {
+      "path": "app/components/UI/Perps/Views/PerpsOrderView/PerpsOrderView.tsx",
+      "line": 1087,
+      "body": "The `shared.submitting()` toast factory in `usePerpsToasts.tsx` (line ~590) is now dead code — it's only referenced by its own unit test. Consider removing it in a follow-up to keep the toast options clean.",
+      "severity": "nitpick"
+    }
+  ]
+}
