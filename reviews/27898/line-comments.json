@@ -1,0 +1,25 @@
+{
+  "pr_number": "27898",
+  "recommendation": "APPROVE",
+  "summary": "Well-implemented disk-backed cold-start cache that eliminates loading skeletons. Clean DI, comprehensive tests, and correct cache invalidation semantics.",
+  "comments": [
+    {
+      "path": "app/controllers/perps/utils/perpsDiskPersistence.ts",
+      "line": 296,
+      "body": "The stale timestamp calculation `Date.now() - staleGuardMs * 10 - 1` couples hydration logic to the TTL constant's magnitude. If `#preloadGuardMs` (30s) changes significantly, this `* 10` factor may silently produce timestamps that are either too fresh (not overwritten by stream) or too stale (always expired even for valid reads). Consider extracting a named constant like `DISK_HYDRATION_STALENESS_FACTOR = 10` with a comment explaining the relationship to the TTL.",
+      "severity": "suggestion"
+    },
+    {
+      "path": "app/controllers/perps/PerpsController.ts",
+      "line": 1003,
+      "body": "PerpsController.ts is now 5,014 lines — well above the 2,500 guideline. This PR improves the trajectory by extracting `perpsDiskPersistence.ts` (351 lines), but the controller continues to grow. Consider extracting the preload lifecycle (`startMarketDataPreload`, `performMarketDataPreload`, `performUserDataPreload`, account-change handler) into a dedicated `PerpsPreloadManager` in a follow-up PR.",
+      "severity": "suggestion"
+    },
+    {
+      "path": "app/components/UI/Perps/providers/PerpsStreamManager.tsx",
+      "line": 1667,
+      "body": "The `persistUserDataToDisk` guard `if (!positions || !orders || !account) return` means if a user has zero positions and zero orders but a valid account, the check passes (empty arrays are truthy). However, if the account channel hasn't delivered yet (null), the write is skipped. This is correct behavior — just noting it's intentional since the comment says 'all channels have delivered'. Consider adding `// null = channel hasn't delivered; [] = delivered but empty (valid)` for clarity.",
+      "severity": "nitpick"
+    }
+  ]
+}
