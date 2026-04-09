@@ -1,0 +1,55 @@
+{
+  "pr": "28592",
+  "title": "Verify foreground reconnect does not clear caches when WebSocket is alive within grace period",
+  "jira": "TAT-2892",
+  "acceptance_criteria": [
+    "Returning to foreground within grace period does not trigger full reconnection when WebSocket is healthy",
+    "No loading skeletons during foreground return with healthy connection",
+    "resumeFromForeground retries ping before falling through to full reconnect"
+  ],
+  "validate": {
+    "workflow": {
+      "pre_conditions": ["wallet.unlocked", "perps.feature_enabled"],
+      "entry": "nav-perps",
+      "nodes": {
+        "nav-perps": {
+          "action": "navigate",
+          "target": "Perps",
+          "next": "wait-initialized"
+        },
+        "wait-initialized": {
+          "action": "wait_for",
+          "expression": "JSON.stringify(Engine.context.PerpsController.state.initializationState)",
+          "timeout_ms": 15000,
+          "assert": { "operator": "contains", "value": "initialized" },
+          "next": "check-state"
+        },
+        "check-state": {
+          "action": "eval_ref",
+          "ref": "perps/state",
+          "assert": { "operator": "not_null" },
+          "next": "watch-no-full-reconnect"
+        },
+        "watch-no-full-reconnect": {
+          "action": "log_watch",
+          "window_seconds": 5,
+          "must_not_appear": [
+            "BUG_MARKER: ping failed in resumeFromForeground",
+            "Performing actual disconnection after grace period"
+          ],
+          "watch_for": ["Successfully connected", "connection healthy"],
+          "next": "screenshot-connected"
+        },
+        "screenshot-connected": {
+          "action": "screenshot",
+          "filename": "evidence-perps-connected.png",
+          "next": "done"
+        },
+        "done": {
+          "action": "end",
+          "status": "pass"
+        }
+      }
+    }
+  }
+}
