@@ -1,0 +1,50 @@
+{
+  "title": "Hyperliquid SDK update — verify market data loads with SDK 0.32.2",
+  "description": "Smoke test: validates that the Hyperliquid SDK 0.32.2 integration works correctly by confirming market data is available via the perps controller.",
+  "validate": {
+    "runtime": {
+      "pre_conditions": [
+        "wallet.unlocked",
+        "perps.feature_enabled"
+      ],
+      "steps": [
+        {
+          "id": "nav-market-list",
+          "action": "navigate",
+          "target": "PerpsTrendingView"
+        },
+        {
+          "id": "wait-route",
+          "action": "wait_for",
+          "route": "PerpsTrendingView"
+        },
+        {
+          "id": "wait-market-data",
+          "action": "wait_for",
+          "expression": "Engine.context.PerpsController.getMarketDataWithPrices().then(function(ms){return JSON.stringify({count:ms.length})})",
+          "assert": {
+            "operator": "gt",
+            "field": "count",
+            "value": 0
+          },
+          "timeout_ms": 30000
+        },
+        {
+          "id": "assert-btc-in-markets",
+          "action": "eval_async",
+          "expression": "Engine.context.PerpsController.getMarketDataWithPrices().then(function(ms){var m=ms.find(function(x){return x.symbol==='BTC'});return JSON.stringify({found:!!m,symbol:m?m.symbol:null})})",
+          "assert": {
+            "operator": "eq",
+            "field": "found",
+            "value": true
+          }
+        },
+        {
+          "id": "evidence-market-loaded",
+          "action": "screenshot",
+          "filename": "evidence-market-loaded.png"
+        }
+      ]
+    }
+  }
+}
