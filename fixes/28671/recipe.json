@@ -1,0 +1,81 @@
+{
+  "pr": "28671",
+  "title": "Verify latest funding payments shown in Activity — TAT-2057",
+  "jira": "TAT-2057",
+  "acceptance_criteria": [
+    "AC1: Activity shows funding payments up to today's date (no missing recent entries)",
+    "AC2: Multiple consecutive getFunding calls return consistent latest timestamp (no oscillation)",
+    "AC5: Refresh cycle produces identical results — cutoff date does not change across refreshes"
+  ],
+  "validate": {
+    "workflow": {
+      "pre_conditions": ["wallet.unlocked", "perps.feature_enabled"],
+      "entry": "setup-switch-account",
+      "nodes": {
+        "setup-switch-account": {
+          "description": "Switch to 0x316BDE (bug's original account — 1174 records, well above 500-record API cap)",
+          "action": "select_account",
+          "address": "0x316BDE155acd07609872a56Bc32CcfB0B13201fA",
+          "next": "gate-wait-account"
+        },
+        "gate-wait-account": {
+          "description": "Wait for PerpsController accountState to load for new account",
+          "action": "wait_for",
+          "expression": "JSON.stringify({ hasAccount: !!Engine.context.PerpsController.state.accountState })",
+          "assert": { "operator": "truthy", "field": "hasAccount" },
+          "timeout_ms": 20000,
+          "poll_ms": 1000,
+          "next": "setup-nav-funding"
+        },
+        "setup-nav-funding": {
+          "description": "Navigate to Activity > Funding tab",
+          "action": "call",
+          "ref": "perps/activity-view",
+          "params": { "tab": "funding" },
+          "next": "ac1-fetch-latest"
+        },
+        "ac1-fetch-latest": {
+          "description": "Full 365-day fetch: count > 500 proves parallel pagination returns all records including recent ones",
+          "action": "eval_async",
+          "expression": "(function(){ return Engine.context.PerpsController.getFunding().then(function(r){ var last = r[r.length - 1]; var nowMs = Date.now(); var thirtyDaysMs = 2592000000; var isRecent = !!(last && (nowMs - last.timestamp) < thirtyDaysMs); return JSON.stringify({ count: r.length, latestTs: last ? last.timestamp : null, isRecent: isRecent, exceedsCap: r.length > 500 }) }) })()",
+          "assert": {
+            "all": [
+              { "operator": "gt", "field": "count", "value": 500 },
+              { "operator": "truthy", "field": "exceedsCap" },
+              { "operator": "truthy", "field": "isRecent" }
+            ]
+          },
+          "next": "ac1-screenshot"
+        },
+        "ac1-screenshot": {
+          "description": "Screenshot funding tab showing latest entries",
+          "action": "screenshot",
+          "filename": "evidence-ac1-funding-latest.png",
+          "next": "ac2-consistency-check"
+        },
+        "ac2-consistency-check": {
+          "description": "Two calls with fixed 2-day window — verify identical count and latest timestamp (no oscillation). Narrow window avoids rate-limit from back-to-back full 365-day fetches.",
+          "action": "eval_async",
+          "expression": "(function(){ var nowMs = Date.now(); var twoDaysMs = 172800000; var opts = {}; opts.startTime = nowMs - twoDaysMs; opts.endTime = nowMs; return Engine.context.PerpsController.getFunding(opts).then(function(r1){ return Engine.context.PerpsController.getFunding(opts).then(function(r2){ var last1 = r1[r1.length - 1]; var last2 = r2[r2.length - 1]; var ts1 = last1 ? last1.timestamp : 0; var ts2 = last2 ? last2.timestamp : 0; return JSON.stringify({ count1: r1.length, count2: r2.length, latestTs1: ts1, latestTs2: ts2, consistent: r1.length === r2.length && ts1 === ts2 }) }) }) })()",
+          "assert": {
+            "all": [
+              { "operator": "truthy", "field": "consistent" },
+              { "operator": "gt", "field": "count1", "value": 0 }
+            ]
+          },
+          "next": "ac2-screenshot"
+        },
+        "ac2-screenshot": {
+          "description": "Screenshot confirming stable funding list",
+          "action": "screenshot",
+          "filename": "evidence-ac2-funding-consistent.png",
+          "next": "done"
+        },
+        "done": {
+          "action": "end",
+          "status": "pass"
+        }
+      }
+    }
+  }
+}
