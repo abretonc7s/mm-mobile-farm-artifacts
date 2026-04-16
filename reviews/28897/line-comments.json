@@ -1,0 +1,19 @@
+{
+  "pr_number": "28897",
+  "recommendation": "APPROVE",
+  "summary": "Clean, minimal fix that correctly removes stale entry price from flip order params, letting the provider use live market data. Strong revert-proof test coverage.",
+  "comments": [
+    {
+      "path": "app/controllers/perps/services/TradingService.ts",
+      "line": 1963,
+      "body": "Good defensive fallback: `result.averagePrice ?? position.entryPrice`. Consider logging when the fallback activates — if `averagePrice` is frequently missing from the provider response, it could indicate an upstream issue worth investigating.",
+      "severity": "nitpick"
+    },
+    {
+      "path": "app/controllers/perps/services/TradingService.ts",
+      "line": 1944,
+      "body": "TradingService.ts is at 2,042 lines (above 2,000-line suggestion threshold). This PR reduces it — just noting for future awareness. Consider splitting trading operations (open/close/flip/margin) into focused sub-services when the file next grows.",
+      "severity": "nitpick"
+    }
+  ]
+}

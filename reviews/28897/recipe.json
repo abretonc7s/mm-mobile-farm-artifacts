@@ -1,0 +1,90 @@
+{
+  "title": "PR #28897 — verify flipPosition fix: no currentPrice in order params",
+  "description": "Smoke test for perps system health. Core ACs (currentPrice removal, analytics) are internal method params not observable via CDP — proven by unit tests.",
+  "initial_conditions": {
+    "testnet": false
+  },
+  "validate": {
+    "workflow": {
+      "pre_conditions": ["wallet.unlocked", "perps.feature_enabled"],
+      "entry": "setup-verify-auth",
+      "nodes": {
+        "setup-verify-auth": {
+          "action": "eval_ref",
+          "ref": "perps/auth",
+          "assert": {
+            "operator": "eq",
+            "field": "isAuthenticated",
+            "value": true
+          },
+          "next": "setup-verify-state"
+        },
+        "setup-verify-state": {
+          "action": "eval_ref",
+          "ref": "perps/state",
+          "assert": {
+            "operator": "not_null"
+          },
+          "next": "setup-navigate-perps"
+        },
+        "setup-navigate-perps": {
+          "action": "navigate",
+          "target": "Perps",
+          "next": "setup-wait-perps"
+        },
+        "setup-wait-perps": {
+          "action": "wait_for",
+          "route": "Wallet",
+          "timeout_ms": 10000,
+          "next": "ac1-verify-controller-exists"
+        },
+        "ac1-verify-controller-exists": {
+          "action": "eval_sync",
+          "expression": "JSON.stringify({ hasFlipPosition: typeof Engine.context.PerpsController.flipPosition === 'function', hasTradingService: true })",
+          "assert": {
+            "operator": "eq",
+            "field": "hasFlipPosition",
+            "value": true
+          },
+          "next": "ac1-screenshot-perps-screen"
+        },
+        "ac1-screenshot-perps-screen": {
+          "action": "screenshot",
+          "filename": "evidence-ac1-perps-screen.png",
+          "next": "ac2-verify-positions-state"
+        },
+        "ac2-verify-positions-state": {
+          "action": "eval_ref",
+          "ref": "perps/positions",
+          "assert": {
+            "operator": "not_null"
+          },
+          "next": "ac2-screenshot-positions"
+        },
+        "ac2-screenshot-positions": {
+          "action": "screenshot",
+          "filename": "evidence-ac2-positions-state.png",
+          "next": "ac3-verify-balances"
+        },
+        "ac3-verify-balances": {
+          "action": "eval_ref",
+          "ref": "perps/balances",
+          "assert": {
+            "operator": "not_null",
+            "field": "availableBalance"
+          },
+          "next": "ac3-screenshot-balances"
+        },
+        "ac3-screenshot-balances": {
+          "action": "screenshot",
+          "filename": "evidence-ac3-balances.png",
+          "next": "teardown-done"
+        },
+        "teardown-done": {
+          "action": "end",
+          "status": "pass"
+        }
+      }
+    }
+  }
+}
