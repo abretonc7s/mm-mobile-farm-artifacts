@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "preferred_mode": "screenshots",
+  "summary": "AbortError from candle fetch cancellation no longer logged to Sentry; real candle fetches still work normally.",
+  "before_after_pairs": [
+    {
+      "label": "Candle chart loads normally (real fetch works) and no abort noise in logs after teardown",
+      "covers": ["ac1", "ac2"],
+      "before": "before-ac2-candles-loaded.png",
+      "after": "after-ac2-candles-loaded.png"
+    }
+  ],
+  "standalone": [],
+  "omit": ["after-ac1-no-abort-noise.png", "before-ac1-no-abort-noise.png"],
+  "videos": {
+    "before": "before.mp4",
+    "after": "after.mp4",
+    "preferred": false
+  }
+}

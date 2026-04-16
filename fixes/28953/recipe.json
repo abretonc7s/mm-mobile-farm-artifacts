@@ -1,0 +1,66 @@
+{
+  "pr": "28953",
+  "title": "Verify candle abort errors are not logged to Sentry",
+  "jira": "TAT-2971",
+  "acceptance_criteria": [
+    "Expected candle-request cancellations (AbortError) are not reported as errors to Sentry/Logger",
+    "Real candle fetch failures still log/report normally to Sentry/Logger",
+    "No new TypeScript errors introduced"
+  ],
+  "validate": {
+    "static": ["yarn lint:tsc"],
+    "workflow": {
+      "pre_conditions": ["wallet.unlocked", "perps.feature_enabled"],
+      "entry": "setup-nav-market",
+      "nodes": {
+        "setup-nav-market": {
+          "action": "call",
+          "ref": "perps/market-discovery",
+          "params": { "symbol": "BTC" },
+          "next": "ac2-wait-candles"
+        },
+        "ac2-wait-candles": {
+          "action": "wait_for",
+          "expression": "Engine.context.PerpsController.getMarketDataWithPrices().then(function(ms){var m=ms.find(function(x){return x.symbol==='BTC'});return JSON.stringify({found:!!m,price:m?m.price:'0'})})",
+          "assert": {
+            "operator": "not_null",
+            "field": "price"
+          },
+          "timeout_ms": 15000,
+          "next": "ac2-screenshot-candles"
+        },
+        "ac2-screenshot-candles": {
+          "action": "screenshot",
+          "filename": "evidence-ac2-candles-loaded.png",
+          "next": "setup-nav-away"
+        },
+        "setup-nav-away": {
+          "action": "navigate",
+          "target": "Wallet",
+          "next": "setup-wait-teardown"
+        },
+        "setup-wait-teardown": {
+          "action": "wait",
+          "ms": 500,
+          "next": "ac1-log-check"
+        },
+        "ac1-log-check": {
+          "action": "log_watch",
+          "window_seconds": 10,
+          "must_not_appear": ["BUG_MARKER: abort error logged to Sentry"],
+          "watch_for": ["CandleStreamChannel"],
+          "next": "ac1-screenshot-clean-logs"
+        },
+        "ac1-screenshot-clean-logs": {
+          "action": "screenshot",
+          "filename": "evidence-ac1-no-abort-noise.png",
+          "next": "done"
+        },
+        "done": {
+          "action": "end",
+          "status": "pass"
+        }
+      }
+    }
+  }
+}
