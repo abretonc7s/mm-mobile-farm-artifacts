@@ -1,0 +1,20 @@
+flowchart TD
+  %% TAT-3016 validation: single-account HL abstraction-mode cycle on Trading — capture AccountState + withdraw + market-details balance readouts before/after Unified toggle
+  __entry__(["ENTRY"]) --> node_assert_mainnet
+  node_assert_mainnet["assert-mainnet<br/>eval_sync"]
+  node_phase1_initial_unified[["phase1-initial-unified<br/>perps/hl-balance-validation"]]
+  node_flip_to_standard[["flip-to-standard<br/>perps/hl-provision-fixture"]]
+  node_refresh_post_flip_standard["refresh-post-flip-standard<br/>wait_for"]
+  node_phase2_after_flip_standard[["phase2-after-flip-standard<br/>perps/hl-balance-validation"]]
+  node_flip_back_to_unified[["flip-back-to-unified<br/>perps/hl-provision-fixture"]]
+  node_refresh_post_flip_unified["refresh-post-flip-unified<br/>wait_for"]
+  node_phase3_restored_unified[["phase3-restored-unified<br/>perps/hl-balance-validation"]]
+  node_done(["done<br/>PASS"])
+  node_assert_mainnet --> node_phase1_initial_unified
+  node_phase1_initial_unified --> node_flip_to_standard
+  node_flip_to_standard --> node_refresh_post_flip_standard
+  node_refresh_post_flip_standard --> node_phase2_after_flip_standard
+  node_phase2_after_flip_standard --> node_flip_back_to_unified
+  node_flip_back_to_unified --> node_refresh_post_flip_unified
+  node_refresh_post_flip_unified --> node_phase3_restored_unified
+  node_phase3_restored_unified --> node_done
