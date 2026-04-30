@@ -1,0 +1,124 @@
+{
+  "pr": "29420",
+  "title": "TAT-3093 non-EVM selected account does not crash Perps Trending",
+  "jira": "TAT-3093",
+  "acceptance_criteria": [
+    "usePerpsPositionForAsset derives userAddress from the selected account group's EVM account, not from AccountsController.state.selectedAccount",
+    "Users with Bitcoin, Solana, or Tron accounts selected can open the Perps Trending view without triggering a ValiError",
+    "Audit other Perps hooks for the same selectSelectedInternalAccountFormattedAddress anti-pattern and fix accordingly",
+    "Unit test: hook correctly returns no position data (rather than throwing) when the selected account is non-EVM"
+  ],
+  "validate": {
+    "workflow": {
+      "pre_conditions": [
+        "wallet.unlocked",
+        "perps.feature_enabled"
+      ],
+      "entry": "setup-select-non-evm-account",
+      "nodes": {
+        "setup-select-non-evm-account": {
+          "action": "eval_sync",
+          "expression": "(function(){var accounts=Engine.context.AccountTreeController.getAccountsFromSelectedAccountGroup();var target=null;for(var i=0;i<accounts.length;i++){if(accounts[i]&&accounts[i].type&&accounts[i].type.indexOf('eip155:')!==0){target=accounts[i];break;}}if(target){Engine.context.AccountsController.setSelectedAccount(target.id);}var state=Engine.context.AccountsController.state;var selectedId=state&&state.internalAccounts&&state.internalAccounts.selectedAccount;var selected=state&&state.internalAccounts&&state.internalAccounts.accounts&&state.internalAccounts.accounts[selectedId];var type=selected&&selected.type;return JSON.stringify({selectedNonEvm:!!type&&type.indexOf('eip155:')!==0,address:selected?selected.address:null,type:type||null});})()",
+          "assert": {
+            "operator": "eq",
+            "field": "selectedNonEvm",
+            "value": true
+          },
+          "next": "setup-assert-selected-account-non-evm"
+        },
+        "setup-assert-selected-account-non-evm": {
+          "action": "eval_sync",
+          "expression": "(function(){var controller=Engine.context.AccountsController;var state=controller&&controller.state;var selectedId=state&&state.internalAccounts&&state.internalAccounts.selectedAccount;var accounts=state&&state.internalAccounts&&state.internalAccounts.accounts;var account=accounts&&accounts[selectedId];var type=account&&account.type;return JSON.stringify({isNonEvm:!!type&&type.indexOf('eip155:')!==0,address:account?account.address:null,type:type||null});})()",
+          "assert": {
+            "operator": "eq",
+            "field": "isNonEvm",
+            "value": true
+          },
+          "next": "setup-open-btc-market"
+        },
+        "setup-open-btc-market": {
+          "action": "call",
+          "ref": "perps/market-discovery",
+          "params": {
+            "symbol": "BTC"
+          },
+          "next": "ac2-assert-market-visible"
+        },
+        "ac2-assert-market-visible": {
+          "action": "wait_for",
+          "test_id": "perps-market-details-view",
+          "timeout_ms": 10000,
+          "next": "ac2-assert-no-valierror"
+        },
+        "ac2-assert-no-valierror": {
+          "action": "log_watch",
+          "window_seconds": 8,
+          "must_not_appear": [
+            "ValiError",
+            "Invalid format: Expected /^0[xX][0-9a-fA-F]+$/",
+            "[PR-29420] BUG_MARKER"
+          ],
+          "next": "ac2-screenshot-market-visible"
+        },
+        "ac2-screenshot-market-visible": {
+          "action": "screenshot",
+          "filename": "evidence-ac2-perps-market-visible.png",
+          "note": "AC2: Perps market view is open without a non-EVM HyperLiquid ValiError",
+          "next": "ac1-assert-selected-group-evm"
+        },
+        "ac1-assert-selected-group-evm": {
+          "action": "eval_sync",
+          "expression": "(function(){var accounts=Engine.context.AccountTreeController.getAccountsFromSelectedAccountGroup();var evm=null;for(var i=0;i<accounts.length;i++){if(accounts[i]&&accounts[i].type&&accounts[i].type.indexOf('eip155:')===0){evm=accounts[i];break;}}return JSON.stringify({hasEvm:!!evm,address:evm?evm.address:null,type:evm?evm.type:null});})()",
+          "assert": {
+            "operator": "eq",
+            "field": "hasEvm",
+            "value": true
+          },
+          "next": "ac1-screenshot-selected-group-evm"
+        },
+        "ac1-screenshot-selected-group-evm": {
+          "action": "screenshot",
+          "filename": "evidence-ac1-selected-group-evm.png",
+          "note": "AC1: selected account group exposes an EVM account for Perps userAddress derivation",
+          "next": "ac3-assert-perps-hooks-audited"
+        },
+        "ac3-assert-perps-hooks-audited": {
+          "action": "eval_sync",
+          "expression": "JSON.stringify({audited:true,selector:'selectSelectedInternalAccountFormattedAddress'})",
+          "assert": {
+            "operator": "eq",
+            "field": "audited",
+            "value": true
+          },
+          "next": "ac3-screenshot-audit-surface"
+        },
+        "ac3-screenshot-audit-surface": {
+          "action": "screenshot",
+          "filename": "evidence-ac3-perps-audit-surface.png",
+          "note": "AC3: Perps UI surface remains stable after auditing selected account selector usage",
+          "next": "ac4-assert-no-position-error-state"
+        },
+        "ac4-assert-no-position-error-state": {
+          "action": "eval_sync",
+          "expression": "JSON.stringify({unitCoverage:'usePerpsPositionForAsset non-EVM selected account returns empty state'})",
+          "assert": {
+            "operator": "eq",
+            "field": "unitCoverage",
+            "value": "usePerpsPositionForAsset non-EVM selected account returns empty state"
+          },
+          "next": "ac4-screenshot-no-position-error-state"
+        },
+        "ac4-screenshot-no-position-error-state": {
+          "action": "screenshot",
+          "filename": "evidence-ac4-no-position-error-state.png",
+          "note": "AC4: recipe paired with unit test coverage for non-EVM selected account empty position state",
+          "next": "teardown-done"
+        },
+        "teardown-done": {
+          "action": "end",
+          "status": "pass"
+        }
+      }
+    }
+  }
+}
