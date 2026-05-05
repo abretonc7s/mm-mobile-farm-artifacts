@@ -1,0 +1,464 @@
+jest-haste-map: duplicate manual mock found: index
+  The following files share their name; please delete one of them:
+    * <rootDir>/app/util/haptics/__mocks__/index.ts
+    * <rootDir>/app/components/UI/Perps/__mocks__/index.ts
+
+FAIL app/controllers/perps/providers/HyperLiquidProvider.test.ts (7.453 s)
+  HyperLiquidProvider
+    Constructor and Initialization
+      ✓ initializes with default mainnet configuration (4 ms)
+      ✓ initializes with testnet configuration (1 ms)
+      ✓ initializes provider successfully (1 ms)
+      ✓ handles initialization errors (1 ms)
+      ✓ initializes with HIP-3 disabled when hip3Enabled is false (2 ms)
+      ✓ falls back to main DEX when perpDexs returns invalid response (1 ms)
+      ✓ does not throw when allowlist contains invalid patterns (2 ms)
+      ✓ does not throw when blocklist contains invalid patterns (1 ms)
+      ✓ logs warning for skipped invalid patterns (1 ms)
+      ✓ compiles valid patterns even when some are invalid (1 ms)
+      ✓ handles perpDexs array with null entries (2 ms)
+    Route Management
+      ✓ gets deposit routes with constraints (1 ms)
+      ✓ gets withdrawal routes with constraints (1 ms)
+      ✓ filters routes by parameters
+    Trading Operations
+      ✓ places a market order successfully (2 ms)
+      ✓ places a limit order successfully (1 ms)
+      ✓ uses Gtc TIF for limit orders (regression test) (1 ms)
+      ✓ tracks performance measurements when placing order
+      ✓ calculates USD position size correctly for market orders (1 ms)
+      ✓ calculates USD position size correctly for limit orders
+      ✓ handles order placement errors (1 ms)
+      ✓ edits an order successfully (1 ms)
+      ✓ edits a market order with slippage calculation (2 ms)
+      ✓ handles editOrder when asset is not found (1 ms)
+      ✓ handles editOrder when no price is available (1 ms)
+      ✓ falls back to REST API when cached price is zero
+      ✓ falls back to REST API when cached price is NaN (1 ms)
+      ✓ falls back to REST API when cached price is negative
+      ✓ falls back to REST API when cached price is Infinity (1 ms)
+      ✓ throws error when REST price is negative
+      ✓ throws error when REST price is Infinity (1 ms)
+      ✓ handles editOrder when asset ID is not found
+      ✓ cancels an order successfully (1 ms)
+      ✓ retries USD-based order when rejected for $10 minimum with adjusted amount (2 ms)
+      ✓ retries size-based order with currentPrice when rejected for $10 minimum (1 ms)
+      ✓ retries with adjusted USD when price-less order hits $10 minimum (uses fetched price from allMids) (2 ms)
+      ✓ closes a position successfully (1 ms)
+      ✓ repairs missing HIP-3 asset IDs during closePosition after degraded discovery (1 ms)
+    closePosition with TP/SL handling
+      ✓ closes position without TP/SL successfully
+      ✓ handles position with TP/SL successfully (1 ms)
+      ✓ handles partial position close with TP/SL (1 ms)
+      ✓ handles position without open TP/SL orders (2 ms)
+      ✓ handles close position when position not found (1 ms)
+      ✓ handles short position close with TP/SL (1 ms)
+      ✓ handles position close even if TP/SL info is unavailable (1 ms)
+    Batch Operations
+      cancelOrders
+        ✓ returns failure when no orders provided
+        ✓ cancels multiple orders successfully (1 ms)
+        ✓ handles batch cancel errors
+      closePositions
+        ✓ returns failure when no positions to close (1 ms)
+        ✓ closes multiple positions successfully (1 ms)
+        ✓ handles batch close errors
+    updatePositionTPSL
+      ✓ updates position TP/SL successfully
+      ✓ handles update with only take profit price (1 ms)
+      ✓ handles update with only stop loss price
+    Data Retrieval
+      ✓ gets positions successfully (1 ms)
+      ✓ gets account state successfully
+      ✓ does not count USDH-only spot balance in funded-state totals (1 ms)
+      ✓ does not fold non-USDC spot balance in Unified Account mode (1 ms)
+      ✓ folds USDC spot balance into spendable/withdrawable in Unified Account mode
+      ✓ does not fold USDC spot balance in default account mode (1 ms)
+      ✓ does not fold USDC spot balance in disabled account mode (2 ms)
+      ✓ gets markets successfully (1 ms)
+      ✓ handles data retrieval errors gracefully
+    Withdrawal Operations
+      ✓ processes withdrawal successfully (1 ms)
+      ✓ runs user-signed unified account migration before withdrawing for dexAbstraction users (1 ms)
+      ✓ handles withdrawal errors (60 ms)
+    Subscription Management
+      ✓ subscribes to prices (3 ms)
+      ✓ subscribes to positions (1 ms)
+      ✓ subscribes to order fills
+      ✓ sets live data config
+    Provider State Management
+      ✓ checks if ready to trade (1 ms)
+      ✓ handles readiness check errors
+      ✓ toggles testnet mode (1 ms)
+      ✓ toggleTestnet succeeds even when called concurrently with initialization (1 ms)
+      ✓ disconnects successfully
+      ✓ disconnects successfully even when initialization was pending
+      ✓ disconnects successfully even when ensureReady was pending (1 ms)
+      ✓ handles disconnect errors
+      ping() health check
+        ✓ successfully ping WebSocket connection with default timeout (3 ms)
+        ✓ successfully ping WebSocket connection with custom timeout
+        ✓ throws error when subscription client is not initialized (1 ms)
+        ✓ throws CONNECTION_TIMEOUT error when timeout occurs (103 ms)
+        ✓ throws error when WebSocket connection fails
+    Asset Mapping
+      ✓ handles asset mapping errors (1 ms)
+    Error Handling
+      ✓ handles validation errors in orders
+      ✓ handles validation errors in withdrawals (1 ms)
+      ✓ handles unknown errors gracefully (1 ms)
+      error mapping integration
+        ✓ maps HyperLiquid leverage error in placeOrder to ORDER_LEVERAGE_REDUCTION_FAILED
+        ✓ maps case insensitive HyperLiquid error (1 ms)
+        ✓ maps partial error message containing the pattern (2 ms)
+        ✓ preserves original error message for unmapped errors
+    Edge Cases
+      ✓ handles missing asset info in orders (1 ms)
+      ✕ handles missing price data (1 ms)
+      ✓ handles missing position in close operation (1 ms)
+    validateDeposit
+      ✓ validates valid deposit parameters
+      ✓ rejects empty amount
+      ✓ rejects zero amount (1 ms)
+      ✓ rejects negative amount
+      ✓ rejects invalid amount format (1 ms)
+      ✓ rejects amount below minimum for mainnet
+      ✓ rejects amount below minimum for testnet
+      ✓ accepts amount at minimum for mainnet (2 ms)
+      ✓ accepts amount at minimum for testnet
+      ✓ rejects empty assetId
+      ✓ rejects unsupported assetId
+      ✓ handles decimal amounts correctly (1 ms)
+      ✓ handles large amounts correctly
+      ✓ handles scientific notation
+    validateClosePosition
+      ✓ validates full close position successfully (1 ms)
+      ✓ validates partial close position successfully
+      ✓ rejects close position below minimum value on mainnet
+      ✓ rejects close position below minimum value on testnet (1 ms)
+      ✓ accepts close position at minimum value
+      ✓ validates limit close position with price (2 ms)
+      ✓ rejects limit close without price
+      ✓ handles validation when currentPrice is not provided (1 ms)
+    calculateLiquidationPrice
+      ✓ calculates liquidation price for long position correctly
+      ✓ calculates liquidation price for short position correctly (1 ms)
+      ✓ throws error for leverage exceeding maintenance leverage
+      ✓ handles invalid inputs (1 ms)
+      ✓ uses default max leverage when asset is not provided
+      ✓ throws error when leverage exceeds default max leverage (1 ms)
+    calculateMaintenanceMargin
+      ✓ calculates maintenance margin correctly for 40x max leverage asset
+      ✓ calculates maintenance margin correctly for 3x max leverage asset (1 ms)
+      ✓ returns default maintenance margin when asset not found
+    getMaxLeverage
+      ✓ returns max leverage for an asset (2 ms)
+      ✓ returns default max leverage when asset not found (1 ms)
+      ✓ returns default max leverage on network failure
+    Additional Error Handling and Edge Cases
+      ensureReady and buildAssetMapping
+        ✓ handles meta fetch failure in buildAssetMapping (1 ms)
+        ✓ handles string response from meta endpoint
+        ✓ handles meta response without universe property (1 ms)
+      Order placement edge cases
+        ✓ handles leverage update failure (1 ms)
+        ✓ succeeds with market order without current price or usdAmount (uses fetched price)
+        ✓ placeOrder validates against fetched price when params omit currentPrice (flipPosition path) (1 ms)
+        ✓ handles order with custom slippage
+        ✓ handles filled order response (2 ms)
+        ✓ handles order with clientOrderId (1 ms)
+        ✓ handles order with TP/SL and custom grouping (1 ms)
+      updatePositionTPSL error scenarios
+        ✓ handles WebSocket error in getPositions
+        ✓ handles non-WebSocket error in getPositions (1 ms)
+        ✓ handles canceling existing TP/SL orders (1 ms)
+        ✓ cache path: only cancels positionTpsl orders, not normalTpsl children of limit orders (2 ms)
+      getAccountState error handling
+        ✓ re-throws errors instead of returning zeros
+        ✓ returns partial account state when one HIP-3 DEX fails (1 ms)
+      getMarketDataWithPrices error scenarios
+        ✓ handles missing perpsMeta (2006 ms)
+        ✓ uses HTTP InfoClient for market data fetches (6 ms)
+        ✓ prefers the last WebSocket allMids snapshot over REST when available (2 ms)
+        ✓ includes diagnostic context in error when all DEX fetches fail (2003 ms)
+        ✓ handles missing allMids (6 ms)
+        ✓ handles meta and predictedFundings calls successfully (6 ms)
+        ✓ returns stale cached market data after retry failure (15 ms)
+        ✓ recovers on retry when cached meta refresh initially returns mismatched asset contexts (2 ms)
+        ✓ excludes a cached-meta DEX when assetCtx refresh fails and no aligned ctx cache exists (1 ms)
+      withdrawal edge cases
+        ✓ handles withdrawal without destination (use current user) (1 ms)
+        ✓ validates withdrawal against withdrawableBalance populated by spot fold for Unified Account
+        ✓ handles withdrawal API error (1 ms)
+      liquidation price edge cases
+        ✓ handles denominator close to zero (1 ms)
+        ✓ handles liquidation price calculation error
+        ✓ handles negative liquidation price (1 ms)
+      isReadyToTrade edge cases
+        ✓ handles getCurrentAccountId throwing error (1 ms)
+        ✓ handles missing exchange or info client (1 ms)
+        ✓ handles general error in readiness check (3 ms)
+      editOrder error scenarios
+        ✓ handles edit order API failure (1 ms)
+      cancelOrder error scenarios
+        ✓ handles cancel order API returning non-success status (1 ms)
+      calculateFees
+        ✓ calculates fees for market orders (1 ms)
+        ✓ calculates fees for limit orders as taker (1 ms)
+        ✓ calculates fees for limit orders as maker (1 ms)
+        ✓ handles zero amount
+        ✓ handles undefined amount (1 ms)
+        ✓ uses cached user-specific fee rates when available (1 ms)
+        ✓ falls back to base rates on API failure
+        ✓ handles non-numeric amount gracefully (1 ms)
+        ✓ returns FeeCalculationResult with correct structure (3 ms)
+        ✓ is async and return a Promise (1 ms)
+        ✓ fetches user-specific fee rates when wallet is connected (1 ms)
+        ✓ falls back to base rates when API returns invalid fee rates
+        ✓ falls back to base rates when API returns negative fee rates (1 ms)
+        ✓ always uses taker rate for market orders regardless of isMaker (1 ms)
+        ✓ applies referral discount only when no staking discount
+        ✓ applies staking discount only when no referral discount (1 ms)
+        ✓ caps combined discounts at 40%
+        ✓ handles maker rates with discounts correctly (1 ms)
+        ✓ handles zero discounts correctly
+        ✓ applies 2× fee multiplier for HIP-3 assets (1 ms)
+        ✓ applies 2× fee multiplier for HIP-3 maker orders (1 ms)
+      fee discount functionality
+        setUserFeeDiscount
+          ✓ logs discount context updates (2 ms)
+          ✓ logs when clearing discount context (1 ms)
+        discount applied to orders
+          ✓ applies discount to builder fee in placeOrder (1 ms)
+          ✓ applies discount to builder fee in updatePositionTPSL
+        calculateFees with fee discount
+          ✓ applies discount to MetaMask fees when active (1 ms)
+          ✓ applies discount to maker fees correctly
+          ✓ preserves protocol fees unchanged (1 ms)
+          ✓ works without discount - backward compatibility
+          ✓ handles 0% discount edge case (1 ms)
+          ✓ combines discount with user staking discount
+          ✓ clears discount context after undefined is set (1 ms)
+      getBlockExplorerUrl
+        ✓ returns mainnet explorer URL with address
+        ✓ returns mainnet base explorer URL without address (3 ms)
+        ✓ returns testnet explorer URL with address when in testnet mode
+        ✓ returns testnet base explorer URL without address when in testnet mode (1 ms)
+        ✓ handles empty string address
+    validateOrder
+      ✓ validates order successfully with valid params and price (1 ms)
+      ✓ fails validation when currentPrice is missing
+      ✓ fails validation when order value is below minimum
+      ✓ fails validation when basic params are invalid
+      ✓ validates limit order with price
+      ✓ handles validation errors gracefully
+      existing position leverage validation
+        ✓ allows order when leverage equals existing position leverage
+        ✓ allows order when leverage exceeds existing position leverage (1 ms)
+        ✓ rejects order when leverage below existing position leverage (2 ms)
+        ✓ allows any leverage when no existing position (1 ms)
+    Builder Fee and Referral Integration
+      ✓ includes builder fee and referral setup in order placement (1 ms)
+      ✓ includes builder fee and referral setup in TP/SL updates
+      ✓ skips referral setup when user is the builder (1 ms)
+      ✓ handles builder fee approval failure (non-blocking) (1 ms)
+      ✓ handles referral code setup failure (non-blocking)
+      ✓ skips referral setup when referral code is not ready (1 ms)
+      ✓ skips referral setup when user already has a referral
+      ✓ uses testnet builder address when in testnet mode (3 ms)
+    Builder Fee Global Cache (PR #25334)
+      ○ skipped returns early when global cache indicates already attempted
+      ○ skipped waits for in-flight operation instead of duplicating request
+      ○ skipped caches success after successful approval
+      ○ skipped caches failure to prevent repeated signing requests
+      ○ skipped skips cache when KEYRING_LOCKED error is thrown
+    Referral Global Cache (PR #25334)
+      ○ skipped returns early when global cache indicates already attempted
+      ○ skipped waits for in-flight operation instead of duplicating request
+      ○ skipped caches success after successful referral setup
+      ○ skipped caches failure to prevent repeated signing requests
+      ○ skipped caches success when user already has referral on-chain
+      ○ skipped skips cache and Sentry when KEYRING_LOCKED error is thrown
+    Additional Coverage Tests
+      ✓ handles getUserFills with empty response
+      ✓ handles getOrders with empty response (1 ms)
+      ✓ properly transform getOrders with reduceOnly and isTrigger fields (1 ms)
+      ✓ properly transform getOpenOrders with reduceOnly and isTrigger fields
+      ✓ handles getFunding with empty response (1 ms)
+      ✓ fetches funding across multiple page windows to include latest records
+      ✓ includes records from the most recent page window when history is long (1 ms)
+      ✓ handles null response from one page window without losing other pages
+      ✓ handles validateWithdrawal returning true (1 ms)
+      ✓ handles clearFeeCache with specific user
+      ✓ transforms fill data with liquidation information
+      ✓ handles fills without liquidation data (2 ms)
+      ✓ uses userFillsByTime when startTime is provided (1 ms)
+      ✓ uses userFills when startTime is not provided
+      ✓ passes endTime to userFillsByTime when provided (1 ms)
+      ○ skipped handles isFeeCacheValid with non-existent address
+    getOrderFills enrichment with detailedOrderType
+      ✓ enriches fills with detailedOrderType from historical orders
+      ✓ gracefully handles historicalOrders failure (1 ms)
+    getOpenOrders additional coverage
+      ✓ returns empty array when frontendOpenOrders throws error
+      ✓ returns cached orders when cache is initialized
+      ✓ falls back to REST when atomic cache getter returns null (1 ms)
+      ✓ returns defensive copy of cached orders (not original array)
+      ✓ queries only main DEX when no additional DEXs enabled (1 ms)
+      ✓ queries multiple DEXs when HIP-3 enabled (2 ms)
+    getUserHistory
+      ✓ returns user history items successfully (1 ms)
+      ✓ returns empty array on API error
+      ✓ handles custom time range parameters (1 ms)
+      ✓ uses default account when no accountId provided
+    getHistoricalPortfolio
+      ✓ returns historical portfolio value from 24h ago (1 ms)
+      ✓ finds closest entry before target timestamp
+      ✓ returns fallback when no historical data exists
+      ✓ handles empty portfolio data gracefully (1 ms)
+      ✓ returns zero values on error
+    getAvailableHip3Dexs
+      ✓ returns HIP-3 DEX names when equity enabled (14 ms)
+      ✓ returns empty array when equity disabled (1 ms)
+      ✓ returns empty array when perpDexs returns invalid data (1 ms)
+    transferBetweenDexs
+      ✓ transfers USDC between DEXs successfully
+      ✓ rejects transfer with zero amount (1 ms)
+      ✓ rejects transfer when source equals destination
+      ✓ handles sendAsset failure gracefully (1 ms)
+      ✓ calls getUsdcTokenId to get correct token
+    getUserNonFundingLedgerUpdates
+      ✓ returns non-funding ledger updates (1 ms)
+      ✓ returns empty array on error
+    HIP-3 Private Methods
+      getUsdcTokenId
+        ○ skipped returns cached token ID when available
+        ○ skipped fetches and caches token ID on first call
+        ○ skipped throws error when USDC token not found in metadata
+      findSourceDexWithBalance
+        ○ skipped finds main DEX with sufficient balance
+        ○ skipped returns null when insufficient balance
+      getAllAvailableDexs
+        ○ skipped returns cached DEX list when cache is populated
+        ○ skipped fetches DEX list from API when cache is empty
+        ○ skipped returns fallback when API returns null
+        ○ skipped returns fallback when API returns non-array
+        ○ skipped returns fallback and logs error when API throws
+        ○ skipped filters out null entries from cached DEX list
+        ○ skipped returns only main DEX when cached list contains only null
+      ensureReadyForTrading
+        ○ skipped calls ensureReady first before trading setup
+        ○ skipped returns immediately when tradingSetupComplete is true
+        ○ skipped sets tradingSetupComplete to true after successful setup
+        ○ skipped keeps tradingSetupComplete false when keyring is locked
+      autoTransferForHip3Order
+        ○ skipped returns null when target DEX has sufficient balance
+        ○ skipped transfers from main DEX when target has insufficient balance
+        ○ skipped throws error when no source has sufficient balance
+        ○ skipped throws error when transfer fails
+      calculateHip3RequiredMargin
+        ○ skipped calculates total margin when increasing existing long position
+        ○ skipped calculates incremental margin when reversing position
+        ○ skipped calculates margin for new position when no existing position
+        ○ skipped calculates total margin when increasing existing short position
+    ensureUnifiedAccountEnabled
+      ✓ does not call userAbstraction when useUnifiedAccount is false (2 ms)
+      ✓ does not call userAbstraction when global cache indicates already attempted (1 ms)
+      ✓ waits for in-flight then returns when another provider already cached the result
+      ✓ waits for in-flight then runs its own attempt when no cache was written (deferred dexAbstraction case) (1 ms)
+      ✓ returns early when re-check cache (inside lock) shows another provider completed
+      ✓ tracks already_enabled and caches success when mode is already unifiedAccount (1 ms)
+      ✓ does NOT migrate portfolioMargin users — tracks already_enabled and skips exchange call
+      ✓ calls agentSetAbstraction silently when mode is default
+      ✓ calls agentSetAbstraction silently when mode is disabled (1 ms)
+      ✓ tracks migration_required then success for default → unifiedAccount
+      ✓ skips migration and does not cache success for unknown abstraction modes (2 ms)
+      ✓ calls userSetAbstraction on init for software-wallet dexAbstraction users (1 ms)
+      ✓ tracks migration_required and writes cache for software-wallet dexAbstraction on init
+      ✓ records unifiedAccount mode when account is already unifiedAccount (1 ms)
+      ✓ records portfolioMargin mode when account is already portfolioMargin
+      ✓ records unifiedAccount mode after migrating from default → unifiedAccount (1 ms)
+      ✓ records unifiedAccount mode after migrating software-wallet dexAbstraction on init
+      ✓ defers dexAbstraction migration on init for hardware wallets
+      ✓ does NOT call setUserAbstractionMode when migration fails
+      ✓ does NOT cache when silent agentSetAbstraction fails (default/disabled paths retry on next entry) (1 ms)
+      ✓ retries migration on the next #ensureReady after a silent agent failure (2 ms)
+      ✓ caches failure when user-signed userSetAbstraction throws (don't re-prompt rejected users) (1 ms)
+      ✓ does NOT cache or log to Sentry when KEYRING_LOCKED is thrown
+      ✓ does NOT cache failure when userAbstraction read itself rejects (1 ms)
+      ✓ uses testnet network key when client is in testnet mode
+      ✓ sets in-flight lock with unifiedAccount key and releases it on success (1 ms)
+    WebSocket connection state methods
+      ✓ getWebSocketConnectionState delegates to clientService
+      ✓ subscribeToConnectionState delegates to clientService
+      ✓ reconnect delegates to clientService (1 ms)
+    getOrFetchFills - Cache-First Pattern
+      ✓ uses cached fills when cache is initialized
+      ✓ falls back to REST API when cache returns null (2 ms)
+      ✓ filters cached fills by startTime (1 ms)
+      ✓ filters cached fills by symbol
+      ✓ filters cached fills by both startTime and symbol (1 ms)
+      ✓ returns all fills when no filter params provided
+      ✓ returns empty array when cache is initialized but empty
+    standalone mode
+      getPositions with standalone mode
+        ✓ returns positions via standalone client when standalone mode enabled (1 ms)
+        ✓ filters zero-size positions in standalone mode
+        ✓ uses testnet endpoint when provider is in testnet mode (1 ms)
+        ✓ returns empty array when standalone client fails
+      getAccountState with standalone mode
+        ✓ returns account state via standalone client when standalone mode enabled (1 ms)
+        ✓ uses testnet endpoint when provider is in testnet mode
+        ✓ returns fallback account state when standalone client fails (2 ms)
+      getOpenOrders with standalone mode
+        ✓ returns orders via standalone client when standalone mode enabled (3 ms)
+        ✓ returns empty array when standalone client fails
+      multi-DEX standalone mode (HIP-3)
+        ✓ returns positions from both main DEX and HIP-3 DEXs (1 ms)
+        ✓ falls back to main DEX only when perpDexs() fails (1 ms)
+        ✓ returns only main DEX positions when hip3Enabled is false
+        ✓ caches validated DEXs across multiple readonly calls (1 ms)
+        ✓ aggregates account state across multiple DEXs in standalone mode (1 ms)
+        ✓ does not poison fully-initialized cache when standalone perpDexs() fails (2 ms)
+        ✓ does not cache invalid perpDexs response in standalone mode (1 ms)
+        ✓ shares cache between standalone and fully-initialized when standalone succeeds
+        ✓ filters DEXs via testnet config when in testnet mode (1 ms)
+        ✓ updates unified state atomically when standalone perpDexs succeeds (1 ms)
+    fetchHistoricalCandles
+      ✓ returns candle data from clientService
+      ✓ returns empty candles when clientService returns null (1 ms)
+    getFunding
+      ✓ returns funding records for the default 30-day window with a single API call
+      ✓ auto-splits window when API returns the record cap and recovers all records from sub-windows (1 ms)
+      ✓ does not split when window is at or below the minimum split size (2 ms)
+      ✓ passes explicit startTime and endTime directly to the API (1 ms)
+    buildAssetMapping with perpDexs network failure
+      ✓ completes asset mapping using fallback when perpDexs throws
+    getExchangeClient escape hatch
+      ✓ delegates to the client service and resolves with the underlying ExchangeClient (1 ms)
+      ✓ propagates errors thrown by the client service
+
+  ● HyperLiquidProvider › Edge Cases › handles missing price data
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+      2842 |       // allMids returns {} so #getOrFetchPrice parses price as 0, which is
+      2843 |       // invalid. The error surfaces from #getAssetInfo before validation runs.
+    > 2844 |       expect(result.success).toBe(false);
+           |                              ^
+      2845 |       expect(result.error).toContain('Invalid price for BTC: 0');
+      2846 |     });
+      2847 |
+
+      at Object.toBe (app/controllers/perps/providers/HyperLiquidProvider.test.ts:2844:30)
+      at asyncGeneratorStep (node_modules/@babel/runtime/helpers/asyncToGenerator.js:3:17)
+      at _next (node_modules/@babel/runtime/helpers/asyncToGenerator.js:17:9)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 36 skipped, 324 passed, 361 total
+Snapshots:   0 total
+Time:        7.479 s
+Ran all test suites matching /app\/controllers\/perps\/providers\/HyperLiquidProvider.test.ts/i.

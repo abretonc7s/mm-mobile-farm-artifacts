@@ -1,0 +1,9 @@
+- `app-navigate.sh --help` is not a help flag; it attempts to navigate to a `--help` route and creates a Metro navigation warning.
+- `simctl recordVideo` needed an absolute output path in this slot; the relative path failed before recording started.
+- The built-in CDP unlock helper expects `login-password-input`, but this build exposed the password input only by placeholder, so a custom placeholder-based CDP input update was needed.
+- For perps smoke validation without a generated recipe, `PerpsMarketDetails` can be reached directly with a market params object and gives a useful affected-screen proof.
+- `perps/providers` and `perps/markets` eval refs are useful read-only probes for confirming the active provider and live market data.
+- `HyperLiquidProvider.placeOrder` now depends on `#getOrFetchPrice` before validation; tests that simulate missing REST price must also clear the WebSocket cached price mock.
+- `HyperLiquidProvider.test.ts` has a default BTC cached price mock, which can accidentally bypass `allMids` mocks unless overridden per test.
+- Both `HyperLiquidProvider.ts` and `HyperLiquidProvider.test.ts` are far above the file-size guardrail, so even narrow future changes will trigger size comments under this review workflow.
+- Recipe coverage was untestable in this standard smoke slot because the ACs are backend/provider ordering behavior rather than visible UI claims.

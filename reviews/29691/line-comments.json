@@ -1,0 +1,25 @@
+{
+  "pr_number": "29691",
+  "recommendation": "REQUEST_CHANGES",
+  "summary": "The implementation matches the intended ordering fix, but the affected HyperLiquidProvider Jest suite fails. Requesting changes until the failing missing-price regression is fixed and the suite passes.",
+  "comments": [
+    {
+      "path": "app/controllers/perps/providers/HyperLiquidProvider.test.ts",
+      "line": 2845,
+      "body": "This updated missing-price regression currently fails: `placeOrder` returns success because the default `mockSubscriptionService.getCachedPrice('BTC')` still returns `50000`, so the `{}` `allMids` mock is never the only price source. Clear the cached price in this test, for example with `mockSubscriptionService.getCachedPrice.mockReturnValueOnce(undefined)`, so it actually exercises the missing REST price path.",
+      "severity": "must_fix"
+    },
+    {
+      "path": "app/controllers/perps/providers/HyperLiquidProvider.ts",
+      "line": 3545,
+      "body": "File-size guardrail: this touched provider is 8,627 lines, above the 2,500-line hard limit. Please split/refactor before merge per the review task guardrail.",
+      "severity": "must_fix"
+    },
+    {
+      "path": "app/controllers/perps/providers/HyperLiquidProvider.test.ts",
+      "line": 1229,
+      "body": "File-size guardrail: this touched test file is 10,619 lines, above the 2,500-line hard limit. Please split/refactor the suite before merge per the review task guardrail.",
+      "severity": "must_fix"
+    }
+  ]
+}
