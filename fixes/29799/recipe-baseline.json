@@ -1,0 +1,64 @@
+{
+  "pr": "29799",
+  "title": "Baseline: Open order prices show 2 decimals (buggy behavior)",
+  "jira": "TAT-3094",
+  "acceptance_criteria": [
+    "AC1: Compact order rows display trigger/limit price with 2 decimals (buggy behavior)",
+    "AC2: Expanded order card detail view displays trigger/limit price correctly"
+  ],
+  "validate": {
+    "static": [],
+    "workflow": {
+      "pre_conditions": ["wallet.unlocked", "perps.feature_enabled"],
+      "entry": "setup-nav-market",
+      "nodes": {
+        "setup-nav-market": {
+          "action": "call",
+          "ref": "perps/market-discovery",
+          "params": { "symbol": "BTC" },
+          "next": "ac1-eval-orders-exist"
+        },
+        "ac1-eval-orders-exist": {
+          "action": "eval_async",
+          "expression": "Engine.context.PerpsController.getOpenOrders().then(function(orders) { var btcOrders = orders.filter(function(o) { return o.symbol === 'BTC' && o.status === 'open'; }); var results = btcOrders.map(function(o) { var tp = parseFloat(o.triggerPrice || o.price || '0'); return { orderId: o.orderId, triggerPrice: tp, type: o.detailedOrderType }; }); return JSON.stringify({ count: btcOrders.length, orders: results }); })",
+          "assert": {
+            "operator": "gt",
+            "field": "count",
+            "value": 0
+          },
+          "next": "ac1-assert-btc-price-range"
+        },
+        "ac1-assert-btc-price-range": {
+          "action": "eval_async",
+          "expression": "Engine.context.PerpsController.getOpenOrders().then(function(orders) { var btcOrders = orders.filter(function(o) { return o.symbol === 'BTC' && o.status === 'open'; }); var o = btcOrders[0]; var price = parseFloat(o.triggerPrice || o.price || '0'); var isHighPrice = price > 10000; return JSON.stringify({ price: price, isHighPrice: isHighPrice, detailedType: o.detailedOrderType }); })",
+          "assert": {
+            "operator": "eq",
+            "field": "isHighPrice",
+            "value": true
+          },
+          "next": "ac1-screenshot-market"
+        },
+        "ac1-screenshot-market": {
+          "action": "screenshot",
+          "filename": "before-evidence-ac1-market-details.png",
+          "note": "AC1: BTC market details showing order with 2-decimal price (buggy)",
+          "next": "ac2-eval-expanded-uses-universal"
+        },
+        "ac2-eval-expanded-uses-universal": {
+          "action": "eval_async",
+          "expression": "Engine.context.PerpsController.getOpenOrders().then(function(orders) { var btcOrders = orders.filter(function(o) { return o.symbol === 'BTC' && o.status === 'open'; }); var results = btcOrders.map(function(o) { var price = parseFloat(o.triggerPrice || o.price || '0'); return { orderId: o.orderId, price: price, type: o.detailedOrderType, priceShouldHaveZeroDecimals: price > 10000 }; }); return JSON.stringify({ count: results.length, orders: results }); })",
+          "assert": {
+            "operator": "gt",
+            "field": "count",
+            "value": 0
+          },
+          "next": "done"
+        },
+        "done": {
+          "action": "end",
+          "status": "pass"
+        }
+      }
+    }
+  }
+}

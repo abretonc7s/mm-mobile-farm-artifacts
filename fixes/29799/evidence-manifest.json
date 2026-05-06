@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "preferred_mode": "screenshots",
+  "summary": "Compact order row price formatting changed from PRICE_RANGES_MINIMAL_VIEW (fixed 2 decimals) to PRICE_RANGES_UNIVERSAL (market-appropriate decimals).",
+  "before_after_pairs": [
+    {
+      "label": "BTC market details with order data (market price shows 0 decimals)",
+      "covers": ["ac1", "ac2"],
+      "before": "before-evidence-ac1-market-details.png",
+      "after": "after-ac1-market-details.png"
+    }
+  ],
+  "standalone": [],
+  "omit": [],
+  "videos": {
+    "preferred": false
+  }
+}

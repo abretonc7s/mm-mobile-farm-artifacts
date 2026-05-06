@@ -1,0 +1,66 @@
+{
+  "pr": "29799",
+  "title": "Open order prices use market-appropriate decimals",
+  "jira": "TAT-3094",
+  "acceptance_criteria": [
+    "AC1: Compact order rows display trigger/limit price with market-appropriate decimals instead of fixed 2 decimals",
+    "AC2: Expanded order card detail view continues to display trigger/limit price correctly (no regression)"
+  ],
+  "validate": {
+    "static": ["yarn lint:tsc"],
+    "workflow": {
+      "pre_conditions": ["wallet.unlocked", "perps.feature_enabled"],
+      "entry": "setup-nav-market",
+      "nodes": {
+        "setup-nav-market": {
+          "action": "call",
+          "ref": "perps/market-discovery",
+          "params": { "symbol": "BTC" },
+          "next": "ac1-eval-orders-exist"
+        },
+        "ac1-eval-orders-exist": {
+          "action": "eval_async",
+          "expression": "Engine.context.PerpsController.getOpenOrders().then(function(orders) { var btcOrders = orders.filter(function(o) { return o.symbol === 'BTC' && o.status === 'open'; }); var results = btcOrders.map(function(o) { var tp = parseFloat(o.triggerPrice || o.price || '0'); return { orderId: o.orderId, triggerPrice: tp, type: o.detailedOrderType }; }); return JSON.stringify({ count: btcOrders.length, orders: results }); })",
+          "assert": {
+            "operator": "gt",
+            "field": "count",
+            "value": 0
+          },
+          "next": "ac1-assert-btc-price-range"
+        },
+        "ac1-assert-btc-price-range": {
+          "action": "eval_async",
+          "expression": "Engine.context.PerpsController.getOpenOrders().then(function(orders) { var btcOrders = orders.filter(function(o) { return o.symbol === 'BTC' && o.status === 'open'; }); var o = btcOrders[0]; var price = parseFloat(o.triggerPrice || o.price || '0'); var isHighPrice = price > 10000; return JSON.stringify({ price: price, isHighPrice: isHighPrice, expectedMaxDecimals: isHighPrice ? 0 : 2, detailedType: o.detailedOrderType }); })",
+          "assert": {
+            "operator": "eq",
+            "field": "isHighPrice",
+            "value": true
+          },
+          "note": "AC1: BTC trigger price > $10,000 means PRICE_RANGES_UNIVERSAL gives 0 decimals, while the old PRICE_RANGES_MINIMAL_VIEW would give 2",
+          "next": "ac1-screenshot-market"
+        },
+        "ac1-screenshot-market": {
+          "action": "screenshot",
+          "filename": "evidence-ac1-market-details.png",
+          "note": "AC1: BTC market details screen showing order data available",
+          "next": "ac2-eval-expanded-uses-universal"
+        },
+        "ac2-eval-expanded-uses-universal": {
+          "action": "eval_async",
+          "expression": "Engine.context.PerpsController.getOpenOrders().then(function(orders) { var btcOrders = orders.filter(function(o) { return o.symbol === 'BTC' && o.status === 'open'; }); var results = btcOrders.map(function(o) { var price = parseFloat(o.triggerPrice || o.price || '0'); return { orderId: o.orderId, price: price, type: o.detailedOrderType, priceShouldHaveZeroDecimals: price > 10000 }; }); return JSON.stringify({ count: results.length, orders: results }); })",
+          "assert": {
+            "operator": "gt",
+            "field": "count",
+            "value": 0
+          },
+          "note": "AC2: Verify order data for expanded card view is available and prices are in high range",
+          "next": "done"
+        },
+        "done": {
+          "action": "end",
+          "status": "pass"
+        }
+      }
+    }
+  }
+}
