@@ -1,0 +1,287 @@
+{
+  "env": {
+    "appRoot": "/Users/deeeed/dev/metamask/metamask-mobile-1",
+    "recipePath": "/Users/deeeed/dev/metamask/metamask-mobile-1/.task/fix/tat-3094-0506-073600/artifacts/recipe.json",
+    "team": ""
+  },
+  "inputs": {},
+  "last": {
+    "message": "",
+    "status": "pass"
+  },
+  "nodes": {
+    "ac1-open-chip-order-details": {
+      "action": "navigate",
+      "description": "navigate to PerpsOrderDetailsView",
+      "finishedAt": "2026-05-06T00:30:51.512Z",
+      "id": "ac1-open-chip-order-details",
+      "status": "pass",
+      "startedAt": "2026-05-06T00:30:50.855Z",
+      "durationMs": 657,
+      "next": "ac1-wait-order-details",
+      "result": {
+        "navigated": "PerpsOrderDetailsView",
+        "params": {
+          "order": {
+            "orderId": "recipe-chip-limit",
+            "symbol": "CHIP",
+            "side": "buy",
+            "orderType": "limit",
+            "size": "100",
+            "originalSize": "100",
+            "price": "0.001234",
+            "filledSize": "0",
+            "remainingSize": "100",
+            "status": "open",
+            "timestamp": 1777982726658,
+            "detailedOrderType": "Limit",
+            "isTrigger": false,
+            "reduceOnly": false,
+            "isPositionTpsl": false,
+            "triggerPrice": "0"
+          }
+        },
+        "previousRoute": {
+          "key": "PerpsOrderDetailsView-Uk_BhrdDapvuNpusLw_0_",
+          "name": "PerpsOrderDetailsView",
+          "params": {
+            "order": {
+              "detailedOrderType": "Limit",
+              "filledSize": "0",
+              "isPositionTpsl": false,
+              "isTrigger": false,
+              "orderId": "recipe-chip-limit",
+              "orderType": "limit",
+              "originalSize": "100",
+              "price": "0.001234",
+              "reduceOnly": false,
+              "remainingSize": "100",
+              "side": "buy",
+              "size": "100",
+              "status": "open",
+              "symbol": "CHIP",
+              "timestamp": 1777982726658,
+              "triggerPrice": "0"
+            }
+          }
+        },
+        "currentRoute": {
+          "key": "PerpsOrderDetailsView-Uk_BhrdDapvuNpusLw_0_",
+          "name": "PerpsOrderDetailsView",
+          "params": {
+            "order": {
+              "detailedOrderType": "Limit",
+              "filledSize": "0",
+              "isPositionTpsl": false,
+              "isTrigger": false,
+              "orderId": "recipe-chip-limit",
+              "orderType": "limit",
+              "originalSize": "100",
+              "price": "0.001234",
+              "reduceOnly": false,
+              "remainingSize": "100",
+              "side": "buy",
+              "size": "100",
+              "status": "open",
+              "symbol": "CHIP",
+              "timestamp": 1777982726658,
+              "triggerPrice": "0"
+            }
+          }
+        },
+        "deviceName": "mm-1",
+        "platform": "ios"
+      }
+    },
+    "ac1-wait-order-details": {
+      "action": "wait_for",
+      "description": "wait for PerpsOrderDetailsView",
+      "finishedAt": "2026-05-06T00:30:51.684Z",
+      "id": "ac1-wait-order-details",
+      "status": "pass",
+      "startedAt": "2026-05-06T00:30:51.513Z",
+      "durationMs": 171,
+      "next": "ac1-assert-chip-limit-price",
+      "result": {
+        "route": "PerpsOrderDetailsView"
+      }
+    },
+    "ac1-assert-chip-limit-price": {
+      "action": "eval_sync",
+      "description": "eval_sync",
+      "finishedAt": "2026-05-06T00:30:51.833Z",
+      "id": "ac1-assert-chip-limit-price",
+      "status": "pass",
+      "startedAt": "2026-05-06T00:30:51.684Z",
+      "durationMs": 149,
+      "next": "ac1-screenshot-chip-order-details",
+      "result": {
+        "found": true,
+        "text": "dev1|dev1|dev1|$55.44|$55.44|$55.44|$55.44|+$0.35 |+$0.35 |+$0.35 |+$0.35 |(+0.64%)|(+0.64%)|(+0.64%)|(+0.64%)|Buy|Buy|Buy|Swap|Swap|Swap|Send|Send|Send|Receive|Receive|Receive|Money|Money|Money|Earn 4% APY|Earn 4% APY|Earn 4% APY|Get started|Get started|Get started|Get started|Get started|Get started|Tokens|Tokens|Tokens|BNB|BNB|BNB|$23.65|$23.65|$23.65|$23.65|$630.16| • |$630.16| • |$630.16| • |+1.12%|+1.12%|+1.12%|+1.12%|0.03753 BNB|0.03753 BNB|0.03753 BNB|0.03753 BNB|Ethereum|Ethereum|Ethereum|Earn 1.9%|Earn 1.9%|Earn 1.9%|$13.45|$13.45|$13.45|$13.45|$2,359.46| • |$2,359.46| • |$2,359.46| • |+0.52%|+0.52%|+0.52%|+0.52%|0.00569 ETH|0.00569 ETH|0.00569 ETH|0.00569 ETH|USD Coin (Native)|USD Coin (Native)|USD Coin (Native)|$6.63|$6.63|$6.63|$6.63|$0.9992| • |$0.9992| • |$0.9992| • |Earn|Earn|Earn|Earn|6.64005 USDC|6.64005 USDC|6.64005 USDC|6.64005 USDC|Ethereum|Ethereum|Ethereum|$3.26|$3.26|$3.26|$3.26|$2,359.46| • |$2,359.46| • |$2,359.46| • |+0.52%|+0.52%|+0.52%|+0.52%|0.00138 ETH|0.00138 ETH|0.00138 ETH|0.00138 ETH|Perpetuals|Perpetuals|Perpetuals|+$0.01 (+0.1%)|+$0.01 (+0.1%)|+$0.01 (+0.1%)|Unrealized P&L|Unrealized P&L|Unrealized P&L|BTC 3x long|BTC 3x long|BTC 3x long|0.00013 BTC|0.00013 BTC|0.00013 BTC|$10.52|$10.52|$10.52|$10.52|+$0.01 (+0.3%)|+$0.01 (+0.3%)|+$0.01 (+0.3%)|+$0.01 (+0.3%)|ETH 3x long|ETH 3x long|ETH 3x long|0.0043 ETH|0.0043 ETH|0.0043 ETH|$10.14|$10.14|$10.14|$10.14|-$0.00 (-0.1%)|-$0.00 (-0.1%)|-$0.00 (-0.1%)|-$0.00 (-0.1%)|Limit long|Limit long|Limit long|0.00013 BTC|0.00013 BTC|0.00013 BTC|$75,000|$75,000|$75,000|$75,000|Limit price|Limit price|Limit price|Limit price|Predictions|Predictions|Predictions|2026 FIFA World Cup Winner |2026 FIFA World Cup Winner |2026 FIFA World Cup Winner |France|France|France|17%|17%|17%|Spain|Spain|Spain|15%|15%|15%|Lakers vs. Thunder|Lakers vs. Thunder|Lakers vs. Thunder|Lakers vs. Thunder|Lakers vs. Thunder|Lakers vs. Thunder|14%|14%|14%|Spread 14.5|Spread 14.5|Spread 14.5|47%|47%|47%|When will Bitcoin hit $150k?|When will Bitcoin hit $150k?|When will Bitcoin hit $150k?|by December 31, 2026|by December 31, 2026|by December 31, 2026|10%|10%|10%|by June 30, 2026|by June 30, 2026|by June 30, 2026|1%|1%|1%|Cavaliers vs. Pistons|Cavaliers vs. Pistons|Cavaliers vs. Pistons|Cavaliers vs. Pistons|Cavaliers vs. Pistons|Cavaliers vs. Pistons|16%|16%|16%|Spread 2.5|Spread 2.5|Spread 2.5|18%|18%|18%|Iran closes its airspace by...?|Iran closes its airspace by...?|Iran closes its airspace by...?|May 31|May 31|May 31|37%|37%|37%|May 15|May 15|May 15|22%|22%|22%|View more|View more|View more|Top Traders|Top Traders|Top Traders|cl207|cl207|cl207|+$930K|+$930K|+$930K| 30D| 30D| 30D|Follow|Follow|Follow|Follow|Follow|Follow|zer0xsaood|zer0xsaood|zer0xsaood|+$775K|+$775K|+$775K| 30D| 30D| 30D|Follow|Follow|Follow|Follow|Follow|Follow|coldwallet.ens.eth|coldwallet.ens.eth|coldwallet.ens.eth|+$645K|+$645K|+$645K| 30D| 30D| 30D|Follow|Follow|Follow|Follow|Follow|Follow|S|S|S|swisscheese|swisscheese|swisscheese|+$0|+$0|+$0| 30D| 30D| 30D|Follow|Follow|Follow|Follow|Follow|Follow|H|H|H|harrys|harrys|harrys|-$0|-$0|-$0| 30D| 30D| 30D|Follow|Follow|Follow|Follow|Follow|Follow|reppodao.eth|reppodao.eth|reppodao.eth|+$424K|+$424K|+$424K| 30D| 30D| 30D|Follow|Follow|Follow|Follow|Follow|Follow|anus.eth|anus.eth|anus.eth|+$399K|+$399K|+$399K| 30D| 30D| 30D|Follow|Follow|Follow|Follow|Follow|Follow|zuq|zuq|zuq|+$303K|+$303K|+$303K| 30D| 30D| 30D|Follow|Follow|Follow|Follow|Follow|Follow|0xforgivable|0xforgivable|0xforgivable|+$287K|+$287K|+$287K| 30D| 30D| 30D|Follow|Follow|Follow|Follow|Follow|Follow|444worldeth|444worldeth|444worldeth|+$245K|+$245K|+$245K| 30D| 30D| 30D|Follow|Follow|Follow|Follow|Follow|Follow|View more|View more|View more|What's happening|What's happening|What's happening|Bullish|Bullish|Bullish|Macro|Macro|Macro|Bitcoin surges past $81,000 on strong ETF inflows and easing geopolitical tensions|Bitcoin surges past $81,000 on strong ETF inflows and easing geopolitical tensions|Bitcoin surges past $81,000 on strong ETF inflows and easing geopolitical tensions|Bitcoin extended its rally above $81,000 on May 5, driven by over $530 million in spot ETF inflows led by BlackRock, reduced Middle East tensions following U.S.-Iran talks, and $225 million in short liquidations. The move marks Bitcoin's strongest level since January 2026.|Bitcoin extended its rally above $81,000 on May 5, driven by over $530 million in spot ETF inflows led by BlackRock, reduced Middle East tensions following U.S.-Iran talks, and $225 million in short liquidations. The move marks Bitcoin's strongest level since January 2026.|Bitcoin extended its rally above $81,000 on May 5, driven by over $530 million in spot ETF inflows led by BlackRock, reduced Middle East tensions following U.S.-Iran talks, and $225 million in short liquidations. The move marks Bitcoin's strongest level since January 2026.|BTC|BTC|BTC|Tue May 05 2026|Tue May 05 2026|Tue May 05 2026|Bullish|Bullish|Bullish|Regulatory|Regulatory|Regulatory|CLARITY Act advances after stablecoin yield compromise clears final hurdle|CLARITY Act advances after stablecoin yield compromise clears final hurdle|CLARITY Act advances after stablecoin yield compromise clears final hurdle|Senators Thom Tillis and Angela Alsobrooks reached a bipartisan deal on May 2 banning passive stablecoin yield while allowing activity-based rewards, removing the final major obstacle to the Digital Asset Market Clarity Act. Senate Banking Committee markup could occur in May, with passage odds jumping to 64% on prediction markets.|Senators Thom Tillis and Angela Alsobrooks reached a bipartisan deal on May 2 banning passive stablecoin yield while allowing activity-based rewards, removing the final major obstacle to the Digital Asset Market Clarity Act. Senate Banking Committee markup could occur in May, with passage odds jumping to 64% on prediction markets.|Senators Thom Tillis and Angela Alsobrooks reached a bipartisan deal on May 2 banning passive stablecoin yield while allowing activity-based rewards, removing the final major obstacle to the Digital Asset Market Clarity Act. Senate Banking Committee markup could occur in May, with passage odds jumping to 64% on prediction markets.|BTC|BTC|BTC|ETH|ETH|ETH|USDC|USDC|USDC|USDT|USDT|USDT|Sat May 02 2026|Sat May 02 2026|Sat May 02 2026|Bearish|Bearish|Bearish|Technical|Technical|Technical|Drift Protocol unveils recovery plan after $295 million North Korea-linked hack|Drift Protocol unveils recovery plan after $295 million North Korea-linked hack|Drift Protocol unveils recovery plan after $295 million North Korea-linked hack|Solana-based Drift Protocol announced a user recovery plan on May 5 following its April 1 exploit attributed to North Korean hackers. The plan includes tokenized recovery claims, a pool funded by up to $127.5 million from Tether and $20 million from partners, and a security-focused Q2 2026 relaunch.|Solana-based Drift Protocol announced a user recovery plan on May 5 following its April 1 exploit attributed to North Korean hackers. The plan includes tokenized recovery claims, a pool funded by up to $127.5 million from Tether and $20 million from partners, and a security-focused Q2 2026 relaunch.|Solana-based Drift Protocol announced a user recovery plan on May 5 following its April 1 exploit attributed to North Korean hackers. The plan includes tokenized recovery claims, a pool funded by up to $127.5 million from Tether and $20 million from partners, and a security-focused Q2 2026 relaunch.|SOL|SOL|SOL|USDC|USDC|USDC|USDT|USDT|USDT|Tue May 05 2026|Tue May 05 2026|Tue May 05 2026|Bullish|Bullish|Bullish|Macro|Macro|Macro|Andreessen Horowitz raises $2.2 billion for fifth crypto fund targeting stablecoins and DeFi|Andreessen Horowitz raises $2.2 billion for fifth crypto fund targeting stablecoins and DeFi|Andreessen Horowitz raises $2.2 billion for fifth crypto fund targeting stablecoins and DeFi|a16z crypto announced on May 5 that it closed a $2.2 billion Crypto Fund 5, bringing total committed capital to $9.8 billion. The fund will back startups building stablecoins, tokenization, perpetual futures, DeFi lending, and blockchain infrastructure over the next decade, despite the AI funding boom.|a16z crypto announced on May 5 that it closed a $2.2 billion Crypto Fund 5, bringing total committed capital to $9.8 billion. The fund will back startups building stablecoins, tokenization, perpetual futures, DeFi lending, and blockchain infrastructure over the next decade, despite the AI funding boom.|a16z crypto announced on May 5 that it closed a $2.2 billion Crypto Fund 5, bringing total committed capital to $9.8 billion. The fund will back startups building stablecoins, tokenization, perpetual futures, DeFi lending, and blockchain infrastructure over the next decade, despite the AI funding boom.|BTC|BTC|BTC|ETH|ETH|ETH|Tue May 05 2026|Tue May 05 2026|Tue May 05 2026|View more|View more|View more|NFTs|NFTs|NFTs|There's a world of NFTs out there. Start your collection today.|There's a world of NFTs out there. Start your collection today.|There's a world of NFTs out there. Start your collection today.|Import NFTs|Import NFTs|Import NFTs|Import NFTs|Import NFTs|Import NFTs|Home|Home|Home|Explore|Explore|Explore|Trade|Trade|Trade|Money|Money|Money|Rewards|Rewards|Rewards|Limit long|Limit long|Limit long|CHIP|CHIP|CHIP|Date|Date|Date|May 5 at 8:05 PM|May 5 at 8:05 PM|May 5 at 8:05 PM|Price|Price|Price|$0.001234|$0.001234|$0.001234|Size|Size|Size|100 CHIP|100 CHIP|100 CHIP|Original size|Original size|Original size|100 CHIP|100 CHIP|100 CHIP|Order value|Order value|Order value|$0.12|$0.12|$0.12|Reduce only|Reduce only|Reduce only|No|No|No|Fee|Fee|Fee|<$0.01|<$0.01|<$0.01|Status|Status|Status|Open|Open|Open|Cancel order|Cancel order|Cancel order|Cancel order|Cancel order|Cancel order|ac1-assert-chip-limit-price|ac1-assert-chip-limit-price|  eval_sync|  eval_sync"
+      }
+    },
+    "ac1-screenshot-chip-order-details": {
+      "action": "screenshot",
+      "description": "AC1: CHIP order details renders six-decimal limit price $0.001234",
+      "finishedAt": "2026-05-06T00:30:52.219Z",
+      "id": "ac1-screenshot-chip-order-details",
+      "status": "pass",
+      "startedAt": "2026-05-06T00:30:51.833Z",
+      "durationMs": 386,
+      "next": "ac1-done",
+      "result": {
+        "screenshot": "/Users/deeeed/dev/metamask/metamask-mobile-1/.agent/screenshots/2026-05-06_083051_evidence-ac1-chip-order-details.png"
+      }
+    },
+    "ac1-done": {
+      "action": "end",
+      "description": "pass end",
+      "finishedAt": "2026-05-06T00:30:52.219Z",
+      "id": "ac1-done",
+      "status": "pass",
+      "note": "",
+      "result": {
+        "message": "",
+        "status": "pass"
+      }
+    }
+  },
+  "trace": [
+    {
+      "action": "navigate",
+      "description": "navigate to PerpsOrderDetailsView",
+      "finishedAt": "2026-05-06T00:30:51.512Z",
+      "id": "ac1-open-chip-order-details",
+      "status": "pass",
+      "startedAt": "2026-05-06T00:30:50.855Z",
+      "durationMs": 657,
+      "next": "ac1-wait-order-details",
+      "result": {
+        "navigated": "PerpsOrderDetailsView",
+        "params": {
+          "order": {
+            "orderId": "recipe-chip-limit",
+            "symbol": "CHIP",
+            "side": "buy",
+            "orderType": "limit",
+            "size": "100",
+            "originalSize": "100",
+            "price": "0.001234",
+            "filledSize": "0",
+            "remainingSize": "100",
+            "status": "open",
+            "timestamp": 1777982726658,
+            "detailedOrderType": "Limit",
+            "isTrigger": false,
+            "reduceOnly": false,
+            "isPositionTpsl": false,
+            "triggerPrice": "0"
+          }
+        },
+        "previousRoute": {
+          "key": "PerpsOrderDetailsView-Uk_BhrdDapvuNpusLw_0_",
+          "name": "PerpsOrderDetailsView",
+          "params": {
+            "order": {
+              "detailedOrderType": "Limit",
+              "filledSize": "0",
+              "isPositionTpsl": false,
+              "isTrigger": false,
+              "orderId": "recipe-chip-limit",
+              "orderType": "limit",
+              "originalSize": "100",
+              "price": "0.001234",
+              "reduceOnly": false,
+              "remainingSize": "100",
+              "side": "buy",
+              "size": "100",
+              "status": "open",
+              "symbol": "CHIP",
+              "timestamp": 1777982726658,
+              "triggerPrice": "0"
+            }
+          }
+        },
+        "currentRoute": {
+          "key": "PerpsOrderDetailsView-Uk_BhrdDapvuNpusLw_0_",
+          "name": "PerpsOrderDetailsView",
+          "params": {
+            "order": {
+              "detailedOrderType": "Limit",
+              "filledSize": "0",
+              "isPositionTpsl": false,
+              "isTrigger": false,
+              "orderId": "recipe-chip-limit",
+              "orderType": "limit",
+              "originalSize": "100",
+              "price": "0.001234",
+              "reduceOnly": false,
+              "remainingSize": "100",
+              "side": "buy",
+              "size": "100",
+              "status": "open",
+              "symbol": "CHIP",
+              "timestamp": 1777982726658,
+              "triggerPrice": "0"
+            }
+          }
+        },
+        "deviceName": "mm-1",
+        "platform": "ios"
+      }
+    },
+    {
+      "action": "wait_for",
+      "description": "wait for PerpsOrderDetailsView",
+      "finishedAt": "2026-05-06T00:30:51.684Z",
+      "id": "ac1-wait-order-details",
+      "status": "pass",
+      "startedAt": "2026-05-06T00:30:51.513Z",
+      "durationMs": 171,
+      "next": "ac1-assert-chip-limit-price",
+      "result": {
+        "route": "PerpsOrderDetailsView"
+      }
+    },
+    {
+      "action": "eval_sync",
+      "description": "eval_sync",
+      "finishedAt": "2026-05-06T00:30:51.833Z",
+      "id": "ac1-assert-chip-limit-price",
+      "status": "pass",
+      "startedAt": "2026-05-06T00:30:51.684Z",
+      "durationMs": 149,
+      "next": "ac1-screenshot-chip-order-details",
+      "result": {
+        "found": true,
+        "text": "dev1|dev1|dev1|$55.44|$55.44|$55.44|$55.44|+$0.35 |+$0.35 |+$0.35 |+$0.35 |(+0.64%)|(+0.64%)|(+0.64%)|(+0.64%)|Buy|Buy|Buy|Swap|Swap|Swap|Send|Send|Send|Receive|Receive|Receive|Money|Money|Money|Earn 4% APY|Earn 4% APY|Earn 4% APY|Get started|Get started|Get started|Get started|Get started|Get started|Tokens|Tokens|Tokens|BNB|BNB|BNB|$23.65|$23.65|$23.65|$23.65|$630.16| • |$630.16| • |$630.16| • |+1.12%|+1.12%|+1.12%|+1.12%|0.03753 BNB|0.03753 BNB|0.03753 BNB|0.03753 BNB|Ethereum|Ethereum|Ethereum|Earn 1.9%|Earn 1.9%|Earn 1.9%|$13.45|$13.45|$13.45|$13.45|$2,359.46| • |$2,359.46| • |$2,359.46| • |+0.52%|+0.52%|+0.52%|+0.52%|0.00569 ETH|0.00569 ETH|0.00569 ETH|0.00569 ETH|USD Coin (Native)|USD Coin (Native)|USD Coin (Native)|$6.63|$6.63|$6.63|$6.63|$0.9992| • |$0.9992| • |$0.9992| • |Earn|Earn|Earn|Earn|6.64005 USDC|6.64005 USDC|6.64005 USDC|6.64005 USDC|Ethereum|Ethereum|Ethereum|$3.26|$3.26|$3.26|$3.26|$2,359.46| • |$2,359.46| • |$2,359.46| • |+0.52%|+0.52%|+0.52%|+0.52%|0.00138 ETH|0.00138 ETH|0.00138 ETH|0.00138 ETH|Perpetuals|Perpetuals|Perpetuals|+$0.01 (+0.1%)|+$0.01 (+0.1%)|+$0.01 (+0.1%)|Unrealized P&L|Unrealized P&L|Unrealized P&L|BTC 3x long|BTC 3x long|BTC 3x long|0.00013 BTC|0.00013 BTC|0.00013 BTC|$10.52|$10.52|$10.52|$10.52|+$0.01 (+0.3%)|+$0.01 (+0.3%)|+$0.01 (+0.3%)|+$0.01 (+0.3%)|ETH 3x long|ETH 3x long|ETH 3x long|0.0043 ETH|0.0043 ETH|0.0043 ETH|$10.14|$10.14|$10.14|$10.14|-$0.00 (-0.1%)|-$0.00 (-0.1%)|-$0.00 (-0.1%)|-$0.00 (-0.1%)|Limit long|Limit long|Limit long|0.00013 BTC|0.00013 BTC|0.00013 BTC|$75,000|$75,000|$75,000|$75,000|Limit price|Limit price|Limit price|Limit price|Predictions|Predictions|Predictions|2026 FIFA World Cup Winner |2026 FIFA World Cup Winner |2026 FIFA World Cup Winner |France|France|France|17%|17%|17%|Spain|Spain|Spain|15%|15%|15%|Lakers vs. Thunder|Lakers vs. Thunder|Lakers vs. Thunder|Lakers vs. Thunder|Lakers vs. Thunder|Lakers vs. Thunder|14%|14%|14%|Spread 14.5|Spread 14.5|Spread 14.5|47%|47%|47%|When will Bitcoin hit $150k?|When will Bitcoin hit $150k?|When will Bitcoin hit $150k?|by December 31, 2026|by December 31, 2026|by December 31, 2026|10%|10%|10%|by June 30, 2026|by June 30, 2026|by June 30, 2026|1%|1%|1%|Cavaliers vs. Pistons|Cavaliers vs. Pistons|Cavaliers vs. Pistons|Cavaliers vs. Pistons|Cavaliers vs. Pistons|Cavaliers vs. Pistons|16%|16%|16%|Spread 2.5|Spread 2.5|Spread 2.5|18%|18%|18%|Iran closes its airspace by...?|Iran closes its airspace by...?|Iran closes its airspace by...?|May 31|May 31|May 31|37%|37%|37%|May 15|May 15|May 15|22%|22%|22%|View more|View more|View more|Top Traders|Top Traders|Top Traders|cl207|cl207|cl207|+$930K|+$930K|+$930K| 30D| 30D| 30D|Follow|Follow|Follow|Follow|Follow|Follow|zer0xsaood|zer0xsaood|zer0xsaood|+$775K|+$775K|+$775K| 30D| 30D| 30D|Follow|Follow|Follow|Follow|Follow|Follow|coldwallet.ens.eth|coldwallet.ens.eth|coldwallet.ens.eth|+$645K|+$645K|+$645K| 30D| 30D| 30D|Follow|Follow|Follow|Follow|Follow|Follow|S|S|S|swisscheese|swisscheese|swisscheese|+$0|+$0|+$0| 30D| 30D| 30D|Follow|Follow|Follow|Follow|Follow|Follow|H|H|H|harrys|harrys|harrys|-$0|-$0|-$0| 30D| 30D| 30D|Follow|Follow|Follow|Follow|Follow|Follow|reppodao.eth|reppodao.eth|reppodao.eth|+$424K|+$424K|+$424K| 30D| 30D| 30D|Follow|Follow|Follow|Follow|Follow|Follow|anus.eth|anus.eth|anus.eth|+$399K|+$399K|+$399K| 30D| 30D| 30D|Follow|Follow|Follow|Follow|Follow|Follow|zuq|zuq|zuq|+$303K|+$303K|+$303K| 30D| 30D| 30D|Follow|Follow|Follow|Follow|Follow|Follow|0xforgivable|0xforgivable|0xforgivable|+$287K|+$287K|+$287K| 30D| 30D| 30D|Follow|Follow|Follow|Follow|Follow|Follow|444worldeth|444worldeth|444worldeth|+$245K|+$245K|+$245K| 30D| 30D| 30D|Follow|Follow|Follow|Follow|Follow|Follow|View more|View more|View more|What's happening|What's happening|What's happening|Bullish|Bullish|Bullish|Macro|Macro|Macro|Bitcoin surges past $81,000 on strong ETF inflows and easing geopolitical tensions|Bitcoin surges past $81,000 on strong ETF inflows and easing geopolitical tensions|Bitcoin surges past $81,000 on strong ETF inflows and easing geopolitical tensions|Bitcoin extended its rally above $81,000 on May 5, driven by over $530 million in spot ETF inflows led by BlackRock, reduced Middle East tensions following U.S.-Iran talks, and $225 million in short liquidations. The move marks Bitcoin's strongest level since January 2026.|Bitcoin extended its rally above $81,000 on May 5, driven by over $530 million in spot ETF inflows led by BlackRock, reduced Middle East tensions following U.S.-Iran talks, and $225 million in short liquidations. The move marks Bitcoin's strongest level since January 2026.|Bitcoin extended its rally above $81,000 on May 5, driven by over $530 million in spot ETF inflows led by BlackRock, reduced Middle East tensions following U.S.-Iran talks, and $225 million in short liquidations. The move marks Bitcoin's strongest level since January 2026.|BTC|BTC|BTC|Tue May 05 2026|Tue May 05 2026|Tue May 05 2026|Bullish|Bullish|Bullish|Regulatory|Regulatory|Regulatory|CLARITY Act advances after stablecoin yield compromise clears final hurdle|CLARITY Act advances after stablecoin yield compromise clears final hurdle|CLARITY Act advances after stablecoin yield compromise clears final hurdle|Senators Thom Tillis and Angela Alsobrooks reached a bipartisan deal on May 2 banning passive stablecoin yield while allowing activity-based rewards, removing the final major obstacle to the Digital Asset Market Clarity Act. Senate Banking Committee markup could occur in May, with passage odds jumping to 64% on prediction markets.|Senators Thom Tillis and Angela Alsobrooks reached a bipartisan deal on May 2 banning passive stablecoin yield while allowing activity-based rewards, removing the final major obstacle to the Digital Asset Market Clarity Act. Senate Banking Committee markup could occur in May, with passage odds jumping to 64% on prediction markets.|Senators Thom Tillis and Angela Alsobrooks reached a bipartisan deal on May 2 banning passive stablecoin yield while allowing activity-based rewards, removing the final major obstacle to the Digital Asset Market Clarity Act. Senate Banking Committee markup could occur in May, with passage odds jumping to 64% on prediction markets.|BTC|BTC|BTC|ETH|ETH|ETH|USDC|USDC|USDC|USDT|USDT|USDT|Sat May 02 2026|Sat May 02 2026|Sat May 02 2026|Bearish|Bearish|Bearish|Technical|Technical|Technical|Drift Protocol unveils recovery plan after $295 million North Korea-linked hack|Drift Protocol unveils recovery plan after $295 million North Korea-linked hack|Drift Protocol unveils recovery plan after $295 million North Korea-linked hack|Solana-based Drift Protocol announced a user recovery plan on May 5 following its April 1 exploit attributed to North Korean hackers. The plan includes tokenized recovery claims, a pool funded by up to $127.5 million from Tether and $20 million from partners, and a security-focused Q2 2026 relaunch.|Solana-based Drift Protocol announced a user recovery plan on May 5 following its April 1 exploit attributed to North Korean hackers. The plan includes tokenized recovery claims, a pool funded by up to $127.5 million from Tether and $20 million from partners, and a security-focused Q2 2026 relaunch.|Solana-based Drift Protocol announced a user recovery plan on May 5 following its April 1 exploit attributed to North Korean hackers. The plan includes tokenized recovery claims, a pool funded by up to $127.5 million from Tether and $20 million from partners, and a security-focused Q2 2026 relaunch.|SOL|SOL|SOL|USDC|USDC|USDC|USDT|USDT|USDT|Tue May 05 2026|Tue May 05 2026|Tue May 05 2026|Bullish|Bullish|Bullish|Macro|Macro|Macro|Andreessen Horowitz raises $2.2 billion for fifth crypto fund targeting stablecoins and DeFi|Andreessen Horowitz raises $2.2 billion for fifth crypto fund targeting stablecoins and DeFi|Andreessen Horowitz raises $2.2 billion for fifth crypto fund targeting stablecoins and DeFi|a16z crypto announced on May 5 that it closed a $2.2 billion Crypto Fund 5, bringing total committed capital to $9.8 billion. The fund will back startups building stablecoins, tokenization, perpetual futures, DeFi lending, and blockchain infrastructure over the next decade, despite the AI funding boom.|a16z crypto announced on May 5 that it closed a $2.2 billion Crypto Fund 5, bringing total committed capital to $9.8 billion. The fund will back startups building stablecoins, tokenization, perpetual futures, DeFi lending, and blockchain infrastructure over the next decade, despite the AI funding boom.|a16z crypto announced on May 5 that it closed a $2.2 billion Crypto Fund 5, bringing total committed capital to $9.8 billion. The fund will back startups building stablecoins, tokenization, perpetual futures, DeFi lending, and blockchain infrastructure over the next decade, despite the AI funding boom.|BTC|BTC|BTC|ETH|ETH|ETH|Tue May 05 2026|Tue May 05 2026|Tue May 05 2026|View more|View more|View more|NFTs|NFTs|NFTs|There's a world of NFTs out there. Start your collection today.|There's a world of NFTs out there. Start your collection today.|There's a world of NFTs out there. Start your collection today.|Import NFTs|Import NFTs|Import NFTs|Import NFTs|Import NFTs|Import NFTs|Home|Home|Home|Explore|Explore|Explore|Trade|Trade|Trade|Money|Money|Money|Rewards|Rewards|Rewards|Limit long|Limit long|Limit long|CHIP|CHIP|CHIP|Date|Date|Date|May 5 at 8:05 PM|May 5 at 8:05 PM|May 5 at 8:05 PM|Price|Price|Price|$0.001234|$0.001234|$0.001234|Size|Size|Size|100 CHIP|100 CHIP|100 CHIP|Original size|Original size|Original size|100 CHIP|100 CHIP|100 CHIP|Order value|Order value|Order value|$0.12|$0.12|$0.12|Reduce only|Reduce only|Reduce only|No|No|No|Fee|Fee|Fee|<$0.01|<$0.01|<$0.01|Status|Status|Status|Open|Open|Open|Cancel order|Cancel order|Cancel order|Cancel order|Cancel order|Cancel order|ac1-assert-chip-limit-price|ac1-assert-chip-limit-price|  eval_sync|  eval_sync"
+      }
+    },
+    {
+      "action": "screenshot",
+      "description": "AC1: CHIP order details renders six-decimal limit price $0.001234",
+      "finishedAt": "2026-05-06T00:30:52.219Z",
+      "id": "ac1-screenshot-chip-order-details",
+      "status": "pass",
+      "startedAt": "2026-05-06T00:30:51.833Z",
+      "durationMs": 386,
+      "next": "ac1-done",
+      "result": {
+        "screenshot": "/Users/deeeed/dev/metamask/metamask-mobile-1/.agent/screenshots/2026-05-06_083051_evidence-ac1-chip-order-details.png"
+      }
+    },
+    {
+      "action": "end",
+      "description": "pass end",
+      "finishedAt": "2026-05-06T00:30:52.219Z",
+      "id": "ac1-done",
+      "status": "pass",
+      "note": "",
+      "result": {
+        "message": "",
+        "status": "pass"
+      }
+    }
+  ],
+  "vars": {}
+}

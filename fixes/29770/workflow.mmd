@@ -1,0 +1,12 @@
+flowchart TD
+  %% Mobile decimals on open orders
+  __entry__(["ENTRY"]) --> node_ac1_open_chip_order_details
+  node_ac1_open_chip_order_details["ac1-open-chip-order-details<br/>navigate"]
+  node_ac1_wait_order_details["ac1-wait-order-details<br/>wait_for"]
+  node_ac1_assert_chip_limit_price["ac1-assert-chip-limit-price<br/>eval_sync"]
+  node_ac1_screenshot_chip_order_details["ac1-screenshot-chip-order-details<br/>screenshot"]
+  node_ac1_done(["ac1-done<br/>PASS"])
+  node_ac1_open_chip_order_details --> node_ac1_wait_order_details
+  node_ac1_wait_order_details --> node_ac1_assert_chip_limit_price
+  node_ac1_assert_chip_limit_price --> node_ac1_screenshot_chip_order_details
+  node_ac1_screenshot_chip_order_details --> node_ac1_done

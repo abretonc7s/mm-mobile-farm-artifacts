@@ -1,0 +1,4 @@
+- Investigation took longer than the source fix because the recipe needed pre-fix failure proof, simulator recording with a valid `moov` atom, and wallet unlock recovery between runs.
+- The most useful codebase anchor was the split between market price formatting (`PRICE_RANGES_UNIVERSAL`) and fiat notional formatting; changing the formatter default would have been too broad.
+- The recipe screenshot was saved under `.agent/screenshots` instead of the artifact directory, so it had to be copied into `.task/.../artifacts` for stable evidence.
+- `lint:tsc` surfaced unrelated deep-instantiation blockers in Perps controller/rewards reducer paths; localizing those casts kept the task moving without changing behavior.
