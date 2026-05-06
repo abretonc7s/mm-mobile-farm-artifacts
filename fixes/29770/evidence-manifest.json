@@ -2,18 +2,15 @@
   "version": 1,
   "preferred_mode": "screenshots",
   "summary": "CHIP open order details display the six-decimal trigger/limit price using market precision.",
-  "before_after_pairs": [],
-  "standalone": [
+  "before_after_pairs": [
     {
       "label": "CHIP order details six-decimal limit price",
       "covers": ["ac1"],
-      "file": "after-ac1-chip-order-details.png"
+      "before": "before-evidence-ac1-chip-order-details.png",
+      "after": "after-ac1-chip-order-details.png"
     }
   ],
+  "standalone": [],
   "omit": [],
-  "videos": {
-    "before": "before.mp4",
-    "after": "after.mp4",
-    "preferred": false
-  }
+  "videos": {}
 }

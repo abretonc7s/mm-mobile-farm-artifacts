@@ -1,0 +1,87 @@
+{
+  "pr": "29770",
+  "title": "Mobile decimals on open orders",
+  "jira": "TAT-3094",
+  "acceptance_criteria": [
+    "Open orders (limit, TP, SL) on wallet home, perps home and perp market detail screens display the same number of decimals for trigger/limit price as the displayed market price (examples: 0 for BTC, 2 for CL, 6 for CHIP)."
+  ],
+  "coverage_notes": {
+    "recipe_scope": "Executable recipe proves the low-priced CHIP limit-order details surface only, using the concrete value that failed before the fix.",
+    "not_recipe_covered": [
+      "Wallet home compact open-order row",
+      "Perps home compact open-order row",
+      "Market detail compact open-order row",
+      "Take-profit trigger condition in order details",
+      "Stop-loss trigger condition in order details"
+    ],
+    "non_recipe_evidence": [
+      "PerpsCompactOrderRow.test.tsx asserts compact open-order price formatting passes PRICE_RANGES_UNIVERSAL.",
+      "PerpsOrderDetailsView.test.tsx asserts limit, trigger-condition, take-profit, and stop-loss prices use universal-range formatted output."
+    ]
+  },
+  "validate": {
+    "workflow": {
+      "pre_conditions": [
+        "wallet.unlocked",
+        "perps.feature_enabled"
+      ],
+      "entry": "ac1-open-chip-order-details",
+      "nodes": {
+        "ac1-open-chip-order-details": {
+          "action": "navigate",
+          "target": "PerpsOrderDetailsView",
+          "params": {
+            "order": {
+              "orderId": "recipe-chip-limit",
+              "symbol": "CHIP",
+              "side": "buy",
+              "orderType": "limit",
+              "size": "100",
+              "originalSize": "100",
+              "price": "0.001234",
+              "filledSize": "0",
+              "remainingSize": "100",
+              "status": "open",
+              "timestamp": 1777982726658,
+              "detailedOrderType": "Limit",
+              "isTrigger": false,
+              "reduceOnly": false,
+              "isPositionTpsl": false,
+              "triggerPrice": "0"
+            }
+          },
+          "next": "ac1-wait-order-details"
+        },
+        "ac1-wait-order-details": {
+          "action": "wait_for",
+          "route": "PerpsOrderDetailsView",
+          "next": "ac1-assert-chip-limit-price"
+        },
+        "ac1-assert-chip-limit-price": {
+          "action": "eval_sync",
+          "expression": "(function(){var hook=globalThis.__REACT_DEVTOOLS_GLOBAL_HOOK__;var out=[];function add(x){if(x===null||x===undefined)return;if(typeof x==='string'||typeof x==='number')out.push(String(x));else if(Array.isArray(x)){for(var i=0;i<x.length;i++)add(x[i]);}}function walk(f){if(!f)return;var p=f.memoizedProps;if(p)add(p.children);walk(f.child);walk(f.sibling);}if(!hook||!hook.getFiberRoots)return JSON.stringify({found:false,text:''});hook.renderers.forEach(function(v,id){var roots=hook.getFiberRoots(id);if(roots)roots.forEach(function(root){walk(root.current);});});var text=out.join('|');return JSON.stringify({found:text.indexOf('<$0.01')>=0&&text.indexOf('$0.001234')<0,text:text});})()",
+          "assert": {
+            "operator": "eq",
+            "field": "found",
+            "value": true
+          },
+          "next": "ac1-screenshot-chip-order-details",
+          "validate": {
+            "buggy_visible_price": "<$0.01",
+            "fixed_price_absent": "$0.001234"
+          }
+        },
+        "ac1-screenshot-chip-order-details": {
+          "action": "screenshot",
+          "filename": "before-evidence-ac1-chip-order-details.png",
+          "note": "AC1 baseline: CHIP order details shows buggy two-decimal precision instead of $0.001234",
+          "next": "ac1-done"
+        },
+        "ac1-done": {
+          "action": "end",
+          "status": "pass"
+        }
+      }
+    }
+  }
+}
