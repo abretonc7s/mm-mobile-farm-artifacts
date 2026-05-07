@@ -1,0 +1,40 @@
+{
+  "title": "PR 29655 runtime validation - Perps stack enters without navigator crash",
+  "schema_version": 1,
+  "pr": 29655,
+  "validate": {
+    "workflow": {
+      "pre_conditions": [
+        "wallet.unlocked",
+        "perps.feature_enabled"
+      ],
+      "entry": "ac7-navigate-perps-home",
+      "nodes": {
+        "ac7-navigate-perps-home": {
+          "action": "navigate",
+          "target": "PerpsHomeView",
+          "next": "ac7-assert-perps-route"
+        },
+        "ac7-assert-perps-route": {
+          "action": "wait_for",
+          "route": "PerpsMarketListView",
+          "timeout_ms": 8000,
+          "next": "ac7-assert-no-duplicate-screen-error"
+        },
+        "ac7-assert-no-duplicate-screen-error": {
+          "action": "log_watch",
+          "window_seconds": 5,
+          "must_not_appear": [
+            "A navigator cannot contain multiple 'Screen' components with the same name",
+            "found duplicate screen named 'PerpsClosePositionModals'"
+          ],
+          "next": "done"
+        },
+        "done": {
+          "action": "end",
+          "status": "pass"
+        }
+      }
+    }
+  }
+}

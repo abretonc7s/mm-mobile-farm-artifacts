@@ -1,0 +1,13 @@
+Running recipe: PR 29655 runtime validation - Perps stack enters without navigator crash
+Pre-conditions: wallet.unlocked, perps.feature_enabled
+Workflow nodes: 4
+
+PRE-CONDITIONS FAILED
+  - wallet.unlocked: Wallet is unlocked and app is navigable
+    error: ERROR: Evaluation error: TypeError: Cannot read property 'name' of undefined
+    at anonymous (:1:75)
+    at anonymous (:1:174)
+    at global (:1:181)
+    hint: Unlock the wallet first:
+  bash scripts/perps/agentic/app-state.sh unlock <password>
+Recipe pre-conditions failed
