@@ -1,0 +1,9 @@
+- Standard-tier recipe generation should be skipped when `app-state.sh status` cannot reach the Metro CDP endpoint; keep ACs explicitly UNTESTABLE rather than implying device proof.
+- `xcrun simctl io <device> screenshot <absolute-path>` worked even when `recordVideo` initially failed with a render-server error.
+- `simctl recordVideo` can leave a host recording lock and produce an MP4 without a `moov` atom if it does not finalize cleanly; verify the atom before trusting the video.
+- `screencapture -v -V <seconds>` can create a valid fallback `review.mp4`, but the report should clearly distinguish it from simulator-native recording.
+- `PerpsConnectionProvider` has two separate error side effects: visible error rendering and the Sentry breadcrumb. `suppressErrorView` only suppresses the visible error UI.
+- The Perps route stack mounts three provider instances around screen, modal, and close-position modal stacks; duplicate side effects need to account for all three.
+- `PerpsAlwaysOnProvider` now owns the lifecycle connection path, so route providers are mostly state/context synchronizers.
+- The new `PerpsGlobalErrorGate` tests are comprehensive for UI and analytics behavior, but they encode the current debounce duration and should match the PR's documented timing.
+- CDP was unavailable during this run, so all live AC proof is a coverage gap despite passing focused unit tests.

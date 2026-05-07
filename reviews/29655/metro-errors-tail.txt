@@ -1,0 +1,20 @@
+ (NOBRIDGE) WARN  Require cycle: app/components/Views/confirmations/components/data-tree/data-tree.tsx -> app/components/Views/confirmations/components/data-tree/data-field.tsx -> app/components/Views/confirmations/components/data-tree/data-tree.tsx
+ (NOBRIDGE) WARN  [Reanimated] Reduced motion setting is overwritten with mode 'never'.
+ (NOBRIDGE) WARN  [Error: getBearerToken - unable to proceed, wallet is locked]
+ (NOBRIDGE) WARN  [MetaMask DEBUG]: [Error: getBearerToken - unable to proceed, wallet is locked]
+ (NOBRIDGE) WARN  You passed a server string as an argument to one of the react-native-keychain functions.
+ (NOBRIDGE) WARN  You passed a server string as an argument to one of the react-native-keychain functions.
+ (NOBRIDGE) WARN  You passed a server string as an argument to one of the react-native-keychain functions.
+ (NOBRIDGE) WARN  You passed a server string as an argument to one of the react-native-keychain functions.
+ (NOBRIDGE) ERROR  Warning: ActionModal: Support for defaultProps will be removed from function components in a future major release. Use JavaScript default parameters instead.
+    in ErrorBoundary (created by Root)
+ (NOBRIDGE) WARN  You passed a server string as an argument to one of the react-native-keychain functions.
+ (NOBRIDGE) WARN  You passed a server string as an argument to one of the react-native-keychain functions.
+ (NOBRIDGE) WARN  Contentful SDK failed, falling back to direct fetch [AccessTokenInvalid: {
+ (NOBRIDGE) WARN  [mapContentfulEntriesToSlides] Invalid items format: undefined
+ (NOBRIDGE) ERROR  Warning: Encountered two children with the same key, ``. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+    in ErrorBoundary (created by Wallet)
+    in ErrorBoundary (created by Root)
+ (NOBRIDGE) ERROR  Warning: Encountered two children with the same key, ``. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+    in ErrorBoundary (created by Wallet)
+    in ErrorBoundary (created by Root)

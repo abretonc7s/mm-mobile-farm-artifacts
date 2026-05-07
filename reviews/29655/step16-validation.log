@@ -1,0 +1,13 @@
+## Step 16 Validation Log
+
+### Health check
+
+### Navigation attempt
+Navigating to Perps...
+
+### Affected screen screenshot
+Detected file type from extension: PNG
+Note: No display specified. Defaulting to display: AF4263B3-A24E-4458-A31C-DDE2CB29A59F (screenID: 1, name: LCD)
+Wrote screenshot to: /Users/deeeed/dev/metamask/metamask-mobile-1/.task/review/29655-0507-172028/artifacts/evidence/affected-screen.png
+
+### Metro log monitor (30s)

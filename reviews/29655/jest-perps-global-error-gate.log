@@ -1,0 +1,40 @@
+watchman warning:  Recrawled this watch 1 time, most recently because:
+MustScanSubDirs UserDroppedTo resolve, please review the information on
+https://facebook.github.io/watchman/docs/troubleshooting.html#recrawl
+To clear this warning, run:
+`watchman watch-del '/Users/deeeed/dev/metamask/metamask-mobile-1' ; watchman watch-project '/Users/deeeed/dev/metamask/metamask-mobile-1'`
+
+jest-haste-map: duplicate manual mock found: index
+  The following files share their name; please delete one of them:
+    * <rootDir>/app/util/haptics/__mocks__/index.ts
+    * <rootDir>/app/components/UI/Perps/__mocks__/index.ts
+
+PASS app/components/UI/Perps/components/PerpsGlobalErrorGate/PerpsGlobalErrorGate.test.tsx (11.715 s)
+  PerpsGlobalErrorGate
+    ✓ renders children when there is no error (6 ms)
+    ✓ renders error view when connection state has an error (36 ms)
+    ✓ shows children again when error clears (2 ms)
+    ✓ always shows back button on error view (2 ms)
+    ✓ calls reconnectWithNewContext with force on retry (1 ms)
+    ✓ increments retry attempts on each retry (3 ms)
+    ✓ resets retry attempts on successful reconnection (1 ms)
+    ✓ cleans up polling interval on unmount (1 ms)
+    ✓ forwards isConnecting as isRetrying to the error view (1 ms)
+    ✓ polls and reflects isConnecting changes (1 ms)
+    ✓ adds Sentry breadcrumb when retry fails (1 ms)
+    analytics debouncing
+      ✓ fires PERPS_SCREEN_VIEWED once after debounce when error occurs (2 ms)
+      ✓ does not fire duplicate events for the same error (1 ms)
+      ✓ suppresses analytics during rapid error flap cycles (1 ms)
+      ✓ fires one event per retry attempt (2 ms)
+    sibling provider deduplication
+      ✓ only one error view renders even with multiple children providers
+    gate + suppressErrorView provider integration
+      ✓ gate renders error view while suppressed children would normally render (1 ms)
+      ✓ gate renders all children when there is no error (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       18 passed, 18 total
+Snapshots:   0 total
+Time:        11.767 s
+Ran all test suites matching /app\/components\/UI\/Perps\/components\/PerpsGlobalErrorGate\/PerpsGlobalErrorGate.test.tsx/i.

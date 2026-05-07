@@ -1,0 +1,6 @@
+     154 app/components/UI/Perps/components/PerpsConnectionErrorView/PerpsConnectionErrorView.tsx
+     663 app/components/UI/Perps/components/PerpsGlobalErrorGate/PerpsGlobalErrorGate.test.tsx
+     155 app/components/UI/Perps/components/PerpsGlobalErrorGate/PerpsGlobalErrorGate.tsx
+       1 app/components/UI/Perps/components/PerpsGlobalErrorGate/index.ts
+     500 app/components/UI/Perps/routes/index.tsx
+    1473 total

@@ -1,0 +1,19 @@
+{
+  "pr_number": "29655",
+  "recommendation": "REQUEST_CHANGES",
+  "summary": "The central gate is the right approach and the focused tests pass, but the implementation no longer matches the PR's stated 1-second analytics debounce window. Suppressed providers also still emit the old error-view Sentry breadcrumb, so the Sentry-noise part is only partially addressed.",
+  "comments": [
+    {
+      "path": "app/components/UI/Perps/components/PerpsGlobalErrorGate/PerpsGlobalErrorGate.tsx",
+      "line": 14,
+      "body": "The PR body says rapid error flaps are debounced with a 1-second window, but this constant is 150 ms. That means an error that clears after 200 ms and reappears before 1 second can still emit two `PERPS_SCREEN_VIEWED` events, which violates the stated behavior. Please either restore the 1-second window or update the PR/tests/acceptance criteria if 150 ms is the intended product behavior.",
+      "severity": "must_fix"
+    },
+    {
+      "path": "app/components/UI/Perps/routes/index.tsx",
+      "line": 137,
+      "body": "Because `PerpsConnectionProvider` still records its `PerpsConnectionErrorView shown` Sentry breadcrumb whenever `connectionState.error` changes, passing `suppressErrorView` here suppresses the UI but not the provider breadcrumb. With the screen, modal, and close-position providers mounted, that can still duplicate and mislabel Sentry breadcrumbs even though the global gate owns rendering. Consider moving that breadcrumb to `PerpsGlobalErrorGate` or guarding it with `!suppressErrorView`.",
+      "severity": "suggestion"
+    }
+  ]
+}
