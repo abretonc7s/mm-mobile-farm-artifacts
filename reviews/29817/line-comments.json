@@ -1,0 +1,25 @@
+{
+  "pr_number": "29817",
+  "recommendation": "APPROVE",
+  "summary": "Clean, minimal fix that closes three Sentry observability gaps in TradingService. All claims verified by code review and comprehensive unit tests.",
+  "comments": [
+    {
+      "path": "app/components/UI/Perps/hooks/usePerpsFlipPosition.ts",
+      "line": 19,
+      "body": "JSDoc still mentions \"Sentry tracking\" but this hook no longer reports to Sentry (that's now the controller's responsibility). Consider updating to reflect the current behavior, e.g. \"Provides consistent error handling and toast notifications\".",
+      "severity": "nitpick"
+    },
+    {
+      "path": "app/controllers/perps/services/TradingService.ts",
+      "line": 1126,
+      "body": "The new `#getErrorContext` calls produce a flat `{controller, method, ...}` object, while the existing `catch` block at line 1491 uses the verbose `{tags: {...}, context: {name, data: {...}}}` format. This means Sentry events for the same method will have different context shapes depending on throw vs non-throwing failure. Consider aligning both paths in a follow-up so Sentry dashboards can query consistently.",
+      "severity": "suggestion"
+    },
+    {
+      "path": "app/controllers/perps/services/TradingService.ts",
+      "line": 2119,
+      "body": "TradingService.ts is at 2,119 lines (above the 2,000-line threshold). This PR adds ~70 lines of necessary logging. Consider splitting into per-operation modules (e.g. OrderService, PositionService, TPSLService) in a follow-up to keep each file manageable.",
+      "severity": "suggestion"
+    }
+  ]
+}
