@@ -1,0 +1,6 @@
+{
+  "originalFamilyScopeSummary": "fix(perps): render PerpsConnectionErrorView once across all provider instances",
+  "currentTriggerSummary": "review-pr: fix(perps): deduplicate error view and analytics across connection providers",
+  "scopeVerdict": "partial-symptom-only",
+  "notes": "The main PerpsScreenStack path is covered by PerpsGlobalErrorGate, but PerpsModalStack is still registered directly in MainNavigator outside that gate while its provider now suppresses its own error view. That leaves a modal entry path where connection errors may not render any error view."
+}
