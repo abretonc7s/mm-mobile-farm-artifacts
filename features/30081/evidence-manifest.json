@@ -1,0 +1,17 @@
+{
+  "evidence": [
+    {
+      "file": "evidence-ac2-banner-visible.png",
+      "label": "AC2: Outage banner visible on Perps home",
+      "note": "Warning icon, outage title, support/Hyperliquid links visible at top of scroll",
+      "ac": ["AC2"]
+    },
+    {
+      "file": "evidence-ac6-banner-gone.png",
+      "label": "AC6: Banner removed after flag toggled OFF",
+      "note": "Perps home with no outage banner — same screen, flag off",
+      "ac": ["AC6"]
+    }
+  ],
+  "omit": []
+}

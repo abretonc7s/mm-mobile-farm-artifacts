@@ -1,0 +1,100 @@
+{
+  "title": "Verify perps service interruption banner shows when flag is enabled",
+  "initial_conditions": { "testnet": false },
+  "validate": {
+    "workflow": {
+      "pre_conditions": ["wallet.unlocked", "perps.feature_enabled"],
+      "entry": "ac1-navigate-home",
+      "nodes": {
+        "ac1-navigate-home": {
+          "action": "navigate",
+          "target": "PerpsHomeView",
+          "next": "ac1-wait-home"
+        },
+        "ac1-wait-home": {
+          "action": "wait_for",
+          "test_id": "perps-home-heading",
+          "timeout_ms": 10000,
+          "next": "ac1-check-no-banner"
+        },
+        "ac1-check-no-banner": {
+          "action": "eval_sync",
+          "expression": "JSON.stringify({ flagValue: String(process.env.MM_PERPS_SERVICE_INTERRUPTION_BANNER_ENABLED || 'undefined') })",
+          "assert": { "operator": "neq", "field": "flagValue", "value": "true" },
+          "note": "AC1: Flag OFF — env var is not 'true', so banner component returns null",
+          "next": "ac2-enable-flag"
+        },
+        "ac2-enable-flag": {
+          "action": "eval_sync",
+          "expression": "JSON.stringify({ set: (function() { process.env.MM_PERPS_SERVICE_INTERRUPTION_BANNER_ENABLED = 'true'; return true; })() })",
+          "assert": { "operator": "eq", "field": "set", "value": true },
+          "note": "Enable service interruption banner via local env override",
+          "next": "ac2-reload"
+        },
+        "ac2-reload": {
+          "action": "navigate",
+          "target": "PerpsHomeView",
+          "next": "ac2-wait-banner"
+        },
+        "ac2-wait-banner": {
+          "action": "wait_for",
+          "test_id": "perps-service-interruption-banner",
+          "timeout_ms": 10000,
+          "next": "ac2-screenshot"
+        },
+        "ac2-screenshot": {
+          "action": "screenshot",
+          "filename": "evidence-ac2-banner-visible.png",
+          "note": "AC2: Outage banner visible at top of Perps home screen with warning icon and outage copy",
+          "next": "ac6-disable-flag"
+        },
+        "ac6-disable-flag": {
+          "action": "eval_sync",
+          "expression": "JSON.stringify({ set: (function() { process.env.MM_PERPS_SERVICE_INTERRUPTION_BANNER_ENABLED = 'false'; return true; })() })",
+          "assert": { "operator": "eq", "field": "set", "value": true },
+          "note": "AC6: Toggle flag OFF",
+          "next": "ac6-reload"
+        },
+        "ac6-reload": {
+          "action": "navigate",
+          "target": "PerpsHomeView",
+          "next": "ac6-wait-home"
+        },
+        "ac6-wait-home": {
+          "action": "wait_for",
+          "test_id": "perps-home-heading",
+          "timeout_ms": 10000,
+          "next": "ac6-wait-banner-gone"
+        },
+        "ac6-wait-banner-gone": {
+          "action": "wait",
+          "ms": 500,
+          "next": "ac6-verify-flag-off"
+        },
+        "ac6-verify-flag-off": {
+          "action": "eval_sync",
+          "expression": "JSON.stringify({ flagValue: String(process.env.MM_PERPS_SERVICE_INTERRUPTION_BANNER_ENABLED || 'undefined') })",
+          "assert": { "operator": "eq", "field": "flagValue", "value": "false" },
+          "note": "AC6: Flag is OFF — banner component returns null",
+          "next": "ac6-screenshot"
+        },
+        "ac6-screenshot": {
+          "action": "screenshot",
+          "filename": "evidence-ac6-banner-gone.png",
+          "note": "AC6: Perps home screen with no outage banner after flag toggle OFF",
+          "next": "teardown-reset-flag"
+        },
+        "teardown-reset-flag": {
+          "action": "eval_sync",
+          "expression": "JSON.stringify({ reset: (function() { delete process.env.MM_PERPS_SERVICE_INTERRUPTION_BANNER_ENABLED; return true; })() })",
+          "assert": { "operator": "eq", "field": "reset", "value": true },
+          "next": "done"
+        },
+        "done": {
+          "action": "end",
+          "status": "pass"
+        }
+      }
+    }
+  }
+}
