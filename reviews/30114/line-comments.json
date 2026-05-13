@@ -1,0 +1,19 @@
+{
+  "pr_number": "30114",
+  "recommendation": "APPROVE",
+  "summary": "Clean, well-tested fix. One concern: mobile's HARDWARE_KEYRING_TYPES now has 5 entries (added Trezor, OneKey, Lattice) but core's perps-controller still only has Ledger + QR — the two are out of sync.",
+  "comments": [
+    {
+      "path": "app/controllers/perps/services/HyperLiquidWalletService.ts",
+      "line": 19,
+      "body": "Mobile now lists 5 hardware keyring types but `core/packages/perps-controller/src/services/HyperLiquidWalletService.ts` still only has `Ledger Hardware` and `QR Hardware Wallet Device`. The comment on line 17 says this is 'inlined to keep this service portable between mobile and the core monorepo' — but they've now diverged. Should this change be mirrored in core to stay in sync?",
+      "severity": "suggestion"
+    },
+    {
+      "path": "app/controllers/perps/utils/hyperLiquidAbstraction.ts",
+      "line": 3,
+      "body": "The `MIGRATABLE_ABSTRACTION_MODES` set here (`dexAbstraction`, `default`, `disabled`) must stay in sync with the explicit guard in `HyperLiquidProvider.ts:747-751` that bails on unknown modes. Consider adding a comment cross-referencing each location, or extracting the known-mode list to a shared constant so they can't drift apart.",
+      "severity": "suggestion"
+    }
+  ]
+}
