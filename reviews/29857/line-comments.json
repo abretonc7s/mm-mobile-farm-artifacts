@@ -1,0 +1,13 @@
+{
+  "pr_number": "29857",
+  "recommendation": "APPROVE",
+  "summary": "Clean, well-tested fix addressing all four root causes: init-await for action calls, full client recreation on reconnect, plain error code for i18n, and user-friendly toast. Low risk.",
+  "comments": [
+    {
+      "path": "app/controllers/perps/PerpsController.ts",
+      "line": 1976,
+      "body": "PerpsController.ts is now 5,061 lines — well past the 2,500 line recommended limit. This PR only adds ~30 lines so it's not the cause, but worth tracking as tech debt. Consider extracting trading action methods into a separate service (TradingActionService or similar) in a future refactor.",
+      "severity": "suggestion"
+    }
+  ]
+}
