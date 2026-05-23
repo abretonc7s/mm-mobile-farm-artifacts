@@ -1,12 +1,12 @@
 {
   "pr_number": "29420",
   "recommendation": "APPROVE",
-  "summary": "Clean, minimal fix that correctly migrates all Perps hooks from the old AccountsController selector to the new account-group-based EVM selector. All 4 ACs proven via live device validation and unit tests (184/184 pass).",
+  "summary": "Clean, well-targeted fix migrating 4 Perps hooks and 1 view from the legacy selected-account selector to the account-group EVM selector, preventing ValiError crashes for non-EVM accounts. All 187 tests pass, runtime validation confirms no ValiError.",
   "comments": [
     {
       "path": "app/components/UI/Perps/hooks/usePerpsOrderFees.test.ts",
-      "line": 34,
-      "body": "This mock for `selectSelectedInternalAccountFormattedAddress` is now dead code — the production code (`usePerpsOrderFees.ts`) no longer imports from `accountsController`. It's harmless but could be removed for clarity.",
+      "line": 32,
+      "body": "This mock for `selectSelectedInternalAccountFormattedAddress` is now dead code — the production file no longer imports from `accountsController`. Consider removing this mock block to avoid confusion about which selector is actually being used.",
       "severity": "nitpick"
     }
   ]

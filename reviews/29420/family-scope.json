@@ -1,0 +1,6 @@
+{
+  "originalFamilyScopeSummary": "fix(perps): [Perps] ValiError: non-EVM address passed to HyperLiquid validator via usePerpsPositionForAsset",
+  "currentTriggerSummary": "review-pr: fix(perps): non-EVM address passed to HyperLiquid validator via usePerpsPositionForAsset",
+  "scopeVerdict": "full-scope-addressed",
+  "notes": "All 4 acceptance criteria addressed: (1) usePerpsPositionForAsset and 3 other hooks migrated to selectSelectedAccountGroupEvmInternalAccount, (2) runtime validation confirms no ValiError on Perps market open, (3) grep audit confirms no remaining production usage of the old selector in Perps code, (4) 2 new unit tests cover non-EVM selected account and no-EVM-in-group edge case. PR has 2 domain-expert approvals."
+}

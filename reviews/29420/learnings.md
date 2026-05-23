@@ -1,17 +1,17 @@
 # Learnings — PR #29420 Review
 
-- **AccountTreeController is the canonical multichain source**: `AccountsController.state.selectedAccount` can return non-EVM accounts. Always use `AccountTreeController` selectors for account group resolution, filtering by `isEvmAccountType` when EVM-specific behavior is needed.
+- **AccountTreeController is the canonical multichain selector source**: `selectSelectedAccountGroupInternalAccounts` and derivatives from `accountTreeController.ts` are the correct way to get accounts for a selected group. The old `selectSelectedInternalAccountFormattedAddress` from `accountsController.ts` returns whatever account type is selected, including non-EVM.
 
-- **Fixture accounts include non-EVM types**: The test wallet's account group has Solana (`solana:data-account`), Bitcoin (`bip122:p2wpkh`), and Tron (`tron:eoa`) accounts alongside EVM, making it easy to validate non-EVM scenarios via CDP eval.
+- **`isEvmAccountType` from `@metamask/keyring-api`** is the canonical EVM type check — not string matching against `eip155:`. The keyring-api function handles all EVM account type variants.
 
-- **Recipe AC3/AC4 assertions are weak by design**: When ACs are primarily code-review or unit-test concerns (not runtime-testable), the recipe nodes are effectively static assertions. This is acceptable when paired with actual code review and test execution, but should be acknowledged in the coverage matrix.
+- **log_watch timing caveat**: When `log_watch` executes in ~129ms but is configured with `window_seconds: 10`, the actual scan window may be shorter than expected. The `watch_counts: {}` empty result means no matches were found, but the absence proof is limited to the actual execution window. For stronger absence proof, a longer real-time wait before the log_watch scan would be needed.
 
-- **iOS simulator video recording is unreliable**: `xcrun simctl io mm-1 recordVideo` fails with `SimRenderServer.SimulatorError Code=2` in some environments. AC-bound screenshots from the recipe runner are sufficient evidence when video fails.
+- **trace.json lives in `.agent/recipe-runs/`**, not in the recipe artifacts directory. Always check `.agent/recipe-runs/<timestamp>/trace.json` and `summary.json` for authoritative recipe evidence.
 
-- **Dead test mocks after selector migration**: When migrating from one selector to another across multiple files, check that test mocks for the old selector are cleaned up. They're harmless but create confusion about which selector is actually being tested.
+- **Dead test mocks accumulate during selector migrations**: When production code migrates from one selector to another, test files that mock the old selector at the module level (`jest.mock(...)`) keep working because Jest doesn't care if the mock is unused. These dead mocks should be cleaned up to avoid confusion.
 
-- **Selector composition pattern**: `selectSelectedAccountGroupEvmInternalAccount` is a good example of composing selectors — it builds on `selectSelectedAccountGroupInternalAccounts` and adds a filter. This is the recommended pattern for derived selector state.
+- **Video recording with `xcrun simctl io` requires kill by PID, not job spec**: `kill -INT %1` may not reach the background process correctly. Use `pgrep -f "simctl io"` to find the PID and `kill -INT <PID>` directly.
 
-- **The `?.address` pattern is consistent**: All migrated hooks use `evmAccount?.address` which produces `string | undefined` — matching the previous `selectSelectedInternalAccountFormattedAddress` return type semantics. Downstream guards like `if (!userAddress)` work identically.
+- **Perps hooks follow a consistent address-derivation pattern**: All hooks that need the user's EVM address use `const evmAccount = useSelector(selectSelectedAccountGroupEvmInternalAccount); const selectedAddress = evmAccount?.address;` with existing `if (!selectedAddress)` guards handling the undefined case.
 
-- **Recipe runner doesn't always produce trace.json**: When reviewing recipe results, rely on stdout pass/fail counts when trace.json is absent.
+- **PR already has 2 domain-expert approvals** (ccharly, michalconsensys) — review comments from ccharly were addressed in commit fbd28d57. No CHANGES_REQUESTED reviews exist.
