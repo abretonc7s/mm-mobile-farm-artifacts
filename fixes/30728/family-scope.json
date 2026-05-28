@@ -1,0 +1,6 @@
+{
+  "originalFamilyScopeSummary": "Add Related Markets rail to mobile market detail pages for cross-market discovery",
+  "currentTriggerSummary": "pr-complete: Add Related Markets rail to mobile market detail pages for cross-market discovery",
+  "scopeVerdict": "full-scope-addressed",
+  "notes": "Review comments fetched for PR #30728 were triaged and addressed where in mobile scope: slide tracking reset, flag rename, category-based related markets, and removal of the local 20-item cap. External tracking-repo registration was deferred as out of scope for this mobile PR."
+}

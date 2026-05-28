@@ -10,7 +10,7 @@
         {
           "id": "setup-enable-related-markets-flag",
           "action": "eval_sync",
-          "expression": "(function(){var c=Engine.context.RemoteFeatureFlagController;c.update(function(state){state.remoteFeatureFlags.perpsRelatedMarketsMobile=true;});if(globalThis.store&&globalThis.store.dispatch){globalThis.store.dispatch({type:'UPDATE_BG_STATE',payload:{key:'RemoteFeatureFlagController'}});}var flag=(((globalThis.store.getState().engine.backgroundState.RemoteFeatureFlagController||{}).remoteFeatureFlags||{}).perpsRelatedMarketsMobile);return JSON.stringify({enabled:flag===true});})()",
+          "expression": "(function(){var c=Engine.context.RemoteFeatureFlagController;c.update(function(state){state.remoteFeatureFlags.perpsRelatedMarkets=true;});if(globalThis.store&&globalThis.store.dispatch){globalThis.store.dispatch({type:'UPDATE_BG_STATE',payload:{key:'RemoteFeatureFlagController'}});}var flag=(((globalThis.store.getState().engine.backgroundState.RemoteFeatureFlagController||{}).remoteFeatureFlags||{}).perpsRelatedMarkets);return JSON.stringify({enabled:flag===true});})()",
           "assert": {
             "operator": "eq",
             "field": "enabled",
@@ -249,7 +249,7 @@
         {
           "id": "teardown-disable-related-markets-flag",
           "action": "eval_sync",
-          "expression": "(function(){var c=Engine.context.RemoteFeatureFlagController;c.update(function(state){delete state.remoteFeatureFlags.perpsRelatedMarketsMobile;});if(globalThis.store&&globalThis.store.dispatch){globalThis.store.dispatch({type:'UPDATE_BG_STATE',payload:{key:'RemoteFeatureFlagController'}});}var flags=((globalThis.store.getState().engine.backgroundState.RemoteFeatureFlagController||{}).remoteFeatureFlags)||{};return JSON.stringify({removed:!Object.prototype.hasOwnProperty.call(flags,'perpsRelatedMarketsMobile')});})()",
+          "expression": "(function(){var c=Engine.context.RemoteFeatureFlagController;c.update(function(state){delete state.remoteFeatureFlags.perpsRelatedMarkets;});if(globalThis.store&&globalThis.store.dispatch){globalThis.store.dispatch({type:'UPDATE_BG_STATE',payload:{key:'RemoteFeatureFlagController'}});}var flags=((globalThis.store.getState().engine.backgroundState.RemoteFeatureFlagController||{}).remoteFeatureFlags)||{};return JSON.stringify({removed:!Object.prototype.hasOwnProperty.call(flags,'perpsRelatedMarkets')});})()",
           "assert": {
             "operator": "eq",
             "field": "removed",
