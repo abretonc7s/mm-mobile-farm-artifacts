@@ -1,0 +1,57 @@
+Running recipe: PR 30731 Perps competition banner review
+Pre-conditions: wallet.unlocked, perps.feature_enabled
+Workflow nodes: 20
+
+Pre-conditions: PASS
+
+[setup-nav-perps-home] navigate to PerpsMarketListView
+  result: {"navigated":"PerpsMarketListView","params":{},"previousRoute":{"key":"RewardsPerpsTradingCampaignDetails-2dTWizw_Bd2ROhAQ5otnd","name":"RewardsPerpsTradingCampaignDetails"},"currentRoute":{"key":"PerpsMarketListView-sxd...
+  PASS
+
+[setup-wait-perps-home] wait for PerpsMarketListView
+  result: {"route":"PerpsMarketListView"}
+  PASS
+
+[ac1-wait-banner-visible] wait for perps-home-competition-banner
+  result: {"visible":true}
+  PASS
+
+[ac1-assert-banner-context] eval_sync
+  result: {"banner":true,"image":true,"close":true,"balanceActions":true}
+  PASS
+
+[ac1-screenshot-banner-placement] AC1: Banner visible below balance actions
+  screenshot: /Users/deeeed/dev/metamask/metamask-mobile-3/.agent/screenshots/2026-05-28_194619_evidence-ac1-banner-placement.png
+  PASS
+
+[ac2-press-banner] press perps-home-competition-banner
+  result: {"ok":true,"testId":"perps-home-competition-banner","deviceName":"mm-3"}
+  PASS
+
+[ac2-wait-rewards-route] wait for condition
+  result: {"route":"RewardsPerpsTradingCampaignDetails"}
+  PASS
+
+[ac2-screenshot-rewards] AC2: Banner tap navigates to Rewards
+  screenshot: /Users/deeeed/dev/metamask/metamask-mobile-3/.agent/screenshots/2026-05-28_194620_evidence-ac2-rewards-route.png
+  PASS
+
+[setup-return-perps-home] navigate to PerpsMarketListView
+  result: {"navigated":"PerpsMarketListView","params":{},"previousRoute":{"key":"RewardsPerpsTradingCampaignDetails-2dTWizw_Bd2ROhAQ5otnd","name":"RewardsPerpsTradingCampaignDetails"},"currentRoute":{"key":"PerpsMarketListView-GcB...
+  PASS
+
+[setup-wait-return-perps-home] wait for PerpsMarketListView
+  result: {"route":"PerpsMarketListView"}
+  PASS
+
+[ac3-wait-banner-visible] wait for perps-home-competition-banner
+  result: {"visible":true}
+  PASS
+
+[ac3-press-close] press perps-home-competition-banner-close
+  result: {"ok":true,"testId":"perps-home-competition-banner-close","deviceName":"mm-3"}
+  PASS
+
+[ac3-wait-banner-hidden] wait for perps-home-competition-banner
+wait_for timed out after 10000ms (test_id=perps-home-competition-banner)
+  last result: {"visible":true}

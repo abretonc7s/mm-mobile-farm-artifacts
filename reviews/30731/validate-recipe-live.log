@@ -1,0 +1,34 @@
+Running recipe: PR 30731 Perps competition banner review
+Pre-conditions: wallet.unlocked, perps.feature_enabled
+Workflow nodes: 20
+
+Pre-conditions: PASS
+
+[setup-nav-perps-home] navigate to PerpsMarketListView
+  result: {"navigated":"PerpsMarketListView","params":{},"previousRoute":{"key":"WalletView-veRNUsSgTI9Oci5NioAjr","name":"WalletView"},"currentRoute":{"key":"PerpsMarketListView-QBKC38FdRgYKtKGSJZw8N","name":"PerpsMarketListView"...
+  PASS
+
+[setup-wait-perps-home] wait for PerpsMarketListView
+  result: {"route":"PerpsMarketListView"}
+  PASS
+
+[ac1-wait-banner-visible] wait for perps-home-competition-banner
+  result: {"visible":true}
+  PASS
+
+[ac1-assert-banner-context] eval_sync
+  result: {"banner":true,"image":true,"close":true,"balanceActions":true}
+  PASS
+
+[ac1-screenshot-banner-placement] AC1: Banner visible below balance actions
+  screenshot: /Users/deeeed/dev/metamask/metamask-mobile-3/.agent/screenshots/2026-05-28_194543_evidence-ac1-banner-placement.png
+  PASS
+
+[ac2-press-banner] press perps-home-competition-banner
+  result: {"ok":true,"testId":"perps-home-competition-banner","deviceName":"mm-3"}
+  PASS
+
+[ac2-wait-rewards-route] wait for condition
+recipe-issues: review — 2 unexpected event(s). See /Users/deeeed/dev/metamask/metamask-mobile-3/.agent/recipe-runs/2026-05-28_11-45-40_recipe/recipe-issues-review.md
+wait_for timed out after 15000ms (expression)
+  last result: {"route":"RewardsPerpsTradingCampaignDetails"}

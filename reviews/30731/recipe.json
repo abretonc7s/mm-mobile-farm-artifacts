@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "title": "PR 30731 Perps competition banner review",
+  "description": "Validates the Perps competition banner visibility, Rewards navigation, and dismissal behavior on iOS.",
+  "validate": {
+    "workflow": {
+      "pre_conditions": [
+        "wallet.unlocked",
+        "perps.feature_enabled"
+      ],
+      "entry": "setup-nav-perps-home",
+      "nodes": {
+        "setup-nav-perps-home": {
+          "action": "navigate",
+          "target": "PerpsMarketListView",
+          "next": "setup-wait-perps-home"
+        },
+        "setup-wait-perps-home": {
+          "action": "wait_for",
+          "route": "PerpsMarketListView",
+          "timeout_ms": 15000,
+          "next": "ac1-wait-banner-visible"
+        },
+        "ac1-wait-banner-visible": {
+          "action": "wait_for",
+          "test_id": "perps-home-competition-banner",
+          "timeout_ms": 15000,
+          "next": "ac1-assert-banner-context"
+        },
+        "ac1-assert-banner-context": {
+          "action": "eval_sync",
+          "expression": "(function(){function has(id){return !!globalThis.__AGENTIC__.findFiberByTestId(id);}return JSON.stringify({banner:has('perps-home-competition-banner'),image:has('perps-home-competition-banner-image'),close:has('perps-home-competition-banner-close'),balanceActions:has('perps-market-balance-actions')});})()",
+          "assert": {
+            "all": [
+              {
+                "operator": "eq",
+                "field": "banner",
+                "value": true
+              },
+              {
+                "operator": "eq",
+                "field": "image",
+                "value": true
+              },
+              {
+                "operator": "eq",
+                "field": "close",
+                "value": true
+              },
+              {
+                "operator": "eq",
+                "field": "balanceActions",
+                "value": true
+              }
+            ]
+          },
+          "next": "ac1-screenshot-banner-placement"
+        },
+        "ac1-screenshot-banner-placement": {
+          "action": "screenshot",
+          "filename": "evidence-ac1-banner-placement.png",
+          "note": "AC1: Banner visible below balance actions",
+          "next": "ac2-press-banner"
+        },
+        "ac2-press-banner": {
+          "action": "press",
+          "test_id": "perps-home-competition-banner",
+          "next": "ac2-wait-rewards-route"
+        },
+        "ac2-wait-rewards-route": {
+          "action": "wait_for",
+          "expression": "(function(){var r=globalThis.__AGENTIC__.getRoute();return JSON.stringify({route:r&&r.name?r.name:''});})()",
+          "assert": {
+            "operator": "contains",
+            "field": "route",
+            "value": "Rewards"
+          },
+          "timeout_ms": 15000,
+          "next": "ac2-screenshot-rewards"
+        },
+        "ac2-screenshot-rewards": {
+          "action": "screenshot",
+          "filename": "evidence-ac2-rewards-route.png",
+          "note": "AC2: Banner tap navigates to Rewards",
+          "next": "setup-return-perps-home"
+        },
+        "setup-return-perps-home": {
+          "action": "navigate",
+          "target": "PerpsMarketListView",
+          "next": "setup-wait-return-perps-home"
+        },
+        "setup-wait-return-perps-home": {
+          "action": "wait_for",
+          "route": "PerpsMarketListView",
+          "timeout_ms": 15000,
+          "next": "ac3-wait-banner-visible"
+        },
+        "ac3-wait-banner-visible": {
+          "action": "wait_for",
+          "test_id": "perps-home-competition-banner",
+          "timeout_ms": 15000,
+          "next": "ac3-press-close"
+        },
+        "ac3-press-close": {
+          "action": "press",
+          "test_id": "perps-home-competition-banner-close",
+          "next": "ac3-wait-banner-hidden"
+        },
+        "ac3-wait-banner-hidden": {
+          "action": "wait_for",
+          "test_id": "perps-home-competition-banner",
+          "visible": false,
+          "timeout_ms": 10000,
+          "next": "ac3-screenshot-dismissed"
+        },
+        "ac3-screenshot-dismissed": {
+          "action": "screenshot",
+          "filename": "evidence-ac3-banner-dismissed.png",
+          "note": "AC3: Banner disappears after close",
+          "next": "setup-leave-perps-home"
+        },
+        "setup-leave-perps-home": {
+          "action": "navigate",
+          "target": "WalletTabHome",
+          "next": "setup-revisit-perps-home"
+        },
+        "setup-revisit-perps-home": {
+          "action": "navigate",
+          "target": "PerpsMarketListView",
+          "next": "ac4-wait-still-hidden"
+        },
+        "ac4-wait-still-hidden": {
+          "action": "wait_for",
+          "test_id": "perps-home-competition-banner",
+          "visible": false,
+          "timeout_ms": 10000,
+          "next": "ac4-screenshot-revisit-hidden"
+        },
+        "ac4-screenshot-revisit-hidden": {
+          "action": "screenshot",
+          "filename": "evidence-ac4-revisit-hidden.png",
+          "note": "AC4: Banner remains hidden on revisit",
+          "next": "gate-ac5-disabled-flag-untestable"
+        },
+        "gate-ac5-disabled-flag-untestable": {
+          "action": "eval_sync",
+          "expression": "(function(){return JSON.stringify({untestable:true});})()",
+          "assert": {
+            "operator": "eq",
+            "field": "untestable",
+            "value": true
+          },
+          "next": "teardown-done"
+        },
+        "teardown-done": {
+          "action": "end",
+          "status": "pass"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "pr_number": "30731",
+  "recommendation": "REQUEST_CHANGES",
+  "summary": "The banner display, Rewards navigation, and dismissal behavior are visually validated, but the linked ticket's Mixpanel tracking requirement is missing for both engage and close.",
+  "comments": [
+    {
+      "path": "app/components/UI/Perps/components/PerpsCompetitionBanner/PerpsCompetitionBanner.tsx",
+      "line": 80,
+      "body": "The linked ticket requires tracking whether users close the banner, but `handleDismiss` only updates local/storage state. Please emit the Perps UI interaction/MetaMetrics event for the close action here and add an assertion in `PerpsCompetitionBanner.test.tsx` for the event payload.",
+      "severity": "must_fix"
+    },
+    {
+      "path": "app/components/UI/Perps/components/PerpsCompetitionBanner/PerpsCompetitionBanner.tsx",
+      "line": 89,
+      "body": "The linked ticket also requires tracking whether users engage with the banner. This press handler dispatches the Rewards deeplink and navigates, but it never records the banner tap. Please add the corresponding Perps UI interaction/MetaMetrics event before navigation and cover it in tests.",
+      "severity": "must_fix"
+    },
+    {
+      "path": "app/components/UI/Perps/selectors/featureFlags/index.test.ts",
+      "line": 899,
+      "body": "This selector test file is now 2,099 lines, which crosses the review guardrail's suggestion threshold. Follow-up suggestion: split Perps feature-flag selector tests by flag group so new flags do not keep growing one large suite.",
+      "severity": "suggestion"
+    }
+  ]
+}

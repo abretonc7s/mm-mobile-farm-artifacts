@@ -1,0 +1,8 @@
+- Perps home is reachable via `PerpsMarketListView`; `PerpsHomeView` is an alias in the navigation helper docs, not the route shown by CDP.
+- Banner tap does not stop at `RewardsView`; the Rewards pending deeplink routes through to `RewardsPerpsTradingCampaignDetails`.
+- `wait_for` with `test_id` can be stale for hidden-state checks because the React fiber may remain findable after the pixels disappear; screenshot evidence is stronger for visual dismissal.
+- The Perps home balance action container uses `perps-market-balance-actions`, which is useful for placement checks around the home header CTA area.
+- `simctl recordVideo` can produce a corrupt no-`moov` temporary artifact if the recorder is not kept attached; in this run it then reported host recording busy with no visible `recordVideo` process.
+- Feature-flag disabled behavior is hard to validate live without a remote override or rebuild; selector tests are the practical proof for default-off behavior in this slot.
+- `PerpsCompetitionBanner` uses `StorageWrapper`/MMKV for dismissal state and hides optimistically before the storage write resolves.
+- The current banner tests pass but emit React `act(...)` warnings around the async storage read effect.

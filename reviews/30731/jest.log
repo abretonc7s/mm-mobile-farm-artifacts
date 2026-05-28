@@ -1,0 +1,893 @@
+(node:45416) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:45422) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:45551) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:46401) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [2mapp/components/UI/Perps/selectors/featureFlags/[22m[1mindex.test.ts[22m ([0m[1m[41m8.427 s[49m[22m[0m)
+(node:46403) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [2mapp/components/UI/Perps/components/PerpsCompetitionBanner/[22m[1mPerpsCompetitionBanner.test.tsx[22m ([0m[1m[41m10.233 s[49m[22m[0m)
+(node:46402) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[0m[7m[1m[32m PASS [39m[22m[27m[0m [2mapp/components/UI/Perps/Views/PerpsHomeView/[22m[1mPerpsHomeView.test.tsx[22m ([0m[1m[41m12.618 s[49m[22m[0m)
+  [1m● [22mConsole
+
+    [2m[31mconsole.error[39m[22m
+[31m      An update to PerpsCompetitionBanner inside a test was not wrapped in act(...).[39m
+[31m      [39m
+[31m      When testing, code that causes React state updates should be wrapped into act(...):[39m
+[31m      [39m
+[31m      act(() => {[39m
+[31m        /* fire events that update state */[39m
+[31m      });[39m
+[31m      /* assert on the output */[39m
+[31m      [39m
+[31m      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act[39m
+[2m[22m
+[2m      70 |           PERPS_COMPETITION_BANNER_DISMISSED,[22m
+[2m      71 |         );[22m
+[2m    > 72 |         setIsDismissed(value === 'true');[22m
+[2m         |         ^[22m
+[2m      73 |       } catch {[22m
+[2m      74 |         setIsDismissed(false);[22m
+[2m      75 |       }[22m
+[2m[22m
+[2m      [2mat [22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11801:19[22m[2m[22m
+[2m      [2mat runWithFiberInDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:1574:13)[22m[2m[22m
+[2m      [2mat warnIfUpdatesNotWrappedWithActDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11800:9)[22m[2m[22m
+[2m      [2mat scheduleUpdateOnFiber ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:10326:9)[22m[2m[22m
+[2m      [2mat dispatchSetStateInternal ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4148:13)[22m[2m[22m
+[2m      [2mat dispatchSetState ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4107:7)[22m[2m[22m
+[2m      [2mat setIsDismissed ([22m[2mapp/components/UI/Perps/components/PerpsCompetitionBanner/PerpsCompetitionBanner.tsx[2m:72:9)[22m[2m[22m
+[2m      [2mat asyncGeneratorStep ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:3:17)[22m[2m[22m
+[2m      [2mat _next ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:17:9)[22m[2m[22m
+
+    [2m[31mconsole.error[39m[22m
+[31m      An update to PerpsCompetitionBanner inside a test was not wrapped in act(...).[39m
+[31m      [39m
+[31m      When testing, code that causes React state updates should be wrapped into act(...):[39m
+[31m      [39m
+[31m      act(() => {[39m
+[31m        /* fire events that update state */[39m
+[31m      });[39m
+[31m      /* assert on the output */[39m
+[31m      [39m
+[31m      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act[39m
+[2m[22m
+[2m      70 |           PERPS_COMPETITION_BANNER_DISMISSED,[22m
+[2m      71 |         );[22m
+[2m    > 72 |         setIsDismissed(value === 'true');[22m
+[2m         |         ^[22m
+[2m      73 |       } catch {[22m
+[2m      74 |         setIsDismissed(false);[22m
+[2m      75 |       }[22m
+[2m[22m
+[2m      [2mat [22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11801:19[22m[2m[22m
+[2m      [2mat runWithFiberInDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:1574:13)[22m[2m[22m
+[2m      [2mat warnIfUpdatesNotWrappedWithActDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11800:9)[22m[2m[22m
+[2m      [2mat scheduleUpdateOnFiber ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:10326:9)[22m[2m[22m
+[2m      [2mat dispatchSetStateInternal ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4148:13)[22m[2m[22m
+[2m      [2mat dispatchSetState ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4107:7)[22m[2m[22m
+[2m      [2mat setIsDismissed ([22m[2mapp/components/UI/Perps/components/PerpsCompetitionBanner/PerpsCompetitionBanner.tsx[2m:72:9)[22m[2m[22m
+[2m      [2mat asyncGeneratorStep ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:3:17)[22m[2m[22m
+[2m      [2mat _next ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:17:9)[22m[2m[22m
+
+    [2m[31mconsole.error[39m[22m
+[31m      An update to PerpsCompetitionBanner inside a test was not wrapped in act(...).[39m
+[31m      [39m
+[31m      When testing, code that causes React state updates should be wrapped into act(...):[39m
+[31m      [39m
+[31m      act(() => {[39m
+[31m        /* fire events that update state */[39m
+[31m      });[39m
+[31m      /* assert on the output */[39m
+[31m      [39m
+[31m      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act[39m
+[2m[22m
+[2m      70 |           PERPS_COMPETITION_BANNER_DISMISSED,[22m
+[2m      71 |         );[22m
+[2m    > 72 |         setIsDismissed(value === 'true');[22m
+[2m         |         ^[22m
+[2m      73 |       } catch {[22m
+[2m      74 |         setIsDismissed(false);[22m
+[2m      75 |       }[22m
+[2m[22m
+[2m      [2mat [22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11801:19[22m[2m[22m
+[2m      [2mat runWithFiberInDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:1574:13)[22m[2m[22m
+[2m      [2mat warnIfUpdatesNotWrappedWithActDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11800:9)[22m[2m[22m
+[2m      [2mat scheduleUpdateOnFiber ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:10326:9)[22m[2m[22m
+[2m      [2mat dispatchSetStateInternal ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4148:13)[22m[2m[22m
+[2m      [2mat dispatchSetState ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4107:7)[22m[2m[22m
+[2m      [2mat setIsDismissed ([22m[2mapp/components/UI/Perps/components/PerpsCompetitionBanner/PerpsCompetitionBanner.tsx[2m:72:9)[22m[2m[22m
+[2m      [2mat asyncGeneratorStep ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:3:17)[22m[2m[22m
+[2m      [2mat _next ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:17:9)[22m[2m[22m
+
+    [2m[31mconsole.error[39m[22m
+[31m      An update to PerpsCompetitionBanner inside a test was not wrapped in act(...).[39m
+[31m      [39m
+[31m      When testing, code that causes React state updates should be wrapped into act(...):[39m
+[31m      [39m
+[31m      act(() => {[39m
+[31m        /* fire events that update state */[39m
+[31m      });[39m
+[31m      /* assert on the output */[39m
+[31m      [39m
+[31m      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act[39m
+[2m[22m
+[2m      70 |           PERPS_COMPETITION_BANNER_DISMISSED,[22m
+[2m      71 |         );[22m
+[2m    > 72 |         setIsDismissed(value === 'true');[22m
+[2m         |         ^[22m
+[2m      73 |       } catch {[22m
+[2m      74 |         setIsDismissed(false);[22m
+[2m      75 |       }[22m
+[2m[22m
+[2m      [2mat [22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11801:19[22m[2m[22m
+[2m      [2mat runWithFiberInDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:1574:13)[22m[2m[22m
+[2m      [2mat warnIfUpdatesNotWrappedWithActDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11800:9)[22m[2m[22m
+[2m      [2mat scheduleUpdateOnFiber ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:10326:9)[22m[2m[22m
+[2m      [2mat dispatchSetStateInternal ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4148:13)[22m[2m[22m
+[2m      [2mat dispatchSetState ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4107:7)[22m[2m[22m
+[2m      [2mat setIsDismissed ([22m[2mapp/components/UI/Perps/components/PerpsCompetitionBanner/PerpsCompetitionBanner.tsx[2m:72:9)[22m[2m[22m
+[2m      [2mat asyncGeneratorStep ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:3:17)[22m[2m[22m
+[2m      [2mat _next ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:17:9)[22m[2m[22m
+
+    [2m[31mconsole.error[39m[22m
+[31m      An update to PerpsCompetitionBanner inside a test was not wrapped in act(...).[39m
+[31m      [39m
+[31m      When testing, code that causes React state updates should be wrapped into act(...):[39m
+[31m      [39m
+[31m      act(() => {[39m
+[31m        /* fire events that update state */[39m
+[31m      });[39m
+[31m      /* assert on the output */[39m
+[31m      [39m
+[31m      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act[39m
+[2m[22m
+[2m      70 |           PERPS_COMPETITION_BANNER_DISMISSED,[22m
+[2m      71 |         );[22m
+[2m    > 72 |         setIsDismissed(value === 'true');[22m
+[2m         |         ^[22m
+[2m      73 |       } catch {[22m
+[2m      74 |         setIsDismissed(false);[22m
+[2m      75 |       }[22m
+[2m[22m
+[2m      [2mat [22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11801:19[22m[2m[22m
+[2m      [2mat runWithFiberInDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:1574:13)[22m[2m[22m
+[2m      [2mat warnIfUpdatesNotWrappedWithActDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11800:9)[22m[2m[22m
+[2m      [2mat scheduleUpdateOnFiber ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:10326:9)[22m[2m[22m
+[2m      [2mat dispatchSetStateInternal ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4148:13)[22m[2m[22m
+[2m      [2mat dispatchSetState ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4107:7)[22m[2m[22m
+[2m      [2mat setIsDismissed ([22m[2mapp/components/UI/Perps/components/PerpsCompetitionBanner/PerpsCompetitionBanner.tsx[2m:72:9)[22m[2m[22m
+[2m      [2mat asyncGeneratorStep ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:3:17)[22m[2m[22m
+[2m      [2mat _next ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:17:9)[22m[2m[22m
+
+    [2m[31mconsole.error[39m[22m
+[31m      An update to PerpsCompetitionBanner inside a test was not wrapped in act(...).[39m
+[31m      [39m
+[31m      When testing, code that causes React state updates should be wrapped into act(...):[39m
+[31m      [39m
+[31m      act(() => {[39m
+[31m        /* fire events that update state */[39m
+[31m      });[39m
+[31m      /* assert on the output */[39m
+[31m      [39m
+[31m      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act[39m
+[2m[22m
+[2m      70 |           PERPS_COMPETITION_BANNER_DISMISSED,[22m
+[2m      71 |         );[22m
+[2m    > 72 |         setIsDismissed(value === 'true');[22m
+[2m         |         ^[22m
+[2m      73 |       } catch {[22m
+[2m      74 |         setIsDismissed(false);[22m
+[2m      75 |       }[22m
+[2m[22m
+[2m      [2mat [22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11801:19[22m[2m[22m
+[2m      [2mat runWithFiberInDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:1574:13)[22m[2m[22m
+[2m      [2mat warnIfUpdatesNotWrappedWithActDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11800:9)[22m[2m[22m
+[2m      [2mat scheduleUpdateOnFiber ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:10326:9)[22m[2m[22m
+[2m      [2mat dispatchSetStateInternal ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4148:13)[22m[2m[22m
+[2m      [2mat dispatchSetState ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4107:7)[22m[2m[22m
+[2m      [2mat setIsDismissed ([22m[2mapp/components/UI/Perps/components/PerpsCompetitionBanner/PerpsCompetitionBanner.tsx[2m:72:9)[22m[2m[22m
+[2m      [2mat asyncGeneratorStep ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:3:17)[22m[2m[22m
+[2m      [2mat _next ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:17:9)[22m[2m[22m
+
+    [2m[31mconsole.error[39m[22m
+[31m      An update to PerpsCompetitionBanner inside a test was not wrapped in act(...).[39m
+[31m      [39m
+[31m      When testing, code that causes React state updates should be wrapped into act(...):[39m
+[31m      [39m
+[31m      act(() => {[39m
+[31m        /* fire events that update state */[39m
+[31m      });[39m
+[31m      /* assert on the output */[39m
+[31m      [39m
+[31m      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act[39m
+[2m[22m
+[2m      70 |           PERPS_COMPETITION_BANNER_DISMISSED,[22m
+[2m      71 |         );[22m
+[2m    > 72 |         setIsDismissed(value === 'true');[22m
+[2m         |         ^[22m
+[2m      73 |       } catch {[22m
+[2m      74 |         setIsDismissed(false);[22m
+[2m      75 |       }[22m
+[2m[22m
+[2m      [2mat [22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11801:19[22m[2m[22m
+[2m      [2mat runWithFiberInDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:1574:13)[22m[2m[22m
+[2m      [2mat warnIfUpdatesNotWrappedWithActDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11800:9)[22m[2m[22m
+[2m      [2mat scheduleUpdateOnFiber ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:10326:9)[22m[2m[22m
+[2m      [2mat dispatchSetStateInternal ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4148:13)[22m[2m[22m
+[2m      [2mat dispatchSetState ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4107:7)[22m[2m[22m
+[2m      [2mat setIsDismissed ([22m[2mapp/components/UI/Perps/components/PerpsCompetitionBanner/PerpsCompetitionBanner.tsx[2m:72:9)[22m[2m[22m
+[2m      [2mat asyncGeneratorStep ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:3:17)[22m[2m[22m
+[2m      [2mat _next ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:17:9)[22m[2m[22m
+
+    [2m[31mconsole.error[39m[22m
+[31m      An update to PerpsCompetitionBanner inside a test was not wrapped in act(...).[39m
+[31m      [39m
+[31m      When testing, code that causes React state updates should be wrapped into act(...):[39m
+[31m      [39m
+[31m      act(() => {[39m
+[31m        /* fire events that update state */[39m
+[31m      });[39m
+[31m      /* assert on the output */[39m
+[31m      [39m
+[31m      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act[39m
+[2m[22m
+[2m      70 |           PERPS_COMPETITION_BANNER_DISMISSED,[22m
+[2m      71 |         );[22m
+[2m    > 72 |         setIsDismissed(value === 'true');[22m
+[2m         |         ^[22m
+[2m      73 |       } catch {[22m
+[2m      74 |         setIsDismissed(false);[22m
+[2m      75 |       }[22m
+[2m[22m
+[2m      [2mat [22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11801:19[22m[2m[22m
+[2m      [2mat runWithFiberInDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:1574:13)[22m[2m[22m
+[2m      [2mat warnIfUpdatesNotWrappedWithActDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11800:9)[22m[2m[22m
+[2m      [2mat scheduleUpdateOnFiber ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:10326:9)[22m[2m[22m
+[2m      [2mat dispatchSetStateInternal ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4148:13)[22m[2m[22m
+[2m      [2mat dispatchSetState ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4107:7)[22m[2m[22m
+[2m      [2mat setIsDismissed ([22m[2mapp/components/UI/Perps/components/PerpsCompetitionBanner/PerpsCompetitionBanner.tsx[2m:72:9)[22m[2m[22m
+[2m      [2mat asyncGeneratorStep ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:3:17)[22m[2m[22m
+[2m      [2mat _next ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:17:9)[22m[2m[22m
+
+    [2m[31mconsole.error[39m[22m
+[31m      An update to PerpsCompetitionBanner inside a test was not wrapped in act(...).[39m
+[31m      [39m
+[31m      When testing, code that causes React state updates should be wrapped into act(...):[39m
+[31m      [39m
+[31m      act(() => {[39m
+[31m        /* fire events that update state */[39m
+[31m      });[39m
+[31m      /* assert on the output */[39m
+[31m      [39m
+[31m      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act[39m
+[2m[22m
+[2m      70 |           PERPS_COMPETITION_BANNER_DISMISSED,[22m
+[2m      71 |         );[22m
+[2m    > 72 |         setIsDismissed(value === 'true');[22m
+[2m         |         ^[22m
+[2m      73 |       } catch {[22m
+[2m      74 |         setIsDismissed(false);[22m
+[2m      75 |       }[22m
+[2m[22m
+[2m      [2mat [22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11801:19[22m[2m[22m
+[2m      [2mat runWithFiberInDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:1574:13)[22m[2m[22m
+[2m      [2mat warnIfUpdatesNotWrappedWithActDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11800:9)[22m[2m[22m
+[2m      [2mat scheduleUpdateOnFiber ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:10326:9)[22m[2m[22m
+[2m      [2mat dispatchSetStateInternal ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4148:13)[22m[2m[22m
+[2m      [2mat dispatchSetState ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4107:7)[22m[2m[22m
+[2m      [2mat setIsDismissed ([22m[2mapp/components/UI/Perps/components/PerpsCompetitionBanner/PerpsCompetitionBanner.tsx[2m:72:9)[22m[2m[22m
+[2m      [2mat asyncGeneratorStep ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:3:17)[22m[2m[22m
+[2m      [2mat _next ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:17:9)[22m[2m[22m
+
+    [2m[31mconsole.error[39m[22m
+[31m      An update to PerpsCompetitionBanner inside a test was not wrapped in act(...).[39m
+[31m      [39m
+[31m      When testing, code that causes React state updates should be wrapped into act(...):[39m
+[31m      [39m
+[31m      act(() => {[39m
+[31m        /* fire events that update state */[39m
+[31m      });[39m
+[31m      /* assert on the output */[39m
+[31m      [39m
+[31m      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act[39m
+[2m[22m
+[2m      70 |           PERPS_COMPETITION_BANNER_DISMISSED,[22m
+[2m      71 |         );[22m
+[2m    > 72 |         setIsDismissed(value === 'true');[22m
+[2m         |         ^[22m
+[2m      73 |       } catch {[22m
+[2m      74 |         setIsDismissed(false);[22m
+[2m      75 |       }[22m
+[2m[22m
+[2m      [2mat [22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11801:19[22m[2m[22m
+[2m      [2mat runWithFiberInDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:1574:13)[22m[2m[22m
+[2m      [2mat warnIfUpdatesNotWrappedWithActDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11800:9)[22m[2m[22m
+[2m      [2mat scheduleUpdateOnFiber ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:10326:9)[22m[2m[22m
+[2m      [2mat dispatchSetStateInternal ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4148:13)[22m[2m[22m
+[2m      [2mat dispatchSetState ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4107:7)[22m[2m[22m
+[2m      [2mat setIsDismissed ([22m[2mapp/components/UI/Perps/components/PerpsCompetitionBanner/PerpsCompetitionBanner.tsx[2m:72:9)[22m[2m[22m
+[2m      [2mat asyncGeneratorStep ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:3:17)[22m[2m[22m
+[2m      [2mat _next ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:17:9)[22m[2m[22m
+
+    [2m[31mconsole.error[39m[22m
+[31m      An update to PerpsCompetitionBanner inside a test was not wrapped in act(...).[39m
+[31m      [39m
+[31m      When testing, code that causes React state updates should be wrapped into act(...):[39m
+[31m      [39m
+[31m      act(() => {[39m
+[31m        /* fire events that update state */[39m
+[31m      });[39m
+[31m      /* assert on the output */[39m
+[31m      [39m
+[31m      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act[39m
+[2m[22m
+[2m      70 |           PERPS_COMPETITION_BANNER_DISMISSED,[22m
+[2m      71 |         );[22m
+[2m    > 72 |         setIsDismissed(value === 'true');[22m
+[2m         |         ^[22m
+[2m      73 |       } catch {[22m
+[2m      74 |         setIsDismissed(false);[22m
+[2m      75 |       }[22m
+[2m[22m
+[2m      [2mat [22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11801:19[22m[2m[22m
+[2m      [2mat runWithFiberInDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:1574:13)[22m[2m[22m
+[2m      [2mat warnIfUpdatesNotWrappedWithActDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11800:9)[22m[2m[22m
+[2m      [2mat scheduleUpdateOnFiber ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:10326:9)[22m[2m[22m
+[2m      [2mat dispatchSetStateInternal ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4148:13)[22m[2m[22m
+[2m      [2mat dispatchSetState ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4107:7)[22m[2m[22m
+[2m      [2mat setIsDismissed ([22m[2mapp/components/UI/Perps/components/PerpsCompetitionBanner/PerpsCompetitionBanner.tsx[2m:72:9)[22m[2m[22m
+[2m      [2mat asyncGeneratorStep ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:3:17)[22m[2m[22m
+[2m      [2mat _next ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:17:9)[22m[2m[22m
+
+    [2m[31mconsole.error[39m[22m
+[31m      An update to PerpsCompetitionBanner inside a test was not wrapped in act(...).[39m
+[31m      [39m
+[31m      When testing, code that causes React state updates should be wrapped into act(...):[39m
+[31m      [39m
+[31m      act(() => {[39m
+[31m        /* fire events that update state */[39m
+[31m      });[39m
+[31m      /* assert on the output */[39m
+[31m      [39m
+[31m      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act[39m
+[2m[22m
+[2m      70 |           PERPS_COMPETITION_BANNER_DISMISSED,[22m
+[2m      71 |         );[22m
+[2m    > 72 |         setIsDismissed(value === 'true');[22m
+[2m         |         ^[22m
+[2m      73 |       } catch {[22m
+[2m      74 |         setIsDismissed(false);[22m
+[2m      75 |       }[22m
+[2m[22m
+[2m      [2mat [22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11801:19[22m[2m[22m
+[2m      [2mat runWithFiberInDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:1574:13)[22m[2m[22m
+[2m      [2mat warnIfUpdatesNotWrappedWithActDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11800:9)[22m[2m[22m
+[2m      [2mat scheduleUpdateOnFiber ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:10326:9)[22m[2m[22m
+[2m      [2mat dispatchSetStateInternal ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4148:13)[22m[2m[22m
+[2m      [2mat dispatchSetState ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4107:7)[22m[2m[22m
+[2m      [2mat setIsDismissed ([22m[2mapp/components/UI/Perps/components/PerpsCompetitionBanner/PerpsCompetitionBanner.tsx[2m:72:9)[22m[2m[22m
+[2m      [2mat asyncGeneratorStep ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:3:17)[22m[2m[22m
+[2m      [2mat _next ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:17:9)[22m[2m[22m
+
+    [2m[31mconsole.error[39m[22m
+[31m      An update to PerpsCompetitionBanner inside a test was not wrapped in act(...).[39m
+[31m      [39m
+[31m      When testing, code that causes React state updates should be wrapped into act(...):[39m
+[31m      [39m
+[31m      act(() => {[39m
+[31m        /* fire events that update state */[39m
+[31m      });[39m
+[31m      /* assert on the output */[39m
+[31m      [39m
+[31m      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act[39m
+[2m[22m
+[2m      70 |           PERPS_COMPETITION_BANNER_DISMISSED,[22m
+[2m      71 |         );[22m
+[2m    > 72 |         setIsDismissed(value === 'true');[22m
+[2m         |         ^[22m
+[2m      73 |       } catch {[22m
+[2m      74 |         setIsDismissed(false);[22m
+[2m      75 |       }[22m
+[2m[22m
+[2m      [2mat [22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11801:19[22m[2m[22m
+[2m      [2mat runWithFiberInDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:1574:13)[22m[2m[22m
+[2m      [2mat warnIfUpdatesNotWrappedWithActDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11800:9)[22m[2m[22m
+[2m      [2mat scheduleUpdateOnFiber ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:10326:9)[22m[2m[22m
+[2m      [2mat dispatchSetStateInternal ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4148:13)[22m[2m[22m
+[2m      [2mat dispatchSetState ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4107:7)[22m[2m[22m
+[2m      [2mat setIsDismissed ([22m[2mapp/components/UI/Perps/components/PerpsCompetitionBanner/PerpsCompetitionBanner.tsx[2m:72:9)[22m[2m[22m
+[2m      [2mat asyncGeneratorStep ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:3:17)[22m[2m[22m
+[2m      [2mat _next ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:17:9)[22m[2m[22m
+
+    [2m[31mconsole.error[39m[22m
+[31m      An update to PerpsCompetitionBanner inside a test was not wrapped in act(...).[39m
+[31m      [39m
+[31m      When testing, code that causes React state updates should be wrapped into act(...):[39m
+[31m      [39m
+[31m      act(() => {[39m
+[31m        /* fire events that update state */[39m
+[31m      });[39m
+[31m      /* assert on the output */[39m
+[31m      [39m
+[31m      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act[39m
+[2m[22m
+[2m      70 |           PERPS_COMPETITION_BANNER_DISMISSED,[22m
+[2m      71 |         );[22m
+[2m    > 72 |         setIsDismissed(value === 'true');[22m
+[2m         |         ^[22m
+[2m      73 |       } catch {[22m
+[2m      74 |         setIsDismissed(false);[22m
+[2m      75 |       }[22m
+[2m[22m
+[2m      [2mat [22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11801:19[22m[2m[22m
+[2m      [2mat runWithFiberInDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:1574:13)[22m[2m[22m
+[2m      [2mat warnIfUpdatesNotWrappedWithActDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11800:9)[22m[2m[22m
+[2m      [2mat scheduleUpdateOnFiber ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:10326:9)[22m[2m[22m
+[2m      [2mat dispatchSetStateInternal ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4148:13)[22m[2m[22m
+[2m      [2mat dispatchSetState ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4107:7)[22m[2m[22m
+[2m      [2mat setIsDismissed ([22m[2mapp/components/UI/Perps/components/PerpsCompetitionBanner/PerpsCompetitionBanner.tsx[2m:72:9)[22m[2m[22m
+[2m      [2mat asyncGeneratorStep ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:3:17)[22m[2m[22m
+[2m      [2mat _next ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:17:9)[22m[2m[22m
+
+    [2m[31mconsole.error[39m[22m
+[31m      An update to PerpsCompetitionBanner inside a test was not wrapped in act(...).[39m
+[31m      [39m
+[31m      When testing, code that causes React state updates should be wrapped into act(...):[39m
+[31m      [39m
+[31m      act(() => {[39m
+[31m        /* fire events that update state */[39m
+[31m      });[39m
+[31m      /* assert on the output */[39m
+[31m      [39m
+[31m      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act[39m
+[2m[22m
+[2m      70 |           PERPS_COMPETITION_BANNER_DISMISSED,[22m
+[2m      71 |         );[22m
+[2m    > 72 |         setIsDismissed(value === 'true');[22m
+[2m         |         ^[22m
+[2m      73 |       } catch {[22m
+[2m      74 |         setIsDismissed(false);[22m
+[2m      75 |       }[22m
+[2m[22m
+[2m      [2mat [22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11801:19[22m[2m[22m
+[2m      [2mat runWithFiberInDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:1574:13)[22m[2m[22m
+[2m      [2mat warnIfUpdatesNotWrappedWithActDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11800:9)[22m[2m[22m
+[2m      [2mat scheduleUpdateOnFiber ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:10326:9)[22m[2m[22m
+[2m      [2mat dispatchSetStateInternal ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4148:13)[22m[2m[22m
+[2m      [2mat dispatchSetState ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4107:7)[22m[2m[22m
+[2m      [2mat setIsDismissed ([22m[2mapp/components/UI/Perps/components/PerpsCompetitionBanner/PerpsCompetitionBanner.tsx[2m:72:9)[22m[2m[22m
+[2m      [2mat asyncGeneratorStep ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:3:17)[22m[2m[22m
+[2m      [2mat _next ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:17:9)[22m[2m[22m
+
+    [2m[31mconsole.error[39m[22m
+[31m      An update to PerpsCompetitionBanner inside a test was not wrapped in act(...).[39m
+[31m      [39m
+[31m      When testing, code that causes React state updates should be wrapped into act(...):[39m
+[31m      [39m
+[31m      act(() => {[39m
+[31m        /* fire events that update state */[39m
+[31m      });[39m
+[31m      /* assert on the output */[39m
+[31m      [39m
+[31m      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act[39m
+[2m[22m
+[2m      70 |           PERPS_COMPETITION_BANNER_DISMISSED,[22m
+[2m      71 |         );[22m
+[2m    > 72 |         setIsDismissed(value === 'true');[22m
+[2m         |         ^[22m
+[2m      73 |       } catch {[22m
+[2m      74 |         setIsDismissed(false);[22m
+[2m      75 |       }[22m
+[2m[22m
+[2m      [2mat [22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11801:19[22m[2m[22m
+[2m      [2mat runWithFiberInDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:1574:13)[22m[2m[22m
+[2m      [2mat warnIfUpdatesNotWrappedWithActDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11800:9)[22m[2m[22m
+[2m      [2mat scheduleUpdateOnFiber ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:10326:9)[22m[2m[22m
+[2m      [2mat dispatchSetStateInternal ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4148:13)[22m[2m[22m
+[2m      [2mat dispatchSetState ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4107:7)[22m[2m[22m
+[2m      [2mat setIsDismissed ([22m[2mapp/components/UI/Perps/components/PerpsCompetitionBanner/PerpsCompetitionBanner.tsx[2m:72:9)[22m[2m[22m
+[2m      [2mat asyncGeneratorStep ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:3:17)[22m[2m[22m
+[2m      [2mat _next ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:17:9)[22m[2m[22m
+
+    [2m[31mconsole.error[39m[22m
+[31m      An update to PerpsCompetitionBanner inside a test was not wrapped in act(...).[39m
+[31m      [39m
+[31m      When testing, code that causes React state updates should be wrapped into act(...):[39m
+[31m      [39m
+[31m      act(() => {[39m
+[31m        /* fire events that update state */[39m
+[31m      });[39m
+[31m      /* assert on the output */[39m
+[31m      [39m
+[31m      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act[39m
+[2m[22m
+[2m      70 |           PERPS_COMPETITION_BANNER_DISMISSED,[22m
+[2m      71 |         );[22m
+[2m    > 72 |         setIsDismissed(value === 'true');[22m
+[2m         |         ^[22m
+[2m      73 |       } catch {[22m
+[2m      74 |         setIsDismissed(false);[22m
+[2m      75 |       }[22m
+[2m[22m
+[2m      [2mat [22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11801:19[22m[2m[22m
+[2m      [2mat runWithFiberInDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:1574:13)[22m[2m[22m
+[2m      [2mat warnIfUpdatesNotWrappedWithActDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11800:9)[22m[2m[22m
+[2m      [2mat scheduleUpdateOnFiber ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:10326:9)[22m[2m[22m
+[2m      [2mat dispatchSetStateInternal ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4148:13)[22m[2m[22m
+[2m      [2mat dispatchSetState ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4107:7)[22m[2m[22m
+[2m      [2mat setIsDismissed ([22m[2mapp/components/UI/Perps/components/PerpsCompetitionBanner/PerpsCompetitionBanner.tsx[2m:72:9)[22m[2m[22m
+[2m      [2mat asyncGeneratorStep ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:3:17)[22m[2m[22m
+[2m      [2mat _next ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:17:9)[22m[2m[22m
+
+    [2m[31mconsole.error[39m[22m
+[31m      An update to PerpsCompetitionBanner inside a test was not wrapped in act(...).[39m
+[31m      [39m
+[31m      When testing, code that causes React state updates should be wrapped into act(...):[39m
+[31m      [39m
+[31m      act(() => {[39m
+[31m        /* fire events that update state */[39m
+[31m      });[39m
+[31m      /* assert on the output */[39m
+[31m      [39m
+[31m      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act[39m
+[2m[22m
+[2m      70 |           PERPS_COMPETITION_BANNER_DISMISSED,[22m
+[2m      71 |         );[22m
+[2m    > 72 |         setIsDismissed(value === 'true');[22m
+[2m         |         ^[22m
+[2m      73 |       } catch {[22m
+[2m      74 |         setIsDismissed(false);[22m
+[2m      75 |       }[22m
+[2m[22m
+[2m      [2mat [22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11801:19[22m[2m[22m
+[2m      [2mat runWithFiberInDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:1574:13)[22m[2m[22m
+[2m      [2mat warnIfUpdatesNotWrappedWithActDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11800:9)[22m[2m[22m
+[2m      [2mat scheduleUpdateOnFiber ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:10326:9)[22m[2m[22m
+[2m      [2mat dispatchSetStateInternal ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4148:13)[22m[2m[22m
+[2m      [2mat dispatchSetState ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4107:7)[22m[2m[22m
+[2m      [2mat setIsDismissed ([22m[2mapp/components/UI/Perps/components/PerpsCompetitionBanner/PerpsCompetitionBanner.tsx[2m:72:9)[22m[2m[22m
+[2m      [2mat asyncGeneratorStep ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:3:17)[22m[2m[22m
+[2m      [2mat _next ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:17:9)[22m[2m[22m
+
+    [2m[31mconsole.error[39m[22m
+[31m      An update to PerpsCompetitionBanner inside a test was not wrapped in act(...).[39m
+[31m      [39m
+[31m      When testing, code that causes React state updates should be wrapped into act(...):[39m
+[31m      [39m
+[31m      act(() => {[39m
+[31m        /* fire events that update state */[39m
+[31m      });[39m
+[31m      /* assert on the output */[39m
+[31m      [39m
+[31m      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act[39m
+[2m[22m
+[2m      70 |           PERPS_COMPETITION_BANNER_DISMISSED,[22m
+[2m      71 |         );[22m
+[2m    > 72 |         setIsDismissed(value === 'true');[22m
+[2m         |         ^[22m
+[2m      73 |       } catch {[22m
+[2m      74 |         setIsDismissed(false);[22m
+[2m      75 |       }[22m
+[2m[22m
+[2m      [2mat [22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11801:19[22m[2m[22m
+[2m      [2mat runWithFiberInDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:1574:13)[22m[2m[22m
+[2m      [2mat warnIfUpdatesNotWrappedWithActDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11800:9)[22m[2m[22m
+[2m      [2mat scheduleUpdateOnFiber ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:10326:9)[22m[2m[22m
+[2m      [2mat dispatchSetStateInternal ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4148:13)[22m[2m[22m
+[2m      [2mat dispatchSetState ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4107:7)[22m[2m[22m
+[2m      [2mat setIsDismissed ([22m[2mapp/components/UI/Perps/components/PerpsCompetitionBanner/PerpsCompetitionBanner.tsx[2m:72:9)[22m[2m[22m
+[2m      [2mat asyncGeneratorStep ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:3:17)[22m[2m[22m
+[2m      [2mat _next ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:17:9)[22m[2m[22m
+
+    [2m[31mconsole.error[39m[22m
+[31m      An update to PerpsCompetitionBanner inside a test was not wrapped in act(...).[39m
+[31m      [39m
+[31m      When testing, code that causes React state updates should be wrapped into act(...):[39m
+[31m      [39m
+[31m      act(() => {[39m
+[31m        /* fire events that update state */[39m
+[31m      });[39m
+[31m      /* assert on the output */[39m
+[31m      [39m
+[31m      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act[39m
+[2m[22m
+[2m      70 |           PERPS_COMPETITION_BANNER_DISMISSED,[22m
+[2m      71 |         );[22m
+[2m    > 72 |         setIsDismissed(value === 'true');[22m
+[2m         |         ^[22m
+[2m      73 |       } catch {[22m
+[2m      74 |         setIsDismissed(false);[22m
+[2m      75 |       }[22m
+[2m[22m
+[2m      [2mat [22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11801:19[22m[2m[22m
+[2m      [2mat runWithFiberInDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:1574:13)[22m[2m[22m
+[2m      [2mat warnIfUpdatesNotWrappedWithActDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11800:9)[22m[2m[22m
+[2m      [2mat scheduleUpdateOnFiber ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:10326:9)[22m[2m[22m
+[2m      [2mat dispatchSetStateInternal ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4148:13)[22m[2m[22m
+[2m      [2mat dispatchSetState ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4107:7)[22m[2m[22m
+[2m      [2mat setIsDismissed ([22m[2mapp/components/UI/Perps/components/PerpsCompetitionBanner/PerpsCompetitionBanner.tsx[2m:72:9)[22m[2m[22m
+[2m      [2mat asyncGeneratorStep ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:3:17)[22m[2m[22m
+[2m      [2mat _next ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:17:9)[22m[2m[22m
+
+    [2m[31mconsole.error[39m[22m
+[31m      An update to PerpsCompetitionBanner inside a test was not wrapped in act(...).[39m
+[31m      [39m
+[31m      When testing, code that causes React state updates should be wrapped into act(...):[39m
+[31m      [39m
+[31m      act(() => {[39m
+[31m        /* fire events that update state */[39m
+[31m      });[39m
+[31m      /* assert on the output */[39m
+[31m      [39m
+[31m      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act[39m
+[2m[22m
+[2m      70 |           PERPS_COMPETITION_BANNER_DISMISSED,[22m
+[2m      71 |         );[22m
+[2m    > 72 |         setIsDismissed(value === 'true');[22m
+[2m         |         ^[22m
+[2m      73 |       } catch {[22m
+[2m      74 |         setIsDismissed(false);[22m
+[2m      75 |       }[22m
+[2m[22m
+[2m      [2mat [22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11801:19[22m[2m[22m
+[2m      [2mat runWithFiberInDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:1574:13)[22m[2m[22m
+[2m      [2mat warnIfUpdatesNotWrappedWithActDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11800:9)[22m[2m[22m
+[2m      [2mat scheduleUpdateOnFiber ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:10326:9)[22m[2m[22m
+[2m      [2mat dispatchSetStateInternal ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4148:13)[22m[2m[22m
+[2m      [2mat dispatchSetState ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4107:7)[22m[2m[22m
+[2m      [2mat setIsDismissed ([22m[2mapp/components/UI/Perps/components/PerpsCompetitionBanner/PerpsCompetitionBanner.tsx[2m:72:9)[22m[2m[22m
+[2m      [2mat asyncGeneratorStep ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:3:17)[22m[2m[22m
+[2m      [2mat _next ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:17:9)[22m[2m[22m
+
+    [2m[31mconsole.error[39m[22m
+[31m      An update to PerpsCompetitionBanner inside a test was not wrapped in act(...).[39m
+[31m      [39m
+[31m      When testing, code that causes React state updates should be wrapped into act(...):[39m
+[31m      [39m
+[31m      act(() => {[39m
+[31m        /* fire events that update state */[39m
+[31m      });[39m
+[31m      /* assert on the output */[39m
+[31m      [39m
+[31m      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act[39m
+[2m[22m
+[2m      70 |           PERPS_COMPETITION_BANNER_DISMISSED,[22m
+[2m      71 |         );[22m
+[2m    > 72 |         setIsDismissed(value === 'true');[22m
+[2m         |         ^[22m
+[2m      73 |       } catch {[22m
+[2m      74 |         setIsDismissed(false);[22m
+[2m      75 |       }[22m
+[2m[22m
+[2m      [2mat [22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11801:19[22m[2m[22m
+[2m      [2mat runWithFiberInDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:1574:13)[22m[2m[22m
+[2m      [2mat warnIfUpdatesNotWrappedWithActDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11800:9)[22m[2m[22m
+[2m      [2mat scheduleUpdateOnFiber ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:10326:9)[22m[2m[22m
+[2m      [2mat dispatchSetStateInternal ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4148:13)[22m[2m[22m
+[2m      [2mat dispatchSetState ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4107:7)[22m[2m[22m
+[2m      [2mat setIsDismissed ([22m[2mapp/components/UI/Perps/components/PerpsCompetitionBanner/PerpsCompetitionBanner.tsx[2m:72:9)[22m[2m[22m
+[2m      [2mat asyncGeneratorStep ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:3:17)[22m[2m[22m
+[2m      [2mat _next ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:17:9)[22m[2m[22m
+
+    [2m[31mconsole.error[39m[22m
+[31m      An update to PerpsCompetitionBanner inside a test was not wrapped in act(...).[39m
+[31m      [39m
+[31m      When testing, code that causes React state updates should be wrapped into act(...):[39m
+[31m      [39m
+[31m      act(() => {[39m
+[31m        /* fire events that update state */[39m
+[31m      });[39m
+[31m      /* assert on the output */[39m
+[31m      [39m
+[31m      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act[39m
+[2m[22m
+[2m      70 |           PERPS_COMPETITION_BANNER_DISMISSED,[22m
+[2m      71 |         );[22m
+[2m    > 72 |         setIsDismissed(value === 'true');[22m
+[2m         |         ^[22m
+[2m      73 |       } catch {[22m
+[2m      74 |         setIsDismissed(false);[22m
+[2m      75 |       }[22m
+[2m[22m
+[2m      [2mat [22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11801:19[22m[2m[22m
+[2m      [2mat runWithFiberInDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:1574:13)[22m[2m[22m
+[2m      [2mat warnIfUpdatesNotWrappedWithActDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11800:9)[22m[2m[22m
+[2m      [2mat scheduleUpdateOnFiber ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:10326:9)[22m[2m[22m
+[2m      [2mat dispatchSetStateInternal ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4148:13)[22m[2m[22m
+[2m      [2mat dispatchSetState ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4107:7)[22m[2m[22m
+[2m      [2mat setIsDismissed ([22m[2mapp/components/UI/Perps/components/PerpsCompetitionBanner/PerpsCompetitionBanner.tsx[2m:72:9)[22m[2m[22m
+[2m      [2mat asyncGeneratorStep ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:3:17)[22m[2m[22m
+[2m      [2mat _next ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:17:9)[22m[2m[22m
+
+    [2m[31mconsole.error[39m[22m
+[31m      An update to PerpsCompetitionBanner inside a test was not wrapped in act(...).[39m
+[31m      [39m
+[31m      When testing, code that causes React state updates should be wrapped into act(...):[39m
+[31m      [39m
+[31m      act(() => {[39m
+[31m        /* fire events that update state */[39m
+[31m      });[39m
+[31m      /* assert on the output */[39m
+[31m      [39m
+[31m      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act[39m
+[2m[22m
+[2m      70 |           PERPS_COMPETITION_BANNER_DISMISSED,[22m
+[2m      71 |         );[22m
+[2m    > 72 |         setIsDismissed(value === 'true');[22m
+[2m         |         ^[22m
+[2m      73 |       } catch {[22m
+[2m      74 |         setIsDismissed(false);[22m
+[2m      75 |       }[22m
+[2m[22m
+[2m      [2mat [22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11801:19[22m[2m[22m
+[2m      [2mat runWithFiberInDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:1574:13)[22m[2m[22m
+[2m      [2mat warnIfUpdatesNotWrappedWithActDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11800:9)[22m[2m[22m
+[2m      [2mat scheduleUpdateOnFiber ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:10326:9)[22m[2m[22m
+[2m      [2mat dispatchSetStateInternal ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4148:13)[22m[2m[22m
+[2m      [2mat dispatchSetState ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4107:7)[22m[2m[22m
+[2m      [2mat setIsDismissed ([22m[2mapp/components/UI/Perps/components/PerpsCompetitionBanner/PerpsCompetitionBanner.tsx[2m:72:9)[22m[2m[22m
+[2m      [2mat asyncGeneratorStep ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:3:17)[22m[2m[22m
+[2m      [2mat _next ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:17:9)[22m[2m[22m
+
+    [2m[31mconsole.error[39m[22m
+[31m      An update to PerpsCompetitionBanner inside a test was not wrapped in act(...).[39m
+[31m      [39m
+[31m      When testing, code that causes React state updates should be wrapped into act(...):[39m
+[31m      [39m
+[31m      act(() => {[39m
+[31m        /* fire events that update state */[39m
+[31m      });[39m
+[31m      /* assert on the output */[39m
+[31m      [39m
+[31m      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act[39m
+[2m[22m
+[2m      70 |           PERPS_COMPETITION_BANNER_DISMISSED,[22m
+[2m      71 |         );[22m
+[2m    > 72 |         setIsDismissed(value === 'true');[22m
+[2m         |         ^[22m
+[2m      73 |       } catch {[22m
+[2m      74 |         setIsDismissed(false);[22m
+[2m      75 |       }[22m
+[2m[22m
+[2m      [2mat [22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11801:19[22m[2m[22m
+[2m      [2mat runWithFiberInDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:1574:13)[22m[2m[22m
+[2m      [2mat warnIfUpdatesNotWrappedWithActDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11800:9)[22m[2m[22m
+[2m      [2mat scheduleUpdateOnFiber ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:10326:9)[22m[2m[22m
+[2m      [2mat dispatchSetStateInternal ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4148:13)[22m[2m[22m
+[2m      [2mat dispatchSetState ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4107:7)[22m[2m[22m
+[2m      [2mat setIsDismissed ([22m[2mapp/components/UI/Perps/components/PerpsCompetitionBanner/PerpsCompetitionBanner.tsx[2m:72:9)[22m[2m[22m
+[2m      [2mat asyncGeneratorStep ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:3:17)[22m[2m[22m
+[2m      [2mat _next ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:17:9)[22m[2m[22m
+
+    [2m[31mconsole.error[39m[22m
+[31m      An update to PerpsCompetitionBanner inside a test was not wrapped in act(...).[39m
+[31m      [39m
+[31m      When testing, code that causes React state updates should be wrapped into act(...):[39m
+[31m      [39m
+[31m      act(() => {[39m
+[31m        /* fire events that update state */[39m
+[31m      });[39m
+[31m      /* assert on the output */[39m
+[31m      [39m
+[31m      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act[39m
+[2m[22m
+[2m      70 |           PERPS_COMPETITION_BANNER_DISMISSED,[22m
+[2m      71 |         );[22m
+[2m    > 72 |         setIsDismissed(value === 'true');[22m
+[2m         |         ^[22m
+[2m      73 |       } catch {[22m
+[2m      74 |         setIsDismissed(false);[22m
+[2m      75 |       }[22m
+[2m[22m
+[2m      [2mat [22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11801:19[22m[2m[22m
+[2m      [2mat runWithFiberInDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:1574:13)[22m[2m[22m
+[2m      [2mat warnIfUpdatesNotWrappedWithActDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11800:9)[22m[2m[22m
+[2m      [2mat scheduleUpdateOnFiber ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:10326:9)[22m[2m[22m
+[2m      [2mat dispatchSetStateInternal ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4148:13)[22m[2m[22m
+[2m      [2mat dispatchSetState ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4107:7)[22m[2m[22m
+[2m      [2mat setIsDismissed ([22m[2mapp/components/UI/Perps/components/PerpsCompetitionBanner/PerpsCompetitionBanner.tsx[2m:72:9)[22m[2m[22m
+[2m      [2mat asyncGeneratorStep ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:3:17)[22m[2m[22m
+[2m      [2mat _next ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:17:9)[22m[2m[22m
+
+    [2m[31mconsole.error[39m[22m
+[31m      An update to PerpsCompetitionBanner inside a test was not wrapped in act(...).[39m
+[31m      [39m
+[31m      When testing, code that causes React state updates should be wrapped into act(...):[39m
+[31m      [39m
+[31m      act(() => {[39m
+[31m        /* fire events that update state */[39m
+[31m      });[39m
+[31m      /* assert on the output */[39m
+[31m      [39m
+[31m      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act[39m
+[2m[22m
+[2m      70 |           PERPS_COMPETITION_BANNER_DISMISSED,[22m
+[2m      71 |         );[22m
+[2m    > 72 |         setIsDismissed(value === 'true');[22m
+[2m         |         ^[22m
+[2m      73 |       } catch {[22m
+[2m      74 |         setIsDismissed(false);[22m
+[2m      75 |       }[22m
+[2m[22m
+[2m      [2mat [22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11801:19[22m[2m[22m
+[2m      [2mat runWithFiberInDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:1574:13)[22m[2m[22m
+[2m      [2mat warnIfUpdatesNotWrappedWithActDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11800:9)[22m[2m[22m
+[2m      [2mat scheduleUpdateOnFiber ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:10326:9)[22m[2m[22m
+[2m      [2mat dispatchSetStateInternal ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4148:13)[22m[2m[22m
+[2m      [2mat dispatchSetState ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4107:7)[22m[2m[22m
+[2m      [2mat setIsDismissed ([22m[2mapp/components/UI/Perps/components/PerpsCompetitionBanner/PerpsCompetitionBanner.tsx[2m:72:9)[22m[2m[22m
+[2m      [2mat asyncGeneratorStep ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:3:17)[22m[2m[22m
+[2m      [2mat _next ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:17:9)[22m[2m[22m
+
+    [2m[31mconsole.error[39m[22m
+[31m      An update to PerpsCompetitionBanner inside a test was not wrapped in act(...).[39m
+[31m      [39m
+[31m      When testing, code that causes React state updates should be wrapped into act(...):[39m
+[31m      [39m
+[31m      act(() => {[39m
+[31m        /* fire events that update state */[39m
+[31m      });[39m
+[31m      /* assert on the output */[39m
+[31m      [39m
+[31m      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act[39m
+[2m[22m
+[2m      70 |           PERPS_COMPETITION_BANNER_DISMISSED,[22m
+[2m      71 |         );[22m
+[2m    > 72 |         setIsDismissed(value === 'true');[22m
+[2m         |         ^[22m
+[2m      73 |       } catch {[22m
+[2m      74 |         setIsDismissed(false);[22m
+[2m      75 |       }[22m
+[2m[22m
+[2m      [2mat [22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11801:19[22m[2m[22m
+[2m      [2mat runWithFiberInDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:1574:13)[22m[2m[22m
+[2m      [2mat warnIfUpdatesNotWrappedWithActDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11800:9)[22m[2m[22m
+[2m      [2mat scheduleUpdateOnFiber ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:10326:9)[22m[2m[22m
+[2m      [2mat dispatchSetStateInternal ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4148:13)[22m[2m[22m
+[2m      [2mat dispatchSetState ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4107:7)[22m[2m[22m
+[2m      [2mat setIsDismissed ([22m[2mapp/components/UI/Perps/components/PerpsCompetitionBanner/PerpsCompetitionBanner.tsx[2m:72:9)[22m[2m[22m
+[2m      [2mat asyncGeneratorStep ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:3:17)[22m[2m[22m
+[2m      [2mat _next ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:17:9)[22m[2m[22m
+
+    [2m[31mconsole.error[39m[22m
+[31m      An update to PerpsCompetitionBanner inside a test was not wrapped in act(...).[39m
+[31m      [39m
+[31m      When testing, code that causes React state updates should be wrapped into act(...):[39m
+[31m      [39m
+[31m      act(() => {[39m
+[31m        /* fire events that update state */[39m
+[31m      });[39m
+[31m      /* assert on the output */[39m
+[31m      [39m
+[31m      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act[39m
+[2m[22m
+[2m      70 |           PERPS_COMPETITION_BANNER_DISMISSED,[22m
+[2m      71 |         );[22m
+[2m    > 72 |         setIsDismissed(value === 'true');[22m
+[2m         |         ^[22m
+[2m      73 |       } catch {[22m
+[2m      74 |         setIsDismissed(false);[22m
+[2m      75 |       }[22m
+[2m[22m
+[2m      [2mat [22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11801:19[22m[2m[22m
+[2m      [2mat runWithFiberInDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:1574:13)[22m[2m[22m
+[2m      [2mat warnIfUpdatesNotWrappedWithActDEV ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:11800:9)[22m[2m[22m
+[2m      [2mat scheduleUpdateOnFiber ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:10326:9)[22m[2m[22m
+[2m      [2mat dispatchSetStateInternal ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4148:13)[22m[2m[22m
+[2m      [2mat dispatchSetState ([22m[2mnode_modules/react-test-renderer/cjs/react-test-renderer.development.js[2m:4107:7)[22m[2m[22m
+[2m      [2mat setIsDismissed ([22m[2mapp/components/UI/Perps/components/PerpsCompetitionBanner/PerpsCompetitionBanner.tsx[2m:72:9)[22m[2m[22m
+[2m      [2mat asyncGeneratorStep ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:3:17)[22m[2m[22m
+[2m      [2mat _next ([22m[2mnode_modules/@babel/runtime/helpers/asyncToGenerator.js[2m:17:9)[22m[2m[22m
+
+
+[1mTest Suites: [22m[1m[32m3 passed[39m[22m, 3 total
+[1mTests:       [22m[1m[32m146 passed[39m[22m, 146 total
+[1mSnapshots:   [22m0 total
+[1mTime:[22m        12.846 s
+[2mRan all test suites[22m[2m matching [22m/app\/components\/UI\/Perps\/components\/PerpsCompetitionBanner\/PerpsCompetitionBanner.test.tsx|app\/components\/UI\/Perps\/Views\/PerpsHomeView\/PerpsHomeView.test.tsx|app\/components\/UI\/Perps\/selectors\/featureFlags\/index.test.ts/i[2m.[22m

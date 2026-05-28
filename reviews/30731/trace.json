@@ -1,0 +1,388 @@
+{
+  "env": {
+    "appRoot": "/Users/deeeed/dev/metamask/metamask-mobile-3",
+    "recipePath": "/Users/deeeed/dev/metamask/metamask-mobile-3/.task/review/30731-0528-190928/artifacts/recipe.json",
+    "team": ""
+  },
+  "inputs": {},
+  "last": {
+    "ok": true,
+    "testId": "perps-home-competition-banner-close",
+    "deviceName": "mm-3"
+  },
+  "nodes": {
+    "setup-nav-perps-home": {
+      "action": "navigate",
+      "description": "navigate to PerpsMarketListView",
+      "finishedAt": "2026-05-28T11:46:18.123Z",
+      "id": "setup-nav-perps-home",
+      "status": "pass",
+      "startedAt": "2026-05-28T11:46:17.010Z",
+      "durationMs": 1113,
+      "next": "setup-wait-perps-home",
+      "result": {
+        "navigated": "PerpsMarketListView",
+        "params": {},
+        "previousRoute": {
+          "key": "RewardsPerpsTradingCampaignDetails-2dTWizw_Bd2ROhAQ5otnd",
+          "name": "RewardsPerpsTradingCampaignDetails"
+        },
+        "currentRoute": {
+          "key": "PerpsMarketListView-sxdU55YKOdhSpxz4jAENr",
+          "name": "PerpsMarketListView"
+        },
+        "deviceName": "mm-3",
+        "platform": "ios"
+      }
+    },
+    "setup-wait-perps-home": {
+      "action": "wait_for",
+      "description": "wait for PerpsMarketListView",
+      "finishedAt": "2026-05-28T11:46:18.418Z",
+      "id": "setup-wait-perps-home",
+      "status": "pass",
+      "startedAt": "2026-05-28T11:46:18.124Z",
+      "durationMs": 294,
+      "next": "ac1-wait-banner-visible",
+      "result": {
+        "route": "PerpsMarketListView"
+      }
+    },
+    "ac1-wait-banner-visible": {
+      "action": "wait_for",
+      "description": "wait for perps-home-competition-banner",
+      "finishedAt": "2026-05-28T11:46:18.718Z",
+      "id": "ac1-wait-banner-visible",
+      "status": "pass",
+      "startedAt": "2026-05-28T11:46:18.418Z",
+      "durationMs": 300,
+      "next": "ac1-assert-banner-context",
+      "result": {
+        "visible": true
+      }
+    },
+    "ac1-assert-banner-context": {
+      "action": "eval_sync",
+      "description": "eval_sync",
+      "finishedAt": "2026-05-28T11:46:19.030Z",
+      "id": "ac1-assert-banner-context",
+      "status": "pass",
+      "startedAt": "2026-05-28T11:46:18.718Z",
+      "durationMs": 312,
+      "next": "ac1-screenshot-banner-placement",
+      "result": {
+        "banner": true,
+        "image": true,
+        "close": true,
+        "balanceActions": true
+      }
+    },
+    "ac1-screenshot-banner-placement": {
+      "action": "screenshot",
+      "description": "AC1: Banner visible below balance actions",
+      "finishedAt": "2026-05-28T11:46:19.822Z",
+      "id": "ac1-screenshot-banner-placement",
+      "status": "pass",
+      "startedAt": "2026-05-28T11:46:19.030Z",
+      "durationMs": 792,
+      "next": "ac2-press-banner",
+      "result": {
+        "screenshot": "/Users/deeeed/dev/metamask/metamask-mobile-3/.agent/screenshots/2026-05-28_194619_evidence-ac1-banner-placement.png"
+      }
+    },
+    "ac2-press-banner": {
+      "action": "press",
+      "description": "press perps-home-competition-banner",
+      "finishedAt": "2026-05-28T11:46:20.122Z",
+      "id": "ac2-press-banner",
+      "status": "pass",
+      "startedAt": "2026-05-28T11:46:19.822Z",
+      "durationMs": 300,
+      "next": "ac2-wait-rewards-route",
+      "result": {
+        "ok": true,
+        "testId": "perps-home-competition-banner",
+        "deviceName": "mm-3"
+      }
+    },
+    "ac2-wait-rewards-route": {
+      "action": "wait_for",
+      "description": "wait for condition",
+      "finishedAt": "2026-05-28T11:46:20.439Z",
+      "id": "ac2-wait-rewards-route",
+      "status": "pass",
+      "startedAt": "2026-05-28T11:46:20.122Z",
+      "durationMs": 317,
+      "next": "ac2-screenshot-rewards",
+      "result": {
+        "route": "RewardsPerpsTradingCampaignDetails"
+      }
+    },
+    "ac2-screenshot-rewards": {
+      "action": "screenshot",
+      "description": "AC2: Banner tap navigates to Rewards",
+      "finishedAt": "2026-05-28T11:46:21.373Z",
+      "id": "ac2-screenshot-rewards",
+      "status": "pass",
+      "startedAt": "2026-05-28T11:46:20.439Z",
+      "durationMs": 934,
+      "next": "setup-return-perps-home",
+      "result": {
+        "screenshot": "/Users/deeeed/dev/metamask/metamask-mobile-3/.agent/screenshots/2026-05-28_194620_evidence-ac2-rewards-route.png"
+      }
+    },
+    "setup-return-perps-home": {
+      "action": "navigate",
+      "description": "navigate to PerpsMarketListView",
+      "finishedAt": "2026-05-28T11:46:22.459Z",
+      "id": "setup-return-perps-home",
+      "status": "pass",
+      "startedAt": "2026-05-28T11:46:21.373Z",
+      "durationMs": 1086,
+      "next": "setup-wait-return-perps-home",
+      "result": {
+        "navigated": "PerpsMarketListView",
+        "params": {},
+        "previousRoute": {
+          "key": "RewardsPerpsTradingCampaignDetails-2dTWizw_Bd2ROhAQ5otnd",
+          "name": "RewardsPerpsTradingCampaignDetails"
+        },
+        "currentRoute": {
+          "key": "PerpsMarketListView-GcBN7lWRGZDdKN1YlrXwH",
+          "name": "PerpsMarketListView"
+        },
+        "deviceName": "mm-3",
+        "platform": "ios"
+      }
+    },
+    "setup-wait-return-perps-home": {
+      "action": "wait_for",
+      "description": "wait for PerpsMarketListView",
+      "finishedAt": "2026-05-28T11:46:22.764Z",
+      "id": "setup-wait-return-perps-home",
+      "status": "pass",
+      "startedAt": "2026-05-28T11:46:22.459Z",
+      "durationMs": 305,
+      "next": "ac3-wait-banner-visible",
+      "result": {
+        "route": "PerpsMarketListView"
+      }
+    },
+    "ac3-wait-banner-visible": {
+      "action": "wait_for",
+      "description": "wait for perps-home-competition-banner",
+      "finishedAt": "2026-05-28T11:46:23.063Z",
+      "id": "ac3-wait-banner-visible",
+      "status": "pass",
+      "startedAt": "2026-05-28T11:46:22.764Z",
+      "durationMs": 299,
+      "next": "ac3-press-close",
+      "result": {
+        "visible": true
+      }
+    },
+    "ac3-press-close": {
+      "action": "press",
+      "description": "press perps-home-competition-banner-close",
+      "finishedAt": "2026-05-28T11:46:23.383Z",
+      "id": "ac3-press-close",
+      "status": "pass",
+      "startedAt": "2026-05-28T11:46:23.063Z",
+      "durationMs": 320,
+      "next": "ac3-wait-banner-hidden",
+      "result": {
+        "ok": true,
+        "testId": "perps-home-competition-banner-close",
+        "deviceName": "mm-3"
+      }
+    }
+  },
+  "trace": [
+    {
+      "action": "navigate",
+      "description": "navigate to PerpsMarketListView",
+      "finishedAt": "2026-05-28T11:46:18.123Z",
+      "id": "setup-nav-perps-home",
+      "status": "pass",
+      "startedAt": "2026-05-28T11:46:17.010Z",
+      "durationMs": 1113,
+      "next": "setup-wait-perps-home",
+      "result": {
+        "navigated": "PerpsMarketListView",
+        "params": {},
+        "previousRoute": {
+          "key": "RewardsPerpsTradingCampaignDetails-2dTWizw_Bd2ROhAQ5otnd",
+          "name": "RewardsPerpsTradingCampaignDetails"
+        },
+        "currentRoute": {
+          "key": "PerpsMarketListView-sxdU55YKOdhSpxz4jAENr",
+          "name": "PerpsMarketListView"
+        },
+        "deviceName": "mm-3",
+        "platform": "ios"
+      }
+    },
+    {
+      "action": "wait_for",
+      "description": "wait for PerpsMarketListView",
+      "finishedAt": "2026-05-28T11:46:18.418Z",
+      "id": "setup-wait-perps-home",
+      "status": "pass",
+      "startedAt": "2026-05-28T11:46:18.124Z",
+      "durationMs": 294,
+      "next": "ac1-wait-banner-visible",
+      "result": {
+        "route": "PerpsMarketListView"
+      }
+    },
+    {
+      "action": "wait_for",
+      "description": "wait for perps-home-competition-banner",
+      "finishedAt": "2026-05-28T11:46:18.718Z",
+      "id": "ac1-wait-banner-visible",
+      "status": "pass",
+      "startedAt": "2026-05-28T11:46:18.418Z",
+      "durationMs": 300,
+      "next": "ac1-assert-banner-context",
+      "result": {
+        "visible": true
+      }
+    },
+    {
+      "action": "eval_sync",
+      "description": "eval_sync",
+      "finishedAt": "2026-05-28T11:46:19.030Z",
+      "id": "ac1-assert-banner-context",
+      "status": "pass",
+      "startedAt": "2026-05-28T11:46:18.718Z",
+      "durationMs": 312,
+      "next": "ac1-screenshot-banner-placement",
+      "result": {
+        "banner": true,
+        "image": true,
+        "close": true,
+        "balanceActions": true
+      }
+    },
+    {
+      "action": "screenshot",
+      "description": "AC1: Banner visible below balance actions",
+      "finishedAt": "2026-05-28T11:46:19.822Z",
+      "id": "ac1-screenshot-banner-placement",
+      "status": "pass",
+      "startedAt": "2026-05-28T11:46:19.030Z",
+      "durationMs": 792,
+      "next": "ac2-press-banner",
+      "result": {
+        "screenshot": "/Users/deeeed/dev/metamask/metamask-mobile-3/.agent/screenshots/2026-05-28_194619_evidence-ac1-banner-placement.png"
+      }
+    },
+    {
+      "action": "press",
+      "description": "press perps-home-competition-banner",
+      "finishedAt": "2026-05-28T11:46:20.122Z",
+      "id": "ac2-press-banner",
+      "status": "pass",
+      "startedAt": "2026-05-28T11:46:19.822Z",
+      "durationMs": 300,
+      "next": "ac2-wait-rewards-route",
+      "result": {
+        "ok": true,
+        "testId": "perps-home-competition-banner",
+        "deviceName": "mm-3"
+      }
+    },
+    {
+      "action": "wait_for",
+      "description": "wait for condition",
+      "finishedAt": "2026-05-28T11:46:20.439Z",
+      "id": "ac2-wait-rewards-route",
+      "status": "pass",
+      "startedAt": "2026-05-28T11:46:20.122Z",
+      "durationMs": 317,
+      "next": "ac2-screenshot-rewards",
+      "result": {
+        "route": "RewardsPerpsTradingCampaignDetails"
+      }
+    },
+    {
+      "action": "screenshot",
+      "description": "AC2: Banner tap navigates to Rewards",
+      "finishedAt": "2026-05-28T11:46:21.373Z",
+      "id": "ac2-screenshot-rewards",
+      "status": "pass",
+      "startedAt": "2026-05-28T11:46:20.439Z",
+      "durationMs": 934,
+      "next": "setup-return-perps-home",
+      "result": {
+        "screenshot": "/Users/deeeed/dev/metamask/metamask-mobile-3/.agent/screenshots/2026-05-28_194620_evidence-ac2-rewards-route.png"
+      }
+    },
+    {
+      "action": "navigate",
+      "description": "navigate to PerpsMarketListView",
+      "finishedAt": "2026-05-28T11:46:22.459Z",
+      "id": "setup-return-perps-home",
+      "status": "pass",
+      "startedAt": "2026-05-28T11:46:21.373Z",
+      "durationMs": 1086,
+      "next": "setup-wait-return-perps-home",
+      "result": {
+        "navigated": "PerpsMarketListView",
+        "params": {},
+        "previousRoute": {
+          "key": "RewardsPerpsTradingCampaignDetails-2dTWizw_Bd2ROhAQ5otnd",
+          "name": "RewardsPerpsTradingCampaignDetails"
+        },
+        "currentRoute": {
+          "key": "PerpsMarketListView-GcBN7lWRGZDdKN1YlrXwH",
+          "name": "PerpsMarketListView"
+        },
+        "deviceName": "mm-3",
+        "platform": "ios"
+      }
+    },
+    {
+      "action": "wait_for",
+      "description": "wait for PerpsMarketListView",
+      "finishedAt": "2026-05-28T11:46:22.764Z",
+      "id": "setup-wait-return-perps-home",
+      "status": "pass",
+      "startedAt": "2026-05-28T11:46:22.459Z",
+      "durationMs": 305,
+      "next": "ac3-wait-banner-visible",
+      "result": {
+        "route": "PerpsMarketListView"
+      }
+    },
+    {
+      "action": "wait_for",
+      "description": "wait for perps-home-competition-banner",
+      "finishedAt": "2026-05-28T11:46:23.063Z",
+      "id": "ac3-wait-banner-visible",
+      "status": "pass",
+      "startedAt": "2026-05-28T11:46:22.764Z",
+      "durationMs": 299,
+      "next": "ac3-press-close",
+      "result": {
+        "visible": true
+      }
+    },
+    {
+      "action": "press",
+      "description": "press perps-home-competition-banner-close",
+      "finishedAt": "2026-05-28T11:46:23.383Z",
+      "id": "ac3-press-close",
+      "status": "pass",
+      "startedAt": "2026-05-28T11:46:23.063Z",
+      "durationMs": 320,
+      "next": "ac3-wait-banner-hidden",
+      "result": {
+        "ok": true,
+        "testId": "perps-home-competition-banner-close",
+        "deviceName": "mm-3"
+      }
+    }
+  ],
+  "vars": {}
+}

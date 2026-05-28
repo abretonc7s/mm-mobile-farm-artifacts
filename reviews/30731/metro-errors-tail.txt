@@ -1,0 +1,20 @@
+ WARN  You passed a server string as an argument to one of the react-native-keychain functions.
+ WARN  You passed a server string as an argument to one of the react-native-keychain functions.
+ WARN  You passed a server string as an argument to one of the react-native-keychain functions.
+ WARN  You passed a server string as an argument to one of the react-native-keychain functions.
+ WARN  Balance fetcher failed for chains 0x89, 0xa4b1, 0xa4b1, 0xa4b1, 0xa4b1, 0xa4b1, 0xa4b1, 0x89, 0xa4b1, 0xa4b1, 0xa4b1, 0x89, 0xa4b1, 0xa4b1, 0x2105, 0xa4b1, 0x2105, 0xa4b1, 0xa4b1, 0xa4b1, 0xa4b1, 0xa4b1, 0xa4b1, 0xa4b1, 0x2105, 0xa4b1, 0xa4b1, 0xa4b1, 0xa4b1, 0x1, 0x1, 0x38, 0x38, 0x38, 0x1, 0x1, 0x1, 0xa4b1, 0x38: Error: Accounts API request timed out or failed
+ WARN  You passed a server string as an argument to one of the react-native-keychain functions.
+ WARN  You passed a server string as an argument to one of the react-native-keychain functions.
+ WARN  You passed a server string as an argument to one of the react-native-keychain functions.
+ WARN  You passed a server string as an argument to one of the react-native-keychain functions.
+ WARN  You passed a server string as an argument to one of the react-native-keychain functions.
+ WARN  You passed a server string as an argument to one of the react-native-keychain functions.
+ WARN  You passed a server string as an argument to one of the react-native-keychain functions.
+ WARN  [MetaMask DEBUG]: [Error: Cardholder API error: 504]
+ WARN  [MetaMask DEBUG]: [Error: Cardholder API error: 504]
+ WARN  [MetaMask DEBUG]: [Error: Cardholder API error: 504]
+ ERROR  Snap request failed for onAssetsConversion: {"handler": "onAssetsConversion", "message": "Load failed", "params": {"conversions": [[Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object]]}, "snapId": "npm:@metamask/tron-wallet-snap"}
+ ERROR  Snap request failed for onAssetsMarketData: {"handler": "onAssetsMarketData", "message": "Load failed", "params": {"assets": [[Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object], [Object]]}, "snapId": "npm:@metamask/tron-wallet-snap"}
+ WARN  [Error: premature close]
+ WARN  [Error: premature close]
+ WARN  Found screens with the same name nested inside one another. Check:

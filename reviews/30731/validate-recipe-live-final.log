@@ -1,0 +1,22 @@
+Running recipe: PR 30731 Perps competition banner review
+Pre-conditions: wallet.unlocked, perps.feature_enabled
+Workflow nodes: 20
+
+Pre-conditions: PASS
+
+[setup-nav-perps-home] navigate to PerpsMarketListView
+  result: {"navigated":"PerpsMarketListView","params":{},"previousRoute":{"key":"PerpsMarketListView-GcBN7lWRGZDdKN1YlrXwH","name":"PerpsMarketListView"},"currentRoute":{"key":"PerpsMarketListView-GcBN7lWRGZDdKN1YlrXwH","name":"Pe...
+  PASS
+
+[setup-wait-perps-home] wait for PerpsMarketListView
+  result: {"route":"PerpsMarketListView"}
+  PASS
+
+[ac1-wait-banner-visible] wait for perps-home-competition-banner
+  result: {"visible":true}
+  PASS
+
+[ac1-assert-banner-context] eval_sync
+Assertion failed for step "ac1-assert-banner-context"
+  result: {"banner":true,"image":false,"close":false,"balanceActions":true}
+  assert: {"all":[{"operator":"eq","field":"banner","value":true},{"operator":"eq","field":"image","value":true},{"operator":"eq","field":"close","value":true},{"operator":"eq","field":"balanceActions","value":true}]}

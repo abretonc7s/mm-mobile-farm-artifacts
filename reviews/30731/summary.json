@@ -1,0 +1,93 @@
+{
+  "status": "FAIL",
+  "title": "PR 30731 Perps competition banner review",
+  "recipePath": "/Users/deeeed/dev/metamask/metamask-mobile-3/.task/review/30731-0528-190928/artifacts/recipe.json",
+  "counts": {
+    "total": 13,
+    "passed": 12,
+    "skipped": 0
+  },
+  "failures": [
+    {
+      "dir": "/Users/deeeed/dev/metamask/metamask-mobile-3/.agent/recipe-runs/2026-05-28_11-46-16_recipe/failures/01_ac3-wait-banner-hidden",
+      "details": "/Users/deeeed/dev/metamask/metamask-mobile-3/.agent/recipe-runs/2026-05-28_11-46-16_recipe/failures/01_ac3-wait-banner-hidden/failure.json",
+      "stepId": "ac3-wait-banner-hidden",
+      "error": "wait_for timed out after 10000ms (test_id=perps-home-competition-banner)\n  last result: {\"visible\":true}"
+    }
+  ],
+  "tracePath": "/Users/deeeed/dev/metamask/metamask-mobile-3/.agent/recipe-runs/2026-05-28_11-46-16_recipe/trace.json",
+  "workflowMermaidPath": "/Users/deeeed/dev/metamask/metamask-mobile-3/.agent/recipe-runs/2026-05-28_11-46-16_recipe/workflow.mmd",
+  "workflowPath": "/Users/deeeed/dev/metamask/metamask-mobile-3/.agent/recipe-runs/2026-05-28_11-46-16_recipe/workflow.json",
+  "availableEvalRefs": [
+    "perps/auth",
+    "perps/balances",
+    "perps/core/available-dexs",
+    "perps/core/leverage-config",
+    "perps/core/positions-by-symbol",
+    "perps/core/pump-market",
+    "perps/core/tpsl-orders",
+    "perps/core/watchlist",
+    "perps/hl-fixture-state",
+    "perps/markets",
+    "perps/orders",
+    "perps/place-order",
+    "perps/positions",
+    "perps/post-trade",
+    "perps/pre-trade",
+    "perps/providers",
+    "perps/setup/account-balance",
+    "perps/setup/current-provider",
+    "perps/setup/testnet-mode",
+    "perps/state"
+  ],
+  "recipeIssues": {
+    "captured": {
+      "total": 0,
+      "warning": 0,
+      "error": 0,
+      "exception": 0,
+      "other": 0
+    },
+    "unexpected": {
+      "total": 0,
+      "warning": 0,
+      "error": 0,
+      "exception": 0,
+      "other": 0
+    },
+    "failOn": {
+      "levels": [],
+      "textMatches": []
+    },
+    "review": {
+      "status": "clean",
+      "note": "No unexpected warnings, errors, or exceptions observed.",
+      "observed": {
+        "total": 0,
+        "warning": 0,
+        "error": 0,
+        "exception": 0,
+        "other": 0
+      },
+      "gating": {
+        "total": 0,
+        "warning": 0,
+        "error": 0,
+        "exception": 0,
+        "other": 0
+      },
+      "informational": {
+        "total": 0
+      },
+      "topIssues": [],
+      "artifactFiles": {
+        "allIssues": "/Users/deeeed/dev/metamask/metamask-mobile-3/.agent/recipe-runs/2026-05-28_11-46-16_recipe/recipe-issues.json",
+        "consoleWarnings": "/Users/deeeed/dev/metamask/metamask-mobile-3/.agent/recipe-runs/2026-05-28_11-46-16_recipe/console-warnings.json",
+        "consoleErrors": "/Users/deeeed/dev/metamask/metamask-mobile-3/.agent/recipe-runs/2026-05-28_11-46-16_recipe/console-errors.json",
+        "runtimeExceptions": "/Users/deeeed/dev/metamask/metamask-mobile-3/.agent/recipe-runs/2026-05-28_11-46-16_recipe/runtime-exceptions.json",
+        "reviewJson": "/Users/deeeed/dev/metamask/metamask-mobile-3/.agent/recipe-runs/2026-05-28_11-46-16_recipe/recipe-issues-review.json",
+        "reviewMd": "/Users/deeeed/dev/metamask/metamask-mobile-3/.agent/recipe-runs/2026-05-28_11-46-16_recipe/recipe-issues-review.md"
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+     235 .js.env.example
+     843 app/components/UI/Perps/Perps.testIds.ts
+    1003 app/components/UI/Perps/Views/PerpsHomeView/PerpsHomeView.test.tsx
+     732 app/components/UI/Perps/Views/PerpsHomeView/PerpsHomeView.tsx
+     171 app/components/UI/Perps/components/PerpsCompetitionBanner/PerpsCompetitionBanner.test.tsx
+     145 app/components/UI/Perps/components/PerpsCompetitionBanner/PerpsCompetitionBanner.tsx
+       3 app/components/UI/Perps/components/PerpsCompetitionBanner/PerpsCompetitionBanner.types.ts
+       2 app/components/UI/Perps/components/PerpsCompetitionBanner/index.ts
+      19 app/components/UI/Perps/mocks/remoteFeatureFlagMocks.ts
+    2099 app/components/UI/Perps/selectors/featureFlags/index.test.ts
+     315 app/components/UI/Perps/selectors/featureFlags/index.ts
+     100 app/constants/storage.ts
+     278 docs/perps/perps-feature-flags.md
+    9480 locales/languages/en.json
+    4894 tests/feature-flags/feature-flag-registry.ts
+   20319 total
