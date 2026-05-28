@@ -96,15 +96,14 @@ For performance guidelines and tooling, see the [Performance Guide](https://cons
 
 > [!NOTE]
 > **Low Risk**
-> Changes are behind a remote feature flag and limited to Perps UI, static collection config, and analytics; the dependency patch only extends event name constants in dist files.
+> UI-only discovery behind a remote flag with tests; no auth, payments, or trading execution changes.
 > 
 > **Overview**
-> Adds a **Related markets** discovery rail on Perps **market details**, gated by remote flag `perpsRelatedMarketsMobile` (defaults off). When enabled, the screen loads the markets list if needed, maps the current symbol to a static thematic/sector collection via `getRelatedMarketsForMarket`, and renders a horizontal `PerpsRelatedMarkets` rail (other symbols in the collection, excluding the current market).
+> Adds a **feature-flagged Related markets** horizontal rail on Perps **market details**, gated by remote flag `perpsRelatedMarkets` (defaults off). When enabled, the screen loads the markets list if needed, derives same-collection peers via new `relatedMarkets` helpers (crypto, stocks, commodities, forex, new; excludes uncategorized HIP-3), and renders **`PerpsRelatedMarkets`** using homepage **`PerpsMarketTileCard`** + sparklines.
 > 
-> Tapping a tile navigates to that asset’s details with `source: related_markets` and emits `PERPS_UI_INTERACTION` for `related_market_clicked` (source/destination market, category, position) and a one-time `slide` on the rail. **Asset screen viewed** tracking now accepts a `resetKey` on `market.symbol` so views fire again when switching markets.
+> Tile taps navigate to another asset with `source: related_markets` and emit dedicated UI analytics (click + one-time rail slide per symbol). **`usePerpsEventTracking`** gains **`resetKey`** so asset screen-view events fire again when switching symbols. Docs, i18n (`related_markets`), test IDs, and unit/integration tests cover the rail and flag selector.
 > 
-> Analytics constants are added through a **yarn patch** on `@metamask/perps-controller` 6.3.0; docs and Mixpanel dictionary entries document the new properties. Includes selectors, locale string, and unit/integration tests for the flag, utilities, rail, and details view.
-> 
-> <sup>Reviewed by [Cursor Bugbot](https://cursor.com/bugbot) for commit 7652c52637f45f3f7be9193ea1b16b9cac7c25b5. Bugbot is set up for automated code reviews on this repo. Configure [here](https://www.cursor.com/dashboard/bugbot).</sup>
+> <sup>Reviewed by [Cursor Bugbot](https://cursor.com/bugbot) for commit db4a7c83adda270fd8ed19f6b3874ad92337b35c. Bugbot is set up for automated code reviews on this repo. Configure [here](https://www.cursor.com/dashboard/bugbot).</sup>
 <!-- /CURSOR_SUMMARY -->
+
 

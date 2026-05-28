@@ -2,5 +2,5 @@
   "originalFamilyScopeSummary": "Add Related Markets rail to mobile market detail pages for cross-market discovery",
   "currentTriggerSummary": "pr-complete: Add Related Markets rail to mobile market detail pages for cross-market discovery",
   "scopeVerdict": "full-scope-addressed",
-  "notes": "Review comments fetched for PR #30728 were triaged and addressed where in mobile scope: slide tracking reset, flag rename, category-based related markets, and removal of the local 20-item cap. External tracking-repo registration was deferred as out of scope for this mobile PR."
+  "notes": "Inherited report and PR body show the full Related Markets rail scope implemented, with prior review fixes committed in db4a7c83 and the remaining alias cleanup committed in 918f82a65f. Recipe re-validation could not execute because the simulator wallet was locked before workflow nodes ran, but local lint/typecheck/format/Jest gates passed and the skipped recipe was unrelated to feature scope."
 }
