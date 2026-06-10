@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "title": "TAT-3168: Market detail category search shortcut (v1, press-only, post-main-merge)",
+  "description": "Proves the magnifying-glass shortcut on the BTC market detail header opens the Markets list (Crypto pre-selected) and returns on back. Drives the app with manifest-declared ui.press/ui.wait_for + visible testIDs only; ui.navigate is NOT used because main removed the in-app agentic bridge (get-route) the mobile runner depends on. Category resolution is delegated to @metamask/perps-controller v8 getMarketTypeFilter (unit-tested). Start state: wallet home (WalletView), unlocked.",
+  "validate": {
+    "workflow": {
+      "entry": "status",
+      "nodes": {
+        "status": {
+          "action": "app.status",
+          "intent": "Confirm runner is connected to the mobile app",
+          "flow": "setup",
+          "next": "open-perps"
+        },
+        "open-perps": {
+          "action": "ui.press",
+          "test_id": "homepage-section-title-perps",
+          "intent": "Open Perps from the wallet homepage",
+          "flow": "shortcut",
+          "next": "wait-perps-home"
+        },
+        "wait-perps-home": {
+          "action": "ui.wait_for",
+          "test_id": "perps-home",
+          "expected": "present",
+          "intent": "Wait for the Perps home screen",
+          "flow": "shortcut",
+          "next": "open-btc-detail"
+        },
+        "open-btc-detail": {
+          "action": "ui.press",
+          "test_id": "perps-market-row-item-BTC",
+          "intent": "Open the BTC market detail from the perps home markets list (clean stack, no market-list screen)",
+          "flow": "shortcut",
+          "next": "ac1-wait-icon"
+        },
+        "ac1-wait-icon": {
+          "action": "ui.wait_for",
+          "test_id": "perps-market-header-category-search-button",
+          "expected": "present",
+          "intent": "AC1/AC5: magnifying glass icon is visible on the BTC detail header",
+          "flow": "shortcut",
+          "next": "ac1-screenshot"
+        },
+        "ac1-screenshot": {
+          "action": "ui.screenshot",
+          "path": "screenshots/ac1-search-icon-visible.png",
+          "intent": "AC1: capture search icon visible on BTC detail header",
+          "flow": "shortcut",
+          "next": "ac2-press-search"
+        },
+        "ac2-press-search": {
+          "action": "ui.press",
+          "test_id": "perps-market-header-category-search-button",
+          "intent": "AC2: tap the magnifying glass",
+          "flow": "shortcut",
+          "next": "ac2-wait-list"
+        },
+        "ac2-wait-list": {
+          "action": "ui.wait_for",
+          "test_id": "perps-market-list",
+          "expected": "present",
+          "intent": "AC2: Markets list opens after tapping search (Crypto pre-selected for BTC)",
+          "flow": "shortcut",
+          "next": "ac2-screenshot"
+        },
+        "ac2-screenshot": {
+          "action": "ui.screenshot",
+          "path": "screenshots/ac2-market-list-crypto.png",
+          "intent": "AC2: capture Markets list opened with Crypto category from the BTC shortcut",
+          "flow": "shortcut",
+          "next": "ac4-press-back"
+        },
+        "ac4-press-back": {
+          "action": "ui.press",
+          "test_id": "perps-market-list-close-button-back-button",
+          "intent": "AC4: tap back from the Markets list",
+          "flow": "shortcut",
+          "next": "ac4-wait-return"
+        },
+        "ac4-wait-return": {
+          "action": "ui.wait_for",
+          "test_id": "perps-market-header-category-search-button",
+          "expected": "present",
+          "intent": "AC4: returns to the originating BTC market detail (header search icon present again)",
+          "flow": "shortcut",
+          "next": "ac4-screenshot"
+        },
+        "ac4-screenshot": {
+          "action": "ui.screenshot",
+          "path": "screenshots/ac4-return-to-detail.png",
+          "intent": "AC4: capture return to BTC market detail",
+          "flow": "shortcut",
+          "next": "done"
+        },
+        "done": {
+          "action": "end",
+          "status": "pass"
+        }
+      }
+    }
+  }
+}

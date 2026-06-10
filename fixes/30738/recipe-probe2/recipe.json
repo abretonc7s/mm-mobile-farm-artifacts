@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "title": "probe waitfor+screenshot on WalletView",
+  "validate": {
+    "workflow": {
+      "entry": "s",
+      "nodes": {
+        "s": {
+          "action": "app.status",
+          "intent": "check runner connected",
+          "next": "w"
+        },
+        "w": {
+          "action": "ui.wait_for",
+          "test_id": "wallet-screen",
+          "expected": "present",
+          "intent": "wait for wallet screen testID",
+          "next": "shot"
+        },
+        "shot": {
+          "action": "ui.screenshot",
+          "path": "screenshots/probe-walletview.png",
+          "intent": "capture wallet view",
+          "next": "done"
+        },
+        "done": {
+          "action": "end",
+          "status": "pass"
+        }
+      }
+    }
+  }
+}

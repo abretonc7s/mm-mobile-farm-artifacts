@@ -1,0 +1,11 @@
+{
+  "familyId": "5fc3609a-27c6-4bf2-98fb-fb6faacc40a1",
+  "familyRootTicketOrPr": "PROJ-3168",
+  "prNumber": 30738,
+  "originalFamilyScopeSummary": "Add category-aware market list shortcut to mobile market detail header",
+  "currentTriggerSummary": "pr-complete: feat(perps): market detail - Magnifying glass shortcut to category-filtered market list [NOT-READY]",
+  "scopeVerdict": "full-scope-addressed",
+  "mergeCommit": "b608cbf172",
+  "baseMain": "1780bfa843",
+  "notes": "Full original scope delivered AND the outstanding review concern resolved. After merging origin/main (which bumped @metamask/perps-controller ^7.0.0 -> ^8.0.0), the category->filter logic was migrated onto the controller: v8 exports getMarketTypeFilter, so the mobile copy in marketUtils.ts was deleted and PerpsMarketDetailsView imports it from @metamask/perps-controller. marketUtils.ts/.test.ts are now identical to main; the net feature diff vs main is 4 files (+59): the header search button + handler, its test, the CATEGORY_SEARCH_BUTTON testID, and the i18n string. This directly addresses aganglada's 'should be on the controller' CHANGES_REQUESTED (T4). In v8 MarketTypeFilter is the singular data-model value and the market list filters marketType === filter (with crypto/new/all specials), so the controller's returned value always lands on a populated pill. Validation: ESLint 0 errors, full tsc PASS, Jest 180/180. Recipe re-run live on the merged build (sim mm-2): AC1 icon visible, AC2 tap -> Markets with Crypto pre-selected for BTC, AC4 back -> BTC detail, all PASS (recipe-evidence.md + recipe-manual/clean-1..3.png). The automated metamask-recipe runner could not gate transitions because main removed app/core/AgenticService (globalThis.__AGENTIC__), which the runner's ui.navigate/ui.wait_for depend on; live validation used the press-test-id fiber-walk fallback. That is a recipe-harness follow-up, not a product or scope gap. Remaining before 'ready': push the merge, post the controller reply to clear CHANGES_REQUESTED, complete the PR-template author checklist (5/8), and drop the [NOT-READY] marker."
+}

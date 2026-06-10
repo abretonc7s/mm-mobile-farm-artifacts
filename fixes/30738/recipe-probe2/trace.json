@@ -1,0 +1,49 @@
+{
+  "metadata": {
+    "runner": {
+      "source": "/Users/deeeed/dev/metamask/metamask-recipe-runner",
+      "git_ref": "7156913df00b305532a03a050952741cb4a316bc",
+      "name": "@metamask/recipe-runner"
+    }
+  },
+  "entries": [
+    {
+      "nodeId": "s",
+      "action": "app.status",
+      "intent": "check runner connected",
+      "startedAt": "2026-06-10T12:53:36.640Z",
+      "endedAt": "2026-06-10T12:53:37.067Z",
+      "durationMs": 427,
+      "ok": true,
+      "next": "w",
+      "output": {
+        "platform": "mobile",
+        "projectRoot": "/Users/deeeed/dev/metamask/metamask-mobile-2",
+        "compatibilityMode": "runner bridge available; app bridge not installed",
+        "shape": {
+          "packageName": "metamask",
+          "packageJsonStatus": "valid",
+          "packageJsonError": null,
+          "extensionProject": false,
+          "mobileProject": true,
+          "agenticService": false,
+          "mobileProductHarness": false,
+          "mobileBridgeScript": true,
+          "extensionRuntime": false,
+          "injectedHarness": true,
+          "walletFixture": true
+        }
+      }
+    },
+    {
+      "nodeId": "w",
+      "action": "ui.wait_for",
+      "intent": "wait for wallet screen testID",
+      "startedAt": "2026-06-10T12:53:37.406Z",
+      "endedAt": "2026-06-10T12:53:47.657Z",
+      "durationMs": 10251,
+      "ok": false,
+      "error": "Timed out waiting for mobile testID wallet-screen to be present; last present=false."
+    }
+  ]
+}
