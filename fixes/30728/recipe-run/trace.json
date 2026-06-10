@@ -1,0 +1,259 @@
+{
+  "metadata": {
+    "runner": {
+      "source": "/Users/deeeed/dev/metamask/metamask-recipe-runner",
+      "git_ref": "7156913df00b305532a03a050952741cb4a316bc",
+      "name": "@metamask/recipe-runner"
+    }
+  },
+  "entries": [
+    {
+      "nodeId": "open-eth-market",
+      "action": "ui.navigate",
+      "intent": "Open the ETH perps market detail screen",
+      "startedAt": "2026-06-10T14:26:17.591Z",
+      "endedAt": "2026-06-10T14:26:19.117Z",
+      "durationMs": 1526,
+      "ok": true,
+      "next": "ac1-wait-rail",
+      "output": {
+        "action": "ui.navigate",
+        "page": "perps-market",
+        "route": "PerpsMarketDetails",
+        "params": {
+          "market": {
+            "symbol": "ETH"
+          }
+        },
+        "navigation": {
+          "navigated": "PerpsMarketDetails",
+          "params": {
+            "market": {
+              "symbol": "ETH"
+            }
+          },
+          "previousRoute": {
+            "key": "PerpsMarketDetails-SmSywQtc__EMmIDGsStFw",
+            "name": "PerpsMarketDetails",
+            "params": {
+              "market": {
+                "symbol": "ETH"
+              }
+            }
+          },
+          "currentRoute": {
+            "key": "PerpsMarketDetails-SmSywQtc__EMmIDGsStFw",
+            "name": "PerpsMarketDetails",
+            "params": {
+              "market": {
+                "symbol": "ETH"
+              }
+            }
+          },
+          "deviceName": "mm-5",
+          "platform": "ios",
+          "verifiedRoute": "PerpsMarketDetails"
+        },
+        "proofPath": "agentic-navigation",
+        "liveAdapter": "/Users/deeeed/dev/metamask/metamask-recipe-runner/live-adapters/mobile/ui/navigate.mjs"
+      }
+    },
+    {
+      "nodeId": "ac1-wait-rail",
+      "action": "ui.wait_for",
+      "intent": "AC1: Related markets rail mounts on a crypto market (flag enabled)",
+      "startedAt": "2026-06-10T14:26:19.290Z",
+      "endedAt": "2026-06-10T14:26:19.702Z",
+      "durationMs": 412,
+      "ok": true,
+      "next": "ac1-scroll-1",
+      "output": {
+        "matched": true,
+        "testId": "perps-related-markets-rail",
+        "expected": "present",
+        "present": true
+      }
+    },
+    {
+      "nodeId": "ac1-scroll-1",
+      "action": "ui.scroll",
+      "intent": "Scroll the market detail toward the Related markets rail",
+      "startedAt": "2026-06-10T14:26:19.830Z",
+      "endedAt": "2026-06-10T14:26:20.125Z",
+      "durationMs": 295,
+      "ok": true,
+      "next": "ac1-scroll-2",
+      "output": {
+        "animated": false,
+        "offset": 900,
+        "ok": true,
+        "testId": "perps-market-details-scroll-view",
+        "deviceName": "mm-5",
+        "intoView": false
+      }
+    },
+    {
+      "nodeId": "ac1-scroll-2",
+      "action": "ui.scroll",
+      "intent": "Continue scrolling until the rail is in view",
+      "startedAt": "2026-06-10T14:26:20.344Z",
+      "endedAt": "2026-06-10T14:26:20.650Z",
+      "durationMs": 306,
+      "ok": true,
+      "next": "ac1-settle",
+      "output": {
+        "animated": false,
+        "offset": 900,
+        "ok": true,
+        "testId": "perps-market-details-scroll-view",
+        "deviceName": "mm-5",
+        "intoView": false
+      }
+    },
+    {
+      "nodeId": "ac1-settle",
+      "action": "wait",
+      "intent": "Let the scroll settle before capturing",
+      "startedAt": "2026-06-10T14:26:20.830Z",
+      "endedAt": "2026-06-10T14:26:22.296Z",
+      "durationMs": 1466,
+      "ok": true,
+      "next": "ac1-screenshot",
+      "output": {
+        "durationMs": 1200
+      }
+    },
+    {
+      "nodeId": "ac1-screenshot",
+      "action": "ui.screenshot",
+      "intent": "AC1: capture the Related markets rail on ETH (crypto category peers)",
+      "startedAt": "2026-06-10T14:26:22.697Z",
+      "endedAt": "2026-06-10T14:26:23.853Z",
+      "durationMs": 1156,
+      "ok": true,
+      "next": "ac2-press-related",
+      "output": {
+        "captured": true,
+        "path": "screenshots/ac1-eth-related-markets-rail.png",
+        "artifact": {
+          "path": "screenshots/ac1-eth-related-markets-rail.png",
+          "type": "screenshot",
+          "nodeId": "ac1-screenshot",
+          "label": "ui.screenshot screenshot",
+          "category": "evidence"
+        }
+      }
+    },
+    {
+      "nodeId": "ac2-press-related",
+      "action": "ui.press",
+      "intent": "AC2: tap the BTC tile in the Related markets rail",
+      "startedAt": "2026-06-10T14:26:24.029Z",
+      "endedAt": "2026-06-10T14:26:24.831Z",
+      "durationMs": 802,
+      "ok": true,
+      "next": "ac3-wait-recursive-rail",
+      "output": {
+        "ok": true,
+        "testId": "perps-related-markets-tile-BTC",
+        "deviceName": "mm-5"
+      }
+    },
+    {
+      "nodeId": "ac3-wait-recursive-rail",
+      "action": "ui.wait_for",
+      "intent": "AC3: destination market detail also mounts its own Related markets rail",
+      "startedAt": "2026-06-10T14:26:26.123Z",
+      "endedAt": "2026-06-10T14:26:27.519Z",
+      "durationMs": 1396,
+      "ok": true,
+      "next": "ac3-scroll-1",
+      "output": {
+        "matched": true,
+        "testId": "perps-related-markets-rail",
+        "expected": "present",
+        "present": true
+      }
+    },
+    {
+      "nodeId": "ac3-scroll-1",
+      "action": "ui.scroll",
+      "intent": "Scroll the destination detail toward its rail",
+      "startedAt": "2026-06-10T14:26:28.168Z",
+      "endedAt": "2026-06-10T14:26:28.673Z",
+      "durationMs": 505,
+      "ok": true,
+      "next": "ac3-scroll-2",
+      "output": {
+        "animated": false,
+        "offset": 900,
+        "ok": true,
+        "testId": "perps-market-details-scroll-view",
+        "deviceName": "mm-5",
+        "intoView": false
+      }
+    },
+    {
+      "nodeId": "ac3-scroll-2",
+      "action": "ui.scroll",
+      "intent": "Continue scrolling until the recursive rail is in view",
+      "startedAt": "2026-06-10T14:26:28.837Z",
+      "endedAt": "2026-06-10T14:26:29.194Z",
+      "durationMs": 357,
+      "ok": true,
+      "next": "ac3-settle",
+      "output": {
+        "animated": false,
+        "offset": 900,
+        "ok": true,
+        "testId": "perps-market-details-scroll-view",
+        "deviceName": "mm-5",
+        "intoView": false
+      }
+    },
+    {
+      "nodeId": "ac3-settle",
+      "action": "wait",
+      "intent": "Let the scroll settle before capturing",
+      "startedAt": "2026-06-10T14:26:29.312Z",
+      "endedAt": "2026-06-10T14:26:30.708Z",
+      "durationMs": 1396,
+      "ok": true,
+      "next": "ac3-screenshot",
+      "output": {
+        "durationMs": 1200
+      }
+    },
+    {
+      "nodeId": "ac3-screenshot",
+      "action": "ui.screenshot",
+      "intent": "AC3: capture the recursive Related markets rail on the destination market",
+      "startedAt": "2026-06-10T14:26:30.807Z",
+      "endedAt": "2026-06-10T14:26:31.141Z",
+      "durationMs": 334,
+      "ok": true,
+      "next": "done",
+      "output": {
+        "captured": true,
+        "path": "screenshots/ac3-destination-recursive-rail.png",
+        "artifact": {
+          "path": "screenshots/ac3-destination-recursive-rail.png",
+          "type": "screenshot",
+          "nodeId": "ac3-screenshot",
+          "label": "ui.screenshot screenshot",
+          "category": "evidence"
+        }
+      }
+    },
+    {
+      "nodeId": "done",
+      "action": "end",
+      "intent": "Related markets rail renders and supports recursive discovery",
+      "startedAt": "2026-06-10T14:26:31.296Z",
+      "endedAt": "2026-06-10T14:26:31.496Z",
+      "durationMs": 200,
+      "ok": true,
+      "status": "pass"
+    }
+  ]
+}

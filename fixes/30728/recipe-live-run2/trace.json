@@ -1,0 +1,132 @@
+{
+  "metadata": {
+    "runner": {
+      "source": "/Users/deeeed/dev/metamask/metamask-recipe-runner",
+      "git_ref": "7156913df00b305532a03a050952741cb4a316bc",
+      "name": "@metamask/recipe-runner"
+    }
+  },
+  "entries": [
+    {
+      "nodeId": "status",
+      "action": "app.status",
+      "intent": "Verify the app bridge is connected",
+      "startedAt": "2026-06-10T14:15:10.329Z",
+      "endedAt": "2026-06-10T14:15:10.433Z",
+      "durationMs": 104,
+      "ok": true,
+      "next": "open-eth-market",
+      "output": {
+        "platform": "mobile",
+        "projectRoot": "/Users/deeeed/dev/metamask/metamask-mobile-5",
+        "compatibilityMode": "runner bridge with injected app bridge",
+        "shape": {
+          "packageName": "metamask",
+          "packageJsonStatus": "valid",
+          "packageJsonError": null,
+          "extensionProject": false,
+          "mobileProject": true,
+          "agenticService": true,
+          "mobileProductHarness": false,
+          "mobileBridgeScript": true,
+          "extensionRuntime": false,
+          "injectedHarness": true,
+          "walletFixture": true
+        }
+      }
+    },
+    {
+      "nodeId": "open-eth-market",
+      "action": "ui.navigate",
+      "intent": "Open the ETH perps market detail screen",
+      "startedAt": "2026-06-10T14:15:10.499Z",
+      "endedAt": "2026-06-10T14:15:14.386Z",
+      "durationMs": 3887,
+      "ok": true,
+      "next": "wait-related-rail",
+      "output": {
+        "action": "ui.navigate",
+        "page": "perps-market",
+        "route": "PerpsMarketDetails",
+        "params": {
+          "market": {
+            "symbol": "ETH"
+          }
+        },
+        "navigation": {
+          "navigated": "PerpsMarketDetails",
+          "params": {
+            "market": {
+              "symbol": "ETH"
+            }
+          },
+          "previousRoute": {
+            "key": "WalletView-SVpWda4JbkWWB1JkkDYIg",
+            "name": "WalletView"
+          },
+          "currentRoute": {
+            "key": "PerpsMarketDetails-SmSywQtc__EMmIDGsStFw",
+            "name": "PerpsMarketDetails",
+            "params": {
+              "market": {
+                "symbol": "ETH"
+              }
+            }
+          },
+          "deviceName": "mm-5",
+          "platform": "ios",
+          "verifiedRoute": "PerpsMarketDetails"
+        },
+        "proofPath": "agentic-navigation",
+        "liveAdapter": "/Users/deeeed/dev/metamask/metamask-recipe-runner/live-adapters/mobile/ui/navigate.mjs"
+      }
+    },
+    {
+      "nodeId": "wait-related-rail",
+      "action": "ui.wait_for",
+      "intent": "Wait for the Related markets rail to mount on ETH (crypto category)",
+      "startedAt": "2026-06-10T14:15:14.587Z",
+      "endedAt": "2026-06-10T14:15:15.540Z",
+      "durationMs": 953,
+      "ok": true,
+      "next": "screenshot-rail",
+      "output": {
+        "matched": true,
+        "testId": "perps-related-markets-rail",
+        "expected": "present",
+        "present": true
+      }
+    },
+    {
+      "nodeId": "screenshot-rail",
+      "action": "ui.screenshot",
+      "intent": "Capture the Related markets rail",
+      "startedAt": "2026-06-10T14:15:15.808Z",
+      "endedAt": "2026-06-10T14:15:16.147Z",
+      "durationMs": 339,
+      "ok": true,
+      "next": "done",
+      "output": {
+        "captured": true,
+        "path": "screenshots/related-markets-rail-eth.png",
+        "artifact": {
+          "path": "screenshots/related-markets-rail-eth.png",
+          "type": "screenshot",
+          "nodeId": "screenshot-rail",
+          "label": "ui.screenshot screenshot",
+          "category": "evidence"
+        }
+      }
+    },
+    {
+      "nodeId": "done",
+      "action": "end",
+      "intent": "Finish: Related markets rail rendered with the flag enabled",
+      "startedAt": "2026-06-10T14:15:16.398Z",
+      "endedAt": "2026-06-10T14:15:16.506Z",
+      "durationMs": 108,
+      "ok": true,
+      "status": "pass"
+    }
+  ]
+}

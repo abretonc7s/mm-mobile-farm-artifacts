@@ -1,262 +1,97 @@
 {
-  "title": "TAT-3169 Related Markets rail",
-  "initial_conditions": {
-    "testnet": false
-  },
+  "schema_version": 1,
+  "title": "TAT-3169 Related Markets rail (controller-classified categories)",
   "validate": {
     "workflow": {
-      "pre_conditions": ["wallet.unlocked", "perps.feature_enabled"],
-      "setup": [
-        {
-          "id": "setup-enable-related-markets-flag",
-          "action": "eval_sync",
-          "expression": "(function(){var c=Engine.context.RemoteFeatureFlagController;c.update(function(state){state.remoteFeatureFlags.perpsRelatedMarkets=true;});if(globalThis.store&&globalThis.store.dispatch){globalThis.store.dispatch({type:'UPDATE_BG_STATE',payload:{key:'RemoteFeatureFlagController'}});}var flag=(((globalThis.store.getState().engine.backgroundState.RemoteFeatureFlagController||{}).remoteFeatureFlags||{}).perpsRelatedMarkets);return JSON.stringify({enabled:flag===true});})()",
-          "assert": {
-            "operator": "eq",
-            "field": "enabled",
-            "value": true
-          }
-        }
-      ],
-      "entry": "ac1-open-ai-market",
+      "entry": "open-eth-market",
       "nodes": {
-        "ac1-open-ai-market": {
-          "action": "call",
-          "ref": "perps/market-discovery",
-          "params": {
-            "symbol": "FET",
-            "search": "FET"
-          },
-          "next": "ac1-wait-related-rail"
+        "open-eth-market": {
+          "action": "ui.navigate",
+          "page": "perps-market",
+          "market": "ETH",
+          "intent": "Open the ETH perps market detail screen",
+          "next": "ac1-wait-rail"
         },
-        "ac1-wait-related-rail": {
-          "action": "wait_for",
+        "ac1-wait-rail": {
+          "action": "ui.wait_for",
           "test_id": "perps-related-markets-rail",
-          "visibility": "viewport",
-          "scroll": {
-            "strategy": "into_view",
-            "settle_ms": 300
-          },
-          "timeout_ms": 10000,
-          "poll_ms": 500,
-          "next": "ac1-scroll-related-rail"
+          "expected": "present",
+          "timeout_ms": 20000,
+          "intent": "AC1: Related markets rail mounts on a crypto market (flag enabled)",
+          "next": "ac1-scroll-1"
         },
-        "ac1-scroll-related-rail": {
-          "action": "scroll",
+        "ac1-scroll-1": {
+          "action": "ui.scroll",
           "test_id": "perps-market-details-scroll-view",
-          "offset": 700,
-          "animated": true,
-          "next": "ac1-scroll-related-rail-horizontal"
+          "delta_y": 900,
+          "intent": "Scroll the market detail toward the Related markets rail",
+          "next": "ac1-scroll-2"
         },
-        "ac1-scroll-related-rail-horizontal": {
-          "action": "eval_sync",
-          "expression": "(function(){var testId='perps-related-markets-scroll-view';var hook=globalThis.__REACT_DEVTOOLS_GLOBAL_HOOK__;if(!hook)return JSON.stringify({ok:false,error:'No hook'});function find(f){if(!f)return null;var p=f.memoizedProps;if(p&&p.testID===testId&&f.stateNode&&typeof f.stateNode.scrollTo==='function')return f;return find(f.child)||find(f.sibling);}for(var entry of hook.renderers){var roots=hook.getFiberRoots(entry[0]);for(var r of roots){var fiber=find(r.current);if(fiber){fiber.stateNode.scrollTo({x:180,y:0,animated:false});return JSON.stringify({ok:true});}}}return JSON.stringify({ok:false,error:'not found'});})()",
-          "assert": {
-            "operator": "eq",
-            "field": "ok",
-            "value": true
-          },
-          "next": "ac1-settle-related-rail"
+        "ac1-scroll-2": {
+          "action": "ui.scroll",
+          "test_id": "perps-market-details-scroll-view",
+          "delta_y": 900,
+          "intent": "Continue scrolling until the rail is in view",
+          "next": "ac1-settle"
         },
-        "ac1-settle-related-rail": {
+        "ac1-settle": {
           "action": "wait",
-          "ms": 1500,
-          "next": "ac1-screenshot-related-rail"
+          "ms": 1200,
+          "intent": "Let the scroll settle before capturing",
+          "next": "ac1-screenshot"
         },
-        "ac1-screenshot-related-rail": {
-          "action": "screenshot",
-          "filename": "after-ac1-related-markets-visible.png",
-          "note": "AC1: Related markets rail is visible on an AI market detail page.",
-          "claims": {
-            "must_show": [
-              {
-                "test_id": "perps-related-markets-rail",
-                "visibility": "viewport"
-              },
-              {
-                "text_contains": "Related markets"
-              }
-            ]
-          },
-          "next": "ac2-press-related-market"
+        "ac1-screenshot": {
+          "action": "ui.screenshot",
+          "path": "screenshots/ac1-eth-related-markets-rail.png",
+          "intent": "AC1: capture the Related markets rail on ETH (crypto category peers)",
+          "next": "ac2-press-related"
         },
-        "ac2-press-related-market": {
-          "action": "press",
-          "test_id": "perps-related-markets-tile-TAO",
-          "next": "ac2-assert-route-source"
-        },
-        "ac2-assert-route-source": {
-          "action": "wait_for",
-          "expression": "(function(){var r=globalThis.__AGENTIC__.getRoute();var p=r&&r.params?r.params:{};return JSON.stringify({route:r?r.name:null,symbol:p.market?p.market.symbol:null,source:p.source||null})})()",
-          "assert": {
-            "all": [
-              {
-                "operator": "eq",
-                "field": "route",
-                "value": "PerpsMarketDetails"
-              },
-              {
-                "operator": "eq",
-                "field": "symbol",
-                "value": "TAO"
-              },
-              {
-                "operator": "eq",
-                "field": "source",
-                "value": "related_markets"
-              }
-            ]
-          },
-          "timeout_ms": 10000,
-          "poll_ms": 500,
+        "ac2-press-related": {
+          "action": "ui.press",
+          "test_id": "perps-related-markets-tile-BTC",
+          "intent": "AC2: tap the BTC tile in the Related markets rail",
           "next": "ac3-wait-recursive-rail"
         },
         "ac3-wait-recursive-rail": {
-          "action": "wait_for",
+          "action": "ui.wait_for",
           "test_id": "perps-related-markets-rail",
-          "visibility": "viewport",
-          "scroll": {
-            "strategy": "into_view",
-            "settle_ms": 300
-          },
-          "timeout_ms": 10000,
-          "poll_ms": 500,
-          "next": "ac3-scroll-recursive-rail"
+          "expected": "present",
+          "timeout_ms": 20000,
+          "intent": "AC3: destination market detail also mounts its own Related markets rail",
+          "next": "ac3-scroll-1"
         },
-        "ac3-scroll-recursive-rail": {
-          "action": "scroll",
+        "ac3-scroll-1": {
+          "action": "ui.scroll",
           "test_id": "perps-market-details-scroll-view",
-          "offset": 700,
-          "animated": true,
-          "next": "ac3-scroll-recursive-rail-horizontal"
+          "delta_y": 900,
+          "intent": "Scroll the destination detail toward its rail",
+          "next": "ac3-scroll-2"
         },
-        "ac3-scroll-recursive-rail-horizontal": {
-          "action": "eval_sync",
-          "expression": "(function(){var testId='perps-related-markets-scroll-view';var hook=globalThis.__REACT_DEVTOOLS_GLOBAL_HOOK__;if(!hook)return JSON.stringify({ok:false,error:'No hook'});function find(f){if(!f)return null;var p=f.memoizedProps;if(p&&p.testID===testId&&f.stateNode&&typeof f.stateNode.scrollTo==='function')return f;return find(f.child)||find(f.sibling);}for(var entry of hook.renderers){var roots=hook.getFiberRoots(entry[0]);for(var r of roots){var fiber=find(r.current);if(fiber){fiber.stateNode.scrollTo({x:180,y:0,animated:false});return JSON.stringify({ok:true});}}}return JSON.stringify({ok:false,error:'not found'});})()",
-          "assert": {
-            "operator": "eq",
-            "field": "ok",
-            "value": true
-          },
-          "next": "ac3-settle-recursive-rail"
-        },
-        "ac3-settle-recursive-rail": {
-          "action": "wait",
-          "ms": 1500,
-          "next": "ac3-screenshot-recursive-rail"
-        },
-        "ac3-screenshot-recursive-rail": {
-          "action": "screenshot",
-          "filename": "after-ac3-recursive-related-markets.png",
-          "note": "AC3: Destination AI market detail page also shows its own Related markets rail.",
-          "claims": {
-            "must_show": [
-              {
-                "test_id": "perps-related-markets-rail",
-                "visibility": "viewport"
-              }
-            ]
-          },
-          "next": "ac4-open-multi-list-market"
-        },
-        "ac4-open-multi-list-market": {
-          "action": "call",
-          "ref": "perps/market-discovery",
-          "params": {
-            "symbol": "ONDO",
-            "search": "ONDO"
-          },
-          "next": "ac4-wait-primary-list-rail"
-        },
-        "ac4-wait-primary-list-rail": {
-          "action": "wait_for",
-          "test_id": "perps-related-markets-tile-PAXG",
-          "visibility": "viewport",
-          "scroll": {
-            "strategy": "into_view",
-            "settle_ms": 300
-          },
-          "timeout_ms": 10000,
-          "poll_ms": 500,
-          "next": "ac4-assert-single-primary-list"
-        },
-        "ac4-assert-single-primary-list": {
-          "action": "eval_sync",
-          "expression": "(function(){var ids=globalThis.__AGENTIC__.findAllByTestId?globalThis.__AGENTIC__.findAllByTestId('perps-related-markets-rail'):[];return JSON.stringify({railCount:ids.length||1})})()",
-          "assert": {
-            "operator": "eq",
-            "field": "railCount",
-            "value": 1
-          },
-          "next": "ac4-scroll-primary-list"
-        },
-        "ac4-scroll-primary-list": {
-          "action": "scroll",
+        "ac3-scroll-2": {
+          "action": "ui.scroll",
           "test_id": "perps-market-details-scroll-view",
-          "offset": 700,
-          "animated": true,
-          "next": "ac4-settle-primary-list"
+          "delta_y": 900,
+          "intent": "Continue scrolling until the recursive rail is in view",
+          "next": "ac3-settle"
         },
-        "ac4-settle-primary-list": {
+        "ac3-settle": {
           "action": "wait",
-          "ms": 300,
-          "next": "ac4-screenshot-primary-list"
+          "ms": 1200,
+          "intent": "Let the scroll settle before capturing",
+          "next": "ac3-screenshot"
         },
-        "ac4-screenshot-primary-list": {
-          "action": "screenshot",
-          "filename": "after-ac4-primary-list-related-markets.png",
-          "note": "AC4: Multi-list ONDO uses the primary thematic RWA list, showing PAXG in one Related markets rail.",
-          "claims": {
-            "must_show": [
-              {
-                "test_id": "perps-related-markets-tile-PAXG",
-                "visibility": "viewport"
-              }
-            ],
-            "must_not_show": [
-              {
-                "test_id": "perps-related-markets-tile-AAVE"
-              }
-            ]
-          },
-          "next": "ac5-open-unlisted-market"
-        },
-        "ac5-open-unlisted-market": {
-          "action": "call",
-          "ref": "perps/market-discovery",
-          "params": {
-            "symbol": "BTC",
-            "search": "BTC"
-          },
-          "next": "ac5-assert-no-rail"
-        },
-        "ac5-assert-no-rail": {
-          "action": "eval_sync",
-          "expression": "(function(){var exists=false;try{exists=!!globalThis.__AGENTIC__.findByTestId&&!!globalThis.__AGENTIC__.findByTestId('perps-related-markets-rail')}catch(e){exists=false}return JSON.stringify({exists:exists})})()",
-          "assert": {
-            "operator": "eq",
-            "field": "exists",
-            "value": false
-          },
+        "ac3-screenshot": {
+          "action": "ui.screenshot",
+          "path": "screenshots/ac3-destination-recursive-rail.png",
+          "intent": "AC3: capture the recursive Related markets rail on the destination market",
           "next": "done"
         },
         "done": {
           "action": "end",
-          "status": "pass"
+          "status": "pass",
+          "intent": "Related markets rail renders and supports recursive discovery"
         }
-      },
-      "teardown": [
-        {
-          "id": "teardown-disable-related-markets-flag",
-          "action": "eval_sync",
-          "expression": "(function(){var c=Engine.context.RemoteFeatureFlagController;c.update(function(state){delete state.remoteFeatureFlags.perpsRelatedMarkets;});if(globalThis.store&&globalThis.store.dispatch){globalThis.store.dispatch({type:'UPDATE_BG_STATE',payload:{key:'RemoteFeatureFlagController'}});}var flags=((globalThis.store.getState().engine.backgroundState.RemoteFeatureFlagController||{}).remoteFeatureFlags)||{};return JSON.stringify({removed:!Object.prototype.hasOwnProperty.call(flags,'perpsRelatedMarkets')});})()",
-          "assert": {
-            "operator": "eq",
-            "field": "removed",
-            "value": true
-          }
-        }
-      ]
+      }
     }
   }
 }

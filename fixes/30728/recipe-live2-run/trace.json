@@ -1,0 +1,158 @@
+{
+  "metadata": {
+    "runner": {
+      "source": "/Users/deeeed/dev/metamask/metamask-recipe-runner",
+      "git_ref": "7156913df00b305532a03a050952741cb4a316bc",
+      "name": "@metamask/recipe-runner"
+    }
+  },
+  "entries": [
+    {
+      "nodeId": "open-eth-market",
+      "action": "ui.navigate",
+      "intent": "Open the ETH perps market detail screen",
+      "startedAt": "2026-06-10T14:25:00.868Z",
+      "endedAt": "2026-06-10T14:25:02.093Z",
+      "durationMs": 1225,
+      "ok": true,
+      "next": "wait-related-rail",
+      "output": {
+        "action": "ui.navigate",
+        "page": "perps-market",
+        "route": "PerpsMarketDetails",
+        "params": {
+          "market": {
+            "symbol": "ETH"
+          }
+        },
+        "navigation": {
+          "navigated": "PerpsMarketDetails",
+          "params": {
+            "market": {
+              "symbol": "ETH"
+            }
+          },
+          "previousRoute": {
+            "key": "PerpsMarketDetails-SmSywQtc__EMmIDGsStFw",
+            "name": "PerpsMarketDetails",
+            "params": {
+              "market": {
+                "symbol": "ETH"
+              }
+            }
+          },
+          "currentRoute": {
+            "key": "PerpsMarketDetails-SmSywQtc__EMmIDGsStFw",
+            "name": "PerpsMarketDetails",
+            "params": {
+              "market": {
+                "symbol": "ETH"
+              }
+            }
+          },
+          "deviceName": "mm-5",
+          "platform": "ios",
+          "verifiedRoute": "PerpsMarketDetails"
+        },
+        "proofPath": "agentic-navigation",
+        "liveAdapter": "/Users/deeeed/dev/metamask/metamask-recipe-runner/live-adapters/mobile/ui/navigate.mjs"
+      }
+    },
+    {
+      "nodeId": "wait-related-rail",
+      "action": "ui.wait_for",
+      "intent": "Wait for the Related markets rail to mount",
+      "startedAt": "2026-06-10T14:25:02.467Z",
+      "endedAt": "2026-06-10T14:25:02.780Z",
+      "durationMs": 313,
+      "ok": true,
+      "next": "scroll-1",
+      "output": {
+        "matched": true,
+        "testId": "perps-related-markets-rail",
+        "expected": "present",
+        "present": true
+      }
+    },
+    {
+      "nodeId": "scroll-1",
+      "action": "ui.scroll",
+      "intent": "Scroll the market detail container down toward the rail",
+      "startedAt": "2026-06-10T14:25:02.931Z",
+      "endedAt": "2026-06-10T14:25:03.335Z",
+      "durationMs": 404,
+      "ok": true,
+      "next": "scroll-2",
+      "output": {
+        "animated": false,
+        "offset": 900,
+        "ok": true,
+        "testId": "perps-market-details-scroll-view",
+        "deviceName": "mm-5",
+        "intoView": false
+      }
+    },
+    {
+      "nodeId": "scroll-2",
+      "action": "ui.scroll",
+      "intent": "Continue scrolling toward the rail",
+      "startedAt": "2026-06-10T14:25:03.482Z",
+      "endedAt": "2026-06-10T14:25:04.130Z",
+      "durationMs": 648,
+      "ok": true,
+      "next": "settle",
+      "output": {
+        "animated": false,
+        "offset": 900,
+        "ok": true,
+        "testId": "perps-market-details-scroll-view",
+        "deviceName": "mm-5",
+        "intoView": false
+      }
+    },
+    {
+      "nodeId": "settle",
+      "action": "wait",
+      "intent": "Let the scroll settle before capturing",
+      "startedAt": "2026-06-10T14:25:04.525Z",
+      "endedAt": "2026-06-10T14:25:06.160Z",
+      "durationMs": 1635,
+      "ok": true,
+      "next": "screenshot-rail",
+      "output": {
+        "durationMs": 1200
+      }
+    },
+    {
+      "nodeId": "screenshot-rail",
+      "action": "ui.screenshot",
+      "intent": "Capture the Related markets rail in view",
+      "startedAt": "2026-06-10T14:25:06.483Z",
+      "endedAt": "2026-06-10T14:25:07.432Z",
+      "durationMs": 949,
+      "ok": true,
+      "next": "done",
+      "output": {
+        "captured": true,
+        "path": "screenshots/related-markets-rail-visible.png",
+        "artifact": {
+          "path": "screenshots/related-markets-rail-visible.png",
+          "type": "screenshot",
+          "nodeId": "screenshot-rail",
+          "label": "ui.screenshot screenshot",
+          "category": "evidence"
+        }
+      }
+    },
+    {
+      "nodeId": "done",
+      "action": "end",
+      "intent": "Finish: rail captured in view",
+      "startedAt": "2026-06-10T14:25:07.623Z",
+      "endedAt": "2026-06-10T14:25:07.734Z",
+      "durationMs": 111,
+      "ok": true,
+      "status": "pass"
+    }
+  ]
+}

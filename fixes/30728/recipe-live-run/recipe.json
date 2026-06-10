@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "title": "Related Markets rail - live validation (flag on)",
+  "validate": {
+    "workflow": {
+      "entry": "status",
+      "nodes": {
+        "status": {
+          "action": "app.status",
+          "intent": "Verify the app bridge is connected",
+          "next": "open-eth-market"
+        },
+        "open-eth-market": {
+          "action": "ui.navigate",
+          "page": "perps-market",
+          "market": "ETH",
+          "intent": "Open the ETH perps market detail screen",
+          "next": "wait-related-rail"
+        },
+        "wait-related-rail": {
+          "action": "ui.wait_for",
+          "test_id": "perps-related-markets-rail",
+          "expected": "present",
+          "timeout_ms": 20000,
+          "intent": "Wait for the Related markets rail to mount on ETH (crypto category)",
+          "next": "screenshot-rail"
+        },
+        "screenshot-rail": {
+          "action": "ui.screenshot",
+          "path": "screenshots/related-markets-rail-eth.png",
+          "intent": "Capture the Related markets rail",
+          "next": "done"
+        },
+        "done": {
+          "action": "end",
+          "status": "pass",
+          "intent": "Finish: Related markets rail rendered with the flag enabled"
+        }
+      }
+    }
+  }
+}
