@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "title": "TAT-3169 Related Markets rail (controller-classified categories)",
+  "validate": {
+    "workflow": {
+      "entry": "open-eth-market",
+      "nodes": {
+        "open-eth-market": {
+          "action": "ui.navigate",
+          "page": "perps-market",
+          "market": "ETH",
+          "intent": "Open the ETH perps market detail screen",
+          "next": "ac1-wait-rail"
+        },
+        "ac1-wait-rail": {
+          "action": "ui.wait_for",
+          "test_id": "perps-related-markets-rail",
+          "expected": "present",
+          "timeout_ms": 20000,
+          "intent": "AC1: Related markets rail mounts on a crypto market (flag enabled)",
+          "next": "ac1-scroll-1"
+        },
+        "ac1-scroll-1": {
+          "action": "ui.scroll",
+          "test_id": "perps-market-details-scroll-view",
+          "delta_y": 900,
+          "intent": "Scroll the market detail toward the Related markets rail",
+          "next": "ac1-scroll-2"
+        },
+        "ac1-scroll-2": {
+          "action": "ui.scroll",
+          "test_id": "perps-market-details-scroll-view",
+          "delta_y": 900,
+          "intent": "Continue scrolling until the rail is in view",
+          "next": "ac1-settle"
+        },
+        "ac1-settle": {
+          "action": "wait",
+          "ms": 1200,
+          "intent": "Let the scroll settle before capturing",
+          "next": "ac1-screenshot"
+        },
+        "ac1-screenshot": {
+          "action": "ui.screenshot",
+          "path": "screenshots/ac1-eth-related-markets-rail.png",
+          "intent": "AC1: capture the Related markets rail on ETH (crypto category peers)",
+          "next": "ac2-press-related"
+        },
+        "ac2-press-related": {
+          "action": "ui.press",
+          "test_id": "perps-related-markets-tile-BTC",
+          "intent": "AC2: tap the BTC tile in the Related markets rail",
+          "next": "ac3-wait-recursive-rail"
+        },
+        "ac3-wait-recursive-rail": {
+          "action": "ui.wait_for",
+          "test_id": "perps-related-markets-rail",
+          "expected": "present",
+          "timeout_ms": 20000,
+          "intent": "AC3: destination market detail also mounts its own Related markets rail",
+          "next": "ac3-scroll-1"
+        },
+        "ac3-scroll-1": {
+          "action": "ui.scroll",
+          "test_id": "perps-market-details-scroll-view",
+          "delta_y": 900,
+          "intent": "Scroll the destination detail toward its rail",
+          "next": "ac3-scroll-2"
+        },
+        "ac3-scroll-2": {
+          "action": "ui.scroll",
+          "test_id": "perps-market-details-scroll-view",
+          "delta_y": 900,
+          "intent": "Continue scrolling until the recursive rail is in view",
+          "next": "ac3-settle"
+        },
+        "ac3-settle": {
+          "action": "wait",
+          "ms": 1200,
+          "intent": "Let the scroll settle before capturing",
+          "next": "ac3-screenshot"
+        },
+        "ac3-screenshot": {
+          "action": "ui.screenshot",
+          "path": "screenshots/ac3-destination-recursive-rail.png",
+          "intent": "AC3: capture the recursive Related markets rail on the destination market",
+          "next": "done"
+        },
+        "done": {
+          "action": "end",
+          "status": "pass",
+          "intent": "Related markets rail renders and supports recursive discovery"
+        }
+      }
+    }
+  }
+}
