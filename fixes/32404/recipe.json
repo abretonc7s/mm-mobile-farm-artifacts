@@ -1,0 +1,467 @@
+{
+  "schema_version": 1,
+  "title": "TAT-3398 Auto Close RoE sign toggle",
+  "description": "Proves the RoE sign badge on the Auto Close (PerpsTPSL) sheet renders defaults (+ TP / - SL), toggles the sign while keeping the value and recomputing the trigger (positive <-> negative return) on tap, flips to match a preset chip's sign, applies a negative sign to the take-profit trigger, and resets to defaults when the sheet is reopened.",
+  "proofTargets": [
+    { "id": "ac1", "claim": "On first render the TP RoE badge shows + and the SL RoE badge shows -" },
+    { "id": "ac2", "claim": "Tapping the + TP badge changes it to - while keeping the value and recomputing the trigger below entry" },
+    { "id": "ac3", "claim": "Tapping the - TP badge changes it back to + while keeping the value" },
+    { "id": "ac4", "claim": "Tapping the - SL badge changes it to + while keeping the value and recomputing the trigger above entry" },
+    { "id": "ac5", "claim": "Tapping a + preset chip while the TP badge is - flips the badge back to +" },
+    { "id": "ac6", "claim": "A take-profit RoE entered with a - sign produces a below-entry (negative RoE) trigger price" },
+    { "id": "ac7", "claim": "Reopening the sheet resets the badges to + TP / - SL" }
+  ],
+  "validate": {
+    "workflow": {
+      "pre_conditions": [],
+      "entry": "wallet-unlock",
+      "nodes": {
+        "wallet-unlock": {
+          "action": "metamask.wallet.ensure_unlocked",
+          "timeout_ms": 45000,
+          "next": "navigate-market",
+          "intent": "Unlock wallet before opening Perps",
+          "phase": "setup"
+        },
+        "navigate-market": {
+          "action": "ui.navigate",
+          "page": "perps-market",
+          "market": "ETH",
+          "timeout_ms": 45000,
+          "next": "wait-long",
+          "intent": "Open the ETH Perps market",
+          "phase": "nav"
+        },
+        "wait-long": {
+          "action": "ui.wait_for",
+          "test_id": "perps-market-details-long-button",
+          "expected": "present",
+          "timeout_ms": 45000,
+          "next": "press-long",
+          "intent": "Wait for the Long entry button",
+          "phase": "nav"
+        },
+        "press-long": {
+          "action": "ui.press",
+          "test_id": "perps-market-details-long-button",
+          "timeout_ms": 20000,
+          "next": "wait-tpsl-row",
+          "intent": "Open the order view (long)",
+          "phase": "nav"
+        },
+        "wait-tpsl-row": {
+          "action": "ui.wait_for",
+          "test_id": "perps-order-view-stop-loss-button",
+          "expected": "present",
+          "timeout_ms": 30000,
+          "next": "press-tpsl-row",
+          "intent": "Wait for the TP/SL row in the order view",
+          "phase": "nav"
+        },
+        "press-tpsl-row": {
+          "action": "ui.press",
+          "test_id": "perps-order-view-stop-loss-button",
+          "timeout_ms": 20000,
+          "next": "wait-sheet",
+          "intent": "Open the Auto Close sheet",
+          "phase": "nav"
+        },
+        "wait-sheet": {
+          "action": "ui.wait_for",
+          "test_id": "perps-tpsl-bottomsheet",
+          "expected": "present",
+          "visibility": "viewport",
+          "timeout_ms": 20000,
+          "next": "ac1-tp-badge",
+          "intent": "Auto Close sheet is visible",
+          "phase": "proof"
+        },
+        "ac1-tp-badge": {
+          "action": "ui.wait_for",
+          "test_id": "perps-tpsl-tp-roe-sign-badge",
+          "expected": "present",
+          "text": "+",
+          "text_match": "exact",
+          "visibility": "viewport",
+          "scroll": { "strategy": "into_view", "settle_ms": 300 },
+          "timeout_ms": 15000,
+          "poll_ms": 500,
+          "next": "ac1-sl-badge",
+          "intent": "AC1: TP RoE badge defaults to +",
+          "phase": "proof",
+          "proofTarget": "ac1"
+        },
+        "ac1-sl-badge": {
+          "action": "ui.wait_for",
+          "test_id": "perps-tpsl-sl-roe-sign-badge",
+          "expected": "present",
+          "text": "-",
+          "text_match": "exact",
+          "visibility": "viewport",
+          "scroll": { "strategy": "into_view", "settle_ms": 300 },
+          "timeout_ms": 15000,
+          "poll_ms": 500,
+          "next": "ac1-screenshot",
+          "intent": "AC1: SL RoE badge defaults to -",
+          "phase": "proof",
+          "proofTarget": "ac1"
+        },
+        "ac1-screenshot": {
+          "action": "ui.screenshot",
+          "path": "after-ac1-default-signs.png",
+          "note": "AC1: TP badge shows + and SL badge shows - on first render",
+          "claims": {
+            "must_show": [
+              { "test_id": "perps-tpsl-tp-roe-sign-badge", "visibility": "viewport" },
+              { "test_id": "perps-tpsl-sl-roe-sign-badge", "visibility": "viewport" }
+            ]
+          },
+          "next": "ac2-fill-preset",
+          "intent": "AC1: capture default RoE signs",
+          "phase": "proof",
+          "proofTarget": "ac1"
+        },
+        "ac2-fill-preset": {
+          "action": "ui.press",
+          "test_id": "perps-tpsl-take-profit-percentage-button-25",
+          "timeout_ms": 15000,
+          "next": "ac2-filled-screenshot",
+          "intent": "AC2 setup: fill the TP RoE input via the +25% preset",
+          "phase": "proof",
+          "proofTarget": "ac2"
+        },
+        "ac2-filled-screenshot": {
+          "action": "ui.screenshot",
+          "path": "after-ac2-tp-filled-plus.png",
+          "note": "AC2 baseline: TP badge + with a +25% RoE and a trigger price above entry, before the toggle flips the sign",
+          "claims": {
+            "must_show": [
+              { "test_id": "perps-tpsl-tp-roe-sign-badge", "visibility": "viewport" },
+              { "test_id": "perps-tpsl-tp-input", "visibility": "viewport" }
+            ]
+          },
+          "next": "ac2-toggle",
+          "intent": "AC2: capture filled TP RoE before toggle",
+          "phase": "proof",
+          "proofTarget": "ac2"
+        },
+        "ac2-toggle": {
+          "action": "ui.press",
+          "test_id": "perps-tpsl-tp-roe-sign-badge",
+          "timeout_ms": 15000,
+          "next": "ac2-badge-minus",
+          "intent": "AC2: tap the TP badge to toggle the sign",
+          "phase": "proof",
+          "proofTarget": "ac2"
+        },
+        "ac2-badge-minus": {
+          "action": "ui.wait_for",
+          "test_id": "perps-tpsl-tp-roe-sign-badge",
+          "expected": "present",
+          "text": "-",
+          "text_match": "exact",
+          "visibility": "viewport",
+          "scroll": { "strategy": "into_view", "settle_ms": 300 },
+          "timeout_ms": 15000,
+          "poll_ms": 500,
+          "next": "ac2-flipped-screenshot",
+          "intent": "AC2: TP badge changed from + to -",
+          "phase": "proof",
+          "proofTarget": "ac2"
+        },
+        "ac2-flipped-screenshot": {
+          "action": "ui.screenshot",
+          "path": "after-ac2-tp-toggled-kept.png",
+          "note": "AC2: TP badge now - with the 25% value kept and the trigger price recomputed below entry (negative RoE)",
+          "claims": {
+            "must_show": [
+              { "test_id": "perps-tpsl-tp-roe-sign-badge", "visibility": "viewport" },
+              { "test_id": "perps-tpsl-tp-input", "visibility": "viewport" }
+            ]
+          },
+          "next": "ac3-toggle-back",
+          "intent": "AC2: capture flipped TP sign with the value kept",
+          "phase": "proof",
+          "proofTarget": "ac2"
+        },
+        "ac3-toggle-back": {
+          "action": "ui.press",
+          "test_id": "perps-tpsl-tp-roe-sign-badge",
+          "timeout_ms": 15000,
+          "next": "ac3-badge-plus",
+          "intent": "AC3: tap the - TP badge to toggle back",
+          "phase": "proof",
+          "proofTarget": "ac3"
+        },
+        "ac3-badge-plus": {
+          "action": "ui.wait_for",
+          "test_id": "perps-tpsl-tp-roe-sign-badge",
+          "expected": "present",
+          "text": "+",
+          "text_match": "exact",
+          "visibility": "viewport",
+          "scroll": { "strategy": "into_view", "settle_ms": 300 },
+          "timeout_ms": 15000,
+          "poll_ms": 500,
+          "next": "ac4-fill-preset",
+          "intent": "AC3: TP badge changed from - back to +",
+          "phase": "proof",
+          "proofTarget": "ac3"
+        },
+        "ac4-fill-preset": {
+          "action": "ui.press",
+          "test_id": "perps-tpsl-stop-loss-percentage-button--5",
+          "timeout_ms": 15000,
+          "next": "ac4-toggle",
+          "intent": "AC4 setup: fill the SL RoE input via the -5% preset",
+          "phase": "proof",
+          "proofTarget": "ac4"
+        },
+        "ac4-toggle": {
+          "action": "ui.press",
+          "test_id": "perps-tpsl-sl-roe-sign-badge",
+          "timeout_ms": 15000,
+          "next": "ac4-badge-plus",
+          "intent": "AC4: tap the - SL badge to toggle the sign",
+          "phase": "proof",
+          "proofTarget": "ac4"
+        },
+        "ac4-badge-plus": {
+          "action": "ui.wait_for",
+          "test_id": "perps-tpsl-sl-roe-sign-badge",
+          "expected": "present",
+          "text": "+",
+          "text_match": "exact",
+          "visibility": "viewport",
+          "scroll": { "strategy": "into_view", "settle_ms": 300 },
+          "timeout_ms": 15000,
+          "poll_ms": 500,
+          "next": "ac4-screenshot",
+          "intent": "AC4: SL badge changed from - to +",
+          "phase": "proof",
+          "proofTarget": "ac4"
+        },
+        "ac4-screenshot": {
+          "action": "ui.screenshot",
+          "path": "after-ac4-sl-toggled.png",
+          "note": "AC4: SL badge now + with the 5% value kept and the trigger recomputed above entry (positive stop loss / floor gain)",
+          "claims": {
+            "must_show": [
+              { "test_id": "perps-tpsl-sl-roe-sign-badge", "visibility": "viewport" },
+              { "test_id": "perps-tpsl-sl-input", "visibility": "viewport" }
+            ]
+          },
+          "next": "ac5-toggle-to-minus",
+          "intent": "AC4: capture toggled SL badge",
+          "phase": "proof",
+          "proofTarget": "ac4"
+        },
+        "ac5-toggle-to-minus": {
+          "action": "ui.press",
+          "test_id": "perps-tpsl-tp-roe-sign-badge",
+          "timeout_ms": 15000,
+          "next": "ac5-confirm-minus",
+          "intent": "AC5 setup: toggle the TP badge to - before tapping a + preset",
+          "phase": "proof",
+          "proofTarget": "ac5"
+        },
+        "ac5-confirm-minus": {
+          "action": "ui.wait_for",
+          "test_id": "perps-tpsl-tp-roe-sign-badge",
+          "expected": "present",
+          "text": "-",
+          "text_match": "exact",
+          "visibility": "viewport",
+          "scroll": { "strategy": "into_view", "settle_ms": 300 },
+          "timeout_ms": 15000,
+          "poll_ms": 500,
+          "next": "ac5-press-positive-preset",
+          "intent": "AC5: TP badge is - prior to the preset tap",
+          "phase": "proof",
+          "proofTarget": "ac5"
+        },
+        "ac5-press-positive-preset": {
+          "action": "ui.press",
+          "test_id": "perps-tpsl-take-profit-percentage-button-25",
+          "timeout_ms": 15000,
+          "next": "ac5-badge-flipped",
+          "intent": "AC5: tap the +25% preset whose natural sign differs from the badge",
+          "phase": "proof",
+          "proofTarget": "ac5"
+        },
+        "ac5-badge-flipped": {
+          "action": "ui.wait_for",
+          "test_id": "perps-tpsl-tp-roe-sign-badge",
+          "expected": "present",
+          "text": "+",
+          "text_match": "exact",
+          "visibility": "viewport",
+          "scroll": { "strategy": "into_view", "settle_ms": 300 },
+          "timeout_ms": 15000,
+          "poll_ms": 500,
+          "next": "ac5-screenshot",
+          "intent": "AC5: TP badge flipped back to + to match the preset",
+          "phase": "proof",
+          "proofTarget": "ac5"
+        },
+        "ac5-screenshot": {
+          "action": "ui.screenshot",
+          "path": "after-ac5-preset-flips-sign.png",
+          "note": "AC5: TP badge flipped to + to match the tapped +25% preset",
+          "claims": {
+            "must_show": [
+              { "test_id": "perps-tpsl-tp-roe-sign-badge", "visibility": "viewport" }
+            ]
+          },
+          "next": "ac6-toggle-to-minus",
+          "intent": "AC5: capture badge flipped by preset",
+          "phase": "proof",
+          "proofTarget": "ac5"
+        },
+        "ac6-toggle-to-minus": {
+          "action": "ui.press",
+          "test_id": "perps-tpsl-tp-roe-sign-badge",
+          "timeout_ms": 15000,
+          "next": "ac6-confirm-minus",
+          "intent": "AC6 setup: toggle TP badge to - for a negative RoE",
+          "phase": "proof",
+          "proofTarget": "ac6"
+        },
+        "ac6-confirm-minus": {
+          "action": "ui.wait_for",
+          "test_id": "perps-tpsl-tp-roe-sign-badge",
+          "expected": "present",
+          "text": "-",
+          "text_match": "exact",
+          "visibility": "viewport",
+          "scroll": { "strategy": "into_view", "settle_ms": 300 },
+          "timeout_ms": 15000,
+          "poll_ms": 500,
+          "next": "ac6-enter-roe",
+          "intent": "AC6: TP badge is - before entering the RoE",
+          "phase": "proof",
+          "proofTarget": "ac6"
+        },
+        "ac6-enter-roe": {
+          "action": "ui.set_input",
+          "test_id": "perps-tpsl-tp-percentage-input",
+          "value": "10",
+          "timeout_ms": 15000,
+          "next": "ac6-settle",
+          "intent": "AC6: enter a 10% RoE magnitude with the - sign active",
+          "phase": "proof",
+          "proofTarget": "ac6"
+        },
+        "ac6-settle": {
+          "action": "wait",
+          "duration_ms": 800,
+          "next": "ac6-screenshot",
+          "intent": "AC6: let the trigger price recompute from the signed RoE",
+          "phase": "proof",
+          "proofTarget": "ac6"
+        },
+        "ac6-screenshot": {
+          "action": "ui.screenshot",
+          "path": "after-ac6-negative-tp-trigger.png",
+          "note": "AC6: TP badge - with a 10% RoE produces a take-profit trigger price below the current price (negative RoE)",
+          "claims": {
+            "must_show": [
+              { "test_id": "perps-tpsl-tp-roe-sign-badge", "visibility": "viewport" },
+              { "test_id": "perps-tpsl-tp-input", "visibility": "viewport" }
+            ]
+          },
+          "next": "ac7-back",
+          "intent": "AC6: capture negative TP trigger price",
+          "phase": "proof",
+          "proofTarget": "ac6"
+        },
+        "ac7-back": {
+          "action": "ui.press",
+          "test_id": "back-button",
+          "timeout_ms": 15000,
+          "next": "ac7-wait-order-view",
+          "intent": "AC7 setup: dismiss the Auto Close sheet without saving",
+          "phase": "proof",
+          "proofTarget": "ac7"
+        },
+        "ac7-wait-order-view": {
+          "action": "ui.wait_for",
+          "test_id": "perps-order-view-stop-loss-button",
+          "expected": "present",
+          "timeout_ms": 20000,
+          "next": "ac7-reopen",
+          "intent": "AC7: back on the order view",
+          "phase": "proof",
+          "proofTarget": "ac7"
+        },
+        "ac7-reopen": {
+          "action": "ui.press",
+          "test_id": "perps-order-view-stop-loss-button",
+          "timeout_ms": 15000,
+          "next": "ac7-wait-sheet",
+          "intent": "AC7: reopen the Auto Close sheet",
+          "phase": "proof",
+          "proofTarget": "ac7"
+        },
+        "ac7-wait-sheet": {
+          "action": "ui.wait_for",
+          "test_id": "perps-tpsl-bottomsheet",
+          "expected": "present",
+          "visibility": "viewport",
+          "timeout_ms": 20000,
+          "next": "ac7-tp-reset",
+          "intent": "AC7: Auto Close sheet reopened",
+          "phase": "proof",
+          "proofTarget": "ac7"
+        },
+        "ac7-tp-reset": {
+          "action": "ui.wait_for",
+          "test_id": "perps-tpsl-tp-roe-sign-badge",
+          "expected": "present",
+          "text": "+",
+          "text_match": "exact",
+          "visibility": "viewport",
+          "scroll": { "strategy": "into_view", "settle_ms": 300 },
+          "timeout_ms": 15000,
+          "poll_ms": 500,
+          "next": "ac7-sl-reset",
+          "intent": "AC7: TP badge reset to + after reopen",
+          "phase": "proof",
+          "proofTarget": "ac7"
+        },
+        "ac7-sl-reset": {
+          "action": "ui.wait_for",
+          "test_id": "perps-tpsl-sl-roe-sign-badge",
+          "expected": "present",
+          "text": "-",
+          "text_match": "exact",
+          "visibility": "viewport",
+          "scroll": { "strategy": "into_view", "settle_ms": 300 },
+          "timeout_ms": 15000,
+          "poll_ms": 500,
+          "next": "ac7-screenshot",
+          "intent": "AC7: SL badge reset to - after reopen",
+          "phase": "proof",
+          "proofTarget": "ac7"
+        },
+        "ac7-screenshot": {
+          "action": "ui.screenshot",
+          "path": "after-ac7-reset-defaults.png",
+          "note": "AC7: reopened sheet shows + TP / - SL default signs",
+          "claims": {
+            "must_show": [
+              { "test_id": "perps-tpsl-tp-roe-sign-badge", "visibility": "viewport" },
+              { "test_id": "perps-tpsl-sl-roe-sign-badge", "visibility": "viewport" }
+            ]
+          },
+          "next": "done",
+          "intent": "AC7: capture reset default signs",
+          "phase": "proof",
+          "proofTarget": "ac7"
+        },
+        "done": { "action": "end", "status": "pass" }
+      },
+      "teardown": []
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "originalFamilyScopeSummary": "Enable tappable RoE sign toggles for Auto Close TP/SL on mobile perps",
+  "currentTriggerSummary": "pr-complete: feat(perps): enable RoE sign toggle on Auto Close TP/SL",
+  "scopeVerdict": "full-scope-addressed",
+  "notes": "The family goal (signed RoE on Auto Close TP/SL) was implemented in the sheet (usePerpsTPSLForm + PerpsTPSLView) by the parent run. Two reviewers (cursor[bot] High, gambinish CHANGES_REQUESTED P1) found the same gap: PerpsOrderView re-validated stored TP/SL prices with classic long/short side rules and had no sign metadata, so a signed trigger (negative TP / gain-side SL) kept hasInvalidTPSL true and disabled Place Order — defeating the feature's 'works for new orders' goal. Fixed by capturing the RoE sign from the sheet's trackingData on confirm and deriving an effective TP/SL direction in the order view (mirroring usePerpsTPSLForm). Default sign maps to the natural direction, so the entire pre-existing wrong-side validation suite (incl. limit-order entry checks) is unchanged. Evidence: PerpsOrderView.test.tsx 101/101 (new signed-acceptance regression test added), inherited recipe re-validated 39/39 against branch+origin/main merged. This closes the order-view half of the feature, so the end-to-end signed-RoE flow now works for new orders — full family scope addressed."
+}

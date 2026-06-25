@@ -1,0 +1,746 @@
+{
+  "metadata": {
+    "runner": {
+      "source": "/Users/deeeed/dev/metamask/metamask-recipe-runner",
+      "git_ref": "adef9ec95b12dab520fe0093341b8c748622b2c3",
+      "name": "@metamask/recipe-runner"
+    }
+  },
+  "entries": [
+    {
+      "nodeId": "wallet-unlock",
+      "action": "metamask.wallet.ensure_unlocked",
+      "intent": "Unlock wallet before opening Perps",
+      "phase": "setup",
+      "startedAt": "2026-06-25T21:10:04.352Z",
+      "endedAt": "2026-06-25T21:10:08.083Z",
+      "durationMs": 3731,
+      "ok": true,
+      "next": "navigate-market",
+      "output": {
+        "action": "metamask.wallet.ensure_unlocked",
+        "unlocked": true,
+        "account": {
+          "address": "0x8dc623e964475d4d669da601fd15ea9125469003",
+          "id": "0285a92b-905c-4814-8a16-52fe1db60357",
+          "name": "dev1"
+        },
+        "route": {
+          "key": "WalletView-OBO5FOQZUq7MsmXp8mvXu",
+          "name": "WalletView"
+        },
+        "redacted": true,
+        "proofPath": "agentic-wallet-unlock",
+        "liveAdapter": "/Users/deeeed/dev/metamask/metamask-recipe-runner/library/actions/mobile/wallet/ensure_unlocked.mjs"
+      }
+    },
+    {
+      "nodeId": "navigate-market",
+      "action": "ui.navigate",
+      "intent": "Open the ETH Perps market",
+      "phase": "nav",
+      "startedAt": "2026-06-25T21:10:08.793Z",
+      "endedAt": "2026-06-25T21:10:12.309Z",
+      "durationMs": 3516,
+      "ok": true,
+      "next": "wait-long",
+      "output": {
+        "action": "ui.navigate",
+        "page": "perps-market",
+        "route": "PerpsMarketDetails",
+        "params": {
+          "market": {
+            "symbol": "ETH"
+          }
+        },
+        "navigation": {
+          "navigated": "PerpsMarketDetails",
+          "params": {
+            "market": {
+              "symbol": "ETH"
+            }
+          },
+          "previousRoute": {
+            "key": "WalletView-OBO5FOQZUq7MsmXp8mvXu",
+            "name": "WalletView"
+          },
+          "currentRoute": {
+            "key": "PerpsMarketDetails-y4Ly7c4IPfxW6gpqBDSgO",
+            "name": "PerpsMarketDetails",
+            "params": {
+              "market": {
+                "symbol": "ETH"
+              }
+            }
+          },
+          "deviceName": "mm-2",
+          "platform": "ios",
+          "verifiedRoute": "PerpsMarketDetails"
+        },
+        "proofPath": "agentic-navigation",
+        "liveAdapter": "/Users/deeeed/dev/metamask/metamask-recipe-runner/library/actions/mobile/ui/navigate.mjs"
+      }
+    },
+    {
+      "nodeId": "wait-long",
+      "action": "ui.wait_for",
+      "intent": "Wait for the Long entry button",
+      "phase": "nav",
+      "startedAt": "2026-06-25T21:10:12.658Z",
+      "endedAt": "2026-06-25T21:10:18.228Z",
+      "durationMs": 5570,
+      "ok": true,
+      "next": "press-long",
+      "output": {
+        "matched": true,
+        "testId": "perps-market-details-long-button",
+        "expected": "present",
+        "present": true
+      }
+    },
+    {
+      "nodeId": "press-long",
+      "action": "ui.press",
+      "intent": "Open the order view (long)",
+      "phase": "nav",
+      "startedAt": "2026-06-25T21:10:18.295Z",
+      "endedAt": "2026-06-25T21:10:18.529Z",
+      "durationMs": 234,
+      "ok": true,
+      "next": "wait-tpsl-row",
+      "output": {
+        "ok": true,
+        "testId": "perps-market-details-long-button",
+        "deviceName": "mm-2"
+      }
+    },
+    {
+      "nodeId": "wait-tpsl-row",
+      "action": "ui.wait_for",
+      "intent": "Wait for the TP/SL row in the order view",
+      "phase": "nav",
+      "startedAt": "2026-06-25T21:10:20.056Z",
+      "endedAt": "2026-06-25T21:10:20.604Z",
+      "durationMs": 548,
+      "ok": true,
+      "next": "press-tpsl-row",
+      "output": {
+        "matched": true,
+        "testId": "perps-order-view-stop-loss-button",
+        "expected": "present",
+        "present": true
+      }
+    },
+    {
+      "nodeId": "press-tpsl-row",
+      "action": "ui.press",
+      "intent": "Open the Auto Close sheet",
+      "phase": "nav",
+      "startedAt": "2026-06-25T21:10:21.491Z",
+      "endedAt": "2026-06-25T21:10:22.192Z",
+      "durationMs": 701,
+      "ok": true,
+      "next": "wait-sheet",
+      "output": {
+        "ok": true,
+        "testId": "perps-order-view-stop-loss-button",
+        "deviceName": "mm-2"
+      }
+    },
+    {
+      "nodeId": "wait-sheet",
+      "action": "ui.wait_for",
+      "intent": "Auto Close sheet is visible",
+      "phase": "proof",
+      "startedAt": "2026-06-25T21:10:22.672Z",
+      "endedAt": "2026-06-25T21:10:22.968Z",
+      "durationMs": 296,
+      "ok": true,
+      "next": "ac1-tp-badge",
+      "output": {
+        "matched": true,
+        "testId": "perps-tpsl-bottomsheet",
+        "expected": "present",
+        "present": true
+      }
+    },
+    {
+      "nodeId": "ac1-tp-badge",
+      "action": "ui.wait_for",
+      "intent": "AC1: TP RoE badge defaults to +",
+      "phase": "proof",
+      "startedAt": "2026-06-25T21:10:23.025Z",
+      "endedAt": "2026-06-25T21:10:23.289Z",
+      "durationMs": 264,
+      "ok": true,
+      "next": "ac1-sl-badge",
+      "output": {
+        "matched": true,
+        "testId": "perps-tpsl-tp-roe-sign-badge",
+        "expected": "present",
+        "present": true,
+        "text": "+",
+        "textMatch": "exact"
+      }
+    },
+    {
+      "nodeId": "ac1-sl-badge",
+      "action": "ui.wait_for",
+      "intent": "AC1: SL RoE badge defaults to -",
+      "phase": "proof",
+      "startedAt": "2026-06-25T21:10:23.660Z",
+      "endedAt": "2026-06-25T21:10:23.943Z",
+      "durationMs": 283,
+      "ok": true,
+      "next": "ac1-screenshot",
+      "output": {
+        "matched": true,
+        "testId": "perps-tpsl-sl-roe-sign-badge",
+        "expected": "present",
+        "present": true,
+        "text": "-",
+        "textMatch": "exact"
+      }
+    },
+    {
+      "nodeId": "ac1-screenshot",
+      "action": "ui.screenshot",
+      "intent": "AC1: capture default RoE signs",
+      "phase": "proof",
+      "startedAt": "2026-06-25T21:10:24.342Z",
+      "endedAt": "2026-06-25T21:10:24.669Z",
+      "durationMs": 327,
+      "ok": true,
+      "next": "ac2-fill-preset",
+      "output": {
+        "captured": true,
+        "path": "after-ac1-default-signs.png",
+        "artifact": {
+          "path": "after-ac1-default-signs.png",
+          "type": "screenshot",
+          "nodeId": "ac1-screenshot",
+          "label": "ui.screenshot screenshot",
+          "category": "evidence"
+        }
+      }
+    },
+    {
+      "nodeId": "ac2-fill-preset",
+      "action": "ui.press",
+      "intent": "AC2 setup: fill the TP RoE input via the +25% preset",
+      "phase": "proof",
+      "startedAt": "2026-06-25T21:10:24.769Z",
+      "endedAt": "2026-06-25T21:10:24.970Z",
+      "durationMs": 201,
+      "ok": true,
+      "next": "ac2-filled-screenshot",
+      "output": {
+        "ok": true,
+        "testId": "perps-tpsl-take-profit-percentage-button-25",
+        "deviceName": "mm-2"
+      }
+    },
+    {
+      "nodeId": "ac2-filled-screenshot",
+      "action": "ui.screenshot",
+      "intent": "AC2: capture filled TP RoE before toggle",
+      "phase": "proof",
+      "startedAt": "2026-06-25T21:10:25.060Z",
+      "endedAt": "2026-06-25T21:10:25.354Z",
+      "durationMs": 294,
+      "ok": true,
+      "next": "ac2-toggle",
+      "output": {
+        "captured": true,
+        "path": "after-ac2-tp-filled-plus.png",
+        "artifact": {
+          "path": "after-ac2-tp-filled-plus.png",
+          "type": "screenshot",
+          "nodeId": "ac2-filled-screenshot",
+          "label": "ui.screenshot screenshot",
+          "category": "evidence"
+        }
+      }
+    },
+    {
+      "nodeId": "ac2-toggle",
+      "action": "ui.press",
+      "intent": "AC2: tap the TP badge to toggle the sign",
+      "phase": "proof",
+      "startedAt": "2026-06-25T21:10:25.437Z",
+      "endedAt": "2026-06-25T21:10:25.844Z",
+      "durationMs": 407,
+      "ok": true,
+      "next": "ac2-badge-minus",
+      "output": {
+        "ok": true,
+        "testId": "perps-tpsl-tp-roe-sign-badge",
+        "deviceName": "mm-2"
+      }
+    },
+    {
+      "nodeId": "ac2-badge-minus",
+      "action": "ui.wait_for",
+      "intent": "AC2: TP badge changed from + to -",
+      "phase": "proof",
+      "startedAt": "2026-06-25T21:10:25.946Z",
+      "endedAt": "2026-06-25T21:10:26.145Z",
+      "durationMs": 199,
+      "ok": true,
+      "next": "ac2-flipped-screenshot",
+      "output": {
+        "matched": true,
+        "testId": "perps-tpsl-tp-roe-sign-badge",
+        "expected": "present",
+        "present": true,
+        "text": "-",
+        "textMatch": "exact"
+      }
+    },
+    {
+      "nodeId": "ac2-flipped-screenshot",
+      "action": "ui.screenshot",
+      "intent": "AC2: capture flipped TP sign with the value kept",
+      "phase": "proof",
+      "startedAt": "2026-06-25T21:10:26.228Z",
+      "endedAt": "2026-06-25T21:10:26.523Z",
+      "durationMs": 295,
+      "ok": true,
+      "next": "ac3-toggle-back",
+      "output": {
+        "captured": true,
+        "path": "after-ac2-tp-toggled-kept.png",
+        "artifact": {
+          "path": "after-ac2-tp-toggled-kept.png",
+          "type": "screenshot",
+          "nodeId": "ac2-flipped-screenshot",
+          "label": "ui.screenshot screenshot",
+          "category": "evidence"
+        }
+      }
+    },
+    {
+      "nodeId": "ac3-toggle-back",
+      "action": "ui.press",
+      "intent": "AC3: tap the - TP badge to toggle back",
+      "phase": "proof",
+      "startedAt": "2026-06-25T21:10:27.069Z",
+      "endedAt": "2026-06-25T21:10:27.686Z",
+      "durationMs": 617,
+      "ok": true,
+      "next": "ac3-badge-plus",
+      "output": {
+        "ok": true,
+        "testId": "perps-tpsl-tp-roe-sign-badge",
+        "deviceName": "mm-2"
+      }
+    },
+    {
+      "nodeId": "ac3-badge-plus",
+      "action": "ui.wait_for",
+      "intent": "AC3: TP badge changed from - back to +",
+      "phase": "proof",
+      "startedAt": "2026-06-25T21:10:27.815Z",
+      "endedAt": "2026-06-25T21:10:29.058Z",
+      "durationMs": 1243,
+      "ok": true,
+      "next": "ac4-fill-preset",
+      "output": {
+        "matched": true,
+        "testId": "perps-tpsl-tp-roe-sign-badge",
+        "expected": "present",
+        "present": true,
+        "text": "+",
+        "textMatch": "exact"
+      }
+    },
+    {
+      "nodeId": "ac4-fill-preset",
+      "action": "ui.press",
+      "intent": "AC4 setup: fill the SL RoE input via the -5% preset",
+      "phase": "proof",
+      "startedAt": "2026-06-25T21:10:29.278Z",
+      "endedAt": "2026-06-25T21:10:29.788Z",
+      "durationMs": 510,
+      "ok": true,
+      "next": "ac4-toggle",
+      "output": {
+        "ok": true,
+        "testId": "perps-tpsl-stop-loss-percentage-button--5",
+        "deviceName": "mm-2"
+      }
+    },
+    {
+      "nodeId": "ac4-toggle",
+      "action": "ui.press",
+      "intent": "AC4: tap the - SL badge to toggle the sign",
+      "phase": "proof",
+      "startedAt": "2026-06-25T21:10:29.958Z",
+      "endedAt": "2026-06-25T21:10:30.383Z",
+      "durationMs": 425,
+      "ok": true,
+      "next": "ac4-badge-plus",
+      "output": {
+        "ok": true,
+        "testId": "perps-tpsl-sl-roe-sign-badge",
+        "deviceName": "mm-2"
+      }
+    },
+    {
+      "nodeId": "ac4-badge-plus",
+      "action": "ui.wait_for",
+      "intent": "AC4: SL badge changed from - to +",
+      "phase": "proof",
+      "startedAt": "2026-06-25T21:10:30.541Z",
+      "endedAt": "2026-06-25T21:10:31.117Z",
+      "durationMs": 576,
+      "ok": true,
+      "next": "ac4-screenshot",
+      "output": {
+        "matched": true,
+        "testId": "perps-tpsl-sl-roe-sign-badge",
+        "expected": "present",
+        "present": true,
+        "text": "+",
+        "textMatch": "exact"
+      }
+    },
+    {
+      "nodeId": "ac4-screenshot",
+      "action": "ui.screenshot",
+      "intent": "AC4: capture toggled SL badge",
+      "phase": "proof",
+      "startedAt": "2026-06-25T21:10:31.399Z",
+      "endedAt": "2026-06-25T21:10:32.423Z",
+      "durationMs": 1024,
+      "ok": true,
+      "next": "ac5-toggle-to-minus",
+      "output": {
+        "captured": true,
+        "path": "after-ac4-sl-toggled.png",
+        "artifact": {
+          "path": "after-ac4-sl-toggled.png",
+          "type": "screenshot",
+          "nodeId": "ac4-screenshot",
+          "label": "ui.screenshot screenshot",
+          "category": "evidence"
+        }
+      }
+    },
+    {
+      "nodeId": "ac5-toggle-to-minus",
+      "action": "ui.press",
+      "intent": "AC5 setup: toggle the TP badge to - before tapping a + preset",
+      "phase": "proof",
+      "startedAt": "2026-06-25T21:10:32.655Z",
+      "endedAt": "2026-06-25T21:10:32.843Z",
+      "durationMs": 188,
+      "ok": true,
+      "next": "ac5-confirm-minus",
+      "output": {
+        "ok": true,
+        "testId": "perps-tpsl-tp-roe-sign-badge",
+        "deviceName": "mm-2"
+      }
+    },
+    {
+      "nodeId": "ac5-confirm-minus",
+      "action": "ui.wait_for",
+      "intent": "AC5: TP badge is - prior to the preset tap",
+      "phase": "proof",
+      "startedAt": "2026-06-25T21:10:32.934Z",
+      "endedAt": "2026-06-25T21:10:33.332Z",
+      "durationMs": 398,
+      "ok": true,
+      "next": "ac5-press-positive-preset",
+      "output": {
+        "matched": true,
+        "testId": "perps-tpsl-tp-roe-sign-badge",
+        "expected": "present",
+        "present": true,
+        "text": "-",
+        "textMatch": "exact"
+      }
+    },
+    {
+      "nodeId": "ac5-press-positive-preset",
+      "action": "ui.press",
+      "intent": "AC5: tap the +25% preset whose natural sign differs from the badge",
+      "phase": "proof",
+      "startedAt": "2026-06-25T21:10:33.449Z",
+      "endedAt": "2026-06-25T21:10:33.764Z",
+      "durationMs": 315,
+      "ok": true,
+      "next": "ac5-badge-flipped",
+      "output": {
+        "ok": true,
+        "testId": "perps-tpsl-take-profit-percentage-button-25",
+        "deviceName": "mm-2"
+      }
+    },
+    {
+      "nodeId": "ac5-badge-flipped",
+      "action": "ui.wait_for",
+      "intent": "AC5: TP badge flipped back to + to match the preset",
+      "phase": "proof",
+      "startedAt": "2026-06-25T21:10:33.849Z",
+      "endedAt": "2026-06-25T21:10:34.201Z",
+      "durationMs": 352,
+      "ok": true,
+      "next": "ac5-screenshot",
+      "output": {
+        "matched": true,
+        "testId": "perps-tpsl-tp-roe-sign-badge",
+        "expected": "present",
+        "present": true,
+        "text": "+",
+        "textMatch": "exact"
+      }
+    },
+    {
+      "nodeId": "ac5-screenshot",
+      "action": "ui.screenshot",
+      "intent": "AC5: capture badge flipped by preset",
+      "phase": "proof",
+      "startedAt": "2026-06-25T21:10:34.345Z",
+      "endedAt": "2026-06-25T21:10:34.756Z",
+      "durationMs": 411,
+      "ok": true,
+      "next": "ac6-toggle-to-minus",
+      "output": {
+        "captured": true,
+        "path": "after-ac5-preset-flips-sign.png",
+        "artifact": {
+          "path": "after-ac5-preset-flips-sign.png",
+          "type": "screenshot",
+          "nodeId": "ac5-screenshot",
+          "label": "ui.screenshot screenshot",
+          "category": "evidence"
+        }
+      }
+    },
+    {
+      "nodeId": "ac6-toggle-to-minus",
+      "action": "ui.press",
+      "intent": "AC6 setup: toggle TP badge to - for a negative RoE",
+      "phase": "proof",
+      "startedAt": "2026-06-25T21:10:34.829Z",
+      "endedAt": "2026-06-25T21:10:35.049Z",
+      "durationMs": 220,
+      "ok": true,
+      "next": "ac6-confirm-minus",
+      "output": {
+        "ok": true,
+        "testId": "perps-tpsl-tp-roe-sign-badge",
+        "deviceName": "mm-2"
+      }
+    },
+    {
+      "nodeId": "ac6-confirm-minus",
+      "action": "ui.wait_for",
+      "intent": "AC6: TP badge is - before entering the RoE",
+      "phase": "proof",
+      "startedAt": "2026-06-25T21:10:35.207Z",
+      "endedAt": "2026-06-25T21:10:35.480Z",
+      "durationMs": 273,
+      "ok": true,
+      "next": "ac6-enter-roe",
+      "output": {
+        "matched": true,
+        "testId": "perps-tpsl-tp-roe-sign-badge",
+        "expected": "present",
+        "present": true,
+        "text": "-",
+        "textMatch": "exact"
+      }
+    },
+    {
+      "nodeId": "ac6-enter-roe",
+      "action": "ui.set_input",
+      "intent": "AC6: enter a 10% RoE magnitude with the - sign active",
+      "phase": "proof",
+      "startedAt": "2026-06-25T21:10:35.567Z",
+      "endedAt": "2026-06-25T21:10:35.796Z",
+      "durationMs": 229,
+      "ok": true,
+      "next": "ac6-settle",
+      "output": {
+        "ok": true,
+        "testId": "perps-tpsl-tp-percentage-input",
+        "value": "10",
+        "deviceName": "mm-2"
+      }
+    },
+    {
+      "nodeId": "ac6-settle",
+      "action": "wait",
+      "intent": "AC6: let the trigger price recompute from the signed RoE",
+      "phase": "proof",
+      "startedAt": "2026-06-25T21:10:35.908Z",
+      "endedAt": "2026-06-25T21:10:36.801Z",
+      "durationMs": 893,
+      "ok": true,
+      "next": "ac6-screenshot",
+      "output": {
+        "durationMs": 800
+      }
+    },
+    {
+      "nodeId": "ac6-screenshot",
+      "action": "ui.screenshot",
+      "intent": "AC6: capture negative TP trigger price",
+      "phase": "proof",
+      "startedAt": "2026-06-25T21:10:36.888Z",
+      "endedAt": "2026-06-25T21:10:37.234Z",
+      "durationMs": 346,
+      "ok": true,
+      "next": "ac7-back",
+      "output": {
+        "captured": true,
+        "path": "after-ac6-negative-tp-trigger.png",
+        "artifact": {
+          "path": "after-ac6-negative-tp-trigger.png",
+          "type": "screenshot",
+          "nodeId": "ac6-screenshot",
+          "label": "ui.screenshot screenshot",
+          "category": "evidence"
+        }
+      }
+    },
+    {
+      "nodeId": "ac7-back",
+      "action": "ui.press",
+      "intent": "AC7 setup: dismiss the Auto Close sheet without saving",
+      "phase": "proof",
+      "startedAt": "2026-06-25T21:10:37.296Z",
+      "endedAt": "2026-06-25T21:10:37.443Z",
+      "durationMs": 147,
+      "ok": true,
+      "next": "ac7-wait-order-view",
+      "output": {
+        "ok": true,
+        "testId": "back-button",
+        "deviceName": "mm-2"
+      }
+    },
+    {
+      "nodeId": "ac7-wait-order-view",
+      "action": "ui.wait_for",
+      "intent": "AC7: back on the order view",
+      "phase": "proof",
+      "startedAt": "2026-06-25T21:10:37.567Z",
+      "endedAt": "2026-06-25T21:10:38.052Z",
+      "durationMs": 485,
+      "ok": true,
+      "next": "ac7-reopen",
+      "output": {
+        "matched": true,
+        "testId": "perps-order-view-stop-loss-button",
+        "expected": "present",
+        "present": true
+      }
+    },
+    {
+      "nodeId": "ac7-reopen",
+      "action": "ui.press",
+      "intent": "AC7: reopen the Auto Close sheet",
+      "phase": "proof",
+      "startedAt": "2026-06-25T21:10:38.331Z",
+      "endedAt": "2026-06-25T21:10:38.925Z",
+      "durationMs": 594,
+      "ok": true,
+      "next": "ac7-wait-sheet",
+      "output": {
+        "ok": true,
+        "testId": "perps-order-view-stop-loss-button",
+        "deviceName": "mm-2"
+      }
+    },
+    {
+      "nodeId": "ac7-wait-sheet",
+      "action": "ui.wait_for",
+      "intent": "AC7: Auto Close sheet reopened",
+      "phase": "proof",
+      "startedAt": "2026-06-25T21:10:39.523Z",
+      "endedAt": "2026-06-25T21:10:40.310Z",
+      "durationMs": 787,
+      "ok": true,
+      "next": "ac7-tp-reset",
+      "output": {
+        "matched": true,
+        "testId": "perps-tpsl-bottomsheet",
+        "expected": "present",
+        "present": true
+      }
+    },
+    {
+      "nodeId": "ac7-tp-reset",
+      "action": "ui.wait_for",
+      "intent": "AC7: TP badge reset to + after reopen",
+      "phase": "proof",
+      "startedAt": "2026-06-25T21:10:40.597Z",
+      "endedAt": "2026-06-25T21:10:41.240Z",
+      "durationMs": 643,
+      "ok": true,
+      "next": "ac7-sl-reset",
+      "output": {
+        "matched": true,
+        "testId": "perps-tpsl-tp-roe-sign-badge",
+        "expected": "present",
+        "present": true,
+        "text": "+",
+        "textMatch": "exact"
+      }
+    },
+    {
+      "nodeId": "ac7-sl-reset",
+      "action": "ui.wait_for",
+      "intent": "AC7: SL badge reset to - after reopen",
+      "phase": "proof",
+      "startedAt": "2026-06-25T21:10:41.663Z",
+      "endedAt": "2026-06-25T21:10:42.505Z",
+      "durationMs": 842,
+      "ok": true,
+      "next": "ac7-screenshot",
+      "output": {
+        "matched": true,
+        "testId": "perps-tpsl-sl-roe-sign-badge",
+        "expected": "present",
+        "present": true,
+        "text": "-",
+        "textMatch": "exact"
+      }
+    },
+    {
+      "nodeId": "ac7-screenshot",
+      "action": "ui.screenshot",
+      "intent": "AC7: capture reset default signs",
+      "phase": "proof",
+      "startedAt": "2026-06-25T21:10:42.752Z",
+      "endedAt": "2026-06-25T21:10:43.306Z",
+      "durationMs": 554,
+      "ok": true,
+      "next": "done",
+      "output": {
+        "captured": true,
+        "path": "after-ac7-reset-defaults.png",
+        "artifact": {
+          "path": "after-ac7-reset-defaults.png",
+          "type": "screenshot",
+          "nodeId": "ac7-screenshot",
+          "label": "ui.screenshot screenshot",
+          "category": "evidence"
+        }
+      }
+    },
+    {
+      "nodeId": "done",
+      "action": "end",
+      "startedAt": "2026-06-25T21:10:43.456Z",
+      "endedAt": "2026-06-25T21:10:43.553Z",
+      "durationMs": 97,
+      "ok": true,
+      "status": "pass"
+    }
+  ]
+}

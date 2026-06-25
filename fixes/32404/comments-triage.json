@@ -1,0 +1,47 @@
+[
+  {
+    "comment_id": 3474511814,
+    "review_id": null,
+    "author_login": "cursor[bot]",
+    "author_type": "Bot",
+    "reviewer_login": "cursor[bot]",
+    "review_state": "COMMENTED",
+    "source_kind": "bugbot",
+    "path": "app/components/UI/Perps/hooks/usePerpsTPSLForm.ts",
+    "line": 1085,
+    "body": "Order view rejects signed TP/SL (High Severity). Sign-aware validation on the Auto Close sheet accepts a long take profit below the reference price or a gain-side stop loss, but the trade order screen still validates stored trigger prices with classic long/short side rules. After Set, only prices are saved — no RoE sign — so hasInvalidTPSL stays true and the place-order action stays disabled.",
+    "triage": "REAL",
+    "action": "Made PerpsOrderView sign-aware: capture RoE sign from the sheet's trackingData on confirm, derive effective TP/SL direction (mirrors usePerpsTPSLForm) so signed triggers are accepted and Place Order is no longer disabled.",
+    "fixed_in_commit": "f94192ac81"
+  },
+  {
+    "comment_id": 4574797409,
+    "review_id": "4574797409",
+    "author_login": "gambinish",
+    "author_type": "User",
+    "reviewer_login": "gambinish",
+    "review_state": "CHANGES_REQUESTED",
+    "source_kind": "human",
+    "path": null,
+    "line": null,
+    "body": "For a new order without an existing tpsl set, configuring a stop loss below current price (toggling + to -) the percent does not persist. [P1] After the TP/SL sheet accepts a long negative TP below current price or gain-side SL above current price, hasInvalidTPSL becomes true and the Place Order button is disabled at :1983 / :2007. The order view needs the same sign-aware interpretation, by deriving effective TP/SL direction from the trigger price/entry reference or preserving sign metadata from the sheet.",
+    "triage": "REAL",
+    "action": "Same root cause as the cursor finding. Order view now preserves the sign metadata from the sheet (via trackingData) and derives effective direction, accepting signed triggers. Default sign keeps existing wrong-side validation intact.",
+    "fixed_in_commit": "f94192ac81"
+  },
+  {
+    "comment_id": 4799410026,
+    "review_id": null,
+    "author_login": "abretonc7s",
+    "author_type": "User",
+    "reviewer_login": "abretonc7s",
+    "review_state": "COMMENTED",
+    "source_kind": "bot",
+    "path": null,
+    "line": null,
+    "body": "Orchestrator worker-report table + self-review fix log (a11y labels, analytics sign recompose, signed-metadata unit test). Posted as a conversation comment by the farmslot orchestrator.",
+    "triage": "OUT_OF_SCOPE",
+    "action": "Automated orchestrator/worker report, not actionable review feedback. No reply or code change required.",
+    "fixed_in_commit": null
+  }
+]

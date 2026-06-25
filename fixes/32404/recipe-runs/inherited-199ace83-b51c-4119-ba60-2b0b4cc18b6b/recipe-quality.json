@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "verdict": "pass",
+  "compact": {
+    "verdict": "PASS",
+    "reasons": [
+      "All 7 acceptance criteria are proven by a 39/39 passing recipe on the live iOS bridge.",
+      "Badge sign assertions use exact fiber-text reads; visual/mixed ACs have viewport wait_for + claims.must_show screenshots.",
+      "AC6 (negative TP trigger) is shown visually (trigger below current, Set enabled) and asserted precisely by a unit test."
+    ],
+    "better_version_guidance": [
+      "Input field values cannot be read via getTextByTestId on Mobile (TextInput value is not fiber children), so 'input cleared' is proven by a before/after screenshot pair plus a unit test rather than a single state assertion."
+    ]
+  },
+  "dimensions": {
+    "acceptance_coverage": "pass",
+    "graph_quality": "pass",
+    "adapter_independence": "pass",
+    "evidence_fit": "pass",
+    "flake_risk": "pass"
+  },
+  "structural_findings": [],
+  "contextual_findings": [],
+  "suggested_recipe_delta": [],
+  "training_fields": {
+    "project": "metamask-mobile-farm",
+    "flow_type": "dev",
+    "proof_mode": "mixed"
+  },
+  "meta": {
+    "producer": "worker",
+    "fallback_used": false,
+    "legacy_task": false,
+    "artifact_required": true,
+    "source_signals": [
+      "recipe-quality.json",
+      "recipe-coverage.md",
+      "recipe.json"
+    ]
+  }
+}

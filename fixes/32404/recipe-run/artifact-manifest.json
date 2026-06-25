@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "runStatus": "pass",
+  "provenance": {
+    "runner": {
+      "source": "/Users/deeeed/dev/metamask/metamask-recipe-runner",
+      "git_ref": "adef9ec95b12dab520fe0093341b8c748622b2c3",
+      "name": "@metamask/recipe-runner"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "recipe.json",
+      "type": "recipe",
+      "label": "Executed recipe",
+      "category": "system"
+    },
+    {
+      "path": "after-ac1-default-signs.png",
+      "type": "screenshot",
+      "nodeId": "ac1-screenshot",
+      "label": "ui.screenshot screenshot",
+      "category": "evidence"
+    },
+    {
+      "path": "after-ac2-tp-filled-plus.png",
+      "type": "screenshot",
+      "nodeId": "ac2-filled-screenshot",
+      "label": "ui.screenshot screenshot",
+      "category": "evidence"
+    },
+    {
+      "path": "after-ac2-tp-toggled-kept.png",
+      "type": "screenshot",
+      "nodeId": "ac2-flipped-screenshot",
+      "label": "ui.screenshot screenshot",
+      "category": "evidence"
+    },
+    {
+      "path": "after-ac4-sl-toggled.png",
+      "type": "screenshot",
+      "nodeId": "ac4-screenshot",
+      "label": "ui.screenshot screenshot",
+      "category": "evidence"
+    },
+    {
+      "path": "after-ac5-preset-flips-sign.png",
+      "type": "screenshot",
+      "nodeId": "ac5-screenshot",
+      "label": "ui.screenshot screenshot",
+      "category": "evidence"
+    },
+    {
+      "path": "after-ac6-negative-tp-trigger.png",
+      "type": "screenshot",
+      "nodeId": "ac6-screenshot",
+      "label": "ui.screenshot screenshot",
+      "category": "evidence"
+    },
+    {
+      "path": "after-ac7-reset-defaults.png",
+      "type": "screenshot",
+      "nodeId": "ac7-screenshot",
+      "label": "ui.screenshot screenshot",
+      "category": "evidence"
+    },
+    {
+      "path": "summary.json",
+      "type": "summary",
+      "label": "Run summary",
+      "category": "system"
+    },
+    {
+      "path": "trace.json",
+      "type": "trace",
+      "label": "Execution trace",
+      "category": "system"
+    }
+  ]
+}
