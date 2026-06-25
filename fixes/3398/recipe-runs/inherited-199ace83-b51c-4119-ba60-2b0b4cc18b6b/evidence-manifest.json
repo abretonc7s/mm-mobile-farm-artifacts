@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "preferred_mode": "screenshots",
+  "summary": "Tappable +/- RoE sign badge on the Auto Close TP/SL fields: defaults, toggle flips the sign while keeping the value and recomputing the trigger, preset-flips-sign, a negative take-profit and a positive stop-loss.",
+  "before_after_pairs": [
+    {
+      "label": "RoE sign badges added: + on Take Profit, - on Stop Loss (AC1)",
+      "covers": ["ac1"],
+      "before": "before-autoclose-baseline.png",
+      "after": "after-ac1-default-signs.png",
+      "note": "Before: RoE fields had no sign control. After: a tappable badge shows + (TP) / - (SL)."
+    },
+    {
+      "label": "Tapping the TP sign badge flips + to - while keeping the value and recomputing the trigger (AC2/AC3)",
+      "covers": ["ac2", "ac3"],
+      "before": "after-ac2-tp-filled-plus.png",
+      "after": "after-ac2-tp-toggled-kept.png",
+      "note": "Before: badge + with 25% and the trigger above entry. After: badge - with 25% kept and the trigger recomputed below entry (a negative return)."
+    }
+  ],
+  "standalone": [
+    {
+      "label": "Negative TP RoE (-10%) yields a below-entry trigger price and enables Set (AC6)",
+      "covers": ["ac6"],
+      "file": "after-ac6-negative-tp-trigger.png",
+      "note": "Badge -, 10% RoE -> trigger $1582.65 below current $1,666.3 (Expected loss); Set is enabled."
+    },
+    {
+      "label": "Tapping the +25% preset while the badge is - flips it back to + (AC5)",
+      "covers": ["ac5"],
+      "file": "after-ac5-preset-flips-sign.png",
+      "note": "Preset chip's natural sign overrides the toggled badge sign."
+    },
+    {
+      "label": "Positive Stop Loss: SL badge + with value kept, trigger above entry (AC4)",
+      "covers": ["ac4"],
+      "file": "after-ac4-sl-toggled.png",
+      "note": "After flipping SL to +, the 5% value is kept and the trigger recomputes above entry ($1657 > $1617, Expected profit) — a floor-gain stop loss."
+    }
+  ],
+  "omit": ["after-ac7-reset-defaults.png"],
+  "videos": {
+    "after": "after.mp4",
+    "preferred": false,
+    "note": "Full recipe run (AC1-AC7) on the live iOS simulator."
+  }
+}

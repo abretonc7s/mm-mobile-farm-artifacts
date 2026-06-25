@@ -1,0 +1,6 @@
+{
+  "originalFamilyScopeSummary": "Enable tappable RoE sign toggles for Auto Close TP/SL on mobile perps",
+  "currentTriggerSummary": "merge-main: Enable tappable RoE sign toggles for Auto Close TP/SL on mobile perps",
+  "scopeVerdict": "full-scope-addressed",
+  "notes": "Merge of origin/main (f0b7a32503..d85e43d259) into the PR branch. One conflict in usePerpsTPSLForm.test.ts: branch and main each appended independent test describe blocks ('RoE sign badge' vs 'bidirectional sync'); both kept in full. One semantic conflict surfaced: main's 'SL % -> price' test asserted the pre-PR signed-magnitude contract (stopLossPercentage === '-10'), which the PR's RoE-sign feature changed — magnitude is now stored unsigned via stripRoeSign() with the sign tracked in stopLossSign. Test updated to the PR's model (magnitude '10', sign '-'), preserving the PR's intent. Validation: yarn lint:tsc exit 0; usePerpsTPSLForm.test.ts 90/90 pass; harness fast launch passed (201s); PR #32404 now MERGEABLE. No native source changes (only ios/Podfile.lock lockfile churn). RoE sign toggle scope fully preserved through the merge."
+}
