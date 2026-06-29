@@ -1,71 +1,43 @@
-# PR #32404 — Review Comment Triage
+# PR #32404 — Comment Triage
 
-PR: feat(perps): enable RoE sign toggle on Auto Close TP/SL
+PR: feat(perps): enable RoE sign toggle on Auto Close TP/SL  
 Branch: TAT-3398-feat-add-roe-sign-toggle
 
-## Context
-The PR adds a tappable +/- RoE sign badge to the Auto Close (TP/SL) sheet so a
-user can set a negative take profit or a gain-side stop loss. All sign logic
-lives in `usePerpsTPSLForm`, which validates against an *effective* direction
-derived from the chosen sign. The sheet persists only the resulting trigger
-**price** — not the sign.
+## Inherited context
+
+- **Family ID:** 199ace83-b51c-4119-ba60-2b0b4cc18b6b (TAT-3398)
+- **Scope:** Enable tappable RoE sign toggles for Auto Close TP/SL on mobile perps
+- **Prior work:** Original feature + self-review rounds (a11y, analytics sign recompose, unit tests) + fix commit `f94192ac81` for order-view sign-aware validation
+- **Trusted recipe:** `artifacts/recipe.json` — 7/7 ACs (AC1–AC7), 39 workflow nodes
 
 ## Comments
 
-| # | Author | Source | File | Triage | Action |
-|---|--------|--------|------|--------|--------|
-| 1 | cursor[bot] | inline (id 3474511814) | usePerpsTPSLForm.ts:1051-1085 | REAL | Order view re-validated stored TP/SL with classic long/short side rules, rejecting signed triggers → `hasInvalidTPSL` stayed true, Place Order disabled. Made the order view sign-aware. |
-| 2 | gambinish | review CHANGES_REQUESTED (id 4574797409) | PerpsOrderView (~:1983/:2007) | REAL | Same root cause as #1 (P1). Negative TP / gain-side SL set in the sheet left Place Order disabled. Fixed with sign-aware effective direction. |
-| 3 | abretonc7s | conversation (id 4799410026) | — | OUT OF SCOPE | Orchestrator worker-report comment, not actionable review feedback. No reply needed. |
+| # | Author | Source | File / ID | Triage | Action |
+|---|--------|--------|-----------|--------|--------|
+| 1 | cursor[bot] | inline 3474511814 | usePerpsTPSLForm.ts:1051–1085 | REAL (fixed) | Order view rejected signed TP/SL; `hasInvalidTPSL` stayed true. Fixed in `f94192ac81` via sign-aware effective direction in `PerpsOrderView`. |
+| 2 | gambinish | review CHANGES_REQUESTED 4574797409 | PerpsOrderView ~:1983/:2007 | REAL (fixed) | Same root cause as #1 — Place Order disabled after signed TP/SL confirm. Addressed in `f94192ac81`. |
+| 3 | gambinish | review CHANGES_REQUESTED 4593430638 | Auto Close sheet | REAL | Sign toggle cleared validation errors when user had typed a trigger **price** directly: toggle recomputed from a clamped `0%` magnitude and moved the price, hiding the error. Fix: only recompute trigger on sign toggle when RoE % is the active input (`tpUsingPercentage` / `slUsingPercentage`); show field errors without gating on combined `isValid`. |
+| 4 | abretonc7s | conversation 4799410026 | — | OUT_OF_SCOPE | Orchestrator worker-report comment; not actionable review feedback. |
+| 5 | abretonc7s | conversation 4804208576 | — | OUT_OF_SCOPE | Fix notification for #1/#2; informational. |
+| 6 | abretonc7s | conversation 4804220380 | — | OUT_OF_SCOPE | Prior triage worker report; superseded by this run. |
 
-## Fix summary
-Both REAL comments share one root cause: `PerpsOrderView` validated
-`orderForm.takeProfitPrice` / `stopLossPrice` against `orderForm.direction`
-only, with no knowledge of the sign chosen in the sheet. A signed trigger
-(price on the classic "wrong" side) was therefore rejected.
+## Fix summary (this session)
 
-Fix (contained in `PerpsOrderView.tsx`):
-- Capture the RoE sign from the sheet's `trackingData` (already carries the
-  signed RoE percentage) into local `takeProfitSign` / `stopLossSign` state on
-  `onConfirm`. Defaults match the sheet (`+` TP / `-` SL).
-- Derive an effective direction from the sign (mirroring `usePerpsTPSLForm`)
-  and validate against it, so a signed trigger is accepted while the
-  un-toggled default keeps the existing wrong-side guard intact.
+### Sign-toggle validation error persistence (gambinish #4593430638)
 
-This preserves the entire pre-existing wrong-side validation suite (default
-sign → effective direction == `orderForm.direction`) and only changes behavior
-when the user has toggled the sign.
+- `usePerpsTPSLForm.ts` — `handleTakeProfitSignToggle` / `handleStopLossSignToggle` now recompute trigger price only when the RoE percentage is the active input (`tpUsingPercentage` / `slUsingPercentage`). Manual price entry keeps the typed price; sign-aware validation re-runs so errors are not cleared until the constraint actually passes.
+- `PerpsTPSLView.tsx` — field error text and input styling keyed off per-field error strings (`takeProfitError`, `stopLossError`, `stopLossLiquidationError`) instead of combined `isValid`.
+- `usePerpsTPSLForm.test.ts` — two regression tests for manual-price sign-toggle validation.
 
-Added a regression test: a long order with a TP below current price is rejected
-by default but accepted after the sheet confirms a negative RoE.
+## Validation (this session)
 
-## Inherited recipe coverage
-The inherited recipe (`artifacts/recipe.json`, 39 steps) proves the Auto Close
-sheet's RoE sign behavior AC1-AC7 (defaults + TP / - SL, toggle keeps value &
-recomputes trigger, preset flips sign, negative TP → below-entry trigger, reset
-on reopen). It covers the *sheet*; the review fix is in the *order view*, which
-is covered by the new unit test above.
+- ESLint changed files: 0 errors; 7 pre-existing warnings (deprecation/react-compiler on untouched lines).
+- Prettier: PASS on changed files.
+- Jest: 230/230 PASS (`usePerpsTPSLForm`, `PerpsTPSLView`, `PerpsOrderView` tests).
+- Recipe re-validation: **PASS 39/39** (re-run after Metro/CDP available on port 8064).
 
-## Validation results
-- ESLint (changed files): 0 errors (6 pre-existing deprecation/react-compiler
-  warnings on untouched lines).
-- `PerpsOrderView.test.tsx`: 101/101 passed (full pre-existing wrong-side suite
-  green → default behavior unchanged; new signed-acceptance test green).
-- Prettier: both changed files conform.
-- Recipe re-validation (post branch+origin/main merge, mobile adapter): **PASS
-  39/39** (`artifacts/recipe-run/summary.json`).
-- Note: full `yarn lint:tsc` skipped per worker-slot policy (forbidden in
-  slots; left to CI). TS-aware ESLint substituted, 0 errors.
-- Merge-main status: clean (no conflicts).
+## Operator follow-up
 
-## Final summary
-- Total comments: 3 (2 REAL, 0 FALSE POSITIVE, 1 OUT OF SCOPE)
-- Fix commit: `f94192ac81` — "fix: address review comments on PR #32404"
-- Files changed:
-  - `app/components/UI/Perps/Views/PerpsOrderView/PerpsOrderView.tsx`
-  - `app/components/UI/Perps/Views/PerpsOrderView/PerpsOrderView.test.tsx`
-- Recipe re-validation: PASS 39/39
-- Merge-main status: clean
-- Replies: cursor[bot] inline thread replied + resolved; gambinish
-  CHANGES_REQUESTED replied via conversation (re-approval is the reviewer's);
-  abretonc7s worker report — OOS, no reply.
+- Reply to gambinish on review 4593430638 with fix summary and request re-review.
+- Resolve cursor[bot] inline thread if not already resolved.
+- Changes are **not committed/pushed** — operator to review, commit, and push.

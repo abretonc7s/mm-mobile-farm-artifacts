@@ -3,9 +3,9 @@
   "total": 39,
   "passed": 39,
   "failed": 0,
-  "startedAt": "2026-06-25T21:10:04.347Z",
-  "endedAt": "2026-06-25T21:10:43.745Z",
-  "durationMs": 39398,
+  "startedAt": "2026-06-29T21:52:02.520Z",
+  "endedAt": "2026-06-29T21:54:24.648Z",
+  "durationMs": 142128,
   "harness": {
     "name": "@farmslot/recipe-harness",
     "version": "0.1.0",
@@ -14,7 +14,7 @@
   },
   "runner": {
     "source": "/Users/deeeed/dev/metamask/metamask-recipe-runner",
-    "git_ref": "adef9ec95b12dab520fe0093341b8c748622b2c3",
+    "git_ref": "838e70916ce7be0a08a775ad37a52b3be544bee2",
     "name": "@metamask/recipe-runner"
   }
 }
