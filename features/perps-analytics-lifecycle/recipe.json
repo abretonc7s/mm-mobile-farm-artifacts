@@ -1,0 +1,205 @@
+{
+  "$schema": "https://farmslot.io/schemas/recipe-v1.schema.json",
+  "title": "Prove the Perps analytics lifecycle — Mobile",
+  "description": "Establish Mobile consent against the collector, render the Perps landing screen from Home, and prove its two real MetaMetrics contracts exactly once.",
+  "workflow": {
+    "entry": "start-collector",
+    "nodes": {
+      "start-collector": {
+        "action": "metamask.analytics.start_capture",
+        "port": "{{params.collector_port}}",
+        "next": "ensure-unlocked-before-consent",
+        "intent": "Make the analytics endpoint reachable before the Segment client initializes"
+      },
+      "ensure-unlocked-before-consent": {
+        "action": "metamask.wallet.ensure_unlocked",
+        "target_timeout_ms": 20000,
+        "unlock_timeout_ms": 15000,
+        "next": "set-consent",
+        "intent": "Establish the wallet precondition before changing consent"
+      },
+      "set-consent": {
+        "action": "metamask.analytics.set_consent",
+        "participate": true,
+        "marketing": true,
+        "timeout_ms": 30000,
+        "next": "home-before-proof",
+        "intent": "Enable MetaMetrics before the measured Perps transition"
+      },
+      "home-before-proof": {
+        "action": "ui.navigate",
+        "page": "home",
+        "timeout_ms": 30000,
+        "next": "drain-setup-events",
+        "intent": "Establish a non-Perps route before the measured navigation"
+      },
+      "drain-setup-events": {
+        "action": "wait",
+        "duration_ms": "{{params.startup_flush_ms}}",
+        "next": "capture",
+        "intent": "Let pre-proof Segment batches flush before taking the measurement cursor"
+      },
+      "capture": {
+        "action": "metamask.analytics.start_capture",
+        "port": "{{params.collector_port}}",
+        "next": "open-perps",
+        "intent": "Capture a cursor immediately before the Perps navigation"
+      },
+      "open-perps": {
+        "action": "ui.navigate",
+        "page": "perps",
+        "timeout_ms": 30000,
+        "next": "wait-for-market-list",
+        "intent": "Show the live Perps overview"
+      },
+      "wait-for-market-list": {
+        "action": "ui.wait_for",
+        "test_id": "perps-market-list",
+        "expected": "visible",
+        "timeout_ms": 30000,
+        "next": "assert-events",
+        "intent": "Prove the Perps market list is visibly loaded"
+      },
+      "assert-events": {
+        "action": "metamask.analytics.assert_events",
+        "since": "{{outputs.capture.cursor}}",
+        "exact": false,
+        "timeout_ms": 30000,
+        "settle_ms": 3000,
+        "expect": [
+          {
+            "event": "Perp Screen Viewed",
+            "count": 1
+          },
+          {
+            "event": "Perp Screen Viewed",
+            "count": 1,
+            "properties": {
+              "timestamp": {
+                "$type": "number",
+                "$gt": 0
+              },
+              "screen_type": "perps_home",
+              "source": "{{params.expected_source}}",
+              "has_perp_balance": "{{params.expected_has_perp_balance}}",
+              "open_position": "{{params.expected_open_positions}}",
+              "open_order": "{{params.expected_open_orders}}",
+              "outage_banner_shown": "{{params.expected_outage_banner_shown}}",
+              "sections_displayed": "{{params.expected_sections_displayed}}",
+              "watchlist_count": "{{params.expected_watchlist_count}}",
+              "watchlist_markets": "{{params.expected_watchlist_markets}}"
+            }
+          },
+          {
+            "event": "Asset Viewed",
+            "count": 1
+          },
+          {
+            "event": "Asset Viewed",
+            "count": 1,
+            "properties": {
+              "timestamp": {
+                "$type": "number",
+                "$gt": 0
+              },
+              "screen_type": "perps_home",
+              "source": "{{params.expected_source}}",
+              "has_perp_balance": "{{params.expected_has_perp_balance}}",
+              "open_positions_count": "{{params.expected_open_positions}}",
+              "open_order": "{{params.expected_open_orders}}",
+              "outage_banner_shown": "{{params.expected_outage_banner_shown}}",
+              "sections_displayed": "{{params.expected_sections_displayed}}",
+              "watchlist_count": "{{params.expected_watchlist_count}}",
+              "watchlist_markets": "{{params.expected_watchlist_markets}}",
+              "trade_type": "Perps",
+              "implementation_type": "native"
+            }
+          }
+        ],
+        "next": "done",
+        "intent": "Prove each Perps landing analytics event was emitted exactly once with its required properties",
+        "proves": [
+          "perps-home-analytics"
+        ]
+      },
+      "done": {
+        "action": "end",
+        "status": "pass"
+      }
+    }
+  },
+  "paramsSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "collector_port": {
+        "type": "number",
+        "default": 9165,
+        "description": "Local Segment collector port that must match SEGMENT_PROXY_URL in the running Mobile bundle."
+      },
+      "expected_has_perp_balance": {
+        "type": "boolean",
+        "default": true,
+        "description": "Expected funded-state flag for the selected fixture account."
+      },
+      "expected_open_positions": {
+        "type": "number",
+        "default": 0,
+        "description": "Expected account-wide open-position count shown by the landing analytics contract."
+      },
+      "expected_open_orders": {
+        "type": "number",
+        "default": 0,
+        "description": "Expected account-wide open-order count shown by the landing analytics contract."
+      },
+      "expected_outage_banner_shown": {
+        "type": "boolean",
+        "default": false,
+        "description": "Expected outage-banner state for the live Perps landing screen."
+      },
+      "expected_sections_displayed": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "default": [
+          "balance",
+          "explore_crypto",
+          "explore_commodities",
+          "explore_stocks",
+          "explore_forex"
+        ],
+        "description": "Expected ordered Perps landing sections for the active feature configuration."
+      },
+      "expected_watchlist_count": {
+        "type": "number",
+        "default": 0,
+        "description": "Expected watchlist count for the selected fixture account."
+      },
+      "expected_watchlist_markets": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "default": [],
+        "description": "Expected ordered watchlist market symbols for the selected fixture account."
+      },
+      "startup_flush_ms": {
+        "type": "number",
+        "default": 22000,
+        "description": "Mobile-only delay that lets pre-proof Segment batches flush before the cursor is taken."
+      },
+      "expected_source": {
+        "type": "string",
+        "default": "main_action_button",
+        "description": "Mobile Perps entry source expected in the landing events."
+      }
+    }
+  },
+  "proofTargets": [
+    {
+      "id": "perps-home-analytics",
+      "claim": "The visible Mobile Perps landing screen emits exactly one Perp Screen Viewed and one Asset Viewed contract."
+    }
+  ]
+}

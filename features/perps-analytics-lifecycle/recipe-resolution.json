@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "root": {
+    "ref": "perps.analytics-lifecycle",
+    "digest": "sha256:d82ce7ac0131474c264edbd102d187c19308f2eceb629b44fc32d33beec275c2"
+  },
+  "dependencies": [],
+  "edges": []
+}

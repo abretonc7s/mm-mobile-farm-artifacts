@@ -1,0 +1,63 @@
+{
+  "status": "pass",
+  "total": 10,
+  "passed": 10,
+  "failed": 0,
+  "cause_counts": {
+    "subject": 0,
+    "harness": 0,
+    "environment": 0,
+    "unknown": 0
+  },
+  "startedAt": "2026-08-01T08:03:25.624Z",
+  "endedAt": "2026-08-01T08:03:58.085Z",
+  "durationMs": 32461,
+  "harness": {
+    "name": "@farmslot/recipe-harness",
+    "version": "0.11.0",
+    "action_manifest_schema": "https://farmslot.io/schemas/action-manifest-v1.schema.json"
+  },
+  "runner": {
+    "source": "<mm-harness>",
+    "git_ref": "19a06b6e6ccd886f0a1d3c5b0be16acaa022b9ab",
+    "name": "@metamask/recipe-runner"
+  },
+  "recipeLibraries": {
+    "sources": [
+      {
+        "name": "perps",
+        "root": "<perps-recipe-library>",
+        "recipeCount": 9,
+        "provenance": {
+          "kind": "library",
+          "trust": "trusted",
+          "name": "perps",
+          "revision": "c7cd11526ba85c2601463ede7f8cdf9697e8bde0",
+          "dirty": false
+        }
+      },
+      {
+        "name": "metamask",
+        "root": "<mm-harness>/library",
+        "recipeCount": 11,
+        "provenance": {
+          "kind": "bundled",
+          "trust": "trusted",
+          "name": "metamask"
+        }
+      }
+    ],
+    "shadowed": []
+  },
+  "sideFindings": {
+    "status": "review",
+    "nonBlocking": true,
+    "counts": {
+      "total": 183,
+      "warning": 65,
+      "error": 32,
+      "exception": 86
+    },
+    "diagnosticsPath": "diagnostics.json"
+  }
+}
