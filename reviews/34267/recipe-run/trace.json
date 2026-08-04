@@ -1,0 +1,5272 @@
+{
+  "metadata": {
+    "runner": {
+      "source": "/Users/deeeed/dev/metamask/metamask-harness",
+      "git_ref": "4b31bbb1369bf6751e837e786dd78295e85a0d1f",
+      "name": "@metamask/recipe-runner"
+    }
+  },
+  "entries": [
+    {
+      "nodeId": "setup-unlock",
+      "action": "metamask.wallet.ensure_unlocked",
+      "intent": "Unlock the wallet — the Perps Pro market view only renders behind an unlocked wallet",
+      "startedAt": "2026-08-04T15:28:19.316Z",
+      "endedAt": "2026-08-04T15:28:20.533Z",
+      "durationMs": 1217,
+      "ok": true,
+      "next": "setup-limit-order",
+      "output": {
+        "action": "metamask.wallet.ensure_unlocked",
+        "unlocked": true,
+        "alreadyUnlocked": true,
+        "account": {
+          "address": "0x8fd323672b903176bb83338a0efe8b179fcaa956",
+          "id": "238c0265-6a13-405f-aa3e-e1100927efef",
+          "name": "perps team srp"
+        },
+        "redacted": true,
+        "proofPath": "agentic-wallet-status",
+        "liveAdapter": "/Users/deeeed/dev/metamask/metamask-harness/library/actions/mobile/wallet/ensure_unlocked.mjs"
+      }
+    },
+    {
+      "nodeId": "setup-limit-order",
+      "action": "metamask.perps.ensure_orders",
+      "intent": "Establish the missing precondition for claim 2: a plain resting limit order, so the Orders tab renders a bare 'Limit' pill. The already-open BTC stop trigger order supplies the 'Stop market' half.",
+      "startedAt": "2026-08-04T15:28:20.619Z",
+      "endedAt": "2026-08-04T15:28:28.505Z",
+      "durationMs": 7886,
+      "ok": true,
+      "next": "setup-navigate-market",
+      "output": {
+        "action": "metamask.perps.ensure_orders",
+        "expectedOpen": true,
+        "matchingCount": 1,
+        "orders": [
+          {
+            "orderId": "509942552756",
+            "symbol": "SOL",
+            "side": "buy",
+            "size": "0.7",
+            "price": "51.554",
+            "type": "limit"
+          }
+        ],
+        "source": "mobile-perps-controller-open-orders",
+        "order": {
+          "action": "metamask.perps.ensure_orders",
+          "market": "SOL",
+          "side": "long",
+          "orderType": "limit",
+          "amount": "12",
+          "size": "0.69830234939946",
+          "leverage": 3,
+          "limitPrice": 51.553599999999996,
+          "submitted": true,
+          "result": {
+            "success": true,
+            "orderId": "509942552756",
+            "submittedSize": "0.7",
+            "providerId": "hyperliquid"
+          },
+          "refresh": {
+            "ok": true,
+            "positions": 3
+          },
+          "proofPath": "mobile-perps-controller-place-order"
+        },
+        "liveAdapter": "/Users/deeeed/dev/metamask/metamask-harness/library/actions/mobile/perps/ensure_orders.mjs"
+      }
+    },
+    {
+      "nodeId": "setup-navigate-market",
+      "action": "ui.navigate",
+      "intent": "Open a Perps market screen, the surface that renders the Pro layout under review",
+      "startedAt": "2026-08-04T15:28:28.595Z",
+      "endedAt": "2026-08-04T15:28:30.532Z",
+      "durationMs": 1937,
+      "ok": true,
+      "next": "gate-pro-view",
+      "output": {
+        "action": "ui.navigate",
+        "page": "perps-market",
+        "route": "PerpsMarketDetails",
+        "params": {
+          "market": {
+            "symbol": "ETH"
+          }
+        },
+        "navigation": {
+          "navigated": "PerpsMarketDetails",
+          "params": {
+            "market": {
+              "symbol": "ETH"
+            }
+          },
+          "previousRoute": {
+            "key": "PerpsMarketDetails-FoPGkCBh5oU19eY_z7ah8",
+            "name": "PerpsMarketDetails",
+            "params": {
+              "market": {
+                "symbol": "ETH"
+              }
+            }
+          },
+          "currentRoute": {
+            "key": "PerpsMarketDetails-FoPGkCBh5oU19eY_z7ah8",
+            "name": "PerpsMarketDetails",
+            "params": {
+              "market": {
+                "symbol": "ETH"
+              }
+            }
+          },
+          "deviceName": "mmdev-1",
+          "platform": "ios",
+          "verifiedRoute": "PerpsMarketDetails"
+        },
+        "proofPath": "agentic-navigation",
+        "liveAdapter": "/Users/deeeed/dev/metamask/metamask-harness/library/actions/mobile/ui/navigate.mjs"
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "5EB61ED7-8829-4447-9A39-E20086FA0638",
+          "name": "MetaMask",
+          "nodeCount": 117,
+          "truncated": false
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXButton",
+              "label": "Browse markets",
+              "test_id": "perps-pro-market-header-market-list-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 53,
+                "width": 213,
+                "height": 52
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Short",
+              "test_id": "perps-pro-order-form-direction-short",
+              "enabled": true,
+              "bounds": {
+                "x": 123,
+                "y": 132,
+                "width": 105,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "3x",
+              "test_id": "perps-pro-order-form-leverage",
+              "enabled": true,
+              "bounds": {
+                "x": 200,
+                "y": 185,
+                "width": 33,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Market",
+              "test_id": "perps-pro-order-form-order-type",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 233,
+                "width": 225,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXTextField",
+              "label": "Size (USD)",
+              "test_id": "perps-pro-order-form-size-input",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 331,
+                "width": 201,
+                "height": 18
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "TP / SL",
+              "test_id": "perps-pro-order-form-tpsl",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 501,
+                "width": 225,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Place order",
+              "test_id": "perps-pro-order-form-place-order",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 565,
+                "width": 225,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Est: 0.00% / Max: 3%",
+              "test_id": "perps-pro-order-form-summary-slippage-button",
+              "enabled": true,
+              "bounds": {
+                "x": 87,
+                "y": 677,
+                "width": 146,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXButton",
+              "test_id": "perps-pro-order-form-summary-fees-button",
+              "enabled": true,
+              "bounds": {
+                "x": 39,
+                "y": 701,
+                "width": 20,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Hide order book",
+              "test_id": "perps-pro-market-order-book-collapse",
+              "enabled": true,
+              "bounds": {
+                "x": 318,
+                "y": 119,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,870 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 179,
+                "width": 116,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,869 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 211,
+                "width": 116,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,868 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 243,
+                "width": 116,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,867 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 275,
+                "width": 116,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,866 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 307,
+                "width": 116,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,865 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 371,
+                "width": 116,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,864 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 403,
+                "width": 116,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,863 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 435,
+                "width": 116,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,862 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 467,
+                "width": 116,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,861 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 499,
+                "width": 116,
+                "height": 32
+              }
+            }
+          ],
+          "hidden_or_offscreen": [
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1002,
+                "width": 374,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the ETH market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1058,
+                "width": 390,
+                "height": 62
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1266,
+                "width": 374,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the ETH market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1322,
+                "width": 390,
+                "height": 62
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1530,
+                "width": 374,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the BTC market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1586,
+                "width": 390,
+                "height": 62
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1794,
+                "width": 374,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            }
+          ],
+          "truncated": false,
+          "limits": {
+            "items": 50,
+            "hidden_or_offscreen": 50
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "gate-pro-view",
+      "action": "ui.wait_for",
+      "intent": "Fail loudly unless the Pro-mode layout is actually rendered — every claim in this PR is Pro-only, so a lite-mode fallback must not be silently accepted",
+      "startedAt": "2026-08-04T15:28:30.629Z",
+      "endedAt": "2026-08-04T15:28:31.647Z",
+      "durationMs": 1018,
+      "ok": true,
+      "next": "ac1-assert-size-label",
+      "output": {
+        "matched": true,
+        "testId": "perps-pro-market-view",
+        "expected": "present",
+        "present": true
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "5EB61ED7-8829-4447-9A39-E20086FA0638",
+          "name": "MetaMask",
+          "nodeCount": 117,
+          "truncated": false
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXButton",
+              "label": "Browse markets",
+              "test_id": "perps-pro-market-header-market-list-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 53,
+                "width": 213,
+                "height": 52
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Short",
+              "test_id": "perps-pro-order-form-direction-short",
+              "enabled": true,
+              "bounds": {
+                "x": 123,
+                "y": 132,
+                "width": 105,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "3x",
+              "test_id": "perps-pro-order-form-leverage",
+              "enabled": true,
+              "bounds": {
+                "x": 200,
+                "y": 185,
+                "width": 33,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Market",
+              "test_id": "perps-pro-order-form-order-type",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 233,
+                "width": 225,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXTextField",
+              "label": "Size (USD)",
+              "test_id": "perps-pro-order-form-size-input",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 331,
+                "width": 201,
+                "height": 18
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "TP / SL",
+              "test_id": "perps-pro-order-form-tpsl",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 501,
+                "width": 225,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Place order",
+              "test_id": "perps-pro-order-form-place-order",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 565,
+                "width": 225,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Est: 0.00% / Max: 3%",
+              "test_id": "perps-pro-order-form-summary-slippage-button",
+              "enabled": true,
+              "bounds": {
+                "x": 87,
+                "y": 677,
+                "width": 146,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXButton",
+              "test_id": "perps-pro-order-form-summary-fees-button",
+              "enabled": true,
+              "bounds": {
+                "x": 39,
+                "y": 701,
+                "width": 20,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Hide order book",
+              "test_id": "perps-pro-market-order-book-collapse",
+              "enabled": true,
+              "bounds": {
+                "x": 318,
+                "y": 119,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,870 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 179,
+                "width": 116,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,869 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 211,
+                "width": 116,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,868 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 243,
+                "width": 116,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,867 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 275,
+                "width": 116,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,866 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 307,
+                "width": 116,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,865 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 371,
+                "width": 116,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,864 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 403,
+                "width": 116,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,863 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 435,
+                "width": 116,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,862 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 467,
+                "width": 116,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,861 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 499,
+                "width": 116,
+                "height": 32
+              }
+            }
+          ],
+          "hidden_or_offscreen": [
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1002,
+                "width": 374,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the ETH market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1058,
+                "width": 390,
+                "height": 62
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1266,
+                "width": 374,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the ETH market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1322,
+                "width": 390,
+                "height": 62
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1530,
+                "width": 374,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the BTC market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1586,
+                "width": 390,
+                "height": 62
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1794,
+                "width": 374,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            }
+          ],
+          "truncated": false,
+          "limits": {
+            "items": 50,
+            "hidden_or_offscreen": 50
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "ac1-assert-size-label",
+      "action": "ui.wait_for",
+      "intent": "Claim 1: prove the order form size label reads 'Size (USD)'. Revert-sensitive — the pre-PR string 'Size USD' does not contain 'Size (USD)'.",
+      "startedAt": "2026-08-04T15:28:31.717Z",
+      "endedAt": "2026-08-04T15:28:32.724Z",
+      "durationMs": 1007,
+      "ok": true,
+      "next": "ac1-screenshot-size-label",
+      "output": {
+        "matched": true,
+        "testId": "perps-pro-order-form-size-input",
+        "expected": "present",
+        "present": true,
+        "text": "Size (USD)",
+        "textMatch": "contains"
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "5EB61ED7-8829-4447-9A39-E20086FA0638",
+          "name": "MetaMask",
+          "nodeCount": 117,
+          "truncated": false
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXButton",
+              "label": "Browse markets",
+              "test_id": "perps-pro-market-header-market-list-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 53,
+                "width": 213,
+                "height": 52
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Short",
+              "test_id": "perps-pro-order-form-direction-short",
+              "enabled": true,
+              "bounds": {
+                "x": 123,
+                "y": 132,
+                "width": 105,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "3x",
+              "test_id": "perps-pro-order-form-leverage",
+              "enabled": true,
+              "bounds": {
+                "x": 200,
+                "y": 185,
+                "width": 33,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Market",
+              "test_id": "perps-pro-order-form-order-type",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 233,
+                "width": 225,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXTextField",
+              "label": "Size (USD)",
+              "test_id": "perps-pro-order-form-size-input",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 331,
+                "width": 201,
+                "height": 18
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "TP / SL",
+              "test_id": "perps-pro-order-form-tpsl",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 501,
+                "width": 225,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Place order",
+              "test_id": "perps-pro-order-form-place-order",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 565,
+                "width": 225,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Est: 0.00% / Max: 3%",
+              "test_id": "perps-pro-order-form-summary-slippage-button",
+              "enabled": true,
+              "bounds": {
+                "x": 87,
+                "y": 677,
+                "width": 146,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXButton",
+              "test_id": "perps-pro-order-form-summary-fees-button",
+              "enabled": true,
+              "bounds": {
+                "x": 39,
+                "y": 701,
+                "width": 20,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Hide order book",
+              "test_id": "perps-pro-market-order-book-collapse",
+              "enabled": true,
+              "bounds": {
+                "x": 318,
+                "y": 119,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,870 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 179,
+                "width": 116,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,869 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 211,
+                "width": 116,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,868 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 243,
+                "width": 116,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,867 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 275,
+                "width": 116,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,866 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 307,
+                "width": 116,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,865 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 371,
+                "width": 116,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,864 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 403,
+                "width": 116,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,863 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 435,
+                "width": 116,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,862 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 467,
+                "width": 116,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,861 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 499,
+                "width": 116,
+                "height": 32
+              }
+            }
+          ],
+          "hidden_or_offscreen": [
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1002,
+                "width": 374,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the ETH market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1058,
+                "width": 390,
+                "height": 62
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1266,
+                "width": 374,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the ETH market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1322,
+                "width": 390,
+                "height": 62
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1530,
+                "width": 374,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the BTC market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1586,
+                "width": 390,
+                "height": 62
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1794,
+                "width": 374,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            }
+          ],
+          "truncated": false,
+          "limits": {
+            "items": 50,
+            "hidden_or_offscreen": 50
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "ac1-screenshot-size-label",
+      "action": "ui.screenshot",
+      "intent": "Claim 1 visual evidence: the size label as a user sees it in the Pro order form",
+      "startedAt": "2026-08-04T15:28:32.854Z",
+      "endedAt": "2026-08-04T15:28:33.922Z",
+      "durationMs": 1068,
+      "ok": true,
+      "next": "ac3-scroll-to-positions",
+      "output": {
+        "captured": true,
+        "path": "screenshots/evidence-ac1-size-usd-label.png",
+        "artifact": {
+          "path": "screenshots/evidence-ac1-size-usd-label.png",
+          "type": "screenshot",
+          "nodeId": "ac1-screenshot-size-label",
+          "label": "ui.screenshot screenshot",
+          "category": "evidence",
+          "mimeType": "image/png",
+          "metadata": {
+            "provider": "simctl",
+            "mode": "xcrun simctl io screenshot",
+            "selectedDevice": "mmdev-1"
+          }
+        }
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "5EB61ED7-8829-4447-9A39-E20086FA0638",
+          "name": "MetaMask",
+          "nodeCount": 117,
+          "truncated": false
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXButton",
+              "label": "Browse markets",
+              "test_id": "perps-pro-market-header-market-list-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 53,
+                "width": 213,
+                "height": 52
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Short",
+              "test_id": "perps-pro-order-form-direction-short",
+              "enabled": true,
+              "bounds": {
+                "x": 123,
+                "y": 132,
+                "width": 105,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "3x",
+              "test_id": "perps-pro-order-form-leverage",
+              "enabled": true,
+              "bounds": {
+                "x": 200,
+                "y": 185,
+                "width": 33,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Market",
+              "test_id": "perps-pro-order-form-order-type",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 233,
+                "width": 225,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXTextField",
+              "label": "Size (USD)",
+              "test_id": "perps-pro-order-form-size-input",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 331,
+                "width": 201,
+                "height": 18
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "TP / SL",
+              "test_id": "perps-pro-order-form-tpsl",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 501,
+                "width": 225,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Place order",
+              "test_id": "perps-pro-order-form-place-order",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 565,
+                "width": 225,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Est: 0.00% / Max: 3%",
+              "test_id": "perps-pro-order-form-summary-slippage-button",
+              "enabled": true,
+              "bounds": {
+                "x": 87,
+                "y": 677,
+                "width": 146,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXButton",
+              "test_id": "perps-pro-order-form-summary-fees-button",
+              "enabled": true,
+              "bounds": {
+                "x": 39,
+                "y": 701,
+                "width": 20,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Hide order book",
+              "test_id": "perps-pro-market-order-book-collapse",
+              "enabled": true,
+              "bounds": {
+                "x": 318,
+                "y": 119,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,870 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 179,
+                "width": 116,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,869 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 211,
+                "width": 116,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,868 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 243,
+                "width": 116,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,867 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 275,
+                "width": 116,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,866 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 307,
+                "width": 116,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,865 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 371,
+                "width": 116,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,864 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 403,
+                "width": 116,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,863 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 435,
+                "width": 116,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,862 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 467,
+                "width": 116,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,861 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": 499,
+                "width": 116,
+                "height": 32
+              }
+            }
+          ],
+          "hidden_or_offscreen": [
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1002,
+                "width": 374,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the ETH market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1058,
+                "width": 390,
+                "height": 62
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1266,
+                "width": 374,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the ETH market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1322,
+                "width": 390,
+                "height": 62
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1530,
+                "width": 374,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the BTC market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1586,
+                "width": 390,
+                "height": 62
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1794,
+                "width": 374,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            }
+          ],
+          "truncated": false,
+          "limits": {
+            "items": 50,
+            "hidden_or_offscreen": 50
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "ac3-scroll-to-positions",
+      "action": "ui.scroll",
+      "intent": "The positions and orders panel sits below the chart and order form on the Pro layout; bring it into the visible viewport so a user can read the filter controls under review.",
+      "startedAt": "2026-08-04T15:28:34.008Z",
+      "endedAt": "2026-08-04T15:28:34.848Z",
+      "durationMs": 840,
+      "ok": true,
+      "next": "ac3-open-positions-tab",
+      "output": {
+        "animated": false,
+        "offset": 650,
+        "ok": true,
+        "testId": "perps-pro-market-scroll-view",
+        "deviceName": "mmdev-1",
+        "intoView": false
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "5EB61ED7-8829-4447-9A39-E20086FA0638",
+          "name": "MetaMask",
+          "nodeCount": 117,
+          "truncated": false
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXButton",
+              "label": "Browse markets",
+              "test_id": "perps-pro-market-header-market-list-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 53,
+                "width": 213,
+                "height": 52
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "TP / SL",
+              "test_id": "perps-pro-order-form-tpsl",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": -31,
+                "width": 225,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Place order",
+              "test_id": "perps-pro-order-form-place-order",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 33,
+                "width": 225,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Est: 0.00% / Max: 3%",
+              "test_id": "perps-pro-order-form-summary-slippage-button",
+              "enabled": true,
+              "bounds": {
+                "x": 87,
+                "y": 145,
+                "width": 146,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXButton",
+              "test_id": "perps-pro-order-form-summary-fees-button",
+              "enabled": true,
+              "bounds": {
+                "x": 39,
+                "y": 169,
+                "width": 20,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 470,
+                "width": 374,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the ETH market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 526,
+                "width": 390,
+                "height": 62
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 734,
+                "width": 374,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the ETH market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 790,
+                "width": 390,
+                "height": 62
+              }
+            }
+          ],
+          "hidden_or_offscreen": [
+            {
+              "role": "AXButton",
+              "label": "Short",
+              "test_id": "perps-pro-order-form-direction-short",
+              "enabled": true,
+              "bounds": {
+                "x": 123,
+                "y": -400,
+                "width": 105,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "3x",
+              "test_id": "perps-pro-order-form-leverage",
+              "enabled": true,
+              "bounds": {
+                "x": 200,
+                "y": -347,
+                "width": 33,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Market",
+              "test_id": "perps-pro-order-form-order-type",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": -299,
+                "width": 225,
+                "height": 48
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXTextField",
+              "label": "Size (USD)",
+              "test_id": "perps-pro-order-form-size-input",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": -201,
+                "width": 201,
+                "height": 18
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Hide order book",
+              "test_id": "perps-pro-market-order-book-collapse",
+              "enabled": true,
+              "bounds": {
+                "x": 318,
+                "y": -413,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,870 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -353,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,869 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -321,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,868 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -289,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,867 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -257,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,866 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -225,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,865 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -161,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,864 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -129,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,863 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -97,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,862 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -65,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,861 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -33,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 998,
+                "width": 374,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the BTC market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1054,
+                "width": 390,
+                "height": 62
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1262,
+                "width": 374,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            }
+          ],
+          "truncated": false,
+          "limits": {
+            "items": 50,
+            "hidden_or_offscreen": 50
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "ac3-open-positions-tab",
+      "action": "ui.press",
+      "intent": "Claim 3 precondition: select the Positions tab that owns the side filter",
+      "startedAt": "2026-08-04T15:28:34.932Z",
+      "endedAt": "2026-08-04T15:28:35.928Z",
+      "durationMs": 996,
+      "ok": true,
+      "next": "ac3-open-side-filter",
+      "output": {
+        "ok": true,
+        "testId": "perps-pro-market-positions-panel-tab-positions",
+        "deviceName": "mmdev-1"
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "5EB61ED7-8829-4447-9A39-E20086FA0638",
+          "name": "MetaMask",
+          "nodeCount": 118,
+          "truncated": false
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXButton",
+              "label": "Browse markets",
+              "test_id": "perps-pro-market-header-market-list-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 53,
+                "width": 213,
+                "height": 52
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "TP / SL",
+              "test_id": "perps-pro-order-form-tpsl",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": -31,
+                "width": 225,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Place order",
+              "test_id": "perps-pro-order-form-place-order",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 33,
+                "width": 225,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Est: 0.00% / Max: 3%",
+              "test_id": "perps-pro-order-form-summary-slippage-button",
+              "enabled": true,
+              "bounds": {
+                "x": 87,
+                "y": 145,
+                "width": 146,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXButton",
+              "test_id": "perps-pro-order-form-summary-fees-button",
+              "enabled": true,
+              "bounds": {
+                "x": 39,
+                "y": 169,
+                "width": 20,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Sort positions",
+              "test_id": "perps-pro-market-positions-sort-button",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 262,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "ETH only",
+              "test_id": "perps-pro-market-positions-ticker-only",
+              "enabled": true,
+              "bounds": {
+                "x": 158,
+                "y": 266,
+                "width": 99,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Close all",
+              "test_id": "perps-pro-market-positions-close-all",
+              "enabled": true,
+              "bounds": {
+                "x": 283,
+                "y": 324,
+                "width": 83,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the ETH market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 398,
+                "width": 390,
+                "height": 46
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Adjust Margin",
+              "test_id": "perps-pro-market-position-edit-margin",
+              "enabled": true,
+              "bounds": {
+                "x": 25,
+                "y": 549,
+                "width": 128,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Edit TP/SL",
+              "test_id": "perps-pro-market-position-edit-tpsl",
+              "enabled": true,
+              "bounds": {
+                "x": 169,
+                "y": 549,
+                "width": 128,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Close",
+              "test_id": "perps-pro-market-position-close",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 590,
+                "width": 119,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Reverse",
+              "test_id": "perps-pro-market-position-reverse",
+              "enabled": true,
+              "bounds": {
+                "x": 135,
+                "y": 590,
+                "width": 119,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Share",
+              "test_id": "perps-pro-market-position-share",
+              "enabled": true,
+              "bounds": {
+                "x": 263,
+                "y": 590,
+                "width": 119,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the SNDK market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 646,
+                "width": 390,
+                "height": 46
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Adjust Margin",
+              "test_id": "perps-pro-market-position-edit-margin",
+              "enabled": true,
+              "bounds": {
+                "x": 25,
+                "y": 797,
+                "width": 128,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Edit TP/SL",
+              "test_id": "perps-pro-market-position-edit-tpsl",
+              "enabled": true,
+              "bounds": {
+                "x": 169,
+                "y": 797,
+                "width": 128,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Close",
+              "test_id": "perps-pro-market-position-close",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 838,
+                "width": 119,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Reverse",
+              "test_id": "perps-pro-market-position-reverse",
+              "enabled": true,
+              "bounds": {
+                "x": 135,
+                "y": 838,
+                "width": 119,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Share",
+              "test_id": "perps-pro-market-position-share",
+              "enabled": true,
+              "bounds": {
+                "x": 263,
+                "y": 838,
+                "width": 119,
+                "height": 32
+              }
+            }
+          ],
+          "hidden_or_offscreen": [
+            {
+              "role": "AXButton",
+              "label": "Short",
+              "test_id": "perps-pro-order-form-direction-short",
+              "enabled": true,
+              "bounds": {
+                "x": 123,
+                "y": -400,
+                "width": 105,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "3x",
+              "test_id": "perps-pro-order-form-leverage",
+              "enabled": true,
+              "bounds": {
+                "x": 200,
+                "y": -347,
+                "width": 33,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Market",
+              "test_id": "perps-pro-order-form-order-type",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": -299,
+                "width": 225,
+                "height": 48
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXTextField",
+              "label": "Size (USD)",
+              "test_id": "perps-pro-order-form-size-input",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": -201,
+                "width": 201,
+                "height": 18
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Hide order book",
+              "test_id": "perps-pro-market-order-book-collapse",
+              "enabled": true,
+              "bounds": {
+                "x": 318,
+                "y": -413,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,870 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -353,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,869 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -321,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,868 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -289,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,867 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -257,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,866 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -225,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,865 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -161,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,864 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -129,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,863 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -97,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,862 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -65,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,861 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -33,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the BTC market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 894,
+                "width": 390,
+                "height": 46
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Adjust Margin",
+              "test_id": "perps-pro-market-position-edit-margin",
+              "enabled": true,
+              "bounds": {
+                "x": 25,
+                "y": 1045,
+                "width": 128,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Edit TP/SL",
+              "test_id": "perps-pro-market-position-edit-tpsl",
+              "enabled": true,
+              "bounds": {
+                "x": 169,
+                "y": 1045,
+                "width": 128,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Close",
+              "test_id": "perps-pro-market-position-close",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1086,
+                "width": 119,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Reverse",
+              "test_id": "perps-pro-market-position-reverse",
+              "enabled": true,
+              "bounds": {
+                "x": 135,
+                "y": 1086,
+                "width": 119,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Share",
+              "test_id": "perps-pro-market-position-share",
+              "enabled": true,
+              "bounds": {
+                "x": 263,
+                "y": 1086,
+                "width": 119,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            }
+          ],
+          "truncated": false,
+          "limits": {
+            "items": 50,
+            "hidden_or_offscreen": 50
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "ac3-open-side-filter",
+      "action": "ui.press",
+      "intent": "Claim 3: open the positions side filter sheet",
+      "startedAt": "2026-08-04T15:28:36.004Z",
+      "endedAt": "2026-08-04T15:28:36.504Z",
+      "durationMs": 500,
+      "ok": true,
+      "next": "ac3-assert-all-sides",
+      "output": {
+        "ok": true,
+        "testId": "perps-pro-market-positions-side-filter-button",
+        "deviceName": "mmdev-1"
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "5EB61ED7-8829-4447-9A39-E20086FA0638",
+          "name": "MetaMask",
+          "nodeCount": 9,
+          "truncated": false
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXButton",
+              "label": "Short",
+              "test_id": "perps-pro-market-positions-side-filter-sheet-option-short",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 674,
+                "width": 388,
+                "height": 72
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Apply",
+              "test_id": "perps-pro-market-positions-side-filter-sheet-apply",
+              "enabled": true,
+              "bounds": {
+                "x": 17,
+                "y": 762,
+                "width": 356,
+                "height": 48
+              }
+            }
+          ],
+          "hidden_or_offscreen": [],
+          "truncated": false,
+          "limits": {
+            "items": 50,
+            "hidden_or_offscreen": 50
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "ac3-assert-all-sides",
+      "action": "ui.wait_for",
+      "intent": "Claim 3: prove the first ('all') filter option reads 'All sides'. Revert-sensitive — the pre-PR key all_types renders 'All types'.",
+      "startedAt": "2026-08-04T15:28:36.652Z",
+      "endedAt": "2026-08-04T15:28:37.192Z",
+      "durationMs": 540,
+      "ok": true,
+      "next": "ac3-screenshot-side-filter",
+      "output": {
+        "matched": true,
+        "testId": "perps-pro-market-positions-side-filter-sheet-option-all",
+        "expected": "present",
+        "present": true,
+        "text": "All sides",
+        "textMatch": "contains"
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "5EB61ED7-8829-4447-9A39-E20086FA0638",
+          "name": "MetaMask",
+          "nodeCount": 9,
+          "truncated": false
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXButton",
+              "label": "Short",
+              "test_id": "perps-pro-market-positions-side-filter-sheet-option-short",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 674,
+                "width": 388,
+                "height": 72
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Apply",
+              "test_id": "perps-pro-market-positions-side-filter-sheet-apply",
+              "enabled": true,
+              "bounds": {
+                "x": 17,
+                "y": 762,
+                "width": 356,
+                "height": 48
+              }
+            }
+          ],
+          "hidden_or_offscreen": [],
+          "truncated": false,
+          "limits": {
+            "items": 50,
+            "hidden_or_offscreen": 50
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "ac3-screenshot-side-filter",
+      "action": "ui.screenshot",
+      "intent": "Claim 3 visual evidence: the filter sheet option order and copy as a user sees it",
+      "startedAt": "2026-08-04T15:28:37.273Z",
+      "endedAt": "2026-08-04T15:28:37.888Z",
+      "durationMs": 615,
+      "ok": true,
+      "next": "ac3-close-side-filter",
+      "output": {
+        "captured": true,
+        "path": "screenshots/evidence-ac3-all-sides-filter.png",
+        "artifact": {
+          "path": "screenshots/evidence-ac3-all-sides-filter.png",
+          "type": "screenshot",
+          "nodeId": "ac3-screenshot-side-filter",
+          "label": "ui.screenshot screenshot",
+          "category": "evidence",
+          "mimeType": "image/png",
+          "metadata": {
+            "provider": "simctl",
+            "mode": "xcrun simctl io screenshot",
+            "selectedDevice": "mmdev-1"
+          }
+        }
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "5EB61ED7-8829-4447-9A39-E20086FA0638",
+          "name": "MetaMask",
+          "nodeCount": 9,
+          "truncated": false
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXButton",
+              "label": "Short",
+              "test_id": "perps-pro-market-positions-side-filter-sheet-option-short",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 674,
+                "width": 388,
+                "height": 72
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Apply",
+              "test_id": "perps-pro-market-positions-side-filter-sheet-apply",
+              "enabled": true,
+              "bounds": {
+                "x": 17,
+                "y": 762,
+                "width": 356,
+                "height": 48
+              }
+            }
+          ],
+          "hidden_or_offscreen": [],
+          "truncated": false,
+          "limits": {
+            "items": 50,
+            "hidden_or_offscreen": 50
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "ac3-close-side-filter",
+      "action": "ui.press",
+      "intent": "Dismiss the filter sheet so the Orders tab is reachable for claim 2",
+      "startedAt": "2026-08-04T15:28:37.965Z",
+      "endedAt": "2026-08-04T15:28:38.884Z",
+      "durationMs": 919,
+      "ok": true,
+      "next": "ac2-open-orders-tab",
+      "output": {
+        "ok": true,
+        "testId": "perps-pro-market-positions-side-filter-sheet-apply",
+        "deviceName": "mmdev-1"
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "5EB61ED7-8829-4447-9A39-E20086FA0638",
+          "name": "MetaMask",
+          "nodeCount": 118,
+          "truncated": false
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXButton",
+              "label": "Browse markets",
+              "test_id": "perps-pro-market-header-market-list-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 53,
+                "width": 213,
+                "height": 52
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "TP / SL",
+              "test_id": "perps-pro-order-form-tpsl",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": -31,
+                "width": 225,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Place order",
+              "test_id": "perps-pro-order-form-place-order",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 33,
+                "width": 225,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Est: 0.00% / Max: 3%",
+              "test_id": "perps-pro-order-form-summary-slippage-button",
+              "enabled": true,
+              "bounds": {
+                "x": 87,
+                "y": 145,
+                "width": 146,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXButton",
+              "test_id": "perps-pro-order-form-summary-fees-button",
+              "enabled": true,
+              "bounds": {
+                "x": 39,
+                "y": 169,
+                "width": 20,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Sort positions",
+              "test_id": "perps-pro-market-positions-sort-button",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 262,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "ETH only",
+              "test_id": "perps-pro-market-positions-ticker-only",
+              "enabled": true,
+              "bounds": {
+                "x": 158,
+                "y": 266,
+                "width": 99,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Close all",
+              "test_id": "perps-pro-market-positions-close-all",
+              "enabled": true,
+              "bounds": {
+                "x": 283,
+                "y": 324,
+                "width": 83,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the ETH market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 398,
+                "width": 390,
+                "height": 46
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Adjust Margin",
+              "test_id": "perps-pro-market-position-edit-margin",
+              "enabled": true,
+              "bounds": {
+                "x": 25,
+                "y": 549,
+                "width": 128,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Edit TP/SL",
+              "test_id": "perps-pro-market-position-edit-tpsl",
+              "enabled": true,
+              "bounds": {
+                "x": 169,
+                "y": 549,
+                "width": 128,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Close",
+              "test_id": "perps-pro-market-position-close",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 590,
+                "width": 119,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Reverse",
+              "test_id": "perps-pro-market-position-reverse",
+              "enabled": true,
+              "bounds": {
+                "x": 135,
+                "y": 590,
+                "width": 119,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Share",
+              "test_id": "perps-pro-market-position-share",
+              "enabled": true,
+              "bounds": {
+                "x": 263,
+                "y": 590,
+                "width": 119,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the SNDK market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 646,
+                "width": 390,
+                "height": 46
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Adjust Margin",
+              "test_id": "perps-pro-market-position-edit-margin",
+              "enabled": true,
+              "bounds": {
+                "x": 25,
+                "y": 797,
+                "width": 128,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Edit TP/SL",
+              "test_id": "perps-pro-market-position-edit-tpsl",
+              "enabled": true,
+              "bounds": {
+                "x": 169,
+                "y": 797,
+                "width": 128,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Close",
+              "test_id": "perps-pro-market-position-close",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 838,
+                "width": 119,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Reverse",
+              "test_id": "perps-pro-market-position-reverse",
+              "enabled": true,
+              "bounds": {
+                "x": 135,
+                "y": 838,
+                "width": 119,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Share",
+              "test_id": "perps-pro-market-position-share",
+              "enabled": true,
+              "bounds": {
+                "x": 263,
+                "y": 838,
+                "width": 119,
+                "height": 32
+              }
+            }
+          ],
+          "hidden_or_offscreen": [
+            {
+              "role": "AXButton",
+              "label": "Short",
+              "test_id": "perps-pro-order-form-direction-short",
+              "enabled": true,
+              "bounds": {
+                "x": 123,
+                "y": -400,
+                "width": 105,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "3x",
+              "test_id": "perps-pro-order-form-leverage",
+              "enabled": true,
+              "bounds": {
+                "x": 200,
+                "y": -347,
+                "width": 33,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Market",
+              "test_id": "perps-pro-order-form-order-type",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": -299,
+                "width": 225,
+                "height": 48
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXTextField",
+              "label": "Size (USD)",
+              "test_id": "perps-pro-order-form-size-input",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": -201,
+                "width": 201,
+                "height": 18
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Hide order book",
+              "test_id": "perps-pro-market-order-book-collapse",
+              "enabled": true,
+              "bounds": {
+                "x": 318,
+                "y": -413,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,870 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -353,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,869 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -321,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,868 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -289,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,867 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -257,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,866 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -225,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,865 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -161,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,864 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -129,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,863 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -97,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,862 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -65,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,861 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -33,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the BTC market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 894,
+                "width": 390,
+                "height": 46
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Adjust Margin",
+              "test_id": "perps-pro-market-position-edit-margin",
+              "enabled": true,
+              "bounds": {
+                "x": 25,
+                "y": 1045,
+                "width": 128,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Edit TP/SL",
+              "test_id": "perps-pro-market-position-edit-tpsl",
+              "enabled": true,
+              "bounds": {
+                "x": 169,
+                "y": 1045,
+                "width": 128,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Close",
+              "test_id": "perps-pro-market-position-close",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1086,
+                "width": 119,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Reverse",
+              "test_id": "perps-pro-market-position-reverse",
+              "enabled": true,
+              "bounds": {
+                "x": 135,
+                "y": 1086,
+                "width": 119,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Share",
+              "test_id": "perps-pro-market-position-share",
+              "enabled": true,
+              "bounds": {
+                "x": 263,
+                "y": 1086,
+                "width": 119,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            }
+          ],
+          "truncated": false,
+          "limits": {
+            "items": 50,
+            "hidden_or_offscreen": 50
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "ac2-open-orders-tab",
+      "action": "ui.press",
+      "intent": "Claim 2 precondition: select the Orders tab that renders the order type pills",
+      "startedAt": "2026-08-04T15:28:38.975Z",
+      "endedAt": "2026-08-04T15:28:39.879Z",
+      "durationMs": 904,
+      "ok": true,
+      "next": "ac2-assert-orders-list",
+      "output": {
+        "ok": true,
+        "testId": "perps-pro-market-positions-panel-tab-orders",
+        "deviceName": "mmdev-1"
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "5EB61ED7-8829-4447-9A39-E20086FA0638",
+          "name": "MetaMask",
+          "nodeCount": 117,
+          "truncated": false
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXButton",
+              "label": "Browse markets",
+              "test_id": "perps-pro-market-header-market-list-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 53,
+                "width": 213,
+                "height": 52
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "TP / SL",
+              "test_id": "perps-pro-order-form-tpsl",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": -31,
+                "width": 225,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Place order",
+              "test_id": "perps-pro-order-form-place-order",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 33,
+                "width": 225,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Est: 0.00% / Max: 3%",
+              "test_id": "perps-pro-order-form-summary-slippage-button",
+              "enabled": true,
+              "bounds": {
+                "x": 87,
+                "y": 145,
+                "width": 146,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXButton",
+              "test_id": "perps-pro-order-form-summary-fees-button",
+              "enabled": true,
+              "bounds": {
+                "x": 39,
+                "y": 169,
+                "width": 20,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the SOL market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 262,
+                "width": 390,
+                "height": 62
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 470,
+                "width": 374,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the ETH market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 526,
+                "width": 390,
+                "height": 62
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 734,
+                "width": 374,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the ETH market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 790,
+                "width": 390,
+                "height": 62
+              }
+            }
+          ],
+          "hidden_or_offscreen": [
+            {
+              "role": "AXButton",
+              "label": "Short",
+              "test_id": "perps-pro-order-form-direction-short",
+              "enabled": true,
+              "bounds": {
+                "x": 123,
+                "y": -400,
+                "width": 105,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "3x",
+              "test_id": "perps-pro-order-form-leverage",
+              "enabled": true,
+              "bounds": {
+                "x": 200,
+                "y": -347,
+                "width": 33,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Market",
+              "test_id": "perps-pro-order-form-order-type",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": -299,
+                "width": 225,
+                "height": 48
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXTextField",
+              "label": "Size (USD)",
+              "test_id": "perps-pro-order-form-size-input",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": -201,
+                "width": 201,
+                "height": 18
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Hide order book",
+              "test_id": "perps-pro-market-order-book-collapse",
+              "enabled": true,
+              "bounds": {
+                "x": 318,
+                "y": -413,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,870 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -353,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,869 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -321,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,868 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -289,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,867 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -257,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,866 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -225,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,865 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -161,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,864 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -129,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,863 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -97,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,862 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -65,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,861 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -33,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 998,
+                "width": 374,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1262,
+                "width": 374,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            }
+          ],
+          "truncated": false,
+          "limits": {
+            "items": 50,
+            "hidden_or_offscreen": 50
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "ac2-assert-orders-list",
+      "action": "ui.wait_for",
+      "intent": "Claim 2: confirm the Orders list is mounted before capturing pill evidence",
+      "startedAt": "2026-08-04T15:28:39.961Z",
+      "endedAt": "2026-08-04T15:28:40.867Z",
+      "durationMs": 906,
+      "ok": true,
+      "next": "ac2-assert-limit-order-open",
+      "output": {
+        "matched": true,
+        "testId": "perps-pro-market-orders-list",
+        "expected": "present",
+        "present": true
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "5EB61ED7-8829-4447-9A39-E20086FA0638",
+          "name": "MetaMask",
+          "nodeCount": 117,
+          "truncated": false
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXButton",
+              "label": "Browse markets",
+              "test_id": "perps-pro-market-header-market-list-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 53,
+                "width": 213,
+                "height": 52
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "TP / SL",
+              "test_id": "perps-pro-order-form-tpsl",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": -31,
+                "width": 225,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Place order",
+              "test_id": "perps-pro-order-form-place-order",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 33,
+                "width": 225,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Est: 0.00% / Max: 3%",
+              "test_id": "perps-pro-order-form-summary-slippage-button",
+              "enabled": true,
+              "bounds": {
+                "x": 87,
+                "y": 145,
+                "width": 146,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXButton",
+              "test_id": "perps-pro-order-form-summary-fees-button",
+              "enabled": true,
+              "bounds": {
+                "x": 39,
+                "y": 169,
+                "width": 20,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the SOL market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 262,
+                "width": 390,
+                "height": 62
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 470,
+                "width": 374,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the ETH market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 526,
+                "width": 390,
+                "height": 62
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 734,
+                "width": 374,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the ETH market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 790,
+                "width": 390,
+                "height": 62
+              }
+            }
+          ],
+          "hidden_or_offscreen": [
+            {
+              "role": "AXButton",
+              "label": "Short",
+              "test_id": "perps-pro-order-form-direction-short",
+              "enabled": true,
+              "bounds": {
+                "x": 123,
+                "y": -400,
+                "width": 105,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "3x",
+              "test_id": "perps-pro-order-form-leverage",
+              "enabled": true,
+              "bounds": {
+                "x": 200,
+                "y": -347,
+                "width": 33,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Market",
+              "test_id": "perps-pro-order-form-order-type",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": -299,
+                "width": 225,
+                "height": 48
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXTextField",
+              "label": "Size (USD)",
+              "test_id": "perps-pro-order-form-size-input",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": -201,
+                "width": 201,
+                "height": 18
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Hide order book",
+              "test_id": "perps-pro-market-order-book-collapse",
+              "enabled": true,
+              "bounds": {
+                "x": 318,
+                "y": -413,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,870 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -353,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,869 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -321,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,868 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -289,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,867 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -257,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,866 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -225,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,865 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -161,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,864 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -129,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,863 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -97,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,862 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -65,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,861 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -33,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 998,
+                "width": 374,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1262,
+                "width": 374,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            }
+          ],
+          "truncated": false,
+          "limits": {
+            "items": 50,
+            "hidden_or_offscreen": 50
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "ac2-assert-limit-order-open",
+      "action": "metamask.perps.assert_orders",
+      "intent": "Claim 2: independently confirm the plain limit order backing the bare 'Limit' pill is actually live, so the screenshot is not proving a stale row",
+      "startedAt": "2026-08-04T15:28:40.946Z",
+      "endedAt": "2026-08-04T15:28:41.387Z",
+      "durationMs": 441,
+      "ok": true,
+      "next": "ac2-screenshot-limit-pill",
+      "output": {
+        "action": "metamask.perps.assert_orders",
+        "expectedOpen": true,
+        "matchingCount": 1,
+        "orders": [
+          {
+            "orderId": "509942552756",
+            "symbol": "SOL",
+            "side": "buy",
+            "size": "0.7",
+            "price": "51.554",
+            "type": "limit"
+          }
+        ],
+        "source": "mobile-perps-controller-open-orders",
+        "liveAdapter": "/Users/deeeed/dev/metamask/metamask-harness/library/actions/mobile/perps/assert_orders.mjs"
+      }
+    },
+    {
+      "nodeId": "ac2-screenshot-limit-pill",
+      "action": "ui.screenshot",
+      "intent": "Claim 2 visual evidence, first half: the resting limit order's type pill shows the order type only",
+      "startedAt": "2026-08-04T15:28:41.513Z",
+      "endedAt": "2026-08-04T15:28:42.528Z",
+      "durationMs": 1015,
+      "ok": true,
+      "next": "ac2-scroll-to-stop-order",
+      "output": {
+        "captured": true,
+        "path": "screenshots/evidence-ac2-order-pill-limit.png",
+        "artifact": {
+          "path": "screenshots/evidence-ac2-order-pill-limit.png",
+          "type": "screenshot",
+          "nodeId": "ac2-screenshot-limit-pill",
+          "label": "ui.screenshot screenshot",
+          "category": "evidence",
+          "mimeType": "image/png",
+          "metadata": {
+            "provider": "simctl",
+            "mode": "xcrun simctl io screenshot",
+            "selectedDevice": "mmdev-1"
+          }
+        }
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "5EB61ED7-8829-4447-9A39-E20086FA0638",
+          "name": "MetaMask",
+          "nodeCount": 117,
+          "truncated": false
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXButton",
+              "label": "Browse markets",
+              "test_id": "perps-pro-market-header-market-list-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 53,
+                "width": 213,
+                "height": 52
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "TP / SL",
+              "test_id": "perps-pro-order-form-tpsl",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": -31,
+                "width": 225,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Place order",
+              "test_id": "perps-pro-order-form-place-order",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 33,
+                "width": 225,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Est: 0.00% / Max: 3%",
+              "test_id": "perps-pro-order-form-summary-slippage-button",
+              "enabled": true,
+              "bounds": {
+                "x": 87,
+                "y": 145,
+                "width": 146,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXButton",
+              "test_id": "perps-pro-order-form-summary-fees-button",
+              "enabled": true,
+              "bounds": {
+                "x": 39,
+                "y": 169,
+                "width": 20,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the SOL market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 262,
+                "width": 390,
+                "height": 62
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 470,
+                "width": 374,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the ETH market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 526,
+                "width": 390,
+                "height": 62
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 734,
+                "width": 374,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the ETH market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 790,
+                "width": 390,
+                "height": 62
+              }
+            }
+          ],
+          "hidden_or_offscreen": [
+            {
+              "role": "AXButton",
+              "label": "Short",
+              "test_id": "perps-pro-order-form-direction-short",
+              "enabled": true,
+              "bounds": {
+                "x": 123,
+                "y": -400,
+                "width": 105,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "3x",
+              "test_id": "perps-pro-order-form-leverage",
+              "enabled": true,
+              "bounds": {
+                "x": 200,
+                "y": -347,
+                "width": 33,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Market",
+              "test_id": "perps-pro-order-form-order-type",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": -299,
+                "width": 225,
+                "height": 48
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXTextField",
+              "label": "Size (USD)",
+              "test_id": "perps-pro-order-form-size-input",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": -201,
+                "width": 201,
+                "height": 18
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Hide order book",
+              "test_id": "perps-pro-market-order-book-collapse",
+              "enabled": true,
+              "bounds": {
+                "x": 318,
+                "y": -413,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,870 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -353,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,869 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -321,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,868 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -289,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,867 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -257,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,866 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -225,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,865 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -161,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,864 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -129,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,863 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -97,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,862 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -65,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,861 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -33,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 998,
+                "width": 374,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1262,
+                "width": 374,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            }
+          ],
+          "truncated": false,
+          "limits": {
+            "items": 50,
+            "hidden_or_offscreen": 50
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "ac2-scroll-to-stop-order",
+      "action": "ui.scroll",
+      "intent": "The stop trigger order sits further down the list than the resting limit order; bring that card into the visible viewport so a reviewer can read its type pill in the evidence image.",
+      "startedAt": "2026-08-04T15:28:42.615Z",
+      "endedAt": "2026-08-04T15:28:43.736Z",
+      "durationMs": 1121,
+      "ok": true,
+      "next": "ac2-screenshot-stop-market-pill",
+      "output": {
+        "animated": false,
+        "offset": 1250,
+        "ok": true,
+        "testId": "perps-pro-market-scroll-view",
+        "deviceName": "mmdev-1",
+        "intoView": false
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "5EB61ED7-8829-4447-9A39-E20086FA0638",
+          "name": "MetaMask",
+          "nodeCount": 117,
+          "truncated": false
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXButton",
+              "label": "Browse markets",
+              "test_id": "perps-pro-market-header-market-list-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 53,
+                "width": 213,
+                "height": 52
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the ETH market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 2,
+                "width": 390,
+                "height": 62
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 210,
+                "width": 374,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the ETH market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 266,
+                "width": 390,
+                "height": 62
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 474,
+                "width": 374,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 738,
+                "width": 374,
+                "height": 32
+              }
+            }
+          ],
+          "hidden_or_offscreen": [
+            {
+              "role": "AXButton",
+              "label": "Short",
+              "test_id": "perps-pro-order-form-direction-short",
+              "enabled": true,
+              "bounds": {
+                "x": 123,
+                "y": -924,
+                "width": 105,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "3x",
+              "test_id": "perps-pro-order-form-leverage",
+              "enabled": true,
+              "bounds": {
+                "x": 200,
+                "y": -871,
+                "width": 33,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Market",
+              "test_id": "perps-pro-order-form-order-type",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": -823,
+                "width": 225,
+                "height": 48
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXTextField",
+              "label": "Size (USD)",
+              "test_id": "perps-pro-order-form-size-input",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": -725,
+                "width": 201,
+                "height": 18
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "TP / SL",
+              "test_id": "perps-pro-order-form-tpsl",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": -555,
+                "width": 225,
+                "height": 48
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Place order",
+              "test_id": "perps-pro-order-form-place-order",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": -491,
+                "width": 225,
+                "height": 48
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Est: 0.00% / Max: 3%",
+              "test_id": "perps-pro-order-form-summary-slippage-button",
+              "enabled": true,
+              "bounds": {
+                "x": 87,
+                "y": -379,
+                "width": 146,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "test_id": "perps-pro-order-form-summary-fees-button",
+              "enabled": true,
+              "bounds": {
+                "x": 39,
+                "y": -355,
+                "width": 20,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Hide order book",
+              "test_id": "perps-pro-market-order-book-collapse",
+              "enabled": true,
+              "bounds": {
+                "x": 318,
+                "y": -937,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,870 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -877,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,869 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -845,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,868 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -813,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,867 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -781,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,866 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -749,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,865 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -685,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,864 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -653,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,863 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -621,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,862 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -589,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,861 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -557,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the SOL market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": -262,
+                "width": 390,
+                "height": 62
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": -54,
+                "width": 374,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            }
+          ],
+          "truncated": false,
+          "limits": {
+            "items": 50,
+            "hidden_or_offscreen": 50
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "ac2-screenshot-stop-market-pill",
+      "action": "ui.screenshot",
+      "intent": "Claim 2 visual evidence, second half: the stop trigger order's type pill shows the detailed order type",
+      "startedAt": "2026-08-04T15:28:43.807Z",
+      "endedAt": "2026-08-04T15:28:44.812Z",
+      "durationMs": 1005,
+      "ok": true,
+      "next": "ac2-run-pill-label-tests",
+      "output": {
+        "captured": true,
+        "path": "screenshots/evidence-ac2-order-pill-stop-market.png",
+        "artifact": {
+          "path": "screenshots/evidence-ac2-order-pill-stop-market.png",
+          "type": "screenshot",
+          "nodeId": "ac2-screenshot-stop-market-pill",
+          "label": "ui.screenshot screenshot",
+          "category": "evidence",
+          "mimeType": "image/png",
+          "metadata": {
+            "provider": "simctl",
+            "mode": "xcrun simctl io screenshot",
+            "selectedDevice": "mmdev-1"
+          }
+        }
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "5EB61ED7-8829-4447-9A39-E20086FA0638",
+          "name": "MetaMask",
+          "nodeCount": 117,
+          "truncated": false
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXButton",
+              "label": "Browse markets",
+              "test_id": "perps-pro-market-header-market-list-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 53,
+                "width": 213,
+                "height": 52
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the ETH market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 2,
+                "width": 390,
+                "height": 62
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 210,
+                "width": 374,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the ETH market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 266,
+                "width": 390,
+                "height": 62
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 474,
+                "width": 374,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 738,
+                "width": 374,
+                "height": 32
+              }
+            }
+          ],
+          "hidden_or_offscreen": [
+            {
+              "role": "AXButton",
+              "label": "Short",
+              "test_id": "perps-pro-order-form-direction-short",
+              "enabled": true,
+              "bounds": {
+                "x": 123,
+                "y": -924,
+                "width": 105,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "3x",
+              "test_id": "perps-pro-order-form-leverage",
+              "enabled": true,
+              "bounds": {
+                "x": 200,
+                "y": -871,
+                "width": 33,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Market",
+              "test_id": "perps-pro-order-form-order-type",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": -823,
+                "width": 225,
+                "height": 48
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXTextField",
+              "label": "Size (USD)",
+              "test_id": "perps-pro-order-form-size-input",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": -725,
+                "width": 201,
+                "height": 18
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "TP / SL",
+              "test_id": "perps-pro-order-form-tpsl",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": -555,
+                "width": 225,
+                "height": 48
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Place order",
+              "test_id": "perps-pro-order-form-place-order",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": -491,
+                "width": 225,
+                "height": 48
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Est: 0.00% / Max: 3%",
+              "test_id": "perps-pro-order-form-summary-slippage-button",
+              "enabled": true,
+              "bounds": {
+                "x": 87,
+                "y": -379,
+                "width": 146,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "test_id": "perps-pro-order-form-summary-fees-button",
+              "enabled": true,
+              "bounds": {
+                "x": 39,
+                "y": -355,
+                "width": 20,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Hide order book",
+              "test_id": "perps-pro-market-order-book-collapse",
+              "enabled": true,
+              "bounds": {
+                "x": 318,
+                "y": -937,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,870 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -877,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,869 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -845,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,868 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -813,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,867 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -781,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,866 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -749,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,865 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -685,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,864 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -653,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,863 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -621,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,862 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -589,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $1,861 as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 266,
+                "y": -557,
+                "width": 116,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the SOL market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": -262,
+                "width": 390,
+                "height": 62
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Cancel",
+              "test_id": "perps-pro-market-order-cancel",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": -54,
+                "width": 374,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            }
+          ],
+          "truncated": false,
+          "limits": {
+            "items": 50,
+            "hidden_or_offscreen": 50
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "ac2-run-pill-label-tests",
+      "action": "command",
+      "intent": "Claim 2 non-visual proof: the Tag pill carries no testID, so no typed text assertion can reach it. These suites pin the exact pill strings ('Limit', 'Stop market', 'Take profit limit') and the 'All sides' filter copy, and fail if the PR is reverted.",
+      "startedAt": "2026-08-04T15:28:44.893Z",
+      "endedAt": "2026-08-04T15:28:49.066Z",
+      "durationMs": 4173,
+      "ok": true,
+      "next": "ac2-assert-pill-label-tests-pass",
+      "output": {
+        "exitCode": 0,
+        "stdout": "",
+        "stderr": "PASS app/components/UI/Perps/utils/orderUtils.test.ts\nPASS app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProPositionsSideFilterSheet.test.tsx\nPASS app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderCard.test.tsx\n\nTest Suites: 3 passed, 3 total\nTests:       107 passed, 107 total\nSnapshots:   0 total\nTime:        2.076 s, estimated 3 s\nRan all test suites matching /app\\/components\\/UI\\/Perps\\/utils\\/orderUtils.test.ts|app\\/components\\/UI\\/Perps\\/Views\\/PerpsProMarketView\\/components\\/PerpsProOrderCard.test.tsx|app\\/components\\/UI\\/Perps\\/Views\\/PerpsProMarketView\\/components\\/PerpsProPositionsSideFilterSheet.test.tsx/i.\n"
+      }
+    },
+    {
+      "nodeId": "ac2-assert-pill-label-tests-pass",
+      "action": "assert_exit_code",
+      "intent": "Claim 2: fail the run unless the pill-label suites actually pass",
+      "startedAt": "2026-08-04T15:28:49.145Z",
+      "endedAt": "2026-08-04T15:28:49.226Z",
+      "durationMs": 81,
+      "ok": true,
+      "next": "teardown-close-limit-order",
+      "output": {
+        "source": "ac2-run-pill-label-tests",
+        "expected": 0,
+        "actual": 0
+      }
+    },
+    {
+      "nodeId": "teardown-close-limit-order",
+      "action": "metamask.perps.close_orders",
+      "intent": "Restore the slot's pre-run order book by cancelling only the SOL limit order this recipe created",
+      "startedAt": "2026-08-04T15:28:49.299Z",
+      "endedAt": "2026-08-04T15:28:53.875Z",
+      "durationMs": 4576,
+      "ok": true,
+      "next": "teardown-done",
+      "output": {
+        "action": "metamask.perps.close_orders",
+        "expectedOpen": false,
+        "matchingCount": 0,
+        "orders": [],
+        "source": "mobile-perps-controller-open-orders",
+        "close": {
+          "action": "metamask.perps.close_orders",
+          "canceled": true,
+          "matchingCount": 1,
+          "symbols": [
+            "SOL"
+          ],
+          "result": {
+            "success": true,
+            "successCount": 1,
+            "failureCount": 0,
+            "results": [
+              {
+                "orderId": "509942552756",
+                "symbol": "SOL",
+                "success": true,
+                "result": {
+                  "success": true,
+                  "orderId": "509942552756",
+                  "providerId": "hyperliquid"
+                }
+              }
+            ]
+          },
+          "proofPath": "mobile-perps-controller-cancel-order"
+        },
+        "liveAdapter": "/Users/deeeed/dev/metamask/metamask-harness/library/actions/mobile/perps/close_orders.mjs"
+      }
+    },
+    {
+      "nodeId": "teardown-done",
+      "action": "end",
+      "startedAt": "2026-08-04T15:28:53.981Z",
+      "endedAt": "2026-08-04T15:28:53.981Z",
+      "durationMs": 0,
+      "ok": true,
+      "status": "pass"
+    }
+  ]
+}

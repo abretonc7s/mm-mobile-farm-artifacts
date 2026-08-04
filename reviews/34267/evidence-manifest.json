@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "preferred_mode": "screenshots",
+  "summary": "Live Perps Pro (iOS, mmdev-1) evidence for the three copy corrections in PR #34267. All 3 claims PROVEN; recipe trace 22/22 nodes passed. The order-pill image is the strongest single proof: it shows the bare 'Limit' pill and the 'Stop market' pill in one frame.",
+  "standalone": [
+    {
+      "label": "Claim 2 — Orders tab type pills: bare 'Limit' (SOL, reduce-only No) and 'Stop market' (ETH) in one frame",
+      "covers": ["2"],
+      "file": "artifacts/recipe-run/screenshots/evidence-ac2-order-pill-limit.png",
+      "note": "Pre-PR the SOL order rendered 'Open limit' and the ETH trigger rendered 'Stop'. Both halves of the AND-claim are visible here, so this is the primary claim-2 proof."
+    },
+    {
+      "label": "Claim 1 — Perps Pro order form size label reads 'Size (USD)'",
+      "covers": ["1"],
+      "file": "artifacts/recipe-run/screenshots/evidence-ac1-size-usd-label.png",
+      "note": "Backed by the typed assertion ui.wait_for test_id=perps-pro-order-form-size-input text='Size (USD)'; pre-PR string was 'Size USD'."
+    },
+    {
+      "label": "Claim 3 — positions side filter sheet lists 'All sides' first, and the collapsed filter button matches",
+      "covers": ["3"],
+      "file": "artifacts/recipe-run/screenshots/evidence-ac3-all-sides-filter.png",
+      "note": "Backed by the typed assertion on ...side-filter-sheet-option-all with text 'All sides'; pre-PR key all_types rendered 'All types'."
+    },
+    {
+      "label": "Claim 2 corroboration — BTC 'Stop market' and ETH 'Take profit limit' pills further down the Orders list",
+      "covers": ["2"],
+      "file": "artifacts/recipe-run/screenshots/evidence-ac2-order-pill-stop-market.png",
+      "note": "Secondary; confirms the detailed-type pills on trigger orders beyond the primary frame."
+    }
+  ],
+  "videos": {
+    "after": "artifacts/evidence/review.mp4",
+    "preferred": false,
+    "note": "Full recording of the passing 22-node recipe run on iOS (mmdev-1); moov atom verified. Screenshots are the preferred proof."
+  },
+  "omit": [
+    {
+      "file": "artifacts/probe/probe-current.png",
+      "reason": "Exploratory probe of the Lite market view before switching to Pro mode; not AC-bound. Deleted during evidence pruning."
+    },
+    {
+      "file": "artifacts/probe/probe-pro.png",
+      "reason": "Exploratory probe confirming Pro mode reachability; superseded by evidence-ac1-size-usd-label.png. Deleted during evidence pruning."
+    },
+    {
+      "file": "artifacts/probe/probe-orders.png",
+      "reason": "Exploratory probe of the Orders tab; superseded by the claim-2 evidence images. Deleted during evidence pruning."
+    },
+    {
+      "file": "artifacts/probe/probe-filter.png",
+      "reason": "Exploratory probe of the side filter sheet; superseded by evidence-ac3-all-sides-filter.png. Deleted during evidence pruning."
+    }
+  ]
+}

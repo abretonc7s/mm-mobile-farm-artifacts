@@ -1,0 +1,180 @@
+{
+  "$schema": "https://farmslot.io/schemas/recipe-v1.schema.json",
+  "title": "PR #34267 — Perps Pro copy fixes (Size (USD), order type pills, All sides filter)",
+  "description": "Proves the three copy corrections claimed by PR #34267 on the live Perps Pro market view: the order form size label reads 'Size (USD)', the Orders tab type pill shows the order type only (plain 'Limit' for a resting limit order, 'Stop market' for a stop trigger order) instead of 'Open limit'/'Close limit'/'Stop', and the positions side filter sheet's first option reads 'All sides' instead of 'All types'. Claim 2 has no testID on the Tag pill, so it is proven by legible screenshot evidence plus the revert-sensitive unit suites that pin the exact pill strings.",
+  "workflow": {
+    "entry": "setup-unlock",
+    "nodes": {
+      "setup-unlock": {
+        "action": "metamask.wallet.ensure_unlocked",
+        "intent": "Unlock the wallet — the Perps Pro market view only renders behind an unlocked wallet",
+        "next": "setup-limit-order"
+      },
+      "setup-limit-order": {
+        "action": "metamask.perps.ensure_orders",
+        "market": "SOL",
+        "side": "long",
+        "state": "open",
+        "notional": 12,
+        "leverage": 3,
+        "timeout_ms": 120000,
+        "intent": "Establish the missing precondition for claim 2: a plain resting limit order, so the Orders tab renders a bare 'Limit' pill. The already-open BTC stop trigger order supplies the 'Stop market' half.",
+        "next": "setup-navigate-market"
+      },
+      "setup-navigate-market": {
+        "action": "ui.navigate",
+        "page": "perps-market",
+        "market": "ETH",
+        "timeout_ms": 60000,
+        "intent": "Open a Perps market screen, the surface that renders the Pro layout under review",
+        "next": "gate-pro-view"
+      },
+      "gate-pro-view": {
+        "action": "ui.wait_for",
+        "test_id": "perps-pro-market-view",
+        "expected": "present",
+        "timeout_ms": 60000,
+        "intent": "Fail loudly unless the Pro-mode layout is actually rendered — every claim in this PR is Pro-only, so a lite-mode fallback must not be silently accepted",
+        "next": "ac1-assert-size-label"
+      },
+      "ac1-assert-size-label": {
+        "action": "ui.wait_for",
+        "test_id": "perps-pro-order-form-size-input",
+        "text": "Size (USD)",
+        "expected": "present",
+        "timeout_ms": 30000,
+        "intent": "Claim 1: prove the order form size label reads 'Size (USD)'. Revert-sensitive — the pre-PR string 'Size USD' does not contain 'Size (USD)'.",
+        "next": "ac1-screenshot-size-label"
+      },
+      "ac1-screenshot-size-label": {
+        "action": "ui.screenshot",
+        "path": "screenshots/evidence-ac1-size-usd-label.png",
+        "label": "Perps Pro order form showing the 'Size (USD)' size input label",
+        "timeout_ms": 45000,
+        "intent": "Claim 1 visual evidence: the size label as a user sees it in the Pro order form",
+        "next": "ac3-scroll-to-positions"
+      },
+      "ac3-scroll-to-positions": {
+        "action": "ui.scroll",
+        "test_id": "perps-pro-market-scroll-view",
+        "delta_y": 650,
+        "settle": true,
+        "intent": "The positions and orders panel sits below the chart and order form on the Pro layout; bring it into the visible viewport so a user can read the filter controls under review.",
+        "next": "ac3-open-positions-tab"
+      },
+      "ac3-open-positions-tab": {
+        "action": "ui.press",
+        "test_id": "perps-pro-market-positions-panel-tab-positions",
+        "settle": true,
+        "intent": "Claim 3 precondition: select the Positions tab that owns the side filter",
+        "next": "ac3-open-side-filter"
+      },
+      "ac3-open-side-filter": {
+        "action": "ui.press",
+        "test_id": "perps-pro-market-positions-side-filter-button",
+        "settle": true,
+        "intent": "Claim 3: open the positions side filter sheet",
+        "next": "ac3-assert-all-sides"
+      },
+      "ac3-assert-all-sides": {
+        "action": "ui.wait_for",
+        "test_id": "perps-pro-market-positions-side-filter-sheet-option-all",
+        "text": "All sides",
+        "expected": "present",
+        "timeout_ms": 30000,
+        "intent": "Claim 3: prove the first ('all') filter option reads 'All sides'. Revert-sensitive — the pre-PR key all_types renders 'All types'.",
+        "next": "ac3-screenshot-side-filter"
+      },
+      "ac3-screenshot-side-filter": {
+        "action": "ui.screenshot",
+        "path": "screenshots/evidence-ac3-all-sides-filter.png",
+        "label": "Positions side filter sheet with 'All sides' as the first option",
+        "timeout_ms": 45000,
+        "intent": "Claim 3 visual evidence: the filter sheet option order and copy as a user sees it",
+        "next": "ac3-close-side-filter"
+      },
+      "ac3-close-side-filter": {
+        "action": "ui.press",
+        "test_id": "perps-pro-market-positions-side-filter-sheet-apply",
+        "settle": true,
+        "intent": "Dismiss the filter sheet so the Orders tab is reachable for claim 2",
+        "next": "ac2-open-orders-tab"
+      },
+      "ac2-open-orders-tab": {
+        "action": "ui.press",
+        "test_id": "perps-pro-market-positions-panel-tab-orders",
+        "settle": true,
+        "intent": "Claim 2 precondition: select the Orders tab that renders the order type pills",
+        "next": "ac2-assert-orders-list"
+      },
+      "ac2-assert-orders-list": {
+        "action": "ui.wait_for",
+        "test_id": "perps-pro-market-orders-list",
+        "expected": "present",
+        "timeout_ms": 45000,
+        "intent": "Claim 2: confirm the Orders list is mounted before capturing pill evidence",
+        "next": "ac2-assert-limit-order-open"
+      },
+      "ac2-assert-limit-order-open": {
+        "action": "metamask.perps.assert_orders",
+        "market": "SOL",
+        "state": "open",
+        "timeout_ms": 60000,
+        "intent": "Claim 2: independently confirm the plain limit order backing the bare 'Limit' pill is actually live, so the screenshot is not proving a stale row",
+        "next": "ac2-screenshot-limit-pill"
+      },
+      "ac2-screenshot-limit-pill": {
+        "action": "ui.screenshot",
+        "path": "screenshots/evidence-ac2-order-pill-limit.png",
+        "label": "Orders tab showing a bare 'Limit' type pill (previously rendered as 'Open limit')",
+        "timeout_ms": 45000,
+        "intent": "Claim 2 visual evidence, first half: the resting limit order's type pill shows the order type only",
+        "next": "ac2-scroll-to-stop-order"
+      },
+      "ac2-scroll-to-stop-order": {
+        "action": "ui.scroll",
+        "test_id": "perps-pro-market-scroll-view",
+        "delta_y": 1250,
+        "settle": true,
+        "timeout_ms": 30000,
+        "intent": "The stop trigger order sits further down the list than the resting limit order; bring that card into the visible viewport so a reviewer can read its type pill in the evidence image.",
+        "next": "ac2-screenshot-stop-market-pill"
+      },
+      "ac2-screenshot-stop-market-pill": {
+        "action": "ui.screenshot",
+        "path": "screenshots/evidence-ac2-order-pill-stop-market.png",
+        "label": "Orders tab showing a 'Stop market' type pill (previously rendered as 'Stop')",
+        "timeout_ms": 45000,
+        "intent": "Claim 2 visual evidence, second half: the stop trigger order's type pill shows the detailed order type",
+        "next": "ac2-run-pill-label-tests"
+      },
+      "ac2-run-pill-label-tests": {
+        "action": "command",
+        "cmd": "yarn jest app/components/UI/Perps/utils/orderUtils.test.ts app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderCard.test.tsx app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProPositionsSideFilterSheet.test.tsx --no-coverage --ci",
+        "timeout_ms": 900000,
+        "allow_failure": true,
+        "intent": "Claim 2 non-visual proof: the Tag pill carries no testID, so no typed text assertion can reach it. These suites pin the exact pill strings ('Limit', 'Stop market', 'Take profit limit') and the 'All sides' filter copy, and fail if the PR is reverted.",
+        "next": "ac2-assert-pill-label-tests-pass"
+      },
+      "ac2-assert-pill-label-tests-pass": {
+        "action": "assert_exit_code",
+        "source": "ac2-run-pill-label-tests",
+        "expected": 0,
+        "intent": "Claim 2: fail the run unless the pill-label suites actually pass",
+        "next": "teardown-close-limit-order"
+      },
+      "teardown-close-limit-order": {
+        "action": "metamask.perps.close_orders",
+        "market": "SOL",
+        "mode": "matching",
+        "timeout_ms": 120000,
+        "intent": "Restore the slot's pre-run order book by cancelling only the SOL limit order this recipe created",
+        "next": "teardown-done"
+      },
+      "teardown-done": {
+        "action": "end",
+        "status": "pass"
+      }
+    }
+  }
+}

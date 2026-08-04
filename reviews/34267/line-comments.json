@@ -1,0 +1,31 @@
+{
+  "pr_number": "34267",
+  "recommendation": "COMMENT",
+  "summary": "All three copy corrections work and are proven on a live Perps Pro device run (22/22 recipe nodes, 3/3 claims PROVEN, 107/107 unit tests, tsc clean). One fix-before-merge item: the new formatOrderTypeLabel renders hardcoded English and raw provider strings, dropping the i18n and provider normalization the removed helper had.",
+  "comments": [
+    {
+      "path": "app/components/UI/Perps/utils/orderUtils.ts",
+      "line": 587,
+      "body": "This helper drops both the translation and the provider normalization that the removed `getOrderTypeLabel` provided, so the pill is now un-translated and provider-dependent.\n\n**i18n regression.** The old code returned `strings('perps.order.market')` for the market fallback and `strings('...open_limit'/'close_limit')` for limit orders. This returns the English literals `'Limit'` / `'Market'`. `perps.order.market` and `perps.order.limit` already exist and are translated in 13 locales (`de, el, es, fr, hi, id, ja, ko, pt, ru, tr, vi, zh` — e.g. fr `Marché` / `Limite`), so those users previously saw translated copy on this pill and will now see English.\n\n**Provider leak.** `order.detailedOrderType` is provider-supplied and is rendered verbatim. HyperLiquid emits exactly the canonical `DETAILED_ORDER_TYPES` values (`Stop Market`, `Take Profit Limit`, …), but the MYX adapter (`@metamask/perps-controller/utils/myxAdapter.mjs:308-317`) emits `'Take Profit'`, `'Stop Loss'`, `'Liquidation'` — none of which are in that set. Once MYX orders reach this tab, the same UI will read `Stop loss` beside HyperLiquid's `Stop market`. The removed helper normalized both to `Stop`. The perps anti-pattern guide is explicit that provider differences must be normalized in the aggregation layer, not leaked to the view.\n\n**Suggested fix.** Minimum: use `strings('perps.order.limit')` / `strings('perps.order.market')` for the fallback branch. Better: map `detailedOrderType` through `DETAILED_ORDER_TYPES` to i18n keys — it is a closed six-value set, so the map stays small and the pill becomes both translated and provider-independent.\n\nWorth adding a test that asserts the label is resolved through `strings(...)`, since the current suites pass on English literals and so cannot catch this class of regression.",
+      "severity": "must_fix"
+    },
+    {
+      "path": "locales/languages/en.json",
+      "line": 1527,
+      "body": "Removing `getOrderTypeLabel` and switching the side filter to `all_sides` orphaned five keys in this file — they now have zero references anywhere in `app/` (verified by ripgrep):\n\n- `perps.pro_positions_panel.side_filter.all_types` (line 1551)\n- `perps.pro_positions_panel.order_card.take_profit` (line 1581)\n- `perps.pro_positions_panel.order_card.stop` (line 1582)\n- `perps.pro_positions_panel.order_card.open_limit` (line 1583)\n- `perps.pro_positions_panel.order_card.close_limit` (line 1584)\n\nThese are orphans this change created, so removing them here keeps the locale bundle and the translation pipeline from carrying dead strings. (If any are intentionally kept for the `formatOrderTypeLabel` i18n fix suggested on `orderUtils.ts`, please keep them and disregard.)",
+      "severity": "suggestion"
+    },
+    {
+      "path": "app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderCard.tsx",
+      "line": 208,
+      "body": "This `Tag` has no `testID`, which makes the copy the PR is fixing unassertable by automated validation. I hit this directly while validating: `ui.wait_for` against the order-row testID returns only the row's own shallow text (`\"BTC\"`), so there is no way to assert the pill string — claim 2 had to fall back to screenshot plus unit-test proof instead of a typed UI assertion.\n\nSince this PR already modifies this element, please add a `testID` sourced from `Perps.testIds.ts` (e.g. `PerpsProMarketViewSelectorsIDs.ORDER_TYPE_TAG`) so recipes and E2E can read the value. The perps testID convention asks for the testID to sit on the element that actually holds the value, i.e. the `Tag` rather than a wrapper.",
+      "severity": "suggestion"
+    },
+    {
+      "path": "app/components/UI/Perps/utils/orderUtils.ts",
+      "line": 586,
+      "body": "This type-resolution expression is character-for-character identical to the one in `formatOrderLabel` just above (lines 566-567). Worth extracting a small internal helper (e.g. `resolveOrderTypeString(order)`) that both call, so the two labels cannot drift apart — particularly relevant if the i18n/normalization fix above is applied to only one of them.",
+      "severity": "nitpick"
+    }
+  ]
+}

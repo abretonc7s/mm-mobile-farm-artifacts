@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "runStatus": "pass",
+  "provenance": {
+    "runner": {
+      "source": "/Users/deeeed/dev/metamask/metamask-harness",
+      "git_ref": "4b31bbb1369bf6751e837e786dd78295e85a0d1f",
+      "name": "@metamask/recipe-runner"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "recipe.json",
+      "type": "recipe",
+      "label": "Executed recipe",
+      "category": "system"
+    },
+    {
+      "path": "recipe-resolution.json",
+      "type": "json",
+      "label": "Resolved recipe dependency graph",
+      "category": "system"
+    },
+    {
+      "path": "screenshots/evidence-ac1-size-usd-label.png",
+      "type": "screenshot",
+      "nodeId": "ac1-screenshot-size-label",
+      "label": "ui.screenshot screenshot",
+      "category": "evidence",
+      "mimeType": "image/png",
+      "metadata": {
+        "provider": "simctl",
+        "mode": "xcrun simctl io screenshot",
+        "selectedDevice": "mmdev-1"
+      }
+    },
+    {
+      "path": "screenshots/evidence-ac3-all-sides-filter.png",
+      "type": "screenshot",
+      "nodeId": "ac3-screenshot-side-filter",
+      "label": "ui.screenshot screenshot",
+      "category": "evidence",
+      "mimeType": "image/png",
+      "metadata": {
+        "provider": "simctl",
+        "mode": "xcrun simctl io screenshot",
+        "selectedDevice": "mmdev-1"
+      }
+    },
+    {
+      "path": "screenshots/evidence-ac2-order-pill-limit.png",
+      "type": "screenshot",
+      "nodeId": "ac2-screenshot-limit-pill",
+      "label": "ui.screenshot screenshot",
+      "category": "evidence",
+      "mimeType": "image/png",
+      "metadata": {
+        "provider": "simctl",
+        "mode": "xcrun simctl io screenshot",
+        "selectedDevice": "mmdev-1"
+      }
+    },
+    {
+      "path": "screenshots/evidence-ac2-order-pill-stop-market.png",
+      "type": "screenshot",
+      "nodeId": "ac2-screenshot-stop-market-pill",
+      "label": "ui.screenshot screenshot",
+      "category": "evidence",
+      "mimeType": "image/png",
+      "metadata": {
+        "provider": "simctl",
+        "mode": "xcrun simctl io screenshot",
+        "selectedDevice": "mmdev-1"
+      }
+    },
+    {
+      "path": "summary.json",
+      "type": "summary",
+      "label": "Run summary",
+      "category": "system"
+    },
+    {
+      "path": "trace.json",
+      "type": "trace",
+      "label": "Execution trace",
+      "category": "system"
+    },
+    {
+      "path": "diagnostics.json",
+      "type": "json",
+      "label": "Run-scoped application diagnostics",
+      "category": "diagnostic"
+    },
+    {
+      "path": "report.md",
+      "type": "report",
+      "label": "Human run report",
+      "category": "system"
+    }
+  ]
+}

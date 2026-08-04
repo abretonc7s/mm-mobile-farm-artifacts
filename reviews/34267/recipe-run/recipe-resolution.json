@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "root": {
+    "ref": "$root:sha256:555f2792604e93ae879d062d862c937dca8a905067cdfd1f127bfd8492ab9473",
+    "digest": "sha256:555f2792604e93ae879d062d862c937dca8a905067cdfd1f127bfd8492ab9473"
+  },
+  "dependencies": [],
+  "edges": []
+}

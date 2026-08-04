@@ -1,0 +1,63 @@
+{
+  "status": "pass",
+  "total": 22,
+  "passed": 22,
+  "failed": 0,
+  "cause_counts": {
+    "subject": 0,
+    "harness": 0,
+    "environment": 0,
+    "unknown": 0
+  },
+  "startedAt": "2026-08-04T15:28:19.314Z",
+  "endedAt": "2026-08-04T15:28:54.061Z",
+  "durationMs": 34747,
+  "harness": {
+    "name": "@farmslot/recipe-harness",
+    "version": "0.14.0",
+    "action_manifest_schema": "https://farmslot.io/schemas/action-manifest-v1.schema.json"
+  },
+  "runner": {
+    "source": "/Users/deeeed/dev/metamask/metamask-harness",
+    "git_ref": "4b31bbb1369bf6751e837e786dd78295e85a0d1f",
+    "name": "@metamask/recipe-runner"
+  },
+  "recipeLibraries": {
+    "sources": [
+      {
+        "name": "perps",
+        "root": "/Users/deeeed/dev/metamask/experimental-metamask-recipe-perps",
+        "recipeCount": 9,
+        "provenance": {
+          "kind": "library",
+          "trust": "trusted",
+          "name": "perps",
+          "revision": "6432e86eb671a137101505866f18444ef1eccc92",
+          "dirty": false
+        }
+      },
+      {
+        "name": "metamask",
+        "root": "/Users/deeeed/dev/metamask/metamask-harness/library",
+        "recipeCount": 11,
+        "provenance": {
+          "kind": "bundled",
+          "trust": "trusted",
+          "name": "metamask"
+        }
+      }
+    ],
+    "shadowed": []
+  },
+  "sideFindings": {
+    "status": "review",
+    "nonBlocking": true,
+    "counts": {
+      "total": 8,
+      "warning": 4,
+      "error": 2,
+      "exception": 2
+    },
+    "diagnosticsPath": "diagnostics.json"
+  }
+}

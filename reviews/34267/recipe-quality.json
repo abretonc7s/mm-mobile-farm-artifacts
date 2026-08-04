@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "verdict": "pass",
+  "compact": {
+    "verdict": "PASS",
+    "reasons": [
+      "All 3 verbatim PR-body claims map to explicitly ac<N>-prefixed nodes and AC-bound evidence filenames; coverage is 3/3 PROVEN with 0 weak, 0 missing, 0 untestable.",
+      "Trace cross-check is clean: 22 drafted nodes, 22 traced, 22 passed, 0 failed. Reported counts are derived from trace.json rather than the draft.",
+      "Assertions are revert-sensitive: 'Size (USD)' is not a substring of the pre-PR 'Size USD', and the pre-PR all_types key renders 'All types', so both typed ui.wait_for text assertions fail if the PR is reverted.",
+      "Claim 2 has no typed path because the order-type Tag carries no testID (verified live: ui.wait_for on the order row returns only 'BTC'). The gap is proven, named as a runner/product gap, and compensated with legible screenshot evidence plus a command + assert_exit_code node running the three suites that pin the exact pill strings (107/107 passed, exit 0).",
+      "Preconditions are established by declared typed actions rather than assumed: metamask.perps.ensure_orders creates the resting limit order, metamask.perps.assert_orders independently confirms it is live before the pill screenshot, and teardown-close-limit-order restores the pre-run order book.",
+      "gate-pro-view fails the run loudly if the Pro layout is not rendered, so a silent Lite-mode fallback cannot produce misleading evidence.",
+      "Forbidden-pattern scan is clean: no switch/default routing around an assertion, no eval_sync, no wait node used in place of ui.wait_for, no fiber-only proof for the visual-ordering claim, every node ID prefixed setup-/gate-/ac<N>-/teardown-.",
+      "Evidence was audited by reading every PNG, not by filename. Three earlier runs passed all nodes while the claim-2 'Limit' pill sat outside the captured frame; those were graded WEAK and the recipe was fixed and re-run rather than reported as proven."
+    ],
+    "better_version_guidance": [
+      "Add a testID to the order-type Tag in PerpsProOrderCard.tsx so claim 2 can be proven by a typed ui.wait_for text assertion instead of screenshot plus unit tests. This is already filed as a review finding against the PR.",
+      "Frame positioning depends on scroll deltas tuned to this device and this fixture's order count. Once the pill has a testID, replace the delta scrolls with scroll_into_view for a device-independent recipe.",
+      "No declared action can create a stop-market order (metamask.perps.place_order exposes no orderType or trigger fields), so the 'Stop market' half relied on a pre-existing fixture order. A parameterised trigger-order setup action would make claim 2 self-contained."
+    ]
+  },
+  "dimensions": {},
+  "structural_findings": [],
+  "contextual_findings": [],
+  "suggested_recipe_delta": [],
+  "training_fields": {
+    "proof_mode": "unknown"
+  },
+  "meta": {
+    "producer": "worker",
+    "fallback_used": false,
+    "legacy_task": false,
+    "artifact_required": true,
+    "source_signals": [
+      "recipe-quality.json"
+    ]
+  }
+}
