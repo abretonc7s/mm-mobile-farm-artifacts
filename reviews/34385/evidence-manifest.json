@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "preferred_mode": "screenshots",
+  "summary": "Evidence collection skipped because the operator restricted this independent review to the light/static tier and prohibited recipe, device, browser, and recording work.",
+  "standalone": [],
+  "videos": {
+    "preferred": false,
+    "note": "skipped (tier: light)"
+  }
+}

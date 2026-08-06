@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "verdict": "warn",
+  "compact": {
+    "verdict": "WARN",
+    "reasons": [
+      "All 8 derived task claims are proven: the recipe asserts the declared and resolved controller version, gates on a clean full-repo tsc, gates on 8 targeted Jest suites, and drives five real Mobile Perps flows (market order with TP/SL, limit order, position Auto close, position close, full open/close lifecycle) with controller-state assertions after each UI gesture.",
+      "The recipe has a genuine removal test: reverting any of the six widened OrderType signatures, the toast-bucket resolution, or the 14 PerpsErrorCode entries reintroduces the 19 TypeScript errors that assert-typecheck-clean asserts are gone, so the recipe fails without the change.",
+      "Warn rather than pass because the recipe is flaky against live HyperLiquid testnet: of five runs, three passed 207/207 and two failed in different library-flow assertions (prove-market-order/restore-market teardown racing the just-placed TP/SL triggers; prove-limit-order/assert-open-order when the limit order filled instead of resting).",
+      "Neither flake implicates the change under test, and both live in called library recipes rather than the authored nodes, but a proof a reviewer cannot re-run green on demand is not a pass-grade proof.",
+      "Screenshot evidence is orientation-only by design: this change has no user-visible surface, so the binding proof for every claim is compiler, test-runner, or controller state rather than pixels."
+    ],
+    "better_version_guidance": [
+      "Make prove-limit-order deterministic by resting the order far from the touch (a percentage offset from mid) instead of the live Bid preset, so it cannot fill during the proof window.",
+      "Give the library teardown a bounded retry or settle window before asserting no open orders, so a just-filled parent's TP/SL triggers cannot race the assertion.",
+      "Consider asserting the two new v11-visible signals directly — Order.orderType reporting 'market' for a stop-market trigger, and Position.takeProfitOrders / stopLossOrders — which would turn the incidental observation made during run 2 into a standing regression guard."
+    ]
+  },
+  "dimensions": {
+    "coverage": {
+      "status": "pass",
+      "reason": "All 8 derived task claims proven; no weak or missing rows.",
+      "evidence": [
+        "artifacts/recipe-coverage.md",
+        "artifacts/recipe-run/trace.json"
+      ]
+    },
+    "graphQuality": {
+      "status": "pass",
+      "reason": "Cheap state asserts gate first, then the compile and test gates, then five real UI flows; every node carries an intent and the graph terminates in a single end node.",
+      "evidence": [
+        "artifacts/recipe.json",
+        "artifacts/recipe-run/recipe-resolution.json"
+      ]
+    },
+    "evidenceFit": {
+      "status": "pass",
+      "reason": "Compiler and test evidence for the type-level claims, controller state plus read-and-verified screenshots for the UI flows. The order-result frame shows the 'Order submitted' toast emitted by the exact expression this change introduces. Market-order screenshots are overwritten by the limit-order flow (same library filenames), so that claim is graded state-only rather than dressed up with a screenshot that shows a different run.",
+      "evidence": [
+        "artifacts/recipe-run/trace.json",
+        "artifacts/recipe-run/screenshots/perps-order-result-mobile.png",
+        "artifacts/recipe-run/screenshots/perps-position-auto-close-mobile.png",
+        "artifacts/recipe-run/screenshots/perps-position-close-mobile.png",
+        "artifacts/after.mp4"
+      ]
+    },
+    "flakeRisk": {
+      "status": "warn",
+      "reason": "Two of five runs failed in different live-testnet library assertions (teardown order race; limit order filling instead of resting); the other three passed 207/207.",
+      "evidence": [
+        "artifacts/recipe-coverage.md",
+        "artifacts/recipe-run.log"
+      ]
+    }
+  },
+  "structural_findings": [],
+  "contextual_findings": [],
+  "suggested_recipe_delta": [],
+  "training_fields": {
+    "proof_mode": "unknown"
+  },
+  "meta": {
+    "producer": "worker",
+    "fallback_used": false,
+    "legacy_task": false,
+    "artifact_required": true,
+    "source_signals": [
+      "recipe-quality.json"
+    ]
+  }
+}

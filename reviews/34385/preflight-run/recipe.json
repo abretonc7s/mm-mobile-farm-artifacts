@@ -1,0 +1,30 @@
+{
+  "$schema": "https://farmslot.io/schemas/recipe-v1.schema.json",
+  "title": "PR 34385 review preflight state",
+  "workflow": {
+    "entry": "setup-ensure-wallet",
+    "nodes": {
+      "setup-ensure-wallet": {
+        "action": "metamask.wallet.ensure_unlocked",
+        "intent": "Unlock the fixture wallet so current Perps state can be read",
+        "next": "setup-read-positions"
+      },
+      "setup-read-positions": {
+        "action": "metamask.perps.read_positions",
+        "market": "ETH",
+        "intent": "Read current ETH positions needed by the review claims",
+        "next": "setup-read-orders"
+      },
+      "setup-read-orders": {
+        "action": "metamask.perps.read_orders",
+        "market": "ETH",
+        "intent": "Read current ETH open orders needed by the review claims",
+        "next": "setup-done"
+      },
+      "setup-done": {
+        "action": "end",
+        "status": "pass"
+      }
+    }
+  }
+}

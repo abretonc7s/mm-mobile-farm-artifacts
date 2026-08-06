@@ -1,0 +1,6 @@
+{
+  "originalFamilyScopeSummary": "update mobile to latest perps controller version",
+  "currentTriggerSummary": "review-pr: feat(perps): update mobile to latest perps controller version",
+  "scopeVerdict": "full-scope-addressed",
+  "notes": "Published HEAD declares and resolves @metamask/perps-controller 11.0.0, applies the required OrderType and error-union compatibility updates, passes the independent static typecheck and 161 focused tests, and matches the inherited implementation scope. Live user-flow claims were not independently rerun because the operator restricted this review to light/static analysis."
+}

@@ -1,0 +1,124 @@
+{
+  "$schema": "https://farmslot.io/schemas/recipe-v1.schema.json",
+  "title": "TAT-3687 — perps-controller v11 adoption, no regression",
+  "description": "Proves Mobile resolves @metamask/perps-controller 11.x, that every v11 breaking change is fixed (repo type-checks clean and the widened OrderType / PerpsErrorCode adoption is unit-covered), and that the Perps market-order, limit-order, Auto close, close-position, and full open/close lifecycle flows still work against the new controller.",
+  "workflow": {
+    "entry": "status",
+    "nodes": {
+      "status": {
+        "action": "app.status",
+        "intent": "Read runner compatibility status before asserting anything",
+        "next": "assert-declared-version"
+      },
+      "assert-declared-version": {
+        "action": "assert_file",
+        "path": "package.json",
+        "contains": "\"@metamask/perps-controller\": \"^11.0.0\"",
+        "intent": "C1: confirm Mobile declares the v11 perps-controller range",
+        "next": "assert-resolved-version"
+      },
+      "assert-resolved-version": {
+        "action": "assert_json",
+        "path": "node_modules/@metamask/perps-controller/package.json",
+        "assert": {
+          "path": "$.version",
+          "operator": "eq",
+          "value": "11.0.0"
+        },
+        "intent": "C1: confirm the declared range actually resolves to 11.0.0, so every later node runs against v11",
+        "next": "typecheck"
+      },
+      "typecheck": {
+        "action": "command",
+        "cmd": "NODE_OPTIONS='--max-old-space-size=8192' npx tsc --noEmit --incremental --tsBuildInfoFile .tat3687.tsbuildinfo --project ./tsconfig.json",
+        "timeout_ms": 1800000,
+        "allow_failure": true,
+        "intent": "C2: compile the repo against v11 — this is the node that fails if any breaking-change fix is removed",
+        "next": "assert-typecheck-clean"
+      },
+      "assert-typecheck-clean": {
+        "action": "assert_exit_code",
+        "source": "typecheck",
+        "expected": 0,
+        "intent": "C2: assert zero TypeScript errors, proving every v11 breaking change is fixed",
+        "next": "unit-tests"
+      },
+      "unit-tests": {
+        "action": "command",
+        "cmd": "yarn jest app/components/UI/Perps/utils/translatePerpsError.test.ts app/components/UI/Perps/utils/translatePerpsErrorCoverage.test.ts app/components/UI/Perps/utils/orderUtils.test.ts app/components/UI/Perps/hooks/usePerpsOrderFees.test.ts app/components/UI/Perps/hooks/usePerpsClosePosition.test.ts app/components/UI/Perps/hooks/usePerpsToasts.test.tsx app/components/UI/Perps/Views/PerpsOrderView/PerpsOrderView.test.tsx app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts --no-coverage",
+        "timeout_ms": 1800000,
+        "allow_failure": true,
+        "intent": "C3: exercise the widened OrderType and PerpsErrorCode adoption behaviourally, not just at the type level",
+        "next": "assert-unit-tests-pass"
+      },
+      "assert-unit-tests-pass": {
+        "action": "assert_exit_code",
+        "source": "unit-tests",
+        "expected": 0,
+        "intent": "C3: assert the error-code map, maker-status, toast-bucket and close-position behaviour is correct under v11",
+        "next": "prove-market-order"
+      },
+      "prove-market-order": {
+        "action": "call",
+        "ref": "perps.prove-order",
+        "params": {
+          "market": "ETH",
+          "network": "testnet",
+          "side": "long",
+          "order_type": "market",
+          "protection": "both"
+        },
+        "intent": "C4: place a real ETH market order with take profit and stop loss through the Mobile UI, exercising the order form, fee hook, TP/SL route params and order toasts against v11",
+        "next": "prove-limit-order"
+      },
+      "prove-limit-order": {
+        "action": "call",
+        "ref": "perps.prove-order",
+        "params": {
+          "market": "ETH",
+          "network": "testnet",
+          "side": "long",
+          "order_type": "limit",
+          "protection": "none"
+        },
+        "intent": "C5: place a real ETH limit order through the Mobile UI, exercising the limit branch of the fee hook and the limit order toasts against v11",
+        "next": "prove-auto-close"
+      },
+      "prove-auto-close": {
+        "action": "call",
+        "ref": "perps.manage-position",
+        "params": {
+          "market": "ETH",
+          "network": "testnet",
+          "side": "long",
+          "operation": "auto_close",
+          "protection": "both"
+        },
+        "intent": "C6: update an open ETH position's Auto close settings through the Mobile UI, exercising updatePositionTPSL and the TP/SL form against v11",
+        "next": "prove-close-position"
+      },
+      "prove-close-position": {
+        "action": "call",
+        "ref": "perps.manage-position",
+        "params": {
+          "market": "ETH",
+          "network": "testnet",
+          "side": "long",
+          "operation": "close"
+        },
+        "intent": "C7: close an ETH position through the Mobile UI, exercising v11's reduce-only size-grid rounding and the removed $10-minimum retry",
+        "next": "prove-lifecycle"
+      },
+      "prove-lifecycle": {
+        "action": "call",
+        "ref": "perps.lifecycle",
+        "intent": "C8: run the full open, verify, close and teardown lifecycle end to end against v11",
+        "next": "done"
+      },
+      "done": {
+        "action": "end",
+        "status": "pass"
+      }
+    }
+  }
+}

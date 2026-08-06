@@ -1,0 +1,19 @@
+{
+  "pr_number": "34385",
+  "recommendation": "APPROVE",
+  "summary": "The controller 11.0.0 adoption is minimal, type-safe, and consistent with controller-owned execution semantics. Static type checking and 161 focused tests pass; live Perps claims were not independently exercised under the light/static constraint.",
+  "comments": [
+    {
+      "path": "app/components/UI/Perps/Views/PerpsOrderView/PerpsOrderView.tsx",
+      "line": 1007,
+      "body": "This component is now 2,408 lines, above the review guardrail's 2,000-line advisory threshold. This PR does not materially grow it, so this is non-blocking, but please track a follow-up split around order submission/toast handling before more behavior accumulates here.",
+      "severity": "suggestion"
+    },
+    {
+      "path": "app/components/UI/Perps/hooks/usePerpsOrderFees.test.ts",
+      "line": 12,
+      "body": "This test file is now 2,149 lines, above the review guardrail's 2,000-line advisory threshold. A follow-up split by fee calculation, maker/taker determination, and error behavior would make failures easier to localize; this narrow type update itself need not be blocked.",
+      "severity": "suggestion"
+    }
+  ]
+}

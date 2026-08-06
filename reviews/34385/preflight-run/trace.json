@@ -1,0 +1,22 @@
+{
+  "metadata": {
+    "runner": {
+      "source": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness",
+      "git_ref": "unknown",
+      "name": "@metamask/recipe-runner"
+    }
+  },
+  "entries": [
+    {
+      "nodeId": "setup-ensure-wallet",
+      "action": "metamask.wallet.ensure_unlocked",
+      "intent": "Unlock the fixture wallet so current Perps state can be read",
+      "startedAt": "2026-08-06T06:16:22.882Z",
+      "endedAt": "2026-08-06T06:16:59.944Z",
+      "durationMs": 37062,
+      "ok": false,
+      "cause_class": "unknown",
+      "error": "Live adapter /Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness/library/actions/mobile/wallet/ensure_unlocked.mjs exited 1: file:///Users/deeeed/dev/metamask/metamask-mobile-3/[eval1]:533\n  throw new Error(`Timed out waiting for Mobile wallet unlock; last status was ${JSON.stringify(last)}; last error was ${String(lastError?.message ?? lastError)}`);\n        ^\n\nError: Timed out waiting for Mobile wallet unlock; last status was []; last error was null\n    at waitForUnlocked (file:///Users/deeeed/dev/metamask/metamask-mobile-3/[eval1]:533:9)\n    at async ensureUnlocked (file:///Users/deeeed/dev/metamask/metamask-mobile-3/[eval1]:583:19)\n    at async runAdapter (file:///Users/deeeed/dev/metamask/metamask-mobile-3/[eval1]:223:18)\n\nNode.js v26.4.0\n"
+    }
+  ]
+}

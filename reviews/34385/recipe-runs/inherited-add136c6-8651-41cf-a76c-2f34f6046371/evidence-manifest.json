@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "preferred_mode": "screenshots",
+  "summary": "This upgrade has no intended user-visible change, so these frames prove the Perps flows still render and compute correctly on controller v11 \u2014 they are not a before/after comparison.",
+  "standalone": [
+    {
+      "label": "Order submitted toast after placing a real ETH order",
+      "covers": [
+        "c5"
+      ],
+      "file": "recipe-run/screenshots/perps-order-result-mobile.png",
+      "note": "The one user-visible surface this diff touches: the toast is emitted by PerpsToastOptions.orderManagement[getTriggerExecution(orderForm.type)].submitted(...), the controller helper that replaces the old direct index."
+    },
+    {
+      "label": "Limit order form with live limit price and computed fee",
+      "covers": [
+        "c5"
+      ],
+      "file": "recipe-run/screenshots/perps-order-form-mobile.png",
+      "note": "Limit order type selected at the recipe's $10 notional, with the limit price and a non-zero fee both populated \u2014 the fee hook running on the widened OrderType. Live mark-derived figures are deliberately not quoted here: they change on every run."
+    },
+    {
+      "label": "Auto close sheet with take profit and stop loss applied to an open position",
+      "covers": [
+        "c6"
+      ],
+      "file": "recipe-run/screenshots/perps-position-auto-close-mobile.png",
+      "note": "Take profit at the +25% preset and stop loss at the -10% preset, each with its trigger price and expected profit/loss populated, through the widened usePerpsTPSLForm. Live mark-derived figures are deliberately not quoted here: they change on every run."
+    },
+    {
+      "label": "Close position sheet at 100% with fees and receive amount",
+      "covers": [
+        "c7"
+      ],
+      "file": "recipe-run/screenshots/perps-position-close-mobile.png",
+      "note": "A 100% Market close with margin, fee and receive amount populated. Exercises v11's reduce-only size-grid rounding through the widened usePerpsClosePosition."
+    }
+  ],
+  "videos": {
+    "preferred": false,
+    "note": "screenshots preferred; video parked for mirror"
+  }
+}
