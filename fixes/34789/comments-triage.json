@@ -1,0 +1,17 @@
+[
+  {
+    "comment_id": 3781582063,
+    "review_id": "4934553468",
+    "author_login": "cursor[bot]",
+    "author_type": "Bot",
+    "reviewer_login": "cursor[bot]",
+    "review_state": "COMMENTED",
+    "source_kind": "bugbot",
+    "path": "app/components/UI/Perps/Views/PerpsOrderView/PerpsOrderView.tsx",
+    "line": 2264,
+    "body": "### Place order ignores live token shortfall\n\n**Medium Severity**\n\nWhile the pay-token balance is unresolved, `effectiveAvailableBalance` falls through to the Perps balance, so `usePerpsOrderValidation` can report `isValid` for the wrong source. After the token resolves as too small, `isPayBalanceLoading` drops immediately, but validation stays debounced and the Place Order `isDisabled` list never consults `hasInsufficientPayTokenBalance`, so the button can enable for a trade the live token cannot fund.\n\nLocations:\napp/components/UI/Perps/Views/PerpsOrderView/PerpsOrderView.tsx#L2256-L2265\napp/components/UI/Perps/Views/PerpsOrderView/PerpsOrderView.tsx#L2490-L2496\napp/components/UI/Perps/hooks/usePerpsOrderValidation.ts#L236-L244",
+    "triage": "REAL",
+    "action": "Added hasInsufficientPayTokenBalance to both Place Order isDisabled lists so the button cannot enable during the 300 ms (PERFORMANCE_CONFIG.ValidationDebounceMs) window where validation still carries the verdict it reached against the Perps balance; the first half of the claim (unresolved balance) was already covered by isPayBalanceLoading.",
+    "fixed_in_commit": "27e68e176f5"
+  }
+]

@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "preferred_mode": "screenshots",
+  "summary": "Lite-mode trade screen straight after switching the payment method from the Perps balance to a wallet token.",
+  "before_after_pairs": [
+    {
+      "label": "Three contradictory funding errors, a dead slider and no action button become a placeable order funded from the real wallet balance",
+      "covers": [
+        "ac1",
+        "ac2"
+      ],
+      "before": "before-ac1-after-payment-switch.png",
+      "after": "after-ac1-after-payment-switch.png"
+    }
+  ],
+  "videos": {
+    "before": "before.mp4",
+    "after": "after.mp4",
+    "preferred": false
+  }
+}

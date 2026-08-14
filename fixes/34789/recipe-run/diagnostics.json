@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "scope": "recipe-run-application",
+  "status": "review",
+  "nonBlocking": true,
+  "note": "Observed 15 distinct application warning/error event(s) during the recipe run; relation to the task is not determined.",
+  "source": {
+    "label": "app",
+    "path": "/Users/deeeed/dev/metamask/metamask-mobile-2/temp/recipe/runtime/app-console.log",
+    "startOffset": 0,
+    "endOffset": 63351,
+    "bytesRead": 63351,
+    "truncated": false,
+    "inAppBuffer": "collected"
+  },
+  "counts": {
+    "total": 15,
+    "warning": 14,
+    "error": 1,
+    "exception": 0
+  },
+  "findings": [
+    {
+      "level": "warning",
+      "fingerprint": "342474e2d93c",
+      "preview": "WARN  07:12:58.483 [console:mm-2] You passed a server string as an argument to one of the react-native-keychain functions.",
+      "count": 6
+    },
+    {
+      "level": "warning",
+      "fingerprint": "297784e30ac1",
+      "preview": "WARN  07:13:03.154 [console:mm-2] [MetaMask DEBUG]: Error: CLIENT_NOT_INITIALIZED",
+      "count": 2
+    },
+    {
+      "level": "warning",
+      "fingerprint": "d25c6a49966f",
+      "preview": "WARN  07:13:03.157 [console:mm-2] [MetaMask DEBUG]: TypeError: Cannot read property 'prototype' of undefined",
+      "count": 1
+    },
+    {
+      "level": "warning",
+      "fingerprint": "9dca54a23fd7",
+      "preview": "WARN  07:13:08.240 [console:mm-2] [MetaMask DEBUG]: Error: Failed to load TradingView library. URL: https://charting-assets.static.metamask.io/tradingview/advanced-charts/v30.1.0/charting_library.js",
+      "count": 2
+    },
+    {
+      "level": "warning",
+      "fingerprint": "ee548156339f",
+      "preview": "WARN  07:13:09.509 [console:mm-2] Error: missing revert data in call exception; Transaction reverted without a reason string [ See: https://links.ethers.org/v5-errors-CALL_EXCEPTION ] (data=\"0x\", transaction={\"to\":\"0xcA11bde05977b3631167028862bE2a173976CA11\",\"data\":\"[REDACTED_HEX]\",\"accessList\":null}, error={\"data\":{\"h",
+      "count": 3
+    },
+    {
+      "level": "warning",
+      "fingerprint": "5ca048045073",
+      "preview": "WARN  07:13:11.894 [console:mm-2] The result function returned its own inputs without modification. e.g",
+      "count": 1
+    },
+    {
+      "level": "error",
+      "fingerprint": "ebe0463775f1",
+      "preview": "ERROR  07:13:12.013 [console:mm-2] Invalid prop `%s` supplied to `React.Fragment`. React.Fragment can only have `key` and `children` props. onStartShouldSetResponder",
+      "count": 2
+    },
+    {
+      "level": "warning",
+      "fingerprint": "b5de236365f3",
+      "preview": "WARN  07:13:56.169 [console:mm-2] `wider` unknown or invalid utility",
+      "count": 2
+    },
+    {
+      "level": "warning",
+      "fingerprint": "1912b1c86cab",
+      "preview": "WARN  07:13:58.038 [console:mm-2] Error: Execution prevented because the circuit breaker is open",
+      "count": 2
+    },
+    {
+      "level": "warning",
+      "fingerprint": "7cbc25954e7d",
+      "preview": "You passed a server string as an argument to one of the react-native-keychain functions.\n            This way of passing service is deprecated and will be removed in a future major.\n            Please update your code to use { service: \"VAULT_BACKUP_TEMP\" }",
+      "count": 4
+    },
+    {
+      "level": "warning",
+      "fingerprint": "8287a6a3fdf7",
+      "preview": "You passed a server string as an argument to one of the react-native-keychain functions.\n            This way of passing service is deprecated and will be removed in a future major.\n            Please update your code to use { service: \"VAULT_BACKUP\" }",
+      "count": 2
+    },
+    {
+      "level": "warning",
+      "fingerprint": "dabdab737480",
+      "preview": "[MetaMask DEBUG]: Error: CLIENT_NOT_INITIALIZED\n    at ensureInitialized (http://127.0.0.1:8072/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:1049036:26)\n    at getInfoClient (http://127.0.0.1:8072/i",
+      "count": 2
+    },
+    {
+      "level": "warning",
+      "fingerprint": "050d94a1df61",
+      "preview": "[MetaMask DEBUG]: TypeError: Cannot read property 'prototype' of undefined\n    at registerMYXProvider (http://127.0.0.1:8072/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:1023693:42)\n    at anonymous",
+      "count": 1
+    },
+    {
+      "level": "warning",
+      "fingerprint": "90d94360288d",
+      "preview": "[MetaMask DEBUG]: Error: Failed to load TradingView library. URL: https://charting-assets.static.metamask.io/tradingview/advanced-charts/v30.1.0/charting_library.js\n    at t2 (http://127.0.0.1:8072/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot",
+      "count": 2
+    },
+    {
+      "level": "warning",
+      "fingerprint": "3c23a3f9a90b",
+      "preview": "The result function returned its own inputs without modification. e.g\n`createSelector([state => state.todos], todos => todos)`\nThis could lead to inefficient memoization and unnecessary re-renders.\nEnsure transformation logic is in the result function, and extraction logic is in the input selectors. Error\n    at runIde",
+      "count": 1
+    }
+  ]
+}
