@@ -4,73 +4,53 @@
   "compact": {
     "verdict": "PASS",
     "reasons": [
-      "The inherited 21-node recipe was re-run unmodified against branch + origin/main after the rebase and returned status pass / exitCode 0 \u2014 no schema migration and no node edits were needed, so this round re-validates the merge and the review fix in one pass.",
-      "Every original AC still maps to at least one assertion node: AC1/AC2 to on-device absence/presence assertions plus a read screenshot, AC3/AC4 to assert_exit_code over the focused 'pay with token funding state' Jest block.",
-      "The review fix landed inside the AC3/AC4 coverage rather than outside it: that Jest block now reports 17 passing tests (16 inherited plus the new regression test), so the recipe's exit-code assertion now also guards the debounce-window defect.",
-      "The new regression test was proven to fail with the fix reverted, so the added coverage is a real gate and not a test that passes for the wrong reason."
+      "Every AC in TASK.md maps to at least one assertion node, and trace.json reports all 21 nodes ok.",
+      "The recipe reaches the exact screen and state named in the bug report through the manifest-declared UI path only, including an explicit re-selection of the Perps balance so the later token press is a real payment-method transition.",
+      "Reverting the fix breaks the run: the pre-fix baseline recipe asserts the opposite values and passes against stashed code, producing the before-evidence side by side with the after-evidence.",
+      "Assertions were narrowed to what the runner can actually measure after ui.wait_for expected=visible was proven unusable on this screen; the viewport claim rests on read screenshots instead of a bogus state assertion."
     ],
     "better_version_guidance": [
-      "Carried forward: if the runner gains a working viewport measurement for React Native host nodes, replace AC2's expected=present assertions with expected=visible so the action-button claim stops depending on a human reading the capture.",
-      "Carried forward: seed a fixed-balance fixture token so the funding message text is deterministic instead of tracking the live ETH balance.",
-      "New: the recipe's command node writes its log into the parent run's task dir (temp/tasks/fix/tat-3742-0813-171821/artifacts/). It resolved here only because that directory still exists in this checkout; a future inheritance should rewrite the path to the current TASK_DIR."
+      "If the runner gains a working viewport measurement for React Native host nodes, replace AC2's expected=present assertions with expected=visible so the action-button claim stops depending on a human reading the capture.",
+      "Seed a fixed-balance fixture token so the funding message text is deterministic instead of tracking the live ETH balance."
     ]
   },
   "dimensions": {
     "intent_clarity": {
       "status": "pass",
-      "reason": "Node intents were inherited unchanged and still state trader-visible goals rather than restating actions or selectors; the runner's intent validator accepted the recipe as-is on re-run.",
+      "reason": "Every node intent states a trader-visible goal rather than restating its action or selector; the runner's own intent validator rejected two earlier drafts until they did.",
       "evidence": [
         "artifacts/recipe.json"
       ]
     },
     "coverage": {
       "status": "pass",
-      "reason": "All four inherited ACs re-asserted green, and this round's defect (place-order button enabled during the 300ms validation debounce after the pay-token balance resolves short) is covered by a new test inside the AC3/AC4 Jest block the recipe already asserts on.",
+      "reason": "AC1 and AC2 are covered by on-device absence/presence assertions plus a before/after capture; AC3 and AC4 are covered by an assert_exit_code over a focused Jest run, because the unresolved-balance window is a timing-dependent render pass no manifest read action can sample deterministically.",
       "evidence": [
-        "artifacts/recipe-run/summary.json",
         "artifacts/recipe-coverage.md"
       ]
     },
     "evidence_fit": {
       "status": "pass",
-      "reason": "The visual AC is proven by a PNG that was read directly, not judged from its filename; the hidden button-gating behaviour is proven by test exit code and a reverted-fix check, not by a screenshot.",
+      "reason": "Visual ACs are proven by PNGs that were read directly, not judged from filenames; state ACs are proven by test exit code and log, not by screenshots of hidden behaviour.",
       "evidence": [
-        "artifacts/recipe-run/screenshots/evidence-ac1-after-payment-switch.png",
-        "artifacts/comments-report.md"
+        "artifacts/before-ac1-after-payment-switch.png",
+        "artifacts/after-ac1-after-payment-switch.png",
+        "artifacts/funding-state-tests.log"
       ]
     },
     "flake_risk": {
       "status": "warn",
-      "reason": "Unchanged from the inherited assessment: the underlying defect is a timing window and the screenshot content still varies with the live fixture token balance. This run additionally hit one mid-run mobile.runtime_recovered (HUD/CDP transient) which the runner absorbed without failing a node, and reported 15 app warning/error side findings whose relation to the task is undetermined.",
+      "reason": "The underlying defect is a timing window. The recipe removes the main source of flake by forcing a real payment-method transition, and its assertions are invariants of the fix (the Perps-balance warning and the zero-available row can never render while a wallet token is selected), so it does not depend on catching the window. The screenshot content can still vary with the fixture token balance.",
       "evidence": [
-        "artifacts/recipe-run/trace.json",
-        "artifacts/recipe-run/diagnostics.json"
+        "artifacts/trace.json"
       ]
     }
   },
   "structural_findings": [],
-  "contextual_findings": [
-    {
-      "code": "command-node-log-path-points-at-parent-run",
-      "message": "The ac3-ac4-run-funding-state-tests command node writes its log to temp/tasks/fix/tat-3742-0813-171821/artifacts/ (the parent run's dir) rather than this run's TASK_DIR. It resolved only because that directory is still present in this checkout; left untouched because step 10 forbids non-mechanical edits to a passing inherited recipe.",
-      "dimension": "coverage",
-      "evidence": [
-        "artifacts/recipe.json"
-      ]
-    }
-  ],
+  "contextual_findings": [],
   "suggested_recipe_delta": [],
   "training_fields": {
-    "flow_type": "pr-complete",
-    "task_type": "review-comment-fix",
-    "claim_is_visual": false,
-    "proof_mode": "mixed",
-    "good_patterns": [
-      "regression test verified to fail with the fix reverted",
-      "review fix covered by an assertion surface the recipe already gates on",
-      "inherited recipe re-run unmodified to validate rebase and fix together"
-    ],
-    "anti_patterns": []
+    "proof_mode": "unknown"
   },
   "meta": {
     "producer": "worker",
@@ -78,8 +58,7 @@
     "legacy_task": false,
     "artifact_required": true,
     "source_signals": [
-      "recipe-quality.json",
-      "artifacts/recipe-run/summary.json"
+      "recipe-quality.json"
     ]
   }
 }

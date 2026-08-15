@@ -1,30 +1,7 @@
-# Learnings — PR #34789 review round
+# Learnings — PR #34789 pr-complete
 
-- **A debounced verdict and a synchronous one must be gated together, not alternately.** The
-  upstream worker correctly stopped trusting the unresolved balance (`isPayBalanceLoading` gates
-  the button) and correctly computed the resolved shortfall (`hasInsufficientPayTokenBalance`
-  drives the funding message) — but each guard covered a different phase and neither covered the
-  handoff between them. The 300 ms `PERFORMANCE_CONFIG.ValidationDebounceMs` window where the
-  loading gate has dropped and the debounced `isValid` has not yet caught up was invisible from
-  either guard's own point of view.
-
-- **"The message renders from X, the button gates on Y" is a latent contradiction.** The PR's own
-  stated goal was that the funding banner "compares against the same balance as validation and the
-  slider so the two can no longer disagree". The place-order button was never brought into that
-  same-source rule. Whenever a screen commits to one source of truth for a state, every affordance
-  reading that state — including disabled-ness — has to be enumerated, not just the visible copy.
-
-- **The bot's diagnosis was half wrong and still worth acting on.** Its first claim (unresolved
-  balance leaks the Perps balance into validation) was already handled; only the second half was
-  live. Triaging the halves separately, rather than accepting or rejecting the comment whole, is
-  what kept the fix to two lines instead of re-plumbing `effectiveAvailableBalance`.
-
-- **Prove the regression test by reverting the fix.** Because the default validation mock in this
-  suite already returns `isValid: true`, a test asserting the button is disabled could pass for the
-  wrong reason. Temporarily removing the two `isDisabled` lines and confirming the new test fails
-  was the only thing that established it actually guards the window.
-
-- **Recipe re-validation after a rebase earns its cost twice.** The inherited 21-node recipe was
-  re-run against `branch + origin/main` (12 commits replayed, `yarn.lock` moved so deps were
-  reinstalled) and passed unchanged, which validated both the merge and the fix in one pass — and
-  the evidence screenshot doubled as proof the new gate does not over-block a fundable order.
+- Human review caught an API smell the prior pr-complete round introduced: extra `isResolved`/`isRawResolved` booleans on top of values that were still `'0'` or a stale snapshot. The ticket's own rule ("unknown, not zero") is better expressed as `undefined` on the existing properties.
+- A measured zero (`'0'`) and an unknown balance must stay distinguishable. Returning the controller snapshot while unresolved forced every caller to consult a second flag; dropping the snapshot from the hook return made the type the gate.
+- Raw units still land before the USD rate. After removing the flags, `balanceRaw !== undefined` with `balanceUsd === undefined` is the same split the fee-alert bugbot already required — do not collapse both fields to a single "resolved" check.
+- Display callers (`pay-with-row`, `usePayWithPreferredToken`) still need a snapshot fallback for formatting. Keep that fallback at the call site, not inside the reactive hook, so alerts and order funding cannot treat it as known.
+- Flaky-test detection on this PR was all 0/360 static pattern hits. The `setTimeout(0)` in `renderWithPayToken` is a documented rAF-mock flush, not a DOM wait — do not "fix" it into `waitFor('perps-order-header')` without checking why the flush exists.

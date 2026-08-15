@@ -1,21 +1,23 @@
 {
   "version": 1,
   "preferred_mode": "screenshots",
-  "summary": "Lite-mode trade screen straight after switching the payment method from the Perps balance to a wallet token. The before/after pair is the family's original TAT-3742 evidence, carried forward unchanged; this pr-complete round re-ran the same recipe against branch + origin/main with the review fix applied and captured a fresh after-state. Re-run artifacts: recipe-run/screenshots/evidence-ac1-after-payment-switch.png (read directly: one funding-message-free trade screen paying with ETH, place-order button inside the viewport and enabled with margin $5.06 covered, confirming the new gate does not over-block a fundable order); state evidence in recipe-run/summary.json, recipe-run/trace.json, recipe-run/report.md, ../../tat-3742-0813-171821/artifacts/funding-state-tests.log.",
-  "before_after_pairs": [
+  "summary": "Recipe re-validation skipped on this pr-complete run because the mobile harness wrapper and runtime capabilities were unavailable. No new screenshots or videos were captured. Inherited family evidence remains under recipe-runs/inherited-9da27bd0-481b-42cd-9cc3-8a2b6807543e/.",
+  "omit": [
     {
-      "label": "Three contradictory funding errors, a dead slider and no action button become a placeable order funded from the real wallet balance",
-      "covers": [
-        "ac1",
-        "ac2"
-      ],
-      "before": "recipe-runs/inherited-9da27bd0-481b-42cd-9cc3-8a2b6807543e/before-ac1-after-payment-switch.png",
-      "after": "recipe-runs/inherited-9da27bd0-481b-42cd-9cc3-8a2b6807543e/after-ac1-after-payment-switch.png"
+      "file": "before-ac1-after-payment-switch.png",
+      "reason": "Recipe re-validation skipped; mobile runtime unavailable"
+    },
+    {
+      "file": "after-ac1-after-payment-switch.png",
+      "reason": "Recipe re-validation skipped; mobile runtime unavailable"
+    },
+    {
+      "file": "before.mp4",
+      "reason": "Recipe re-validation skipped; mobile runtime unavailable"
+    },
+    {
+      "file": "after.mp4",
+      "reason": "Recipe re-validation skipped; mobile runtime unavailable"
     }
-  ],
-  "videos": {
-    "before": "recipe-runs/inherited-9da27bd0-481b-42cd-9cc3-8a2b6807543e/before.mp4",
-    "after": "recipe-runs/inherited-9da27bd0-481b-42cd-9cc3-8a2b6807543e/after.mp4",
-    "preferred": false
-  }
+  ]
 }

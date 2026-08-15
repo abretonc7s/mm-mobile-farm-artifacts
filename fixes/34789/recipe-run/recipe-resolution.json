@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "root": {
-    "ref": "$root:sha256:d5c6eed5d2a052aa2be9e215392e2c94a9e5389b7e2a73821fc9d287f229d5f0",
+    "ref": "$root",
     "digest": "sha256:d5c6eed5d2a052aa2be9e215392e2c94a9e5389b7e2a73821fc9d287f229d5f0"
   },
   "dependencies": [],
