@@ -4,45 +4,42 @@
   "compact": {
     "verdict": "PASS",
     "reasons": [
-      "Every AC in TASK.md maps to at least one assertion node, and trace.json reports all 21 nodes ok.",
-      "The recipe reaches the exact screen and state named in the bug report through the manifest-declared UI path only, including an explicit re-selection of the Perps balance so the later token press is a real payment-method transition.",
-      "Reverting the fix breaks the run: the pre-fix baseline recipe asserts the opposite values and passes against stashed code, producing the before-evidence side by side with the after-evidence.",
-      "Assertions were narrowed to what the runner can actually measure after ui.wait_for expected=visible was proven unusable on this screen; the viewport claim rests on read screenshots instead of a bogus state assertion."
+      "Every inherited TAT-3742 acceptance criterion maps to one or more recipe assertions, and the post-rebase trace reports 21/21 nodes passed.",
+      "The workflow performs a real Perps-balance-to-wallet-token transition before asserting the absence of contradictory funding copy and the presence of the action button.",
+      "Visual claims use an original-resolution screenshot inspected after the run; unresolved-balance and minimum-order state claims use focused tests and an asserted zero exit code."
     ],
     "better_version_guidance": [
-      "If the runner gains a working viewport measurement for React Native host nodes, replace AC2's expected=present assertions with expected=visible so the action-button claim stops depending on a human reading the capture.",
-      "Seed a fixed-balance fixture token so the funding message text is deterministic instead of tracking the live ETH balance."
+      "Keep the fixture token balance deterministic so the exact funding copy remains stable across future evidence runs."
     ]
   },
   "dimensions": {
     "intent_clarity": {
       "status": "pass",
-      "reason": "Every node intent states a trader-visible goal rather than restating its action or selector; the runner's own intent validator rejected two earlier drafts until they did.",
+      "reason": "Node intents describe the user-visible transition and expected outcome.",
       "evidence": [
         "artifacts/recipe.json"
       ]
     },
     "coverage": {
       "status": "pass",
-      "reason": "AC1 and AC2 are covered by on-device absence/presence assertions plus a before/after capture; AC3 and AC4 are covered by an assert_exit_code over a focused Jest run, because the unresolved-balance window is a timing-dependent render pass no manifest read action can sample deterministically.",
+      "reason": "All four inherited acceptance criteria are proven by mixed, visual, or state evidence.",
       "evidence": [
         "artifacts/recipe-coverage.md"
       ]
     },
     "evidence_fit": {
       "status": "pass",
-      "reason": "Visual ACs are proven by PNGs that were read directly, not judged from filenames; state ACs are proven by test exit code and log, not by screenshots of hidden behaviour.",
+      "reason": "The visual artifact proves the rendered screen while focused tests prove timing-dependent balance behavior.",
       "evidence": [
-        "artifacts/before-ac1-after-payment-switch.png",
-        "artifacts/after-ac1-after-payment-switch.png",
-        "artifacts/funding-state-tests.log"
+        "artifacts/evidence-manifest.json",
+        "artifacts/recipe-run/trace.json"
       ]
     },
     "flake_risk": {
       "status": "warn",
-      "reason": "The underlying defect is a timing window. The recipe removes the main source of flake by forcing a real payment-method transition, and its assertions are invariants of the fix (the Perps-balance warning and the zero-available row can never render while a wallet token is selected), so it does not depend on catching the window. The screenshot content can still vary with the fixture token balance.",
+      "reason": "The balance race is timing-sensitive, but the recipe asserts stable invariants and recovered the mobile runtime once before completing successfully.",
       "evidence": [
-        "artifacts/trace.json"
+        "artifacts/recipe-run/summary.json"
       ]
     }
   },
@@ -50,7 +47,7 @@
   "contextual_findings": [],
   "suggested_recipe_delta": [],
   "training_fields": {
-    "proof_mode": "unknown"
+    "proof_mode": "mixed"
   },
   "meta": {
     "producer": "worker",

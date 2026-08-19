@@ -2,5 +2,5 @@
   "originalFamilyScopeSummary": "Fix pay with token UI issues in lite mode including error handling and button visibility",
   "currentTriggerSummary": "pr-complete: fix(perps): Fix UI and error handling for 'pay with token' in lite mode",
   "scopeVerdict": "full-scope-addressed",
-  "notes": "Matthew's CHANGES_REQUESTED review asked to express unknown balances as undefined on the existing hook properties instead of extra isResolved/isRawResolved flags. That change is in 37f5e3fea07 and keeps the family rule that an unresolved pay-token balance is unknown, not zero. Prior pr-complete already landed the Place Order debounce gate and raw-before-USD fee alert. Inherited recipe AC1–AC4 still describe the original TAT-3742 symptoms; recipe re-validation was skipped because the mobile harness wrapper is unavailable on this slot."
+  "notes": "The rebased branch preserves all four inherited TAT-3742 outcomes: funding-error cleanup, visible Place Order CTA, usable slider during unresolved balance, and the below-minimum token state. The post-review recipe passed 21/21 nodes and the two remaining unsafe snapshot fallbacks were removed."
 }

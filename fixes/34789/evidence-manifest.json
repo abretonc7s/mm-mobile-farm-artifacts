@@ -1,23 +1,21 @@
 {
   "version": 1,
   "preferred_mode": "screenshots",
-  "summary": "Recipe re-validation skipped on this pr-complete run because the mobile harness wrapper and runtime capabilities were unavailable. No new screenshots or videos were captured. Inherited family evidence remains under recipe-runs/inherited-9da27bd0-481b-42cd-9cc3-8a2b6807543e/.",
-  "omit": [
+  "summary": "Lite-mode trade screen after switching from the Perps balance to a wallet token on the rebased review-fix branch.",
+  "before_after_pairs": [
     {
-      "file": "before-ac1-after-payment-switch.png",
-      "reason": "Recipe re-validation skipped; mobile runtime unavailable"
-    },
-    {
-      "file": "after-ac1-after-payment-switch.png",
-      "reason": "Recipe re-validation skipped; mobile runtime unavailable"
-    },
-    {
-      "file": "before.mp4",
-      "reason": "Recipe re-validation skipped; mobile runtime unavailable"
-    },
-    {
-      "file": "after.mp4",
-      "reason": "Recipe re-validation skipped; mobile runtime unavailable"
+      "label": "Contradictory funding errors and a missing action become a token-funded trade screen with the action in reach",
+      "covers": [
+        "ac1",
+        "ac2"
+      ],
+      "before": "recipe-runs/inherited-9da27bd0-481b-42cd-9cc3-8a2b6807543e/before-ac1-after-payment-switch.png",
+      "after": "recipe-run/screenshots/evidence-ac1-after-payment-switch.png"
     }
-  ]
+  ],
+  "videos": {
+    "before": "recipe-runs/inherited-9da27bd0-481b-42cd-9cc3-8a2b6807543e/before.mp4",
+    "after": "recipe-runs/inherited-9da27bd0-481b-42cd-9cc3-8a2b6807543e/after.mp4",
+    "preferred": false
+  }
 }

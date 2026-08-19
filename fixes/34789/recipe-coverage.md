@@ -1,12 +1,12 @@
-# Recipe coverage — PR #34789 pr-complete (this run)
+# TAT-3742 recipe coverage
 
-Re-validation SKIPPED: `mm-harness launch --platform ios --preflight-mode fast` failed because the portable harness wrapper is missing and the runtime capability catalog has no providers. No on-device nodes were re-run.
+The family-inherited recipe was re-run after the `origin/main` rebase and review fixes. It passed all 21 nodes in 52 seconds. The mixed/visual screenshot was read at original resolution; the state assertions were verified from the focused Jest command and exit-code assertion.
 
-Inherited family coverage (AC1–AC4 PROVEN on the parent run) lives at `inputs/inherited/recipe-coverage.md`. This run's review fix does not change those ACs: unknown pay-token balances stay unknown (`undefined`) rather than zero, which is the same gate the inherited recipe already exercises.
+| AC | Proof mode | Evidence | Verdict |
+|---|---|---|---|
+| Clean up pay-with-token funding errors without reporting an unmeasured zero balance | mixed | `ac1-assert-no-perps-balance-warning`, `ac1-assert-no-zero-available-row`, and `recipe-run/screenshots/evidence-ac1-after-payment-switch.png` | PROVEN |
+| Keep the Place Order CTA in the viewport after switching payment methods | visual | `ac2-assert-action-button-visible`, `ac2-assert-button-still-visible`, and the inspected screenshot | PROVEN |
+| Keep the slider usable while the selected token balance is unresolved | state | `ac3-ac4-run-funding-state-tests` and `ac3-ac4-assert-funding-state-tests` | PROVEN |
+| Show the protocol minimum state once a resolved pay-token balance cannot reach $10 | state | The focused `pay with token funding state` tests executed by the recipe | PROVEN |
 
-| # | AC | Proof mode this run | Evidence verdict |
-|---|----|---------------------|------------------|
-| 1 | At most one funding message; no false $0 available | state | DEFERRED — recipe skipped; unit tests for undefined-balance gating passed |
-| 2 | Place-order button stays reachable after payment switch | state | DEFERRED — recipe skipped |
-| 3 | Slider stays usable while pay-token balance is unresolved | state | COVERED by PerpsOrderView funding-state unit tests (135/135) |
-| 4 | Below-minimum token shows the $10 minimum-order copy | state | COVERED by PerpsOrderView funding-state unit tests (135/135) |
+Overall coverage: **4/4 ACs proven** (weak: 0, missing: 0).

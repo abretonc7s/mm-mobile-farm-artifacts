@@ -1,7 +1,6 @@
-# Learnings — PR #34789 pr-complete
+# Review-driven learnings
 
-- Human review caught an API smell the prior pr-complete round introduced: extra `isResolved`/`isRawResolved` booleans on top of values that were still `'0'` or a stale snapshot. The ticket's own rule ("unknown, not zero") is better expressed as `undefined` on the existing properties.
-- A measured zero (`'0'`) and an unknown balance must stay distinguishable. Returning the controller snapshot while unresolved forced every caller to consult a second flag; dropping the snapshot from the hook return made the type the gate.
-- Raw units still land before the USD rate. After removing the flags, `balanceRaw !== undefined` with `balanceUsd === undefined` is the same split the fee-alert bugbot already required — do not collapse both fields to a single "resolved" check.
-- Display callers (`pay-with-row`, `usePayWithPreferredToken`) still need a snapshot fallback for formatting. Keep that fallback at the call site, not inside the reactive hook, so alerts and order funding cannot treat it as known.
-- Flaky-test detection on this PR was all 0/360 static pattern hits. The `setTimeout(0)` in `renderWithPayToken` is a documented rAF-mock flush, not a DOM wait — do not "fix" it into `waitFor('perps-order-header')` without checking why the flush exists.
+- A fallback can be numerically harmless but account-incorrect: `payToken.balanceUsd` and `selectedToken.balanceUsd` are snapshots from the original transaction context, so they must not backfill an override-aware live-balance hook.
+- Unknown live balances need surface-specific behavior. Display-only rows can render zero, while the Perps trade screen should suppress false insufficiency copy and independently keep its CTA disabled through `isPayBalanceLoading`.
+- Reviewer questions should be traced through the consuming CTA before changing shared alert semantics; the existing two-variant Place Order guard and focused unresolved-balance test showed that the alert comment was already covered.
+- A strict changed-file lint gate can surface pre-existing warnings in an otherwise minimal fix. Migrating the four local legacy `Box` usages kept the touched file at zero warnings without changing layout behavior.
