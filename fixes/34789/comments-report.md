@@ -1,49 +1,58 @@
-# PR #34789 review-comment triage
+# Comments triage — PR #34789
 
-Context reviewed: live PR description, TAT-3742 ticket snapshot and comments, the complete `origin/main...HEAD` diff, all live root review threads, general PR comments, and `CHANGES_REQUESTED` reviews.
+PR intent: Lite Perps treated an unresolved wallet-token balance as `$0` after switching payment methods. The order flow now reads the live paying-account balance, keeps unknown balances as `undefined`, shows at most one funding message, and blocks submit until the balance resolves.
 
-| # | Source / ID | Author | File | Triage | Action |
-|---|---|---|---|---|---|
-| 1 | issue_comment 5290199503 | github-actions[bot] | conversation | OUT OF SCOPE | Routine CLA status; no reply. |
-| 2 | issue_comment 5290235689 | github-actions[bot] | PerpsOrderView.test.tsx; usePerpsOrderValidation.test.ts | FALSE POSITIVE | J6 flushes this suite's timer-backed `requestAnimationFrame` inside `act`; J9 mutations are restored by the owning describe's `afterEach`; J8 advances the SUT debounce before observing the settled result. The existing consolidated response (5299847404) already records this triage, so do not duplicate it. |
-| 3 | issue_comment 5290647503 | abretonc7s | conversation | OUT OF SCOPE | Previous worker report; status-only, no reply. |
-| 4 | issue_comment 5299847404 | abretonc7s | conversation | OUT OF SCOPE | Existing response to the flaky-test bot; status-only, no reply. |
-| 5 | issue_comment 5299855089 | github-actions[bot] | conversation | OUT OF SCOPE | Informational test-selection output; no reply. |
-| 6 | issue_comment 5299865719 | abretonc7s | conversation | OUT OF SCOPE | Previous worker report; status-only, no reply. |
-| 7 | issue_comment 5299938577 | sonarqubecloud[bot] | conversation | OUT OF SCOPE | Passing quality-gate summary; no reply. |
-| 8 | issue_comment 5299967679 | metamask-ci[bot] | PR template | OUT OF SCOPE | Informational PR-template status; recipe evidence is revalidated by this task, while attachment/upload is outside the review-fix commit. No reply. |
-| 9 | issue_comment 5299978971 | github-actions[bot] | conversation | OUT OF SCOPE | Non-blocking performance run with no green main baseline and a `no_performance_metrics` infrastructure failure; no reply. |
-| 10 | review_comment 3793297994 | matthewwalsh0 | app/components/Views/confirmations/hooks/pay/usePayWithPreferredToken.ts:49 | REAL | Remove the unsafe `selectedToken.balanceUsd` fallback; unresolved live balance must fall back to zero without reading the original transaction/account snapshot. |
-| 11 | review_comment 3793303225 | matthewwalsh0 | app/components/Views/confirmations/hooks/alerts/useInsufficientPayTokenBalanceAlert.ts:139 | FALSE POSITIVE | The lite-mode Place Order CTA explicitly includes `isPayBalanceLoading` in both button variants, and the regression test `disables the place order button while the balance is unresolved` pins the guard. This preserves the ticket requirement to avoid claiming an unmeasured zero balance. |
-| 12 | review_comment 3793304361 | matthewwalsh0 | app/components/Views/confirmations/components/rows/pay-with-row/pay-with-row.tsx:217 | REAL | Remove the unsafe `payToken.balanceUsd` fallback and render zero until the override-aware live account balance resolves. |
+Skipped without reply (status-only automation): 4
+- github-actions CLA (5290199503)
+- github-actions Smart E2E selection (5345633424)
+- sonarqubecloud Quality Gate (5345731611)
+- github-actions Performance Test Results (5346199399) — informational, non-blocking
 
-Skipped without reply: 8 routine/status-only comments (rows 1, 3–9). The flaky-test summary already has a consolidated response, so it will not receive a duplicate reply.
+Prior human triage comment (5299847404, abretonc7s) is already the flaky-test response, not a new request.
 
-## Inherited acceptance-criteria coverage
+| # | Author | File | Triage | Action |
+|---|--------|------|--------|--------|
+| 1 | cursor[bot] 3781582063 | PerpsOrderView.tsx:2279 | REAL (already on branch) | `hasInsufficientPayTokenBalance` is on both Place Order `isDisabled` lists. No further change. |
+| 2 | cursor[bot] 3781855756 | useInsufficientPayTokenBalanceAlert.ts | REAL (already on branch) | Fee check gates on `isPayBalanceRawKnown` (`accountBalanceRaw !== undefined`), USD check stays on `isPayBalanceKnown`. No further change. |
+| 3 | matthewwalsh0 3783645243 | usePayTokenAccountBalance.ts | REAL (already on branch) | Extra flags dropped; `balanceUsd`/`balanceRaw` are `string \| undefined`. No further change. |
+| 4 | matthewwalsh0 3793297994 | usePayWithPreferredToken.ts | REAL (already on branch) | Live balance only: `liveBalanceUsd ?? '0'`. Does not fall back to `selectedToken.balanceUsd`. No further change. |
+| 5 | matthewwalsh0 3793303225 | useInsufficientPayTokenBalanceAlert.ts:139 | REAL (already on branch) | Place Order stays disabled via `isPayBalanceLoading` until the live balance resolves. No further change. |
+| 6 | matthewwalsh0 3793304361 | pay-with-row.tsx | REAL (already on branch) | Row no longer falls back to `payToken.balanceUsd` (wrong-account snapshot). No further change. |
+| 7 | cursor[bot] 3815225399 | usePerpsOrderValidation.ts:244 | REAL | Fix was claimed in 45f48d0143f but that commit is not on the PR branch (dangling after later history). Re-apply: filter the stored generic balance string out of `errors` as soon as `skipBalanceError` becomes true, without waiting for the debounce. |
+| 8 | github-actions 5290235689 | PerpsOrderView.test.tsx J6 | FALSE POSITIVE | `setTimeout(0)` flushes this file's `requestAnimationFrame` → `setTimeout(cb, 0)` mock inside `act()`, not a DOM wait. Historical 0/436. |
+| 9 | github-actions 5290235689 | PerpsOrderView.test.tsx J9 | FALSE POSITIVE | Nested describe that mutates pay mocks already resets them in `afterEach`. Historical 0/436. |
+| 10 | github-actions 5290235689 | usePerpsOrderValidation.test.ts J8 | FALSE POSITIVE | Pre-existing suite advances the debounce with `jest.advanceTimersByTime` before `fastWaitFor`. Historical 0/436. |
 
-The trusted family-inherited recipe covers all four TAT-3742 outcomes:
+CHANGES_REQUESTED reviews from matthewwalsh0 (4937146587, 4947816977) cover comments 3–6; those threads are resolved. GitHub still shows CHANGES_REQUESTED until a new review is submitted; no extra code for that.
 
-- AC1 (mixed): after switching to a wallet token, the Perps-balance warning and false `Available: $0` row are absent; the screenshot captures the resulting single-message-or-no-message state.
-- AC2 (visual): the Place Order CTA remains present through payment-method selection and settling, with screenshot evidence for viewport reachability.
-- AC3 (state): the focused `pay with token funding state` Jest block verifies the slider remains usable while the live balance is unresolved.
-- AC4 (state): the same focused tests verify a resolved token below the protocol minimum shows the minimum-order message and disables the slider for that reason.
+## Local CI
 
-Post-rebase recipe result: **PASS** — 21/21 nodes passed in 52 seconds after one automatic mobile-runtime recovery. The screenshot was inspected at original resolution: the wallet-token payment method is selected, no contradictory funding/zero-balance error is visible, the slider remains rendered, and the Long ETH CTA is present in the viewport. The nine non-blocking console diagnostics are unrelated runtime noise (TradingView load/circuit-breaker warnings, an existing selector warning, an invalid Fragment prop warning, and a reverted read call); none correspond to the two review fixes or failed recipe assertions.
+- Scoped ESLint: pass
+- `yarn lint:tsc`: 32 errors, all pre-existing on `origin/main` (react-navigation 3-arg `navigate` / `NavigationIndependentTree`). None in changed files (`usePerpsOrderValidation.ts` / `.test.ts`).
+- `yarn format:check`: pass
+- Jest: `usePerpsOrderValidation.test.ts` 35/35, `PerpsOrderView.test.tsx` 139/139, plus the other PR test files in the first-five gate.
 
-## Final summary
+## Inherited recipe AC coverage
 
-- Total comments: **12** (**2 REAL, 2 FALSE POSITIVE, 8 OUT OF SCOPE**).
-- Fix commit: `5632184c17416068b2d51f44b637994238e3dec5`.
-- Integration status: **rebased** onto `origin/main`; two `PerpsOrderView.tsx` conflicts were reconciled and the force-with-lease push published the linear history.
-- Recipe re-validation: **PASS** (21/21 nodes, screenshot inspected).
-- Review threads: all three current human threads replied to and resolved. The flaky-test issue comment already had a consolidated response, so no duplicate top-level reply was posted.
-- Local validation: changed-file ESLint with zero warnings, `yarn lint:tsc`, `yarn format:check`, the checklist-selected five test files, and the two directly changed suites all passed. Directly changed suites: 2 suites / 33 tests.
+Family recipe `artifacts/recipe.json` covers TAT-3742 ACs:
 
-Files changed in the review-fix commit:
+| AC | Proof | Nodes |
+|----|-------|-------|
+| 1. At most one funding message; no Perps-balance `$0` after a token switch | mixed | `ac1-assert-no-perps-balance-warning`, `ac1-assert-no-zero-available-row`, `ac1-screenshot-single-message` |
+| 2. Place-order button stays in the viewport | visual | `ac2-assert-action-button-visible`, `ac2-assert-button-still-visible` |
+| 3. Slider stays usable while the pay-token balance is unresolved | state | `ac3-ac4-run-funding-state-tests` |
+| 4. Below-minimum pay-token state states the $10 minimum | state | `ac3-ac4-run-funding-state-tests` |
 
-- `app/components/Views/confirmations/hooks/pay/usePayWithPreferredToken.ts`
-- `app/components/Views/confirmations/hooks/pay/usePayWithPreferredToken.test.ts`
-- `app/components/Views/confirmations/components/rows/pay-with-row/pay-with-row.tsx`
-- `app/components/Views/confirmations/components/rows/pay-with-row/pay-with-row.test.tsx`
+## Recipe re-validation
 
-The pay-with-row file's four legacy `Box` usages were migrated to the design-system `Box` API because the mandatory changed-file ESLint gate treats its pre-existing deprecation warnings as failures under `--max-warnings=0`; this was a local mechanical cleanup with unchanged layout classes.
+SKIPPED: mobile runtime unavailable. `mm-harness launch ios --verify` opened the dev client but the in-app bridge never matched (`wait-for-bridge: no bridge target matched ... 90 polls`). `mm-harness call app.status` hung. Did not rebuild Metro or the native app (slot recovery is out of scope). Unit tests cover the review fix.
+
+## Summary
+
+- Total comments: 11 (7 REAL, 1 FALSE POSITIVE with 3 findings, 4 OUT OF SCOPE skipped)
+- Commit SHA for fixes: `8ae9149c9eeab4f548a21dd7a10d080266fc8e0f`
+- Files changed: `app/components/UI/Perps/hooks/usePerpsOrderValidation.ts`, `app/components/UI/Perps/hooks/usePerpsOrderValidation.test.ts`
+- Recipe re-validation: SKIPPED (mobile runtime unavailable)
+- Integration status: `rebased`
+
+

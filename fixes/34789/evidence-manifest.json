@@ -1,21 +1,9 @@
 {
   "version": 1,
   "preferred_mode": "screenshots",
-  "summary": "Lite-mode trade screen after switching from the Perps balance to a wallet token on the rebased review-fix branch.",
-  "before_after_pairs": [
-    {
-      "label": "Contradictory funding errors and a missing action become a token-funded trade screen with the action in reach",
-      "covers": [
-        "ac1",
-        "ac2"
-      ],
-      "before": "recipe-runs/inherited-9da27bd0-481b-42cd-9cc3-8a2b6807543e/before-ac1-after-payment-switch.png",
-      "after": "recipe-run/screenshots/evidence-ac1-after-payment-switch.png"
-    }
-  ],
+  "summary": "Recipe re-validation skipped on this PR-complete run: the iOS in-app bridge never matched after launch. Inherited family evidence lives under recipe-runs/inherited-9da27bd0-481b-42cd-9cc3-8a2b6807543e/.",
+  "before_after_pairs": [],
   "videos": {
-    "before": "recipe-runs/inherited-9da27bd0-481b-42cd-9cc3-8a2b6807543e/before.mp4",
-    "after": "recipe-runs/inherited-9da27bd0-481b-42cd-9cc3-8a2b6807543e/after.mp4",
     "preferred": false
   }
 }
