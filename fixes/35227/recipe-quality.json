@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "verdict": "pass",
+  "compact": {
+    "verdict": "PASS",
+    "reasons": [
+      "Current recipe has 14 nodes: perps.ensure-session, ensure_orders reset, start_state BTC Limit at offset_pct -1, assert_orders, Pro market navigate, wait perps-pro-market-view then chart-panel then perps-pro-market-chart-content, screenshot, teardown cancel.",
+      "State claim is assert_orders; visual claim is the screenshot because the Limit line is a WebView canvas stroke with no fiber testID.",
+      "The old wait-limit-overlay node and perps-chart-limit-overlay testID are gone. recipe-run/summary.json is pass; recipe-coverage.md matches the current graph."
+    ],
+    "better_version_guidance": []
+  },
+  "dimensions": {},
+  "structural_findings": [],
+  "contextual_findings": [],
+  "suggested_recipe_delta": [],
+  "training_fields": {
+    "proof_mode": "unknown"
+  },
+  "meta": {
+    "producer": "worker",
+    "fallback_used": false,
+    "legacy_task": false,
+    "artifact_required": true,
+    "source_signals": [
+      "recipe-quality.json"
+    ]
+  }
+}

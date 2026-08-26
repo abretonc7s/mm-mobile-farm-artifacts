@@ -1,0 +1,125 @@
+{
+  "$schema": "https://farmslot.io/schemas/recipe-v1.schema.json",
+  "title": "TAT-3530 Display limit orders on the chart",
+  "description": "Place a resting testnet limit order, open the market chart, and prove the Limit overlay is on the visible chart.",
+  "proofTargets": [
+    {
+      "id": "ac1",
+      "claim": "A resting limit order is drawn on the market chart."
+    }
+  ],
+  "workflow": {
+    "entry": "ensure-session",
+    "teardown": "cleanup-orders",
+    "nodes": {
+      "ensure-session": {
+        "action": "call",
+        "ref": "perps.ensure-session",
+        "intent": "Unlock the fixture wallet and confirm Perps session",
+        "next": "reset-orders"
+      },
+      "reset-orders": {
+        "action": "metamask.perps.ensure_orders",
+        "market": "BTC",
+        "state": "none",
+        "mode": "all",
+        "intent": "Drop leftover testnet orders so the next Limit is a fresh on-scale placement",
+        "next": "ensure-limit-order"
+      },
+      "ensure-limit-order": {
+        "action": "metamask.perps.start_state",
+        "page": false,
+        "positions": false,
+        "orders": {
+          "state": "open",
+          "market": "BTC",
+          "side": "long",
+          "notional": 12,
+          "leverage": 3,
+          "order_type": "limit",
+          "offset_pct": -1
+        },
+        "intent": "Place a resting BTC long Limit 1% below mid so the Limit line sits in the 15m frame",
+        "next": "assert-order-state"
+      },
+      "assert-order-state": {
+        "action": "metamask.perps.assert_orders",
+        "market": "BTC",
+        "state": "open",
+        "intent": "Prove controller has an open BTC order before chart proof",
+        "proves": ["ac1"],
+        "next": "open-market"
+      },
+      "open-market": {
+        "action": "ui.navigate",
+        "page": "perps-market",
+        "market": "BTC",
+        "mode": "pro",
+        "intent": "Open BTC market details so the chart overlay can render",
+        "next": "wait-market-details"
+      },
+      "wait-market-details": {
+        "action": "ui.wait_for",
+        "test_id": "perps-pro-market-view",
+        "expected": "visible",
+        "timeout_ms": 20000,
+        "intent": "Confirm the BTC Pro market screen is in the viewport",
+        "next": "expand-chart"
+      },
+      "expand-chart": {
+        "action": "ui.wait_for",
+        "test_id": "perps-pro-market-chart-panel",
+        "expected": "visible",
+        "timeout_ms": 2500,
+        "intent": "Use the already-expanded BTC chart when persist left it open",
+        "next": "scroll-chart-into-view"
+      },
+      "scroll-chart-into-view": {
+        "action": "ui.scroll",
+        "test_id": "perps-pro-market-scroll-view",
+        "delta_y": -1200,
+        "intent": "Keep the BTC chart above the order ticket in the visible frame",
+        "next": "wait-chart-panel"
+      },
+      "wait-chart-panel": {
+        "action": "ui.wait_for",
+        "test_id": "perps-pro-market-chart-panel",
+        "expected": "visible",
+        "timeout_ms": 20000,
+        "intent": "Confirm the BTC chart panel is on screen before capture",
+        "next": "wait-chart-content"
+      },
+      "wait-chart-content": {
+        "action": "ui.wait_for",
+        "test_id": "perps-pro-market-chart-content",
+        "expected": "visible",
+        "timeout_ms": 20000,
+        "intent": "Confirm the BTC chart body is mounted before capture",
+        "next": "capture-chart"
+      },
+      "capture-chart": {
+        "action": "ui.screenshot",
+        "path": "screenshots/after-ac1-limit-line-on-chart.png",
+        "label": "AC1: Limit order line visible on the BTC chart",
+        "intent": "Keep a still of the BTC chart with the resting Limit price line in view",
+        "proves": ["ac1"],
+        "next": "done"
+      },
+      "cleanup-orders": {
+        "action": "metamask.perps.ensure_orders",
+        "market": "BTC",
+        "state": "none",
+        "intent": "Remove the temporary BTC testnet limit order",
+        "next": "teardown-done"
+      },
+      "teardown-done": {
+        "action": "end",
+        "status": "pass"
+      },
+      "done": {
+        "action": "end",
+        "status": "pass"
+      }
+    }
+  }
+}

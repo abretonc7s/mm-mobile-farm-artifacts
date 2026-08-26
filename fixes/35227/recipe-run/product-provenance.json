@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "adapter": "mobile",
+  "repository": "metamask-mobile-6",
+  "git_ref": "764d5a18301537f395cc33a5a9f1afd91a12c0c5",
+  "branch": "TAT-3530-feat-display-limit-orders-on-the-ch",
+  "dirty": true
+}

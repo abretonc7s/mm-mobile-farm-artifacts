@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "root": {
+    "ref": "$root:sha256:adf40f84633ee0ebb6d86031ac0c7e65cfb4e5ca5aa80ae26dc521c98fdc829f",
+    "digest": "sha256:adf40f84633ee0ebb6d86031ac0c7e65cfb4e5ca5aa80ae26dc521c98fdc829f"
+  },
+  "dependencies": [
+    {
+      "ref": "perps.ensure-session",
+      "source": "perps",
+      "file": "recipes/mobile/perps/ensure-session.recipe.json",
+      "digest": "sha256:660430590be03b0884389d278947d8f5bbafde73847adb8be3da2835ba6f580a",
+      "artifact": "resolved-recipes/660430590be03b0884389d278947d8f5bbafde73847adb8be3da2835ba6f580a.recipe.json",
+      "adapter": "mobile"
+    }
+  ],
+  "edges": [
+    {
+      "from": "$root:sha256:adf40f84633ee0ebb6d86031ac0c7e65cfb4e5ca5aa80ae26dc521c98fdc829f",
+      "to": "perps.ensure-session"
+    }
+  ]
+}

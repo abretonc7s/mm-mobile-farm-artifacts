@@ -1,0 +1,6 @@
+{
+  "originalFamilyScopeSummary": "Display limit orders on the chart",
+  "currentTriggerSummary": "pr-complete: feat: display limit orders on the chart",
+  "scopeVerdict": "full-scope-addressed",
+  "notes": "Review fixes keep resting Limit lines on Lite/Pro charts. Autoscale stays on autoscaleInfoProvider; unchanged limits are not torn down on current-price ticks. Assertion and behavioral tests match reviewer requests. Types-module rename left as follow-up."
+}

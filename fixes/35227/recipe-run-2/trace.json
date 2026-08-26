@@ -1,0 +1,72 @@
+{
+  "metadata": {
+    "runner": {
+      "source": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness",
+      "git_ref": "unknown",
+      "name": "@metamask/recipe-runner"
+    }
+  },
+  "entries": [
+    {
+      "nodeId": "ensure-session/probe-runtime",
+      "action": "cdp.target",
+      "intent": "Confirm the selected MetaMask runtime is reachable",
+      "startedAt": "2026-08-26T02:50:51.325Z",
+      "endedAt": "2026-08-26T02:51:01.369Z",
+      "durationMs": 10044,
+      "ok": true,
+      "next": "ensure-wallet",
+      "output": {
+        "platform": "mobile",
+        "transport": "react-native-debug-bridge",
+        "cdpPort": null,
+        "metroPort": "8066",
+        "probeUrl": "http://127.0.0.1:8066/json/list",
+        "timeoutMs": 10000,
+        "reachable": false,
+        "statusCode": null,
+        "error": "Timed out after 10000ms"
+      }
+    },
+    {
+      "nodeId": "ensure-session/ensure-wallet",
+      "action": "metamask.wallet.ensure_unlocked",
+      "intent": "Ensure the fixture-backed wallet is unlocked",
+      "startedAt": "2026-08-26T02:51:01.558Z",
+      "endedAt": "2026-08-26T02:51:22.735Z",
+      "durationMs": 21177,
+      "ok": false,
+      "cause_class": "unknown",
+      "error": "Live adapter /Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness/library/actions/mobile/wallet/ensure_unlocked.mjs exited 1: file:///Users/deeeed/dev/metamask/metamask-mobile-6/[eval1]:16294\n  throw new Error(\n        ^\n\nError: Timed out waiting for pinned Mobile agentic bridge target; last status was null; last error was Mobile CDP bridge command timed out after 1801ms: node ../../../.npm-global/lib/node_modules/@deeeed/metamask-harness/adapters/mobile/bridge-runtime/cdp-bridge.cjs status-selected\n    at waitForTargetStatus (file:///Users/deeeed/dev/metamask/metamask-mobile-6/[eval1]:16294:9)\n    at async ensureUnlocked (file:///Users/deeeed/dev/metamask/metamask-mobile-6/[eval1]:16373:24)\n    at async runAdapter (file:///Users/deeeed/dev/metamask/metamask-mobile-6/[eval1]:13558:20)\n\nNode.js v24.16.0\n"
+    },
+    {
+      "nodeId": "ensure-session",
+      "action": "call",
+      "recipe": {
+        "ref": "perps.ensure-session",
+        "digest": "sha256:660430590be03b0884389d278947d8f5bbafde73847adb8be3da2835ba6f580a",
+        "source": "perps",
+        "file": "recipes/mobile/perps/ensure-session.recipe.json",
+        "adapter": "mobile"
+      },
+      "intent": "Unlock the fixture wallet and confirm Perps session",
+      "startedAt": "2026-08-26T02:50:51.281Z",
+      "endedAt": "2026-08-26T02:51:22.805Z",
+      "durationMs": 31524,
+      "ok": false,
+      "cause_class": "unknown",
+      "error": "Recipe perps.ensure-session finished with status fail."
+    },
+    {
+      "nodeId": "cleanup-orders",
+      "action": "metamask.perps.ensure_orders",
+      "intent": "Remove the temporary BTC testnet limit order",
+      "startedAt": "2026-08-26T02:51:22.805Z",
+      "endedAt": "2026-08-26T02:51:33.807Z",
+      "durationMs": 11002,
+      "ok": false,
+      "cause_class": "unknown",
+      "error": "Live adapter /Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness/library/actions/mobile/perps/ensure_orders.mjs exited 1: file:///Users/deeeed/dev/metamask/metamask-mobile-6/[eval1]:13821\n    const error = new Error(`Mobile CDP bridge command failed: ${command2}\n                  ^\n\nError: Mobile CDP bridge command failed: node ../../../.npm-global/lib/node_modules/@deeeed/metamask-harness/adapters/mobile/bridge-runtime/cdp-bridge.cjs eval-async (function(){\n          var controller = Engine && Engine.context && Engine.context.PerpsController;\n          if (!controller || typeof controller.getOpenOrders !== 'function') {\n            throw new Error('Engine.context.PerpsController.getOpenOrders is unavailable; cannot assert live Perps orders.');\n          }\n          return controller.getOpenOrders().then(function(r){\n            if (!Array.isArray(r)) throw new Error('PerpsController.getOpenOrders returned a non-array result.');\n            return JSON.stringify(r);\n          });\n        })()\nERROR[CDP_TIMEOUT]: CDP broker request timeout\nNext: the app is reloading or busy — retry, or `mm-harness launch <platform>` to foreground it.\n\n    at bridgeCommand (file:///Users/deeeed/dev/metamask/metamask-mobile-6/[eval1]:13821:19)\n    at async evalAsync (file:///Users/deeeed/dev/metamask/metamask-mobile-6/[eval1]:13885:29)\n    at async file:///Users/deeeed/dev/metamask/metamask-mobile-6/[eval1]:17118:22\n    at async retryPerpsClientRead (file:///Users/deeeed/dev/metamask/metamask-mobile-6/[eval1]:16993:14)\n    at async closeOrders (file:///Users/deeeed/dev/metamask/metamask-mobile-6/[eval1]:17483:18)\n    at async ensureOrders (file:///Users/deeeed/dev/metamask/metamask-mobile-6/[eval1]:17596:19)\n    at async runAdapter (file:///Users/deeeed/dev/metamask/metamask-mobile-6/[eval1]:13558:20) {\n  code: 'CDP_TIMEOUT'\n}\n\nNode.js v24.16.0\n"
+    }
+  ]
+}

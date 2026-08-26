@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "id": "run-network",
+  "status": "unavailable",
+  "startedAtEpochMs": 1787712636129,
+  "endedAtEpochMs": 1787712700969,
+  "maxDurationMs": 3600000,
+  "reconnects": 0,
+  "droppedRequests": 0,
+  "unavailableReasons": [
+    "CDP command timed out: Network.enable"
+  ],
+  "coverageGapReasons": [],
+  "uninspectableBodyRequests": 0,
+  "projectedBodyFields": [
+    "type"
+  ],
+  "totalRequests": 0,
+  "requestsByMethod": {},
+  "requestsByHost": {},
+  "requestsByType": {},
+  "requests": [],
+  "nodeEvents": [
+    {
+      "action": "cdp.target",
+      "elapsedMs": 15235,
+      "nodeId": "ensure-session/probe-runtime",
+      "status": "running"
+    },
+    {
+      "action": "cdp.target",
+      "elapsedMs": 25239,
+      "nodeId": "ensure-session/probe-runtime",
+      "status": "passed"
+    },
+    {
+      "action": "metamask.wallet.ensure_unlocked",
+      "elapsedMs": 25553,
+      "nodeId": "ensure-session/ensure-wallet",
+      "status": "running"
+    },
+    {
+      "action": "metamask.wallet.ensure_unlocked",
+      "elapsedMs": 46539,
+      "nodeId": "ensure-session/ensure-wallet",
+      "status": "failed"
+    },
+    {
+      "action": "metamask.perps.ensure_orders",
+      "elapsedMs": 46749,
+      "nodeId": "cleanup-orders",
+      "status": "running"
+    },
+    {
+      "action": "metamask.perps.ensure_orders",
+      "elapsedMs": 57369,
+      "nodeId": "cleanup-orders",
+      "status": "failed"
+    }
+  ]
+}

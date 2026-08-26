@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "scope": "recipe-run-application",
+  "status": "clean",
+  "nonBlocking": true,
+  "note": "No application warnings or errors were emitted during the recipe run.",
+  "source": {
+    "label": "app",
+    "path": "/Users/deeeed/dev/metamask/metamask-mobile-6/temp/recipe/runtime/app-console.log",
+    "startOffset": 29395,
+    "endOffset": 29395,
+    "bytesRead": 0,
+    "truncated": false,
+    "inAppBuffer": "n/a",
+    "rawArtifact": "diagnostics-app-log.txt",
+    "redacted": true
+  },
+  "counts": {
+    "total": 0,
+    "warning": 0,
+    "error": 0,
+    "exception": 0
+  },
+  "displayedFindingCount": 0,
+  "omittedFindingCount": 0,
+  "findings": []
+}

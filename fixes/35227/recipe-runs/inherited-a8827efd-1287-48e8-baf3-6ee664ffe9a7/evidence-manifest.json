@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "preferred_mode": "screenshots",
+  "summary": "AC1 mixed proof: open BTC limit in controller, Limit overlay present in fiber, simulator screenshot after that wait.",
+  "before_after_pairs": [],
+  "standalone": [
+    {
+      "label": "AC1 Limit overlay on BTC Pro market",
+      "covers": ["ac1"],
+      "file": "after-ac1-limit-line-on-chart.png"
+    }
+  ],
+  "omit": [],
+  "videos": {}
+}

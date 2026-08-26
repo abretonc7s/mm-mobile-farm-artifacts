@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "valid": true,
+  "snapshots": [
+    {
+      "phase": "start",
+      "capturedAt": "2026-08-26T02:50:35.809Z",
+      "recipeDigest": "sha256:adf40f84633ee0ebb6d86031ac0c7e65cfb4e5ca5aa80ae26dc521c98fdc829f",
+      "product": {
+        "head": "764d5a18301537f395cc33a5a9f1afd91a12c0c5",
+        "status": " M app/components/UI/Perps/components/PerpsAdvancedChart/PerpsAdvancedChart.tsx\n M app/components/UI/Perps/components/TradingViewChart/TradingViewChart.incremental.test.tsx\n M app/components/UI/Perps/components/TradingViewChart/TradingViewChartTemplate.tsx\n?? app/components/UI/Perps/components/TradingViewChart/limitOrderOverlay.test.ts\n?? app/components/UI/Perps/components/TradingViewChart/limitOrderOverlay.ts\n",
+        "sourceFingerprint": "afcb0170b36e93ecfd4a895e436fe93a2a2dd7a13874ad2fa085e142f9774f01"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "36551b962475da9d16f7326b5f3398b200f6da54e91cfe352c1d38bfba9bc818"
+      },
+      "libraries": [
+        {
+          "name": "perps",
+          "head": "6432e86eb671a137101505866f18444ef1eccc92",
+          "status": "",
+          "sourceFingerprint": "c508cf28c0e90960d7e11bc29c59bb607fbfccad8cf2464f3153b398cd0ddd80"
+        },
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "0b8c85146c6dc865c0a37ce34bfa14d8b7ec23a1e534c37573a9e7495eb7e69e"
+        }
+      ],
+      "helpers": []
+    },
+    {
+      "phase": "pre-execute",
+      "capturedAt": "2026-08-26T02:50:45.853Z",
+      "recipeDigest": "sha256:adf40f84633ee0ebb6d86031ac0c7e65cfb4e5ca5aa80ae26dc521c98fdc829f",
+      "product": {
+        "head": "764d5a18301537f395cc33a5a9f1afd91a12c0c5",
+        "status": " M app/components/UI/Perps/components/PerpsAdvancedChart/PerpsAdvancedChart.tsx\n M app/components/UI/Perps/components/TradingViewChart/TradingViewChart.incremental.test.tsx\n M app/components/UI/Perps/components/TradingViewChart/TradingViewChartTemplate.tsx\n?? app/components/UI/Perps/components/TradingViewChart/limitOrderOverlay.test.ts\n?? app/components/UI/Perps/components/TradingViewChart/limitOrderOverlay.ts\n",
+        "sourceFingerprint": "afcb0170b36e93ecfd4a895e436fe93a2a2dd7a13874ad2fa085e142f9774f01"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "36551b962475da9d16f7326b5f3398b200f6da54e91cfe352c1d38bfba9bc818"
+      },
+      "libraries": [
+        {
+          "name": "perps",
+          "head": "6432e86eb671a137101505866f18444ef1eccc92",
+          "status": "",
+          "sourceFingerprint": "c508cf28c0e90960d7e11bc29c59bb607fbfccad8cf2464f3153b398cd0ddd80"
+        },
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "0b8c85146c6dc865c0a37ce34bfa14d8b7ec23a1e534c37573a9e7495eb7e69e"
+        }
+      ],
+      "helpers": []
+    },
+    {
+      "phase": "end",
+      "capturedAt": "2026-08-26T02:51:36.919Z",
+      "recipeDigest": "sha256:adf40f84633ee0ebb6d86031ac0c7e65cfb4e5ca5aa80ae26dc521c98fdc829f",
+      "product": {
+        "head": "764d5a18301537f395cc33a5a9f1afd91a12c0c5",
+        "status": " M app/components/UI/Perps/components/PerpsAdvancedChart/PerpsAdvancedChart.tsx\n M app/components/UI/Perps/components/TradingViewChart/TradingViewChart.incremental.test.tsx\n M app/components/UI/Perps/components/TradingViewChart/TradingViewChartTemplate.tsx\n?? app/components/UI/Perps/components/TradingViewChart/limitOrderOverlay.test.ts\n?? app/components/UI/Perps/components/TradingViewChart/limitOrderOverlay.ts\n",
+        "sourceFingerprint": "afcb0170b36e93ecfd4a895e436fe93a2a2dd7a13874ad2fa085e142f9774f01"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "36551b962475da9d16f7326b5f3398b200f6da54e91cfe352c1d38bfba9bc818"
+      },
+      "libraries": [
+        {
+          "name": "perps",
+          "head": "6432e86eb671a137101505866f18444ef1eccc92",
+          "status": "",
+          "sourceFingerprint": "c508cf28c0e90960d7e11bc29c59bb607fbfccad8cf2464f3153b398cd0ddd80"
+        },
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "0b8c85146c6dc865c0a37ce34bfa14d8b7ec23a1e534c37573a9e7495eb7e69e"
+        }
+      ],
+      "helpers": []
+    }
+  ],
+  "drift": []
+}
