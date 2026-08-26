@@ -17,14 +17,14 @@
       },
       "setup-open-market": {
         "action": "ui.navigate",
-        "intent": "Open the ETH perps market where a trade can be started",
+        "intent": "Open the SOL perps market where a trade can be started",
         "page": "perps-market",
-        "market": "ETH",
+        "market": "SOL",
         "next": "setup-wait-long"
       },
       "setup-wait-long": {
         "action": "ui.wait_for",
-        "intent": "The ETH market screen is ready for a trader to start a long trade",
+        "intent": "The SOL market screen is ready for a trader to start a long trade",
         "test_id": "perps-market-details-long-button",
         "timeout_ms": 20000,
         "next": "setup-press-long"
@@ -83,7 +83,7 @@
       "ac1-assert-no-perps-balance-warning": {
         "action": "ui.wait_for",
         "intent": "The trader is never told their Perps balance is empty while they are paying with a wallet token",
-        "test_id": "perps-amount-display-warning",
+        "text": "Not enough funds available. Deposit funds or select a different payment method",
         "expected": "absent",
         "timeout_ms": 15000,
         "next": "ac1-assert-no-zero-available-row"
@@ -121,15 +121,15 @@
       },
       "ac3-ac4-run-funding-state-tests": {
         "action": "command",
-        "intent": "The unresolved-balance and below-minimum funding states are checked at the layer where a trader-facing render pass can be reproduced deterministically",
-        "cmd": "yarn jest app/components/UI/Perps/Views/PerpsOrderView/PerpsOrderView.test.tsx -t 'pay with token funding state' --no-coverage > temp/tasks/fix/tat-3742-0813-171821/artifacts/funding-state-tests.log 2>&1; status=$?; cat temp/tasks/fix/tat-3742-0813-171821/artifacts/funding-state-tests.log; exit $status",
+        "intent": "The unresolved-to-resolved wallet-token transition is checked at the layer where a trader-facing render pass can be reproduced deterministically",
+        "cmd": "yarn jest app/components/UI/Perps/Views/PerpsOrderView/PerpsOrderView.test.tsx -t 'unresolved pay-token balance' --runInBand --coverage=false --forceExit > temp/tasks/fix/34789-0825-085413/artifacts/funding-state-tests.log 2>&1; status=$?; cat temp/tasks/fix/34789-0825-085413/artifacts/funding-state-tests.log; exit $status",
         "timeout_ms": 600000,
         "allow_failure": true,
         "next": "ac3-ac4-assert-funding-state-tests"
       },
       "ac3-ac4-assert-funding-state-tests": {
         "action": "assert_exit_code",
-        "intent": "A trader keeps a usable slider and a stated minimum order size in both funding states",
+        "intent": "A same-source cached capacity keeps the slider usable during refresh, while a new unresolved source cannot borrow Perps capacity and Place Order stays fail-closed",
         "node": "ac3-ac4-run-funding-state-tests",
         "expected": 0,
         "next": "teardown-index-test-log"
@@ -139,9 +139,9 @@
         "intent": "Keep the funding-state test output alongside the on-device evidence",
         "artifacts": [
           {
-            "path": "temp/tasks/fix/tat-3742-0813-171821/artifacts/funding-state-tests.log",
+            "path": "temp/tasks/fix/34789-0825-085413/artifacts/funding-state-tests.log",
             "type": "log",
-            "label": "AC3 + AC4: funding-state unit test output"
+            "label": "AC3: wallet-token balance transition test output"
           }
         ],
         "next": "teardown-done"

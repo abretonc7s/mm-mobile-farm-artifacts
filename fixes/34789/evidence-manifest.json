@@ -1,9 +1,18 @@
 {
   "version": 1,
   "preferred_mode": "screenshots",
-  "summary": "Recipe re-validation skipped on this PR-complete run: the iOS in-app bridge never matched after launch. Inherited family evidence lives under recipe-runs/inherited-9da27bd0-481b-42cd-9cc3-8a2b6807543e/.",
-  "before_after_pairs": [],
+  "summary": "Trusted inherited proof for the lite-mode trade screen after switching from the Perps balance to a wallet token.",
+  "before_after_pairs": [
+    {
+      "label": "Contradictory funding errors, a disabled slider, and a missing action become a placeable order funded from the live wallet balance",
+      "covers": ["ac1", "ac2"],
+      "before": "artifacts/recipe-runs/inherited-9da27bd0-481b-42cd-9cc3-8a2b6807543e/before-ac1-after-payment-switch.png",
+      "after": "artifacts/recipe-runs/inherited-9da27bd0-481b-42cd-9cc3-8a2b6807543e/after-ac1-after-payment-switch.png"
+    }
+  ],
   "videos": {
+    "before": "artifacts/recipe-runs/inherited-9da27bd0-481b-42cd-9cc3-8a2b6807543e/before.mp4",
+    "after": "artifacts/recipe-runs/inherited-9da27bd0-481b-42cd-9cc3-8a2b6807543e/after.mp4",
     "preferred": false
   }
 }

@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "id": "run-network",
+  "status": "unavailable",
+  "startedAtEpochMs": 1787653264832,
+  "endedAtEpochMs": 1787653325053,
+  "maxDurationMs": 3600000,
+  "reconnects": 0,
+  "droppedRequests": 0,
+  "unavailableReasons": [
+    "CDP broker request timeout"
+  ],
+  "coverageGapReasons": [],
+  "uninspectableBodyRequests": 0,
+  "projectedBodyFields": [
+    "type"
+  ],
+  "totalRequests": 0,
+  "requestsByMethod": {},
+  "requestsByHost": {},
+  "requestsByType": {},
+  "requests": [],
+  "nodeEvents": [
+    {
+      "action": "app.status",
+      "elapsedMs": 232,
+      "nodeId": "setup-status",
+      "status": "running"
+    },
+    {
+      "action": "app.status",
+      "elapsedMs": 233,
+      "nodeId": "setup-status",
+      "status": "passed"
+    },
+    {
+      "action": "metamask.wallet.ensure_unlocked",
+      "elapsedMs": 314,
+      "nodeId": "setup-unlock",
+      "status": "running"
+    },
+    {
+      "action": "metamask.wallet.ensure_unlocked",
+      "elapsedMs": 1376,
+      "nodeId": "setup-unlock",
+      "status": "passed"
+    },
+    {
+      "action": "ui.navigate",
+      "elapsedMs": 1460,
+      "nodeId": "setup-open-market",
+      "status": "running"
+    },
+    {
+      "action": "ui.navigate",
+      "elapsedMs": 1586,
+      "nodeId": "setup-open-market",
+      "status": "passed"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 2190,
+      "nodeId": "setup-wait-long",
+      "status": "running"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 22446,
+      "nodeId": "setup-wait-long",
+      "status": "failed"
+    },
+    {
+      "action": "app.status",
+      "elapsedMs": 27872,
+      "nodeId": "setup-status",
+      "status": "running"
+    },
+    {
+      "action": "app.status",
+      "elapsedMs": 27872,
+      "nodeId": "setup-status",
+      "status": "passed"
+    },
+    {
+      "action": "metamask.wallet.ensure_unlocked",
+      "elapsedMs": 27943,
+      "nodeId": "setup-unlock",
+      "status": "running"
+    },
+    {
+      "action": "metamask.wallet.ensure_unlocked",
+      "elapsedMs": 28904,
+      "nodeId": "setup-unlock",
+      "status": "passed"
+    },
+    {
+      "action": "ui.navigate",
+      "elapsedMs": 29016,
+      "nodeId": "setup-open-market",
+      "status": "running"
+    },
+    {
+      "action": "ui.navigate",
+      "elapsedMs": 29142,
+      "nodeId": "setup-open-market",
+      "status": "passed"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 29804,
+      "nodeId": "setup-wait-long",
+      "status": "running"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 50049,
+      "nodeId": "setup-wait-long",
+      "status": "failed"
+    }
+  ]
+}

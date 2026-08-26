@@ -1,1 +1,467 @@
-[{"nodeId":"setup-status","action":"app.status","intent":"Confirm the mobile bridge is reachable before driving the UI","ok":false,"cause_class":"environment"}]
+{
+  "metadata": {
+    "runner": {
+      "source": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness",
+      "git_ref": "unknown",
+      "name": "@metamask/recipe-runner"
+    }
+  },
+  "entries": [
+    {
+      "nodeId": "setup-status",
+      "action": "app.status",
+      "intent": "Confirm the mobile bridge is reachable before driving the UI",
+      "startedAt": "2026-08-25T10:21:32.665Z",
+      "endedAt": "2026-08-25T10:21:32.704Z",
+      "durationMs": 39,
+      "ok": true,
+      "next": "setup-unlock",
+      "output": {
+        "platform": "mobile",
+        "projectRoot": "/Users/deeeed/dev/metamask/metamask-mobile-2",
+        "compatibilityMode": "runner bridge with injected app bridge",
+        "shape": {
+          "packageName": "metamask",
+          "packageJsonStatus": "valid",
+          "packageJsonError": null,
+          "extensionProject": false,
+          "mobileProject": true,
+          "agenticService": true,
+          "mobileProductHarness": false,
+          "mobileBridgeScript": true,
+          "extensionRuntime": false,
+          "injectedHarness": true,
+          "walletFixture": true
+        }
+      }
+    },
+    {
+      "nodeId": "setup-unlock",
+      "action": "metamask.wallet.ensure_unlocked",
+      "intent": "Make the fixture wallet usable so Perps screens can render live data",
+      "startedAt": "2026-08-25T10:21:32.738Z",
+      "endedAt": "2026-08-25T10:21:33.736Z",
+      "durationMs": 998,
+      "ok": true,
+      "next": "setup-open-market",
+      "output": {
+        "action": "metamask.wallet.ensure_unlocked",
+        "unlocked": true,
+        "alreadyUnlocked": true,
+        "account": {
+          "address": "0x8dc623e964475d4d669da601fd15ea9125469003",
+          "id": "0285a92b-905c-4814-8a16-52fe1db60357",
+          "name": "dev1"
+        },
+        "deviceName": "mm-2",
+        "platform": "ios",
+        "redacted": true,
+        "proofPath": "agentic-wallet-status",
+        "liveAdapter": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness/library/actions/mobile/wallet/ensure_unlocked.mjs"
+      }
+    },
+    {
+      "nodeId": "setup-open-market",
+      "action": "ui.navigate",
+      "intent": "Open the SOL perps market where a trade can be started",
+      "startedAt": "2026-08-25T10:21:33.805Z",
+      "endedAt": "2026-08-25T10:21:34.555Z",
+      "durationMs": 750,
+      "ok": true,
+      "next": "setup-wait-long",
+      "output": {
+        "action": "ui.navigate",
+        "page": "perps-market",
+        "route": "PerpsMarketDetails",
+        "params": {
+          "market": {
+            "symbol": "SOL"
+          },
+          "mode": "lite"
+        },
+        "navigation": {
+          "navigated": "PerpsMarketDetails",
+          "params": {
+            "market": {
+              "symbol": "SOL"
+            },
+            "mode": "lite"
+          },
+          "previousRoute": {
+            "key": "PerpsMarketDetails-u_Ydiu4v669SMFS5qe1Qp",
+            "name": "PerpsMarketDetails",
+            "params": {
+              "market": {
+                "symbol": "SOL"
+              },
+              "mode": "lite"
+            }
+          },
+          "currentRoute": {
+            "key": "PerpsMarketDetails-u_Ydiu4v669SMFS5qe1Qp",
+            "name": "PerpsMarketDetails",
+            "params": {
+              "market": {
+                "symbol": "SOL"
+              },
+              "mode": "lite"
+            }
+          },
+          "verifiedRoute": "PerpsMarketDetails",
+          "alreadyAtRoute": true
+        },
+        "proofPath": "agentic-navigation",
+        "liveAdapter": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness/library/actions/mobile/ui/navigate.mjs"
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "87C73AA9-AA53-48C0-9E02-24C4C3E57858",
+          "name": "MetaMask",
+          "nodeCount": 76,
+          "truncated": false
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXButton",
+              "label": "Browse markets",
+              "test_id": "perps-market-header-market-list-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 68,
+                "width": 230,
+                "height": 52
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Currently Lite mode",
+              "test_id": "perps-mode-toggle-lite",
+              "enabled": true,
+              "bounds": {
+                "x": 330,
+                "y": 78,
+                "width": 56,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "1min",
+              "test_id": "perps-market-details-view-candle-period-selector-period-1m",
+              "enabled": true,
+              "bounds": {
+                "x": 38,
+                "y": 594,
+                "width": 54,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "3min",
+              "test_id": "perps-market-details-view-candle-period-selector-period-3m",
+              "enabled": true,
+              "bounds": {
+                "x": 96,
+                "y": 594,
+                "width": 57,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "5min",
+              "test_id": "perps-market-details-view-candle-period-selector-period-5m",
+              "enabled": true,
+              "bounds": {
+                "x": 157,
+                "y": 594,
+                "width": 57,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "15min",
+              "test_id": "perps-market-details-view-candle-period-selector-period-15m",
+              "enabled": true,
+              "bounds": {
+                "x": 219,
+                "y": 594,
+                "width": 63,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "More",
+              "test_id": "perps-market-details-view-candle-period-selector-more-button",
+              "enabled": true,
+              "bounds": {
+                "x": 286,
+                "y": 594,
+                "width": 78,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Modify",
+              "test_id": "perps-market-details-modify-button",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 766,
+                "width": 180,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Close long",
+              "test_id": "perps-market-details-close-button",
+              "enabled": true,
+              "bounds": {
+                "x": 208,
+                "y": 766,
+                "width": 178,
+                "height": 48
+              }
+            }
+          ],
+          "hidden_or_offscreen": [
+            {
+              "role": "AXButton",
+              "label": "Order book",
+              "test_id": "perps-order-book-view",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 2100,
+                "width": 370,
+                "height": 48
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Related markets",
+              "test_id": "perps-related-markets-header",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 2201,
+                "width": 402,
+                "height": 44
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "BTC, +3.06%",
+              "test_id": "perps-market-tile-card-BTC",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 2245,
+                "width": 133,
+                "height": 40
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "ETH, -3.96%",
+              "test_id": "perps-market-tile-card-ETH",
+              "enabled": true,
+              "bounds": {
+                "x": 157,
+                "y": 2245,
+                "width": 129,
+                "height": 40
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "JUP, +4.39%",
+              "test_id": "perps-market-tile-card-JUP",
+              "enabled": true,
+              "bounds": {
+                "x": 293,
+                "y": 2245,
+                "width": 132,
+                "height": 40
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "AVAX, +0.52%",
+              "test_id": "perps-market-tile-card-AVAX",
+              "enabled": true,
+              "bounds": {
+                "x": 433,
+                "y": 2245,
+                "width": 144,
+                "height": 40
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "ADA, -0.30%",
+              "test_id": "perps-market-tile-card-ADA",
+              "enabled": true,
+              "bounds": {
+                "x": 585,
+                "y": 2245,
+                "width": 133,
+                "height": 40
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "ARB, -2.90%",
+              "test_id": "perps-market-tile-card-ARB",
+              "enabled": true,
+              "bounds": {
+                "x": 726,
+                "y": 2245,
+                "width": 132,
+                "height": 40
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "DOGE, -1.12%",
+              "test_id": "perps-market-tile-card-DOGE",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 2293,
+                "width": 136,
+                "height": 40
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "OP, -4.69%",
+              "test_id": "perps-market-tile-card-OP",
+              "enabled": true,
+              "bounds": {
+                "x": 160,
+                "y": 2293,
+                "width": 122,
+                "height": 40
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "SUI, -2.39%",
+              "test_id": "perps-market-tile-card-SUI",
+              "enabled": true,
+              "bounds": {
+                "x": 290,
+                "y": 2293,
+                "width": 125,
+                "height": 40
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "BNB, +0.15%",
+              "test_id": "perps-market-tile-card-BNB",
+              "enabled": true,
+              "bounds": {
+                "x": 423,
+                "y": 2293,
+                "width": 132,
+                "height": 40
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "XLM, -1.61%",
+              "test_id": "perps-market-tile-card-XLM",
+              "enabled": true,
+              "bounds": {
+                "x": 563,
+                "y": 2293,
+                "width": 126,
+                "height": 40
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "TRUMP, -2.74%",
+              "test_id": "perps-market-tile-card-TRUMP",
+              "enabled": true,
+              "bounds": {
+                "x": 697,
+                "y": 2293,
+                "width": 150,
+                "height": 40
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Recent activity",
+              "test_id": "see-all-button",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 2386,
+                "width": 402,
+                "height": 44
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Learn the basics of perps",
+              "test_id": "perps-tutorial-card",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 2749,
+                "width": 402,
+                "height": 48
+              },
+              "reason": "hidden_or_offscreen"
+            }
+          ],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "setup-wait-long",
+      "action": "ui.wait_for",
+      "intent": "The SOL market screen is ready for a trader to start a long trade",
+      "startedAt": "2026-08-25T10:21:34.599Z",
+      "endedAt": "2026-08-25T10:21:54.959Z",
+      "durationMs": 20360,
+      "ok": false,
+      "cause_class": "unknown",
+      "error": "Timed out waiting for mobile testID \"perps-market-details-long-button\" to be present; last result={\"present\":false,\"visible\":false,\"visibility\":\"tree\",\"testId\":\"perps-market-details-long-button\"}."
+    }
+  ]
+}

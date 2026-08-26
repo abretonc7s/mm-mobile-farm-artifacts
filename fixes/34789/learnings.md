@@ -1,5 +1,15 @@
-# Learnings
+# PR 34789 reviewer-driven learnings
 
-- A GitHub reply that cites a SHA is not proof the commit is on the PR branch. `45f48d0143f` was posted as the bugbot fix, then left dangling after later history, so the stale `insufficient_balance` row came back after rebase.
-- `skipBalanceError` only affects the next validation write. After the first run, later flag flips are debounced, so the previous generic balance string stays in `errors` until that timer fires. Filter it out of the returned list as soon as the caller owns the message.
-- Rebasing this hook onto main means keeping main's `protocolValid` / trigger-price shape and folding `skipBalanceError` into it. Do not take the older `isValid`-in-state version from the PR commit.
+- **A technically defensible fix can still be the wrong PR.** The unresolved-balance finding led to a reusable global hook and guards in Footer and CustomAmountInfo, but the confirmations owner clarified that standard deposit flows already fail closed on quote readiness. Before adding a second readiness mechanism, trace the owning surface’s existing final gate and prove it is insufficient.
+- **Readiness belongs at the earliest action that can escape existing validation.** Lite Perps can expose its Place Order CTA while its live wallet-token balance is still resolving, so a Perps-local balance gate is necessary. Standard confirmation CTAs already wait for a quote, so duplicating the balance gate there adds surface area without demonstrated behavior coverage.
+- **Changing a shared hook contract does not authorize redesigning all consumers.** Returning `undefined` from `usePayTokenAccountBalance` correctly distinguishes unknown from measured zero. Consumers need type-safe display/validation handling, but behavior changes in shared Footer, CustomAmountInfo, or other confirmation flows require their own reproduced problem and owner agreement.
+- **Opportunistic cleanup obscures review intent.** Migrating the Pay With row from the legacy `Box` to the design-system `Box` was unrelated to TAT-3742. It increased the diff and forced reviewers to assess visual/layout risk alongside balance correctness. Keep that migration in a separate independent PR with its own visual proof.
+- **Scope growth has a measurable validation cost.** The reviewer-requested rollback reduced the PR from 22 changed files and 1,228 additions to 16 files and 995 additions while preserving the original Perps acceptance criteria. Smaller ownership boundaries reduce test setup, runtime proof demands, and the chance that a follow-up fix creates unrelated regressions.
+- **Line-count cleanup must preserve assertion-level coverage.** Table-driving duplicated setup initially removed five distinct regression checks. A focused internal review restored each assertion while keeping the final seven-file PR at 999 changed lines. Deduplicate scaffolding, not behavioral expectations.
+
+## Ownership and non-blocking follow-up
+
+- **PR 34789 priority:** land the smallest safe TAT-3742 Perps fix. None of the broader confirmation observations should block its review or merge.
+- **Pay With row design-system migration:** this is optional confirmations-owned work with no functional dependency on TAT-3742. It is preserved as independent draft PR #35220 from `main`; the confirmations team can pursue, revise, or close it.
+- **General confirmation unresolved-balance gating:** the confirmations team owns the decision to investigate, reproduce, fix, or close this observation. The discarded approach is preserved as stacked draft PR #35221 for reference because it consumes #34789's optional balance contract. It remains non-blocking and should not be interpreted as TAT-3742 follow-up work.
+- **Possible display behavior changes for unresolved balances:** `$0`, placeholder, and skeleton behavior are confirmations/product decisions. They are not follow-up requirements for the Perps fix and may be closed without affecting PR 34789.

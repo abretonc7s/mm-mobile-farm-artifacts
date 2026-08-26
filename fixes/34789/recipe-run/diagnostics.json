@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "scope": "recipe-run-application",
+  "status": "review",
+  "nonBlocking": true,
+  "note": "Observed 2 distinct application warning/error event(s) during the recipe run; relation to the task is not determined.",
+  "source": {
+    "label": "app",
+    "path": "/Users/deeeed/dev/metamask/metamask-mobile-2/temp/recipe/runtime/app-console.log",
+    "startOffset": 0,
+    "endOffset": 6313,
+    "bytesRead": 6313,
+    "truncated": false,
+    "inAppBuffer": "collected"
+  },
+  "counts": {
+    "total": 2,
+    "warning": 2,
+    "error": 0,
+    "exception": 0
+  },
+  "findings": [
+    {
+      "level": "warning",
+      "fingerprint": "6939592733b8",
+      "preview": "WARN  10:21:34.740 [console:mm-2] { message: \"Execution prevented because the circuit breaker is open\", stack: \"Error: Execution prevented because the circuit breaker is open\\n    at construct (native)\\n    at apply (native)\\n    at _construct (http://127.0.0.1:8072/index.bundle//&platform=ios&dev=true&hot=false&lazy=t",
+      "count": 1
+    },
+    {
+      "level": "warning",
+      "fingerprint": "9a51a8fd1dc2",
+      "preview": "WARN  10:21:35.074 [console:mm-2] { message: \"MoneyAccountBalanceService: failed to fetch balance from all eligible sources\", stack: \"MoneyAccountBalanceFetchError: MoneyAccountBalanceService: failed to fetch balance from all eligible sources\\n    at construct (native)\\n    at apply (native)\\n    at _construct (http://",
+      "count": 1
+    }
+  ]
+}

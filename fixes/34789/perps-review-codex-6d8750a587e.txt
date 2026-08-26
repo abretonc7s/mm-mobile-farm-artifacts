@@ -1,0 +1,15 @@
+VERDICT: REQUEST_CHANGES
+COMMIT: 6d8750a587ef34e8f0e5291f69ae989724f52e57
+BLOCKERS:
+- app/components/Views/confirmations/hooks/pay/usePayTokenAccountBalance.ts:47 — The live overload passes preserved non-EVM chain/address values into `useTokenFiatRate`; its implementation calls `toChecksumAddress(address)`, which throws for non-hex addresses. Thus an arbitrary non-EVM pay token is not safe to inspect, and existing tests cover only a non-EVM candidate beside an EVM pay token — Skip fiat-rate lookup safely for non-EVM inputs and add a test using a non-EVM pay token/address.
+NITS:
+- None
+EVIDENCE:
+- `git rev-parse HEAD`
+- `git status --short --branch`
+- `git diff --stat --name-status --check 19c16f08452d2f5445887275fbad59f477756d0e..6d8750a587ef34e8f0e5291f69ae989724f52e57`
+- Complete seven-file diff from `git diff 19c16f08452d2f5445887275fbad59f477756d0e..6d8750a587ef34e8f0e5291f69ae989724f52e57`
+- All nine mandated Perps knowledge files
+- `usePayTokenAccountBalance.ts`, `useTokenFiatRates.ts`, `useAccountTokens.ts`, `useTransactionAccountOverride.ts`, `app/util/address/index.ts`
+- All four changed test files and Perps order provider/form/validation paths
+- Targeted Jest attempted; immutable worktree prevented Yarn from opening `.yarn/install-state.gz` (`EPERM`)

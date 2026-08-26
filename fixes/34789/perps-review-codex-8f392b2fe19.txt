@@ -1,0 +1,13 @@
+VERDICT: REQUEST_CHANGES
+COMMIT: 8f392b2fe19121e4fc1661f0577fcfe1a7da078d
+BLOCKERS:
+- app/components/Views/confirmations/hooks/pay/usePayTokenAccountBalance.ts:52 — Chain-ID normalization now also changes token matching for existing non-opt-in callers: equivalent but textually different IDs previously used the snapshot fallback and now use the live balance, violating the required preservation of their behavior — Apply normalized matching only when `requireLiveBalance` is true; retain exact chain-ID matching for the default overload and add a regression test for the non-opt-in leading-zero case.
+NITS:
+- None
+EVIDENCE:
+- Required `mms-perps-review-pr/SKILL.md` and all nine specified Perps knowledge files
+- `git rev-parse HEAD`
+- `git status --short`
+- `git diff --stat/--name-only/--check 19c16f08452d2f5445887275fbad59f477756d0e..8f392b2fe19121e4fc1661f0577fcfe1a7da078d`
+- Complete seven-file diff plus numbered production sources, affected tests, hook callers, account-token/account-override wiring, form capacity logic, and commit history
+- Focused Jest command attempted; immutable worktree prevented Yarn from writing `.yarn/install-state.gz` (`EPERM`)
