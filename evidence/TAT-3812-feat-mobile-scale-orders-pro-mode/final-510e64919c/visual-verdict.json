@@ -1,0 +1,15 @@
+{
+  "score": 88,
+  "verdict": "revise",
+  "category_match": true,
+  "differences": [
+    "The iOS software numeric keypad is absent from the Start and End screenshots; only the app-owned Up, Down, and Done accessory is visible.",
+    "The requested harness HUD overlays the lower edge of each screenshot, unlike the clean Figma frames.",
+    "Live ETH prices, balances, leverage limits, and order-book values differ from the static BTC design examples as expected."
+  ],
+  "suggestions": [
+    "Capture a supplemental Start and End input pair from a simulator session that renders the iOS numeric keypad.",
+    "Keep the current HUD screenshots as execution provenance and pair them with clean Figma exports for layout comparison."
+  ],
+  "reasoning": "The Scale form, summaries, placement confirmation, and live child-order UI match the intended component structure. The missing simulator-owned numeric keypad prevents a strict 90-plus pixel-parity verdict, although the full runtime behavior passed."
+}

@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "valid": true,
+  "snapshots": [
+    {
+      "phase": "start",
+      "capturedAt": "2026-08-27T14:50:18.242Z",
+      "recipeDigest": "sha256:707ad34e9a31a0262e80edd789960d1fdb4862bf66510c29196c2d752f807237",
+      "product": {
+        "head": "510e64919c3e0d60a11f2671e15becce49f9a4a6",
+        "status": "",
+        "sourceFingerprint": "4f220e1d6edbccee82af443028464ca8d59dff42b74019ef83564d28f6cdc4f1"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "56e73c58849781ee9fb574b02c59fc2ecb24eae51b85f9249ec05dafdf3f9614"
+      },
+      "libraries": [
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "e55aeb5523633064bcbd11d77ea9bb2b0077247b6215d181f0489bad6e67177b"
+        }
+      ],
+      "helpers": []
+    },
+    {
+      "phase": "pre-execute",
+      "capturedAt": "2026-08-27T14:50:18.528Z",
+      "recipeDigest": "sha256:707ad34e9a31a0262e80edd789960d1fdb4862bf66510c29196c2d752f807237",
+      "product": {
+        "head": "510e64919c3e0d60a11f2671e15becce49f9a4a6",
+        "status": "",
+        "sourceFingerprint": "4f220e1d6edbccee82af443028464ca8d59dff42b74019ef83564d28f6cdc4f1"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "56e73c58849781ee9fb574b02c59fc2ecb24eae51b85f9249ec05dafdf3f9614"
+      },
+      "libraries": [
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "e55aeb5523633064bcbd11d77ea9bb2b0077247b6215d181f0489bad6e67177b"
+        }
+      ],
+      "helpers": []
+    },
+    {
+      "phase": "end",
+      "capturedAt": "2026-08-27T14:51:29.924Z",
+      "recipeDigest": "sha256:707ad34e9a31a0262e80edd789960d1fdb4862bf66510c29196c2d752f807237",
+      "product": {
+        "head": "510e64919c3e0d60a11f2671e15becce49f9a4a6",
+        "status": "",
+        "sourceFingerprint": "4f220e1d6edbccee82af443028464ca8d59dff42b74019ef83564d28f6cdc4f1"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "56e73c58849781ee9fb574b02c59fc2ecb24eae51b85f9249ec05dafdf3f9614"
+      },
+      "libraries": [
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "e55aeb5523633064bcbd11d77ea9bb2b0077247b6215d181f0489bad6e67177b"
+        }
+      ],
+      "helpers": []
+    }
+  ],
+  "drift": []
+}
