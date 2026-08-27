@@ -1,0 +1,215 @@
+{
+  "version": 1,
+  "runStatus": "pass",
+  "provenance": {
+    "runner": {
+      "source": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness",
+      "git_ref": "unknown",
+      "name": "@metamask/recipe-runner"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "recipe.json",
+      "type": "recipe",
+      "label": "Executed recipe",
+      "category": "system"
+    },
+    {
+      "path": "recipe-resolution.json",
+      "type": "json",
+      "label": "Resolved recipe dependency graph",
+      "category": "system"
+    },
+    {
+      "path": "screenshots/scale-order-type-bottom-sheet.png",
+      "type": "screenshot",
+      "nodeId": "capture-scale-option",
+      "label": "ui.screenshot screenshot",
+      "category": "evidence",
+      "mimeType": "image/png",
+      "metadata": {
+        "provider": "simctl",
+        "mode": "xcrun simctl io screenshot",
+        "selectedDevice": "mm-3"
+      }
+    },
+    {
+      "path": "screenshots/scale-default.png",
+      "type": "screenshot",
+      "nodeId": "capture-scale-default",
+      "label": "ui.screenshot screenshot",
+      "category": "evidence",
+      "mimeType": "image/png",
+      "metadata": {
+        "provider": "simctl",
+        "mode": "xcrun simctl io screenshot",
+        "selectedDevice": "mm-3"
+      }
+    },
+    {
+      "path": "screenshots/scale-start-keyboard.png",
+      "type": "screenshot",
+      "nodeId": "capture-start-keyboard",
+      "label": "ui.screenshot screenshot",
+      "category": "evidence",
+      "mimeType": "image/png",
+      "metadata": {
+        "provider": "simctl",
+        "mode": "xcrun simctl io screenshot",
+        "selectedDevice": "mm-3"
+      }
+    },
+    {
+      "path": "screenshots/scale-end-keyboard.png",
+      "type": "screenshot",
+      "nodeId": "capture-end-keyboard",
+      "label": "ui.screenshot screenshot",
+      "category": "evidence",
+      "mimeType": "image/png",
+      "metadata": {
+        "provider": "simctl",
+        "mode": "xcrun simctl io screenshot",
+        "selectedDevice": "mm-3"
+      }
+    },
+    {
+      "path": "screenshots/scale-summary-incomplete.png",
+      "type": "screenshot",
+      "nodeId": "capture-incomplete-summary",
+      "label": "ui.screenshot screenshot",
+      "category": "evidence",
+      "mimeType": "image/png",
+      "metadata": {
+        "provider": "simctl",
+        "mode": "xcrun simctl io screenshot",
+        "selectedDevice": "mm-3"
+      }
+    },
+    {
+      "path": "screenshots/configured-scale-inputs-with-3x.png",
+      "type": "screenshot",
+      "nodeId": "capture-scale-input-card",
+      "label": "ui.screenshot screenshot",
+      "category": "evidence",
+      "mimeType": "image/png",
+      "metadata": {
+        "provider": "simctl",
+        "mode": "xcrun simctl io screenshot",
+        "selectedDevice": "mm-3"
+      }
+    },
+    {
+      "path": "screenshots/scale-summary-complete.png",
+      "type": "screenshot",
+      "nodeId": "capture-configured-scale",
+      "label": "ui.screenshot screenshot",
+      "category": "evidence",
+      "mimeType": "image/png",
+      "metadata": {
+        "provider": "simctl",
+        "mode": "xcrun simctl io screenshot",
+        "selectedDevice": "mm-3"
+      }
+    },
+    {
+      "path": "screenshots/scale-orders-placed.png",
+      "type": "screenshot",
+      "nodeId": "capture-scale-success",
+      "label": "ui.screenshot screenshot",
+      "category": "evidence",
+      "mimeType": "image/png",
+      "metadata": {
+        "provider": "simctl",
+        "mode": "xcrun simctl io screenshot",
+        "selectedDevice": "mm-3"
+      }
+    },
+    {
+      "path": "screenshots/live-scale-orders-top.png",
+      "type": "screenshot",
+      "nodeId": "capture-live-orders-top",
+      "label": "ui.screenshot screenshot",
+      "category": "evidence",
+      "mimeType": "image/png",
+      "metadata": {
+        "provider": "simctl",
+        "mode": "xcrun simctl io screenshot",
+        "selectedDevice": "mm-3"
+      }
+    },
+    {
+      "path": "screenshots/live-scale-orders-bottom.png",
+      "type": "screenshot",
+      "nodeId": "capture-live-orders-bottom",
+      "label": "ui.screenshot screenshot",
+      "category": "evidence",
+      "mimeType": "image/png",
+      "metadata": {
+        "provider": "simctl",
+        "mode": "xcrun simctl io screenshot",
+        "selectedDevice": "mm-3"
+      }
+    },
+    {
+      "path": "summary.json",
+      "type": "summary",
+      "label": "Run summary",
+      "category": "system"
+    },
+    {
+      "path": "trace.json",
+      "type": "trace",
+      "label": "Execution trace",
+      "category": "system"
+    },
+    {
+      "path": "execution-provenance.json",
+      "type": "json",
+      "label": "Execution provenance",
+      "category": "system",
+      "metadata": {
+        "valid": true,
+        "errorCode": null
+      }
+    },
+    {
+      "path": "diagnostics.json",
+      "type": "json",
+      "label": "Run-scoped application diagnostics",
+      "category": "diagnostic"
+    },
+    {
+      "path": "diagnostics-app-log.txt",
+      "type": "log",
+      "label": "Redacted run-scoped application log slice",
+      "category": "diagnostic"
+    },
+    {
+      "path": "network/run-summary.json",
+      "type": "report",
+      "label": "Automatic network observation",
+      "category": "diagnostic"
+    },
+    {
+      "path": "product-provenance.json",
+      "type": "json",
+      "label": "Product checkout provenance",
+      "category": "system",
+      "metadata": {
+        "adapter": "mobile",
+        "git_ref": "c7c23fa8edc81342ab08fb5452a0380392c45adb",
+        "branch": "TAT-3812-feat-add-mobile-scale-orders",
+        "dirty": false
+      }
+    },
+    {
+      "path": "report.md",
+      "type": "report",
+      "label": "Human run report",
+      "category": "system"
+    }
+  ],
+  "recovered": [],
+  "mutations": []
+}
