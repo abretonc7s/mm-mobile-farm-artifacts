@@ -1,0 +1,16 @@
+{
+  "score": 92,
+  "verdict": "pass",
+  "category_match": true,
+  "differences": [
+    "Figma uses illustrative BTC values while the exact-head device proof uses live SOL testnet values.",
+    "Figma History mocks include average fill, Reduce only, and authoritative terminal timing; controller 13.1.0 does not expose those Chase fields, so Mobile truthfully shows Limit price and locally observed runtime instead.",
+    "The proof HUD covers the lowest edge of some lifecycle screenshots, so the accepted evidence set uses the earlier backgrounded History frame and full video instead of the cropped final duplicate."
+  ],
+  "suggestions": [
+    "Publish the picker, default form, USD and percent keyboard, optional summary, Active card, filtered empty, backgrounded History, resting order, and Orders-empty frames from R5.",
+    "Keep the controller-field limitation explicit in the PR until a released controller exposes average fill, reduce-only, and terminal timestamps.",
+    "Use the full-run video for continuous placement, background lifecycle, cancellation, and teardown review."
+  ],
+  "reasoning": "The approved implementation matches the Figma structure, MMDS hierarchy, dark semantic styling, row proportions, selected fill, keyboard accessory, and Chase lifecycle layout. Runtime content differences are truthful controller/testnet substitutions rather than visual implementation drift."
+}
