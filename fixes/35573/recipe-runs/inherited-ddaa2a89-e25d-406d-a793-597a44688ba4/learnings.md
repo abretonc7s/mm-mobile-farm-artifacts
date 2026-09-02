@@ -1,5 +1,0 @@
-- Investigation was most of the time: locating Add funds (`perps-market-add-funds-button`, not `perps-home-add-funds-button`) and proving `ui.wait_for expected=visible` fails when the testID has no measurable native node (`present` works).
-- Root cause was already in `usePerpsHomeActions.handleAddFunds`: `setIsProcessing(true)` plus `await depositWithConfirmation()` after navigate. Predict already fire-and-forgets. Existing open PR #35326 on another branch had the same shape.
-- `ui.navigate page=perps` cannot leave `ConfirmationPayWithBottomSheet`; restart the app between deposit runs instead of fighting the sheet.
-- Local `main` is stale, so `git diff main...HEAD` spans 202 files; the worker-owned `origin/main...HEAD` change is seven files.
-- Continuation review confirmed the focused pattern: disarm the guard on the first post-presentation blur, then prove scheduling with fake timers and an explicit “not called before flush” assertion at every entry point.

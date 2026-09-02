@@ -11,9 +11,9 @@
       "nodeId": "setup-unlock",
       "action": "metamask.wallet.ensure_unlocked",
       "intent": "Unlock the fixture wallet before opening Perps",
-      "startedAt": "2026-09-02T08:14:19.341Z",
-      "endedAt": "2026-09-02T08:14:26.249Z",
-      "durationMs": 6908,
+      "startedAt": "2026-09-02T08:52:36.969Z",
+      "endedAt": "2026-09-02T08:52:44.711Z",
+      "durationMs": 7742,
       "ok": true,
       "next": "setup-account",
       "output": {
@@ -26,7 +26,7 @@
           "name": "Trading"
         },
         "route": {
-          "key": "WalletView-YpRdzaWE58-7Ceu3xh5q4",
+          "key": "WalletView-q6Bh5fLGXCRMFwYIACB4W",
           "name": "WalletView"
         },
         "deviceName": "mm-2",
@@ -40,9 +40,9 @@
       "nodeId": "setup-account",
       "action": "metamask.wallet.select_account",
       "intent": "Select the funded Trading account for the deposit flow",
-      "startedAt": "2026-09-02T08:14:26.308Z",
-      "endedAt": "2026-09-02T08:14:26.653Z",
-      "durationMs": 345,
+      "startedAt": "2026-09-02T08:52:44.885Z",
+      "endedAt": "2026-09-02T08:52:48.668Z",
+      "durationMs": 3783,
       "ok": true,
       "next": "setup-open-perps",
       "output": {
@@ -61,9 +61,9 @@
       "nodeId": "setup-open-perps",
       "action": "ui.navigate",
       "intent": "Open the Perps home screen where deposit is triggered",
-      "startedAt": "2026-09-02T08:14:26.753Z",
-      "endedAt": "2026-09-02T08:14:34.712Z",
-      "durationMs": 7959,
+      "startedAt": "2026-09-02T08:52:48.782Z",
+      "endedAt": "2026-09-02T08:53:02.590Z",
+      "durationMs": 13808,
       "ok": true,
       "next": "gate-wait-heading",
       "output": {
@@ -79,11 +79,11 @@
             "mode": "lite"
           },
           "previousRoute": {
-            "key": "WalletView-YpRdzaWE58-7Ceu3xh5q4",
+            "key": "WalletView-q6Bh5fLGXCRMFwYIACB4W",
             "name": "WalletView"
           },
           "currentRoute": {
-            "key": "PerpsMarketListView-Bl57F0I7tbw6jzFasrajv",
+            "key": "PerpsMarketListView-9WBwSh0sTqVcyvEvYh2Hg",
             "name": "PerpsMarketListView",
             "params": {
               "mode": "lite"
@@ -95,57 +95,6 @@
         },
         "proofPath": "agentic-navigation",
         "liveAdapter": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness/library/actions/mobile/ui/navigate.mjs"
-      },
-      "observations": {
-        "ui.screen": {
-          "provider": "idb-accessibility",
-          "platform": "ios",
-          "deviceId": "87C73AA9-AA53-48C0-9E02-24C4C3E57858",
-          "name": "MetaMask",
-          "nodeCount": 3,
-          "truncated": false
-        },
-        "ui.visible": {
-          "provider": "idb-accessibility",
-          "items": [
-            {
-              "role": "AXImage",
-              "label": "gearshape.fill",
-              "test_id": "gearshape.fill",
-              "enabled": true,
-              "bounds": {
-                "x": 348,
-                "y": 96,
-                "width": 26,
-                "height": 26
-              }
-            }
-          ],
-          "hidden_or_offscreen": [],
-          "truncated": false,
-          "limits": {
-            "items": 200,
-            "hidden_or_offscreen": 100
-          }
-        }
-      }
-    },
-    {
-      "nodeId": "gate-wait-heading",
-      "action": "ui.wait_for",
-      "intent": "Confirm Perps home has finished rendering its title",
-      "startedAt": "2026-09-02T08:14:34.754Z",
-      "endedAt": "2026-09-02T08:14:44.910Z",
-      "durationMs": 10156,
-      "ok": true,
-      "next": "gate-wait-deposit",
-      "output": {
-        "matched": true,
-        "testId": "perps-home-heading-provider-badge",
-        "expected": "present",
-        "present": true,
-        "visible": true,
-        "visibility": "tree"
       },
       "observations": {
         "ui.screen": {
@@ -256,7 +205,7 @@
             },
             {
               "role": "AXButton",
-              "label": "BTC 11x long, 0.00017 BTC, $13.16, +$2.38 (+242.4%)",
+              "label": "BTC 11x long, 0.00017 BTC, $13.05, +$2.26 (+230.7%)",
               "test_id": "perps-home-position-card-0",
               "enabled": true,
               "bounds": {
@@ -268,7 +217,7 @@
             },
             {
               "role": "AXButton",
-              "label": "ETH 10x long, 0.0049 ETH, $11.85, -$0.40 (-32.6%)",
+              "label": "ETH 10x long, 0.0049 ETH, $11.72, -$0.53 (-42.9%)",
               "test_id": "perps-home-position-card-1",
               "enabled": true,
               "bounds": {
@@ -319,8 +268,8 @@
             },
             {
               "role": "AXButton",
-              "label": "Ethereum, 25x, ETH · $1.09B Vol, $2,417.6, -1.91%",
-              "test_id": "perps-market-row-item-ETH",
+              "label": "Bitcoin, 40x, BTC · $2.79B Vol, $76,797, -1.39%",
+              "test_id": "perps-market-row-item-BTC",
               "enabled": true,
               "bounds": {
                 "x": 0,
@@ -332,12 +281,12 @@
             },
             {
               "role": "AXButton",
-              "label": "Bitcoin, 40x, BTC · $2.78B Vol, $77,398, -1.17%",
-              "test_id": "perps-market-row-item-BTC",
+              "label": "Ethereum, 25x, ETH · $1.08B Vol, $2,392.3, -2.28%",
+              "test_id": "perps-market-row-item-ETH",
               "enabled": true,
               "bounds": {
                 "x": 0,
-                "y": 1239,
+                "y": 1209,
                 "width": 402,
                 "height": 72
               },
@@ -345,12 +294,12 @@
             },
             {
               "role": "AXButton",
-              "label": "Hyperliquid, 10x, HYPE · $494.46M Vol, $82.434, -0.71%",
+              "label": "Hyperliquid, 10x, HYPE · $488.96M Vol, $81.356, -2.00%",
               "test_id": "perps-market-row-item-HYPE",
               "enabled": true,
               "bounds": {
                 "x": 0,
-                "y": 1311,
+                "y": 1281,
                 "width": 402,
                 "height": 72
               },
@@ -358,7 +307,7 @@
             },
             {
               "role": "AXButton",
-              "label": "WTI Crude Oil, 20x, CL · $419.81M Vol, $90.057, +3.22%",
+              "label": "WTI Crude Oil, 20x, CL · $408.20M Vol, $90.366, +2.71%",
               "test_id": "perps-market-row-item-xyz:CL",
               "enabled": true,
               "bounds": {
@@ -371,7 +320,7 @@
             },
             {
               "role": "AXButton",
-              "label": "Solana, 20x, SOL · $391.28M Vol, $99.826, -2.68%",
+              "label": "Solana, 20x, SOL · $380.33M Vol, $98.826, -3.13%",
               "test_id": "perps-market-row-item-SOL",
               "enabled": true,
               "bounds": {
@@ -527,50 +476,37 @@
             },
             {
               "role": "AXButton",
-              "label": "CASHCAT, +29.28%",
-              "test_id": "perps-market-tile-card-CASHCAT",
+              "label": "ACE, +21.51%",
+              "test_id": "perps-market-tile-card-ACE",
               "enabled": true,
               "bounds": {
                 "x": 16,
                 "y": 1855,
-                "width": 180,
+                "width": 136,
                 "height": 40
               },
               "reason": "hidden_or_offscreen"
             },
             {
               "role": "AXButton",
-              "label": "ACE, +23.81%",
-              "test_id": "perps-market-tile-card-ACE",
+              "label": "CASHCAT, +21.05%",
+              "test_id": "perps-market-tile-card-CASHCAT",
               "enabled": true,
               "bounds": {
-                "x": 204,
+                "x": 162,
                 "y": 1855,
-                "width": 139,
+                "width": 178,
                 "height": 40
               },
               "reason": "hidden_or_offscreen"
             },
             {
               "role": "AXButton",
-              "label": "FIL, +16.42%",
-              "test_id": "perps-market-tile-card-FIL",
-              "enabled": true,
-              "bounds": {
-                "x": 351,
-                "y": 1855,
-                "width": 131,
-                "height": 40
-              },
-              "reason": "hidden_or_offscreen"
-            },
-            {
-              "role": "AXButton",
-              "label": "CHIP, +14.48%",
+              "label": "CHIP, +15.29%",
               "test_id": "perps-market-tile-card-CHIP",
               "enabled": true,
               "bounds": {
-                "x": 489,
+                "x": 348,
                 "y": 1855,
                 "width": 144,
                 "height": 40
@@ -579,52 +515,65 @@
             },
             {
               "role": "AXButton",
-              "label": "SYRUP, +11.08%",
-              "test_id": "perps-market-tile-card-SYRUP",
+              "label": "FIL, +14.30%",
+              "test_id": "perps-market-tile-card-FIL",
+              "enabled": true,
+              "bounds": {
+                "x": 499,
+                "y": 1855,
+                "width": 132,
+                "height": 40
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "PYTH, +12.04%",
+              "test_id": "perps-market-tile-card-PYTH",
               "enabled": true,
               "bounds": {
                 "x": 16,
                 "y": 1903,
-                "width": 154,
+                "width": 147,
                 "height": 40
               },
               "reason": "hidden_or_offscreen"
             },
             {
               "role": "AXButton",
-              "label": "PYTH, +10.68%",
-              "test_id": "perps-market-tile-card-PYTH",
+              "label": "SYRUP, +11.64%",
+              "test_id": "perps-market-tile-card-SYRUP",
               "enabled": true,
               "bounds": {
-                "x": 178,
+                "x": 171,
                 "y": 1903,
-                "width": 146,
+                "width": 153,
                 "height": 40
               },
               "reason": "hidden_or_offscreen"
             },
             {
               "role": "AXButton",
-              "label": "MR, MRNA, +9.41%",
+              "label": "MR, MRNA, +10.26%",
               "test_id": "perps-market-tile-card-xyz:MRNA",
               "enabled": true,
               "bounds": {
                 "x": 332,
                 "y": 1903,
-                "width": 144,
+                "width": 153,
                 "height": 40
               },
               "reason": "hidden_or_offscreen"
             },
             {
               "role": "AXButton",
-              "label": "MINA, +8.18%",
-              "test_id": "perps-market-tile-card-MINA",
+              "label": "ARB, +8.94%",
+              "test_id": "perps-market-tile-card-ARB",
               "enabled": true,
               "bounds": {
-                "x": 484,
+                "x": 493,
                 "y": 1903,
-                "width": 138,
+                "width": 133,
                 "height": 40
               },
               "reason": "hidden_or_offscreen"
@@ -644,7 +593,7 @@
             },
             {
               "role": "AXButton",
-              "label": "Bitcoin, 40x, BTC · $2.78B Vol, $77,398, -1.17%",
+              "label": "Bitcoin, 40x, BTC · $2.79B Vol, $76,764, -1.44%",
               "test_id": "perps-market-row-item-BTC",
               "enabled": true,
               "bounds": {
@@ -657,7 +606,7 @@
             },
             {
               "role": "AXButton",
-              "label": "Ethereum, 25x, ETH · $1.09B Vol, $2,417.6, -1.91%",
+              "label": "Ethereum, 25x, ETH · $1.08B Vol, $2,393.4, -2.23%",
               "test_id": "perps-market-row-item-ETH",
               "enabled": true,
               "bounds": {
@@ -670,7 +619,7 @@
             },
             {
               "role": "AXButton",
-              "label": "Hyperliquid, 10x, HYPE · $494.46M Vol, $82.434, -0.71%",
+              "label": "Hyperliquid, 10x, HYPE · $488.96M Vol, $81.361, -1.99%",
               "test_id": "perps-market-row-item-HYPE",
               "enabled": true,
               "bounds": {
@@ -683,7 +632,7 @@
             },
             {
               "role": "AXButton",
-              "label": "Solana, 20x, SOL · $391.28M Vol, $99.827, -2.68%",
+              "label": "Solana, 20x, SOL · $380.33M Vol, $98.901, -3.06%",
               "test_id": "perps-market-row-item-SOL",
               "enabled": true,
               "bounds": {
@@ -696,7 +645,7 @@
             },
             {
               "role": "AXButton",
-              "label": "Zcash, 10x, ZEC · $266.69M Vol, $831.1, -2.11%",
+              "label": "Zcash, 10x, ZEC · $265.04M Vol, $821.49, -2.71%",
               "test_id": "perps-market-row-item-ZEC",
               "enabled": true,
               "bounds": {
@@ -721,7 +670,7 @@
             },
             {
               "role": "AXButton",
-              "label": "WTI Crude Oil, 20x, CL · $419.81M Vol, $90.057, +3.22%",
+              "label": "WTI Crude Oil, 20x, CL · $408.20M Vol, $90.41, +2.76%",
               "test_id": "perps-market-row-item-xyz:CL",
               "enabled": true,
               "bounds": {
@@ -734,7 +683,7 @@
             },
             {
               "role": "AXButton",
-              "label": "Brent Crude Oil, 20x, BRENTOIL · $194.81M Vol, $94.669, +2.97%",
+              "label": "Brent Crude Oil, 20x, BRENTOIL · $191.65M Vol, $94.918, +2.69%",
               "test_id": "perps-market-row-item-xyz:BRENTOIL",
               "enabled": true,
               "bounds": {
@@ -747,7 +696,7 @@
             },
             {
               "role": "AXButton",
-              "label": "Gold, 25x, GOLD · $168.81M Vol, $4,328.6, -1.78%",
+              "label": "Gold, 25x, GOLD · $153.00M Vol, $4,320.3, -1.19%",
               "test_id": "perps-market-row-item-xyz:GOLD",
               "enabled": true,
               "bounds": {
@@ -760,7 +709,7 @@
             },
             {
               "role": "AXButton",
-              "label": "Silver, 25x, SILVER · $154.24M Vol, $64.136, -2.94%",
+              "label": "Silver, 25x, SILVER · $143.56M Vol, $63.906, -1.26%",
               "test_id": "perps-market-row-item-xyz:SILVER",
               "enabled": true,
               "bounds": {
@@ -773,7 +722,7 @@
             },
             {
               "role": "AXButton",
-              "label": "Copper, 20x, COPPER · $14.28M Vol, $6.5493, -2.10%",
+              "label": "Copper, 20x, COPPER · $13.97M Vol, $6.5282, -1.24%",
               "test_id": "perps-market-row-item-xyz:COPPER",
               "enabled": true,
               "bounds": {
@@ -798,7 +747,7 @@
             },
             {
               "role": "AXButton",
-              "label": "SK Hynix, 10x, SKHX · $216.46M Vol, $1,182.7, -3.03%",
+              "label": "SK Hynix, 10x, SKHX · $185.42M Vol, $1,174.9, -2.22%",
               "test_id": "perps-market-row-item-xyz:SKHX",
               "enabled": true,
               "bounds": {
@@ -811,7 +760,7 @@
             },
             {
               "role": "AXButton",
-              "label": "SanDisk, 10x, SNDK · $169.70M Vol, $1,531.8, -0.08%",
+              "label": "SanDisk, 10x, SNDK · $162.72M Vol, $1,517, +0.06%",
               "test_id": "perps-market-row-item-xyz:SNDK",
               "enabled": true,
               "bounds": {
@@ -824,7 +773,7 @@
             },
             {
               "role": "AXButton",
-              "label": "SpaceX, 20x, SPCX · $103.98M Vol, $141.82, -0.89%",
+              "label": "SpaceX, 20x, SPCX · $99.56M Vol, $141.43, -0.58%",
               "test_id": "perps-market-row-item-xyz:SPCX",
               "enabled": true,
               "bounds": {
@@ -837,7 +786,7 @@
             },
             {
               "role": "AXButton",
-              "label": "Micron Technology, 10x, MU · $78.24M Vol, $928.42, -1.63%",
+              "label": "Micron Technology, 10x, MU · $74.60M Vol, $922.42, -1.96%",
               "test_id": "perps-market-row-item-xyz:MU",
               "enabled": true,
               "bounds": {
@@ -850,7 +799,7 @@
             },
             {
               "role": "AXButton",
-              "label": "NVIDIA, 20x, NVDA · $58.53M Vol, $217.24, -0.82%",
+              "label": "NVIDIA, 20x, NVDA · $56.60M Vol, $216.7, -0.57%",
               "test_id": "perps-market-row-item-xyz:NVDA",
               "enabled": true,
               "bounds": {
@@ -875,7 +824,7 @@
             },
             {
               "role": "AXButton",
-              "label": "Japanese Yen, 50x, JPY · $6.09M Vol, $159.74, -0.20%",
+              "label": "Japanese Yen, 50x, JPY · $6.03M Vol, $159.78, -0.12%",
               "test_id": "perps-market-row-item-xyz:JPY",
               "enabled": true,
               "bounds": {
@@ -888,7 +837,7 @@
             },
             {
               "role": "AXButton",
-              "label": "Euro, 50x, EUR · $1.47M Vol, $1.1582, -0.11%",
+              "label": "Euro, 50x, EUR · $1.51M Vol, $1.1582, -0.16%",
               "test_id": "perps-market-row-item-xyz:EUR",
               "enabled": true,
               "bounds": {
@@ -901,7 +850,1106 @@
             },
             {
               "role": "AXButton",
-              "label": "British Pound, 50x, GBP · $63K Vol, $1.351, -0.18%",
+              "label": "British Pound, 50x, GBP · $63K Vol, $1.3507, -0.20%",
+              "test_id": "perps-market-row-item-xyz:GBP",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 3519,
+                "width": 402,
+                "height": 72
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Recently added",
+              "test_id": "perps-home-recently-added-header",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 3632,
+                "width": 402,
+                "height": 44
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "PONS recently added market",
+              "test_id": "perps-recently-added-tile-PONS",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 3684,
+                "width": 128,
+                "height": 144
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "xyz:SHEIN recently added market",
+              "test_id": "perps-recently-added-tile-xyz:SHEIN",
+              "enabled": true,
+              "bounds": {
+                "x": 156,
+                "y": 3684,
+                "width": 128,
+                "height": 144
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "xyz:XBI recently added market",
+              "test_id": "perps-recently-added-tile-xyz:XBI",
+              "enabled": true,
+              "bounds": {
+                "x": 296,
+                "y": 3684,
+                "width": 128,
+                "height": 144
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "xyz:MRNA recently added market",
+              "test_id": "perps-recently-added-tile-xyz:MRNA",
+              "enabled": true,
+              "bounds": {
+                "x": 436,
+                "y": 3684,
+                "width": 128,
+                "height": 144
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "xyz:CRWD recently added market",
+              "test_id": "perps-recently-added-tile-xyz:CRWD",
+              "enabled": true,
+              "bounds": {
+                "x": 576,
+                "y": 3684,
+                "width": 128,
+                "height": 144
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "xyz:IREN recently added market",
+              "test_id": "perps-recently-added-tile-xyz:IREN",
+              "enabled": true,
+              "bounds": {
+                "x": 716,
+                "y": 3684,
+                "width": 128,
+                "height": 144
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "xyz:AAOI recently added market",
+              "test_id": "perps-recently-added-tile-xyz:AAOI",
+              "enabled": true,
+              "bounds": {
+                "x": 856,
+                "y": 3684,
+                "width": 128,
+                "height": 144
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "xyz:RDDT recently added market",
+              "test_id": "perps-recently-added-tile-xyz:RDDT",
+              "enabled": true,
+              "bounds": {
+                "x": 996,
+                "y": 3684,
+                "width": 128,
+                "height": 144
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "xyz:NET recently added market",
+              "test_id": "perps-recently-added-tile-xyz:NET",
+              "enabled": true,
+              "bounds": {
+                "x": 1136,
+                "y": 3684,
+                "width": 128,
+                "height": 144
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "xyz:MAGS recently added market",
+              "test_id": "perps-recently-added-tile-xyz:MAGS",
+              "enabled": true,
+              "bounds": {
+                "x": 1276,
+                "y": 3684,
+                "width": 128,
+                "height": 144
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "xyz:SOXL recently added market",
+              "test_id": "perps-recently-added-tile-xyz:SOXL",
+              "enabled": true,
+              "bounds": {
+                "x": 1416,
+                "y": 3684,
+                "width": 128,
+                "height": 144
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "xyz:NCLD recently added market",
+              "test_id": "perps-recently-added-tile-xyz:NCLD",
+              "enabled": true,
+              "bounds": {
+                "x": 1556,
+                "y": 3684,
+                "width": 128,
+                "height": 144
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "xyz:LYTE recently added market",
+              "test_id": "perps-recently-added-tile-xyz:LYTE",
+              "enabled": true,
+              "bounds": {
+                "x": 1696,
+                "y": 3684,
+                "width": 128,
+                "height": 144
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "xyz:KORU recently added market",
+              "test_id": "perps-recently-added-tile-xyz:KORU",
+              "enabled": true,
+              "bounds": {
+                "x": 1836,
+                "y": 3684,
+                "width": 128,
+                "height": 144
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "xyz:UNITREE recently added market",
+              "test_id": "perps-recently-added-tile-xyz:UNITREE",
+              "enabled": true,
+              "bounds": {
+                "x": 1976,
+                "y": 3684,
+                "width": 128,
+                "height": 144
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "xyz:GEV recently added market",
+              "test_id": "perps-recently-added-tile-xyz:GEV",
+              "enabled": true,
+              "bounds": {
+                "x": 2116,
+                "y": 3684,
+                "width": 128,
+                "height": 144
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Activity",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 3873,
+                "width": 402,
+                "height": 44
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Opened long, 0.0049 ETH, -$0.02",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 3917,
+                "width": 402,
+                "height": 72
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Opened long, 0.00017 BTC, -$0.01",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 3989,
+                "width": 402,
+                "height": 72
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.0006 ETH, +$0.08",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 4061,
+                "width": 402,
+                "height": 72
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Contact support",
+              "test_id": "perps-home-support-button",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 4218,
+                "width": 402,
+                "height": 48
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Give us feedback",
+              "test_id": "perps-home-feedback-button",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 4266,
+                "width": 402,
+                "height": 48
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Learn the basics of perps",
+              "test_id": "perps-home-learn-more-button",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 4314,
+                "width": 402,
+                "height": 48
+              },
+              "reason": "hidden_or_offscreen"
+            }
+          ],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "gate-wait-heading",
+      "action": "ui.wait_for",
+      "intent": "Confirm Perps home has finished rendering its title",
+      "startedAt": "2026-09-02T08:53:02.668Z",
+      "endedAt": "2026-09-02T08:53:04.596Z",
+      "durationMs": 1928,
+      "ok": true,
+      "next": "gate-wait-deposit",
+      "output": {
+        "matched": true,
+        "testId": "perps-home-heading-provider-badge",
+        "expected": "present",
+        "present": true,
+        "visible": true,
+        "visibility": "tree"
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "87C73AA9-AA53-48C0-9E02-24C4C3E57858",
+          "name": "MetaMask",
+          "nodeCount": 99,
+          "truncated": false
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXGenericElement",
+              "label": "Back",
+              "test_id": "perps-home-back-button",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 78,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Search",
+              "test_id": "perps-home-search-toggle",
+              "enabled": true,
+              "bounds": {
+                "x": 302,
+                "y": 78,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Currently Lite mode",
+              "test_id": "perps-mode-toggle-lite",
+              "enabled": true,
+              "bounds": {
+                "x": 338,
+                "y": 78,
+                "width": 56,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Current provider: HyperLiquid, Mainnet. Tap to change.",
+              "test_id": "perps-home-heading-provider-badge",
+              "enabled": true,
+              "bounds": {
+                "x": 77,
+                "y": 126,
+                "width": 127,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Withdraw",
+              "test_id": "perps-market-withdraw-button",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 254,
+                "width": 179,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Add funds",
+              "test_id": "perps-market-add-funds-button",
+              "enabled": true,
+              "bounds": {
+                "x": 207,
+                "y": 254,
+                "width": 179,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Competition leaderboard, See where you rank in the Perps trading competition",
+              "test_id": "perps-home-competition-banner",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 314,
+                "width": 370,
+                "height": 96
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "test_id": "section-header-action-button",
+              "enabled": true,
+              "bounds": {
+                "x": 354,
+                "y": 475,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "BTC 11x long, 0.00017 BTC, $13.05, +$2.27 (+231.1%)",
+              "test_id": "perps-home-position-card-0",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 541,
+                "width": 402,
+                "height": 72
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "ETH 10x long, 0.0049 ETH, $11.72, -$0.52 (-42.7%)",
+              "test_id": "perps-home-position-card-1",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 613,
+                "width": 402,
+                "height": 72
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "What's happening, AI generated, AI-generated content",
+              "test_id": "whats-happening-section-title",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 726,
+                "width": 402,
+                "height": 72
+              }
+            },
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 348,
+                "y": 96,
+                "width": 26,
+                "height": 26
+              }
+            }
+          ],
+          "hidden_or_offscreen": [
+            {
+              "role": "AXButton",
+              "label": "Watchlist",
+              "test_id": "perps-watchlist-header",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1093,
+                "width": 402,
+                "height": 44
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Bitcoin, 40x, BTC · $2.79B Vol, $76,793, -1.40%",
+              "test_id": "perps-market-row-item-BTC",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1137,
+                "width": 402,
+                "height": 72
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Ethereum, 25x, ETH · $1.08B Vol, $2,393.4, -2.23%",
+              "test_id": "perps-market-row-item-ETH",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1209,
+                "width": 402,
+                "height": 72
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Hyperliquid, 10x, HYPE · $488.96M Vol, $81.35, -2.01%",
+              "test_id": "perps-market-row-item-HYPE",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1281,
+                "width": 402,
+                "height": 72
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "WTI Crude Oil, 20x, CL · $408.20M Vol, $90.41, +2.76%",
+              "test_id": "perps-market-row-item-xyz:CL",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1383,
+                "width": 402,
+                "height": 72
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Solana, 20x, SOL · $380.33M Vol, $98.901, -3.06%",
+              "test_id": "perps-market-row-item-SOL",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1455,
+                "width": 402,
+                "height": 72
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Crypto",
+              "test_id": "perps-products-crypto",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 1620,
+                "width": 90,
+                "height": 38
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Stocks",
+              "test_id": "perps-products-stock",
+              "enabled": true,
+              "bounds": {
+                "x": 114,
+                "y": 1620,
+                "width": 91,
+                "height": 38
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Pre-IPO",
+              "test_id": "perps-products-pre-ipo",
+              "enabled": true,
+              "bounds": {
+                "x": 213,
+                "y": 1620,
+                "width": 96,
+                "height": 38
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Forex",
+              "test_id": "perps-products-forex",
+              "enabled": true,
+              "bounds": {
+                "x": 318,
+                "y": 1620,
+                "width": 83,
+                "height": 38
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Commodities",
+              "test_id": "perps-products-commodity",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 1666,
+                "width": 132,
+                "height": 38
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Indices",
+              "test_id": "perps-products-index",
+              "enabled": true,
+              "bounds": {
+                "x": 156,
+                "y": 1666,
+                "width": 92,
+                "height": 38
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "ETFs",
+              "test_id": "perps-products-etf",
+              "enabled": true,
+              "bounds": {
+                "x": 256,
+                "y": 1666,
+                "width": 76,
+                "height": 38
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "New",
+              "test_id": "perps-products-new",
+              "enabled": true,
+              "bounds": {
+                "x": 341,
+                "y": 1666,
+                "width": 74,
+                "height": 38
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Top movers",
+              "test_id": "perps-home-top-movers-header",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1757,
+                "width": 402,
+                "height": 44
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Gainers",
+              "test_id": "perps-home-top-movers-gainers",
+              "enabled": true,
+              "bounds": {
+                "x": 21,
+                "y": 1806,
+                "width": 178,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Losers",
+              "test_id": "perps-home-top-movers-losers",
+              "enabled": true,
+              "bounds": {
+                "x": 203,
+                "y": 1806,
+                "width": 178,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "ACE, +21.57%",
+              "test_id": "perps-market-tile-card-ACE",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 1855,
+                "width": 138,
+                "height": 40
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "CASHCAT, +21.05%",
+              "test_id": "perps-market-tile-card-CASHCAT",
+              "enabled": true,
+              "bounds": {
+                "x": 162,
+                "y": 1855,
+                "width": 178,
+                "height": 40
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "CHIP, +15.29%",
+              "test_id": "perps-market-tile-card-CHIP",
+              "enabled": true,
+              "bounds": {
+                "x": 348,
+                "y": 1855,
+                "width": 144,
+                "height": 40
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "FIL, +14.30%",
+              "test_id": "perps-market-tile-card-FIL",
+              "enabled": true,
+              "bounds": {
+                "x": 499,
+                "y": 1855,
+                "width": 132,
+                "height": 40
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "PYTH, +12.04%",
+              "test_id": "perps-market-tile-card-PYTH",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 1903,
+                "width": 147,
+                "height": 40
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "SYRUP, +11.64%",
+              "test_id": "perps-market-tile-card-SYRUP",
+              "enabled": true,
+              "bounds": {
+                "x": 171,
+                "y": 1903,
+                "width": 153,
+                "height": 40
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "MR, MRNA, +10.26%",
+              "test_id": "perps-market-tile-card-xyz:MRNA",
+              "enabled": true,
+              "bounds": {
+                "x": 332,
+                "y": 1903,
+                "width": 153,
+                "height": 40
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "ARB, +8.94%",
+              "test_id": "perps-market-tile-card-ARB",
+              "enabled": true,
+              "bounds": {
+                "x": 493,
+                "y": 1903,
+                "width": 133,
+                "height": 40
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Explore crypto",
+              "test_id": "perps-home-explore-crypto-section-header",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1996,
+                "width": 402,
+                "height": 44
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Bitcoin, 40x, BTC · $2.79B Vol, $76,797, -1.39%",
+              "test_id": "perps-market-row-item-BTC",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 2040,
+                "width": 402,
+                "height": 72
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Ethereum, 25x, ETH · $1.08B Vol, $2,393.4, -2.23%",
+              "test_id": "perps-market-row-item-ETH",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 2112,
+                "width": 402,
+                "height": 72
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Hyperliquid, 10x, HYPE · $488.96M Vol, $81.361, -1.99%",
+              "test_id": "perps-market-row-item-HYPE",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 2184,
+                "width": 402,
+                "height": 72
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Solana, 20x, SOL · $380.33M Vol, $98.901, -3.06%",
+              "test_id": "perps-market-row-item-SOL",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 2256,
+                "width": 402,
+                "height": 72
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Zcash, 10x, ZEC · $265.04M Vol, $821.49, -2.71%",
+              "test_id": "perps-market-row-item-ZEC",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 2328,
+                "width": 402,
+                "height": 72
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Commodities",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 2441,
+                "width": 402,
+                "height": 44
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "WTI Crude Oil, 20x, CL · $408.20M Vol, $90.41, +2.76%",
+              "test_id": "perps-market-row-item-xyz:CL",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 2485,
+                "width": 402,
+                "height": 72
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Brent Crude Oil, 20x, BRENTOIL · $191.65M Vol, $94.918, +2.69%",
+              "test_id": "perps-market-row-item-xyz:BRENTOIL",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 2557,
+                "width": 402,
+                "height": 72
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Gold, 25x, GOLD · $153.00M Vol, $4,320.3, -1.19%",
+              "test_id": "perps-market-row-item-xyz:GOLD",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 2629,
+                "width": 402,
+                "height": 72
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Silver, 25x, SILVER · $143.56M Vol, $63.906, -1.26%",
+              "test_id": "perps-market-row-item-xyz:SILVER",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 2701,
+                "width": 402,
+                "height": 72
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Copper, 20x, COPPER · $13.97M Vol, $6.5282, -1.24%",
+              "test_id": "perps-market-row-item-xyz:COPPER",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 2773,
+                "width": 402,
+                "height": 72
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Stocks",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 2886,
+                "width": 402,
+                "height": 44
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "SK Hynix, 10x, SKHX · $185.42M Vol, $1,174.9, -2.22%",
+              "test_id": "perps-market-row-item-xyz:SKHX",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 2930,
+                "width": 402,
+                "height": 72
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "SanDisk, 10x, SNDK · $162.72M Vol, $1,517, +0.06%",
+              "test_id": "perps-market-row-item-xyz:SNDK",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 3002,
+                "width": 402,
+                "height": 72
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "SpaceX, 20x, SPCX · $99.56M Vol, $141.43, -0.58%",
+              "test_id": "perps-market-row-item-xyz:SPCX",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 3074,
+                "width": 402,
+                "height": 72
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Micron Technology, 10x, MU · $74.60M Vol, $922.42, -1.96%",
+              "test_id": "perps-market-row-item-xyz:MU",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 3146,
+                "width": 402,
+                "height": 72
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "NVIDIA, 20x, NVDA · $56.60M Vol, $216.7, -0.57%",
+              "test_id": "perps-market-row-item-xyz:NVDA",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 3218,
+                "width": 402,
+                "height": 72
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Forex",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 3331,
+                "width": 402,
+                "height": 44
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Japanese Yen, 50x, JPY · $6.03M Vol, $159.78, -0.12%",
+              "test_id": "perps-market-row-item-xyz:JPY",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 3375,
+                "width": 402,
+                "height": 72
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Euro, 50x, EUR · $1.51M Vol, $1.1582, -0.16%",
+              "test_id": "perps-market-row-item-xyz:EUR",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 3447,
+                "width": 402,
+                "height": 72
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "British Pound, 50x, GBP · $63K Vol, $1.3507, -0.20%",
               "test_id": "perps-market-row-item-xyz:GBP",
               "enabled": true,
               "bounds": {
@@ -1233,9 +2281,9 @@
       "nodeId": "gate-wait-deposit",
       "action": "ui.wait_for",
       "intent": "Confirm the deposit CTA is on screen before using it",
-      "startedAt": "2026-09-02T08:14:45.009Z",
-      "endedAt": "2026-09-02T08:14:46.679Z",
-      "durationMs": 1670,
+      "startedAt": "2026-09-02T08:53:04.654Z",
+      "endedAt": "2026-09-02T08:53:06.751Z",
+      "durationMs": 2097,
       "ok": true,
       "next": "ac1-press-deposit",
       "output": {
@@ -1355,7 +2403,7 @@
             },
             {
               "role": "AXButton",
-              "label": "BTC 11x long, 0.00017 BTC, $13.16, +$2.38 (+242.3%)",
+              "label": "BTC 11x long, 0.00017 BTC, $13.05, +$2.27 (+231.1%)",
               "test_id": "perps-home-position-card-0",
               "enabled": true,
               "bounds": {
@@ -1367,7 +2415,7 @@
             },
             {
               "role": "AXButton",
-              "label": "ETH 10x long, 0.0049 ETH, $11.85, -$0.40 (-32.6%)",
+              "label": "ETH 10x long, 0.0049 ETH, $11.72, -$0.52 (-42.7%)",
               "test_id": "perps-home-position-card-1",
               "enabled": true,
               "bounds": {
@@ -1418,8 +2466,8 @@
             },
             {
               "role": "AXButton",
-              "label": "Ethereum, 25x, ETH · $1.09B Vol, $2,417.6, -1.91%",
-              "test_id": "perps-market-row-item-ETH",
+              "label": "Bitcoin, 40x, BTC · $2.79B Vol, $76,793, -1.40%",
+              "test_id": "perps-market-row-item-BTC",
               "enabled": true,
               "bounds": {
                 "x": 0,
@@ -1431,12 +2479,12 @@
             },
             {
               "role": "AXButton",
-              "label": "Bitcoin, 40x, BTC · $2.78B Vol, $77,398, -1.17%",
-              "test_id": "perps-market-row-item-BTC",
+              "label": "Ethereum, 25x, ETH · $1.08B Vol, $2,392.8, -2.25%",
+              "test_id": "perps-market-row-item-ETH",
               "enabled": true,
               "bounds": {
                 "x": 0,
-                "y": 1239,
+                "y": 1209,
                 "width": 402,
                 "height": 72
               },
@@ -1444,12 +2492,12 @@
             },
             {
               "role": "AXButton",
-              "label": "Hyperliquid, 10x, HYPE · $494.46M Vol, $82.434, -0.71%",
+              "label": "Hyperliquid, 10x, HYPE · $488.96M Vol, $81.35, -2.01%",
               "test_id": "perps-market-row-item-HYPE",
               "enabled": true,
               "bounds": {
                 "x": 0,
-                "y": 1311,
+                "y": 1281,
                 "width": 402,
                 "height": 72
               },
@@ -1457,7 +2505,7 @@
             },
             {
               "role": "AXButton",
-              "label": "WTI Crude Oil, 20x, CL · $419.81M Vol, $90.057, +3.22%",
+              "label": "WTI Crude Oil, 20x, CL · $408.20M Vol, $90.385, +2.73%",
               "test_id": "perps-market-row-item-xyz:CL",
               "enabled": true,
               "bounds": {
@@ -1470,7 +2518,7 @@
             },
             {
               "role": "AXButton",
-              "label": "Solana, 20x, SOL · $391.28M Vol, $99.827, -2.68%",
+              "label": "Solana, 20x, SOL · $380.33M Vol, $98.868, -3.09%",
               "test_id": "perps-market-row-item-SOL",
               "enabled": true,
               "bounds": {
@@ -1626,24 +2674,24 @@
             },
             {
               "role": "AXButton",
-              "label": "CASHCAT, +29.28%",
+              "label": "CASHCAT, +22.15%",
               "test_id": "perps-market-tile-card-CASHCAT",
               "enabled": true,
               "bounds": {
                 "x": 16,
                 "y": 1855,
-                "width": 180,
+                "width": 177,
                 "height": 40
               },
               "reason": "hidden_or_offscreen"
             },
             {
               "role": "AXButton",
-              "label": "ACE, +23.81%",
+              "label": "ACE, +21.45%",
               "test_id": "perps-market-tile-card-ACE",
               "enabled": true,
               "bounds": {
-                "x": 204,
+                "x": 201,
                 "y": 1855,
                 "width": 139,
                 "height": 40
@@ -1652,24 +2700,11 @@
             },
             {
               "role": "AXButton",
-              "label": "FIL, +16.42%",
-              "test_id": "perps-market-tile-card-FIL",
-              "enabled": true,
-              "bounds": {
-                "x": 351,
-                "y": 1855,
-                "width": 131,
-                "height": 40
-              },
-              "reason": "hidden_or_offscreen"
-            },
-            {
-              "role": "AXButton",
-              "label": "CHIP, +14.48%",
+              "label": "CHIP, +15.68%",
               "test_id": "perps-market-tile-card-CHIP",
               "enabled": true,
               "bounds": {
-                "x": 489,
+                "x": 348,
                 "y": 1855,
                 "width": 144,
                 "height": 40
@@ -1678,24 +2713,24 @@
             },
             {
               "role": "AXButton",
-              "label": "SYRUP, +11.08%",
-              "test_id": "perps-market-tile-card-SYRUP",
+              "label": "FIL, +14.40%",
+              "test_id": "perps-market-tile-card-FIL",
               "enabled": true,
               "bounds": {
-                "x": 16,
-                "y": 1903,
-                "width": 154,
+                "x": 500,
+                "y": 1855,
+                "width": 132,
                 "height": 40
               },
               "reason": "hidden_or_offscreen"
             },
             {
               "role": "AXButton",
-              "label": "PYTH, +10.68%",
+              "label": "PYTH, +12.25%",
               "test_id": "perps-market-tile-card-PYTH",
               "enabled": true,
               "bounds": {
-                "x": 178,
+                "x": 16,
                 "y": 1903,
                 "width": 146,
                 "height": 40
@@ -1704,26 +2739,39 @@
             },
             {
               "role": "AXButton",
-              "label": "MR, MRNA, +9.41%",
-              "test_id": "perps-market-tile-card-xyz:MRNA",
+              "label": "SYRUP, +11.43%",
+              "test_id": "perps-market-tile-card-SYRUP",
               "enabled": true,
               "bounds": {
-                "x": 332,
+                "x": 170,
                 "y": 1903,
-                "width": 144,
+                "width": 153,
                 "height": 40
               },
               "reason": "hidden_or_offscreen"
             },
             {
               "role": "AXButton",
-              "label": "MINA, +8.18%",
-              "test_id": "perps-market-tile-card-MINA",
+              "label": "MR, MRNA, +10.30%",
+              "test_id": "perps-market-tile-card-xyz:MRNA",
               "enabled": true,
               "bounds": {
-                "x": 484,
+                "x": 332,
                 "y": 1903,
-                "width": 138,
+                "width": 154,
+                "height": 40
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "ARB, +9.01%",
+              "test_id": "perps-market-tile-card-ARB",
+              "enabled": true,
+              "bounds": {
+                "x": 494,
+                "y": 1903,
+                "width": 131,
                 "height": 40
               },
               "reason": "hidden_or_offscreen"
@@ -1743,7 +2791,7 @@
             },
             {
               "role": "AXButton",
-              "label": "Bitcoin, 40x, BTC · $2.78B Vol, $77,398, -1.17%",
+              "label": "Bitcoin, 40x, BTC · $2.79B Vol, $76,776, -1.42%",
               "test_id": "perps-market-row-item-BTC",
               "enabled": true,
               "bounds": {
@@ -1756,7 +2804,7 @@
             },
             {
               "role": "AXButton",
-              "label": "Ethereum, 25x, ETH · $1.09B Vol, $2,417.6, -1.91%",
+              "label": "Ethereum, 25x, ETH · $1.08B Vol, $2,392.8, -2.25%",
               "test_id": "perps-market-row-item-ETH",
               "enabled": true,
               "bounds": {
@@ -1769,7 +2817,7 @@
             },
             {
               "role": "AXButton",
-              "label": "Hyperliquid, 10x, HYPE · $494.46M Vol, $82.434, -0.71%",
+              "label": "Hyperliquid, 10x, HYPE · $488.96M Vol, $81.343, -2.01%",
               "test_id": "perps-market-row-item-HYPE",
               "enabled": true,
               "bounds": {
@@ -1782,7 +2830,7 @@
             },
             {
               "role": "AXButton",
-              "label": "Solana, 20x, SOL · $391.28M Vol, $99.827, -2.68%",
+              "label": "Solana, 20x, SOL · $380.33M Vol, $98.868, -3.09%",
               "test_id": "perps-market-row-item-SOL",
               "enabled": true,
               "bounds": {
@@ -1795,7 +2843,7 @@
             },
             {
               "role": "AXButton",
-              "label": "Zcash, 10x, ZEC · $266.69M Vol, $831.1, -2.11%",
+              "label": "Zcash, 10x, ZEC · $265.04M Vol, $820.88, -2.78%",
               "test_id": "perps-market-row-item-ZEC",
               "enabled": true,
               "bounds": {
@@ -1820,7 +2868,7 @@
             },
             {
               "role": "AXButton",
-              "label": "WTI Crude Oil, 20x, CL · $419.81M Vol, $90.057, +3.22%",
+              "label": "WTI Crude Oil, 20x, CL · $408.20M Vol, $90.385, +2.73%",
               "test_id": "perps-market-row-item-xyz:CL",
               "enabled": true,
               "bounds": {
@@ -1833,7 +2881,7 @@
             },
             {
               "role": "AXButton",
-              "label": "Brent Crude Oil, 20x, BRENTOIL · $194.81M Vol, $94.669, +2.97%",
+              "label": "Brent Crude Oil, 20x, BRENTOIL · $191.65M Vol, $94.897, +2.67%",
               "test_id": "perps-market-row-item-xyz:BRENTOIL",
               "enabled": true,
               "bounds": {
@@ -1846,7 +2894,7 @@
             },
             {
               "role": "AXButton",
-              "label": "Gold, 25x, GOLD · $168.81M Vol, $4,328.6, -1.78%",
+              "label": "Gold, 25x, GOLD · $153.00M Vol, $4,320.3, -1.19%",
               "test_id": "perps-market-row-item-xyz:GOLD",
               "enabled": true,
               "bounds": {
@@ -1859,7 +2907,7 @@
             },
             {
               "role": "AXButton",
-              "label": "Silver, 25x, SILVER · $154.24M Vol, $64.136, -2.94%",
+              "label": "Silver, 25x, SILVER · $143.56M Vol, $63.907, -1.26%",
               "test_id": "perps-market-row-item-xyz:SILVER",
               "enabled": true,
               "bounds": {
@@ -1872,7 +2920,7 @@
             },
             {
               "role": "AXButton",
-              "label": "Copper, 20x, COPPER · $14.28M Vol, $6.5493, -2.10%",
+              "label": "Copper, 20x, COPPER · $13.97M Vol, $6.5288, -1.23%",
               "test_id": "perps-market-row-item-xyz:COPPER",
               "enabled": true,
               "bounds": {
@@ -1897,7 +2945,7 @@
             },
             {
               "role": "AXButton",
-              "label": "SK Hynix, 10x, SKHX · $216.46M Vol, $1,182.7, -3.03%",
+              "label": "SK Hynix, 10x, SKHX · $185.42M Vol, $1,172.7, -2.41%",
               "test_id": "perps-market-row-item-xyz:SKHX",
               "enabled": true,
               "bounds": {
@@ -1910,7 +2958,7 @@
             },
             {
               "role": "AXButton",
-              "label": "SanDisk, 10x, SNDK · $169.70M Vol, $1,531.8, -0.08%",
+              "label": "SanDisk, 10x, SNDK · $162.72M Vol, $1,516.9, +0.05%",
               "test_id": "perps-market-row-item-xyz:SNDK",
               "enabled": true,
               "bounds": {
@@ -1923,7 +2971,7 @@
             },
             {
               "role": "AXButton",
-              "label": "SpaceX, 20x, SPCX · $103.98M Vol, $141.8, -0.91%",
+              "label": "SpaceX, 20x, SPCX · $99.56M Vol, $141.43, -0.58%",
               "test_id": "perps-market-row-item-xyz:SPCX",
               "enabled": true,
               "bounds": {
@@ -1936,7 +2984,7 @@
             },
             {
               "role": "AXButton",
-              "label": "Micron Technology, 10x, MU · $78.24M Vol, $928.42, -1.63%",
+              "label": "Micron Technology, 10x, MU · $74.60M Vol, $922.19, -1.98%",
               "test_id": "perps-market-row-item-xyz:MU",
               "enabled": true,
               "bounds": {
@@ -1949,7 +2997,7 @@
             },
             {
               "role": "AXButton",
-              "label": "NVIDIA, 20x, NVDA · $58.53M Vol, $217.26, -0.81%",
+              "label": "NVIDIA, 20x, NVDA · $56.60M Vol, $216.7, -0.57%",
               "test_id": "perps-market-row-item-xyz:NVDA",
               "enabled": true,
               "bounds": {
@@ -1974,7 +3022,7 @@
             },
             {
               "role": "AXButton",
-              "label": "Japanese Yen, 50x, JPY · $6.09M Vol, $159.74, -0.20%",
+              "label": "Japanese Yen, 50x, JPY · $6.03M Vol, $159.78, -0.12%",
               "test_id": "perps-market-row-item-xyz:JPY",
               "enabled": true,
               "bounds": {
@@ -1987,7 +3035,7 @@
             },
             {
               "role": "AXButton",
-              "label": "Euro, 50x, EUR · $1.47M Vol, $1.1582, -0.11%",
+              "label": "Euro, 50x, EUR · $1.51M Vol, $1.1582, -0.16%",
               "test_id": "perps-market-row-item-xyz:EUR",
               "enabled": true,
               "bounds": {
@@ -2000,7 +3048,7 @@
             },
             {
               "role": "AXButton",
-              "label": "British Pound, 50x, GBP · $63K Vol, $1.351, -0.18%",
+              "label": "British Pound, 50x, GBP · $63K Vol, $1.3508, -0.19%",
               "test_id": "perps-market-row-item-xyz:GBP",
               "enabled": true,
               "bounds": {
@@ -2332,9 +3380,9 @@
       "nodeId": "ac1-press-deposit",
       "action": "ui.press",
       "intent": "Begin the Perps deposit confirmation from home",
-      "startedAt": "2026-09-02T08:14:46.720Z",
-      "endedAt": "2026-09-02T08:14:50.395Z",
-      "durationMs": 3675,
+      "startedAt": "2026-09-02T08:53:06.841Z",
+      "endedAt": "2026-09-02T08:53:12.555Z",
+      "durationMs": 5714,
       "ok": true,
       "next": "ac1-wait-confirmation",
       "output": {
@@ -2348,12 +3396,222 @@
           "platform": "ios",
           "deviceId": "87C73AA9-AA53-48C0-9E02-24C4C3E57858",
           "name": "MetaMask",
-          "nodeCount": 3,
+          "nodeCount": 23,
           "truncated": false
         },
         "ui.visible": {
           "provider": "idb-accessibility",
           "items": [
+            {
+              "role": "AXGenericElement",
+              "test_id": "Add funds-navbar-back-button",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 74,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Pay with, ETH ($3.14)",
+              "test_id": "pay-with",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 502,
+                "width": 370,
+                "height": 34
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "10%",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 552,
+                "width": 83,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "25%",
+              "enabled": true,
+              "bounds": {
+                "x": 109,
+                "y": 552,
+                "width": 85,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "50%",
+              "enabled": true,
+              "bounds": {
+                "x": 204,
+                "y": 552,
+                "width": 86,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "90%",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 552,
+                "width": 86,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "1",
+              "test_id": "keypad-key-1",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 612,
+                "width": 115,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "2",
+              "test_id": "keypad-key-2",
+              "enabled": true,
+              "bounds": {
+                "x": 143,
+                "y": 612,
+                "width": 115,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "3",
+              "test_id": "keypad-key-3",
+              "enabled": true,
+              "bounds": {
+                "x": 271,
+                "y": 612,
+                "width": 115,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "4",
+              "test_id": "keypad-key-4",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 672,
+                "width": 115,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "5",
+              "test_id": "keypad-key-5",
+              "enabled": true,
+              "bounds": {
+                "x": 143,
+                "y": 672,
+                "width": 115,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "6",
+              "test_id": "keypad-key-6",
+              "enabled": true,
+              "bounds": {
+                "x": 271,
+                "y": 672,
+                "width": 115,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "7",
+              "test_id": "keypad-key-7",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 732,
+                "width": 115,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "8",
+              "test_id": "keypad-key-8",
+              "enabled": true,
+              "bounds": {
+                "x": 143,
+                "y": 732,
+                "width": 115,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "9",
+              "test_id": "keypad-key-9",
+              "enabled": true,
+              "bounds": {
+                "x": 271,
+                "y": 732,
+                "width": 115,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": ".",
+              "test_id": "keypad-key-dot",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 792,
+                "width": 115,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "0",
+              "test_id": "keypad-key-0",
+              "enabled": true,
+              "bounds": {
+                "x": 143,
+                "y": 792,
+                "width": 115,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "test_id": "keypad-delete-button",
+              "enabled": true,
+              "bounds": {
+                "x": 271,
+                "y": 792,
+                "width": 115,
+                "height": 48
+              }
+            },
             {
               "role": "AXImage",
               "label": "gearshape.fill",
@@ -2380,9 +3638,9 @@
       "nodeId": "ac1-wait-confirmation",
       "action": "ui.wait_for",
       "intent": "Confirm the deposit amount screen appeared without a multi-second stall",
-      "startedAt": "2026-09-02T08:14:50.436Z",
-      "endedAt": "2026-09-02T08:14:51.689Z",
-      "durationMs": 1253,
+      "startedAt": "2026-09-02T08:53:12.639Z",
+      "endedAt": "2026-09-02T08:53:14.505Z",
+      "durationMs": 1866,
       "ok": true,
       "next": "ac1-wait-pay-with",
       "output": {
@@ -2418,7 +3676,7 @@
             },
             {
               "role": "AXGenericElement",
-              "label": "Pay with, ETH ($3.17)",
+              "label": "Pay with, ETH ($3.14)",
               "test_id": "pay-with",
               "enabled": true,
               "bounds": {
@@ -2641,9 +3899,9 @@
       "nodeId": "ac1-wait-pay-with",
       "action": "ui.wait_for",
       "intent": "Confirm Pay With is mounted on the deposit confirmation",
-      "startedAt": "2026-09-02T08:14:51.726Z",
-      "endedAt": "2026-09-02T08:14:52.297Z",
-      "durationMs": 571,
+      "startedAt": "2026-09-02T08:53:14.631Z",
+      "endedAt": "2026-09-02T08:53:16.233Z",
+      "durationMs": 1602,
       "ok": true,
       "next": "ac1-screenshot-confirmation",
       "output": {
@@ -2679,7 +3937,7 @@
             },
             {
               "role": "AXGenericElement",
-              "label": "Pay with, ETH ($3.17)",
+              "label": "Pay with, ETH ($3.14)",
               "test_id": "pay-with",
               "enabled": true,
               "bounds": {
@@ -2902,9 +4160,9 @@
       "nodeId": "ac1-screenshot-confirmation",
       "action": "ui.screenshot",
       "intent": "Record the deposit confirmation after a responsive Add funds tap",
-      "startedAt": "2026-09-02T08:14:52.334Z",
-      "endedAt": "2026-09-02T08:14:53.289Z",
-      "durationMs": 955,
+      "startedAt": "2026-09-02T08:53:16.396Z",
+      "endedAt": "2026-09-02T08:53:18.917Z",
+      "durationMs": 2521,
       "ok": true,
       "next": "ac2-press-pay-with",
       "output": {
@@ -2930,12 +4188,222 @@
           "platform": "ios",
           "deviceId": "87C73AA9-AA53-48C0-9E02-24C4C3E57858",
           "name": "MetaMask",
-          "nodeCount": 3,
+          "nodeCount": 23,
           "truncated": false
         },
         "ui.visible": {
           "provider": "idb-accessibility",
           "items": [
+            {
+              "role": "AXGenericElement",
+              "test_id": "Add funds-navbar-back-button",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 74,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Pay with, ETH ($3.14)",
+              "test_id": "pay-with",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 502,
+                "width": 370,
+                "height": 34
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "10%",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 552,
+                "width": 83,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "25%",
+              "enabled": true,
+              "bounds": {
+                "x": 109,
+                "y": 552,
+                "width": 85,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "50%",
+              "enabled": true,
+              "bounds": {
+                "x": 204,
+                "y": 552,
+                "width": 86,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "90%",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 552,
+                "width": 86,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "1",
+              "test_id": "keypad-key-1",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 612,
+                "width": 115,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "2",
+              "test_id": "keypad-key-2",
+              "enabled": true,
+              "bounds": {
+                "x": 143,
+                "y": 612,
+                "width": 115,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "3",
+              "test_id": "keypad-key-3",
+              "enabled": true,
+              "bounds": {
+                "x": 271,
+                "y": 612,
+                "width": 115,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "4",
+              "test_id": "keypad-key-4",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 672,
+                "width": 115,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "5",
+              "test_id": "keypad-key-5",
+              "enabled": true,
+              "bounds": {
+                "x": 143,
+                "y": 672,
+                "width": 115,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "6",
+              "test_id": "keypad-key-6",
+              "enabled": true,
+              "bounds": {
+                "x": 271,
+                "y": 672,
+                "width": 115,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "7",
+              "test_id": "keypad-key-7",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 732,
+                "width": 115,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "8",
+              "test_id": "keypad-key-8",
+              "enabled": true,
+              "bounds": {
+                "x": 143,
+                "y": 732,
+                "width": 115,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "9",
+              "test_id": "keypad-key-9",
+              "enabled": true,
+              "bounds": {
+                "x": 271,
+                "y": 732,
+                "width": 115,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": ".",
+              "test_id": "keypad-key-dot",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 792,
+                "width": 115,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "0",
+              "test_id": "keypad-key-0",
+              "enabled": true,
+              "bounds": {
+                "x": 143,
+                "y": 792,
+                "width": 115,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "test_id": "keypad-delete-button",
+              "enabled": true,
+              "bounds": {
+                "x": 271,
+                "y": 792,
+                "width": 115,
+                "height": 48
+              }
+            },
             {
               "role": "AXImage",
               "label": "gearshape.fill",
@@ -2962,9 +4430,9 @@
       "nodeId": "ac2-press-pay-with",
       "action": "ui.press",
       "intent": "Show every token that can fund this Perps deposit",
-      "startedAt": "2026-09-02T08:14:53.503Z",
-      "endedAt": "2026-09-02T08:14:55.034Z",
-      "durationMs": 1531,
+      "startedAt": "2026-09-02T08:53:19.074Z",
+      "endedAt": "2026-09-02T08:53:20.810Z",
+      "durationMs": 1736,
       "ok": true,
       "next": "ac2-wait-token-sheet",
       "output": {
@@ -2997,7 +4465,7 @@
             },
             {
               "role": "AXButton",
-              "label": "ETH, $3.17 available",
+              "label": "ETH, $3.14 available",
               "test_id": "pay-with-crypto-section-preferred-token-row",
               "enabled": true,
               "bounds": {
@@ -3045,9 +4513,9 @@
       "nodeId": "ac2-wait-token-sheet",
       "action": "ui.wait_for",
       "intent": "Confirm the Pay With token sheet listed a crypto asset",
-      "startedAt": "2026-09-02T08:14:55.074Z",
-      "endedAt": "2026-09-02T08:14:55.738Z",
-      "durationMs": 664,
+      "startedAt": "2026-09-02T08:53:20.991Z",
+      "endedAt": "2026-09-02T08:53:21.961Z",
+      "durationMs": 970,
       "ok": true,
       "next": "ac2-screenshot-token-list",
       "output": {
@@ -3083,7 +4551,7 @@
             },
             {
               "role": "AXButton",
-              "label": "ETH, $3.17 available",
+              "label": "ETH, $3.14 available",
               "test_id": "pay-with-crypto-section-preferred-token-row",
               "enabled": true,
               "bounds": {
@@ -3131,9 +4599,9 @@
       "nodeId": "ac2-screenshot-token-list",
       "action": "ui.screenshot",
       "intent": "Record the Pay With token sheet after first open",
-      "startedAt": "2026-09-02T08:14:55.781Z",
-      "endedAt": "2026-09-02T08:14:56.247Z",
-      "durationMs": 466,
+      "startedAt": "2026-09-02T08:53:22.059Z",
+      "endedAt": "2026-09-02T08:53:22.894Z",
+      "durationMs": 835,
       "ok": true,
       "next": "done",
       "output": {
@@ -3178,7 +4646,7 @@
             },
             {
               "role": "AXButton",
-              "label": "ETH, $3.17 available",
+              "label": "ETH, $3.14 available",
               "test_id": "pay-with-crypto-section-preferred-token-row",
               "enabled": true,
               "bounds": {
@@ -3225,8 +4693,8 @@
     {
       "nodeId": "done",
       "action": "end",
-      "startedAt": "2026-09-02T08:14:56.356Z",
-      "endedAt": "2026-09-02T08:14:56.356Z",
+      "startedAt": "2026-09-02T08:53:22.960Z",
+      "endedAt": "2026-09-02T08:53:22.960Z",
       "durationMs": 0,
       "ok": true,
       "status": "pass"

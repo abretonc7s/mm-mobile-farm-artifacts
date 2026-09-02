@@ -4,10 +4,10 @@
   "compact": {
     "verdict": "PASS",
     "reasons": [
-      "AC1 and AC2 are mixed and each has wait_for plus a screenshot that was read: after-ac1 shows the Add funds amount keypad and Pay with ETH; after-ac2 shows the Pay with sheet with ETH and Other assets.",
-      "Live re-run after rebase and review-comment fix passed 13/13. summary.json status pass; simctl screenshots, not DOM fallback.",
+      "AC1 and AC2 are mixed and each has wait_for plus a screenshot that was read: after-ac1 shows the Add funds amount keypad and Pay with ETH ($3.14); after-ac2 shows the Pay with sheet with ETH and Other assets.",
+      "Live re-run after rebase onto origin/main and Bugbot Pay With / abandoned-guard fixes passed 13/13. summary.json status pass; simctl screenshots, not DOM fallback.",
       "Setup uses metamask.wallet.ensure_unlocked, select_account Trading, and ui.navigate page=perps. No eval, shell, or undeclared actions.",
-      "Review-comment race fix does not change the happy-path recipe: one Add funds tap still navigates then preps."
+      "Guard fixes do not change the happy-path recipe: one Add funds tap still navigates then preps; opening Pay With is the AC2 path."
     ],
     "better_version_guidance": []
   },

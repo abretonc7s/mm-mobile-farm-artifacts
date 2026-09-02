@@ -9,9 +9,9 @@
     "environment": 0,
     "unknown": 0
   },
-  "startedAt": "2026-09-02T08:14:19.339Z",
-  "endedAt": "2026-09-02T08:14:56.413Z",
-  "durationMs": 37074,
+  "startedAt": "2026-09-02T08:52:36.962Z",
+  "endedAt": "2026-09-02T08:53:23.079Z",
+  "durationMs": 46117,
   "harness": {
     "name": "@farmslot/recipe-harness",
     "version": "0.15.1",
@@ -41,8 +41,8 @@
     "status": "review",
     "nonBlocking": true,
     "counts": {
-      "total": 18,
-      "warning": 15,
+      "total": 16,
+      "warning": 13,
       "error": 3,
       "exception": 0
     },

@@ -1,7 +1,7 @@
-# Learnings — PR #35573 follow-up
+# Learnings — PR #35573 pr-complete
 
-- Fire-and-forget `setTimeout` + promise settlement must be generation-aware. Cancelling only the navigation guard leaves the first prep running; its `.then`/`.catch` can null the latest cancel ref or dismiss the confirmation the user is on.
-- Two call sites (home actions and market details) copied the same race. Own the timeout in one session helper so the second tap replaces the guard and does not start a second `depositWithConfirmation()`.
-- `jest.clearAllMocks()` does not drop `mockImplementation`. A hanging deposit mock from a double-tap test leaked into `onAddFundsSuccess` until `mockReset()` in `beforeEach`.
-- Fake-timer tests in a nested describe still leak into sibling `waitFor` tests. Keep every deferred-prep assertion inside the fake-timer block and flush with `runAllTimersAsync`.
-- `afterEach` `setTimeout(0)` as a drain is a hang waiting to happen next to fake timers. Prefer explicit timer control over a sleep barrier.
+- A fire-and-forget failure path that sets `dismissWhenShown` still owns the navigation listener. Nulling the guard or the session without `dispose()` leaves that listener armed against the next confirmation.
+- Pay With is the same deposit flow, not "user left confirmation". Treat those routes as focused confirmation or a later prep failure leaves the empty amount screen up.
+- `waitFor` on a `setTimeout(0)` deposit prep is still a flake even when sibling tests use fake timers. Any test that calls `handleAddFunds` and then asserts prep settlement needs `runAllTimersAsync`.
+- Flaky-detector J9 can flag a `let` binding that the outer `beforeEach` already resets. Check HEAD before changing test setup.
+- Unrelated loader-enum to string swaps and extra hook mocks showed up in the dirty tree from a prior attempt. Revert anything that is not the comment.

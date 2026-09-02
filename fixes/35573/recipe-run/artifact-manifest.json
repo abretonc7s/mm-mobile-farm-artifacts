@@ -94,7 +94,7 @@
       "category": "system",
       "metadata": {
         "adapter": "mobile",
-        "git_ref": "dfee1a6a54d57052e4ceb7eb6cdf4c933ff38d98",
+        "git_ref": "7669847a6dfc2b1ed89d4a5c9233a448d81f2ce3",
         "branch": "TAT-3772-fix-fix-perps-deposit-performance",
         "dirty": true
       }

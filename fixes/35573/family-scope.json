@@ -2,5 +2,5 @@
   "originalFamilyScopeSummary": "Fix deposit button delay and token list lag in Perps flow",
   "currentTriggerSummary": "pr-complete: Fix deposit button delay and token list lag in Perps flow",
   "scopeVerdict": "full-scope-addressed",
-  "notes": "Inherited recipe still proves both ACs after rebase onto origin/main plus the review-comment race fix: Add funds opens the amount screen immediately (custom-amount-input + Pay with ETH), and Pay with lists ETH plus Other assets. Live re-run PASS 13/13 with simctl screenshots. Review fix is a double-tap race on the same deposit path, not a new product scope."
+  "notes": "TAT-3772 asked for immediate deposit-tap feedback and a non-laggy Pay With list. The branch still navigates to the Custom Amount confirmation first and preps in the background. Live recipe after rebase plus this run's Bugbot guard fixes passed 13/13: Add funds amount screen with Pay with ETH ($3.14), then Pay with sheet listing ETH and Other assets. Review fixes only cover failed-prep listener cleanup and Pay With remaining in the confirmation flow."
 }

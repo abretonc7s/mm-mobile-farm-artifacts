@@ -1,54 +1,52 @@
-# PR #35573 comment triage
+# PR #35573 comments triage
 
-Ticket: TAT-3772 — deposit tap should navigate immediately; Pay with should not stall.
-PR: fire-and-forget `depositWithConfirmation()` after confirmation navigation, with a focus-aware dismiss guard.
+PR: fix(perps): performance issue: Deposit button delay and token list lag in Perps flow
+Ticket: [TAT-3772](https://consensyssoftware.atlassian.net/browse/TAT-3772) — deposit tap felt stuck; Pay With token list lagged. Expected: immediate haptic + confirmation skeleton, then prep.
 
-Skipped without reply (status-only automation): 2
-- `github-actions[bot]` #5506154352 CLA signature
-- `github-actions[bot]` #5506183754 Smart E2E test selection
+Fetched 2026-09-02. REQUEST_CHANGES reviews: none.
 
-No `CHANGES_REQUESTED` reviews.
+Skipped status-only (no reply): 3
+- 5506154352 CLA
+- 5506640744 Smart E2E Test Selection
+- 5506830945 Performance Test Results
 
 | # | Author | File | Triage | Action |
 |---|--------|------|--------|--------|
-| 1 | cursor[bot] | `usePerpsHomeActions.ts:190` (+ MarketDetails `L729-L747`) | REAL | Stale `setTimeout` / `depositWithConfirmation()` settlement can null the latest guard. Add a prep session that cancels the pending timeout, ignores stale settlement, and reuses one in-flight prep against the latest guard. |
-| 2 | github-actions[bot] | `usePerpsHomeActions.test.ts:167` (J6) | REAL | Remove `afterEach` `setTimeout(0)` sleep; it can hang when a sibling test uses fake timers. |
-| 3 | github-actions[bot] | `usePerpsHomeActions.test.ts:196` (J8) | REAL | Isolate the fake-timer test in a nested describe with `beforeEach`/`afterEach` timer setup. |
-| 4 | github-actions[bot] | `PerpsMarketDetailsView.test.tsx:1825` (J8) | FALSE POSITIVE | Fake timers start after render on purpose so mount effects use real timers. `try/finally` always restores (including on throw). Historical rate 0/431. Suggested nested describe would freeze mount timers. |
+| 1 | cursor[bot] 3911860795 | usePerpsHomeActions.ts:190 | REAL (already fixed) | Prep session cancels timeout, ignores stale settlement, reuses in-flight prep. Replied + resolved in 7669847a6d (was c4e7408f1d). No further change. |
+| 2 | cursor[bot] 3912193415 | depositConfirmationGuard.ts:213 | REAL | Keep the guard after failed prep so dispose/next tap can cancel a waiting dismissWhenShown listener. Callers must not null the session without dispose. |
+| 3 | cursor[bot] 3912193426 | depositConfirmationGuard.ts:90 | REAL | Treat Pay With routes as still in the deposit confirmation flow. Dismiss Pay With then confirmation on prep failure. |
+| 4 | github-actions[bot] 5506202407 J9 | PerpsMarketDetailsView.test.tsx:52 | FALSE POSITIVE | Outer beforeEach already sets `mockConnectionInitialized = true` (HEAD and origin/main). Historical rate 0/430. |
+| 5 | github-actions[bot] 5506202407 J8 | usePerpsHomeActions.test.ts:196 | REAL | Eligible-user test still used `waitFor` against deferred `setTimeout(0)` on real timers. Converted that test and the deposit string-error test to fake timers + `runAllTimersAsync`. |
 
-## Inherited recipe AC coverage
+Issue comment 5506607069 is our prior flaky-test triage, not a new finding.
 
-Source: `inputs/inherited/recipe-coverage.md` + `artifacts/recipe.json` (family-inherited, trusted).
+## Totals
 
-| AC | Proof | Nodes | Inherited verdict |
-|----|-------|-------|-------------------|
-| 1. Deposit tap navigates immediately to confirmation | mixed | ac1-press-deposit → ac1-wait-confirmation (`custom-amount-input`, 4s) → ac1-wait-pay-with → screenshot | PROVEN |
-| 2. Pay with token list loads without multi-second stall | mixed | ac2-press-pay-with → ac2-wait-token-sheet (`pay-with-crypto-section-preferred-token-row`, 4s) → screenshot | PROVEN |
-
-Recipe is the after/with-state validation flow. Re-run uses the same node IDs against `branch + origin/main`.
-
-## Recipe re-validation
-
-- Result: PASS (13/13 nodes, 37074ms)
-- summary: `artifacts/recipe-run/summary.json`
-- trace: `artifacts/recipe-run/trace.json`
-- manifest: `artifacts/recipe-run/artifact-manifest.json`
-- AC1 screenshot: Add funds amount screen, Pay with ETH ($3.17), keypad visible (`screenshots/evidence-ac1-deposit-confirmation.png`, simctl)
-- AC2 screenshot: Pay with sheet lists ETH $3.17 and Other assets (`screenshots/evidence-ac2-pay-with-list.png`, simctl)
-- Integration: rebased onto origin/main (`artifacts/integration-status.txt`)
-
-## Summary
-
-- Total comments: 4 (2 REAL, 0 FALSE POSITIVE, 2 OUT OF SCOPE)
-  - Finding-level: 2 REAL (stale prep race; J6+J8 home-actions tests), 1 FALSE POSITIVE (MarketDetails J8), 2 skipped status-only
-- Commit SHA for fixes: `c4e7408f1da65cc8aee2c5b2a83078ae1c9697dc`
+- Total comments: 8 (3 REAL this run, 1 REAL already-fixed, 1 FALSE POSITIVE, 3 OUT OF SCOPE status-only)
+- Actionable this run: 4 (3 REAL code fixes + 1 FALSE POSITIVE reply)
+- Commit SHA: `700b2145c1d05cda9abbb761b3368f537d82e281`
 - Files changed:
   - `app/components/UI/Perps/utils/depositConfirmationGuard.ts`
   - `app/components/UI/Perps/utils/depositConfirmationGuard.test.ts`
   - `app/components/UI/Perps/hooks/usePerpsHomeActions.ts`
   - `app/components/UI/Perps/hooks/usePerpsHomeActions.test.ts`
   - `app/components/UI/Perps/Views/PerpsMarketDetailsView/PerpsMarketDetailsView.tsx`
-- Recipe re-validation: PASS
+- Recipe re-validation: PASS 13/13 (`temp/tasks/fix/35573-0902-163558/artifacts/recipe-run/summary.json`)
 - Integration status: rebased
-- Replies: inline on review `3911860795`; consolidated issue comment `5506607069`; skipped CLA `5506154352` and Smart E2E `5506183754`
-- Review thread `PRRT_kwDOCG4DHc6eaSzx` resolved
+
+## Inherited recipe AC coverage
+
+See `inputs/inherited/report.md` and `artifacts/recipe.json`.
+- AC1 mixed: Add funds opens deposit confirmation without waiting for tx prep (`custom-amount-input`, `pay-with`).
+- AC2 mixed: Pay With sheet lists a crypto asset (`pay-with-crypto-section-preferred-token-row`).
+- Parent run reported 2/2 PROVEN.
+
+## Recipe re-validation (step 10)
+
+- Recipe: `temp/tasks/fix/35573-0902-163558/artifacts/recipe.json` (family-inherited)
+- Harness: `/Users/deeeed/.npm-global/bin/mm-harness` 0.45.1, slot `mini-mm-2`, watcher 8072
+- Doctor: pass / ready
+- Run: PASS 13/13 in 46117ms
+- summary: `temp/tasks/fix/35573-0902-163558/artifacts/recipe-run/summary.json`
+- Screenshots confirm Add funds amount screen (Pay with ETH $3.14) and Pay with sheet (ETH + Other assets)
+- Integration: rebased onto origin/main before this run

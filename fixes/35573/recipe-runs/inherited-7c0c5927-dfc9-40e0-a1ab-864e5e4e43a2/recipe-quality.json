@@ -5,9 +5,9 @@
     "verdict": "PASS",
     "reasons": [
       "AC1 and AC2 are mixed and each has wait_for plus a screenshot that was read: after-ac1 shows the Add funds amount keypad and Pay with ETH; after-ac2 shows the Pay with sheet with ETH and Other assets.",
-      "Trace.json from the passing recipe-run includes every ac1- and ac2- node as passed.",
-      "Setup uses metamask.wallet.ensure_unlocked, select_account Trading, and ui.navigate page=perps from the mobile manifest. No eval_sync or undeclared actions.",
-      "Focused unit tests cover fire-and-forget navigate-before-deposit-prep and the confirmation dismiss guard."
+      "Live re-run after rebase and review-comment fix passed 13/13. summary.json status pass; simctl screenshots, not DOM fallback.",
+      "Setup uses metamask.wallet.ensure_unlocked, select_account Trading, and ui.navigate page=perps. No eval, shell, or undeclared actions.",
+      "Review-comment race fix does not change the happy-path recipe: one Add funds tap still navigates then preps."
     ],
     "better_version_guidance": []
   },
@@ -16,7 +16,7 @@
   "contextual_findings": [],
   "suggested_recipe_delta": [],
   "training_fields": {
-    "proof_mode": "unknown"
+    "proof_mode": "mixed"
   },
   "meta": {
     "producer": "worker",
@@ -24,7 +24,8 @@
     "legacy_task": false,
     "artifact_required": true,
     "source_signals": [
-      "recipe-quality.json"
+      "recipe-quality.json",
+      "recipe-run/summary.json"
     ]
   }
 }

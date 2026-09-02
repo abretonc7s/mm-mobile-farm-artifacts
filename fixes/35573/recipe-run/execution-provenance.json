@@ -4,12 +4,12 @@
   "snapshots": [
     {
       "phase": "start",
-      "capturedAt": "2026-09-02T08:14:18.778Z",
+      "capturedAt": "2026-09-02T08:52:35.365Z",
       "recipeDigest": "sha256:849a081a0f175890e091cc858db5e83e3b818a146d8726b482078d47c78f185a",
       "product": {
-        "head": "dfee1a6a54d57052e4ceb7eb6cdf4c933ff38d98",
+        "head": "7669847a6dfc2b1ed89d4a5c9233a448d81f2ce3",
         "status": " M app/components/UI/Perps/Views/PerpsMarketDetailsView/PerpsMarketDetailsView.tsx\n M app/components/UI/Perps/hooks/usePerpsHomeActions.test.ts\n M app/components/UI/Perps/hooks/usePerpsHomeActions.ts\n M app/components/UI/Perps/utils/depositConfirmationGuard.test.ts\n M app/components/UI/Perps/utils/depositConfirmationGuard.ts\n",
-        "sourceFingerprint": "6cc6ee4dba42567b187e6fa64b5bcc20cced1bea3a2c1ec77de546600bff053f"
+        "sourceFingerprint": "a2011928ffc4d4521163b01311dca657e30249018b2128f68d1ff854ef3a4ffc"
       },
       "runner": {
         "head": null,
@@ -28,12 +28,12 @@
     },
     {
       "phase": "pre-execute",
-      "capturedAt": "2026-09-02T08:14:19.058Z",
+      "capturedAt": "2026-09-02T08:52:36.226Z",
       "recipeDigest": "sha256:849a081a0f175890e091cc858db5e83e3b818a146d8726b482078d47c78f185a",
       "product": {
-        "head": "dfee1a6a54d57052e4ceb7eb6cdf4c933ff38d98",
+        "head": "7669847a6dfc2b1ed89d4a5c9233a448d81f2ce3",
         "status": " M app/components/UI/Perps/Views/PerpsMarketDetailsView/PerpsMarketDetailsView.tsx\n M app/components/UI/Perps/hooks/usePerpsHomeActions.test.ts\n M app/components/UI/Perps/hooks/usePerpsHomeActions.ts\n M app/components/UI/Perps/utils/depositConfirmationGuard.test.ts\n M app/components/UI/Perps/utils/depositConfirmationGuard.ts\n",
-        "sourceFingerprint": "6cc6ee4dba42567b187e6fa64b5bcc20cced1bea3a2c1ec77de546600bff053f"
+        "sourceFingerprint": "a2011928ffc4d4521163b01311dca657e30249018b2128f68d1ff854ef3a4ffc"
       },
       "runner": {
         "head": null,
@@ -52,12 +52,12 @@
     },
     {
       "phase": "end",
-      "capturedAt": "2026-09-02T08:14:56.558Z",
+      "capturedAt": "2026-09-02T08:53:23.326Z",
       "recipeDigest": "sha256:849a081a0f175890e091cc858db5e83e3b818a146d8726b482078d47c78f185a",
       "product": {
-        "head": "dfee1a6a54d57052e4ceb7eb6cdf4c933ff38d98",
+        "head": "7669847a6dfc2b1ed89d4a5c9233a448d81f2ce3",
         "status": " M app/components/UI/Perps/Views/PerpsMarketDetailsView/PerpsMarketDetailsView.tsx\n M app/components/UI/Perps/hooks/usePerpsHomeActions.test.ts\n M app/components/UI/Perps/hooks/usePerpsHomeActions.ts\n M app/components/UI/Perps/utils/depositConfirmationGuard.test.ts\n M app/components/UI/Perps/utils/depositConfirmationGuard.ts\n",
-        "sourceFingerprint": "6cc6ee4dba42567b187e6fa64b5bcc20cced1bea3a2c1ec77de546600bff053f"
+        "sourceFingerprint": "a2011928ffc4d4521163b01311dca657e30249018b2128f68d1ff854ef3a4ffc"
       },
       "runner": {
         "head": null,
