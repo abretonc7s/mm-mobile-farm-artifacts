@@ -1,0 +1,164 @@
+{
+  "$schema": "https://farmslot.io/schemas/recipe-v1.schema.json",
+  "title": "TAT-3903 Pro TWAP management tab proof",
+  "description": "Proves the TWAP tab renders beside Positions and Orders in the Pro panel, carries the shared ticker-only and side filters, exposes the Active / History / Fill History views, and labels itself plain TWAP when no schedule is active.",
+  "paramsSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {}
+  },
+  "proofTargets": [
+    {
+      "id": "PT-1",
+      "claim": "A third tab labelled TWAP renders beside Positions and Orders in the Pro panel and can be selected."
+    },
+    {
+      "id": "PT-2",
+      "claim": "The TWAP tab exposes three selectable views — Active, History, and Fill History."
+    },
+    {
+      "id": "PT-3",
+      "claim": "The TWAP tab carries the same side and ticker-only filters as the Positions and Orders tabs, and reads plain TWAP with no count while no schedule is active."
+    }
+  ],
+  "workflow": {
+    "entry": "prepare-perps",
+    "teardown": "restore-perps",
+    "nodes": {
+      "prepare-perps": {
+        "action": "metamask.perps.start_state",
+        "profile": "clean_market_testnet",
+        "provider": "hyperliquid",
+        "network": "testnet",
+        "market": "BTC",
+        "page": "market",
+        "positions": {
+          "state": "none",
+          "mode": "matching"
+        },
+        "orders": {
+          "state": "none",
+          "mode": "matching"
+        },
+        "timeout_ms": 120000,
+        "intent": "Prepare an unlocked HyperLiquid testnet BTC Pro market with no pre-existing BTC positions or orders.",
+        "next": "wait-panel-tabs"
+      },
+      "wait-panel-tabs": {
+        "action": "ui.wait_for",
+        "test_id": "perps-pro-market-positions-panel-tabs",
+        "expected": "present",
+        "timeout_ms": 20000,
+        "intent": "Confirm the Pro positions/orders panel tab bar is mounted before asserting the new tab.",
+        "next": "wait-twap-tab"
+      },
+      "wait-twap-tab": {
+        "action": "ui.wait_for",
+        "test_id": "perps-pro-market-positions-panel-tab-twap",
+        "expected": "present",
+        "timeout_ms": 20000,
+        "intent": "Confirm the user is offered a TWAP tab next to Positions and Orders, which is the surface this ticket adds for monitoring running schedules.",
+        "proves": [
+          "PT-1"
+        ],
+        "next": "open-twap-tab"
+      },
+      "open-twap-tab": {
+        "action": "ui.press",
+        "test_id": "perps-pro-market-positions-panel-tab-twap",
+        "intent": "Select the TWAP tab so its own view switcher and filters render.",
+        "next": "wait-view-active"
+      },
+      "wait-view-active": {
+        "action": "ui.wait_for",
+        "test_id": "perps-pro-market-twap-view-tab-active",
+        "expected": "present",
+        "timeout_ms": 15000,
+        "intent": "Assert the Active view is offered inside the TWAP tab.",
+        "proves": [
+          "PT-2"
+        ],
+        "next": "wait-view-history"
+      },
+      "wait-view-history": {
+        "action": "ui.wait_for",
+        "test_id": "perps-pro-market-twap-view-tab-history",
+        "expected": "present",
+        "timeout_ms": 15000,
+        "intent": "Assert the History view is offered inside the TWAP tab.",
+        "proves": [
+          "PT-2"
+        ],
+        "next": "wait-view-fill-history"
+      },
+      "wait-view-fill-history": {
+        "action": "ui.wait_for",
+        "test_id": "perps-pro-market-twap-view-tab-fill-history",
+        "expected": "present",
+        "timeout_ms": 15000,
+        "intent": "Assert the Fill History view is offered inside the TWAP tab.",
+        "proves": [
+          "PT-2"
+        ],
+        "next": "wait-side-filter"
+      },
+      "wait-side-filter": {
+        "action": "ui.wait_for",
+        "test_id": "perps-pro-market-positions-side-filter-button",
+        "expected": "present",
+        "timeout_ms": 15000,
+        "intent": "Assert the shared side filter stays available while the TWAP tab is selected.",
+        "proves": [
+          "PT-3"
+        ],
+        "next": "wait-ticker-only"
+      },
+      "wait-ticker-only": {
+        "action": "ui.wait_for",
+        "test_id": "perps-pro-market-positions-ticker-only",
+        "expected": "present",
+        "timeout_ms": 15000,
+        "intent": "Assert the shared ticker-only filter stays available while the TWAP tab is selected.",
+        "proves": [
+          "PT-3"
+        ],
+        "next": "capture-twap-tab"
+      },
+      "capture-twap-tab": {
+        "action": "ui.screenshot",
+        "path": "screenshots/evidence-twap-tab.png",
+        "label": "TWAP tab selected beside Positions and Orders, showing the Active / History / Fill History switch, the shared All sides and BTC only filters, and the plain TWAP label with no count while no schedule is active.",
+        "intent": "Preserve the visible TWAP tab state for review.",
+        "proves": [
+          "PT-1",
+          "PT-3"
+        ],
+        "next": "entry-done"
+      },
+      "entry-done": {
+        "action": "end",
+        "status": "pass"
+      },
+      "restore-perps": {
+        "action": "metamask.perps.teardown_state",
+        "market": "BTC",
+        "orders": {
+          "state": "none",
+          "mode": "matching"
+        },
+        "positions": {
+          "state": "none",
+          "mode": "matching"
+        },
+        "page": "home",
+        "timeout_ms": 60000,
+        "intent": "Return to Home and clear any BTC order or position left by the proof window.",
+        "next": "teardown-done"
+      },
+      "teardown-done": {
+        "action": "end",
+        "status": "pass"
+      }
+    }
+  }
+}

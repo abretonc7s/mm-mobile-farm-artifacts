@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "valid": true,
+  "snapshots": [
+    {
+      "phase": "start",
+      "capturedAt": "2026-09-02T20:31:55.326Z",
+      "recipeDigest": "sha256:8c1a1884d6218c11f44d2b9758f4ee239eb7ddb87f10158af009fc825a0202e5",
+      "product": {
+        "head": "965e2bf35f4c63001f34e70c32e6cbc6590a395d",
+        "status": "M  app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProPositionsPanel.test.tsx\nM  app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProPositionsPanel.tsx\nM  app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProTwapPanel.test.tsx\nM  app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProTwapPanel.tsx\n",
+        "sourceFingerprint": "23fe62a24af36a5af5688ca3d52aea6b464aca42df5c83900bb356fd2913dbf4"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "90733a0c390db7b7f790f482fd75f3c2cb50128991de479cc5be30cbb2ad6800"
+      },
+      "libraries": [
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "e8e8fec19e86f59ddc3d5ba25efa392bdce65162bdcccf5aa19f513f63b283f5"
+        }
+      ],
+      "helpers": []
+    },
+    {
+      "phase": "pre-execute",
+      "capturedAt": "2026-09-02T20:31:55.648Z",
+      "recipeDigest": "sha256:8c1a1884d6218c11f44d2b9758f4ee239eb7ddb87f10158af009fc825a0202e5",
+      "product": {
+        "head": "965e2bf35f4c63001f34e70c32e6cbc6590a395d",
+        "status": "M  app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProPositionsPanel.test.tsx\nM  app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProPositionsPanel.tsx\nM  app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProTwapPanel.test.tsx\nM  app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProTwapPanel.tsx\n",
+        "sourceFingerprint": "23fe62a24af36a5af5688ca3d52aea6b464aca42df5c83900bb356fd2913dbf4"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "90733a0c390db7b7f790f482fd75f3c2cb50128991de479cc5be30cbb2ad6800"
+      },
+      "libraries": [
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "e8e8fec19e86f59ddc3d5ba25efa392bdce65162bdcccf5aa19f513f63b283f5"
+        }
+      ],
+      "helpers": []
+    },
+    {
+      "phase": "end",
+      "capturedAt": "2026-09-02T20:32:19.588Z",
+      "recipeDigest": "sha256:8c1a1884d6218c11f44d2b9758f4ee239eb7ddb87f10158af009fc825a0202e5",
+      "product": {
+        "head": "965e2bf35f4c63001f34e70c32e6cbc6590a395d",
+        "status": "M  app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProPositionsPanel.test.tsx\nM  app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProPositionsPanel.tsx\nM  app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProTwapPanel.test.tsx\nM  app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProTwapPanel.tsx\n",
+        "sourceFingerprint": "23fe62a24af36a5af5688ca3d52aea6b464aca42df5c83900bb356fd2913dbf4"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "90733a0c390db7b7f790f482fd75f3c2cb50128991de479cc5be30cbb2ad6800"
+      },
+      "libraries": [
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "e8e8fec19e86f59ddc3d5ba25efa392bdce65162bdcccf5aa19f513f63b283f5"
+        }
+      ],
+      "helpers": []
+    }
+  ],
+  "drift": []
+}

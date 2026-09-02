@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "adapter": "mobile",
+  "repository": "metamask-mobile-3",
+  "git_ref": "965e2bf35f4c63001f34e70c32e6cbc6590a395d",
+  "branch": "TAT-3903-feat-add-twap-management-tab",
+  "dirty": true
+}

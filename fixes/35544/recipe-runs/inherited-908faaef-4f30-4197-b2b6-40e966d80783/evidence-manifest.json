@@ -1,0 +1,5 @@
+{
+  "version": 1,
+  "preferred_mode": "screenshots",
+  "summary": "Recipe re-validation skipped; no current-run screenshots were captured because iOS bundle prewarm failed during runtime verification."
+}

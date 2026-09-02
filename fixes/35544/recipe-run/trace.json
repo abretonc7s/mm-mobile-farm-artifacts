@@ -1,0 +1,497 @@
+{
+  "metadata": {
+    "runner": {
+      "source": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness",
+      "git_ref": "unknown",
+      "name": "@metamask/recipe-runner"
+    }
+  },
+  "entries": [
+    {
+      "nodeId": "prepare-perps",
+      "action": "metamask.perps.start_state",
+      "intent": "Prepare an unlocked HyperLiquid testnet BTC Pro market with no pre-existing BTC positions or orders.",
+      "startedAt": "2026-09-02T20:31:56.051Z",
+      "endedAt": "2026-09-02T20:32:12.194Z",
+      "durationMs": 16143,
+      "ok": true,
+      "next": "wait-panel-tabs",
+      "output": {
+        "action": "metamask.perps.start_state",
+        "profile": "clean_market_testnet",
+        "phase": "start_state",
+        "wallet": {
+          "action": "metamask.wallet.ensure_unlocked",
+          "unlocked": true,
+          "keyringUnlocked": true,
+          "account": {
+            "address": "0x316bde155acd07609872a56bc32ccfb0b13201fa",
+            "id": "234870c9-4599-440f-986f-779ced252938",
+            "name": "Trading"
+          },
+          "route": {
+            "key": "WalletView-hjZUKfgMEooBdBcRUUKGZ",
+            "name": "WalletView"
+          },
+          "deviceName": "mm-3",
+          "platform": "ios",
+          "redacted": true,
+          "proofPath": "agentic-wallet-unlock"
+        },
+        "account": {
+          "skipped": true
+        },
+        "provider": {
+          "requested": "hyperliquid",
+          "activeProvider": "hyperliquid",
+          "changed": false
+        },
+        "network": {
+          "requested": "testnet",
+          "isTestnet": true,
+          "changed": false
+        },
+        "tutorial": {
+          "skipped": true
+        },
+        "readyToTrade": {
+          "skipped": true
+        },
+        "balance": {
+          "skipped": true
+        },
+        "market": "BTC",
+        "orders": {
+          "action": "metamask.perps.start_state",
+          "expectedOpen": false,
+          "matchingCount": 0,
+          "orders": [],
+          "source": "mobile-perps-controller-open-orders",
+          "close": {
+            "action": "metamask.perps.start_state",
+            "canceled": false,
+            "matchingCount": 0,
+            "symbols": [],
+            "result": null
+          }
+        },
+        "positions": {
+          "action": "metamask.perps.start_state",
+          "expectedOpen": false,
+          "matchingCount": 0,
+          "positions": [],
+          "source": "mobile-perps-controller",
+          "close": {
+            "action": "metamask.perps.start_state",
+            "closed": false,
+            "matchingCount": 0,
+            "symbols": [],
+            "reason": "no matching open positions",
+            "proofPath": "mobile-perps-controller-close"
+          }
+        },
+        "navigation": {
+          "action": "metamask.perps.start_state",
+          "target": "market",
+          "market": "BTC",
+          "navigation": {
+            "navigated": "PerpsMarketDetails",
+            "params": {
+              "market": {
+                "symbol": "BTC"
+              }
+            },
+            "previousRoute": {
+              "key": "WalletView-hjZUKfgMEooBdBcRUUKGZ",
+              "name": "WalletView"
+            },
+            "currentRoute": {
+              "key": "PerpsMarketDetails-1NpAy-LWval6Zh9ViRprG",
+              "name": "PerpsMarketDetails",
+              "params": {
+                "market": {
+                  "symbol": "BTC"
+                }
+              }
+            },
+            "deviceName": "mm-3",
+            "platform": "ios",
+            "verifiedRoute": "PerpsMarketDetails"
+          },
+          "proofPath": "agentic-navigation"
+        },
+        "proofPath": "metamask-perps-start-state",
+        "liveAdapter": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness/library/actions/mobile/perps/perps.mjs"
+      }
+    },
+    {
+      "nodeId": "wait-panel-tabs",
+      "action": "ui.wait_for",
+      "intent": "Confirm the Pro positions/orders panel tab bar is mounted before asserting the new tab.",
+      "startedAt": "2026-09-02T20:32:12.243Z",
+      "endedAt": "2026-09-02T20:32:12.783Z",
+      "durationMs": 540,
+      "ok": true,
+      "next": "wait-twap-tab",
+      "output": {
+        "matched": true,
+        "testId": "perps-pro-market-positions-panel-tabs",
+        "expected": "present",
+        "present": true,
+        "visible": true,
+        "visibility": "tree"
+      },
+      "observationWarnings": [
+        {
+          "ref": "ui.screen",
+          "message": "Command failed: /opt/homebrew/Cellar/idb-cli/1.5.0.b3/libexec/bin/idb ui describe-all --udid A9804666-0EF7-4306-8A31-FE544548BDB9\nFailed to connect to companion at address DomainSocketAddress(path='/tmp/idb/A9804666-0EF7-4306-8A31-FE544548BDB9_companion.sock'): [Errno 2] No such file or directory\n"
+        },
+        {
+          "ref": "ui.visible",
+          "message": "Command failed: /opt/homebrew/Cellar/idb-cli/1.5.0.b3/libexec/bin/idb ui describe-all --udid A9804666-0EF7-4306-8A31-FE544548BDB9\nFailed to connect to companion at address DomainSocketAddress(path='/tmp/idb/A9804666-0EF7-4306-8A31-FE544548BDB9_companion.sock'): [Errno 2] No such file or directory\n"
+        }
+      ]
+    },
+    {
+      "nodeId": "wait-twap-tab",
+      "action": "ui.wait_for",
+      "intent": "Confirm the user is offered a TWAP tab next to Positions and Orders, which is the surface this ticket adds for monitoring running schedules.",
+      "proves": [
+        "PT-1"
+      ],
+      "startedAt": "2026-09-02T20:32:12.816Z",
+      "endedAt": "2026-09-02T20:32:13.303Z",
+      "durationMs": 488,
+      "ok": true,
+      "next": "open-twap-tab",
+      "output": {
+        "matched": true,
+        "testId": "perps-pro-market-positions-panel-tab-twap",
+        "expected": "present",
+        "present": true,
+        "visible": true,
+        "visibility": "tree"
+      },
+      "observationWarnings": [
+        {
+          "ref": "ui.screen",
+          "message": "Command failed: /opt/homebrew/Cellar/idb-cli/1.5.0.b3/libexec/bin/idb ui describe-all --udid A9804666-0EF7-4306-8A31-FE544548BDB9\nFailed to connect to companion at address DomainSocketAddress(path='/tmp/idb/A9804666-0EF7-4306-8A31-FE544548BDB9_companion.sock'): [Errno 2] No such file or directory\n"
+        },
+        {
+          "ref": "ui.visible",
+          "message": "Command failed: /opt/homebrew/Cellar/idb-cli/1.5.0.b3/libexec/bin/idb ui describe-all --udid A9804666-0EF7-4306-8A31-FE544548BDB9\nFailed to connect to companion at address DomainSocketAddress(path='/tmp/idb/A9804666-0EF7-4306-8A31-FE544548BDB9_companion.sock'): [Errno 2] No such file or directory\n"
+        }
+      ]
+    },
+    {
+      "nodeId": "open-twap-tab",
+      "action": "ui.press",
+      "intent": "Select the TWAP tab so its own view switcher and filters render.",
+      "startedAt": "2026-09-02T20:32:13.339Z",
+      "endedAt": "2026-09-02T20:32:13.809Z",
+      "durationMs": 470,
+      "ok": true,
+      "next": "wait-view-active",
+      "output": {
+        "ok": true,
+        "testId": "perps-pro-market-positions-panel-tab-twap",
+        "deviceName": "mm-3"
+      },
+      "observationWarnings": [
+        {
+          "ref": "ui.screen",
+          "message": "Command failed: /opt/homebrew/Cellar/idb-cli/1.5.0.b3/libexec/bin/idb ui describe-all --udid A9804666-0EF7-4306-8A31-FE544548BDB9\nFailed to connect to companion at address DomainSocketAddress(path='/tmp/idb/A9804666-0EF7-4306-8A31-FE544548BDB9_companion.sock'): [Errno 2] No such file or directory\n"
+        },
+        {
+          "ref": "ui.visible",
+          "message": "Command failed: /opt/homebrew/Cellar/idb-cli/1.5.0.b3/libexec/bin/idb ui describe-all --udid A9804666-0EF7-4306-8A31-FE544548BDB9\nFailed to connect to companion at address DomainSocketAddress(path='/tmp/idb/A9804666-0EF7-4306-8A31-FE544548BDB9_companion.sock'): [Errno 2] No such file or directory\n"
+        }
+      ]
+    },
+    {
+      "nodeId": "wait-view-active",
+      "action": "ui.wait_for",
+      "intent": "Assert the Active view is offered inside the TWAP tab.",
+      "proves": [
+        "PT-2"
+      ],
+      "startedAt": "2026-09-02T20:32:13.842Z",
+      "endedAt": "2026-09-02T20:32:14.352Z",
+      "durationMs": 510,
+      "ok": true,
+      "next": "wait-view-history",
+      "output": {
+        "matched": true,
+        "testId": "perps-pro-market-twap-view-tab-active",
+        "expected": "present",
+        "present": true,
+        "visible": true,
+        "visibility": "tree"
+      },
+      "observationWarnings": [
+        {
+          "ref": "ui.screen",
+          "message": "Command failed: /opt/homebrew/Cellar/idb-cli/1.5.0.b3/libexec/bin/idb ui describe-all --udid A9804666-0EF7-4306-8A31-FE544548BDB9\nFailed to connect to companion at address DomainSocketAddress(path='/tmp/idb/A9804666-0EF7-4306-8A31-FE544548BDB9_companion.sock'): [Errno 2] No such file or directory\n"
+        },
+        {
+          "ref": "ui.visible",
+          "message": "Command failed: /opt/homebrew/Cellar/idb-cli/1.5.0.b3/libexec/bin/idb ui describe-all --udid A9804666-0EF7-4306-8A31-FE544548BDB9\nFailed to connect to companion at address DomainSocketAddress(path='/tmp/idb/A9804666-0EF7-4306-8A31-FE544548BDB9_companion.sock'): [Errno 2] No such file or directory\n"
+        }
+      ]
+    },
+    {
+      "nodeId": "wait-view-history",
+      "action": "ui.wait_for",
+      "intent": "Assert the History view is offered inside the TWAP tab.",
+      "proves": [
+        "PT-2"
+      ],
+      "startedAt": "2026-09-02T20:32:14.386Z",
+      "endedAt": "2026-09-02T20:32:14.875Z",
+      "durationMs": 489,
+      "ok": true,
+      "next": "wait-view-fill-history",
+      "output": {
+        "matched": true,
+        "testId": "perps-pro-market-twap-view-tab-history",
+        "expected": "present",
+        "present": true,
+        "visible": true,
+        "visibility": "tree"
+      },
+      "observationWarnings": [
+        {
+          "ref": "ui.screen",
+          "message": "Command failed: /opt/homebrew/Cellar/idb-cli/1.5.0.b3/libexec/bin/idb ui describe-all --udid A9804666-0EF7-4306-8A31-FE544548BDB9\nFailed to connect to companion at address DomainSocketAddress(path='/tmp/idb/A9804666-0EF7-4306-8A31-FE544548BDB9_companion.sock'): [Errno 2] No such file or directory\n"
+        },
+        {
+          "ref": "ui.visible",
+          "message": "Command failed: /opt/homebrew/Cellar/idb-cli/1.5.0.b3/libexec/bin/idb ui describe-all --udid A9804666-0EF7-4306-8A31-FE544548BDB9\nFailed to connect to companion at address DomainSocketAddress(path='/tmp/idb/A9804666-0EF7-4306-8A31-FE544548BDB9_companion.sock'): [Errno 2] No such file or directory\n"
+        }
+      ]
+    },
+    {
+      "nodeId": "wait-view-fill-history",
+      "action": "ui.wait_for",
+      "intent": "Assert the Fill History view is offered inside the TWAP tab.",
+      "proves": [
+        "PT-2"
+      ],
+      "startedAt": "2026-09-02T20:32:14.912Z",
+      "endedAt": "2026-09-02T20:32:15.391Z",
+      "durationMs": 479,
+      "ok": true,
+      "next": "wait-side-filter",
+      "output": {
+        "matched": true,
+        "testId": "perps-pro-market-twap-view-tab-fill-history",
+        "expected": "present",
+        "present": true,
+        "visible": true,
+        "visibility": "tree"
+      },
+      "observationWarnings": [
+        {
+          "ref": "ui.screen",
+          "message": "Command failed: /opt/homebrew/Cellar/idb-cli/1.5.0.b3/libexec/bin/idb ui describe-all --udid A9804666-0EF7-4306-8A31-FE544548BDB9\nFailed to connect to companion at address DomainSocketAddress(path='/tmp/idb/A9804666-0EF7-4306-8A31-FE544548BDB9_companion.sock'): [Errno 2] No such file or directory\n"
+        },
+        {
+          "ref": "ui.visible",
+          "message": "Command failed: /opt/homebrew/Cellar/idb-cli/1.5.0.b3/libexec/bin/idb ui describe-all --udid A9804666-0EF7-4306-8A31-FE544548BDB9\nFailed to connect to companion at address DomainSocketAddress(path='/tmp/idb/A9804666-0EF7-4306-8A31-FE544548BDB9_companion.sock'): [Errno 2] No such file or directory\n"
+        }
+      ]
+    },
+    {
+      "nodeId": "wait-side-filter",
+      "action": "ui.wait_for",
+      "intent": "Assert the shared side filter stays available while the TWAP tab is selected.",
+      "proves": [
+        "PT-3"
+      ],
+      "startedAt": "2026-09-02T20:32:15.425Z",
+      "endedAt": "2026-09-02T20:32:15.904Z",
+      "durationMs": 479,
+      "ok": true,
+      "next": "wait-ticker-only",
+      "output": {
+        "matched": true,
+        "testId": "perps-pro-market-positions-side-filter-button",
+        "expected": "present",
+        "present": true,
+        "visible": true,
+        "visibility": "tree"
+      },
+      "observationWarnings": [
+        {
+          "ref": "ui.screen",
+          "message": "Command failed: /opt/homebrew/Cellar/idb-cli/1.5.0.b3/libexec/bin/idb ui describe-all --udid A9804666-0EF7-4306-8A31-FE544548BDB9\nFailed to connect to companion at address DomainSocketAddress(path='/tmp/idb/A9804666-0EF7-4306-8A31-FE544548BDB9_companion.sock'): [Errno 2] No such file or directory\n"
+        },
+        {
+          "ref": "ui.visible",
+          "message": "Command failed: /opt/homebrew/Cellar/idb-cli/1.5.0.b3/libexec/bin/idb ui describe-all --udid A9804666-0EF7-4306-8A31-FE544548BDB9\nFailed to connect to companion at address DomainSocketAddress(path='/tmp/idb/A9804666-0EF7-4306-8A31-FE544548BDB9_companion.sock'): [Errno 2] No such file or directory\n"
+        }
+      ]
+    },
+    {
+      "nodeId": "wait-ticker-only",
+      "action": "ui.wait_for",
+      "intent": "Assert the shared ticker-only filter stays available while the TWAP tab is selected.",
+      "proves": [
+        "PT-3"
+      ],
+      "startedAt": "2026-09-02T20:32:15.939Z",
+      "endedAt": "2026-09-02T20:32:16.440Z",
+      "durationMs": 501,
+      "ok": true,
+      "next": "capture-twap-tab",
+      "output": {
+        "matched": true,
+        "testId": "perps-pro-market-positions-ticker-only",
+        "expected": "present",
+        "present": true,
+        "visible": true,
+        "visibility": "tree"
+      },
+      "observationWarnings": [
+        {
+          "ref": "ui.screen",
+          "message": "Command failed: /opt/homebrew/Cellar/idb-cli/1.5.0.b3/libexec/bin/idb ui describe-all --udid A9804666-0EF7-4306-8A31-FE544548BDB9\nFailed to connect to companion at address DomainSocketAddress(path='/tmp/idb/A9804666-0EF7-4306-8A31-FE544548BDB9_companion.sock'): [Errno 2] No such file or directory\n"
+        },
+        {
+          "ref": "ui.visible",
+          "message": "Command failed: /opt/homebrew/Cellar/idb-cli/1.5.0.b3/libexec/bin/idb ui describe-all --udid A9804666-0EF7-4306-8A31-FE544548BDB9\nFailed to connect to companion at address DomainSocketAddress(path='/tmp/idb/A9804666-0EF7-4306-8A31-FE544548BDB9_companion.sock'): [Errno 2] No such file or directory\n"
+        }
+      ]
+    },
+    {
+      "nodeId": "capture-twap-tab",
+      "action": "ui.screenshot",
+      "intent": "Preserve the visible TWAP tab state for review.",
+      "proves": [
+        "PT-1",
+        "PT-3"
+      ],
+      "startedAt": "2026-09-02T20:32:16.473Z",
+      "endedAt": "2026-09-02T20:32:16.850Z",
+      "durationMs": 377,
+      "ok": true,
+      "next": "entry-done",
+      "output": {
+        "captured": true,
+        "path": "screenshots/evidence-twap-tab.png",
+        "artifact": {
+          "path": "screenshots/evidence-twap-tab.png",
+          "type": "screenshot",
+          "nodeId": "capture-twap-tab",
+          "label": "ui.screenshot screenshot",
+          "category": "evidence",
+          "mimeType": "image/png",
+          "metadata": {
+            "provider": "simctl",
+            "mode": "xcrun simctl io screenshot",
+            "selectedDevice": "mm-3"
+          }
+        }
+      },
+      "observationWarnings": [
+        {
+          "ref": "ui.screen",
+          "message": "Command failed: /opt/homebrew/Cellar/idb-cli/1.5.0.b3/libexec/bin/idb ui describe-all --udid A9804666-0EF7-4306-8A31-FE544548BDB9\nFailed to connect to companion at address DomainSocketAddress(path='/tmp/idb/A9804666-0EF7-4306-8A31-FE544548BDB9_companion.sock'): [Errno 2] No such file or directory\n"
+        },
+        {
+          "ref": "ui.visible",
+          "message": "Command failed: /opt/homebrew/Cellar/idb-cli/1.5.0.b3/libexec/bin/idb ui describe-all --udid A9804666-0EF7-4306-8A31-FE544548BDB9\nFailed to connect to companion at address DomainSocketAddress(path='/tmp/idb/A9804666-0EF7-4306-8A31-FE544548BDB9_companion.sock'): [Errno 2] No such file or directory\n"
+        }
+      ]
+    },
+    {
+      "nodeId": "entry-done",
+      "action": "end",
+      "startedAt": "2026-09-02T20:32:16.886Z",
+      "endedAt": "2026-09-02T20:32:16.886Z",
+      "durationMs": 0,
+      "ok": true,
+      "status": "pass"
+    },
+    {
+      "nodeId": "restore-perps",
+      "action": "metamask.perps.teardown_state",
+      "intent": "Return to Home and clear any BTC order or position left by the proof window.",
+      "startedAt": "2026-09-02T20:32:16.886Z",
+      "endedAt": "2026-09-02T20:32:19.458Z",
+      "durationMs": 2572,
+      "ok": true,
+      "next": "teardown-done",
+      "output": {
+        "action": "metamask.perps.teardown_state",
+        "phase": "teardown",
+        "market": "BTC",
+        "orders": {
+          "action": "metamask.perps.teardown_state",
+          "expectedOpen": false,
+          "matchingCount": 0,
+          "orders": [],
+          "source": "mobile-perps-controller-open-orders",
+          "close": {
+            "action": "metamask.perps.teardown_state",
+            "canceled": false,
+            "matchingCount": 0,
+            "symbols": [],
+            "result": null
+          }
+        },
+        "positions": {
+          "action": "metamask.perps.teardown_state",
+          "expectedOpen": false,
+          "matchingCount": 0,
+          "positions": [],
+          "source": "mobile-perps-controller",
+          "close": {
+            "action": "metamask.perps.teardown_state",
+            "closed": false,
+            "matchingCount": 0,
+            "symbols": [],
+            "reason": "no matching open positions",
+            "proofPath": "mobile-perps-controller-close"
+          }
+        },
+        "navigation": {
+          "action": "metamask.perps.teardown_state",
+          "target": "home",
+          "navigation": {
+            "navigated": "PerpsMarketListView",
+            "params": {},
+            "previousRoute": {
+              "key": "PerpsMarketDetails-1NpAy-LWval6Zh9ViRprG",
+              "name": "PerpsMarketDetails",
+              "params": {
+                "market": {
+                  "symbol": "BTC"
+                }
+              }
+            },
+            "currentRoute": {
+              "key": "PerpsMarketListView-TnF0OhdD98Qv14w2AV11t",
+              "name": "PerpsMarketListView"
+            },
+            "deviceName": "mm-3",
+            "platform": "ios",
+            "verifiedRoute": "PerpsMarketListView"
+          },
+          "proofPath": "agentic-navigation"
+        },
+        "proofPath": "metamask-perps-teardown-state",
+        "liveAdapter": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness/library/actions/mobile/perps/perps.mjs"
+      }
+    },
+    {
+      "nodeId": "teardown-done",
+      "action": "end",
+      "startedAt": "2026-09-02T20:32:19.505Z",
+      "endedAt": "2026-09-02T20:32:19.505Z",
+      "durationMs": 0,
+      "ok": true,
+      "status": "pass"
+    }
+  ]
+}

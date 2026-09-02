@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "verdict": "warn",
+  "compact": {
+    "verdict": "WARN",
+    "reasons": [
+      "The live iOS recipe run passed all 13 nodes and produced complete Recipe v1 summary, trace, manifest, and provenance artifacts.",
+      "The read PNG does not show the management panel claimed by the screenshot node, so PT-1 and the idle-label portion of PT-3 lack reviewable visual evidence.",
+      "The inherited structural recipe does not exercise the multi-cancel stale-row behavior fixed in this run; focused component tests provide that regression coverage."
+    ],
+    "better_version_guidance": []
+  },
+  "dimensions": {},
+  "structural_findings": [],
+  "contextual_findings": [],
+  "suggested_recipe_delta": [],
+  "training_fields": {
+    "proof_mode": "unknown"
+  },
+  "meta": {
+    "producer": "worker",
+    "fallback_used": false,
+    "legacy_task": false,
+    "artifact_required": true,
+    "source_signals": [
+      "recipe-quality.json"
+    ]
+  }
+}

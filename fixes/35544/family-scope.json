@@ -1,0 +1,6 @@
+{
+  "originalFamilyScopeSummary": "Add TWAP tab for monitoring active orders, history, and fill tracking with real-time updates",
+  "currentTriggerSummary": "pr-complete: feat(perps): Missing tab \"TWAP\" to track active TWAPs, TWAP history and TWAP fill history",
+  "scopeVerdict": "full-scope-addressed",
+  "notes": "The branch implements Active, History, and Fill History with live reconciliation, and this run closes the remaining multi-cancel stale-row guard. Focused tests and the inherited 13-node runtime recipe pass."
+}
