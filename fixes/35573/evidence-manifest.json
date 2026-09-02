@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "preferred_mode": "screenshots",
+  "summary": "Re-validation after review-comment race fix: Add funds opens the amount screen immediately; Pay with lists ETH and Other assets.",
+  "before_after_pairs": [
+    {
+      "label": "Perps Add funds opens the deposit amount screen with Pay with",
+      "covers": ["ac1"],
+      "before": "recipe-runs/inherited-ddaa2a89-e25d-406d-a793-597a44688ba4/before-evidence-ac1-deposit-confirmation.png",
+      "after": "recipe-run/screenshots/evidence-ac1-deposit-confirmation.png"
+    },
+    {
+      "label": "Pay with sheet lists ETH and other assets",
+      "covers": ["ac2"],
+      "before": "recipe-runs/inherited-ddaa2a89-e25d-406d-a793-597a44688ba4/before-evidence-ac2-pay-with-list.png",
+      "after": "recipe-run/screenshots/evidence-ac2-pay-with-list.png"
+    }
+  ],
+  "standalone": [],
+  "omit": [],
+  "videos": {
+    "before": "recipe-runs/inherited-ddaa2a89-e25d-406d-a793-597a44688ba4/before.mp4",
+    "after": "recipe-runs/inherited-ddaa2a89-e25d-406d-a793-597a44688ba4/after.mp4",
+    "preferred": false
+  }
+}

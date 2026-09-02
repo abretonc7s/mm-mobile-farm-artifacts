@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "scope": "recipe-run-application",
+  "status": "review",
+  "nonBlocking": true,
+  "note": "Observed 18 distinct application warning/error event(s) during the recipe run; showing 18 preview(s) and omitting 0. Relation to the task is not determined.",
+  "source": {
+    "label": "app",
+    "path": "/Volumes/FD/dev/metamask/metamask-mobile-2/temp/recipe/runtime/app-console.log",
+    "startOffset": 1042,
+    "endOffset": 63218,
+    "bytesRead": 62176,
+    "truncated": false,
+    "inAppBuffer": "collected",
+    "rawArtifact": "diagnostics-app-log.txt",
+    "redacted": true
+  },
+  "counts": {
+    "total": 18,
+    "warning": 15,
+    "error": 3,
+    "exception": 0
+  },
+  "displayedFindingCount": 18,
+  "omittedFindingCount": 0,
+  "findings": [
+    {
+      "level": "warning",
+      "fingerprint": "5ca048045073",
+      "preview": "WARN  08:14:23.327 [console:mm-2] The result function returned its own inputs without modification. e.g",
+      "count": 4
+    },
+    {
+      "level": "warning",
+      "fingerprint": "bed1af86371f",
+      "preview": "WARN  08:14:42.180 [console:mm-2] Unable to create some accounts (batch) with provider \"Tron\" { message: \"Timed out after: 3000ms\", stack: \"TimeoutError: Timed out after: 3000ms\\n    at construct (native)\\n    at apply (native)\\n    at _construct (http://127.0.0.1:8072/index.bundle//&platform=ios&dev=true&hot=false&laz",
+      "count": 1
+    },
+    {
+      "level": "warning",
+      "fingerprint": "13972926bc8d",
+      "preview": "WARN  08:14:42.187 [console:mm-2] Unable to create some accounts (batch) with provider \"Stellar\" { message: \"Timed out after: 3000ms\", stack: \"TimeoutError: Timed out after: 3000ms\\n    at construct (native)\\n    at apply (native)\\n    at _construct (http://127.0.0.1:8072/index.bundle//&platform=ios&dev=true&hot=false&",
+      "count": 1
+    },
+    {
+      "level": "warning",
+      "fingerprint": "287b15bf93f7",
+      "preview": "WARN  08:14:42.187 [console:mm-2] Unable to align some accounts. Providers threw the following errors:",
+      "count": 1
+    },
+    {
+      "level": "warning",
+      "fingerprint": "9d44377d4af0",
+      "preview": "WARN  08:14:45.463 [console:mm-2] Unable to discover accounts with provider \"Tron\" { message: \"Timed out after: 3000ms\", stack: \"TimeoutError: Timed out after: 3000ms\\n    at construct (native)\\n    at apply (native)\\n    at _construct (http://127.0.0.1:8072/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&tran",
+      "count": 2
+    },
+    {
+      "level": "warning",
+      "fingerprint": "5d5752283a57",
+      "preview": "WARN  08:14:45.464 [console:mm-2] Unable to discover accounts with provider \"Stellar\" { message: \"Timed out after: 3000ms\", stack: \"TimeoutError: Timed out after: 3000ms\\n    at construct (native)\\n    at apply (native)\\n    at _construct (http://127.0.0.1:8072/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&t",
+      "count": 2
+    },
+    {
+      "level": "error",
+      "fingerprint": "ebe0463775f1",
+      "preview": "ERROR  08:14:47.853 [console:mm-2] Invalid prop `%s` supplied to `React.Fragment`. React.Fragment can only have `key` and `children` props. onStartShouldSetResponder",
+      "count": 2
+    },
+    {
+      "level": "error",
+      "fingerprint": "95caa142cf07",
+      "preview": "ERROR  08:14:49.451 [console:mm-2] A query that was dehydrated as pending ended up rejecting. [[\"MoneyAccountBalanceService:getMoneyAccountBalance\",\"0xf62b4ed01965f4dabc34a1297845124f2421ef95\"]]: Error: missing revert data in call exception; Transaction reverted without a reason string [ See: https://links.ethers.org/v",
+      "count": 1
+    },
+    {
+      "level": "warning",
+      "fingerprint": "77d176db8594",
+      "preview": "WARN  08:14:50.228 [console:mm-2] Unable to discover accounts with provider \"Solana\" { message: \"Timed out after: 3000ms\", stack: \"TimeoutError: Timed out after: 3000ms\\n    at construct (native)\\n    at apply (native)\\n    at _construct (http://127.0.0.1:8072/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&tr",
+      "count": 1
+    },
+    {
+      "level": "warning",
+      "fingerprint": "b5de236365f3",
+      "preview": "WARN  08:14:53.866 [console:mm-2] `wider` unknown or invalid utility",
+      "count": 2
+    },
+    {
+      "level": "warning",
+      "fingerprint": "3c23a3f9a90b",
+      "preview": "The result function returned its own inputs without modification. e.g\n`createSelector([state => state.todos], todos => todos)`\nThis could lead to inefficient memoization and unnecessary re-renders.\nEnsure transformation logic is in the result function, and extraction logic is in the input selectors. Error\n    at runIde",
+      "count": 4
+    },
+    {
+      "level": "warning",
+      "fingerprint": "c42481ac6cb3",
+      "preview": "Unable to create some accounts (batch) with provider \"Tron\" TimeoutError: Timed out after: 3000ms\n    at construct (native)\n    at apply (native)\n    at _construct (http://127.0.0.1:8072/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstab",
+      "count": 1
+    },
+    {
+      "level": "warning",
+      "fingerprint": "1d8bef47cd42",
+      "preview": "Unable to create some accounts (batch) with provider \"Stellar\" TimeoutError: Timed out after: 3000ms\n    at construct (native)\n    at apply (native)\n    at _construct (http://127.0.0.1:8072/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&uns",
+      "count": 1
+    },
+    {
+      "level": "warning",
+      "fingerprint": "e5af8cbbbe34",
+      "preview": "Unable to align some accounts. Providers threw the following errors:\n- [Tron] Timed out after: 3000ms\n- [Stellar] Timed out after: 3000ms",
+      "count": 1
+    },
+    {
+      "level": "warning",
+      "fingerprint": "0ecda65ba740",
+      "preview": "Unable to discover accounts with provider \"Tron\" TimeoutError: Timed out after: 3000ms\n    at construct (native)\n    at apply (native)\n    at _construct (http://127.0.0.1:8072/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transfor",
+      "count": 2
+    },
+    {
+      "level": "warning",
+      "fingerprint": "29042a25b88a",
+      "preview": "Unable to discover accounts with provider \"Stellar\" TimeoutError: Timed out after: 3000ms\n    at construct (native)\n    at apply (native)\n    at _construct (http://127.0.0.1:8072/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_trans",
+      "count": 2
+    },
+    {
+      "level": "error",
+      "fingerprint": "50dd455888fa",
+      "preview": "A query that was dehydrated as pending ended up rejecting. [[\"MoneyAccountBalanceService:getMoneyAccountBalance\",\"0xf62b4ed01965f4dabc34a1297845124f2421ef95\"]]: Error: missing revert data in call exception; Transaction reverted without a reason string [ See: https://links.ethers.org/v5-errors-CALL_EXCEPTION ] (data=\"0x",
+      "count": 1
+    },
+    {
+      "level": "warning",
+      "fingerprint": "8abe3982d2b9",
+      "preview": "Unable to discover accounts with provider \"Solana\" TimeoutError: Timed out after: 3000ms\n    at construct (native)\n    at apply (native)\n    at _construct (http://127.0.0.1:8072/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transf",
+      "count": 1
+    }
+  ]
+}

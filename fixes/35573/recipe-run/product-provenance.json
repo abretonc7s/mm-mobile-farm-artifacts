@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "adapter": "mobile",
+  "repository": "metamask-mobile-2",
+  "git_ref": "dfee1a6a54d57052e4ceb7eb6cdf4c933ff38d98",
+  "branch": "TAT-3772-fix-fix-perps-deposit-performance",
+  "dirty": true
+}

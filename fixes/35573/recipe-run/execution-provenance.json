@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "valid": true,
+  "snapshots": [
+    {
+      "phase": "start",
+      "capturedAt": "2026-09-02T08:14:18.778Z",
+      "recipeDigest": "sha256:849a081a0f175890e091cc858db5e83e3b818a146d8726b482078d47c78f185a",
+      "product": {
+        "head": "dfee1a6a54d57052e4ceb7eb6cdf4c933ff38d98",
+        "status": " M app/components/UI/Perps/Views/PerpsMarketDetailsView/PerpsMarketDetailsView.tsx\n M app/components/UI/Perps/hooks/usePerpsHomeActions.test.ts\n M app/components/UI/Perps/hooks/usePerpsHomeActions.ts\n M app/components/UI/Perps/utils/depositConfirmationGuard.test.ts\n M app/components/UI/Perps/utils/depositConfirmationGuard.ts\n",
+        "sourceFingerprint": "6cc6ee4dba42567b187e6fa64b5bcc20cced1bea3a2c1ec77de546600bff053f"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "90733a0c390db7b7f790f482fd75f3c2cb50128991de479cc5be30cbb2ad6800"
+      },
+      "libraries": [
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "e8e8fec19e86f59ddc3d5ba25efa392bdce65162bdcccf5aa19f513f63b283f5"
+        }
+      ],
+      "helpers": []
+    },
+    {
+      "phase": "pre-execute",
+      "capturedAt": "2026-09-02T08:14:19.058Z",
+      "recipeDigest": "sha256:849a081a0f175890e091cc858db5e83e3b818a146d8726b482078d47c78f185a",
+      "product": {
+        "head": "dfee1a6a54d57052e4ceb7eb6cdf4c933ff38d98",
+        "status": " M app/components/UI/Perps/Views/PerpsMarketDetailsView/PerpsMarketDetailsView.tsx\n M app/components/UI/Perps/hooks/usePerpsHomeActions.test.ts\n M app/components/UI/Perps/hooks/usePerpsHomeActions.ts\n M app/components/UI/Perps/utils/depositConfirmationGuard.test.ts\n M app/components/UI/Perps/utils/depositConfirmationGuard.ts\n",
+        "sourceFingerprint": "6cc6ee4dba42567b187e6fa64b5bcc20cced1bea3a2c1ec77de546600bff053f"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "90733a0c390db7b7f790f482fd75f3c2cb50128991de479cc5be30cbb2ad6800"
+      },
+      "libraries": [
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "e8e8fec19e86f59ddc3d5ba25efa392bdce65162bdcccf5aa19f513f63b283f5"
+        }
+      ],
+      "helpers": []
+    },
+    {
+      "phase": "end",
+      "capturedAt": "2026-09-02T08:14:56.558Z",
+      "recipeDigest": "sha256:849a081a0f175890e091cc858db5e83e3b818a146d8726b482078d47c78f185a",
+      "product": {
+        "head": "dfee1a6a54d57052e4ceb7eb6cdf4c933ff38d98",
+        "status": " M app/components/UI/Perps/Views/PerpsMarketDetailsView/PerpsMarketDetailsView.tsx\n M app/components/UI/Perps/hooks/usePerpsHomeActions.test.ts\n M app/components/UI/Perps/hooks/usePerpsHomeActions.ts\n M app/components/UI/Perps/utils/depositConfirmationGuard.test.ts\n M app/components/UI/Perps/utils/depositConfirmationGuard.ts\n",
+        "sourceFingerprint": "6cc6ee4dba42567b187e6fa64b5bcc20cced1bea3a2c1ec77de546600bff053f"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "90733a0c390db7b7f790f482fd75f3c2cb50128991de479cc5be30cbb2ad6800"
+      },
+      "libraries": [
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "e8e8fec19e86f59ddc3d5ba25efa392bdce65162bdcccf5aa19f513f63b283f5"
+        }
+      ],
+      "helpers": []
+    }
+  ],
+  "drift": []
+}

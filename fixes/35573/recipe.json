@@ -1,0 +1,103 @@
+{
+  "$schema": "https://farmslot.io/schemas/recipe-v1.schema.json",
+  "title": "Perps deposit tap is responsive and Pay With tokens load",
+  "description": "Unlocks the Trading fixture account, opens Perps home, taps Add funds, and proves confirmation plus the Pay With token sheet appear without the pre-fix multi-second stall. Setup follows the perps.smoke unlock and Perps navigation pattern.",
+  "workflow": {
+    "entry": "setup-unlock",
+    "nodes": {
+      "setup-unlock": {
+        "action": "metamask.wallet.ensure_unlocked",
+        "intent": "Unlock the fixture wallet before opening Perps",
+        "stable_unlocked_ms": 0,
+        "unlock_timeout_ms": 60000,
+        "target_timeout_ms": 60000,
+        "next": "setup-account"
+      },
+      "setup-account": {
+        "action": "metamask.wallet.select_account",
+        "intent": "Select the funded Trading account for the deposit flow",
+        "name": "Trading",
+        "next": "setup-open-perps"
+      },
+      "setup-open-perps": {
+        "action": "ui.navigate",
+        "intent": "Open the Perps home screen where deposit is triggered",
+        "page": "perps",
+        "timeout_ms": 30000,
+        "next": "gate-wait-heading"
+      },
+      "gate-wait-heading": {
+        "action": "ui.wait_for",
+        "intent": "Confirm Perps home has finished rendering its title",
+        "test_id": "perps-home-heading-provider-badge",
+        "expected": "present",
+        "timeout_ms": 20000,
+        "next": "gate-wait-deposit"
+      },
+      "gate-wait-deposit": {
+        "action": "ui.wait_for",
+        "intent": "Confirm the deposit CTA is on screen before using it",
+        "test_id": "perps-market-add-funds-button",
+        "expected": "present",
+        "timeout_ms": 20000,
+        "next": "ac1-press-deposit"
+      },
+      "ac1-press-deposit": {
+        "action": "ui.press",
+        "intent": "Begin the Perps deposit confirmation from home",
+        "test_id": "perps-market-add-funds-button",
+        "timeout_ms": 8000,
+        "next": "ac1-wait-confirmation"
+      },
+      "ac1-wait-confirmation": {
+        "action": "ui.wait_for",
+        "intent": "Confirm the deposit amount screen appeared without a multi-second stall",
+        "test_id": "custom-amount-input",
+        "expected": "present",
+        "timeout_ms": 4000,
+        "next": "ac1-wait-pay-with"
+      },
+      "ac1-wait-pay-with": {
+        "action": "ui.wait_for",
+        "intent": "Confirm Pay With is mounted on the deposit confirmation",
+        "test_id": "pay-with",
+        "expected": "present",
+        "timeout_ms": 8000,
+        "next": "ac1-screenshot-confirmation"
+      },
+      "ac1-screenshot-confirmation": {
+        "action": "ui.screenshot",
+        "intent": "Record the deposit confirmation after a responsive Add funds tap",
+        "path": "screenshots/evidence-ac1-deposit-confirmation.png",
+        "label": "AC1: deposit confirmation after Add funds",
+        "next": "ac2-press-pay-with"
+      },
+      "ac2-press-pay-with": {
+        "action": "ui.press",
+        "intent": "Show every token that can fund this Perps deposit",
+        "test_id": "pay-with",
+        "timeout_ms": 10000,
+        "next": "ac2-wait-token-sheet"
+      },
+      "ac2-wait-token-sheet": {
+        "action": "ui.wait_for",
+        "intent": "Confirm the Pay With token sheet listed a crypto asset",
+        "test_id": "pay-with-crypto-section-preferred-token-row",
+        "expected": "present",
+        "timeout_ms": 4000,
+        "next": "ac2-screenshot-token-list"
+      },
+      "ac2-screenshot-token-list": {
+        "action": "ui.screenshot",
+        "intent": "Record the Pay With token sheet after first open",
+        "path": "screenshots/evidence-ac2-pay-with-list.png",
+        "label": "AC2: Pay With token sheet",
+        "next": "done"
+      },
+      "done": {
+        "action": "end",
+        "status": "pass"
+      }
+    }
+  }
+}

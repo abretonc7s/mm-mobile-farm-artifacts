@@ -1,0 +1,62 @@
+[
+  {
+    "comment_id": 3911860795,
+    "review_id": "5086932511",
+    "author_login": "cursor[bot]",
+    "author_type": "Bot",
+    "reviewer_login": "cursor[bot]",
+    "review_state": "COMMENTED",
+    "source_kind": "bugbot",
+    "path": "app/components/UI/Perps/hooks/usePerpsHomeActions.ts",
+    "line": 190,
+    "body": "### Stale deposit prep races the guard\n\n**Medium Severity**\n\nA second Add funds tap cancels the first confirmation guard but does not cancel the first `setTimeout` or `depositWithConfirmation()`. When that stale prep settles, it unconditionally sets `confirmationGuardCancelRef` to `null`, dropping cleanup for the newer guard. The older call can still create a second unapproved deposit, and a later failure can dismiss the confirmation the user is actually on.\n\nLocations: usePerpsHomeActions.ts L161-L190; PerpsMarketDetailsView.tsx L729-L747",
+    "triage": "REAL",
+    "action": "Added createDepositPrepSession so a second tap replaces the guard, skips a second prep, and ignores stale settlement.",
+    "fixed_in_commit": "c4e7408f1da65cc8aee2c5b2a83078ae1c9697dc"
+  },
+  {
+    "comment_id": 5506154352,
+    "review_id": null,
+    "author_login": "github-actions[bot]",
+    "author_type": "Bot",
+    "reviewer_login": "github-actions[bot]",
+    "review_state": null,
+    "source_kind": "ci",
+    "path": "",
+    "line": null,
+    "body": "CLA Signature Action: All authors have signed the CLA. You may need to manually re-run the blocking PR check if it doesn't pass in a few minutes.",
+    "triage": "OUT_OF_SCOPE",
+    "action": "Status-only automation; skipped without reply.",
+    "fixed_in_commit": null
+  },
+  {
+    "comment_id": 5506183754,
+    "review_id": null,
+    "author_login": "github-actions[bot]",
+    "author_type": "Bot",
+    "reviewer_login": "github-actions[bot]",
+    "review_state": null,
+    "source_kind": "ci",
+    "path": "",
+    "line": null,
+    "body": "Smart E2E Test Selection: Selected E2E tags SmokePerps, SmokeWalletPlatform, SmokeConfirmations. Selected Performance tags @PerformancePreps. Risk Level: medium.",
+    "triage": "OUT_OF_SCOPE",
+    "action": "Status-only automation; skipped without reply.",
+    "fixed_in_commit": null
+  },
+  {
+    "comment_id": 5506202407,
+    "review_id": null,
+    "author_login": "github-actions[bot]",
+    "author_type": "Bot",
+    "reviewer_login": "github-actions[bot]",
+    "review_state": null,
+    "source_kind": "ci",
+    "path": "app/components/UI/Perps/hooks/usePerpsHomeActions.test.ts",
+    "line": 167,
+    "body": "Flaky unit test detection. Historical failure rate 0/191, 0/286, 0/431 for PerpsMarketDetailsView.test.tsx and usePerpsHomeActions.test.ts. AI-detected: J8 fake timers after render in PerpsMarketDetailsView.test.tsx:1825; J6 afterEach setTimeout(0) in usePerpsHomeActions.test.ts:167; J8 fake timers combined with waitFor in usePerpsHomeActions.test.ts:196.",
+    "triage": "REAL",
+    "action": "Removed the afterEach sleep and isolated deferred-prep tests under fake timers. Left MarketDetails timer-after-render as intentional (false positive).",
+    "fixed_in_commit": "c4e7408f1da65cc8aee2c5b2a83078ae1c9697dc"
+  }
+]
