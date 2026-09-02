@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "preferred_mode": "screenshots",
+  "summary": "Same Lite BTC path (Long → place order → Back), before the fix and after, re-captured on the branch rebased onto latest main.",
+  "before_after_pairs": [
+    {
+      "label": "Back after placing an order returns to Perps home instead of the trade screen",
+      "covers": ["ac1"],
+      "before": "before-ac1-back-lands-on-order-screen.png",
+      "after": "after-ac1-back-lands-on-perps-home.png"
+    }
+  ],
+  "standalone": [],
+  "omit": [],
+  "videos": {
+    "preferred": false
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "verdict": "pass",
+  "compact": {
+    "verdict": "PASS",
+    "reasons": [
+      "The inherited recipe was executed unchanged (byte-identical to the family copy, 20 nodes) and passed with exit 0 and every node ok:true against the branch rebased onto origin/main@9128899f301, so it re-validates the merge as well as the branch's own change.",
+      "AC1 is proven through the real user path with visible controls only - Long, place order, Back - and the decisive assertion is that the order form's testID is absent after Back, which is present in the pre-fix baseline run.",
+      "AC2 is proven at code level by focused unit tests executed inside the recipe with the exit code asserted zero; its live-device proof is honestly recorded UNTESTABLE because it needs a funded Arbitrum Sepolia deposit the slot has no consent for.",
+      "This run's screenshot was read directly rather than trusted by filename, and shows Perps home carrying the BTC 3x long the run had just opened, which is what distinguishes it from an unrelated home screen."
+    ],
+    "better_version_guidance": [
+      "AC2 would move from test-backed to device-backed on a slot with funding consent for an Arbitrum Sepolia deposit.",
+      "Visibility gates assert present rather than visible because the app's accessibility viewport probe reports visible:false for fixed-footer controls and the Perps home heading; fixing that probe would let the recipe assert visibility directly instead of leaning on the screenshot."
+    ]
+  },
+  "dimensions": {
+    "intent_clarity": {
+      "status": "pass",
+      "reason": "Every node intent states a human-visible goal; the recipe was accepted unchanged by the runner's intent validator on this run.",
+      "evidence": [
+        "mm-harness run exit 0 with all 20 nodes ok:true in artifacts/recipe-run/trace.json"
+      ]
+    },
+    "coverage": {
+      "status": "pass",
+      "reason": "2/2 ACs PROVEN with no weak or missing rows; AC2's live-device gap is explicitly recorded with a concrete rationale.",
+      "evidence": [
+        "artifacts/recipe-coverage.md coverage matrix",
+        "artifacts/recipe-run/trace.json shows all ac1-* and ac2-* nodes ok:true"
+      ]
+    },
+    "evidence_fit": {
+      "status": "pass",
+      "reason": "The mixed AC pairs state assertions with a screenshot; the state AC uses test output and an asserted exit code rather than a screenshot of hidden behaviour.",
+      "evidence": [
+        "after-ac1-back-lands-on-perps-home.png shows Perps home with the just-placed BTC 3x long",
+        "before-ac1-back-lands-on-order-screen.png shows the Long BTC trade screen on pre-fix code"
+      ]
+    },
+    "adapter_independence": {
+      "status": "pass",
+      "reason": "Only manifest-declared actions are used - ui.*, metamask.perps.*, metamask.wallet.*, app.status, command, assert_exit_code, index_artifacts - with no removed helpers or raw eval.",
+      "evidence": [
+        "Recipe executed unmodified by mm-harness run against the mobile adapter manifest"
+      ]
+    },
+    "flake_risk": {
+      "status": "warn",
+      "reason": "The recipe places a real Hyperliquid testnet order, so it depends on venue availability and a funded fixture account. An earlier family run failed once when the venue rejected market orders post-upgrade, then passed on retry.",
+      "evidence": [
+        "Family report.md records the provider response 'Only post-only orders allowed immediately after network upgrade'",
+        "This pr-complete run passed first time with ac1-wait-position-open ok:true"
+      ]
+    }
+  },
+  "structural_findings": [],
+  "contextual_findings": [],
+  "suggested_recipe_delta": [],
+  "training_fields": {
+    "proof_mode": "unknown"
+  },
+  "meta": {
+    "producer": "worker",
+    "fallback_used": false,
+    "legacy_task": false,
+    "artifact_required": true,
+    "source_signals": [
+      "recipe-quality.json"
+    ]
+  }
+}

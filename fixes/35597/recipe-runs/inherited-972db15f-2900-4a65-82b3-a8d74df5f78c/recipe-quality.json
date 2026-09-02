@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "verdict": "pass",
+  "compact": {
+    "verdict": "PASS",
+    "reasons": [
+      "Both acceptance criteria are covered: AC1 by a full visible user path (Long -> place order -> Back) with a strict absent-assertion on the order form plus before/after screenshots, AC2 by focused unit tests run inside the recipe with an asserted exit code.",
+      "The recipe is falsifiable: the sibling recipe-baseline.json asserts the buggy values and passes on pre-fix code, the verify recipe passes only on fixed code, and removing pop: true makes the new PerpsOrderView unit test fail.",
+      "No banned patterns: no switch/default routing, no eval_* nodes, no wait-as-substitute-for-wait_for, every node id is prefixed ac<N>-/setup-/gate-/teardown-, and the order is submitted through ui.press against the form's own defaults rather than injected state.",
+      "All 20 nodes report ok: true in trace.json, and the screenshots were read directly rather than inferred from the recipe's pass status."
+    ],
+    "better_version_guidance": [
+      "AC2 rests on unit tests because a live Pro add-funds proof needs a funded Arbitrum Sepolia deposit, an external mutation with no funding consent in this slot; a funded slot could exercise it end to end.",
+      "Visibility gates assert present rather than visible because this app's accessibility viewport probe reports visible: false for fixed-footer controls and the Perps home heading; a fixed probe would let the recipe assert visibility directly instead of leaning on the screenshot."
+    ]
+  },
+  "dimensions": {
+    "intent_clarity": {
+      "status": "pass",
+      "reason": "Every node intent states a human-visible goal rather than restating its action or selector; the runner's own intent validator rejected two drafts until they did.",
+      "evidence": [
+        "mm-harness run --plan reported workflow.invalid_intent on ac1-press-back and gate-market-page before rewording; final plan passes."
+      ]
+    },
+    "coverage": {
+      "status": "pass",
+      "reason": "2/2 ACs PROVEN with no weak or missing rows; AC2's live-device evidence is explicitly recorded UNTESTABLE with a concrete rationale.",
+      "evidence": [
+        "artifacts/recipe-coverage.md coverage matrix; artifacts/trace.json shows all ac1-* and ac2-* nodes ok: true."
+      ]
+    },
+    "evidence_fit": {
+      "status": "pass",
+      "reason": "The mixed AC gets state assertions plus a screenshot; the state AC gets test output and an asserted exit code rather than a screenshot of hidden behaviour.",
+      "evidence": [
+        "before-ac1-back-lands-on-order-screen.png shows the Long BTC trade screen, after-ac1-back-lands-on-perps-home.png shows Perps home carrying the just-placed BTC 3x long; artifacts/ac2-navigation-unit-tests.log reports 151 passed."
+      ]
+    },
+    "adapter_independence": {
+      "status": "pass",
+      "reason": "Only manifest-declared actions are used - ui.*, metamask.perps.*, metamask.wallet.*, app.status, command, assert_exit_code, index_artifacts - with no removed helpers or raw eval.",
+      "evidence": [
+        "Validated against mm-harness actions --adapter mobile --json; mm-harness run --plan passes schema and action-existence checks."
+      ]
+    },
+    "flake_risk": {
+      "status": "warn",
+      "reason": "The recipe places a real testnet order, so it depends on Hyperliquid testnet availability and a funded fixture account, and it needs start_state to clean the market first or the Long control is replaced by Close/Modify.",
+      "evidence": [
+        "setup-clean-market uses profile clean_market_testnet; ac1-wait-position-open allows 60s for the fill; an earlier run failed exactly this way when a position was left open."
+      ]
+    }
+  },
+  "structural_findings": [],
+  "contextual_findings": [],
+  "suggested_recipe_delta": [],
+  "training_fields": {
+    "proof_mode": "unknown"
+  },
+  "meta": {
+    "producer": "worker",
+    "fallback_used": false,
+    "legacy_task": false,
+    "artifact_required": true,
+    "source_signals": [
+      "recipe-quality.json"
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "adapter": "mobile",
+  "repository": "metamask-mobile-1",
+  "git_ref": "8837af4389495d8ef5be24efd0a78eccf823e8fb",
+  "branch": "TAT-3906-fix-fix-btc-lite-back-nav",
+  "dirty": false
+}

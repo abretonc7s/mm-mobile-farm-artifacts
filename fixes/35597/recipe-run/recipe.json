@@ -1,0 +1,164 @@
+{
+  "$schema": "https://farmslot.io/schemas/recipe-v1.schema.json",
+  "title": "Perps back navigation returns to the screen the user came from",
+  "description": "Places a Lite BTC order the way a user does and proves the market page's back arrow returns to Perps home instead of the order screen (TAT-3906), then runs the focused unit tests that pin the post-deposit Pro navigation (TAT-3874).",
+  "workflow": {
+    "entry": "setup-status",
+    "nodes": {
+      "setup-status": {
+        "action": "app.status",
+        "intent": "Confirm the mobile bridge is reachable before touching the app",
+        "next": "setup-unlock"
+      },
+      "setup-unlock": {
+        "action": "metamask.wallet.ensure_unlocked",
+        "intent": "Make the wallet usable so Perps screens can render",
+        "next": "setup-open-perps"
+      },
+      "setup-open-perps": {
+        "action": "ui.navigate",
+        "page": "perps",
+        "intent": "Start from the Perps home screen the reporter came from in step 1",
+        "next": "gate-perps-home"
+      },
+      "gate-perps-home": {
+        "action": "ui.wait_for",
+        "test_id": "perps-home-heading",
+        "expected": "present",
+        "timeout_ms": 20000,
+        "intent": "Confirm Perps home is the screen sitting underneath the market page",
+        "next": "setup-open-market"
+      },
+      "setup-open-market": {
+        "action": "ui.navigate",
+        "page": "perps-market",
+        "market": "BTC",
+        "mode": "lite",
+        "intent": "Open the BTC market page in Lite mode where the trade is placed",
+        "next": "setup-clean-market"
+      },
+      "setup-clean-market": {
+        "action": "metamask.perps.start_state",
+        "profile": "clean_market_testnet",
+        "market": "BTC",
+        "positions": {
+          "state": "none",
+          "mode": "matching"
+        },
+        "orders": {
+          "state": "none",
+          "mode": "matching"
+        },
+        "page": "market",
+        "intent": "Leave BTC with no open position so the market page offers Long rather than Close",
+        "next": "gate-market-page"
+      },
+      "gate-market-page": {
+        "action": "ui.wait_for",
+        "test_id": "perps-market-details-long-button",
+        "expected": "present",
+        "timeout_ms": 30000,
+        "intent": "Confirm the BTC Lite market page is offering a new position rather than an existing one",
+        "next": "ac1-open-order-form"
+      },
+      "ac1-open-order-form": {
+        "action": "ui.press",
+        "test_id": "perps-market-details-long-button",
+        "intent": "Open the Lite long order form the way the reporter did",
+        "next": "ac1-wait-order-form"
+      },
+      "ac1-wait-order-form": {
+        "action": "ui.wait_for",
+        "test_id": "perps-order-view-place-order-button",
+        "expected": "present",
+        "timeout_ms": 30000,
+        "intent": "Confirm the BTC trade screen is open with its default order ready to submit",
+        "next": "ac1-place-order"
+      },
+      "ac1-place-order": {
+        "action": "ui.press",
+        "test_id": "perps-order-view-place-order-button",
+        "intent": "Submit the order through the visible Place order control",
+        "next": "ac1-wait-position-open"
+      },
+      "ac1-wait-position-open": {
+        "action": "ui.wait_for",
+        "test_id": "perps-market-details-close-button",
+        "expected": "present",
+        "timeout_ms": 60000,
+        "intent": "Confirm the order was accepted and the app returned to the BTC market page",
+        "next": "ac1-press-back"
+      },
+      "ac1-press-back": {
+        "action": "ui.press",
+        "test_id": "perps-market-header-back-button",
+        "intent": "Leave the BTC market page the way a user does after their trade lands",
+        "next": "ac1-assert-order-screen-gone"
+      },
+      "ac1-assert-order-screen-gone": {
+        "action": "ui.wait_for",
+        "test_id": "perps-order-view-place-order-button",
+        "expected": "absent",
+        "timeout_ms": 20000,
+        "intent": "Confirm Back did not land the user back on the BTC trade screen",
+        "next": "ac1-assert-back-to-perps-home"
+      },
+      "ac1-assert-back-to-perps-home": {
+        "action": "ui.wait_for",
+        "test_id": "perps-home-heading",
+        "expected": "present",
+        "timeout_ms": 20000,
+        "intent": "Confirm Back returned to Perps home, the screen the user came from",
+        "next": "ac1-screenshot-perps-home"
+      },
+      "ac1-screenshot-perps-home": {
+        "action": "ui.screenshot",
+        "path": "screenshots/evidence-ac1-back-lands-on-perps-home.png",
+        "label": "AC1: Back from the post-order market page shows Perps home",
+        "intent": "Preserve visible proof that Back reaches Perps home, not the trade screen",
+        "next": "ac2-run-navigation-unit-tests"
+      },
+      "ac2-run-navigation-unit-tests": {
+        "action": "command",
+        "cmd": "yarn jest app/components/UI/Perps/utils/perpsModeSwitch.test.ts app/components/UI/Perps/Views/PerpsOrderView/PerpsOrderView.test.tsx --no-coverage > temp/tasks/fix/tat-3906-0902-145412/artifacts/ac2-navigation-unit-tests.log 2>&1; status=$?; tail -40 temp/tasks/fix/tat-3906-0902-145412/artifacts/ac2-navigation-unit-tests.log; exit $status",
+        "timeout_ms": 900000,
+        "allow_failure": true,
+        "intent": "Exercise the post-deposit Pro navigation helper that TAT-3874 reported, which needs a funded on-chain deposit to reach on a device",
+        "next": "ac2-assert-navigation-unit-tests-pass"
+      },
+      "ac2-assert-navigation-unit-tests-pass": {
+        "action": "assert_exit_code",
+        "node": "ac2-run-navigation-unit-tests",
+        "expected": 0,
+        "intent": "Confirm the Pro add-funds and Lite post-order navigation contracts both hold",
+        "next": "ac2-index-test-log"
+      },
+      "ac2-index-test-log": {
+        "action": "index_artifacts",
+        "artifacts": [
+          "temp/tasks/fix/tat-3906-0902-145412/artifacts/ac2-navigation-unit-tests.log"
+        ],
+        "intent": "Attach the unit-test output as reviewable evidence for the Pro add-funds claim",
+        "next": "teardown-clean-market"
+      },
+      "teardown-clean-market": {
+        "action": "metamask.perps.teardown_state",
+        "market": "BTC",
+        "positions": {
+          "state": "none",
+          "mode": "matching"
+        },
+        "orders": {
+          "state": "none",
+          "mode": "matching"
+        },
+        "intent": "Return the BTC testnet market to the clean state the run started from",
+        "next": "teardown-end"
+      },
+      "teardown-end": {
+        "action": "end",
+        "status": "pass"
+      }
+    }
+  }
+}

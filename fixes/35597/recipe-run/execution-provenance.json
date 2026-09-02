@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "valid": true,
+  "snapshots": [
+    {
+      "phase": "start",
+      "capturedAt": "2026-09-02T11:39:08.002Z",
+      "recipeDigest": "sha256:69806fc1029b752e1d6b8bd3adddb782b1265f2d1a60d0ddf300ee054ddd6814",
+      "product": {
+        "head": "8837af4389495d8ef5be24efd0a78eccf823e8fb",
+        "status": "",
+        "sourceFingerprint": "a46ffc97dde31e7480bd0058dc7830490e4166c40f4938d067ef84b504ea177a"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "90733a0c390db7b7f790f482fd75f3c2cb50128991de479cc5be30cbb2ad6800"
+      },
+      "libraries": [
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "e8e8fec19e86f59ddc3d5ba25efa392bdce65162bdcccf5aa19f513f63b283f5"
+        }
+      ],
+      "helpers": [
+        {
+          "path": "app/components/UI/Perps/Views/PerpsOrderView/PerpsOrderView.test.tsx",
+          "sourceFingerprint": "4f3de451053df6512a9d4247822edede551e4a69a6dac0f4120945e700daf58a"
+        },
+        {
+          "path": "app/components/UI/Perps/utils/perpsModeSwitch.test.ts",
+          "sourceFingerprint": "6ee519bb54322b450fae4571b8db0911373fb603bcb739e884c9f3906c105dfd"
+        }
+      ]
+    },
+    {
+      "phase": "pre-execute",
+      "capturedAt": "2026-09-02T11:39:14.321Z",
+      "recipeDigest": "sha256:69806fc1029b752e1d6b8bd3adddb782b1265f2d1a60d0ddf300ee054ddd6814",
+      "product": {
+        "head": "8837af4389495d8ef5be24efd0a78eccf823e8fb",
+        "status": "",
+        "sourceFingerprint": "a46ffc97dde31e7480bd0058dc7830490e4166c40f4938d067ef84b504ea177a"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "90733a0c390db7b7f790f482fd75f3c2cb50128991de479cc5be30cbb2ad6800"
+      },
+      "libraries": [
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "e8e8fec19e86f59ddc3d5ba25efa392bdce65162bdcccf5aa19f513f63b283f5"
+        }
+      ],
+      "helpers": [
+        {
+          "path": "app/components/UI/Perps/Views/PerpsOrderView/PerpsOrderView.test.tsx",
+          "sourceFingerprint": "4f3de451053df6512a9d4247822edede551e4a69a6dac0f4120945e700daf58a"
+        },
+        {
+          "path": "app/components/UI/Perps/utils/perpsModeSwitch.test.ts",
+          "sourceFingerprint": "6ee519bb54322b450fae4571b8db0911373fb603bcb739e884c9f3906c105dfd"
+        }
+      ]
+    },
+    {
+      "phase": "end",
+      "capturedAt": "2026-09-02T11:42:23.597Z",
+      "recipeDigest": "sha256:69806fc1029b752e1d6b8bd3adddb782b1265f2d1a60d0ddf300ee054ddd6814",
+      "product": {
+        "head": "8837af4389495d8ef5be24efd0a78eccf823e8fb",
+        "status": "",
+        "sourceFingerprint": "a46ffc97dde31e7480bd0058dc7830490e4166c40f4938d067ef84b504ea177a"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "90733a0c390db7b7f790f482fd75f3c2cb50128991de479cc5be30cbb2ad6800"
+      },
+      "libraries": [
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "e8e8fec19e86f59ddc3d5ba25efa392bdce65162bdcccf5aa19f513f63b283f5"
+        }
+      ],
+      "helpers": [
+        {
+          "path": "app/components/UI/Perps/Views/PerpsOrderView/PerpsOrderView.test.tsx",
+          "sourceFingerprint": "4f3de451053df6512a9d4247822edede551e4a69a6dac0f4120945e700daf58a"
+        },
+        {
+          "path": "app/components/UI/Perps/utils/perpsModeSwitch.test.ts",
+          "sourceFingerprint": "6ee519bb54322b450fae4571b8db0911373fb603bcb739e884c9f3906c105dfd"
+        }
+      ]
+    }
+  ],
+  "drift": []
+}

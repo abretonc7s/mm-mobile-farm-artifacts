@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "scope": "recipe-run-application",
+  "status": "review",
+  "nonBlocking": true,
+  "note": "Observed 12 distinct application warning/error event(s) during the recipe run; showing 12 preview(s) and omitting 0. Relation to the task is not determined.",
+  "source": {
+    "label": "app",
+    "path": "/Users/deeeed/dev/metamask/metamask-mobile-1/temp/recipe/runtime/app-console.log",
+    "startOffset": 32097,
+    "endOffset": 146924,
+    "bytesRead": 114827,
+    "truncated": false,
+    "inAppBuffer": "collected",
+    "rawArtifact": "diagnostics-app-log.txt",
+    "redacted": true
+  },
+  "counts": {
+    "total": 12,
+    "warning": 8,
+    "error": 4,
+    "exception": 0
+  },
+  "displayedFindingCount": 12,
+  "omittedFindingCount": 0,
+  "findings": [
+    {
+      "level": "warning",
+      "fingerprint": "5ca048045073",
+      "preview": "WARN  11:39:24.327 [console:mmdev-1] The result function returned its own inputs without modification. e.g",
+      "count": 4
+    },
+    {
+      "level": "warning",
+      "fingerprint": "06f68b434e23",
+      "preview": "WARN  11:39:26.651 [console:mmdev-1] [MetaMask DEBUG]: { message: \"Terminal global snapshot returned 400: bad request\", stack: \"Error: Terminal global snapshot returned 400: bad request\\n    at ?anon_0_ (http://127.0.0.1:8061/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.byt",
+      "count": 5
+    },
+    {
+      "level": "warning",
+      "fingerprint": "7c1e417d587f",
+      "preview": "WARN  11:39:36.534 [console:mmdev-1] Unable to create some accounts (batch) with provider \"Stellar\" { message: \"Timed out after: 3000ms\", stack: \"TimeoutError: Timed out after: 3000ms\\n    at construct (native)\\n    at apply (native)\\n    at _construct (http://127.0.0.1:8061/index.bundle//&platform=ios&dev=true&hot=fal",
+      "count": 1
+    },
+    {
+      "level": "warning",
+      "fingerprint": "287b15bf93f7",
+      "preview": "WARN  11:39:36.534 [console:mmdev-1] Unable to align some accounts. Providers threw the following errors:",
+      "count": 1
+    },
+    {
+      "level": "error",
+      "fingerprint": "4239370bc8e9",
+      "preview": "ERROR  11:40:07.441 [console:mmdev-1] A query that was dehydrated as pending ended up rejecting. [[\"MoneyAccountBalanceService:getMoneyAccountBalance\",\"0xf62b4ed01965f4dabc34a1297845124f2421ef95\"]]: Error: missing revert data in call exception; Transaction reverted without a reason string [ See: https://links.ethers.or",
+      "count": 3
+    },
+    {
+      "level": "error",
+      "fingerprint": "ebe0463775f1",
+      "preview": "ERROR  11:40:20.900 [console:mmdev-1] Invalid prop `%s` supplied to `React.Fragment`. React.Fragment can only have `key` and `children` props. onStartShouldSetResponder",
+      "count": 2
+    },
+    {
+      "level": "error",
+      "fingerprint": "a2a3da24242a",
+      "preview": "ERROR  11:41:30.468 [console:mmdev-1] A query that was dehydrated as pending ended up rejecting. [[\"MoneyAccountBalanceService:getMoneyAccountBalance\",\"0xf62b4ed01965f4dabc34a1297845124f2421ef95\"]]: Error: Execution prevented because the circuit breaker is open; The error will be redacted in production builds",
+      "count": 4
+    },
+    {
+      "level": "warning",
+      "fingerprint": "3c23a3f9a90b",
+      "preview": "The result function returned its own inputs without modification. e.g\n`createSelector([state => state.todos], todos => todos)`\nThis could lead to inefficient memoization and unnecessary re-renders.\nEnsure transformation logic is in the result function, and extraction logic is in the input selectors. Error\n    at runIde",
+      "count": 4
+    },
+    {
+      "level": "warning",
+      "fingerprint": "060b31bb2616",
+      "preview": "[MetaMask DEBUG]: Error: Terminal global snapshot returned 400: bad request\n    at ?anon_0_ (http://127.0.0.1:8061/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:1366107:26)\n    at next (native)\n    a",
+      "count": 5
+    },
+    {
+      "level": "warning",
+      "fingerprint": "2180b1c1978e",
+      "preview": "Unable to create some accounts (batch) with provider \"Stellar\" TimeoutError: Timed out after: 3000ms\n    at construct (native)\n    at apply (native)\n    at _construct (http://127.0.0.1:8061/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&uns",
+      "count": 1
+    },
+    {
+      "level": "warning",
+      "fingerprint": "3a68a8730991",
+      "preview": "Unable to align some accounts. Providers threw the following errors:\n- [Stellar] Timed out after: 3000ms",
+      "count": 1
+    },
+    {
+      "level": "error",
+      "fingerprint": "50dd455888fa",
+      "preview": "A query that was dehydrated as pending ended up rejecting. [[\"MoneyAccountBalanceService:getMoneyAccountBalance\",\"0xf62b4ed01965f4dabc34a1297845124f2421ef95\"]]: Error: missing revert data in call exception; Transaction reverted without a reason string [ See: https://links.ethers.org/v5-errors-CALL_EXCEPTION ] (data=\"0x",
+      "count": 3
+    }
+  ]
+}
