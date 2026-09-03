@@ -1,0 +1,25 @@
+{
+  "pr_number": "35654",
+  "recommendation": "APPROVE",
+  "summary": "Shared position header formatter aligns Lite list rows with Pro. Unit tests cover the new layout, privacy, and locators. Live recipe skipped (static-code / runtime offline). Two non-blocking suggestions.",
+  "comments": [
+    {
+      "path": "app/components/UI/Perps/utils/positionDisplay.ts",
+      "line": 46,
+      "body": "Non-numeric `returnOnEquity` becomes `0` then `+0.0%` (`Number.parseFloat(...) || 0`). Perps review patterns ask for `PERPS_CONSTANTS.FallbackPercentageDisplay` (`--%`) when a percentage is unavailable, so a missing field does not look like a flat position. Loaded positions from the controller should already have ROE, so this is not a merge blocker. If you keep `+0.0%`, the existing unit test documents that choice.",
+      "severity": "suggestion"
+    },
+    {
+      "path": "app/components/UI/Perps/components/PerpsCard/PerpsCard.tsx",
+      "line": 223,
+      "body": "`${testID}-direction-tag` is an inline suffix. Appium `PerpsView` hard-codes the same string. Perps testIDs are supposed to live in `Perps.testIds.ts` so recipes and page objects share one helper. A small `getPerpsPositionDirectionTagTestId(testID)` (or a constant suffix) would keep the locator from drifting again.",
+      "severity": "suggestion"
+    },
+    {
+      "path": "app/components/UI/Perps/components/PerpsCard/PerpsCard.test.tsx",
+      "line": 253,
+      "body": "This test is named \"displays correct PnL color\" but only asserts `+$100.50` and `+5.0%`. Color is `pnlColor` / `TagSeverity` on the helper. Either assert those (the helper suite already does) or rename this test so it does not claim a color check it does not make.",
+      "severity": "nitpick"
+    }
+  ]
+}

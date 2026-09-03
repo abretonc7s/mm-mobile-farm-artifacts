@@ -1,0 +1,9 @@
+- This farmslot run is static-code: capability catalog `providers` is empty, so do not launch Metro, CDP, recipes, or simulators even though REVIEW_TIER is standard. Recipe decision is `skip-runtime-offline`.
+- `TASK.md` embeds the PR template, so `#### Performance checks` checkboxes escape the `pre-merge` skip section. `mark N` with the visible worker number does not hit worker step N (offset +3). Worker boxes still need a direct `[x]` edit. `mark complete --mark-last` counts all 38 enumerated boxes.
+- Perps list rows on Wallet Home (`PerpsSectionMain` `perps-position-row-${symbol}`), Perps Home (`POSITION_CARD-${index}`), and Asset Detail (`PERPS_POSITION_CARD`) all render `PerpsCard`. Aligning Lite with Pro is a shared formatter, not three UI copies.
+- Controller `returnOnEquity` is a decimal ratio (`0.103` → 10.3%). `defaultPerpsPositionMock` was still `'10.3'` until this PR. Other Perps fixtures still use `'10'` as if it were already a percent. Only treat that as a bug if those fixtures pass through `getPerpsPositionHeaderDisplay`.
+- Domain anti-pattern still worth grepping: `parseFloat(x) || 0` on percentages. Live price headers use `FallbackPercentageDisplay` (`--%`). Position rows that default missing ROE to `+0.0%` look like a flat book.
+- Appium after-fill check now keys off `${testID}-direction-tag`. `ListItem` `titleEndAccessory` plus Tag `...props` onto Box is what makes that testID exist. If someone moves the Tag, `expectPositionRowAfterLimitOrderFilled` breaks.
+- Author PR screenshots were enough to see Wallet Home, Perps Home, and Pro share the header (ticker, `3x Short` danger tag, `size • USD`, PnL / ROE split). They did not show Asset Detail, a long row, or privacy mode.
+- Zero-size direction changed in Pro: old `size >= 0` was Long, shared helper `size > 0` is Short. There is a unit test. Do not re-raise it as an accident.
+- `mark start` then `mark 2` is the required bootstrap. Do not hand-write `SIGNAL.json`.
