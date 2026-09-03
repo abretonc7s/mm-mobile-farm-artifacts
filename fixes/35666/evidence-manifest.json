@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "preferred_mode": "screenshots",
+  "summary": "The recipe reaches the live Pro Scale form through the order-type sheet (order-type -> advanced tab -> Scale) and asserts the scale price fields and Place. The warning banner itself is not captured: text entry into the scale price fields is unreachable from this adapter, so all 6 ACs are proven by state, not pixels.",
+  "before_after_pairs": [],
+  "standalone": [],
+  "omit": [
+    {
+      "file": "after-scale-form.png",
+      "reason": "Orientation only, not AC proof. Shows the live Pro Scale form (Start/End USD fields) that the far-from-market warning attaches to, reached via ui.press through the order-type sheet, but not the banner itself: text entry into the scale price fields is unreachable from this adapter (ui.set_input fails validation on every documented arg shape; ui.key_press commits no value). Kept in artifacts/ for reviewer orientation; claimed as evidence for no AC, so the manifest carries zero visual claims and matches recipe-coverage.md, where all 6 ACs are proven by state."
+    },
+    {
+      "file": "after-ac-orientation-pro-form.png",
+      "reason": "Superseded. Shows a default Market form with no scale fields, captured before the recipe pressed through to Scale. It was previously cited as AC6 evidence on the false premise that the order-type sheet could not be opened."
+    },
+    {
+      "file": "after.mp4",
+      "reason": "Recording of the same superseded default Pro form; adds nothing over the still."
+    }
+  ],
+  "videos": {}
+}

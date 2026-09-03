@@ -1,0 +1,139 @@
+{
+  "$schema": "https://farmslot.io/schemas/recipe-v1.schema.json",
+  "title": "TAT-3897 scale/limit fat-finger warning",
+  "description": "Drive the Pro order-type sheet into Scale and prove the scale price fields mount, then prove the warning logic at the hook and helper layers. Text entry into the scale price fields is not reachable through the mobile adapter (ui.set_input fails validation on every documented arg shape), so the banner pixels are not captured; the hook tests cover that boundary and fail if the wiring is deleted.",
+  "paramsSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "market": {
+        "type": "string",
+        "default": "BTC",
+        "description": "Perps market to open."
+      }
+    }
+  },
+  "workflow": {
+    "entry": "unlock",
+    "nodes": {
+      "unlock": {
+        "action": "metamask.wallet.ensure_unlocked",
+        "intent": "Unlock the fixture wallet",
+        "next": "run-helper-tests"
+      },
+      "run-helper-tests": {
+        "action": "command",
+        "cmd": "yarn jest app/components/UI/Perps/utils/limitPriceFarFromMarket.test.ts --no-coverage",
+        "timeout_ms": 180000,
+        "intent": "Distance, threshold, reduce-only skip and farthest-endpoint selection",
+        "next": "assert-helper-tests"
+      },
+      "assert-helper-tests": {
+        "action": "assert_exit_code",
+        "node": "run-helper-tests",
+        "expected": 0,
+        "intent": "Helper logic holds",
+        "next": "run-hook-tests"
+      },
+      "run-hook-tests": {
+        "action": "command",
+        "cmd": "yarn jest app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts --no-coverage -t 'far-from-market'",
+        "timeout_ms": 180000,
+        "intent": "Hook wiring: notice push, both gates, Place stays enabled, telemetry, price-card fallback. These fail if the wiring is reverted.",
+        "next": "assert-hook-tests"
+      },
+      "assert-hook-tests": {
+        "action": "assert_exit_code",
+        "node": "run-hook-tests",
+        "expected": 0,
+        "intent": "The user-visible feature is not deletable without failing tests",
+        "next": "open-btc-pro"
+      },
+      "open-btc-pro": {
+        "action": "ui.navigate",
+        "page": "perps-market",
+        "market": "{{params.market}}",
+        "mode": "pro",
+        "intent": "Open BTC market details in Pro",
+        "next": "wait-pro-form"
+      },
+      "wait-pro-form": {
+        "action": "ui.wait_for",
+        "test_id": "perps-pro-order-form",
+        "expected": "present",
+        "timeout_ms": 30000,
+        "intent": "Pro order form mounted",
+        "next": "open-order-type"
+      },
+      "open-order-type": {
+        "action": "ui.press",
+        "test_id": "perps-pro-order-form-order-type",
+        "intent": "Open the order-type sheet",
+        "next": "wait-sheet"
+      },
+      "wait-sheet": {
+        "action": "ui.wait_for",
+        "test_id": "perps-order-type-tab-advanced",
+        "expected": "present",
+        "timeout_ms": 15000,
+        "intent": "Sheet is open on its tab bar",
+        "next": "open-advanced-tab"
+      },
+      "open-advanced-tab": {
+        "action": "ui.press",
+        "test_id": "perps-order-type-tab-advanced",
+        "intent": "Scale lives under the advanced tab",
+        "next": "wait-scale-option"
+      },
+      "wait-scale-option": {
+        "action": "ui.wait_for",
+        "test_id": "perps-order-type-scale",
+        "expected": "present",
+        "timeout_ms": 15000,
+        "intent": "Scale option is offered",
+        "next": "select-scale"
+      },
+      "select-scale": {
+        "action": "ui.press",
+        "test_id": "perps-order-type-scale",
+        "intent": "Switch the form to a Scale order",
+        "next": "wait-scale-start"
+      },
+      "wait-scale-start": {
+        "action": "ui.wait_for",
+        "test_id": "perps-pro-order-form-scale-start-price",
+        "expected": "present",
+        "timeout_ms": 15000,
+        "intent": "The scale start price field the warning measures is on screen",
+        "next": "wait-scale-end"
+      },
+      "wait-scale-end": {
+        "action": "ui.wait_for",
+        "test_id": "perps-pro-order-form-scale-end-price",
+        "expected": "present",
+        "timeout_ms": 15000,
+        "intent": "The scale end price field is on screen",
+        "next": "wait-place"
+      },
+      "wait-place": {
+        "action": "ui.wait_for",
+        "test_id": "perps-pro-order-form-place-order",
+        "expected": "present",
+        "timeout_ms": 10000,
+        "intent": "AC6: Place remains present on a Scale order",
+        "next": "shot-scale-form"
+      },
+      "shot-scale-form": {
+        "action": "ui.screenshot",
+        "path": "screenshots/after-scale-form.png",
+        "label": "Pro Scale form with start/end price fields and Place",
+        "intent": "Reviewer sees the real Scale surface the warning attaches to",
+        "next": "done"
+      },
+      "done": {
+        "action": "end",
+        "status": "pass"
+      }
+    }
+  }
+}

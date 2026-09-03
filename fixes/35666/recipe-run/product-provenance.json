@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "adapter": "mobile",
+  "repository": "metamask-mobile-1",
+  "git_ref": "2521838b09c29c8e1cc216372001333dc03a21a1",
+  "branch": "TAT-3897-feat-add-scale-order-price-warning",
+  "dirty": true
+}

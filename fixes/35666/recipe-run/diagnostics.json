@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "scope": "recipe-run-application",
+  "status": "review",
+  "nonBlocking": true,
+  "note": "Observed 10 distinct application warning/error event(s) during the recipe run; showing 10 preview(s) and omitting 0. Relation to the task is not determined.",
+  "source": {
+    "label": "app",
+    "path": "/Users/deeeed/dev/metamask/metamask-mobile-1/temp/recipe/runtime/app-console.log",
+    "startOffset": 2617,
+    "endOffset": 66453,
+    "bytesRead": 63836,
+    "truncated": false,
+    "inAppBuffer": "collected",
+    "rawArtifact": "diagnostics-app-log.txt",
+    "redacted": true
+  },
+  "counts": {
+    "total": 10,
+    "warning": 10,
+    "error": 0,
+    "exception": 0
+  },
+  "displayedFindingCount": 10,
+  "omittedFindingCount": 0,
+  "findings": [
+    {
+      "level": "warning",
+      "fingerprint": "5ca048045073",
+      "preview": "WARN  07:07:37.028 [console:mm-1] The result function returned its own inputs without modification. e.g",
+      "count": 3
+    },
+    {
+      "level": "warning",
+      "fingerprint": "ec2ab1c078f5",
+      "preview": "WARN  07:07:40.622 [console:mm-1] [MetaMask DEBUG]: { message: \"Terminal global snapshot returned 400: bad request\", stack: \"Error: Terminal global snapshot returned 400: bad request\\n    at ?anon_0_ (http://127.0.0.1:8061/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.byteco",
+      "count": 3
+    },
+    {
+      "level": "warning",
+      "fingerprint": "91abec6bc4b9",
+      "preview": "WARN  07:07:56.470 [console:mm-1] Unable to discover accounts with provider \"Tron\" { message: \"Timed out after: 3000ms\", stack: \"TimeoutError: Timed out after: 3000ms\\n    at construct (native)\\n    at apply (native)\\n    at _construct (http://127.0.0.1:8061/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&tran",
+      "count": 2
+    },
+    {
+      "level": "warning",
+      "fingerprint": "ac3d58e52cf7",
+      "preview": "WARN  07:07:56.471 [console:mm-1] Unable to discover accounts with provider \"Stellar\" { message: \"Timed out after: 3000ms\", stack: \"TimeoutError: Timed out after: 3000ms\\n    at construct (native)\\n    at apply (native)\\n    at _construct (http://127.0.0.1:8061/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&t",
+      "count": 2
+    },
+    {
+      "level": "warning",
+      "fingerprint": "06bda5d65a4a",
+      "preview": "WARN  07:07:59.242 [console:mm-1] Unable to discover accounts with provider \"Solana\" { message: \"Timed out after: 3000ms\", stack: \"TimeoutError: Timed out after: 3000ms\\n    at construct (native)\\n    at apply (native)\\n    at _construct (http://127.0.0.1:8061/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&tr",
+      "count": 1
+    },
+    {
+      "level": "warning",
+      "fingerprint": "3c23a3f9a90b",
+      "preview": "The result function returned its own inputs without modification. e.g\n`createSelector([state => state.todos], todos => todos)`\nThis could lead to inefficient memoization and unnecessary re-renders.\nEnsure transformation logic is in the result function, and extraction logic is in the input selectors. Error\n    at runIde",
+      "count": 3
+    },
+    {
+      "level": "warning",
+      "fingerprint": "6607a5b6e9bc",
+      "preview": "[MetaMask DEBUG]: Error: Terminal global snapshot returned 400: bad request\n    at ?anon_0_ (http://127.0.0.1:8061/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:1372838:26)\n    at next (native)\n    a",
+      "count": 3
+    },
+    {
+      "level": "warning",
+      "fingerprint": "2a00a8ed33f9",
+      "preview": "Unable to discover accounts with provider \"Tron\" TimeoutError: Timed out after: 3000ms\n    at construct (native)\n    at apply (native)\n    at _construct (http://127.0.0.1:8061/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transfor",
+      "count": 2
+    },
+    {
+      "level": "warning",
+      "fingerprint": "7524bbd59a8d",
+      "preview": "Unable to discover accounts with provider \"Stellar\" TimeoutError: Timed out after: 3000ms\n    at construct (native)\n    at apply (native)\n    at _construct (http://127.0.0.1:8061/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_trans",
+      "count": 2
+    },
+    {
+      "level": "warning",
+      "fingerprint": "ff305a8f504d",
+      "preview": "Unable to discover accounts with provider \"Solana\" TimeoutError: Timed out after: 3000ms\n    at construct (native)\n    at apply (native)\n    at _construct (http://127.0.0.1:8061/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transf",
+      "count": 1
+    }
+  ]
+}

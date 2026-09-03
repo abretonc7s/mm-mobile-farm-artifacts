@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "valid": true,
+  "snapshots": [
+    {
+      "phase": "start",
+      "capturedAt": "2026-09-03T07:07:32.128Z",
+      "recipeDigest": "sha256:edf22ad0eb8e976502e4f668ffc6ed0c32ce19d9528b1def7c1504fe2e6c626b",
+      "product": {
+        "head": "2521838b09c29c8e1cc216372001333dc03a21a1",
+        "status": "M  app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts\nM  app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.ts\nM  app/components/UI/Perps/utils/limitPriceFarFromMarket.test.ts\n",
+        "sourceFingerprint": "0750d31b99112c64173f0c8ab04b178ea182839fe7d602506c7df169e9f5815a"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "90733a0c390db7b7f790f482fd75f3c2cb50128991de479cc5be30cbb2ad6800"
+      },
+      "libraries": [
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "e8e8fec19e86f59ddc3d5ba25efa392bdce65162bdcccf5aa19f513f63b283f5"
+        }
+      ],
+      "helpers": [
+        {
+          "path": "app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts",
+          "sourceFingerprint": "c85f70cca8ef0890678de91e395998f339374f0a96e11f6cb54b848f2a28e777"
+        },
+        {
+          "path": "app/components/UI/Perps/utils/limitPriceFarFromMarket.test.ts",
+          "sourceFingerprint": "cc6898b6f431403efc1278104f513fac261491f1219f82ff97d52f9356439f9b"
+        }
+      ]
+    },
+    {
+      "phase": "pre-execute",
+      "capturedAt": "2026-09-03T07:07:32.670Z",
+      "recipeDigest": "sha256:edf22ad0eb8e976502e4f668ffc6ed0c32ce19d9528b1def7c1504fe2e6c626b",
+      "product": {
+        "head": "2521838b09c29c8e1cc216372001333dc03a21a1",
+        "status": "M  app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts\nM  app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.ts\nM  app/components/UI/Perps/utils/limitPriceFarFromMarket.test.ts\n",
+        "sourceFingerprint": "0750d31b99112c64173f0c8ab04b178ea182839fe7d602506c7df169e9f5815a"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "90733a0c390db7b7f790f482fd75f3c2cb50128991de479cc5be30cbb2ad6800"
+      },
+      "libraries": [
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "e8e8fec19e86f59ddc3d5ba25efa392bdce65162bdcccf5aa19f513f63b283f5"
+        }
+      ],
+      "helpers": [
+        {
+          "path": "app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts",
+          "sourceFingerprint": "c85f70cca8ef0890678de91e395998f339374f0a96e11f6cb54b848f2a28e777"
+        },
+        {
+          "path": "app/components/UI/Perps/utils/limitPriceFarFromMarket.test.ts",
+          "sourceFingerprint": "cc6898b6f431403efc1278104f513fac261491f1219f82ff97d52f9356439f9b"
+        }
+      ]
+    },
+    {
+      "phase": "end",
+      "capturedAt": "2026-09-03T07:08:07.518Z",
+      "recipeDigest": "sha256:edf22ad0eb8e976502e4f668ffc6ed0c32ce19d9528b1def7c1504fe2e6c626b",
+      "product": {
+        "head": "2521838b09c29c8e1cc216372001333dc03a21a1",
+        "status": "M  app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts\nM  app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.ts\nM  app/components/UI/Perps/utils/limitPriceFarFromMarket.test.ts\n",
+        "sourceFingerprint": "0750d31b99112c64173f0c8ab04b178ea182839fe7d602506c7df169e9f5815a"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "90733a0c390db7b7f790f482fd75f3c2cb50128991de479cc5be30cbb2ad6800"
+      },
+      "libraries": [
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "e8e8fec19e86f59ddc3d5ba25efa392bdce65162bdcccf5aa19f513f63b283f5"
+        }
+      ],
+      "helpers": [
+        {
+          "path": "app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts",
+          "sourceFingerprint": "c85f70cca8ef0890678de91e395998f339374f0a96e11f6cb54b848f2a28e777"
+        },
+        {
+          "path": "app/components/UI/Perps/utils/limitPriceFarFromMarket.test.ts",
+          "sourceFingerprint": "cc6898b6f431403efc1278104f513fac261491f1219f82ff97d52f9356439f9b"
+        }
+      ]
+    }
+  ],
+  "drift": []
+}

@@ -1,0 +1,4249 @@
+{
+  "metadata": {
+    "runner": {
+      "source": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness",
+      "git_ref": "unknown",
+      "name": "@metamask/recipe-runner"
+    }
+  },
+  "entries": [
+    {
+      "nodeId": "unlock",
+      "action": "metamask.wallet.ensure_unlocked",
+      "intent": "Unlock the fixture wallet",
+      "startedAt": "2026-09-03T07:07:33.146Z",
+      "endedAt": "2026-09-03T07:07:42.577Z",
+      "durationMs": 9431,
+      "ok": true,
+      "next": "run-helper-tests",
+      "output": {
+        "action": "metamask.wallet.ensure_unlocked",
+        "unlocked": true,
+        "keyringUnlocked": true,
+        "account": {
+          "address": "0x8dc623e964475d4d669da601fd15ea9125469003",
+          "id": "0285a92b-905c-4814-8a16-52fe1db60357",
+          "name": "dev1"
+        },
+        "route": {
+          "key": "WalletView-PXBgKmgwH6TF49AMXLDJg",
+          "name": "WalletView"
+        },
+        "deviceName": "mm-1",
+        "platform": "ios",
+        "redacted": true,
+        "proofPath": "agentic-wallet-unlock",
+        "liveAdapter": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness/library/actions/mobile/wallet/ensure_unlocked.mjs"
+      }
+    },
+    {
+      "nodeId": "run-helper-tests",
+      "action": "command",
+      "intent": "Distance, threshold, reduce-only skip and farthest-endpoint selection",
+      "startedAt": "2026-09-03T07:07:42.627Z",
+      "endedAt": "2026-09-03T07:07:47.526Z",
+      "durationMs": 4899,
+      "ok": true,
+      "next": "assert-helper-tests",
+      "output": {
+        "exitCode": 0,
+        "stdout": "",
+        "stderr": "PASS app/components/UI/Perps/utils/limitPriceFarFromMarket.test.ts\n  getFarthestRestingLimitPrice\n    ✓ returns the limit price for a limit order (2 ms)\n    ✓ returns the lower endpoint for a long scale (1 ms)\n    ✓ returns the higher endpoint for a short scale\n    ✓ returns undefined when a scale endpoint is missing (1 ms)\n  getLimitPriceFarFromMarketWarning\n    ✓ warns when a long limit is more than 5% below the best bid\n    ✓ stays quiet at exactly the 5% long threshold (1 ms)\n    ✓ warns when a short scale high endpoint is more than 5% above the ask\n    ✓ never renders a percentage at or below the 5% threshold\n    ✓ skips reduce-only orders\n    ✓ skips market orders\n\nTest Suites: 1 passed, 1 total\nTests:       10 passed, 10 total\nSnapshots:   0 total\nTime:        1.626 s, estimated 2 s\nRan all test suites matching /app\\/components\\/UI\\/Perps\\/utils\\/limitPriceFarFromMarket.test.ts/i.\n"
+      }
+    },
+    {
+      "nodeId": "assert-helper-tests",
+      "action": "assert_exit_code",
+      "intent": "Helper logic holds",
+      "startedAt": "2026-09-03T07:07:47.598Z",
+      "endedAt": "2026-09-03T07:07:47.669Z",
+      "durationMs": 71,
+      "ok": true,
+      "next": "run-hook-tests",
+      "output": {
+        "source": "run-helper-tests",
+        "expected": 0,
+        "actual": 0
+      }
+    },
+    {
+      "nodeId": "run-hook-tests",
+      "action": "command",
+      "intent": "Hook wiring: notice push, both gates, Place stays enabled, telemetry, price-card fallback. These fail if the wiring is reverted.",
+      "startedAt": "2026-09-03T07:07:47.739Z",
+      "endedAt": "2026-09-03T07:07:52.715Z",
+      "durationMs": 4976,
+      "ok": true,
+      "next": "assert-hook-tests",
+      "output": {
+        "exitCode": 0,
+        "stdout": "",
+        "stderr": "PASS app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts\n  usePerpsProOrderForm\n    availableBalance\n      ○ skipped formats spendable balance as \"$amount available\" when connected\n      ○ skipped shows the unavailable placeholder before Perps is initialized\n    summary\n      ○ skipped builds display-ready margin, liquidation, slippage and numeric fees\n      ○ skipped shows the fallback liquidation display when amount is empty\n      ○ skipped shows margin and liquidation before-and-after values from the controller preview\n      ○ skipped keeps single-value summary when the controller returns no preview\n      ○ skipped keeps single-value summary for unsupported cross-margin previews\n      ○ skipped uses the controller fee result unchanged for a TWAP order\n      ○ skipped routes Scale fees and validation through the concrete provider\n      ○ skipped routes Chase fees through its placement provider\n    notices\n      ○ skipped blocks a 0-minute TWAP duration below the controller minimum\n      ○ skipped blocks a 1-minute TWAP duration below the controller minimum\n      ○ skipped blocks TWAP totals below the controller-supported minimum\n      ○ skipped shows a required notice when the TWAP duration is empty\n      ○ skipped keeps an empty TWAP size silent while disabling placement\n      ○ skipped maps a margin validation error to a priority banner\n      ○ skipped keeps an empty amount blocked without an inline message\n      ○ skipped blocks after submit without an inline amount message\n      ○ skipped blocks silently while market data is loading\n      ○ skipped explains why the order is blocked when the live price is unavailable\n      ○ skipped shows a failure message when market data loading fails\n      ○ skipped maps an OI cap to a banner notice\n      ○ skipped shows the sl-liq-risk notice when the stop loss risks liquidation\n      ○ skipped shows the tp-invalid notice when the take profit is on the wrong side\n      ○ skipped shows the sl-invalid notice when the stop loss is on the wrong side\n      ○ skipped shows the reduce-only no-position banner and suppresses TP/SL notices\n      ○ skipped shows the reduce-only wrong-side banner for same-direction orders\n      ○ skipped shows the reduce-only too-large banner and disables submit when size exceeds position\n      ○ skipped shows a position-loading notice while suppressing stale validation errors\n      ○ skipped validates the stop loss side against the remaining position direction on a partial decrease\n      ○ skipped phrases the stop loss wrong-side warning for the remaining position, not the order\n      ○ skipped warns when the stop loss sits past the projected liquidation price\n    handlePlaceOrder\n      ○ skipped starts a new TWAP draft at the Figma default of 30 minutes\n      ○ skipped submits valid TWAP params with live mid price and Randomize\n      ○ skipped resets the TWAP draft after accepted placement\n      ○ skipped shows TWAP-specific confirmation for accepted placement\n      ○ skipped shows TWAP-specific failure copy for rejected placement\n      ○ skipped blocks TWAP placement after the feature gate is disabled\n      ○ skipped re-checks selected-route TWAP support immediately before placement\n      ○ skipped re-checks TWAP rollout after an asynchronous compliance gate\n      ○ skipped blocks TWAP placement when its resolved route changes during validation\n      ○ skipped resets a selected TWAP after rollout availability disappears\n      ○ skipped clears the TWAP draft after rollout availability disappears\n      ○ skipped preserves a selected TWAP draft through capability reinitialization\n      ○ skipped keeps ordinary placement on controller default routing\n      ○ skipped keeps a non-Chase fingerprint out of Chase analytics\n      ○ skipped does not show Chase feedback for a stale non-Chase fingerprint\n      ○ skipped executes order for an eligible compliant user\n      ○ skipped keeps a pending termination in the visible Chase placement limit\n      ○ skipped tracks each Chase limit banner episode once\n      ○ skipped blocks a Chase submit when refreshed active and pending sessions reach the venue limit\n      ○ skipped tracks a controller Chase limit rejection during execution\n      ○ skipped blocks Chase placement until session context reconnects\n      ○ skipped abandons Chase when compliance resolves after fallback\n      ○ skipped locks Chase preflight against repeated taps and draft edits\n      ○ skipped releases Chase preflight lock after compliance failure\n      ○ skipped abandons deferred Chase compliance after the symbol-keyed form unmounts\n      ○ skipped keeps the Chase form active while disabling its blurred polling consumer\n      ○ skipped aborts Chase when the provider changes during compliance\n      ○ skipped aborts Chase when the Perps network changes during compliance\n      ○ skipped aborts Chase when a price tick changes reviewed exposure during compliance\n      ○ skipped aborts Chase when effective token precision changes during compliance\n      ○ skipped accepts formatting-equivalent prices during compliance\n      ○ skipped uses committed Chase refs during a render-phase compliance callback\n      ○ skipped places Chase without an optional max distance\n      ○ skipped refreshes Chase history after a successful terminal placement\n      ○ skipped fails closed before controller placement when Chase is disabled\n      ○ skipped re-checks capability and fails closed before controller placement\n      ○ skipped fails closed with feedback when the Chase session refresh fails\n      ○ skipped asks for route review when the Chase session refresh becomes stale\n      ○ skipped blocks a Chase distance-unit edit during capability refresh\n      ○ skipped abandons Chase submit when the capability route disappears\n      ○ skipped abandons Chase submit when the visible draft changes during validation\n      ○ skipped abandons Chase submit when the selected account changes\n      ○ skipped revalidates Chase when spendable balance drops during validation\n      ○ skipped revalidates Chase when an existing position becomes cross margin\n      ○ skipped revalidates Chase when reduce-only position loading starts\n      ○ skipped aborts when validation changes the reviewed Chase size\n      ○ skipped aborts when MAX-derived size changes during session refresh\n      ○ skipped blocks an explicit Chase size edit during session refresh\n      ○ skipped blocks a Chase leverage edit during session refresh\n      ○ skipped aborts when effective price changes during session refresh\n      ○ skipped clears the Chase draft after capability resolves unsupported\n      ○ skipped keeps a selected Chase draft while capability discovery is pending\n      ○ skipped keeps haptics silent for a duplicate submit\n      ○ skipped opens geo-block modal and skips execution for an ineligible user\n      ○ skipped skips geo handling and execution when compliance gate blocks\n      ○ skipped commits pending slider preview without invoking compliance or submitting\n      ○ skipped builds OrderParams including reduceOnly and calls executeOrder\n      ○ skipped submits the exact live size and omits USD for a max-slider full close\n      ○ skipped keeps a focused max preview from becoming a full close\n      ○ skipped submits a smaller interrupted reduce-only preview instead of a full close\n      ○ skipped clears the size max override after a successful Reduce Only order\n      ○ skipped flushes a pending slider preview before allowing submission\n      ○ skipped submits on the first tap when a pending slider preview is unchanged\n      ○ skipped blocks reduce-only submit when there is no open position\n      ○ skipped blocks reduce-only submit when size exceeds the open position\n      ○ skipped blocks submit and shows a toast when validation is invalid\n      ○ skipped shows a final trigger-limit field error without executing the order\n      ○ skipped keeps the CTA enabled without loading while validation is pending\n      ○ skipped runs current validation before executing a pending order\n      ○ skipped blocks a pending trigger order when the live mid crosses the trigger\n      ○ skipped navigates to the cross-margin warning and aborts\n      ○ skipped aborts and tracks when the estimated slippage exceeds the max\n      ○ skipped aborts submit when the stop loss risks liquidation (doesStopLossRiskLiquidation guard)\n      ○ skipped skips updatePositionTPSL and clearPendingConfig when the order fails (shouldHandleTPSLSeparately path)\n      ○ skipped skips clearPendingConfig when the order fails (plain else path)\n    execution toasts\n      ○ skipped shows the confirmed toast on success\n      ○ skipped shows Chase confirmation when Chase starts\n      ○ skipped shows the creation-failed toast on error\n    TP/SL handling\n      ○ skipped places the order without TP/SL then updates position TP/SL when flagged\n      ○ skipped shows an error toast when the separate TP/SL update fails\n    limit orders\n      ○ skipped sets the limit price and the fixed limit slippage on OrderParams\n      ○ skipped finalizes a trailing decimal separator from the limit price before submit\n    scale orders\n      ○ skipped normalizes Scale rungs through the controller precision contract\n      ○ skipped applies HyperLiquid precision for each asset size grid\n      ○ skipped keeps Scale placement disabled for a MYX route\n      ○ skipped starts with a blank Order count to match the default Scale form\n      ○ skipped keeps the blank Scale default free of validation banners\n      ○ skipped restores Scale validation after switching order types\n      ○ skipped bounds ladder sizing work for an extreme accepted skew\n      ○ skipped reports unexpected controller ladder failures\n      ○ skipped normalizes controller ladder failure ORDER_SCALE_RANGE_INVALID into Scale validation\n      ○ skipped normalizes controller ladder failure ORDER_SCALE_COUNT_INVALID into Scale validation\n      ○ skipped uses controller-owned price formatting for Scale preview\n      ○ skipped clears limit and trigger drafts when Scale is selected\n      ○ skipped clears hidden price and TP/SL drafts when Chase is selected\n      ○ skipped submits one controller Scale request with canonical strategy parameters\n      ○ skipped rejects an unsupported Scale provider before placement\n      ○ skipped keeps Scale USD sizing consistent when market and ladder prices differ\n      ○ skipped resets Scale configuration after controller placement succeeds\n      ○ skipped clears limit and trigger drafts after full Scale placement\n      ○ skipped clears limit and trigger drafts after partial Scale placement\n      ○ skipped shows localized Scale-specific copy while the ladder is submitted\n      ○ skipped shows localized Scale-specific copy when the full ladder is placed\n      ○ skipped shows localized Scale-specific copy for a partial controller result\n      ○ skipped uses requested ladder for empty child arrays in the confirmation copy\n      ○ skipped uses legacy submitted size when accepted size is absent in the confirmation copy\n      ○ skipped uses resting-order failure copy when Scale placement fails\n      ○ skipped uses Scale failure copy after a Chase placement\n      ○ skipped does not submit a duplicate Scale request while placement is pending\n      ○ skipped resets Scale configuration after a partial controller result\n      ○ skipped does not retry placed children after a partial Scale success\n      ○ skipped retains Scale configuration when the controller rejects the placement\n      ○ skipped keeps the previous Scale order count when a fractional edit arrives\n      ○ skipped blocks and tracks an out-of-range Scale order count\n      ○ skipped rejects a ladder when a rung is below the controller minimum\n      ○ skipped asks for a Scale size before applying minimum-lot validation\n      ○ skipped validates margin from the whole rounded Scale ladder notional\n      ○ skipped blocks a Reduce Only Scale order when no position can be reduced\n      ○ skipped renders the controller-formatted Scale price ladder\n      ○ skipped weights an above-one Scale skew toward the end of the range\n      ○ skipped builds the per-rung Scale margin range\n      ○ skipped weights a below-one Scale skew toward the start of the range\n      ○ skipped keeps an exactly-one Scale skew evenly sized\n      ○ skipped rejects a third Scale skew decimal while typing\n      ○ skipped restores the default Scale skew when an empty draft blurs\n      ○ skipped preserves an invalid Scale skew on blur for validation\n      ○ skipped tracks a Scale configuration interaction\n      ○ skipped opens the Size skew tooltip\n      ○ skipped preserves a supported Scale draft while capability refresh is pending\n      ○ skipped preserves an initial persisted Scale draft while capability support is pending\n      ○ skipped resets a selected Scale draft after capability resolves unsupported\n      ○ skipped blocks Scale selection when the remote flag is disabled\n      ○ skipped blocks Scale placement when the remote flag is disabled\n      ○ skipped re-checks selected-route Scale support immediately before placement\n      ○ skipped restarts Scale validation when the live position changes during validation\n      ○ skipped ignores live mid-price ticks during Scale validation\n      ○ skipped uses fresh reduce-only position state after the Scale capability gap\n      ○ skipped uses fresh sizing and fee inputs after the Scale capability gap\n      ○ skipped uses a fresh Scale ladder after the capability gap\n      ○ skipped locks retained Scale callbacks before deferred compliance completes\n      ○ skipped blocks Scale placement when its flag turns off during validation\n      ○ skipped blocks Scale placement when its provider changes during validation\n      ○ skipped keeps Scale locked when capability support is lost during placement\n      ○ skipped rejects stale Scale mutations during the capability recheck and submits the original snapshot\n      far-from-market warning\n        ✓ pushes the far-from-market notice for a long ladder resting below the bid (30 ms)\n        ✓ stays quiet for a ladder resting inside the threshold (3 ms)\n        ✓ stays quiet before any scale price blur (2 ms)\n        ✓ stays quiet while a scale start price is still being typed (4 ms)\n        ✓ hides the warning when a finished scale price is edited again (2 ms)\n        ✓ stays quiet while the ladder itself is invalid (1 ms)\n        ✓ never disables Place for a far-from-market ladder (2 ms)\n        ✓ emits the warning-shown event once per distinct message (10 ms)\n        ✓ labels a limit-order warning as limit and omits scale properties (1 ms)\n        ✓ emits no telemetry while a limit price is still being typed (3 ms)\n        ✓ falls back to the far-from-market message on the limit price card (1 ms)\n    trigger orders\n      ○ skipped explains and blocks a preserved trigger order when the feature is disabled\n      ○ skipped submits triggerPrice and omits TP/SL for a stop-market order\n      ○ skipped validates trigger placement against mid when mark differs\n      ○ skipped uses the 10% default slippage for trigger-market sizing and submission\n      ○ skipped exposes persisted slippage for trigger-market settings\n      ○ skipped tracks persisted slippage when trigger-market settings open\n      ○ skipped preserves an explicit trigger-market slippage setting\n      ○ skipped submits triggerPrice and limit price for a take-limit order\n      ○ skipped submits canonical venue prices after non-canonical trigger input\n      ○ skipped blocks long stop_market before blur and shows guidance after blur\n      ○ skipped blocks short stop_market before blur and shows guidance after blur\n      ○ skipped blocks long stop_limit before blur and shows guidance after blur\n      ○ skipped blocks short stop_limit before blur and shows guidance after blur\n      ○ skipped blocks long take_profit_market before blur and shows guidance after blur\n      ○ skipped blocks short take_profit_market before blur and shows guidance after blur\n      ○ skipped blocks long take_profit_limit before blur and shows guidance after blur\n      ○ skipped blocks short take_profit_limit before blur and shows guidance after blur\n      ○ skipped clears the helper once a valid trigger price is entered\n      ○ skipped shows a new wrong-side error when live mid crosses a blurred trigger\n      ○ skipped shows the trigger error before the required limit error\n      ○ skipped defers a required limit error for stop_limit until the limit price blurs\n      ○ skipped defers a required limit error for take_profit_limit until the limit price blurs\n      ○ skipped defers a required trigger error until the trigger price blurs\n      ○ skipped keeps field copy blur-gated after a blocked submit attempt\n      ○ skipped handles marketability warnings for limit orders\n      ○ skipped handles marketability warnings for stop_limit orders\n      ○ skipped handles marketability warnings for take_profit_limit orders\n      ○ skipped handles marketability warnings for take_profit_limit orders\n    additional notices\n      ○ skipped flags TP invalid, SL invalid and SL-liquidation-risk as inline notices\n    summary slippage\n      ○ skipped hides the slippage row for Chase orders\n      ○ skipped hides the slippage row for limit orders\n      ○ skipped hides the slippage row for trigger-limit orders\n      ○ skipped shows maximum slippage only for trigger-market orders\n      ○ skipped shows a pending slippage row for market orders when no estimate is available\n    isPlaceOrderDisabled\n      ○ skipped is disabled on mount for amount \"\"\n      ○ skipped is disabled on mount for amount \"0\"\n      ○ skipped is disabled on mount for amount \"not-a-number\"\n      ○ skipped is disabled when protocol validation is not ready for a positive amount\n      ○ skipped is disabled without a notice for a filtered size-positive error\n      ○ skipped is disabled for limit when limitPrice is missing\n      ○ skipped is disabled for stop_market when triggerPrice is missing\n      ○ skipped is disabled for take_profit_market when triggerPrice is missing\n      ○ skipped is disabled for stop_limit when triggerPrice is missing\n      ○ skipped is disabled for stop_limit when limitPrice is missing\n      ○ skipped is disabled for take_profit_limit when triggerPrice is missing\n      ○ skipped is disabled for take_profit_limit when limitPrice is missing\n      ○ skipped shows loading only while order placement is in progress\n      ○ skipped is disabled at the OI cap\n      ○ skipped is enabled for a valid, uncapped order\n      ○ skipped is disabled while awaiting the first position-modify preview\n      ○ skipped is disabled when the stop loss risks liquidation\n      ○ skipped is disabled when the take profit is on the wrong side\n      ○ skipped is disabled when the stop loss is on the wrong side\n      ○ skipped ignores TP/SL blockers while Reduce Only is on with a valid closing side\n      ○ skipped disables Place Order while the reduce-only position is loading\n    reduceOnly toggle\n      ○ skipped restores reduceOnly from the pending trade draft\n      ○ skipped clears TP/SL state when Reduce Only turns on\n      ○ skipped sets the size slider max to the open position notional when Reduce Only is on\n      ○ skipped keeps the margin-based slider max and empty size when Reduce Only is on with no position\n      ○ skipped keeps the margin-based slider max and empty size when Reduce Only is on with the wrong direction\n      ○ skipped does not commit slider amount when Reduce Only has a position error\n      ○ skipped does not restore a focused size after Reduce Only enables with no position\n      ○ skipped does not clear typed size while the reduce-only position is loading\n      ○ skipped keeps typed size when a valid closing position arrives after Reduce Only load\n      ○ skipped uses the limit price for the Reduce Only slider max\n      ○ skipped restores the margin-based amount cap when Reduce Only turns off\n      ○ skipped does not clamp size to available margin when confirming leverage with Reduce Only on\n    handlers\n      ○ skipped navigates to the TP/SL screen and its onConfirm sets TP/SL\n      ○ skipped shows the limit-price-required toast and does not navigate for a limit order without a price\n      ○ skipped confirms leverage, clamps an over-max amount, and tracks the change\n      ○ skipped tracks leverage change with previous_leverage and not previousLeverage\n      ○ skipped saves slippage and opens the slippage sheet\n      ○ skipped selects an order type\n      ○ skipped clears incompatible prices when TWAP is selected\n      ○ skipped ignores TWAP selection while the feature gate is disabled\n      ○ skipped preserves typed digits while blocking an out-of-range duration part\n      ○ skipped normalizes leading zeros in TWAP duration parts\n      ○ skipped blocks a TWAP duration whose individually valid parts exceed the total maximum\n      ○ skipped preserves price values while resetting presentation for a new order type\n      ○ skipped ignores size input over nine digits and forwards valid input\n      ○ skipped ignores limit price input over nine digits and forwards valid input\n      ○ skipped normalizes leading zeroes in limit price input\n      ○ skipped normalizes comma decimal input in the limit price\n      ○ skipped rejects repeated decimal separators in limit price input\n      ○ skipped rejects malformed Chase max distance input 1abc\n      ○ skipped rejects malformed Chase max distance input 1.2.3\n      ○ skipped normalizes Chase max distance and enforces the shared digit cap\n      ○ skipped clears Chase max distance only when its unit changes\n      ○ skipped accepts a Chase percentage below the basis-point divisor\n      ○ skipped rejects a Chase percentage at the basis-point divisor\n      ○ skipped finalizes a trailing decimal separator from the limit price on blur\n      ○ skipped does not update the limit price on blur when already finalized\n      ○ skipped sets the limit price from the live mid\n      ○ skipped previews a slider USD amount before committing on drag end\n      ○ skipped forwards the direction and add-funds handlers\n\nTest Suites: 1 passed, 1 total\nTests:       271 skipped, 11 passed, 282 total\nSnapshots:   0 total\nTime:        1.462 s, estimated 4 s\nRan all test suites matching /app\\/components\\/UI\\/Perps\\/Views\\/PerpsProMarketView\\/components\\/PerpsProOrderForm\\/usePerpsProOrderForm.test.ts/i with tests matching \"far-from-market\".\n"
+      }
+    },
+    {
+      "nodeId": "assert-hook-tests",
+      "action": "assert_exit_code",
+      "intent": "The user-visible feature is not deletable without failing tests",
+      "startedAt": "2026-09-03T07:07:52.774Z",
+      "endedAt": "2026-09-03T07:07:52.827Z",
+      "durationMs": 53,
+      "ok": true,
+      "next": "open-btc-pro",
+      "output": {
+        "source": "run-hook-tests",
+        "expected": 0,
+        "actual": 0
+      }
+    },
+    {
+      "nodeId": "open-btc-pro",
+      "action": "ui.navigate",
+      "intent": "Open BTC market details in Pro",
+      "startedAt": "2026-09-03T07:07:52.882Z",
+      "endedAt": "2026-09-03T07:07:58.553Z",
+      "durationMs": 5671,
+      "ok": true,
+      "next": "wait-pro-form",
+      "output": {
+        "action": "ui.navigate",
+        "page": "perps-market",
+        "route": "PerpsMarketDetails",
+        "params": {
+          "market": {
+            "symbol": "BTC"
+          }
+        },
+        "navigation": {
+          "navigated": "PerpsMarketDetails",
+          "params": {
+            "market": {
+              "symbol": "BTC"
+            }
+          },
+          "previousRoute": {
+            "key": "WalletView-PXBgKmgwH6TF49AMXLDJg",
+            "name": "WalletView"
+          },
+          "currentRoute": {
+            "key": "PerpsMarketDetails-wkJM4G_9dYD1GgZR3FXW7",
+            "name": "PerpsMarketDetails",
+            "params": {
+              "market": {
+                "symbol": "BTC"
+              }
+            }
+          },
+          "deviceName": "mm-1",
+          "platform": "ios",
+          "verifiedRoute": "PerpsMarketDetails"
+        },
+        "visibleMode": {
+          "mode": "pro",
+          "observedScreen": "perps-mode-toggle-pro",
+          "provider": "ios-native-accessibility",
+          "proofPath": "visible-native-navigation"
+        },
+        "proofPath": "agentic-navigation+visible-native-navigation",
+        "liveAdapter": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness/library/actions/mobile/ui/navigate.mjs"
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "699912B9-4B29-4C75-841D-D4A307E801AF",
+          "name": "MetaMask",
+          "nodeCount": 74,
+          "truncated": false
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXButton",
+              "label": "Browse markets",
+              "test_id": "perps-pro-market-header-market-list-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 68,
+                "width": 186,
+                "height": 52
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Back",
+              "test_id": "perps-pro-market-header-back-button",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 82,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Perps balance",
+              "test_id": "perps-pro-market-header-wallet-button",
+              "enabled": true,
+              "bounds": {
+                "x": 246,
+                "y": 78,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Remove from watchlist",
+              "test_id": "perps-pro-market-header-favorite-button",
+              "enabled": true,
+              "bounds": {
+                "x": 290,
+                "y": 78,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Currently Pro mode",
+              "test_id": "perps-mode-toggle-pro",
+              "enabled": true,
+              "bounds": {
+                "x": 330,
+                "y": 78,
+                "width": 56,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Expand chart",
+              "test_id": "perps-pro-market-chart-toggle-button",
+              "enabled": true,
+              "bounds": {
+                "x": 354,
+                "y": 148,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Long",
+              "test_id": "perps-pro-order-form-direction-long",
+              "enabled": true,
+              "bounds": {
+                "x": 13,
+                "y": 265,
+                "width": 162,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Short",
+              "test_id": "perps-pro-order-form-direction-short",
+              "enabled": true,
+              "bounds": {
+                "x": 179,
+                "y": 265,
+                "width": 162,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Show order book",
+              "test_id": "perps-pro-market-order-book-expand",
+              "enabled": true,
+              "bounds": {
+                "x": 362,
+                "y": 265,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Isolated",
+              "test_id": "perps-pro-order-form-margin-mode",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 318,
+                "width": 70,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "3x",
+              "test_id": "perps-pro-order-form-leverage",
+              "enabled": true,
+              "bounds": {
+                "x": 86,
+                "y": 318,
+                "width": 33,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Scale",
+              "test_id": "perps-pro-order-form-order-type",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 366,
+                "width": 386,
+                "height": 54
+              }
+            },
+            {
+              "role": "AXTextField",
+              "label": "Start (USD)",
+              "test_id": "perps-pro-order-form-scale-start-price",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 448,
+                "width": 362,
+                "height": 18
+              }
+            },
+            {
+              "role": "AXTextField",
+              "label": "End (USD)",
+              "test_id": "perps-pro-order-form-scale-end-price",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 502,
+                "width": 362,
+                "height": 18
+              }
+            },
+            {
+              "role": "AXTextField",
+              "label": "Order count",
+              "test_id": "perps-pro-order-form-scale-total-orders",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 556,
+                "width": 362,
+                "height": 18
+              }
+            },
+            {
+              "role": "AXTextField",
+              "label": "Size skew",
+              "test_id": "perps-pro-order-form-scale-size-skew",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 610,
+                "width": 342,
+                "height": 18
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Size skew",
+              "test_id": "perps-pro-order-form-scale-skew-info",
+              "enabled": true,
+              "bounds": {
+                "x": 362,
+                "y": 600,
+                "width": 20,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Size (USD)",
+              "test_id": "perps-pro-order-form-size-field",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 652,
+                "width": 386,
+                "height": 78
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Switch size denomination: USD",
+              "test_id": "perps-pro-order-form-size-unit",
+              "enabled": false,
+              "bounds": {
+                "x": 358,
+                "y": 664,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "$629.35 available",
+              "test_id": "perps-pro-order-form-add-funds",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 789,
+                "width": 386,
+                "height": 46
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Reduce only",
+              "test_id": "perps-pro-order-form-reduce-only",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 864,
+                "width": 362,
+                "height": 22
+              }
+            },
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 348,
+                "y": 130,
+                "width": 26,
+                "height": 26
+              }
+            }
+          ],
+          "hidden_or_offscreen": [
+            {
+              "role": "AXButton",
+              "label": "Place order",
+              "test_id": "perps-pro-order-form-place-order",
+              "enabled": false,
+              "bounds": {
+                "x": 8,
+                "y": 915,
+                "width": 386,
+                "height": 48
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "test_id": "perps-pro-order-form-summary-fees-button",
+              "enabled": true,
+              "bounds": {
+                "x": 39,
+                "y": 1097,
+                "width": 20,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Positions (1), Positions (1)",
+              "test_id": "perps-pro-market-positions-panel-tab-positions",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1148,
+                "width": 93,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Orders, Orders",
+              "test_id": "perps-pro-market-positions-panel-tab-orders",
+              "enabled": true,
+              "bounds": {
+                "x": 125,
+                "y": 1148,
+                "width": 54,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Chase, Chase",
+              "test_id": "perps-pro-market-positions-panel-tab-chase",
+              "enabled": true,
+              "bounds": {
+                "x": 203,
+                "y": 1148,
+                "width": 49,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Order history",
+              "test_id": "perps-pro-market-positions-history",
+              "enabled": true,
+              "bounds": {
+                "x": 362,
+                "y": 1148,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Sort positions",
+              "test_id": "perps-pro-market-positions-sort-button",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1192,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "All sides",
+              "test_id": "perps-pro-market-positions-side-filter-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 1192,
+                "width": 102,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "BTC only",
+              "test_id": "perps-pro-market-positions-ticker-only",
+              "enabled": true,
+              "bounds": {
+                "x": 166,
+                "y": 1197,
+                "width": 92,
+                "height": 22
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Close all",
+              "test_id": "perps-pro-market-positions-close-all",
+              "enabled": true,
+              "bounds": {
+                "x": 295,
+                "y": 1254,
+                "width": 83,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the ETH market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1328,
+                "width": 402,
+                "height": 62
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Adjust Margin",
+              "test_id": "perps-pro-market-position-edit-margin",
+              "enabled": true,
+              "bounds": {
+                "x": 209,
+                "y": 1435,
+                "width": 160,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Edit TP/SL",
+              "test_id": "perps-pro-market-position-edit-tpsl",
+              "enabled": true,
+              "bounds": {
+                "x": 209,
+                "y": 1539,
+                "width": 160,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Close",
+              "test_id": "perps-pro-market-position-close",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 1584,
+                "width": 161,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Reverse",
+              "test_id": "perps-pro-market-position-reverse",
+              "enabled": true,
+              "bounds": {
+                "x": 185,
+                "y": 1584,
+                "width": 161,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Share",
+              "test_id": "perps-pro-market-position-share",
+              "enabled": true,
+              "bounds": {
+                "x": 354,
+                "y": 1584,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            }
+          ],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "wait-pro-form",
+      "action": "ui.wait_for",
+      "intent": "Pro order form mounted",
+      "startedAt": "2026-09-03T07:07:58.614Z",
+      "endedAt": "2026-09-03T07:07:59.725Z",
+      "durationMs": 1111,
+      "ok": true,
+      "next": "open-order-type",
+      "output": {
+        "matched": true,
+        "testId": "perps-pro-order-form",
+        "expected": "present",
+        "present": true,
+        "visible": true,
+        "visibility": "tree"
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "699912B9-4B29-4C75-841D-D4A307E801AF",
+          "name": "MetaMask",
+          "nodeCount": 74,
+          "truncated": false
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXButton",
+              "label": "Browse markets",
+              "test_id": "perps-pro-market-header-market-list-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 68,
+                "width": 186,
+                "height": 52
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Back",
+              "test_id": "perps-pro-market-header-back-button",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 82,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Perps balance",
+              "test_id": "perps-pro-market-header-wallet-button",
+              "enabled": true,
+              "bounds": {
+                "x": 246,
+                "y": 78,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Remove from watchlist",
+              "test_id": "perps-pro-market-header-favorite-button",
+              "enabled": true,
+              "bounds": {
+                "x": 290,
+                "y": 78,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Currently Pro mode",
+              "test_id": "perps-mode-toggle-pro",
+              "enabled": true,
+              "bounds": {
+                "x": 330,
+                "y": 78,
+                "width": 56,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Expand chart",
+              "test_id": "perps-pro-market-chart-toggle-button",
+              "enabled": true,
+              "bounds": {
+                "x": 354,
+                "y": 148,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Long",
+              "test_id": "perps-pro-order-form-direction-long",
+              "enabled": true,
+              "bounds": {
+                "x": 13,
+                "y": 265,
+                "width": 162,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Short",
+              "test_id": "perps-pro-order-form-direction-short",
+              "enabled": true,
+              "bounds": {
+                "x": 179,
+                "y": 265,
+                "width": 162,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Show order book",
+              "test_id": "perps-pro-market-order-book-expand",
+              "enabled": true,
+              "bounds": {
+                "x": 362,
+                "y": 265,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Isolated",
+              "test_id": "perps-pro-order-form-margin-mode",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 318,
+                "width": 70,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "3x",
+              "test_id": "perps-pro-order-form-leverage",
+              "enabled": true,
+              "bounds": {
+                "x": 86,
+                "y": 318,
+                "width": 33,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Scale",
+              "test_id": "perps-pro-order-form-order-type",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 366,
+                "width": 386,
+                "height": 54
+              }
+            },
+            {
+              "role": "AXTextField",
+              "label": "Start (USD)",
+              "test_id": "perps-pro-order-form-scale-start-price",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 448,
+                "width": 362,
+                "height": 18
+              }
+            },
+            {
+              "role": "AXTextField",
+              "label": "End (USD)",
+              "test_id": "perps-pro-order-form-scale-end-price",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 502,
+                "width": 362,
+                "height": 18
+              }
+            },
+            {
+              "role": "AXTextField",
+              "label": "Order count",
+              "test_id": "perps-pro-order-form-scale-total-orders",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 556,
+                "width": 362,
+                "height": 18
+              }
+            },
+            {
+              "role": "AXTextField",
+              "label": "Size skew",
+              "test_id": "perps-pro-order-form-scale-size-skew",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 610,
+                "width": 342,
+                "height": 18
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Size skew",
+              "test_id": "perps-pro-order-form-scale-skew-info",
+              "enabled": true,
+              "bounds": {
+                "x": 362,
+                "y": 600,
+                "width": 20,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Size (USD)",
+              "test_id": "perps-pro-order-form-size-field",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 652,
+                "width": 386,
+                "height": 78
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Switch size denomination: USD",
+              "test_id": "perps-pro-order-form-size-unit",
+              "enabled": false,
+              "bounds": {
+                "x": 358,
+                "y": 664,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "$629.35 available",
+              "test_id": "perps-pro-order-form-add-funds",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 789,
+                "width": 386,
+                "height": 46
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Reduce only",
+              "test_id": "perps-pro-order-form-reduce-only",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 864,
+                "width": 362,
+                "height": 22
+              }
+            },
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 348,
+                "y": 130,
+                "width": 26,
+                "height": 26
+              }
+            }
+          ],
+          "hidden_or_offscreen": [
+            {
+              "role": "AXButton",
+              "label": "Place order",
+              "test_id": "perps-pro-order-form-place-order",
+              "enabled": false,
+              "bounds": {
+                "x": 8,
+                "y": 915,
+                "width": 386,
+                "height": 48
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "test_id": "perps-pro-order-form-summary-fees-button",
+              "enabled": true,
+              "bounds": {
+                "x": 39,
+                "y": 1097,
+                "width": 20,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Positions (1), Positions (1)",
+              "test_id": "perps-pro-market-positions-panel-tab-positions",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1148,
+                "width": 93,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Orders, Orders",
+              "test_id": "perps-pro-market-positions-panel-tab-orders",
+              "enabled": true,
+              "bounds": {
+                "x": 125,
+                "y": 1148,
+                "width": 54,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Chase, Chase",
+              "test_id": "perps-pro-market-positions-panel-tab-chase",
+              "enabled": true,
+              "bounds": {
+                "x": 203,
+                "y": 1148,
+                "width": 49,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Order history",
+              "test_id": "perps-pro-market-positions-history",
+              "enabled": true,
+              "bounds": {
+                "x": 362,
+                "y": 1148,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Sort positions",
+              "test_id": "perps-pro-market-positions-sort-button",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1192,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "All sides",
+              "test_id": "perps-pro-market-positions-side-filter-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 1192,
+                "width": 102,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "BTC only",
+              "test_id": "perps-pro-market-positions-ticker-only",
+              "enabled": true,
+              "bounds": {
+                "x": 166,
+                "y": 1197,
+                "width": 92,
+                "height": 22
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Close all",
+              "test_id": "perps-pro-market-positions-close-all",
+              "enabled": true,
+              "bounds": {
+                "x": 295,
+                "y": 1254,
+                "width": 83,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the ETH market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1328,
+                "width": 402,
+                "height": 62
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Adjust Margin",
+              "test_id": "perps-pro-market-position-edit-margin",
+              "enabled": true,
+              "bounds": {
+                "x": 209,
+                "y": 1435,
+                "width": 160,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Edit TP/SL",
+              "test_id": "perps-pro-market-position-edit-tpsl",
+              "enabled": true,
+              "bounds": {
+                "x": 209,
+                "y": 1539,
+                "width": 160,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Close",
+              "test_id": "perps-pro-market-position-close",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 1584,
+                "width": 161,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Reverse",
+              "test_id": "perps-pro-market-position-reverse",
+              "enabled": true,
+              "bounds": {
+                "x": 185,
+                "y": 1584,
+                "width": 161,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Share",
+              "test_id": "perps-pro-market-position-share",
+              "enabled": true,
+              "bounds": {
+                "x": 354,
+                "y": 1584,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            }
+          ],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "open-order-type",
+      "action": "ui.press",
+      "intent": "Open the order-type sheet",
+      "startedAt": "2026-09-03T07:07:59.778Z",
+      "endedAt": "2026-09-03T07:08:00.448Z",
+      "durationMs": 670,
+      "ok": true,
+      "next": "wait-sheet",
+      "output": {
+        "ok": true,
+        "testId": "perps-pro-order-form-order-type",
+        "deviceName": "mm-1"
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "699912B9-4B29-4C75-841D-D4A307E801AF",
+          "name": "MetaMask",
+          "nodeCount": 11,
+          "truncated": false
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXGenericElement",
+              "test_id": "perps-order-type-bottom-sheet-close",
+              "enabled": true,
+              "bounds": {
+                "x": 361,
+                "y": 508,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Basic, Basic",
+              "test_id": "perps-order-type-tab-basic",
+              "enabled": true,
+              "bounds": {
+                "x": 17,
+                "y": 552,
+                "width": 43,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Triggered, Triggered",
+              "test_id": "perps-order-type-tab-triggered",
+              "enabled": true,
+              "bounds": {
+                "x": 84,
+                "y": 552,
+                "width": 76,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Advanced, Advanced",
+              "test_id": "perps-order-type-tab-advanced",
+              "enabled": true,
+              "bounds": {
+                "x": 184,
+                "y": 552,
+                "width": 78,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "perps-order-type-twap-icon-light, TWAP, Split orders to execute at regular time interval",
+              "test_id": "perps-order-type-twap",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 584,
+                "width": 400,
+                "height": 78
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "perps-order-type-scale-icon-light, Scale, Multiple limit orders spread across a price range",
+              "test_id": "perps-order-type-scale",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 662,
+                "width": 400,
+                "height": 78
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "perps-order-type-chase-icon-light, Chase, Post-only limit order that follows the best bid or ask",
+              "test_id": "perps-order-type-chase",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 740,
+                "width": 400,
+                "height": 100
+              }
+            },
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 348,
+                "y": 130,
+                "width": 26,
+                "height": 26
+              }
+            }
+          ],
+          "hidden_or_offscreen": [],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "wait-sheet",
+      "action": "ui.wait_for",
+      "intent": "Sheet is open on its tab bar",
+      "startedAt": "2026-09-03T07:08:00.500Z",
+      "endedAt": "2026-09-03T07:08:01.169Z",
+      "durationMs": 669,
+      "ok": true,
+      "next": "open-advanced-tab",
+      "output": {
+        "matched": true,
+        "testId": "perps-order-type-tab-advanced",
+        "expected": "present",
+        "present": true,
+        "visible": true,
+        "visibility": "tree"
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "699912B9-4B29-4C75-841D-D4A307E801AF",
+          "name": "MetaMask",
+          "nodeCount": 11,
+          "truncated": false
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXGenericElement",
+              "test_id": "perps-order-type-bottom-sheet-close",
+              "enabled": true,
+              "bounds": {
+                "x": 361,
+                "y": 508,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Basic, Basic",
+              "test_id": "perps-order-type-tab-basic",
+              "enabled": true,
+              "bounds": {
+                "x": 17,
+                "y": 552,
+                "width": 43,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Triggered, Triggered",
+              "test_id": "perps-order-type-tab-triggered",
+              "enabled": true,
+              "bounds": {
+                "x": 84,
+                "y": 552,
+                "width": 76,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Advanced, Advanced",
+              "test_id": "perps-order-type-tab-advanced",
+              "enabled": true,
+              "bounds": {
+                "x": 184,
+                "y": 552,
+                "width": 78,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "perps-order-type-twap-icon-light, TWAP, Split orders to execute at regular time interval",
+              "test_id": "perps-order-type-twap",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 584,
+                "width": 400,
+                "height": 78
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "perps-order-type-scale-icon-light, Scale, Multiple limit orders spread across a price range",
+              "test_id": "perps-order-type-scale",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 662,
+                "width": 400,
+                "height": 78
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "perps-order-type-chase-icon-light, Chase, Post-only limit order that follows the best bid or ask",
+              "test_id": "perps-order-type-chase",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 740,
+                "width": 400,
+                "height": 100
+              }
+            },
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 348,
+                "y": 130,
+                "width": 26,
+                "height": 26
+              }
+            }
+          ],
+          "hidden_or_offscreen": [],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "open-advanced-tab",
+      "action": "ui.press",
+      "intent": "Scale lives under the advanced tab",
+      "startedAt": "2026-09-03T07:08:01.220Z",
+      "endedAt": "2026-09-03T07:08:01.959Z",
+      "durationMs": 739,
+      "ok": true,
+      "next": "wait-scale-option",
+      "output": {
+        "ok": true,
+        "testId": "perps-order-type-tab-advanced",
+        "deviceName": "mm-1"
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "699912B9-4B29-4C75-841D-D4A307E801AF",
+          "name": "MetaMask",
+          "nodeCount": 11,
+          "truncated": false
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXGenericElement",
+              "test_id": "perps-order-type-bottom-sheet-close",
+              "enabled": true,
+              "bounds": {
+                "x": 361,
+                "y": 508,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Basic, Basic",
+              "test_id": "perps-order-type-tab-basic",
+              "enabled": true,
+              "bounds": {
+                "x": 17,
+                "y": 552,
+                "width": 43,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Triggered, Triggered",
+              "test_id": "perps-order-type-tab-triggered",
+              "enabled": true,
+              "bounds": {
+                "x": 84,
+                "y": 552,
+                "width": 76,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Advanced, Advanced",
+              "test_id": "perps-order-type-tab-advanced",
+              "enabled": true,
+              "bounds": {
+                "x": 184,
+                "y": 552,
+                "width": 78,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "perps-order-type-twap-icon-light, TWAP, Split orders to execute at regular time interval",
+              "test_id": "perps-order-type-twap",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 584,
+                "width": 400,
+                "height": 78
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "perps-order-type-scale-icon-light, Scale, Multiple limit orders spread across a price range",
+              "test_id": "perps-order-type-scale",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 662,
+                "width": 400,
+                "height": 78
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "perps-order-type-chase-icon-light, Chase, Post-only limit order that follows the best bid or ask",
+              "test_id": "perps-order-type-chase",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 740,
+                "width": 400,
+                "height": 100
+              }
+            },
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 348,
+                "y": 130,
+                "width": 26,
+                "height": 26
+              }
+            }
+          ],
+          "hidden_or_offscreen": [],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "wait-scale-option",
+      "action": "ui.wait_for",
+      "intent": "Scale option is offered",
+      "startedAt": "2026-09-03T07:08:02.011Z",
+      "endedAt": "2026-09-03T07:08:02.648Z",
+      "durationMs": 637,
+      "ok": true,
+      "next": "select-scale",
+      "output": {
+        "matched": true,
+        "testId": "perps-order-type-scale",
+        "expected": "present",
+        "present": true,
+        "visible": true,
+        "visibility": "tree"
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "699912B9-4B29-4C75-841D-D4A307E801AF",
+          "name": "MetaMask",
+          "nodeCount": 11,
+          "truncated": false
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXGenericElement",
+              "test_id": "perps-order-type-bottom-sheet-close",
+              "enabled": true,
+              "bounds": {
+                "x": 361,
+                "y": 508,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Basic, Basic",
+              "test_id": "perps-order-type-tab-basic",
+              "enabled": true,
+              "bounds": {
+                "x": 17,
+                "y": 552,
+                "width": 43,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Triggered, Triggered",
+              "test_id": "perps-order-type-tab-triggered",
+              "enabled": true,
+              "bounds": {
+                "x": 84,
+                "y": 552,
+                "width": 76,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Advanced, Advanced",
+              "test_id": "perps-order-type-tab-advanced",
+              "enabled": true,
+              "bounds": {
+                "x": 184,
+                "y": 552,
+                "width": 78,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "perps-order-type-twap-icon-light, TWAP, Split orders to execute at regular time interval",
+              "test_id": "perps-order-type-twap",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 584,
+                "width": 400,
+                "height": 78
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "perps-order-type-scale-icon-light, Scale, Multiple limit orders spread across a price range",
+              "test_id": "perps-order-type-scale",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 662,
+                "width": 400,
+                "height": 78
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "perps-order-type-chase-icon-light, Chase, Post-only limit order that follows the best bid or ask",
+              "test_id": "perps-order-type-chase",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 740,
+                "width": 400,
+                "height": 100
+              }
+            },
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 348,
+                "y": 130,
+                "width": 26,
+                "height": 26
+              }
+            }
+          ],
+          "hidden_or_offscreen": [],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "select-scale",
+      "action": "ui.press",
+      "intent": "Switch the form to a Scale order",
+      "startedAt": "2026-09-03T07:08:02.697Z",
+      "endedAt": "2026-09-03T07:08:03.781Z",
+      "durationMs": 1084,
+      "ok": true,
+      "next": "wait-scale-start",
+      "output": {
+        "ok": true,
+        "testId": "perps-order-type-scale",
+        "deviceName": "mm-1"
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "699912B9-4B29-4C75-841D-D4A307E801AF",
+          "name": "MetaMask",
+          "nodeCount": 74,
+          "truncated": false
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXButton",
+              "label": "Browse markets",
+              "test_id": "perps-pro-market-header-market-list-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 68,
+                "width": 186,
+                "height": 52
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Back",
+              "test_id": "perps-pro-market-header-back-button",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 82,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Perps balance",
+              "test_id": "perps-pro-market-header-wallet-button",
+              "enabled": true,
+              "bounds": {
+                "x": 246,
+                "y": 78,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Remove from watchlist",
+              "test_id": "perps-pro-market-header-favorite-button",
+              "enabled": true,
+              "bounds": {
+                "x": 290,
+                "y": 78,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Currently Pro mode",
+              "test_id": "perps-mode-toggle-pro",
+              "enabled": true,
+              "bounds": {
+                "x": 330,
+                "y": 78,
+                "width": 56,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Expand chart",
+              "test_id": "perps-pro-market-chart-toggle-button",
+              "enabled": true,
+              "bounds": {
+                "x": 354,
+                "y": 148,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Long",
+              "test_id": "perps-pro-order-form-direction-long",
+              "enabled": true,
+              "bounds": {
+                "x": 13,
+                "y": 265,
+                "width": 162,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Short",
+              "test_id": "perps-pro-order-form-direction-short",
+              "enabled": true,
+              "bounds": {
+                "x": 179,
+                "y": 265,
+                "width": 162,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Show order book",
+              "test_id": "perps-pro-market-order-book-expand",
+              "enabled": true,
+              "bounds": {
+                "x": 362,
+                "y": 265,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Isolated",
+              "test_id": "perps-pro-order-form-margin-mode",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 318,
+                "width": 70,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "3x",
+              "test_id": "perps-pro-order-form-leverage",
+              "enabled": true,
+              "bounds": {
+                "x": 86,
+                "y": 318,
+                "width": 33,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Scale",
+              "test_id": "perps-pro-order-form-order-type",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 366,
+                "width": 386,
+                "height": 54
+              }
+            },
+            {
+              "role": "AXTextField",
+              "label": "Start (USD)",
+              "test_id": "perps-pro-order-form-scale-start-price",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 448,
+                "width": 362,
+                "height": 18
+              }
+            },
+            {
+              "role": "AXTextField",
+              "label": "End (USD)",
+              "test_id": "perps-pro-order-form-scale-end-price",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 502,
+                "width": 362,
+                "height": 18
+              }
+            },
+            {
+              "role": "AXTextField",
+              "label": "Order count",
+              "test_id": "perps-pro-order-form-scale-total-orders",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 556,
+                "width": 362,
+                "height": 18
+              }
+            },
+            {
+              "role": "AXTextField",
+              "label": "Size skew",
+              "test_id": "perps-pro-order-form-scale-size-skew",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 610,
+                "width": 342,
+                "height": 18
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Size skew",
+              "test_id": "perps-pro-order-form-scale-skew-info",
+              "enabled": true,
+              "bounds": {
+                "x": 362,
+                "y": 600,
+                "width": 20,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Size (USD)",
+              "test_id": "perps-pro-order-form-size-field",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 652,
+                "width": 386,
+                "height": 78
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Switch size denomination: USD",
+              "test_id": "perps-pro-order-form-size-unit",
+              "enabled": false,
+              "bounds": {
+                "x": 358,
+                "y": 664,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "$629.35 available",
+              "test_id": "perps-pro-order-form-add-funds",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 789,
+                "width": 386,
+                "height": 46
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Reduce only",
+              "test_id": "perps-pro-order-form-reduce-only",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 864,
+                "width": 362,
+                "height": 22
+              }
+            },
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 348,
+                "y": 130,
+                "width": 26,
+                "height": 26
+              }
+            }
+          ],
+          "hidden_or_offscreen": [
+            {
+              "role": "AXButton",
+              "label": "Place order",
+              "test_id": "perps-pro-order-form-place-order",
+              "enabled": false,
+              "bounds": {
+                "x": 8,
+                "y": 915,
+                "width": 386,
+                "height": 48
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "test_id": "perps-pro-order-form-summary-fees-button",
+              "enabled": true,
+              "bounds": {
+                "x": 39,
+                "y": 1097,
+                "width": 20,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Positions (1), Positions (1)",
+              "test_id": "perps-pro-market-positions-panel-tab-positions",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1148,
+                "width": 93,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Orders, Orders",
+              "test_id": "perps-pro-market-positions-panel-tab-orders",
+              "enabled": true,
+              "bounds": {
+                "x": 125,
+                "y": 1148,
+                "width": 54,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Chase, Chase",
+              "test_id": "perps-pro-market-positions-panel-tab-chase",
+              "enabled": true,
+              "bounds": {
+                "x": 203,
+                "y": 1148,
+                "width": 49,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Order history",
+              "test_id": "perps-pro-market-positions-history",
+              "enabled": true,
+              "bounds": {
+                "x": 362,
+                "y": 1148,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Sort positions",
+              "test_id": "perps-pro-market-positions-sort-button",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1192,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "All sides",
+              "test_id": "perps-pro-market-positions-side-filter-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 1192,
+                "width": 102,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "BTC only",
+              "test_id": "perps-pro-market-positions-ticker-only",
+              "enabled": true,
+              "bounds": {
+                "x": 166,
+                "y": 1197,
+                "width": 92,
+                "height": 22
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Close all",
+              "test_id": "perps-pro-market-positions-close-all",
+              "enabled": true,
+              "bounds": {
+                "x": 295,
+                "y": 1254,
+                "width": 83,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the ETH market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1328,
+                "width": 402,
+                "height": 62
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Adjust Margin",
+              "test_id": "perps-pro-market-position-edit-margin",
+              "enabled": true,
+              "bounds": {
+                "x": 209,
+                "y": 1435,
+                "width": 160,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Edit TP/SL",
+              "test_id": "perps-pro-market-position-edit-tpsl",
+              "enabled": true,
+              "bounds": {
+                "x": 209,
+                "y": 1539,
+                "width": 160,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Close",
+              "test_id": "perps-pro-market-position-close",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 1584,
+                "width": 161,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Reverse",
+              "test_id": "perps-pro-market-position-reverse",
+              "enabled": true,
+              "bounds": {
+                "x": 185,
+                "y": 1584,
+                "width": 161,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Share",
+              "test_id": "perps-pro-market-position-share",
+              "enabled": true,
+              "bounds": {
+                "x": 354,
+                "y": 1584,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            }
+          ],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "wait-scale-start",
+      "action": "ui.wait_for",
+      "intent": "The scale start price field the warning measures is on screen",
+      "startedAt": "2026-09-03T07:08:03.831Z",
+      "endedAt": "2026-09-03T07:08:04.734Z",
+      "durationMs": 903,
+      "ok": true,
+      "next": "wait-scale-end",
+      "output": {
+        "matched": true,
+        "testId": "perps-pro-order-form-scale-start-price",
+        "expected": "present",
+        "present": true,
+        "visible": true,
+        "visibility": "tree"
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "699912B9-4B29-4C75-841D-D4A307E801AF",
+          "name": "MetaMask",
+          "nodeCount": 74,
+          "truncated": false
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXButton",
+              "label": "Browse markets",
+              "test_id": "perps-pro-market-header-market-list-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 68,
+                "width": 186,
+                "height": 52
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Back",
+              "test_id": "perps-pro-market-header-back-button",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 82,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Perps balance",
+              "test_id": "perps-pro-market-header-wallet-button",
+              "enabled": true,
+              "bounds": {
+                "x": 246,
+                "y": 78,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Remove from watchlist",
+              "test_id": "perps-pro-market-header-favorite-button",
+              "enabled": true,
+              "bounds": {
+                "x": 290,
+                "y": 78,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Currently Pro mode",
+              "test_id": "perps-mode-toggle-pro",
+              "enabled": true,
+              "bounds": {
+                "x": 330,
+                "y": 78,
+                "width": 56,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Expand chart",
+              "test_id": "perps-pro-market-chart-toggle-button",
+              "enabled": true,
+              "bounds": {
+                "x": 354,
+                "y": 148,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Long",
+              "test_id": "perps-pro-order-form-direction-long",
+              "enabled": true,
+              "bounds": {
+                "x": 13,
+                "y": 265,
+                "width": 162,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Short",
+              "test_id": "perps-pro-order-form-direction-short",
+              "enabled": true,
+              "bounds": {
+                "x": 179,
+                "y": 265,
+                "width": 162,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Show order book",
+              "test_id": "perps-pro-market-order-book-expand",
+              "enabled": true,
+              "bounds": {
+                "x": 362,
+                "y": 265,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Isolated",
+              "test_id": "perps-pro-order-form-margin-mode",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 318,
+                "width": 70,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "3x",
+              "test_id": "perps-pro-order-form-leverage",
+              "enabled": true,
+              "bounds": {
+                "x": 86,
+                "y": 318,
+                "width": 33,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Scale",
+              "test_id": "perps-pro-order-form-order-type",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 366,
+                "width": 386,
+                "height": 54
+              }
+            },
+            {
+              "role": "AXTextField",
+              "label": "Start (USD)",
+              "test_id": "perps-pro-order-form-scale-start-price",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 448,
+                "width": 362,
+                "height": 18
+              }
+            },
+            {
+              "role": "AXTextField",
+              "label": "End (USD)",
+              "test_id": "perps-pro-order-form-scale-end-price",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 502,
+                "width": 362,
+                "height": 18
+              }
+            },
+            {
+              "role": "AXTextField",
+              "label": "Order count",
+              "test_id": "perps-pro-order-form-scale-total-orders",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 556,
+                "width": 362,
+                "height": 18
+              }
+            },
+            {
+              "role": "AXTextField",
+              "label": "Size skew",
+              "test_id": "perps-pro-order-form-scale-size-skew",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 610,
+                "width": 342,
+                "height": 18
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Size skew",
+              "test_id": "perps-pro-order-form-scale-skew-info",
+              "enabled": true,
+              "bounds": {
+                "x": 362,
+                "y": 600,
+                "width": 20,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Size (USD)",
+              "test_id": "perps-pro-order-form-size-field",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 652,
+                "width": 386,
+                "height": 78
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Switch size denomination: USD",
+              "test_id": "perps-pro-order-form-size-unit",
+              "enabled": false,
+              "bounds": {
+                "x": 358,
+                "y": 664,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "$629.35 available",
+              "test_id": "perps-pro-order-form-add-funds",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 789,
+                "width": 386,
+                "height": 46
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Reduce only",
+              "test_id": "perps-pro-order-form-reduce-only",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 864,
+                "width": 362,
+                "height": 22
+              }
+            },
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 348,
+                "y": 130,
+                "width": 26,
+                "height": 26
+              }
+            }
+          ],
+          "hidden_or_offscreen": [
+            {
+              "role": "AXButton",
+              "label": "Place order",
+              "test_id": "perps-pro-order-form-place-order",
+              "enabled": false,
+              "bounds": {
+                "x": 8,
+                "y": 915,
+                "width": 386,
+                "height": 48
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "test_id": "perps-pro-order-form-summary-fees-button",
+              "enabled": true,
+              "bounds": {
+                "x": 39,
+                "y": 1097,
+                "width": 20,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Positions (1), Positions (1)",
+              "test_id": "perps-pro-market-positions-panel-tab-positions",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1148,
+                "width": 93,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Orders, Orders",
+              "test_id": "perps-pro-market-positions-panel-tab-orders",
+              "enabled": true,
+              "bounds": {
+                "x": 125,
+                "y": 1148,
+                "width": 54,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Chase, Chase",
+              "test_id": "perps-pro-market-positions-panel-tab-chase",
+              "enabled": true,
+              "bounds": {
+                "x": 203,
+                "y": 1148,
+                "width": 49,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Order history",
+              "test_id": "perps-pro-market-positions-history",
+              "enabled": true,
+              "bounds": {
+                "x": 362,
+                "y": 1148,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Sort positions",
+              "test_id": "perps-pro-market-positions-sort-button",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1192,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "All sides",
+              "test_id": "perps-pro-market-positions-side-filter-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 1192,
+                "width": 102,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "BTC only",
+              "test_id": "perps-pro-market-positions-ticker-only",
+              "enabled": true,
+              "bounds": {
+                "x": 166,
+                "y": 1197,
+                "width": 92,
+                "height": 22
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Close all",
+              "test_id": "perps-pro-market-positions-close-all",
+              "enabled": true,
+              "bounds": {
+                "x": 295,
+                "y": 1254,
+                "width": 83,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the ETH market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1328,
+                "width": 402,
+                "height": 62
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Adjust Margin",
+              "test_id": "perps-pro-market-position-edit-margin",
+              "enabled": true,
+              "bounds": {
+                "x": 209,
+                "y": 1435,
+                "width": 160,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Edit TP/SL",
+              "test_id": "perps-pro-market-position-edit-tpsl",
+              "enabled": true,
+              "bounds": {
+                "x": 209,
+                "y": 1539,
+                "width": 160,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Close",
+              "test_id": "perps-pro-market-position-close",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 1584,
+                "width": 161,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Reverse",
+              "test_id": "perps-pro-market-position-reverse",
+              "enabled": true,
+              "bounds": {
+                "x": 185,
+                "y": 1584,
+                "width": 161,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Share",
+              "test_id": "perps-pro-market-position-share",
+              "enabled": true,
+              "bounds": {
+                "x": 354,
+                "y": 1584,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            }
+          ],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "wait-scale-end",
+      "action": "ui.wait_for",
+      "intent": "The scale end price field is on screen",
+      "startedAt": "2026-09-03T07:08:04.781Z",
+      "endedAt": "2026-09-03T07:08:05.590Z",
+      "durationMs": 809,
+      "ok": true,
+      "next": "wait-place",
+      "output": {
+        "matched": true,
+        "testId": "perps-pro-order-form-scale-end-price",
+        "expected": "present",
+        "present": true,
+        "visible": true,
+        "visibility": "tree"
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "699912B9-4B29-4C75-841D-D4A307E801AF",
+          "name": "MetaMask",
+          "nodeCount": 74,
+          "truncated": false
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXButton",
+              "label": "Browse markets",
+              "test_id": "perps-pro-market-header-market-list-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 68,
+                "width": 186,
+                "height": 52
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Back",
+              "test_id": "perps-pro-market-header-back-button",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 82,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Perps balance",
+              "test_id": "perps-pro-market-header-wallet-button",
+              "enabled": true,
+              "bounds": {
+                "x": 246,
+                "y": 78,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Remove from watchlist",
+              "test_id": "perps-pro-market-header-favorite-button",
+              "enabled": true,
+              "bounds": {
+                "x": 290,
+                "y": 78,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Currently Pro mode",
+              "test_id": "perps-mode-toggle-pro",
+              "enabled": true,
+              "bounds": {
+                "x": 330,
+                "y": 78,
+                "width": 56,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Expand chart",
+              "test_id": "perps-pro-market-chart-toggle-button",
+              "enabled": true,
+              "bounds": {
+                "x": 354,
+                "y": 148,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Long",
+              "test_id": "perps-pro-order-form-direction-long",
+              "enabled": true,
+              "bounds": {
+                "x": 13,
+                "y": 265,
+                "width": 162,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Short",
+              "test_id": "perps-pro-order-form-direction-short",
+              "enabled": true,
+              "bounds": {
+                "x": 179,
+                "y": 265,
+                "width": 162,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Show order book",
+              "test_id": "perps-pro-market-order-book-expand",
+              "enabled": true,
+              "bounds": {
+                "x": 362,
+                "y": 265,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Isolated",
+              "test_id": "perps-pro-order-form-margin-mode",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 318,
+                "width": 70,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "3x",
+              "test_id": "perps-pro-order-form-leverage",
+              "enabled": true,
+              "bounds": {
+                "x": 86,
+                "y": 318,
+                "width": 33,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Scale",
+              "test_id": "perps-pro-order-form-order-type",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 366,
+                "width": 386,
+                "height": 54
+              }
+            },
+            {
+              "role": "AXTextField",
+              "label": "Start (USD)",
+              "test_id": "perps-pro-order-form-scale-start-price",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 448,
+                "width": 362,
+                "height": 18
+              }
+            },
+            {
+              "role": "AXTextField",
+              "label": "End (USD)",
+              "test_id": "perps-pro-order-form-scale-end-price",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 502,
+                "width": 362,
+                "height": 18
+              }
+            },
+            {
+              "role": "AXTextField",
+              "label": "Order count",
+              "test_id": "perps-pro-order-form-scale-total-orders",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 556,
+                "width": 362,
+                "height": 18
+              }
+            },
+            {
+              "role": "AXTextField",
+              "label": "Size skew",
+              "test_id": "perps-pro-order-form-scale-size-skew",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 610,
+                "width": 342,
+                "height": 18
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Size skew",
+              "test_id": "perps-pro-order-form-scale-skew-info",
+              "enabled": true,
+              "bounds": {
+                "x": 362,
+                "y": 600,
+                "width": 20,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Size (USD)",
+              "test_id": "perps-pro-order-form-size-field",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 652,
+                "width": 386,
+                "height": 78
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Switch size denomination: USD",
+              "test_id": "perps-pro-order-form-size-unit",
+              "enabled": false,
+              "bounds": {
+                "x": 358,
+                "y": 664,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "$629.35 available",
+              "test_id": "perps-pro-order-form-add-funds",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 789,
+                "width": 386,
+                "height": 46
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Reduce only",
+              "test_id": "perps-pro-order-form-reduce-only",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 864,
+                "width": 362,
+                "height": 22
+              }
+            },
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 348,
+                "y": 130,
+                "width": 26,
+                "height": 26
+              }
+            }
+          ],
+          "hidden_or_offscreen": [
+            {
+              "role": "AXButton",
+              "label": "Place order",
+              "test_id": "perps-pro-order-form-place-order",
+              "enabled": false,
+              "bounds": {
+                "x": 8,
+                "y": 915,
+                "width": 386,
+                "height": 48
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "test_id": "perps-pro-order-form-summary-fees-button",
+              "enabled": true,
+              "bounds": {
+                "x": 39,
+                "y": 1097,
+                "width": 20,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Positions (1), Positions (1)",
+              "test_id": "perps-pro-market-positions-panel-tab-positions",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1148,
+                "width": 93,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Orders, Orders",
+              "test_id": "perps-pro-market-positions-panel-tab-orders",
+              "enabled": true,
+              "bounds": {
+                "x": 125,
+                "y": 1148,
+                "width": 54,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Chase, Chase",
+              "test_id": "perps-pro-market-positions-panel-tab-chase",
+              "enabled": true,
+              "bounds": {
+                "x": 203,
+                "y": 1148,
+                "width": 49,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Order history",
+              "test_id": "perps-pro-market-positions-history",
+              "enabled": true,
+              "bounds": {
+                "x": 362,
+                "y": 1148,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Sort positions",
+              "test_id": "perps-pro-market-positions-sort-button",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1192,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "All sides",
+              "test_id": "perps-pro-market-positions-side-filter-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 1192,
+                "width": 102,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "BTC only",
+              "test_id": "perps-pro-market-positions-ticker-only",
+              "enabled": true,
+              "bounds": {
+                "x": 166,
+                "y": 1197,
+                "width": 92,
+                "height": 22
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Close all",
+              "test_id": "perps-pro-market-positions-close-all",
+              "enabled": true,
+              "bounds": {
+                "x": 295,
+                "y": 1254,
+                "width": 83,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the ETH market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1328,
+                "width": 402,
+                "height": 62
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Adjust Margin",
+              "test_id": "perps-pro-market-position-edit-margin",
+              "enabled": true,
+              "bounds": {
+                "x": 209,
+                "y": 1435,
+                "width": 160,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Edit TP/SL",
+              "test_id": "perps-pro-market-position-edit-tpsl",
+              "enabled": true,
+              "bounds": {
+                "x": 209,
+                "y": 1539,
+                "width": 160,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Close",
+              "test_id": "perps-pro-market-position-close",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 1584,
+                "width": 161,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Reverse",
+              "test_id": "perps-pro-market-position-reverse",
+              "enabled": true,
+              "bounds": {
+                "x": 185,
+                "y": 1584,
+                "width": 161,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Share",
+              "test_id": "perps-pro-market-position-share",
+              "enabled": true,
+              "bounds": {
+                "x": 354,
+                "y": 1584,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            }
+          ],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "wait-place",
+      "action": "ui.wait_for",
+      "intent": "AC6: Place remains present on a Scale order",
+      "startedAt": "2026-09-03T07:08:05.634Z",
+      "endedAt": "2026-09-03T07:08:06.501Z",
+      "durationMs": 867,
+      "ok": true,
+      "next": "shot-scale-form",
+      "output": {
+        "matched": true,
+        "testId": "perps-pro-order-form-place-order",
+        "expected": "present",
+        "present": true,
+        "visible": true,
+        "visibility": "tree"
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "699912B9-4B29-4C75-841D-D4A307E801AF",
+          "name": "MetaMask",
+          "nodeCount": 74,
+          "truncated": false
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXButton",
+              "label": "Browse markets",
+              "test_id": "perps-pro-market-header-market-list-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 68,
+                "width": 186,
+                "height": 52
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Back",
+              "test_id": "perps-pro-market-header-back-button",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 82,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Perps balance",
+              "test_id": "perps-pro-market-header-wallet-button",
+              "enabled": true,
+              "bounds": {
+                "x": 246,
+                "y": 78,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Remove from watchlist",
+              "test_id": "perps-pro-market-header-favorite-button",
+              "enabled": true,
+              "bounds": {
+                "x": 290,
+                "y": 78,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Currently Pro mode",
+              "test_id": "perps-mode-toggle-pro",
+              "enabled": true,
+              "bounds": {
+                "x": 330,
+                "y": 78,
+                "width": 56,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Expand chart",
+              "test_id": "perps-pro-market-chart-toggle-button",
+              "enabled": true,
+              "bounds": {
+                "x": 354,
+                "y": 148,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Long",
+              "test_id": "perps-pro-order-form-direction-long",
+              "enabled": true,
+              "bounds": {
+                "x": 13,
+                "y": 265,
+                "width": 162,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Short",
+              "test_id": "perps-pro-order-form-direction-short",
+              "enabled": true,
+              "bounds": {
+                "x": 179,
+                "y": 265,
+                "width": 162,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Show order book",
+              "test_id": "perps-pro-market-order-book-expand",
+              "enabled": true,
+              "bounds": {
+                "x": 362,
+                "y": 265,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Isolated",
+              "test_id": "perps-pro-order-form-margin-mode",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 318,
+                "width": 70,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "3x",
+              "test_id": "perps-pro-order-form-leverage",
+              "enabled": true,
+              "bounds": {
+                "x": 86,
+                "y": 318,
+                "width": 33,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Scale",
+              "test_id": "perps-pro-order-form-order-type",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 366,
+                "width": 386,
+                "height": 54
+              }
+            },
+            {
+              "role": "AXTextField",
+              "label": "Start (USD)",
+              "test_id": "perps-pro-order-form-scale-start-price",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 448,
+                "width": 362,
+                "height": 18
+              }
+            },
+            {
+              "role": "AXTextField",
+              "label": "End (USD)",
+              "test_id": "perps-pro-order-form-scale-end-price",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 502,
+                "width": 362,
+                "height": 18
+              }
+            },
+            {
+              "role": "AXTextField",
+              "label": "Order count",
+              "test_id": "perps-pro-order-form-scale-total-orders",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 556,
+                "width": 362,
+                "height": 18
+              }
+            },
+            {
+              "role": "AXTextField",
+              "label": "Size skew",
+              "test_id": "perps-pro-order-form-scale-size-skew",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 610,
+                "width": 342,
+                "height": 18
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Size skew",
+              "test_id": "perps-pro-order-form-scale-skew-info",
+              "enabled": true,
+              "bounds": {
+                "x": 362,
+                "y": 600,
+                "width": 20,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Size (USD)",
+              "test_id": "perps-pro-order-form-size-field",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 652,
+                "width": 386,
+                "height": 78
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Switch size denomination: USD",
+              "test_id": "perps-pro-order-form-size-unit",
+              "enabled": false,
+              "bounds": {
+                "x": 358,
+                "y": 664,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "$629.35 available",
+              "test_id": "perps-pro-order-form-add-funds",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 789,
+                "width": 386,
+                "height": 46
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Reduce only",
+              "test_id": "perps-pro-order-form-reduce-only",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 864,
+                "width": 362,
+                "height": 22
+              }
+            },
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 348,
+                "y": 130,
+                "width": 26,
+                "height": 26
+              }
+            }
+          ],
+          "hidden_or_offscreen": [
+            {
+              "role": "AXButton",
+              "label": "Place order",
+              "test_id": "perps-pro-order-form-place-order",
+              "enabled": false,
+              "bounds": {
+                "x": 8,
+                "y": 915,
+                "width": 386,
+                "height": 48
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "test_id": "perps-pro-order-form-summary-fees-button",
+              "enabled": true,
+              "bounds": {
+                "x": 39,
+                "y": 1097,
+                "width": 20,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Positions (1), Positions (1)",
+              "test_id": "perps-pro-market-positions-panel-tab-positions",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1148,
+                "width": 93,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Orders, Orders",
+              "test_id": "perps-pro-market-positions-panel-tab-orders",
+              "enabled": true,
+              "bounds": {
+                "x": 125,
+                "y": 1148,
+                "width": 54,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Chase, Chase",
+              "test_id": "perps-pro-market-positions-panel-tab-chase",
+              "enabled": true,
+              "bounds": {
+                "x": 203,
+                "y": 1148,
+                "width": 49,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Order history",
+              "test_id": "perps-pro-market-positions-history",
+              "enabled": true,
+              "bounds": {
+                "x": 362,
+                "y": 1148,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Sort positions",
+              "test_id": "perps-pro-market-positions-sort-button",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1192,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "All sides",
+              "test_id": "perps-pro-market-positions-side-filter-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 1192,
+                "width": 102,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "BTC only",
+              "test_id": "perps-pro-market-positions-ticker-only",
+              "enabled": true,
+              "bounds": {
+                "x": 166,
+                "y": 1197,
+                "width": 92,
+                "height": 22
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Close all",
+              "test_id": "perps-pro-market-positions-close-all",
+              "enabled": true,
+              "bounds": {
+                "x": 295,
+                "y": 1254,
+                "width": 83,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the ETH market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1328,
+                "width": 402,
+                "height": 62
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Adjust Margin",
+              "test_id": "perps-pro-market-position-edit-margin",
+              "enabled": true,
+              "bounds": {
+                "x": 209,
+                "y": 1435,
+                "width": 160,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Edit TP/SL",
+              "test_id": "perps-pro-market-position-edit-tpsl",
+              "enabled": true,
+              "bounds": {
+                "x": 209,
+                "y": 1539,
+                "width": 160,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Close",
+              "test_id": "perps-pro-market-position-close",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 1584,
+                "width": 161,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Reverse",
+              "test_id": "perps-pro-market-position-reverse",
+              "enabled": true,
+              "bounds": {
+                "x": 185,
+                "y": 1584,
+                "width": 161,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Share",
+              "test_id": "perps-pro-market-position-share",
+              "enabled": true,
+              "bounds": {
+                "x": 354,
+                "y": 1584,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            }
+          ],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "shot-scale-form",
+      "action": "ui.screenshot",
+      "intent": "Reviewer sees the real Scale surface the warning attaches to",
+      "startedAt": "2026-09-03T07:08:06.548Z",
+      "endedAt": "2026-09-03T07:08:07.354Z",
+      "durationMs": 806,
+      "ok": true,
+      "next": "done",
+      "output": {
+        "captured": true,
+        "path": "screenshots/after-scale-form.png",
+        "artifact": {
+          "path": "screenshots/after-scale-form.png",
+          "type": "screenshot",
+          "nodeId": "shot-scale-form",
+          "label": "ui.screenshot screenshot",
+          "category": "evidence",
+          "mimeType": "image/png",
+          "metadata": {
+            "provider": "simctl",
+            "mode": "xcrun simctl io screenshot",
+            "selectedDevice": "mm-1"
+          }
+        }
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "699912B9-4B29-4C75-841D-D4A307E801AF",
+          "name": "MetaMask",
+          "nodeCount": 74,
+          "truncated": false
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXButton",
+              "label": "Browse markets",
+              "test_id": "perps-pro-market-header-market-list-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 68,
+                "width": 186,
+                "height": 52
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Back",
+              "test_id": "perps-pro-market-header-back-button",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 82,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Perps balance",
+              "test_id": "perps-pro-market-header-wallet-button",
+              "enabled": true,
+              "bounds": {
+                "x": 246,
+                "y": 78,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Remove from watchlist",
+              "test_id": "perps-pro-market-header-favorite-button",
+              "enabled": true,
+              "bounds": {
+                "x": 290,
+                "y": 78,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Currently Pro mode",
+              "test_id": "perps-mode-toggle-pro",
+              "enabled": true,
+              "bounds": {
+                "x": 330,
+                "y": 78,
+                "width": 56,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Expand chart",
+              "test_id": "perps-pro-market-chart-toggle-button",
+              "enabled": true,
+              "bounds": {
+                "x": 354,
+                "y": 148,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Long",
+              "test_id": "perps-pro-order-form-direction-long",
+              "enabled": true,
+              "bounds": {
+                "x": 13,
+                "y": 265,
+                "width": 162,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Short",
+              "test_id": "perps-pro-order-form-direction-short",
+              "enabled": true,
+              "bounds": {
+                "x": 179,
+                "y": 265,
+                "width": 162,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Show order book",
+              "test_id": "perps-pro-market-order-book-expand",
+              "enabled": true,
+              "bounds": {
+                "x": 362,
+                "y": 265,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Isolated",
+              "test_id": "perps-pro-order-form-margin-mode",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 318,
+                "width": 70,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "3x",
+              "test_id": "perps-pro-order-form-leverage",
+              "enabled": true,
+              "bounds": {
+                "x": 86,
+                "y": 318,
+                "width": 33,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Scale",
+              "test_id": "perps-pro-order-form-order-type",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 366,
+                "width": 386,
+                "height": 54
+              }
+            },
+            {
+              "role": "AXTextField",
+              "label": "Start (USD)",
+              "test_id": "perps-pro-order-form-scale-start-price",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 448,
+                "width": 362,
+                "height": 18
+              }
+            },
+            {
+              "role": "AXTextField",
+              "label": "End (USD)",
+              "test_id": "perps-pro-order-form-scale-end-price",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 502,
+                "width": 362,
+                "height": 18
+              }
+            },
+            {
+              "role": "AXTextField",
+              "label": "Order count",
+              "test_id": "perps-pro-order-form-scale-total-orders",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 556,
+                "width": 362,
+                "height": 18
+              }
+            },
+            {
+              "role": "AXTextField",
+              "label": "Size skew",
+              "test_id": "perps-pro-order-form-scale-size-skew",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 610,
+                "width": 342,
+                "height": 18
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Size skew",
+              "test_id": "perps-pro-order-form-scale-skew-info",
+              "enabled": true,
+              "bounds": {
+                "x": 362,
+                "y": 600,
+                "width": 20,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Size (USD)",
+              "test_id": "perps-pro-order-form-size-field",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 652,
+                "width": 386,
+                "height": 78
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Switch size denomination: USD",
+              "test_id": "perps-pro-order-form-size-unit",
+              "enabled": false,
+              "bounds": {
+                "x": 358,
+                "y": 664,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "$629.35 available",
+              "test_id": "perps-pro-order-form-add-funds",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 789,
+                "width": 386,
+                "height": 46
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Reduce only",
+              "test_id": "perps-pro-order-form-reduce-only",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 864,
+                "width": 362,
+                "height": 22
+              }
+            },
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 348,
+                "y": 130,
+                "width": 26,
+                "height": 26
+              }
+            }
+          ],
+          "hidden_or_offscreen": [
+            {
+              "role": "AXButton",
+              "label": "Place order",
+              "test_id": "perps-pro-order-form-place-order",
+              "enabled": false,
+              "bounds": {
+                "x": 8,
+                "y": 915,
+                "width": 386,
+                "height": 48
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "test_id": "perps-pro-order-form-summary-fees-button",
+              "enabled": true,
+              "bounds": {
+                "x": 39,
+                "y": 1097,
+                "width": 20,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Positions (1), Positions (1)",
+              "test_id": "perps-pro-market-positions-panel-tab-positions",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1148,
+                "width": 93,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Orders, Orders",
+              "test_id": "perps-pro-market-positions-panel-tab-orders",
+              "enabled": true,
+              "bounds": {
+                "x": 125,
+                "y": 1148,
+                "width": 54,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Chase, Chase",
+              "test_id": "perps-pro-market-positions-panel-tab-chase",
+              "enabled": true,
+              "bounds": {
+                "x": 203,
+                "y": 1148,
+                "width": 49,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Order history",
+              "test_id": "perps-pro-market-positions-history",
+              "enabled": true,
+              "bounds": {
+                "x": 362,
+                "y": 1148,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Sort positions",
+              "test_id": "perps-pro-market-positions-sort-button",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1192,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "All sides",
+              "test_id": "perps-pro-market-positions-side-filter-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 1192,
+                "width": 102,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "BTC only",
+              "test_id": "perps-pro-market-positions-ticker-only",
+              "enabled": true,
+              "bounds": {
+                "x": 166,
+                "y": 1197,
+                "width": 92,
+                "height": 22
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Close all",
+              "test_id": "perps-pro-market-positions-close-all",
+              "enabled": true,
+              "bounds": {
+                "x": 295,
+                "y": 1254,
+                "width": 83,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Switch to the ETH market",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1328,
+                "width": 402,
+                "height": 62
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Adjust Margin",
+              "test_id": "perps-pro-market-position-edit-margin",
+              "enabled": true,
+              "bounds": {
+                "x": 209,
+                "y": 1435,
+                "width": 160,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Edit TP/SL",
+              "test_id": "perps-pro-market-position-edit-tpsl",
+              "enabled": true,
+              "bounds": {
+                "x": 209,
+                "y": 1539,
+                "width": 160,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Close",
+              "test_id": "perps-pro-market-position-close",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 1584,
+                "width": 161,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Reverse",
+              "test_id": "perps-pro-market-position-reverse",
+              "enabled": true,
+              "bounds": {
+                "x": 185,
+                "y": 1584,
+                "width": 161,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Share",
+              "test_id": "perps-pro-market-position-share",
+              "enabled": true,
+              "bounds": {
+                "x": 354,
+                "y": 1584,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            }
+          ],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "done",
+      "action": "end",
+      "startedAt": "2026-09-03T07:08:07.407Z",
+      "endedAt": "2026-09-03T07:08:07.407Z",
+      "durationMs": 0,
+      "ok": true,
+      "status": "pass"
+    }
+  ]
+}

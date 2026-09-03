@@ -1,0 +1,6 @@
+{
+  "originalFamilyScopeSummary": "Add fat-finger price warning for scale orders when price is abnormally far from market",
+  "currentTriggerSummary": "pr-complete: feat(perps): warn when limit and scale prices are far from market",
+  "scopeVerdict": "full-scope-addressed",
+  "notes": "Inherited feature already covered limit and scale far-from-market warning, reduce-only skip, and non-blocking Place (TAT-3897). This run fixed the remaining scale mid-keystroke hole (banner/telemetry on a partial start while end+count were filled) by gating on start/end blur like hasBlurredLimitPrice. Recipe re-validation passed against branch rebased onto origin/main. TAT-3904 (crossing the market) remains a separate ticket and is out of scope."
+}

@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "verdict": "warn",
+  "compact": {
+    "verdict": "WARN",
+    "reasons": [
+      "Recipe now drives the real order-type sheet into Scale and asserts the scale price fields and Place mount; the screenshot shows the live Scale form.",
+      "Hook tests are load-bearing: reverting usePerpsProOrderForm.ts fails 4 of them.",
+      "Banner pixels still not captured — ui.set_input fails validation on every documented arg shape, so no price can be typed into the scale fields."
+    ],
+    "better_version_guidance": [
+      "If a working text-entry path lands in the harness, add set-start-price/set-end-price nodes and a ui.wait_for on the far-from-market notice test ID to convert AC1 to visual proof."
+    ]
+  },
+  "dimensions": {},
+  "structural_findings": [],
+  "contextual_findings": [],
+  "suggested_recipe_delta": [],
+  "training_fields": {
+    "proof_mode": "state"
+  },
+  "meta": {
+    "producer": "worker",
+    "fallback_used": false,
+    "legacy_task": false,
+    "artifact_required": true,
+    "source_signals": [
+      "recipe-quality.json"
+    ]
+  }
+}
