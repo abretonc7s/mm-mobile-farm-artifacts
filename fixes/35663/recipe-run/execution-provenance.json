@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "valid": true,
+  "snapshots": [
+    {
+      "phase": "start",
+      "capturedAt": "2026-09-03T05:16:12.111Z",
+      "recipeDigest": "sha256:4ab736936528d7c1cba5cfde9c4289b390fee1edb48804c830174e7ea2ab5f92",
+      "product": {
+        "head": "0ddf5efb4d7a60dc85bd63af4d0eadf4f3dc5fad",
+        "status": " M app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.ts\n M app/components/UI/Perps/utils/triggerOrderValidation.test.ts\n M app/components/UI/Perps/utils/triggerOrderValidation.ts\n M locales/languages/en.json\n",
+        "sourceFingerprint": "20ff2f8a1e8be25cf037bf01d0fcc576999bbb0c974955adb3ec5b174ac7f74b"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "90733a0c390db7b7f790f482fd75f3c2cb50128991de479cc5be30cbb2ad6800"
+      },
+      "libraries": [
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "e8e8fec19e86f59ddc3d5ba25efa392bdce65162bdcccf5aa19f513f63b283f5"
+        }
+      ],
+      "helpers": []
+    },
+    {
+      "phase": "pre-execute",
+      "capturedAt": "2026-09-03T05:16:12.509Z",
+      "recipeDigest": "sha256:4ab736936528d7c1cba5cfde9c4289b390fee1edb48804c830174e7ea2ab5f92",
+      "product": {
+        "head": "0ddf5efb4d7a60dc85bd63af4d0eadf4f3dc5fad",
+        "status": " M app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.ts\n M app/components/UI/Perps/utils/triggerOrderValidation.test.ts\n M app/components/UI/Perps/utils/triggerOrderValidation.ts\n M locales/languages/en.json\n",
+        "sourceFingerprint": "20ff2f8a1e8be25cf037bf01d0fcc576999bbb0c974955adb3ec5b174ac7f74b"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "90733a0c390db7b7f790f482fd75f3c2cb50128991de479cc5be30cbb2ad6800"
+      },
+      "libraries": [
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "e8e8fec19e86f59ddc3d5ba25efa392bdce65162bdcccf5aa19f513f63b283f5"
+        }
+      ],
+      "helpers": []
+    },
+    {
+      "phase": "end",
+      "capturedAt": "2026-09-03T05:17:45.495Z",
+      "recipeDigest": "sha256:4ab736936528d7c1cba5cfde9c4289b390fee1edb48804c830174e7ea2ab5f92",
+      "product": {
+        "head": "0ddf5efb4d7a60dc85bd63af4d0eadf4f3dc5fad",
+        "status": " M app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.ts\n M app/components/UI/Perps/utils/triggerOrderValidation.test.ts\n M app/components/UI/Perps/utils/triggerOrderValidation.ts\n M locales/languages/en.json\n",
+        "sourceFingerprint": "20ff2f8a1e8be25cf037bf01d0fcc576999bbb0c974955adb3ec5b174ac7f74b"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "90733a0c390db7b7f790f482fd75f3c2cb50128991de479cc5be30cbb2ad6800"
+      },
+      "libraries": [
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "e8e8fec19e86f59ddc3d5ba25efa392bdce65162bdcccf5aa19f513f63b283f5"
+        }
+      ],
+      "helpers": []
+    }
+  ],
+  "drift": []
+}

@@ -1,0 +1,115 @@
+{
+  "version": 1,
+  "verdict": "pass",
+  "compact": {
+    "verdict": "PASS",
+    "reasons": [
+      "All 19 nodes pass against the implementation and the recipe demonstrably fails without it (first behavioural assertion times out), so it is a real validator rather than a rubber stamp.",
+      "Every acceptance criterion is proved by a state assertion, and the three copy variants are additionally shown in stitched screenshots with the HUD suppressed, so the claim is provable both ways.",
+      "Both the positive and negative sides of the behaviour are asserted: the warning must appear for a crossing ladder and must clear itself on a side flip without any endpoint edit."
+    ],
+    "better_version_guidance": [
+      "Assert the submit-time re-validation path directly. AC 4's submit half currently only emits a DevLogger line; a watch_logs node reading from a captured baseline offset would turn that into proof instead of inference.",
+      "Drive the endpoint values from the live top-of-book instead of hardcoding prices around BTC's current level, so the recipe does not silently degrade if BTC moves far from ~77k."
+    ]
+  },
+  "dimensions": {
+    "coverage": {
+      "status": "pass",
+      "reason": "All five acceptance criteria have at least one dedicated assertion node; AC 4 is covered on both the endpoint-edit and side-flip axes.",
+      "evidence": [
+        "artifacts/recipe-coverage.md",
+        "artifacts/recipe-run/trace.json"
+      ]
+    },
+    "graph_quality": {
+      "status": "pass",
+      "reason": "Linear graph with an explicit direction reset after navigation, so the run does not inherit leftover form state from a previous run. That defect was caught and fixed during authoring.",
+      "evidence": [
+        "artifacts/recipe.json"
+      ]
+    },
+    "evidence_fit": {
+      "status": "pass",
+      "reason": "Mixed proof: assertions for every claim plus a screenshot per copy variant. Capturing the frames exposed two recipe defects (incomplete ticket, mis-ordered ladder) that the assertions alone had missed.",
+      "evidence": [
+        "artifacts/evidence-manifest.json",
+        "artifacts/recipe-coverage.md"
+      ]
+    },
+    "flake_risk": {
+      "status": "warn",
+      "reason": "Endpoint prices are hardcoded around BTC ~77k. A large move would put the chosen values on the wrong side of the book and flip assertions. Acceptable for a branch gate; would need live-price parameterisation for CI.",
+      "evidence": [
+        "artifacts/recipe.json"
+      ]
+    },
+    "failing_first": {
+      "status": "pass",
+      "reason": "Verified by stashing the implementation, restarting the app onto that source, and re-running: fail at expect-partial-above with present=false.",
+      "evidence": [
+        "artifacts/recipe-coverage.md"
+      ]
+    }
+  },
+  "structural_findings": [],
+  "contextual_findings": [
+    {
+      "code": "submit_path_not_asserted",
+      "dimension": "coverage",
+      "message": "The submit-time re-validation in onPlaceOrderPress is exercised only indirectly. It emits a DevLogger line rather than changing visible state, so the recipe does not assert on it; the unit tests cover the helper it calls.",
+      "evidence": [
+        "app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.ts"
+      ]
+    },
+    {
+      "code": "baseline_node_passes_without_feature",
+      "dimension": "failing_first",
+      "message": "expect-quiet passes in both worlds because the message element is absent with and without the feature. Retained deliberately as a guard against over-warning, not counted as feature proof.",
+      "evidence": [
+        "artifacts/recipe-coverage.md"
+      ]
+    },
+    {
+      "code": "assertions_passed_on_unrepresentative_state",
+      "dimension": "evidence_fit",
+      "message": "A ui.wait_for on the warning passes even when a blocking validation error occupies the same slot or Place order is disabled. Two such defects survived a fully green run and were only caught once the frames were inspected.",
+      "evidence": [
+        "artifacts/recipe-coverage.md"
+      ]
+    }
+  ],
+  "suggested_recipe_delta": [
+    "Add a watch_logs node, offset from a pre-run baseline line count, asserting the submit-time crossing marker fires when the order is placed while crossing.",
+    "Read the live best bid/ask into params and derive the endpoint values from it instead of hardcoding prices near 77k."
+  ],
+  "training_fields": {
+    "farm": "macpro",
+    "project": "metamask-mobile",
+    "flow_type": "dev",
+    "task_type": "feature",
+    "claim_is_visual": true,
+    "proof_mode": "mixed",
+    "anti_patterns": [
+      "Concluding a UI claim is unprovable visually because the element renders below the fold. --hud hide plus ui.capture_surface solve both the overlay and the clipping; anchoring the scroll on the element above the target keeps it in frame.",
+      "Authoring a multi-node recipe blind: the first full run failed at expect-quiet purely because the form kept the Short side from an earlier probe. An explicit direction-reset node was the fix.",
+      "Trusting a green ui.wait_for as proof the user would see the message: it passes even when a blocking error occupies the same slot or the submit button is disabled."
+    ],
+    "good_patterns": [
+      "Validating each node standalone via mm-harness call before appending it to the recipe.",
+      "Proving failing-first by stashing the implementation and restarting the app, rather than asserting it from reasoning.",
+      "Inspecting every captured frame rather than trusting the run's exit code \u2014 the screenshots found two recipe defects that a fully green run had hidden."
+    ]
+  },
+  "meta": {
+    "producer": "worker",
+    "fallback_used": false,
+    "legacy_task": false,
+    "artifact_required": true,
+    "source_signals": [
+      "artifacts/recipe-run/summary.json",
+      "artifacts/recipe-run/trace.json",
+      "artifacts/recipe-coverage.md"
+    ]
+  }
+}

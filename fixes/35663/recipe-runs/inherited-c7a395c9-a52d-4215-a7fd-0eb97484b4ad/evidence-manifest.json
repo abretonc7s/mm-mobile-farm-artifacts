@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "preferred_mode": "screenshots",
+  "summary": "Visual proof of the scale crossing warning in all three copy variants, captured with the recipe HUD suppressed (mm-harness run --hud hide) and ui.capture_surface stitching the full order-form panel so the warning is not clipped by the viewport. Each frame shows the warning text, the ladder endpoints, the live market price that justifies the warning, and the Place order control in the same shot, so non-blocking placement is visible alongside each warning rather than asserted separately.",
+  "standalone": [
+    {
+      "label": "AC 3 — partly-crossing long ladder gets partial copy",
+      "covers": ["AC3", "AC5"],
+      "file": "artifacts/evidence-ac3-partial-cross.png",
+      "note": "Start $76,000 / End $79,000 with the market at $77,690: only the far rung crosses. Shows 'Part of your order is above current price and may execute as a market order.' Margin and fees compute and Place order is enabled, so the warning is advisory."
+    },
+    {
+      "label": "AC 1 — fully-crossing long ladder escalates to full copy",
+      "covers": ["AC1", "AC5"],
+      "file": "artifacts/evidence-ac1-long-full-cross.png",
+      "note": "Start $78,000 / End $79,000 with the market at $77,842: both rungs cross. Copy escalates to 'Limit price is above current price. Your order may execute as a market order.' Place order still enabled."
+    },
+    {
+      "label": "AC 2 — fully-crossing short ladder gets mirrored copy",
+      "covers": ["AC2", "AC5"],
+      "file": "artifacts/evidence-ac2-short-full-cross.png",
+      "note": "Short side, Start $75,000 / End $76,000 with the market at $77,834: both rungs cross the bid. Mirrored copy 'Limit price is below current price. Your order may execute as a market order.' Place order enabled in the short styling."
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "$schema": "https://farmslot.io/schemas/recipe-v1.schema.json",
+  "title": "Perps Pro scale order warns when a ladder would cross the book — Mobile",
+  "description": "A trader building a scale (laddered) order on Perps Pro expects their rungs to rest on the book as passive orders. Any rung placed on the wrong side of the market fills instantly as a taker order instead, which defeats the point of laddering. This recipe proves the order form tells the trader when that is about to happen, distinguishes a partly-affected ladder from one that is entirely on the wrong side, re-evaluates the moment the trader edits an endpoint or flips their side, and never blocks them from placing the order anyway.",
+  "paramsSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "market": {
+        "type": "string",
+        "default": "BTC",
+        "description": "Perps market symbol to open."
+      }
+    }
+  },
+  "workflow": {
+    "entry": "ensure-unlocked",
+    "nodes": {
+      "ensure-unlocked": {
+        "action": "metamask.wallet.ensure_unlocked",
+        "target_timeout_ms": 45000,
+        "unlock_timeout_ms": 45000,
+        "intent": "A returning trader gets back into their wallet",
+        "next": "open-market"
+      },
+      "open-market": {
+        "action": "ui.navigate",
+        "page": "perps-market",
+        "market": "{{params.market}}",
+        "intent": "The trader opens the {{params.market}} market they want to trade",
+        "next": "wait-scale-fields"
+      },
+      "wait-scale-fields": {
+        "action": "ui.wait_for",
+        "test_id": "perps-pro-order-form-scale-start-price",
+        "expected": "present",
+        "intent": "The trader is looking at the laddered-order ticket, ready to choose a price range",
+        "next": "go-long"
+      },
+      "go-long": {
+        "action": "ui.press",
+        "test_id": "perps-pro-order-form-direction-long",
+        "intent": "The trader starts from a clean slate, betting the market rises",
+        "next": "set-orders"
+      },
+      "set-orders": {
+        "action": "ui.set_input",
+        "test_id": "perps-pro-order-form-scale-total-orders",
+        "value": "2",
+        "intent": "The trader splits the ladder across two rungs",
+        "next": "set-size"
+      },
+      "set-size": {
+        "action": "ui.set_input",
+        "test_id": "perps-pro-order-form-size-input",
+        "value": "35",
+        "intent": "The trader commits a size so the ticket is complete and placeable",
+        "next": "safe-start"
+      },
+      "safe-start": {
+        "action": "ui.set_input",
+        "test_id": "perps-pro-order-form-scale-start-price",
+        "value": "76000",
+        "intent": "The trader places the cheapest rung of their upward bet safely below the market",
+        "next": "safe-end"
+      },
+      "safe-end": {
+        "action": "ui.set_input",
+        "test_id": "perps-pro-order-form-scale-end-price",
+        "value": "76500",
+        "intent": "The trader keeps the far rung below the market too, so the whole ladder should rest",
+        "next": "expect-quiet"
+      },
+      "expect-quiet": {
+        "action": "ui.wait_for",
+        "test_id": "perps-pro-order-form-price-card-message",
+        "expected": "absent",
+        "intent": "Nothing is wrong with this ladder, so the trader is left alone",
+        "next": "partial-end"
+      },
+      "partial-end": {
+        "action": "ui.set_input",
+        "test_id": "perps-pro-order-form-scale-end-price",
+        "value": "79000",
+        "intent": "The trader stretches only the far rung past the market, so part of the ladder would fill on the spot",
+        "next": "expect-partial-above"
+      },
+      "expect-partial-above": {
+        "action": "ui.wait_for",
+        "text": "Part of your price range is above current price",
+        "text_match": "contains",
+        "expected": "present",
+        "intent": "The trader is told that only part of their order would fill immediately, not all of it",
+        "next": "evidence-partial-scroll"
+      },
+      "evidence-partial-scroll": {
+        "action": "ui.scroll",
+        "scroll_into_view": true,
+        "test_id": "perps-pro-order-form-scale-start-price",
+        "intent": "Bring the price range and the caution beneath it into plain sight",
+        "next": "evidence-partial-shot",
+        "offset": 180
+      },
+      "evidence-partial-shot": {
+        "action": "ui.capture_surface",
+        "label": "evidence-partial",
+        "restore_position": false,
+        "intent": "Show the trader being told only part of their ladder would fill at once",
+        "next": "full-start"
+      },
+      "full-start": {
+        "action": "ui.set_input",
+        "test_id": "perps-pro-order-form-scale-start-price",
+        "value": "78000",
+        "intent": "The trader lifts the near rung above the market too, putting every rung on the wrong side",
+        "next": "expect-full-above"
+      },
+      "expect-full-above": {
+        "action": "ui.wait_for",
+        "text": "Your price range is above current price",
+        "text_match": "contains",
+        "expected": "present",
+        "intent": "Now the whole order would fill immediately, and the wording escalates to say so",
+        "next": "evidence-full-above-scroll"
+      },
+      "evidence-full-above-scroll": {
+        "action": "ui.scroll",
+        "scroll_into_view": true,
+        "test_id": "perps-pro-order-form-scale-start-price",
+        "intent": "Bring the price range and the caution beneath it into plain sight",
+        "next": "evidence-full-above-shot",
+        "offset": 180
+      },
+      "evidence-full-above-shot": {
+        "action": "ui.capture_surface",
+        "label": "evidence-full-above",
+        "restore_position": false,
+        "intent": "Show the trader being told their whole upward ladder would fill at once",
+        "next": "flip-short"
+      },
+      "flip-short": {
+        "action": "ui.press",
+        "test_id": "perps-pro-order-form-direction-short",
+        "intent": "The trader changes their mind and bets the market falls instead",
+        "next": "expect-cleared-on-flip"
+      },
+      "expect-cleared-on-flip": {
+        "action": "ui.wait_for",
+        "test_id": "perps-pro-order-form-price-card-message",
+        "expected": "absent",
+        "intent": "Those same prices are perfectly sensible for a downward bet, so the warning clears itself",
+        "next": "short-start"
+      },
+      "short-start": {
+        "action": "ui.set_input",
+        "test_id": "perps-pro-order-form-scale-start-price",
+        "value": "75000",
+        "intent": "The trader sets the lower bound of the downward ladder under the market",
+        "next": "short-end"
+      },
+      "short-end": {
+        "action": "ui.set_input",
+        "test_id": "perps-pro-order-form-scale-end-price",
+        "value": "76000",
+        "intent": "The trader keeps the upper bound under the market too, so every rung is on the wrong side",
+        "next": "expect-full-below"
+      },
+      "expect-full-below": {
+        "action": "ui.wait_for",
+        "text": "Your price range is below current price",
+        "text_match": "contains",
+        "expected": "present",
+        "intent": "The trader gets the mirrored warning for a downward bet that would fill on the spot",
+        "next": "evidence-full-below-scroll"
+      },
+      "evidence-full-below-scroll": {
+        "action": "ui.scroll",
+        "scroll_into_view": true,
+        "test_id": "perps-pro-order-form-scale-start-price",
+        "intent": "Bring the price range and the caution beneath it into plain sight",
+        "next": "evidence-full-below-shot",
+        "offset": 180
+      },
+      "evidence-full-below-shot": {
+        "action": "ui.capture_surface",
+        "label": "evidence-full-below",
+        "restore_position": false,
+        "intent": "Show the trader the mirrored caution for a downward ladder that would fill at once",
+        "next": "expect-still-placeable"
+      },
+      "expect-still-placeable": {
+        "action": "ui.wait_for",
+        "test_id": "perps-pro-order-form-place-order",
+        "expected": "present",
+        "intent": "The warning is advice, not a veto: the trader can still go ahead and place the order",
+        "next": "done"
+      },
+      "done": {
+        "action": "end",
+        "status": "pass"
+      }
+    }
+  }
+}

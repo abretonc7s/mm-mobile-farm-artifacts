@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "preferred_mode": "screenshots",
+  "summary": "Re-captured proof of the scale crossing warning in all three copy variants after the review fixes in 50753638e5, run against the branch rebased onto origin/main at 6766f343c8. Recipe pass 26/26. Each frame shows the reviewer-requested taker-execution wording, the ladder endpoints, the live market price that justifies the warning, and the Place order control in the same shot, so non-blocking placement is visible alongside each warning rather than asserted separately. Captured with the recipe HUD suppressed (mm-harness run --hud hide) and ui.capture_surface stitching the full order-form panel so the warning is not clipped.",
+  "standalone": [
+    {
+      "label": "AC 3 — partly-crossing long ladder gets partial copy",
+      "covers": ["AC3", "AC5"],
+      "file": "artifacts/recipe-run/screenshots/evidence-partial-shot.png",
+      "note": "Start $76,000 / End $79,000 with the market at $77,613: only the far rung crosses. Shows 'Part of your price range is above current price and may fill immediately as a taker order and incur taker fees.' Margin and fees compute and Place order is enabled, so the warning is advisory."
+    },
+    {
+      "label": "AC 1 — fully-crossing long ladder escalates to full copy",
+      "covers": ["AC1", "AC5"],
+      "file": "artifacts/recipe-run/screenshots/evidence-full-above-shot.png",
+      "note": "Start $78,000 / End $79,000 with the market at $77,578: both rungs cross. Copy escalates to 'Your price range is above current price and may fill immediately as a taker order and incur taker fees.' — its own scale string rather than the shipped single-limit copy. Place order still enabled."
+    },
+    {
+      "label": "AC 2 — fully-crossing short ladder gets mirrored copy",
+      "covers": ["AC2", "AC5"],
+      "file": "artifacts/recipe-run/screenshots/evidence-full-below-shot.png",
+      "note": "Short side, Start $75,000 / End $76,000 with the market at $77,535: both rungs cross the bid. Mirrored copy 'Your price range is below current price and may fill immediately as a taker order and incur taker fees.' Place order enabled in the short styling."
+    }
+  ]
+}

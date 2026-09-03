@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "adapter": "mobile",
+  "repository": "metamask-mobile-4",
+  "git_ref": "0ddf5efb4d7a60dc85bd63af4d0eadf4f3dc5fad",
+  "branch": "TAT-3904-feat-add-scale-order-spread-warning",
+  "dirty": true
+}

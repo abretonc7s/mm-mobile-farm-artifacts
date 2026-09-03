@@ -1,0 +1,6 @@
+{
+  "originalFamilyScopeSummary": "Add execution risk warning when scale order prices cross best ask/bid spread",
+  "currentTriggerSummary": "pr-complete: feat(perps): warn when scale order prices cross the market",
+  "scopeVerdict": "full-scope-addressed",
+  "notes": "The feature itself shipped in the family root commit and its five acceptance criteria are re-proven here: the inherited recipe passes 26/26 nodes against the branch rebased onto origin/main at 6766f343c8. This run closed the five REAL review comments from geositta's CHANGES_REQUESTED review, all of which sharpened the original scope rather than widening it: inclusive comparison at the touch, no mid fallback when the book quote is missing, both endpoints required before warning, taker-execution wording, and removal of a submit-time check that observed no new state. AC 4 is no longer partial — the unprovable submit-time half was removed, so what remains is exactly the stream-driven behaviour the recipe asserts. Unit coverage went from 71 to 79 tests in triggerOrderValidation.test.ts; usePerpsProOrderForm.test.ts still passes 271."
+}

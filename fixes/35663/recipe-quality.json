@@ -1,0 +1,125 @@
+{
+  "version": 1,
+  "verdict": "pass",
+  "compact": {
+    "verdict": "PASS",
+    "reasons": [
+      "All 26 nodes pass against the review-fixed implementation on the branch rebased onto origin/main, with no loss of coverage versus the inherited baseline.",
+      "AC 4 is no longer partial. The inherited artifact flagged its submit-time half as asserted only indirectly; review comment 3921202954 caused that path to be removed, so what remains is exactly the stream-driven behaviour the recipe does assert.",
+      "The three copy-variant frames were re-captured and each was inspected, not just counted: all three render the reviewer-requested taker wording with Place order enabled, which is the check that caught defects on the original authoring run."
+    ],
+    "better_version_guidance": [
+      "Drive the endpoint values from the live top-of-book instead of hardcoding prices around BTC's current level, so the recipe does not silently degrade if BTC moves far from ~77k. Carried forward unaddressed from the inherited artifact.",
+      "The at-the-touch equality case that review comment 3921202930 fixed is not reachable through this recipe, which types round prices against a live market. It is covered by unit tests instead. A recipe that read best ask into a param and typed exactly that value would close the gap end-to-end."
+    ]
+  },
+  "dimensions": {
+    "coverage": {
+      "status": "pass",
+      "reason": "All five acceptance criteria have at least one dedicated assertion node. AC 4 is covered on both the endpoint-edit and side-flip axes, and its previously unasserted submit half no longer exists in the implementation.",
+      "evidence": [
+        "artifacts/recipe-coverage.md",
+        "artifacts/recipe-run/trace.json"
+      ]
+    },
+    "graph_quality": {
+      "status": "pass",
+      "reason": "Unchanged from the inherited recipe apart from three assertion strings. Linear graph with an explicit direction reset after navigation, so the run does not inherit leftover form state.",
+      "evidence": [
+        "artifacts/recipe.json"
+      ]
+    },
+    "evidence_fit": {
+      "status": "pass",
+      "reason": "Mixed proof: assertions for every claim plus a re-captured screenshot per copy variant. Each frame was read and confirmed to show the new wording, the endpoints, the justifying market price, and an enabled Place order control.",
+      "evidence": [
+        "artifacts/evidence-manifest.json",
+        "artifacts/recipe-coverage.md"
+      ]
+    },
+    "flake_risk": {
+      "status": "warn",
+      "reason": "Endpoint prices remain hardcoded around BTC ~77k. A large move would put the chosen values on the wrong side of the book and flip assertions. Acceptable for a branch gate; would need live-price parameterisation for CI. Unchanged from the inherited artifact.",
+      "evidence": [
+        "artifacts/recipe.json"
+      ]
+    },
+    "failing_first": {
+      "status": "pass",
+      "reason": "Established on the family root run by stashing the implementation, restarting the app onto that source, and re-running: fail at expect-partial-above with present=false. Not re-executed this round; the review fixes narrowed the helper's behaviour rather than introducing the feature, and the assertion nodes that failed without it are unchanged.",
+      "evidence": [
+        "inputs/inherited/recipe-coverage.md",
+        "artifacts/recipe-coverage.md"
+      ]
+    }
+  },
+  "structural_findings": [],
+  "contextual_findings": [
+    {
+      "code": "boundary_case_not_recipe_reachable",
+      "dimension": "coverage",
+      "message": "The inclusive at-the-touch comparison from review comment 3921202930 cannot be exercised by this recipe, which types round prices against a moving live market. Eight unit tests cover the boundary in both directions instead. Recorded so the gap is explicit rather than assumed covered by the green run.",
+      "evidence": [
+        "app/components/UI/Perps/utils/triggerOrderValidation.test.ts"
+      ]
+    },
+    {
+      "code": "submit_path_removed_not_deferred",
+      "dimension": "coverage",
+      "message": "Resolves the inherited submit_path_not_asserted finding. The submit-time re-check was removed rather than made assertable: it read the same committed snapshot that produced the price-card message and only wrote a DevLogger line, so it observed no new state.",
+      "evidence": [
+        "app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.ts"
+      ]
+    },
+    {
+      "code": "baseline_node_passes_without_feature",
+      "dimension": "failing_first",
+      "message": "expect-quiet passes in both worlds because the message element is absent with and without the feature. Retained deliberately as a guard against over-warning, not counted as feature proof. Carried forward from the inherited artifact.",
+      "evidence": [
+        "artifacts/recipe-coverage.md"
+      ]
+    },
+    {
+      "code": "assertion_text_coupled_to_copy",
+      "dimension": "graph_quality",
+      "message": "Three ui.wait_for nodes assert on literal user-facing copy, so the reviewer-requested rewording in comment 3921202951 required editing the recipe alongside the locale file. Text-only edit; node IDs, ordering, testIDs, intents, and screenshot nodes untouched.",
+      "evidence": [
+        "artifacts/recipe.json"
+      ]
+    }
+  ],
+  "suggested_recipe_delta": [
+    "Read the live best bid/ask into params and derive the endpoint values from it instead of hardcoding prices near 77k.",
+    "Add a node that types exactly the live best ask as an endpoint, so the inclusive at-the-touch behaviour is proved in the app and not only in unit tests."
+  ],
+  "training_fields": {
+    "farm": "macpro",
+    "project": "metamask-mobile",
+    "flow_type": "pr-complete",
+    "task_type": "review-fix",
+    "claim_is_visual": true,
+    "proof_mode": "mixed",
+    "anti_patterns": [
+      "Treating a green end-to-end run as evidence that a comparison operator is correct. All 26 nodes passed with a strict > that mislabelled an at-the-touch endpoint as resting, because a UI recipe never types boundary values.",
+      "Falling back to an approximate reference (mid) to keep a warning always-available. It converts an absent answer into a confident wrong one on a claim about the user's money.",
+      "Reusing a shipped locale string in a new semantic context without checking the blast radius: fifteen locales already carried translations, so the wording could not be corrected in place."
+    ],
+    "good_patterns": [
+      "Re-running the inherited recipe against branch plus origin/main rather than authoring a new one, so the node count is directly comparable to the baseline.",
+      "Reading every re-captured frame after a copy change instead of trusting the exit code.",
+      "Removing an unobservable code path when the reviewer offers removal as an option, rather than building plumbing to make a dev-only log assertable."
+    ]
+  },
+  "meta": {
+    "producer": "worker",
+    "fallback_used": false,
+    "legacy_task": false,
+    "artifact_required": true,
+    "source_signals": [
+      "artifacts/recipe-run/summary.json",
+      "artifacts/recipe-run/trace.json",
+      "artifacts/recipe-coverage.md",
+      "inputs/inherited/recipe-quality.json"
+    ]
+  }
+}
