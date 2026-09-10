@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "verdict": "warn",
+  "compact": {
+    "verdict": "WARN",
+    "reasons": [
+      "Existing runs prove the approved iOS display slice with real controller and venue state.",
+      "Replay requires a fresh authorized fixture and current liquidation expectation; full epic and Android are not covered."
+    ],
+    "better_version_guidance": [
+      "Refresh fixture state and numeric expectation before replay; keep runtime evidence scoped to the approved slice."
+    ]
+  },
+  "dimensions": {
+    "claim_alignment": {
+      "status": "pass",
+      "reason": "Recipe assertions map to badges, venue numeric/null liquidation, shared explanation and edit suppression.",
+      "evidence": [
+        "recipe-coverage.md",
+        "report.md",
+        "recipe.json"
+      ]
+    },
+    "runtime_proof": {
+      "status": "pass",
+      "reason": "Real linked-controller testnet positions and passing Pro/Lite state and visual assertions; both fixtures closed after proof.",
+      "evidence": [
+        "recipe-run-recorded-2/trace.json",
+        "recipe-run-linked-null-3/trace.json",
+        "cross-cleanup-verified/trace.json"
+      ]
+    },
+    "visual_evidence": {
+      "status": "pass",
+      "reason": "Selected screenshots and passing recording show the claimed displays; no baseline comparison is asserted.",
+      "evidence": [
+        "evidence-manifest.json",
+        "after.mp4"
+      ]
+    },
+    "repeatability": {
+      "status": "warn",
+      "reason": "Fixture cleanup and live funding changes require fresh setup and refreshed numeric expectation.",
+      "evidence": [
+        "report.md",
+        "selected-account-cross-setup.ts"
+      ]
+    }
+  },
+  "structural_findings": [],
+  "contextual_findings": [
+    {
+      "code": "LIVE_FIXTURE_REPLAY",
+      "message": "Fixture setup and current venue liquidation expectation are prerequisites to rerun; the final recorded recipe is historical proof.",
+      "dimension": "repeatability",
+      "evidence": [
+        "report.md"
+      ]
+    }
+  ],
+  "suggested_recipe_delta": [
+    "Keep fresh venue expected-value capture in replay setup."
+  ],
+  "training_fields": {
+    "project": "metamask-mobile",
+    "flow_type": "dev",
+    "task_type": "feature",
+    "claim_is_visual": true,
+    "proof_mode": "mixed",
+    "anti_patterns": [],
+    "good_patterns": [
+      "real venue fixtures",
+      "explicit null-state proof",
+      "cleanup receipts"
+    ]
+  },
+  "meta": {
+    "producer": "worker",
+    "fallback_used": false,
+    "legacy_task": false,
+    "artifact_required": true,
+    "source_signals": [
+      "recipe.json",
+      "recipe-run-recorded-2/trace.json",
+      "recipe-run-linked-null-3/trace.json",
+      "evidence-manifest.json",
+      "report.md"
+    ]
+  }
+}

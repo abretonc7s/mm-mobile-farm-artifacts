@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "verdict": "warn",
+  "compact": {
+    "verdict": "WARN",
+    "reasons": [
+      "The inherited recipe could not be replayed: it gates on exactly one real open Cross position and the selected testnet account now holds none, so it aborted at node 4 of 42 before reaching any assertion on the PR's code.",
+      "No code change was made on this run (0 REAL comment findings), so no new runtime proof was owed; the display behavior was re-proved in state mode by 5/5 passing component suites (110/110 tests) on the rebased tree."
+    ],
+    "better_version_guidance": [
+      "Make the fixture precondition self-establishing or fixture-backed rather than dependent on live venue state that the run's own cleanup destroys.",
+      "Capture the venue liquidation expectation at replay time rather than pinning a value from the original run."
+    ]
+  },
+  "dimensions": {
+    "claim_alignment": {
+      "status": "pass",
+      "reason": "Recipe assertions still map to the PR's claims: Cross badges, numeric/null venue liquidation, shared-collateral explanation and non-editable Margin used. Alignment was not invalidated by the rebase.",
+      "evidence": [
+        "recipe.json",
+        "recipe-coverage.md",
+        "comments-report.md"
+      ]
+    },
+    "runtime_proof": {
+      "status": "fail",
+      "reason": "Replay aborted at the require-cross precondition ($.positions length_eq 1, actual []). Runtime itself was healthy (launch --verify exit 0, doctor 5/5 pass), so this is an unmet live-venue fixture, not a runtime or code fault. No branch commit touches the fixture path.",
+      "evidence": [
+        "recipe-run/summary.json",
+        "recipe-run/trace.json",
+        "recipe-run/diagnostics.json"
+      ]
+    },
+    "visual_evidence": {
+      "status": "not_applicable",
+      "reason": "No screenshot or recording node executed, because the run aborted before them. No visual proof is produced or claimed by this run; inherited screenshots belong to the original pre-rebase run and are not re-claimed.",
+      "evidence": [
+        "evidence-manifest.json",
+        "recipe-coverage.md"
+      ]
+    },
+    "repeatability": {
+      "status": "fail",
+      "reason": "The recipe is not currently re-runnable. Its precondition was destroyed by the original run's own cleanup (positions closed, ETH restored to isolated 3x), so replay requires re-opening a real leveraged testnet position \u2014 a financial mutation outside this comment-triage task's scope.",
+      "evidence": [
+        "inputs/inherited/recipe-coverage.md",
+        "recipe-run/summary.json"
+      ]
+    }
+  },
+  "structural_findings": [],
+  "contextual_findings": [
+    {
+      "code": "LIVE_FIXTURE_REPLAY",
+      "message": "Fixture setup and a current venue liquidation expectation are prerequisites to rerun; the recorded recipe remains historical proof only. This run hit exactly that limit.",
+      "dimension": "repeatability"
+    },
+    {
+      "code": "PRECONDITION_ABORT_BEFORE_CLAIM",
+      "message": "The failure occurred at a fixture gate before any node asserting PR behavior, so it carries no signal about the correctness of the branch.",
+      "dimension": "runtime_proof"
+    }
+  ],
+  "suggested_recipe_delta": [
+    "Add a setup branch that establishes the required Cross position, or back the precondition with a recorded fixture, so replay does not depend on live venue state.",
+    "Capture the expected venue liquidation value at replay time instead of pinning the original run's number."
+  ],
+  "training_fields": {
+    "project": "metamask-mobile",
+    "flow_type": "pr-complete",
+    "task_type": "pr-complete",
+    "claim_is_visual": false,
+    "proof_mode": "state",
+    "anti_patterns": [
+      "recipe precondition destroyed by the same run's cleanup",
+      "live-venue state used as a replay gate"
+    ],
+    "good_patterns": [
+      "causation analysis before blaming a failing recipe on the branch",
+      "independent re-verification of bot findings against source rather than failure-rate hints",
+      "refusing to fabricate visual evidence for a run that produced none"
+    ]
+  },
+  "meta": {
+    "producer": "worker",
+    "fallback_used": false,
+    "legacy_task": false,
+    "artifact_required": true,
+    "source_signals": [
+      "recipe.json",
+      "recipe-run/summary.json",
+      "recipe-run/trace.json",
+      "inputs/inherited/recipe-coverage.md"
+    ]
+  }
+}

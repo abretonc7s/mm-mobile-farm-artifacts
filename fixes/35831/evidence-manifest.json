@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "preferred_mode": "screenshots",
+  "summary": "pr-complete re-validation run. No code change was made (0 REAL comment findings), so no before/after visual evidence is produced or claimed. The inherited recipe aborted at its fixture precondition (require-cross: $.positions length_eq 1, actual []) before reaching any ui.screenshot node, so this run generated NO screenshots and NO video. Evidence below is limited to what this run actually produced: the failed recipe trace, and the passing post-rebase local gate. Prior visual proof exists only in the inherited package and is historical, not re-executed here. State-mode proof that DID execute on the rebased tree: scoped ESLint --max-warnings=0 pass, lint:tsc pass (exit 0, zero errors \u2014 first clean typecheck since @metamask/perps-controller@16.2.0 supplied the ORDER_MARGIN_MODE_* constants), format:check pass, working tree clean, and Jest 5/5 suites with 110/110 tests passing across PerpsPositionsView, PerpsProPositionCard, PerpsCard, PerpsCrossMarginInfoButton and PerpsPositionCard. See recipe-coverage.md and comments-report.md.",
+  "before_after_pairs": [],
+  "standalone": [
+    {
+      "label": "Recipe run summary \u2014 fail at require-cross precondition gate",
+      "covers": [
+        "recipe-revalidation-attempt"
+      ],
+      "file": "recipe-run/summary.json"
+    },
+    {
+      "label": "Recipe execution trace \u2014 node-level path to the failing gate",
+      "covers": [
+        "recipe-revalidation-attempt",
+        "failure-causation"
+      ],
+      "file": "recipe-run/trace.json"
+    },
+    {
+      "label": "Runtime diagnostics captured at failure (runtime itself healthy)",
+      "covers": [
+        "runtime-health"
+      ],
+      "file": "recipe-run/diagnostics.json"
+    },
+    {
+      "label": "Comment triage report \u2014 0 REAL, 5 FALSE POSITIVE, gate results, dependency-blocker resolution",
+      "covers": [
+        "comment-triage",
+        "local-ci-gate",
+        "dependency-unblock"
+      ],
+      "file": "comments-report.md"
+    },
+    {
+      "label": "Structured triage for all 10 comments",
+      "covers": [
+        "comment-triage"
+      ],
+      "file": "comments-triage.json"
+    },
+    {
+      "label": "Coverage map \u2014 what this run re-executed vs. inherited historical proof",
+      "covers": [
+        "coverage-delta"
+      ],
+      "file": "recipe-coverage.md"
+    }
+  ],
+  "omit": [],
+  "videos": {
+    "after": "",
+    "preferred": false,
+    "note": "No video recorded. The recipe aborted at node 4 of 42 on an unmet live-venue fixture precondition, before any screenshot or recording node executed. The inherited after.mp4 belongs to the original pre-rebase run and is not re-claimed as evidence for this run."
+  }
+}

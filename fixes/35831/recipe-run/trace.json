@@ -1,0 +1,129 @@
+{
+  "metadata": {
+    "runner": {
+      "source": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness",
+      "git_ref": "unknown",
+      "name": "@metamask/recipe-runner"
+    }
+  },
+  "entries": [
+    {
+      "nodeId": "wallet",
+      "action": "metamask.wallet.read_state",
+      "intent": "Verify the selected account before inspecting its positions",
+      "startedAt": "2026-09-10T13:17:45.019Z",
+      "endedAt": "2026-09-10T13:17:45.484Z",
+      "durationMs": 465,
+      "ok": true,
+      "next": "account",
+      "output": {
+        "action": "metamask.wallet.read_state",
+        "source": "mobile-agentic-status",
+        "account": {
+          "address": "0x8dc623e964475d4d669da601fd15ea9125469003",
+          "id": "0285a92b-905c-4814-8a16-52fe1db60357",
+          "name": "dev1"
+        },
+        "route": {
+          "key": "Login-HLyPU5IX7AMokLwZgk9Gv",
+          "name": "Login"
+        },
+        "deviceName": "mm-2",
+        "platform": "ios",
+        "redacted": true,
+        "proofPath": "agentic-wallet-status",
+        "liveAdapter": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness/library/actions/mobile/wallet/read_state.mjs"
+      }
+    },
+    {
+      "nodeId": "account",
+      "action": "assert_output",
+      "intent": "Require the intended account; never substitute another wallet",
+      "startedAt": "2026-09-10T13:17:45.582Z",
+      "endedAt": "2026-09-10T13:17:45.635Z",
+      "durationMs": 53,
+      "ok": true,
+      "next": "unlock",
+      "output": {
+        "source": "wallet",
+        "stream": "stdout",
+        "assertion": {
+          "path": "$.account.address",
+          "operator": "eq",
+          "value": "0x8dc623e964475d4d669da601fd15ea9125469003",
+          "actual": "0x8dc623e964475d4d669da601fd15ea9125469003"
+        }
+      }
+    },
+    {
+      "nodeId": "unlock",
+      "action": "metamask.wallet.ensure_unlocked",
+      "intent": "Unlock the selected fixture wallet through its supported flow",
+      "startedAt": "2026-09-10T13:17:45.718Z",
+      "endedAt": "2026-09-10T13:17:52.385Z",
+      "durationMs": 6667,
+      "ok": true,
+      "next": "environment",
+      "output": {
+        "action": "metamask.wallet.ensure_unlocked",
+        "unlocked": true,
+        "keyringUnlocked": true,
+        "account": {
+          "address": "0x8dc623e964475d4d669da601fd15ea9125469003",
+          "id": "0285a92b-905c-4814-8a16-52fe1db60357",
+          "name": "dev1"
+        },
+        "route": {
+          "key": "WalletView-gwEnwkyas4W_9uSBJS9Zu",
+          "name": "WalletView"
+        },
+        "deviceName": "mm-2",
+        "platform": "ios",
+        "redacted": true,
+        "proofPath": "agentic-wallet-unlock",
+        "liveAdapter": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness/library/actions/mobile/wallet/ensure_unlocked.mjs"
+      }
+    },
+    {
+      "nodeId": "environment",
+      "action": "command",
+      "intent": "Verify dev1, Hyperliquid and testnet before reading the real Cross fixture",
+      "startedAt": "2026-09-10T13:17:52.556Z",
+      "endedAt": "2026-09-10T13:17:57.252Z",
+      "durationMs": 4696,
+      "ok": true,
+      "next": "positions",
+      "output": {
+        "exitCode": 0,
+        "stdout": "{\"identity\":{\"address\":\"0x8dc623e964475d4d669da601fd15ea9125469003\",\"provider\":\"hyperliquid\",\"isTestnet\":true},\"positions\":[],\"venuePositions\":[],\"orders\":[],\"leverage\":{\"type\":\"isolated\",\"value\":3,\"rawUsd\":\"0.0\"}}\n",
+        "stderr": "(node:2743) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/deeeed/dev/metamask/metamask-mobile-2/temp/tasks/feat/tat-3519-0908-104128/artifacts/selected-account-cross-setup.ts is not specified and it doesn't parse as CommonJS.\nReparsing as ES module because module syntax was detected. This incurs a performance overhead.\nTo eliminate this warning, add \"type\": \"module\" to /Users/deeeed/dev/metamask/metamask-mobile-2/package.json.\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+      }
+    },
+    {
+      "nodeId": "positions",
+      "action": "command",
+      "intent": "Read full live controller positions and compare their mode and liquidation price against the venue; the bundled read action omits these fields",
+      "startedAt": "2026-09-10T13:17:57.436Z",
+      "endedAt": "2026-09-10T13:18:00.043Z",
+      "durationMs": 2607,
+      "ok": true,
+      "next": "require-cross",
+      "output": {
+        "exitCode": 0,
+        "stdout": "{\"identity\":{\"address\":\"0x8dc623e964475d4d669da601fd15ea9125469003\",\"provider\":\"hyperliquid\",\"isTestnet\":true},\"positions\":[],\"venuePositions\":[],\"orders\":[],\"leverage\":{\"type\":\"isolated\",\"value\":3,\"rawUsd\":\"0.0\"}}\n",
+        "stderr": "(node:2927) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/deeeed/dev/metamask/metamask-mobile-2/temp/tasks/feat/tat-3519-0908-104128/artifacts/selected-account-cross-setup.ts is not specified and it doesn't parse as CommonJS.\nReparsing as ES module because module syntax was detected. This incurs a performance overhead.\nTo eliminate this warning, add \"type\": \"module\" to /Users/deeeed/dev/metamask/metamask-mobile-2/package.json.\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+      }
+    },
+    {
+      "nodeId": "require-cross",
+      "action": "assert_json",
+      "intent": "Require exactly one live position so shared value selectors cannot match another market",
+      "startedAt": "2026-09-10T13:18:00.150Z",
+      "endedAt": "2026-09-10T13:18:00.353Z",
+      "durationMs": 203,
+      "ok": false,
+      "cause_class": "subject",
+      "error": "JSON temp/tasks/feat/tat-3519-0908-104128/artifacts/selected-account-live-positions.json failed assertion {\"path\":\"$.positions\",\"operator\":\"length_eq\",\"value\":1}."
+    }
+  ]
+}

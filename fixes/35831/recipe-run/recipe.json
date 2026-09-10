@@ -1,0 +1,392 @@
+{
+  "$schema": "https://farmslot.io/schemas/recipe-v1.schema.json",
+  "title": "Existing cross-position display in Lite and Pro",
+  "description": "Requires exactly one real cross position on the selected account, so shared Pro selectors cannot match another market. Run separately for null and numeric liquidation fixtures. Asserts badges, venue liquidation display, explanation and non-editable Margin used in Lite and Pro. No trades are created. Mixed-book, compact-row and privacy behavior require the later component tests; the remaining epic stays open. The null branch requires an existing falsy JSON field, excluding empty string, zero and false, because this pinned runner cannot express literal null in an atomic assertion.",
+  "paramsSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "market": {
+        "type": "string",
+        "default": "ETH"
+      },
+      "accountAddress": {
+        "type": "string",
+        "default": "0x8dc623e964475d4d669da601fd15ea9125469003"
+      },
+      "liquidationPrice": {
+        "type": "string",
+        "default": "",
+        "description": "Raw venue liquidation price; required to match the position when priceKind is numeric."
+      },
+      "displayValue": {
+        "type": "string",
+        "default": "No liquidation price",
+        "description": "The formatted venue price without distance, or No liquidation price. Pro matches the price within its distance-suffixed display; Lite matches exactly."
+      },
+      "explanation": {
+        "type": "string",
+        "default": "At the current account value, this position has no liquidation price. This can change as the value of your other cross positions changes. A liquidation can affect your entire cross balance.",
+        "description": "Exact localized tooltip copy for priceKind; supply the numeric explanation for numeric runs."
+      },
+      "priceKind": {
+        "type": "string",
+        "enum": [
+          "null",
+          "numeric"
+        ],
+        "default": "null"
+      }
+    }
+  },
+  "workflow": {
+    "entry": "wallet",
+    "nodes": {
+      "wallet": {
+        "action": "metamask.wallet.read_state",
+        "intent": "Verify the selected account before inspecting its positions",
+        "next": "account"
+      },
+      "account": {
+        "action": "assert_output",
+        "intent": "Require the intended account; never substitute another wallet",
+        "source": "wallet",
+        "assert": {
+          "path": "$.account.address",
+          "operator": "eq",
+          "value": "{{params.accountAddress}}"
+        },
+        "next": "unlock"
+      },
+      "unlock": {
+        "action": "metamask.wallet.ensure_unlocked",
+        "intent": "Unlock the selected fixture wallet through its supported flow",
+        "unlock_timeout_ms": 90000,
+        "next": "environment"
+      },
+      "positions": {
+        "action": "command",
+        "intent": "Read full live controller positions and compare their mode and liquidation price against the venue; the bundled read action omits these fields",
+        "cmd": "node temp/tasks/feat/tat-3519-0908-104128/artifacts/selected-account-cross-setup.ts inspect",
+        "timeout_ms": 30000,
+        "next": "require-cross"
+      },
+      "require-cross": {
+        "action": "assert_json",
+        "intent": "Require exactly one live position so shared value selectors cannot match another market",
+        "assert": {
+          "path": "$.positions",
+          "operator": "length_eq",
+          "value": 1
+        },
+        "next": "require-cross-mode",
+        "path": "temp/tasks/feat/tat-3519-0908-104128/artifacts/selected-account-live-positions.json"
+      },
+      "pro-open": {
+        "action": "ui.navigate",
+        "intent": "Open the cross market in pro mode",
+        "page": "perps-market",
+        "market": "{{params.market}}",
+        "mode": "pro",
+        "next": "pro-scroll"
+      },
+      "pro-scroll": {
+        "action": "ui.scroll",
+        "intent": "Make the shared-collateral classification and margin amount visible for review",
+        "test_id": "cross-margin-tag-pro-{{params.market}}",
+        "scroll_into_view": true,
+        "timeout_ms": 15000,
+        "next": "pro-tag"
+      },
+      "pro-tag": {
+        "action": "ui.wait_for",
+        "intent": "Require the cross margin badge in pro",
+        "test_id": "cross-margin-tag-pro-{{params.market}}",
+        "expected": "visible",
+        "timeout_ms": 5000,
+        "next": "pro-margin"
+      },
+      "pro-price": {
+        "action": "ui.wait_for",
+        "intent": "Require the expected visible venue price or explicit no-price state",
+        "text": "{{params.displayValue}}",
+        "text_match": "contains",
+        "expected": "visible",
+        "timeout_ms": 5000,
+        "next": "pro-position-capture",
+        "test_id": "perps-pro-market-position-liq-price"
+      },
+      "pro-margin": {
+        "action": "ui.wait_for",
+        "intent": "Require the cross collateral label",
+        "text": "Margin used",
+        "text_match": "contains",
+        "expected": "visible",
+        "timeout_ms": 5000,
+        "next": "pro-no-edit"
+      },
+      "pro-info": {
+        "action": "ui.press",
+        "intent": "Open the cross liquidation explanation",
+        "test_id": "cross-liquidation-info-pro-{{params.market}}",
+        "next": "pro-explanation"
+      },
+      "pro-explanation": {
+        "action": "ui.wait_for",
+        "intent": "Require the shared-collateral explanation",
+        "text": "{{params.explanation}}",
+        "text_match": "exact",
+        "expected": "visible",
+        "timeout_ms": 5000,
+        "next": "pro-capture",
+        "test_id": "perps-bottom-sheet-tooltip-content"
+      },
+      "pro-capture": {
+        "action": "ui.screenshot",
+        "intent": "Preserve the explanation that liquidation can affect the entire cross balance",
+        "path": "screenshots/cross-explanation-pro.png",
+        "next": "pro-dismiss"
+      },
+      "pro-dismiss": {
+        "action": "ui.press",
+        "intent": "Dismiss the explanation through its visible action",
+        "test_id": "perps-bottom-sheet-tooltip-got-it-button",
+        "next": "lite-open"
+      },
+      "lite-open": {
+        "action": "ui.navigate",
+        "intent": "Open the cross market in lite mode",
+        "page": "perps-market",
+        "market": "{{params.market}}",
+        "mode": "lite",
+        "next": "lite-scroll"
+      },
+      "lite-scroll": {
+        "action": "ui.scroll",
+        "intent": "Make the shared-collateral classification and margin amount visible for review",
+        "test_id": "cross-margin-tag-lite-{{params.market}}",
+        "scroll_into_view": true,
+        "timeout_ms": 15000,
+        "next": "lite-tag"
+      },
+      "lite-tag": {
+        "action": "ui.wait_for",
+        "intent": "Require the cross margin badge in lite",
+        "test_id": "cross-margin-tag-lite-{{params.market}}",
+        "expected": "visible",
+        "timeout_ms": 5000,
+        "next": "lite-margin"
+      },
+      "lite-price": {
+        "action": "ui.wait_for",
+        "intent": "Require the expected visible venue price or explicit no-price state",
+        "text": "{{params.displayValue}}",
+        "text_match": "exact",
+        "expected": "visible",
+        "timeout_ms": 5000,
+        "next": "lite-position-capture",
+        "test_id": "position-card-liquidation-price-value"
+      },
+      "lite-margin": {
+        "action": "ui.wait_for",
+        "intent": "Require the cross collateral label",
+        "text": "Margin used",
+        "text_match": "contains",
+        "expected": "visible",
+        "timeout_ms": 5000,
+        "next": "lite-no-edit"
+      },
+      "lite-no-edit": {
+        "action": "ui.wait_for",
+        "intent": "Require the cross margin edit control to be absent from this single-position view",
+        "test_id": "position-card-margin-chevron",
+        "expected": "absent",
+        "timeout_ms": 5000,
+        "next": "lite-summary-capture"
+      },
+      "lite-info": {
+        "action": "ui.press",
+        "intent": "Open the cross liquidation explanation",
+        "test_id": "cross-liquidation-info-lite-{{params.market}}",
+        "next": "lite-explanation"
+      },
+      "lite-explanation": {
+        "action": "ui.wait_for",
+        "intent": "Require the shared-collateral explanation",
+        "text": "{{params.explanation}}",
+        "text_match": "exact",
+        "expected": "visible",
+        "timeout_ms": 5000,
+        "next": "lite-capture",
+        "test_id": "perps-bottom-sheet-tooltip-content"
+      },
+      "lite-capture": {
+        "action": "ui.screenshot",
+        "intent": "Preserve the explanation that liquidation can affect the entire cross balance",
+        "path": "screenshots/cross-explanation-lite.png",
+        "next": "lite-dismiss"
+      },
+      "lite-dismiss": {
+        "action": "ui.press",
+        "intent": "Dismiss the explanation through its visible action",
+        "test_id": "perps-bottom-sheet-tooltip-got-it-button",
+        "next": "done"
+      },
+      "done": {
+        "action": "end",
+        "status": "pass"
+      },
+      "price-kind": {
+        "action": "switch",
+        "intent": "Choose the explicit no-price case or the supplied numeric venue-price case",
+        "value": "{{params.priceKind}}",
+        "equals": "null",
+        "cases": {
+          "match": "require-null-price"
+        },
+        "default": "require-numeric-price"
+      },
+      "require-null-price": {
+        "action": "assert_json",
+        "intent": "Require the venue liquidation field to be present",
+        "assert": {
+          "path": "$.positions[0].liquidationPrice",
+          "operator": "exists"
+        },
+        "next": "require-null-falsy",
+        "path": "temp/tasks/feat/tat-3519-0908-104128/artifacts/selected-account-live-positions.json"
+      },
+      "require-numeric-price": {
+        "action": "assert_json",
+        "intent": "Require the expected venue liquidation value before comparing its UI rendering",
+        "assert": {
+          "path": "$.positions[0].liquidationPrice",
+          "operator": "eq",
+          "value": "{{params.liquidationPrice}}"
+        },
+        "next": "pro-open",
+        "path": "temp/tasks/feat/tat-3519-0908-104128/artifacts/selected-account-live-positions.json"
+      },
+      "pro-no-edit": {
+        "action": "ui.wait_for",
+        "intent": "Require the cross margin edit control to be absent from this single-position view",
+        "test_id": "perps-pro-market-position-edit-margin",
+        "expected": "absent",
+        "timeout_ms": 5000,
+        "next": "pro-summary-capture"
+      },
+      "pro-scroll-price": {
+        "action": "ui.scroll",
+        "intent": "Make the liquidation value visible alongside its shared-collateral explanation control",
+        "test_id": "cross-liquidation-info-pro-{{params.market}}",
+        "scroll_into_view": true,
+        "timeout_ms": 15000,
+        "next": "pro-price"
+      },
+      "pro-position-capture": {
+        "action": "ui.screenshot",
+        "intent": "Preserve the visible liquidation value and cross information affordance after their assertions",
+        "path": "screenshots/cross-position-pro.png",
+        "next": "pro-info"
+      },
+      "lite-scroll-price": {
+        "action": "ui.scroll",
+        "intent": "Make the liquidation value visible alongside its shared-collateral explanation control",
+        "test_id": "cross-liquidation-info-lite-{{params.market}}",
+        "scroll_into_view": true,
+        "timeout_ms": 15000,
+        "next": "lite-price"
+      },
+      "lite-position-capture": {
+        "action": "ui.screenshot",
+        "intent": "Preserve the visible liquidation value and cross information affordance after their assertions",
+        "path": "screenshots/cross-position-lite.png",
+        "next": "lite-info"
+      },
+      "require-cross-mode": {
+        "action": "assert_json",
+        "intent": "Require shared collateral on the live position",
+        "assert": {
+          "path": "$.positions[0].leverage.type",
+          "operator": "eq",
+          "value": "cross"
+        },
+        "next": "require-cross-market",
+        "path": "temp/tasks/feat/tat-3519-0908-104128/artifacts/selected-account-live-positions.json"
+      },
+      "require-cross-market": {
+        "action": "assert_json",
+        "intent": "Require the live position to belong to the intended market",
+        "assert": {
+          "path": "$.positions[0].symbol",
+          "operator": "eq",
+          "value": "{{params.market}}"
+        },
+        "next": "price-kind",
+        "path": "temp/tasks/feat/tat-3519-0908-104128/artifacts/selected-account-live-positions.json"
+      },
+      "require-null-falsy": {
+        "action": "assert_json",
+        "intent": "Require an empty-valued liquidation field before ruling out non-null JSON values",
+        "assert": {
+          "path": "$.positions[0].liquidationPrice",
+          "operator": "falsy"
+        },
+        "next": "require-null-not-string",
+        "path": "temp/tasks/feat/tat-3519-0908-104128/artifacts/selected-account-live-positions.json"
+      },
+      "require-null-not-string": {
+        "action": "assert_json",
+        "intent": "Reject an empty price string as a substitute for venue null",
+        "assert": {
+          "path": "$.positions[0].liquidationPrice",
+          "operator": "ne",
+          "value": ""
+        },
+        "next": "require-null-not-zero",
+        "path": "temp/tasks/feat/tat-3519-0908-104128/artifacts/selected-account-live-positions.json"
+      },
+      "require-null-not-zero": {
+        "action": "assert_json",
+        "intent": "Reject numeric zero as a substitute for venue null",
+        "assert": {
+          "path": "$.positions[0].liquidationPrice",
+          "operator": "ne",
+          "value": 0
+        },
+        "next": "require-null-not-false",
+        "path": "temp/tasks/feat/tat-3519-0908-104128/artifacts/selected-account-live-positions.json"
+      },
+      "require-null-not-false": {
+        "action": "assert_json",
+        "intent": "Reject boolean false so only literal venue null passes",
+        "assert": {
+          "path": "$.positions[0].liquidationPrice",
+          "operator": "ne",
+          "value": false
+        },
+        "next": "pro-open",
+        "path": "temp/tasks/feat/tat-3519-0908-104128/artifacts/selected-account-live-positions.json"
+      },
+      "environment": {
+        "action": "command",
+        "intent": "Verify dev1, Hyperliquid and testnet before reading the real Cross fixture",
+        "cmd": "node temp/tasks/feat/tat-3519-0908-104128/artifacts/selected-account-cross-setup.ts inspect",
+        "timeout_ms": 30000,
+        "next": "positions"
+      },
+      "pro-summary-capture": {
+        "action": "ui.screenshot",
+        "intent": "Preserve the visible Cross badge and Margin used label after their assertions",
+        "path": "screenshots/cross-summary-pro.png",
+        "next": "pro-scroll-price"
+      },
+      "lite-summary-capture": {
+        "action": "ui.screenshot",
+        "intent": "Preserve the visible Cross badge and Margin used label after their assertions",
+        "path": "screenshots/cross-summary-lite.png",
+        "next": "lite-scroll-price"
+      }
+    }
+  }
+}

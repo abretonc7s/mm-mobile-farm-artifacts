@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "valid": true,
+  "snapshots": [
+    {
+      "phase": "start",
+      "capturedAt": "2026-09-10T13:17:43.559Z",
+      "recipeDigest": "sha256:a5bd8bed1f91b4aaf1004d734061ec5920634e9bfe58dd733cddb6f5021e1617",
+      "product": {
+        "head": "9e350ce121d1bfcc28d298857fd564eedc82a617",
+        "status": "",
+        "sourceFingerprint": "c2432da32d24c3553f4acadf1584ae91cb7b35d131c3230782b6d2f802be835d"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "e8007a92bacfd6f200288f1d7e783a5b3373333dcb914554eeaf87a320e31793"
+      },
+      "libraries": [
+        {
+          "name": "perps",
+          "head": "e848357ff355146afa809cb4ed76f55a923d6ebd",
+          "status": "",
+          "sourceFingerprint": "fc29a58e984b294a86350ee516f5bbe29d3355a12a808fce8401033aa159ef1a"
+        },
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "d5743ef50d86c67894248d4fa0e6d1ca0511be46e72409bb08ed44c464074b81"
+        }
+      ],
+      "helpers": [
+        {
+          "path": "temp/tasks/feat/tat-3519-0908-104128/artifacts/selected-account-cross-setup.ts",
+          "sourceFingerprint": "d2b4ed08f7c1a5fd4f3346f97760b5f048929a7532d28b1c8a7b6a8dccc90af0"
+        }
+      ]
+    },
+    {
+      "phase": "pre-execute",
+      "capturedAt": "2026-09-10T13:17:44.229Z",
+      "recipeDigest": "sha256:a5bd8bed1f91b4aaf1004d734061ec5920634e9bfe58dd733cddb6f5021e1617",
+      "product": {
+        "head": "9e350ce121d1bfcc28d298857fd564eedc82a617",
+        "status": "",
+        "sourceFingerprint": "c2432da32d24c3553f4acadf1584ae91cb7b35d131c3230782b6d2f802be835d"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "e8007a92bacfd6f200288f1d7e783a5b3373333dcb914554eeaf87a320e31793"
+      },
+      "libraries": [
+        {
+          "name": "perps",
+          "head": "e848357ff355146afa809cb4ed76f55a923d6ebd",
+          "status": "",
+          "sourceFingerprint": "fc29a58e984b294a86350ee516f5bbe29d3355a12a808fce8401033aa159ef1a"
+        },
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "d5743ef50d86c67894248d4fa0e6d1ca0511be46e72409bb08ed44c464074b81"
+        }
+      ],
+      "helpers": [
+        {
+          "path": "temp/tasks/feat/tat-3519-0908-104128/artifacts/selected-account-cross-setup.ts",
+          "sourceFingerprint": "d2b4ed08f7c1a5fd4f3346f97760b5f048929a7532d28b1c8a7b6a8dccc90af0"
+        }
+      ]
+    },
+    {
+      "phase": "end",
+      "capturedAt": "2026-09-10T13:18:00.756Z",
+      "recipeDigest": "sha256:a5bd8bed1f91b4aaf1004d734061ec5920634e9bfe58dd733cddb6f5021e1617",
+      "product": {
+        "head": "9e350ce121d1bfcc28d298857fd564eedc82a617",
+        "status": "",
+        "sourceFingerprint": "c2432da32d24c3553f4acadf1584ae91cb7b35d131c3230782b6d2f802be835d"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "e8007a92bacfd6f200288f1d7e783a5b3373333dcb914554eeaf87a320e31793"
+      },
+      "libraries": [
+        {
+          "name": "perps",
+          "head": "e848357ff355146afa809cb4ed76f55a923d6ebd",
+          "status": "",
+          "sourceFingerprint": "fc29a58e984b294a86350ee516f5bbe29d3355a12a808fce8401033aa159ef1a"
+        },
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "d5743ef50d86c67894248d4fa0e6d1ca0511be46e72409bb08ed44c464074b81"
+        }
+      ],
+      "helpers": [
+        {
+          "path": "temp/tasks/feat/tat-3519-0908-104128/artifacts/selected-account-cross-setup.ts",
+          "sourceFingerprint": "d2b4ed08f7c1a5fd4f3346f97760b5f048929a7532d28b1c8a7b6a8dccc90af0"
+        }
+      ]
+    }
+  ],
+  "drift": []
+}

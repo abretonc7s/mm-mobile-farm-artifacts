@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "preferred_mode": "screenshots",
+  "summary": "Real Cross ETH positions on Hyperliquid testnet, opened by the yalc-linked Core controller. No before screenshot is claimed.",
+  "before_after_pairs": [],
+  "standalone": [
+    {
+      "label": "Pro Cross position with venue liquidation and Margin used",
+      "covers": [
+        "AC7-current",
+        "AC8",
+        "AC11"
+      ],
+      "file": "recipe-run-recorded-2/screenshots/cross-summary-pro.png"
+    },
+    {
+      "label": "Lite Cross position and Margin used",
+      "covers": [
+        "AC7-current",
+        "AC11"
+      ],
+      "file": "recipe-run-recorded-2/screenshots/cross-summary-lite.png"
+    },
+    {
+      "label": "Pro explicitly displays No liquidation price",
+      "covers": [
+        "AC8b"
+      ],
+      "file": "recipe-run-linked-null-3/screenshots/cross-position-pro.png"
+    },
+    {
+      "label": "Null liquidation explanation states the shared-balance risk",
+      "covers": [
+        "AC8b",
+        "AC10"
+      ],
+      "file": "recipe-run-linked-null-3/screenshots/cross-explanation-lite.png"
+    }
+  ],
+  "omit": [
+    "baseline-pro-screen/screenshots/before-pro.png",
+    "recipe-run-recorded-2/screenshots/cross-position-pro.png",
+    "recipe-run-recorded-2/screenshots/cross-position-lite.png",
+    "recipe-run-recorded-2/screenshots/cross-explanation-pro.png",
+    "recipe-run-recorded-2/screenshots/cross-explanation-lite.png",
+    "recipe-run-linked-null-3/screenshots/cross-position-lite.png",
+    "recipe-run-linked-null-3/screenshots/cross-explanation-pro.png"
+  ],
+  "videos": {
+    "after": "after.mp4",
+    "preferred": false,
+    "note": "Passing 37/37-action numeric recipe on mm-2. HUD hidden; developer overlay remains visible."
+  }
+}
