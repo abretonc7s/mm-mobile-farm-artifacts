@@ -9,9 +9,9 @@
     "environment": 0,
     "unknown": 0
   },
-  "startedAt": "2026-09-10T13:17:44.998Z",
-  "endedAt": "2026-09-10T13:18:00.353Z",
-  "durationMs": 15355,
+  "startedAt": "2026-09-11T09:01:33.819Z",
+  "endedAt": "2026-09-11T09:01:46.498Z",
+  "durationMs": 12679,
   "harness": {
     "name": "@farmslot/recipe-harness",
     "version": "0.16.1",
@@ -24,18 +24,6 @@
   },
   "recipeLibraries": {
     "sources": [
-      {
-        "name": "perps",
-        "root": "/Users/deeeed/dev/metamask/experimental-metamask-recipe-perps",
-        "recipeCount": 20,
-        "provenance": {
-          "kind": "library",
-          "trust": "trusted",
-          "name": "perps",
-          "revision": "e848357ff355146afa809cb4ed76f55a923d6ebd",
-          "dirty": false
-        }
-      },
       {
         "name": "metamask",
         "root": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness/library",

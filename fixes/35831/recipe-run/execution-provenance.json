@@ -4,25 +4,19 @@
   "snapshots": [
     {
       "phase": "start",
-      "capturedAt": "2026-09-10T13:17:43.559Z",
+      "capturedAt": "2026-09-11T09:01:33.099Z",
       "recipeDigest": "sha256:a5bd8bed1f91b4aaf1004d734061ec5920634e9bfe58dd733cddb6f5021e1617",
       "product": {
-        "head": "9e350ce121d1bfcc28d298857fd564eedc82a617",
+        "head": "9b0472a4d4ad6e1981d9be1af041e3fa7b01c8b6",
         "status": "",
-        "sourceFingerprint": "c2432da32d24c3553f4acadf1584ae91cb7b35d131c3230782b6d2f802be835d"
+        "sourceFingerprint": "5bbb7a276bdf6e6d4e2c6cca325b543aa8ff213b97fcd6711373800736ee505c"
       },
       "runner": {
         "head": null,
         "status": "not-a-git-checkout",
-        "sourceFingerprint": "e8007a92bacfd6f200288f1d7e783a5b3373333dcb914554eeaf87a320e31793"
+        "sourceFingerprint": "b5e810753a26c6410e32e60a113339fad36d6b4d055a2a357cc5668ffa24a0a7"
       },
       "libraries": [
-        {
-          "name": "perps",
-          "head": "e848357ff355146afa809cb4ed76f55a923d6ebd",
-          "status": "",
-          "sourceFingerprint": "fc29a58e984b294a86350ee516f5bbe29d3355a12a808fce8401033aa159ef1a"
-        },
         {
           "name": "metamask",
           "head": null,
@@ -39,25 +33,19 @@
     },
     {
       "phase": "pre-execute",
-      "capturedAt": "2026-09-10T13:17:44.229Z",
+      "capturedAt": "2026-09-11T09:01:33.475Z",
       "recipeDigest": "sha256:a5bd8bed1f91b4aaf1004d734061ec5920634e9bfe58dd733cddb6f5021e1617",
       "product": {
-        "head": "9e350ce121d1bfcc28d298857fd564eedc82a617",
+        "head": "9b0472a4d4ad6e1981d9be1af041e3fa7b01c8b6",
         "status": "",
-        "sourceFingerprint": "c2432da32d24c3553f4acadf1584ae91cb7b35d131c3230782b6d2f802be835d"
+        "sourceFingerprint": "5bbb7a276bdf6e6d4e2c6cca325b543aa8ff213b97fcd6711373800736ee505c"
       },
       "runner": {
         "head": null,
         "status": "not-a-git-checkout",
-        "sourceFingerprint": "e8007a92bacfd6f200288f1d7e783a5b3373333dcb914554eeaf87a320e31793"
+        "sourceFingerprint": "b5e810753a26c6410e32e60a113339fad36d6b4d055a2a357cc5668ffa24a0a7"
       },
       "libraries": [
-        {
-          "name": "perps",
-          "head": "e848357ff355146afa809cb4ed76f55a923d6ebd",
-          "status": "",
-          "sourceFingerprint": "fc29a58e984b294a86350ee516f5bbe29d3355a12a808fce8401033aa159ef1a"
-        },
         {
           "name": "metamask",
           "head": null,
@@ -74,25 +62,19 @@
     },
     {
       "phase": "end",
-      "capturedAt": "2026-09-10T13:18:00.756Z",
+      "capturedAt": "2026-09-11T09:01:46.629Z",
       "recipeDigest": "sha256:a5bd8bed1f91b4aaf1004d734061ec5920634e9bfe58dd733cddb6f5021e1617",
       "product": {
-        "head": "9e350ce121d1bfcc28d298857fd564eedc82a617",
+        "head": "9b0472a4d4ad6e1981d9be1af041e3fa7b01c8b6",
         "status": "",
-        "sourceFingerprint": "c2432da32d24c3553f4acadf1584ae91cb7b35d131c3230782b6d2f802be835d"
+        "sourceFingerprint": "5bbb7a276bdf6e6d4e2c6cca325b543aa8ff213b97fcd6711373800736ee505c"
       },
       "runner": {
         "head": null,
         "status": "not-a-git-checkout",
-        "sourceFingerprint": "e8007a92bacfd6f200288f1d7e783a5b3373333dcb914554eeaf87a320e31793"
+        "sourceFingerprint": "b5e810753a26c6410e32e60a113339fad36d6b4d055a2a357cc5668ffa24a0a7"
       },
       "libraries": [
-        {
-          "name": "perps",
-          "head": "e848357ff355146afa809cb4ed76f55a923d6ebd",
-          "status": "",
-          "sourceFingerprint": "fc29a58e984b294a86350ee516f5bbe29d3355a12a808fce8401033aa159ef1a"
-        },
         {
           "name": "metamask",
           "head": null,

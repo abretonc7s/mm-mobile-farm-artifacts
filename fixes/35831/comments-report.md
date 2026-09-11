@@ -1,173 +1,150 @@
 # PR #35831 — Comment Triage Report
 
 Branch: `TAT-3519-feat-mobile-pro-cross-margin`
-PR: feat(perps): mobile | Pro mode | Cross margin
-Verified against post-rebase HEAD (rebased onto `origin/main` @ `9e21342485`).
+Triaged at HEAD: (see final section)
 
-## Comment inventory
+## Fetch results
 
-Fetched live from all three endpoints:
+- Inline review comments (`pulls/35831/comments`, `in_reply_to_id == null`): **0**
+- `CHANGES_REQUESTED` reviews: **0** (no reviews of any state exist on this PR)
+- Issue/conversation comments: **7** (5 bot, 2 human — both authored by the PR author in earlier runs)
 
-- Inline review comments (`/pulls/35831/comments`): **0**
-- REQUEST_CHANGES reviews (`/pulls/35831/reviews`): **0**
-- Issue/conversation comments (`/issues/35831/comments`): **6**
+## Triage table
 
-### Skipped as status-only automation (4, no reply posted)
+| # | ID | Author | Source | File | Triage | Action |
+|---|----|--------|--------|------|--------|--------|
+| 1 | 5578350099 | github-actions[bot] | issue_comment | — | STATUS-ONLY (skipped) | CLA signature status. No reply. |
+| 2 | 5581113223 | github-actions[bot] | issue_comment | — | OUT OF SCOPE | Perf test "Perps add funds" quality-gates exceeded on commit `732dc86` (pre-rebase). Explicitly non-blocking; the add-funds flow is untouched by this PR's diff (display-only changes to position cards + a feature-flag selector). |
+| 3 | 5581571760 | github-actions[bot] | issue_comment | 5 perps test files | FALSE POSITIVE | Flaky-test detection. The rendered body reports **"All previously detected unit test flakiness issues in this PR have been fixed"** and its metadata block carries `"findings": []` for all five analyzed files. No outstanding finding to fix. |
+| 4 | 5581695034 | abretonc7s (PR author) | issue_comment | — | ALREADY HANDLED | Author's own prior triage of #3. Not a reviewer request; no reply (would be self-reply). |
+| 5 | 5619337354 | abretonc7s (PR author) | issue_comment | — | ALREADY HANDLED | Author's own prior rebase/blocker-cleared note. Not a reviewer request; no reply. |
+| 6 | 5621086006 | github-actions[bot] | issue_comment | — | STATUS-ONLY (skipped) | Smart E2E tag selection summary. No reply. |
+| 7 | 5621245345 | sonarqubecloud[bot] | issue_comment | — | STATUS-ONLY (skipped) | **Quality Gate passed** — 0 security hotspots, 98.9% coverage on new code, 0.0% duplication. The 3 "new issues" did not fail the gate and carry no inline comment on this PR. No reply. |
 
-| id | author | kind |
-|---|---|---|
-| 5578350099 | github-actions[bot] | CLA signature status |
-| 5581113223 | github-actions[bot] | Performance test results (explicitly non-blocking) |
-| 5581569439 | github-actions[bot] | Smart E2E test selection |
-| 5581664028 | sonarqubecloud[bot] | Sonar Quality Gate — passed |
+**Skipped without reply (routine status-only automation): 3** (#1 CLA, #6 E2E selection, #7 Sonar gate-passed).
 
-### Triaged
+## CI status
 
-| # | Author | File | Triage | Action |
-|---|--------|------|--------|--------|
-| 1 | github-actions[bot] (5581571760, J4) | PerpsPositionsView.test.tsx:56 | FALSE POSITIVE | No `waitFor(() => {})` exists; all 16 `waitFor` callbacks carry `expect` assertions |
-| 2 | github-actions[bot] (5581571760, J3) | PerpsProPositionCard.test.tsx:12 | FALSE POSITIVE | `beforeEach` (35–38) restores the one mutated mock (`useSelector`); `resetAllMocks()` would strip module-factory implementations |
-| 3 | github-actions[bot] (5581571760, J3) | PerpsCard.test.tsx:12 | FALSE POSITIVE | `beforeEach` (69–92) restores `useSelector` and `mockUsePerpsMarkets`; `resetAllMocks()` would erase the markets factory |
-| 4 | github-actions[bot] (5581571760, J4) | PerpsCrossMarginInfoButton.test.tsx:12 | FALSE POSITIVE | File imports and calls no `waitFor` at all; there is no empty callback to replace |
-| 5 | github-actions[bot] (5581571760, J3) | PerpsPositionCard.test.tsx:12 | FALSE POSITIVE | `beforeEach` (206–259) restores theme, PnL, markets, live prices and selectors; `resetAllMocks()` would erase all of them |
-| 6 | abretonc7s (5581695034) | conversation | ALREADY REPLIED | Author's own prior triage of 5581571760, same dispositions. No new reply — see "Reply policy" below |
+Checked via `gh pr checks 35831`. One non-skipped failure:
 
-Totals: **6 triaged — 0 REAL, 5 FALSE POSITIVE, 1 already-replied (own comment)**; 4 status-only automation skipped without reply.
+- **`check-pr-labels` — FAIL:** `PR cannot be merged because it still contains this label: blocked`.
+  **Triage: OUT OF SCOPE for a code fix.** The `blocked` label is an intentional author/product hold, consistent with the PR title suffix `[NOT-READY-NEED-DESIGN]`. It is a process gate, not a defect, and removing it is a product decision outside a review-comment worker's remit. No code change can clear it.
 
-## Independent verification (not taken on trust from the prior triage)
+All other checks: `Unit tests (0..9)` pass, `Verify feature flags are registered` pass, `Validate E2E Fixtures` pass, Sonar gate pass. `policy-bot` pending; the remaining entries are `skipping`.
 
-Counted against current HEAD source rather than relying on the historical 0-failure rate:
+## Integration (step 3)
 
-```
-PerpsPositionsView.test.tsx        empty waitFor: 0   waitFor total: 16
-PerpsProPositionCard.test.tsx      empty waitFor: 0   clearAllMocks: 1
-PerpsCard.test.tsx                 empty waitFor: 0   clearAllMocks: 1
-PerpsCrossMarginInfoButton.test.tsx empty waitFor: 0  waitFor total: 0
-PerpsPositionCard.test.tsx         empty waitFor: 0   clearAllMocks: 1
-```
+Rebased `TAT-3519-feat-mobile-pro-cross-margin` onto `origin/main` (`91a66f077a`). Six branch commits replayed cleanly, no conflicts, no merge commit. `main` moved `yarn.lock`/`package.json`/`ios/Podfile.lock`, so `yarn install --immutable` was re-run (completed with pre-existing peer warnings only).
 
-Each `beforeEach` was read in full. In all three J3 files the mock return values the tests mutate are
-explicitly re-established after `clearAllMocks()`. `jest.resetAllMocks()` additionally wipes
-implementations installed by `jest.mock` module factories (`mockUsePerpsMarkets`, `mockUseTheme`,
-`usePerpsLivePrices`, the event-tracking factory), which the `beforeEach` blocks do not all
-reinstall — so the suggested fix would break these suites rather than stabilize them.
+Pre-rebase remote SHA: `4d0f2b7f1009ff49d08f0d36759eff01092803bc` (local HEAD matched remote exactly before the rebase).
+Integration status: `rebased`.
 
-## Dependency blocker — now resolved by the step 3 rebase
+## Step 6 — fixes applied
 
-The prior conversation comment recorded Mobile as blocked on Core #10136 for four missing
-`ORDER_MARGIN_MODE_*` constants. That is no longer true:
+**None.** No comment triaged REAL, so no code change was made. Verification that this is not a
+premature no-change:
 
-- `origin/main` bumped `@metamask/perps-controller` `^16.1.0` → `^16.2.0`.
-- Installed `@metamask/perps-controller@16.2.0` exports all four constants
-  (`perpsErrorCodes.d.cts:44-47`), and its CHANGELOG credits Core #10136.
-- The rebase + `yarn install --immutable` brought that release into this checkout, so the
-  typecheck failure cited in the earlier comment is cleared. No `package.json`/`yarn.lock`
-  change is needed in this PR's own diff — main already carries it.
+- The flaky-detection metadata block (base64, decoded) reports `findings: []` for **all five**
+  analyzed test files, confirming the rendered "all issues fixed" text rather than relying on it.
+- Sonar's quality gate **passed** and posted no inline comment.
+- The only failing check (`check-pr-labels`) is a label-process gate with no code remedy.
 
-## Reply policy
+## Step 9 — bounded local CI gate (post-rebase)
 
-Comment 6 is the PR author's own triage covering exactly the same five findings with the same
-dispositions, already posted against the pre-rebase SHA. Per the "do not post a second reply for the
-same current-HEAD resolution" rule, no duplicate triage is posted. One short top-level follow-up is
-posted instead, reporting only what changed since that comment: the rebase and the now-resolved
-Core dependency blocker.
+Run against the rebased base `91a66f077a`:
 
-## Local CI gate (step 9) — post-rebase
-
-| Check | Result |
+| Gate | Result |
 |---|---|
-| Scoped ESLint (`--max-warnings=0`, 13 changed files) | PASS (exit 0) |
-| `yarn lint:tsc` | PASS (exit 0, zero errors) |
-| `yarn format:check` | PASS — all matched files use Prettier style |
-| Working tree clean (`git status --porcelain`) | PASS — empty |
-| Affected unit tests (5 suites) | PASS — 110/110 tests, 5/5 suites |
+| Scoped ESLint `--max-warnings=0` (16 PR files) | **PASS** — no output |
+| `yarn lint:tsc` | **PASS** — 0 errors |
+| `yarn format:check` | **PASS** — "All matched files use Prettier code style!" |
+| Working tree clean (`git status --porcelain`) | **PASS** — empty |
+| Affected suites (5 files) | **PASS** — 112/112 tests |
 
-The `lint:tsc` pass is the direct evidence that the `ORDER_MARGIN_MODE_*` blocker recorded in
-comment 5581695034 is cleared on the rebased branch.
+Suites run: `PerpsPositionsView`, `PerpsProPositionCard`, `PerpsCard`,
+`PerpsCrossMarginInfoButton`, `PerpsPositionCard`.
 
-## Recipe re-validation (step 10) — BLOCKED ON FIXTURE, unrelated to this branch
+## Step 10 — recipe re-validation
 
-Recipe: `artifacts/recipe.json` — "Existing cross-position display in Lite and Pro"
-(family-inherited, `RECIPE_SOURCE: family-inherited`, trusted; 42 nodes; action mix is normal
-validation flow — `ui.*`, `assert_json`, `metamask.wallet.*`, plus two `command` nodes that both
-invoke the in-repo `selected-account-cross-setup.ts inspect` probe. No arbitrary-code or
-exfiltration primitive present.)
+Recipe: `artifacts/recipe.json` (present; `RECIPE_SOURCE: family-inherited`, trusted).
+Actions used are all standard validation primitives — `metamask.wallet.*`, `ui.navigate|press|scroll|screenshot|wait_for`, `assert_json`, `assert_output`, `command`, `switch`, `end`. No adversarial primitive.
 
-### Inherited AC coverage (step 10b)
+**Inherited AC coverage** (from the recipe description + `inputs/inherited/report.md`): the recipe
+proves, on exactly one real Cross position, the Cross badge, the venue liquidation display for both
+the null and numeric fixtures, the shared-collateral explanation, and the non-editable "Margin used"
+label in both Lite and Pro. Mixed-book grouping, compact rows, and privacy masking are explicitly
+delegated to component tests, not to this recipe.
 
-From `inputs/inherited/report.md` and the recipe description, the inherited recipe covers:
-Cross badge in Lite and Pro cards, venue liquidation display for both the null and numeric
-branches, the shared-collateral explanation, and non-editable "Margin used". Explicitly **not**
-covered by the recipe and deferred to component tests: mixed-book, compact-row and privacy
-behavior.
+**Runtime health:** UP. `launch ios --verify` passed (13.7s; fixture READY, 4 accounts) and
+`doctor --expect-live` reported Metro `up`, device `mm-2` Booted, capture providers available.
 
-### Runtime health — PASS
+**Result: FAIL at the precondition gate — environmental, not a regression.**
 
-- `mm-harness launch ios --verify` — exit 0, bundle rebuilt against the rebased tree,
-  `Mobile bridge ready (17.5s)`, `verify mobile passed (20.7s)`, fixture `READY (accounts=4)`.
-- `mm-harness doctor --expect-live --json` — exit 0, `status: pass`, 5/5 checks pass.
+| # | Node | Action | Result |
+|---|------|--------|--------|
+| 1 | `wallet` | `metamask.wallet.read_state` | pass |
+| 2 | `account` | `assert_output` | pass |
+| 3 | `unlock` | `metamask.wallet.ensure_unlocked` | pass |
+| 4 | `environment` | `command` | pass |
+| 5 | `positions` | `command` | pass |
+| 6 | `require-cross` | `assert_json` | **fail** |
 
-So the runtime was live and healthy; this is not a "runtime unavailable" skip.
+5 passed / 1 failed of 6. The failure is:
+`$.positions length_eq 1` against `selected-account-live-positions.json`, which currently holds
+`positions: []` (zero open positions on the testnet account).
 
-### Result: FAIL at precondition gate — environmental, not a code regression
+`require-cross`'s own stated intent is *"Require exactly one live position so shared value selectors
+cannot match another market"* — it is a fixture precondition, not an assertion about this PR. Execution
+stopped there and **never reached a single node that touches this PR's display code** (`pro-open`,
+`pro-scroll`, and every badge/liquidation/margin assertion are downstream of it).
 
-```
-node:    require-cross   (4th node; entry wallet → account → environment → positions → require-cross)
-assert:  $.positions length_eq 1
-actual:  "positions": []   (fixture recaptured live at 2026-09-10T13:18:00Z)
-error:   APP_LOGIC_FAILURE
-```
+Attribution per step 10's RUNTIME/ASSERT FAIL rule: `git diff origin/main...HEAD --name-only` shows the
+branch touches **no** fixture, runtime, or `temp/` data — only perps components, tests, selectors,
+locales, and the flag registry. The failure is therefore caused by neither the review fixes (there were
+none) nor the rebase. It is the same environmental condition documented in PR comment 5619337354: the
+positions used for the original validation were closed at the end of that run. Logged as
+**unrelated/environmental**; continuing per the checklist.
 
-Causation analysis per step 10's RUNTIME/ASSERT FAIL rule:
+## Step 11 — commit and push
 
-- The gate fails **before** any node that touches the PR's code — no badge, liquidation,
-  explanation or margin-label assertion was ever reached.
-- The failing node reads `temp/tasks/feat/.../selected-account-live-positions.json`. **Zero**
-  commits on this branch touch that path, and it is not in the PR diff.
-- Not caused by the review fixes: there are no review fixes (0 REAL findings, no code change).
-- Not caused by the step 3 merge from main: the failing assertion is on live venue account
-  state, not on any file main changed.
+**No fix commit created** — no comment triaged REAL, so an empty commit was deliberately avoided.
 
-Root cause: the recipe requires exactly one **real** open Cross position on testnet account
-`0x8dc6…9003`, and that account currently holds none. The PR body records that the positions used
-for the original validation were deliberately closed after that run ("Both were closed and ETH was
-restored to isolated 3x"), so the fixture precondition can no longer be met without re-opening a
-real leveraged testnet position.
+The rebase from step 3 still needed publishing, so the integrated history was force-pushed under a
+lease. Remote was verified unmoved (`4d0f2b7f100` expected == actual) immediately before the push.
 
-Disposition: logged as **unrelated/environmental**, continuing per step 10's explicit instruction
-for a failing step unrelated to anything in this branch. Re-establishing a live leveraged position
-is a financial mutation outside the scope of a comment-triage run and is not requested by any
-comment. The PR's display behavior remains covered by the 110 passing component tests in step 9.
+- Before: `4d0f2b7f1009ff49d08f0d36759eff01092803bc`
+- After:  `9b0472a4d4ad6e1981d9be1af041e3fa7b01c8b6`
 
-Run artifacts: `artifacts/recipe-run/summary.json`, `artifacts/recipe-run/trace.json`.
+No leftover lint changes; working tree clean after push.
 
-## Replies posted (step 12)
+## Step 12 — replies
 
-- Inline `review_comment` replies: **none** — the PR has zero inline review comments and zero
-  REQUEST_CHANGES reviews, so no inline reply and no `resolveReviewThread` mutation applies.
-  (Issue comments are not review threads and were correctly not passed to that mutation.)
-- Consolidated top-level response: https://github.com/MetaMask/metamask-mobile/pull/35831#issuecomment-5619337354
-  Reports the rebase, the cleared Core dependency blocker with typecheck evidence, the post-rebase
-  gate results, the re-verified five flaky dispositions, and the recipe fixture gap.
-- No duplicate of the author's existing five-finding triage (5581695034) was posted; the new comment
-  covers only what changed since it.
-- Status-only automation (CLA, performance, E2E selection, Sonar): 4 comments, no reply posted.
+- **Inline review comments: none exist**, so no inline replies were posted and no review threads were
+  resolved. GraphQL `reviewThreads` returns **0** nodes — nothing to pass to `resolveReviewThread`.
+- **One consolidated top-level response posted** covering the flaky-detection finding (FALSE POSITIVE,
+  verified via decoded metadata), the performance-test failure (OUT OF SCOPE), the Sonar gate, the
+  post-rebase gate results, the recipe precondition failure, and the intentional `blocked` label:
+  https://github.com/MetaMask/metamask-mobile/pull/35831#issuecomment-5632089383
+- **No reply** to comments 5581695034 and 5619337354 — both are the PR author's own earlier triage
+  notes, not reviewer requests; replying would be a self-reply.
+- **No reply** to the 3 routine status-only automation comments (CLA, Smart E2E selection, Sonar
+  gate-passed).
 
 ---
 
-## Final summary (step 13)
+## Final summary
 
-- **Total comments: 10** — 6 issue comments (4 status-only automation skipped without reply,
-  1 actionable bot finding-set, 1 pre-existing author triage) + 0 inline review comments + 0 reviews.
-- **Triaged: 6 → 0 REAL, 5 FALSE POSITIVE, 0 OUT OF SCOPE, 1 already-replied.**
-- **Commit SHA for fixes: none** — no REAL findings, so no fix commit was created and no empty
-  commit was made.
-- **Pushed:** `fc11c3ec0cc` → `9e350ce121d` (force-with-lease, rebased history only).
-- **Files changed by this run: none.** The branch diff is unchanged from the pre-rebase content;
-  only the base moved.
-- **Recipe re-validation: FAIL (unrelated/environmental)** — precondition gate `require-cross`
-  (`$.positions length_eq 1`) against a live testnet account holding zero positions. Fails before
-  reaching any PR code; no branch commit touches the fixture. Runtime itself was live and healthy.
-- **Integration status:** `rebased` (see `artifacts/integration-status.txt`).
-- **Dependency blocker cleared:** `@metamask/perps-controller@16.2.0` from main supplies the four
-  `ORDER_MARGIN_MODE_*` constants; `lint:tsc` exits 0.
+- **Total comments triaged: 7** — 0 REAL, 1 FALSE POSITIVE (flaky detection), 1 OUT OF SCOPE
+  (performance test), 2 already-handled author notes, 3 status-only automation skipped without reply.
+- **Inline review comments: 0. `CHANGES_REQUESTED` reviews: 0.**
+- **Commit SHA for fixes: none** — no code change was required, so no empty commit was created.
+- **Files changed this run: none.** Branch content is unchanged; only its base moved.
+- **Branch tip:** `9b0472a4d4ad6e1981d9be1af041e3fa7b01c8b6` (was `4d0f2b7f1009ff49d08f0d36759eff01092803bc`).
+- **Recipe re-validation: FAIL (environmental).** Stops at the `require-cross` fixture precondition —
+  zero open positions on the testnet account. 5/6 nodes pass; no assertion on this PR's code was
+  reached. Not attributable to the branch or the rebase.
+- **Integration status (step 3): `rebased`** onto `origin/main` `91a66f077a`, clean, linear, no merge
+  commit; `yarn install --immutable` re-run for the lockfile move.
+- **Local CI gate: all green** — ESLint, `lint:tsc`, `format:check`, clean tree, 112/112 tests.
+- **Remaining merge blocker:** `check-pr-labels` fails on the intentional `blocked` label, matching
+  the `[NOT-READY-NEED-DESIGN]` title. Product hold, deliberately left in place.

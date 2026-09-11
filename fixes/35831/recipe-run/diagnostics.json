@@ -7,9 +7,9 @@
   "source": {
     "label": "app",
     "path": "/Users/deeeed/dev/metamask/metamask-mobile-2/temp/recipe/runtime/app-console.log",
-    "startOffset": 33384,
-    "endOffset": 82201,
-    "bytesRead": 48817,
+    "startOffset": 32916,
+    "endOffset": 82027,
+    "bytesRead": 49111,
     "truncated": false,
     "inAppBuffer": "collected",
     "rawArtifact": "diagnostics-app-log.txt",
@@ -27,13 +27,13 @@
     {
       "level": "warning",
       "fingerprint": "5ca048045073",
-      "preview": "WARN  13:17:49.157 [console:mm-2] The result function returned its own inputs without modification. e.g",
+      "preview": "WARN  09:01:37.390 [console:mm-2] The result function returned its own inputs without modification. e.g",
       "count": 3
     },
     {
       "level": "warning",
       "fingerprint": "f2aedf9ebff0",
-      "preview": "WARN  13:17:51.258 [console:mm-2] [MetaMask DEBUG]: { message: \"Terminal global snapshot returned 400: bad request\", stack: \"Error: Terminal global snapshot returned 400: bad request\\n    at ?anon_0_ (http://127.0.0.1:8062/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.byteco",
+      "preview": "WARN  09:01:39.497 [console:mm-2] [MetaMask DEBUG]: { message: \"Terminal global snapshot returned 400: bad request\", stack: \"Error: Terminal global snapshot returned 400: bad request\\n    at ?anon_0_ (http://127.0.0.1:8062/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.byteco",
       "count": 3
     },
     {
@@ -44,8 +44,8 @@
     },
     {
       "level": "warning",
-      "fingerprint": "43feb969d9df",
-      "preview": "[MetaMask DEBUG]: Error: Terminal global snapshot returned 400: bad request\n    at ?anon_0_ (http://127.0.0.1:8062/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:1373206:26)\n    at next (native)\n    a",
+      "fingerprint": "7375cb40da64",
+      "preview": "[MetaMask DEBUG]: Error: Terminal global snapshot returned 400: bad request\n    at ?anon_0_ (http://127.0.0.1:8062/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:1385501:26)\n    at next (native)\n    a",
       "count": 3
     }
   ]

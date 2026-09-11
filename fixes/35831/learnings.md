@@ -1,35 +1,32 @@
 # Learnings — PR #35831 pr-complete run
 
-No reviewer-driven code fixes were required on this run (0 REAL, 5 FALSE POSITIVE). The learnings
-below are about the run itself rather than about defects reviewers caught.
+- No reviewer-driven learnings — no actionable comment fixes on this run. Zero comments triaged REAL:
+  no inline review comments and no `CHANGES_REQUESTED` reviews exist on this PR, and every conversation
+  comment was status-only automation, an already-handled author note, or a bot finding that verified
+  clean.
 
-- **A rebase can silently clear a blocker that a prior run recorded as hard-blocking.** The
-  inherited report and the author's PR comment both stated Mobile was blocked on Core #10136 for
-  four missing `ORDER_MARGIN_MODE_*` constants. Between that run and this one, Core merged, shipped
-  in `@metamask/perps-controller@16.2.0`, and `main` picked up the bump — so step 3's rebase plus
-  `yarn install --immutable` cleared the typecheck failure with no code change on the branch. Worth
-  re-testing an inherited blocker after integration instead of carrying it forward as still-true.
+Process notes worth carrying forward:
 
-- **Verify static bot findings against source, not against the historical failure rate.** All five
-  flaky findings cited a 0/439 failure rate, which proves nothing either way. The dispositions held
-  up only because the actual files were read: the two J4 findings cite an `await waitFor(() => {})`
-  line that exists in neither file (one file imports no `waitFor` at all), and the three J3 findings
-  ask for a `resetAllMocks()` that would wipe `jest.mock` factory implementations the suites depend
-  on — the suggested "fix" would break the tests it claims to stabilize.
-
-- **`clearAllMocks()` without `resetAllMocks()` is correct when the `beforeEach` restores what the
-  tests mutate.** In all three J3 suites the `beforeEach` explicitly reinstates every mutated return
-  value (selectors, markets, theme, PnL, live prices). The generic pattern-matcher cannot see that,
-  so this finding class will keep recurring on well-written perps suites and should be dispositioned
-  by reading the setup block.
-
-- **Recipes with live-venue preconditions decay between runs.** The inherited recipe gates on
-  exactly one real open Cross position, but the original run deliberately closed its positions
-  afterward ("Both were closed and ETH was restored to isolated 3x"). The gate now fails at node 4
-  before touching any PR code. A recipe whose precondition is destroyed by its own cleanup cannot
-  re-validate later without re-establishing a real financial position — a re-runnability gap worth
-  designing around (fixture-backed state rather than live venue state).
-
-- **Distinguishing "runtime unavailable" from "precondition unmet" mattered here.** Launch and
-  doctor both passed cleanly, so the skip-on-unhealthy-runtime path did not apply; the failure had
-  to be triaged on causation instead, and traced to a fixture path no branch commit touches.
+- **Verify bot "all clear" claims from their machine-readable payload, not their prose.** The
+  flaky-detection comment's rendered body says everything is fixed; the authoritative signal is the
+  base64 `metamask-flaky-test-detection-metadata` block, which decodes to `findings: []` per file. One
+  `base64 -d | jq` confirmed the disposition instead of trusting rendered text — cheap, and it also
+  surfaces the `analyzedSha` so you know which commit the claim covers.
+- **A red check is not always a code defect.** The only failing check, `check-pr-labels`, fails on the
+  `blocked` label, which is an intentional product hold matching the `[NOT-READY-NEED-DESIGN]` title.
+  Clearing it would mean removing a deliberate gate, which is a product decision, not a worker fix.
+  Worth distinguishing process gates from defects before attempting a "make CI green" action.
+- **Attribute recipe failures by node, not by exit code.** The run reported `status: fail`, but the
+  per-node trace showed 5/6 passing and the stop at `require-cross`, a fixture precondition requiring
+  exactly one open position. Reading the node sequence proved execution never reached any assertion on
+  the PR's display code, which is what separates "environmental" from "regression". Confirming the
+  branch touches no fixture or runtime data (`git diff origin/main...HEAD --name-only`) closed the
+  attribution.
+- **Recurring environmental gap in this family:** the inherited recipe depends on a live testnet
+  position that the prior validation run closed at its end. Every follow-up run therefore fails the
+  same gate. The recipe would be re-runnable if it either seeded its own position or tolerated setup,
+  rather than asserting a precondition it does not establish.
+- **`yarn jest` with newline-joined paths silently becomes one pattern.** Passing `$tests` from a
+  `git diff | grep` capture matched 0 suites and exited 1, which reads like a failure. The suites must
+  be passed as separate arguments; worth word-splitting deliberately rather than interpolating a
+  multi-line variable.

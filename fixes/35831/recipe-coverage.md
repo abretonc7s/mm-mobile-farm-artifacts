@@ -1,61 +1,45 @@
-# Recipe coverage — pr-complete run (PR #35831)
+# Recipe coverage — pr-complete re-validation run
 
-Scope: re-validation only. **Proof mode for this run: state only.** This run made **no code change**
-(0 REAL comment findings), so it adds no new criteria to the inherited map and produces no visual
-proof of its own. It attempted to replay the inherited recipe against the rebased
-tree (`branch + origin/main`) and did not reach the assertion nodes. Nothing below is claimed as a
-new passing execution.
+Scope: re-validation only. This run authored no recipe and added no acceptance criteria; it re-ran the
+inherited recipe against `branch + origin/main` after rebasing onto `91a66f077a`. The inherited
+criteria map is unchanged — see `inputs/inherited/recipe-coverage.md` for the authored slice.
 
-## This run's re-validation attempt
+Proof mode this run: **state only**. No new visual evidence was produced, because execution stopped
+before the first screenshot node.
 
-| Stage | Result | Evidence |
-| --- | --- | --- |
-| Runtime launch + verify (`mm-harness launch ios --verify`) | PASS | exit 0; bundle rebuilt on rebased tree; `Mobile bridge ready (17.5s)`; `verify mobile passed (20.7s)`; fixture `READY (accounts=4)` |
-| Runtime health (`mm-harness doctor --expect-live --json`) | PASS | exit 0; `status: pass`; 5/5 checks |
-| Recipe replay (42-node graph) | FAIL at node 4 — precondition | `recipe-run/summary.json`, `recipe-run/trace.json` |
-| Display-assertion nodes (badges, liquidation, explanation, Margin used) | NOT REACHED | run aborted at `require-cross` |
+## What this run actually proved
 
-Failing gate: `require-cross`, `$.positions length_eq 1`, actual `"positions": []` (fixture
-recaptured live at 2026-09-10T13:18:00Z). The selected testnet account
-`0x8dc623e964475d4d669da601fd15ea9125469003` currently holds no open position.
+| Criterion within this slice | Mode | Evidence this run | Status this run |
+| --- | --- | --- | --- |
+| Runtime reachable on rebased HEAD | State | `launch ios --verify` pass (13.7s, fixture READY, 4 accounts); `doctor --expect-live` Metro up, `mm-2` Booted | Proved |
+| Wallet/account/unlock preamble | State | Recipe nodes `wallet`, `account`, `unlock` pass | Proved |
+| Environment + live position read | State | Recipe nodes `environment`, `positions` pass | Proved |
+| AC7 Cross badge | Mixed | — | **Not reached** |
+| AC8 numeric venue liquidation | Mixed | — | **Not reached** |
+| AC8b legitimate null liquidation | Mixed | — | **Not reached** |
+| AC10 shared liquidation explanation | Mixed | — | **Not reached** |
+| AC11 Margin used and edit suppression | Mixed | — | **Not reached** |
+| Existing privacy / isolated / compact-card contracts | State | 5 affected suites pass, 112/112 tests on the rebased base | Proved |
 
-This is the replay limit the inherited coverage doc predicted: *"this requires fresh authorized
-testnet fixtures and a refreshed venue liquidation expectation before replay. Final fixtures have
-been closed, ETH restored to isolated 3x."* The precondition was destroyed by the original run's own
-cleanup, so the recipe is not re-runnable without re-opening a real leveraged testnet position —
-a financial mutation outside this comment-triage task's scope and not requested by any comment.
+Run result: 5 passed / 1 failed of 6 nodes, `status: fail`, cause `subject: 1`.
 
-Causation: the failing node reads a fixture path under `temp/tasks/feat/tat-3519-0908-104128/`;
-zero commits on this branch touch it, and it is not in the PR diff. Neither the (absent) review
-fixes nor the step 3 merge from main can explain it. Logged as unrelated/environmental per step 10.
+## Why the display criteria were not reached
 
-## Inherited coverage map (historical — NOT re-executed by this run)
+The run stops at `require-cross`, whose stated intent is *"Require exactly one live position so shared
+value selectors cannot match another market"*. It asserts `$.positions length_eq 1` against
+`selected-account-live-positions.json`, which currently holds `positions: []`. Every display assertion
+(`pro-open`, `pro-scroll`, and the badge / liquidation / explanation / margin nodes) is downstream of
+that gate.
 
-The inherited package proved the criteria below in mixed state+visual mode on the pre-rebase tree,
-via `recipe-run-recorded-2` (37/37, numeric branch) and `recipe-run-linked-null-3` (39/39, null
-branch): AC7 current-position Cross badge, AC8 numeric venue liquidation, AC8b legitimate null
-liquidation, AC10 shared liquidation explanation, and AC11 Margin used with edit suppression.
+This is a precondition the recipe requires but does not establish. The inherited coverage document
+records the cause directly: *"Final fixtures have been closed, ETH restored to isolated 3x"* — the
+authored run closed its own positions on completion, so the fixture the recipe depends on no longer
+exists. `git diff origin/main...HEAD --name-only` confirms the branch touches no fixture, runtime, or
+`temp/` data, so the failure is attributable to neither the rebase nor any change in this PR.
 
-Those runs and their screenshots live in the inherited package. They are historical evidence for the
-original run and are **not** re-claimed, re-referenced, or counted as proof for this run. Detail is
-preserved verbatim in `inputs/inherited/recipe-coverage.md`.
+## Limits
 
-## State-mode coverage that WAS re-executed on the rebased tree
-
-The display behavior the recipe would have asserted is independently covered by component tests,
-which did run and pass post-rebase:
-
-| Suite | Result |
-| --- | --- |
-| `PerpsPositionsView.test.tsx` | PASS |
-| `PerpsProPositionCard.test.tsx` | PASS |
-| `PerpsCard.test.tsx` | PASS |
-| `PerpsCrossMarginInfoButton.test.tsx` | PASS |
-| `PerpsPositionCard.test.tsx` | PASS |
-
-**5/5 suites, 110/110 tests.** Plus `lint:tsc` exit 0 (the first clean typecheck since the Core
-dependency landed in `@metamask/perps-controller@16.2.0`), scoped ESLint `--max-warnings=0` clean,
-and `format:check` clean.
-
-Limits: no runtime/visual proof was produced by this run. No Android execution, no account-wide
-health, no Pro picker enablement, and no full-epic completion is claimed.
+No visual proof, no Android execution, and no re-proof of AC7/AC8/AC8b/AC10/AC11 is claimed for this
+run. Replay requires re-seeding one authorized testnet Cross position and a refreshed venue
+liquidation expectation. Unit-level coverage of the display code stands on the 5 passing suites and
+Sonar's 98.9% new-code coverage.
