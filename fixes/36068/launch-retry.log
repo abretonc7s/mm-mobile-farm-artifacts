@@ -1,0 +1,134 @@
+Restarting Metro on port 8063 with cleared cache
+Stopping Metro listener on port 8063: 27577 
+Starting Metro on port 8063 (workers=4, clear)
+(Full log: /Users/deeeed/dev/metamask/metamask-mobile-3/temp/recipe/runtime/metro.log — mm-harness logs | mm-harness logs --full)
+mm-harness | Metro bundler
+mm-harness | full log: /Users/deeeed/dev/metamask/metamask-mobile-3/temp/recipe/runtime/metro.log
+mm-harness | full stream: mm-harness logs --full
+
+  * (waiting for first build event...)
+mm-harness | Metro bundler
+mm-harness | full log: /Users/deeeed/dev/metamask/metamask-mobile-3/temp/recipe/runtime/metro.log
+mm-harness | full stream: mm-harness logs --full
+
+  * » ios: paths-project-pbxproj: Found multiple project.pbxproj file paths, using "ios/MetaMask.xcodeproj/project.pbxproj". Ignored paths: ["ios/branch-ios-sdk/carthage-files/BranchSDK.xcodeproj/project.pbxproj"]
+Metro ready on port 8063
+  Next: mm-harness logs  (tail Metro)
+Prewarming ios bundle before launching dev client (set MOBILE_BUNDLE_PREWARM=0 to skip)
+  url: http://localhost:8063/index.bundle?platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable
+Bundle progress: iOS ./index.js ░░░░░░░░░░░░░░░░  0.0% (0/1) [metro-progress 2026-09-14T08:14:37.031Z]
+Bundle progress: iOS ./index.js ░░░░░░░░░░░░░░░░  1.0% ( 2/20) [metro-progress 2026-09-14T08:14:40.533Z]
+Bundle progress: iOS ./index.js ░░░░░░░░░░░░░░░░  3.2% ( 47/261) [metro-progress 2026-09-14T08:14:44.042Z]
+Bundle progress: iOS ./index.js ▓░░░░░░░░░░░░░░░  8.9% (285/958) [metro-progress 2026-09-14T08:14:51.077Z]
+Bundle progress: iOS ./index.js ▓▓▓░░░░░░░░░░░░░ 20.3% ( 486/1078) [metro-progress 2026-09-14T08:14:54.578Z]
+Bundle progress: iOS ./index.js ▓▓▓▓░░░░░░░░░░░░ 27.9% ( 622/1178) [metro-progress 2026-09-14T08:14:58.096Z]
+Bundle progress: iOS ./index.js ▓▓▓▓░░░░░░░░░░░░ 28.8% ( 711/1409) [metro-progress 2026-09-14T08:15:01.599Z]
+Waiting for ios bundle (30s/900s) — iOS ./index.js ▓▓▓▓░░░░░░░░░░░░ 28.8% ( 711/1409) [metro-progress 2026-09-14T08:15:01.599Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓░░░░░░░░░░░ 35.5% (1319/2421) [metro-progress 2026-09-14T08:15:15.732Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓░░░░░░░░░░░ 35.5% (1888/3314) [metro-progress 2026-09-14T08:15:33.355Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓░░░░░░░░░░░ 36.2% (2085/3467) [metro-progress 2026-09-14T08:15:36.852Z]
+Waiting for ios bundle (60s/900s) — iOS ./index.js ▓▓▓▓▓░░░░░░░░░░░ 36.2% (2085/3467) [metro-progress 2026-09-14T08:15:36.852Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓░░░░░░░░░░ 40.7% (2485/3910) [metro-progress 2026-09-14T08:15:43.969Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓░░░░░░░░░░ 41.7% (2574/4008) [metro-progress 2026-09-14T08:15:47.464Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓░░░░░░░░░░ 41.8% (2913/4579) [metro-progress 2026-09-14T08:16:05.149Z]
+Waiting for ios bundle (90s/900s) — iOS ./index.js ▓▓▓▓▓▓░░░░░░░░░░ 41.8% (2913/4579) [metro-progress 2026-09-14T08:16:05.149Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓░░░░░░░░░░ 42.6% (3574/5510) [metro-progress 2026-09-14T08:16:15.689Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓░░░░░░░░░░ 43.0% (4141/6313) [metro-progress 2026-09-14T08:16:33.452Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓░░░░░░░░░ 44.2% (4291/6465) [metro-progress 2026-09-14T08:16:40.470Z]
+Waiting for ios bundle (120s/900s) — iOS ./index.js ▓▓▓▓▓▓▓░░░░░░░░░ 44.2% (4291/6465) [metro-progress 2026-09-14T08:16:40.470Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓░░░░░░░░░ 44.2% (4443/7017) [metro-progress 2026-09-14T08:16:58.327Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓░░░░░░░░░ 45.5% (5080/7558) [metro-progress 2026-09-14T08:17:12.425Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓░░░░░░░░░ 46.7% (5279/7722) [metro-progress 2026-09-14T08:17:15.934Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓░░░░░░░░░ 48.1% (5411/7803) [metro-progress 2026-09-14T08:17:19.455Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓░░░░░░░░░ 49.5% (5510/7837) [metro-progress 2026-09-14T08:17:22.957Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓░░░░░░░░░ 49.6% (6052/8874) [metro-progress 2026-09-14T08:17:40.573Z]
+Waiting for ios bundle (180s/900s) — iOS ./index.js ▓▓▓▓▓▓▓░░░░░░░░░ 49.6% (6052/8874) [metro-progress 2026-09-14T08:17:40.573Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓░░░░░░░░░ 49.6% (6601/9483) [metro-progress 2026-09-14T08:17:58.223Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓░░░░░░░░░ 49.6% ( 7109/10275) [metro-progress 2026-09-14T08:18:15.822Z]
+Waiting for ios bundle (210s/900s) — iOS ./index.js ▓▓▓▓▓▓▓░░░░░░░░░ 49.6% ( 7109/10275) [metro-progress 2026-09-14T08:18:15.822Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓░░░░░░░░ 51.1% ( 7747/10837) [metro-progress 2026-09-14T08:18:29.869Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓░░░░░░░░ 52.6% ( 7926/10929) [metro-progress 2026-09-14T08:18:33.396Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓░░░░░░░░ 53.0% ( 7966/10950) [metro-progress 2026-09-14T08:18:36.896Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓░░░░░░░░ 54.1% ( 8220/11349) [metro-progress 2026-09-14T08:18:44.072Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓░░░░░░░░ 55.3% ( 8881/11938) [metro-progress 2026-09-14T08:18:47.575Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓░░░░░░░░ 56.1% ( 9244/12388) [metro-progress 2026-09-14T08:18:51.081Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓▓░░░░░░░ 57.2% ( 9685/12808) [metro-progress 2026-09-14T08:19:08.707Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓▓░░░░░░░ 58.0% ( 9845/12975) [metro-progress 2026-09-14T08:19:15.730Z]
+Waiting for ios bundle (270s/900s) — iOS ./index.js ▓▓▓▓▓▓▓▓▓░░░░░░░ 58.0% ( 9845/12975) [metro-progress 2026-09-14T08:19:15.730Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓▓░░░░░░░ 58.0% (10209/13402) [metro-progress 2026-09-14T08:19:33.413Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓▓░░░░░░░ 59.4% (10650/13826) [metro-progress 2026-09-14T08:19:43.976Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓▓░░░░░░░ 60.2% (10850/14138) [metro-progress 2026-09-14T08:19:47.485Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓▓░░░░░░░ 62.2% (11467/14537) [metro-progress 2026-09-14T08:19:54.734Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓▓▓░░░░░░ 64.0% (11830/14790) [metro-progress 2026-09-14T08:19:58.253Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓▓▓░░░░░░ 65.6% (12150/14998) [metro-progress 2026-09-14T08:20:01.747Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓▓▓░░░░░░ 67.1% (12423/15170) [metro-progress 2026-09-14T08:20:05.247Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓▓▓▓░░░░░ 69.3% (12765/15330) [metro-progress 2026-09-14T08:20:12.277Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓▓▓▓░░░░░ 70.2% (13107/15657) [metro-progress 2026-09-14T08:20:22.903Z]
+Waiting for ios bundle (330s/900s) — iOS ./index.js ▓▓▓▓▓▓▓▓▓▓▓░░░░░ 70.2% (13107/15657) [metro-progress 2026-09-14T08:20:22.903Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓▓▓▓░░░░░ 72.4% (13522/15896) [metro-progress 2026-09-14T08:20:37.034Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓▓▓▓░░░░░ 73.4% (13751/16060) [metro-progress 2026-09-14T08:20:40.583Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓▓▓▓▓░░░░ 76.3% (14234/16291) [metro-progress 2026-09-14T08:20:44.106Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓▓▓▓▓░░░░ 77.2% (14493/16491) [metro-progress 2026-09-14T08:20:47.665Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓▓▓▓▓░░░░ 80.6% (14982/16714) [metro-progress 2026-09-14T08:20:51.191Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓▓▓▓▓░░░░ 81.2% (15195/16866) [metro-progress 2026-09-14T08:20:54.708Z]
+Waiting for ios bundle (360s/900s) — iOS ./index.js ▓▓▓▓▓▓▓▓▓▓▓▓░░░░ 81.2% (15195/16866) [metro-progress 2026-09-14T08:20:54.708Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓▓▓▓▓▓░░░ 82.6% (15461/17009) [metro-progress 2026-09-14T08:21:05.266Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓▓▓▓▓▓░░░ 83.1% (15576/17099) [metro-progress 2026-09-14T08:21:08.800Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓▓▓▓▓▓░░░ 84.6% (15934/17319) [metro-progress 2026-09-14T08:21:15.841Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓▓▓▓▓▓░░░ 86.2% (16238/17486) [metro-progress 2026-09-14T08:21:19.354Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓▓▓▓▓▓░░░ 87.2% (16550/17749) [metro-progress 2026-09-14T08:21:22.871Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░ 88.5% (16892/17956) [metro-progress 2026-09-14T08:21:29.902Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░ 89.1% (17079/18098) [metro-progress 2026-09-14T08:21:36.952Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░ 90.7% (17511/18414) [metro-progress 2026-09-14T08:21:54.568Z]
+Waiting for ios bundle (420s/900s) — iOS ./index.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░ 90.7% (17511/18414) [metro-progress 2026-09-14T08:21:54.568Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░ 91.3% (17906/18746) [metro-progress 2026-09-14T08:22:05.218Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░ 91.6% (18534/19390) [metro-progress 2026-09-14T08:22:23.100Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░ 92.8% (18816/19535) [metro-progress 2026-09-14T08:22:30.114Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░ 95.0% (19112/19609) [metro-progress 2026-09-14T08:22:33.628Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░ 97.0% (19627/19928) [metro-progress 2026-09-14T08:22:47.723Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░ 98.3% (19875/20048) [metro-progress 2026-09-14T08:22:51.222Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░ 99.1% (20088/20252) [metro-progress 2026-09-14T08:22:54.817Z]
+ios bundle ready
+Restarting iOS dev client io.metamask.MetaMask on 88E7B7DE-CBC3-42A3-A23B-0F38D3D5BB17
+Launching iOS dev client io.metamask.MetaMask on 88E7B7DE-CBC3-42A3-A23B-0F38D3D5BB17
+open-device: iOS dev client opened (io.metamask.MetaMask on 88E7B7DE-CBC3-42A3-A23B-0F38D3D5BB17)
+  Next: mm-harness logs   # tail Metro
+Device console → app-console.log (CDP forwarder pid 29693)
+Waiting for Mobile bridge (0.0s elapsed, 180.0s remaining): Metro running; no React Native debug target yet (iOS Bundled 510276ms index.js (20455 modules))
+Waiting for Mobile bridge (11.0s elapsed, 169.0s remaining): Metro running; no React Native debug target yet (iOS Bundled 2412ms index.js (1 module))
+Waiting for Mobile bridge (21.5s elapsed, 158.5s remaining): React Native target answered; in-app bridge not installed yet (iOS Bundled 2412ms index.js (1 module))
+Waiting for Mobile bridge (32.3s elapsed, 147.7s remaining): React Native target answered; in-app bridge not installed yet (iOS Bundled 2412ms index.js (1 module))
+{
+  "account": null,
+  "agenticPresent": false,
+  "keyringUnlocked": false,
+  "route": null,
+  "deviceName": "mmdev-3",
+  "platform": ""
+}
+wait-for-bridge: React Native target for ios / mmdev-3 answered without __AGENTIC__ for 15.0s.
+wait-for-bridge: no bridge target matched the requested ios / mmdev-3 on port 8063.
+  requested: ios / mmdev-3
+  answered:  ?/'mmdev-3' (no route)
+  Next: check /Users/deeeed/dev/metamask/metamask-mobile-3/temp/recipe/runtime/bridge-status.log — or run mm-harness status --json
+✗ launch mobile ios failed
+  wallet prerequisites need attention; healing never changes wallet state.
+  --- original failure ---
+Waiting for Mobile bridge (0.0s elapsed, 180.0s remaining): Metro running; no React Native debug target yet (iOS Bundled 510276ms index.js (20455 modules))
+Waiting for Mobile bridge (11.0s elapsed, 169.0s remaining): Metro running; no React Native debug target yet (iOS Bundled 2412ms index.js (1 module))
+Waiting for Mobile bridge (21.5s elapsed, 158.5s remaining): React Native target answered; in-app bridge not installed yet (iOS Bundled 2412ms index.js (1 module))
+Waiting for Mobile bridge (32.3s elapsed, 147.7s remaining): React Native target answered; in-app bridge not installed yet (iOS Bundled 2412ms index.js (1 module))
+{
+  "account": null,
+  "agenticPresent": false,
+  "keyringUnlocked": false,
+  "route": null,
+  "deviceName": "mmdev-3",
+  "platform": ""
+}
+wait-for-bridge: React Native target for ios / mmdev-3 answered without __AGENTIC__ for 15.0s.
+wait-for-bridge: no bridge target matched the requested ios / mmdev-3 on port 8063.
+  requested: ios / mmdev-3
+  answered:  ?/'mmdev-3' (no route)
+  Next: check /Users/deeeed/dev/metamask/metamask-mobile-3/temp/recipe/runtime/bridge-status.log — or run mm-harness status --json
+  Next: check /Users/deeeed/dev/metamask/metamask-mobile-3/temp/recipe/runtime/bridge-status.log — or run mm-harness status --json

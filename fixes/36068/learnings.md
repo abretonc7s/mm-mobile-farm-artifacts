@@ -1,0 +1,8 @@
+# Learnings — PR #36068 pr-complete
+
+- Bugbot caught a nested touchable: the upstream worker put the runtime info `ButtonIcon` inside the duration `ButtonBase` to get the Figma "label + ⓘ" row. In RN the inner touchable wins the tap, but the parent's accessibility node swallows the child, so screen readers can't reach the info button. Fix pattern: render the icon as an absolutely positioned sibling so the visual stays the same.
+- Match the icon offset to the nested layout rather than eyeballing it: `ButtonIconSize.Xs` is a 20px box, so in a 54px row with a BodyXs label over a BodySm value the label row starts at ~6px (`top-1.5`).
+- Small info affordances need `hitSlop`. The form already uses `12` (`CHASE_UNIT_HIT_SLOP`), so the fix reuses that value.
+- RNTL `fireEvent.press` only calls the nearest handler, so a "does not open the duration picker" assertion can't catch nesting on its own. Use the recipe or a visual check for layout and a11y structure.
+- A rebase that pulls in native dependency bumps (reanimated/worklets) makes the slot's installed Runway dev client stale: `Exception in HostFunction` then `"MetaMask" has not been registered`. `--clear-metro` does not fix it. Refresh the slot with a Runway build from a commit that includes the bump, and pin `--run` if the skill's "latest" lookup is stale (here it returned a Sep 4 run older than the installed one).
+- Under heavy machine load, `ui.wait_for ... not_present` can fail on a CDP bridge timeout (`last result=null`) that looks like an assertion failure. Check the node's `error` in `summary.json` and `status` liveState before assuming a regression.

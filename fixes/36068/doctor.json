@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "protocolVersion": "v1",
+  "runner_protocol_version": 1,
+  "status": "pass",
+  "checks": [
+    {
+      "id": "manifest",
+      "status": "pass",
+      "required": true,
+      "message": "Action manifest is valid Recipe v1."
+    },
+    {
+      "id": "bridge",
+      "status": "pass",
+      "required": false,
+      "message": "mobile compatibility mode: runner bridge with injected app bridge."
+    },
+    {
+      "id": "device-tool-adb",
+      "status": "pass",
+      "required": false,
+      "message": "Android device tool adb is ready.",
+      "detail": "/Users/deeeed/Library/Android/sdk/platform-tools/adb"
+    },
+    {
+      "id": "device-tool-idb",
+      "status": "pass",
+      "required": false,
+      "message": "iOS device tool idb is ready.",
+      "detail": "/Users/deeeed/Library/Application Support/pipx/venvs/fb-idb/bin/idb"
+    },
+    {
+      "id": "runtime",
+      "status": "pass",
+      "required": true,
+      "message": "Runtime is ready.",
+      "detail": "Dependencies are current, Metro reports a successful bundle, and the dev client is running. Verify bridge before replay."
+    }
+  ],
+  "requiredChecks": {
+    "status": "pass",
+    "total": 2,
+    "passed": 2,
+    "failed": []
+  },
+  "adapter": "mobile",
+  "target": "/Users/deeeed/dev/metamask/metamask-mobile-3",
+  "runner": {
+    "name": "@metamask/recipe-runner",
+    "packageName": "@deeeed/metamask-harness",
+    "version": "0.51.7",
+    "runnerDir": "/Users/deeeed/dev/metamask/metamask-harness",
+    "packagePath": "/Users/deeeed/dev/metamask/metamask-harness/package.json",
+    "packageSource": "source-checkout",
+    "installKind": "source-checkout",
+    "linked": false,
+    "global": false,
+    "invokedPath": "/Users/deeeed/dev/metamask/metamask-harness/bin/mm-harness",
+    "executablePath": "/Users/deeeed/dev/metamask/metamask-harness/bin/mm-harness",
+    "actionManifestPath": "/Users/deeeed/dev/metamask/metamask-harness/library/manifests/mobile.action-manifest.json",
+    "harnessPackage": "@farmslot/recipe-harness"
+  },
+  "compatibilityMode": "runner bridge with injected app bridge",
+  "shape": {
+    "packageName": "metamask",
+    "packageJsonStatus": "valid",
+    "packageJsonError": null,
+    "extensionProject": false,
+    "mobileProject": true,
+    "agenticService": true,
+    "mobileProductHarness": false,
+    "mobileBridgeScript": true,
+    "extensionRuntime": false,
+    "injectedHarness": true,
+    "walletFixture": true
+  },
+  "fixture": {
+    "status": "ready",
+    "path": "temp/recipe/runtime/wallet-fixture.json",
+    "accountCount": 4,
+    "hasPassword": true
+  },
+  "environment": {
+    "mobilePerps": {
+      "file": ".js.env",
+      "fileExists": true,
+      "status": "ready",
+      "perpsEnabled": {
+        "status": "enabled",
+        "value": "true"
+      },
+      "remoteFeatureFlagOverride": {
+        "status": "missing",
+        "value": null
+      }
+    }
+  },
+  "runtimeContext": {
+    "file": "temp/recipe/runtime/agentic-runtime.json",
+    "fileExists": true,
+    "envOverride": null,
+    "fields": {
+      "slotId": {
+        "value": "macwork-mmdev-3",
+        "source": "file",
+        "envVar": "RECIPE_SLOT_ID",
+        "customize": "doctor --fix creates local identity; Farmslot may override"
+      }
+    }
+  },
+  "manifestValidation": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "ready": true,
+  "runtime": {
+    "decision": "ready",
+    "reasonCode": "healthy",
+    "reasons": [
+      "Dependencies are current, Metro reports a successful bundle, and the dev client is running. Verify bridge before replay."
+    ],
+    "deps": "current",
+    "devServer": {
+      "label": "metro",
+      "status": "up"
+    }
+  },
+  "orphanMetros": [],
+  "capture": {
+    "status": "pass",
+    "failing": [],
+    "screenshots": {
+      "available": true,
+      "providers": [
+        "capture-helper",
+        "simctl",
+        "adb"
+      ]
+    },
+    "recording": {
+      "available": true,
+      "provider": "capture-helper"
+    }
+  },
+  "devices": [
+    {
+      "platform": "ios",
+      "id": "88E7B7DE-CBC3-42A3-A23B-0F38D3D5BB17",
+      "state": "Booted",
+      "name": "mmdev-3",
+      "selected": true,
+      "fixtureStatus": "READY",
+      "currentScreen": "Login",
+      "walletState": "locked",
+      "selectedAccount": {
+        "label": "dev1",
+        "address": "0x8dc6…9003"
+      }
+    }
+  ],
+  "additionalReachableDevices": []
+}

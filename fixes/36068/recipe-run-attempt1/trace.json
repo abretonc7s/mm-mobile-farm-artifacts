@@ -1,0 +1,6287 @@
+{
+  "metadata": {
+    "runner": {
+      "source": "/Users/deeeed/dev/metamask/metamask-harness",
+      "git_ref": "e39c127281fcb4b7cadffddca17804cb11dbeb38",
+      "name": "@metamask/recipe-runner"
+    }
+  },
+  "entries": [
+    {
+      "nodeId": "status",
+      "action": "app.status",
+      "intent": "Resolve the Mobile checkout and adapter status before the proof",
+      "startedAt": "2026-09-14T08:44:59.367Z",
+      "endedAt": "2026-09-14T08:44:59.470Z",
+      "durationMs": 103,
+      "ok": true,
+      "next": "cdp",
+      "output": {
+        "platform": "mobile",
+        "projectRoot": "/Users/deeeed/dev/metamask/metamask-mobile-3",
+        "compatibilityMode": "runner bridge with injected app bridge",
+        "shape": {
+          "packageName": "metamask",
+          "packageJsonStatus": "valid",
+          "packageJsonError": null,
+          "extensionProject": false,
+          "mobileProject": true,
+          "agenticService": true,
+          "mobileProductHarness": false,
+          "mobileBridgeScript": true,
+          "extensionRuntime": false,
+          "injectedHarness": true,
+          "walletFixture": true
+        }
+      }
+    },
+    {
+      "nodeId": "cdp",
+      "action": "cdp.target",
+      "intent": "Confirm the React Native debug bridge is reachable",
+      "startedAt": "2026-09-14T08:44:59.540Z",
+      "endedAt": "2026-09-14T08:44:59.660Z",
+      "durationMs": 120,
+      "ok": true,
+      "next": "ensure-unlocked",
+      "output": {
+        "platform": "mobile",
+        "transport": "react-native-debug-bridge",
+        "cdpPort": null,
+        "metroPort": "8063",
+        "timeoutMs": 15000,
+        "reachable": true,
+        "bridge": "runner:adapters/mobile/bridge-runtime/cdp-bridge.cjs",
+        "targetCount": 1,
+        "deviceName": "mmdev-3",
+        "routeName": "Login",
+        "accountPresent": true
+      }
+    },
+    {
+      "nodeId": "ensure-unlocked",
+      "action": "metamask.wallet.ensure_unlocked",
+      "intent": "Ensure the wallet is unlocked before opening the Pro order form",
+      "startedAt": "2026-09-14T08:44:59.746Z",
+      "endedAt": "2026-09-14T08:45:08.539Z",
+      "durationMs": 8793,
+      "ok": true,
+      "next": "open-market",
+      "output": {
+        "action": "metamask.wallet.ensure_unlocked",
+        "unlocked": true,
+        "keyringUnlocked": true,
+        "account": {
+          "address": "0x8dc623e964475d4d669da601fd15ea9125469003",
+          "id": "0285a92b-905c-4814-8a16-52fe1db60357",
+          "name": "dev1"
+        },
+        "route": {
+          "key": "WalletView-3mkv7VZHtkP4CWvdTL-As",
+          "name": "WalletView"
+        },
+        "deviceName": "mmdev-3",
+        "platform": "ios",
+        "redacted": true,
+        "proofPath": "agentic-wallet-unlock",
+        "liveAdapter": "/Users/deeeed/dev/metamask/metamask-harness/library/actions/mobile/wallet/ensure_unlocked.mjs"
+      }
+    },
+    {
+      "nodeId": "open-market",
+      "action": "ui.navigate",
+      "intent": "Open the BTC market view; the next node proves the Pro order form is the one on screen",
+      "startedAt": "2026-09-14T08:45:09.506Z",
+      "endedAt": "2026-09-14T08:45:35.487Z",
+      "durationMs": 25981,
+      "ok": true,
+      "next": "await-order-form",
+      "output": {
+        "action": "ui.navigate",
+        "page": "perps-market",
+        "route": "PerpsMarketDetails",
+        "params": {
+          "market": {
+            "symbol": "BTC"
+          }
+        },
+        "navigation": {
+          "navigated": "PerpsMarketDetails",
+          "params": {
+            "market": {
+              "symbol": "BTC"
+            }
+          },
+          "previousRoute": {
+            "key": "WalletView-3mkv7VZHtkP4CWvdTL-As",
+            "name": "WalletView"
+          },
+          "currentRoute": {
+            "key": "PerpsMarketDetails-BpGdoM-A1LnkNzo51l1bX",
+            "name": "PerpsMarketDetails",
+            "params": {
+              "market": {
+                "symbol": "BTC"
+              }
+            }
+          },
+          "deviceName": "mmdev-3",
+          "platform": "ios",
+          "verifiedRoute": "PerpsMarketDetails"
+        },
+        "proofPath": "agentic-navigation",
+        "liveAdapter": "/Users/deeeed/dev/metamask/metamask-harness/library/actions/mobile/ui/navigate.mjs"
+      },
+      "observationWarnings": [
+        {
+          "ref": "ui.screen",
+          "message": "Command failed: /Users/deeeed/Library/Application Support/pipx/venvs/fb-idb/bin/idb ui describe-all --udid 88E7B7DE-CBC3-42A3-A23B-0F38D3D5BB17\n"
+        },
+        {
+          "ref": "ui.visible",
+          "message": "Command failed: /Users/deeeed/Library/Application Support/pipx/venvs/fb-idb/bin/idb ui describe-all --udid 88E7B7DE-CBC3-42A3-A23B-0F38D3D5BB17\n"
+        }
+      ]
+    },
+    {
+      "nodeId": "await-order-form",
+      "action": "ui.wait_for",
+      "intent": "Confirm the Pro order form order-type control is on screen",
+      "startedAt": "2026-09-14T08:45:36.047Z",
+      "endedAt": "2026-09-14T08:45:45.235Z",
+      "durationMs": 9188,
+      "ok": true,
+      "next": "open-order-type-sheet-twap",
+      "output": {
+        "matched": true,
+        "testId": "perps-pro-order-form-order-type",
+        "expected": "visible",
+        "present": true,
+        "visible": true,
+        "visibility": "viewport",
+        "rect": {
+          "x": 8,
+          "y": 726,
+          "width": 259.6666564941406,
+          "height": 54
+        }
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "88E7B7DE-CBC3-42A3-A23B-0F38D3D5BB17",
+          "name": "MetaMask",
+          "nodeCount": 75,
+          "truncated": false,
+          "route": "PerpsMarketDetails"
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXButton",
+              "label": "Browse markets",
+              "test_id": "perps-pro-market-header-market-list-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 68,
+                "width": 224,
+                "height": 52
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Back",
+              "test_id": "perps-pro-market-header-back-button",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 82,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Perps balance",
+              "test_id": "perps-pro-market-header-wallet-button",
+              "enabled": true,
+              "bounds": {
+                "x": 284,
+                "y": 78,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Remove from watchlist",
+              "test_id": "perps-pro-market-header-favorite-button",
+              "enabled": true,
+              "bounds": {
+                "x": 328,
+                "y": 78,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Currently Pro mode",
+              "test_id": "perps-mode-toggle-pro",
+              "enabled": true,
+              "bounds": {
+                "x": 368,
+                "y": 78,
+                "width": 56,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Collapse chart",
+              "test_id": "perps-pro-market-chart-toggle-button",
+              "enabled": true,
+              "bounds": {
+                "x": 392,
+                "y": 148,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "1m",
+              "test_id": "perps-pro-market-chart-period-selector-period-1m",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 218,
+                "width": 24,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "5m",
+              "test_id": "perps-pro-market-chart-period-selector-period-5m",
+              "enabled": true,
+              "bounds": {
+                "x": 40,
+                "y": 218,
+                "width": 26,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "15m",
+              "test_id": "perps-pro-market-chart-period-selector-period-15m",
+              "enabled": true,
+              "bounds": {
+                "x": 74,
+                "y": 218,
+                "width": 34,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "1h",
+              "test_id": "perps-pro-market-chart-period-selector-period-1h",
+              "enabled": true,
+              "bounds": {
+                "x": 116,
+                "y": 218,
+                "width": 21,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "1d",
+              "test_id": "perps-pro-market-chart-period-selector-period-1d",
+              "enabled": true,
+              "bounds": {
+                "x": 145,
+                "y": 218,
+                "width": 21,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "More",
+              "test_id": "perps-pro-market-chart-period-selector-more-button",
+              "enabled": true,
+              "bounds": {
+                "x": 174,
+                "y": 218,
+                "width": 58,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Fullscreen chart",
+              "test_id": "perps-pro-market-chart-fullscreen-button",
+              "enabled": true,
+              "bounds": {
+                "x": 408,
+                "y": 220,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Long",
+              "test_id": "perps-pro-order-form-direction-long",
+              "enabled": true,
+              "bounds": {
+                "x": 13,
+                "y": 625,
+                "width": 123,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Short",
+              "test_id": "perps-pro-order-form-direction-short",
+              "enabled": true,
+              "bounds": {
+                "x": 140,
+                "y": 625,
+                "width": 123,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Isolated",
+              "test_id": "perps-pro-order-form-margin-mode",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 678,
+                "width": 68,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "3x",
+              "test_id": "perps-pro-order-form-leverage",
+              "enabled": true,
+              "bounds": {
+                "x": 84,
+                "y": 678,
+                "width": 33,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "TWAP",
+              "test_id": "perps-pro-order-form-order-type",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 726,
+                "width": 260,
+                "height": 54
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Runtime (5m – 24h), 0h 30m",
+              "test_id": "perps-pro-order-form-twap-duration-button",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 781,
+                "width": 260,
+                "height": 54
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "About TWAP runtime",
+              "test_id": "perps-pro-order-form-twap-duration-info",
+              "enabled": true,
+              "bounds": {
+                "x": 236,
+                "y": 787,
+                "width": 20,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Randomize",
+              "test_id": "perps-pro-order-form-twap-randomize",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 852,
+                "width": 236,
+                "height": 22
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Size (USD)",
+              "test_id": "perps-pro-order-form-size-field",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 905,
+                "width": 260,
+                "height": 78
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Switch size denomination: USD",
+              "test_id": "perps-pro-order-form-size-unit",
+              "enabled": true,
+              "bounds": {
+                "x": 232,
+                "y": 917,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Hide order book",
+              "test_id": "perps-pro-market-order-book-collapse",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 612,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Order book settings",
+              "test_id": "perps-pro-market-order-book-panel-grouping-trigger",
+              "enabled": true,
+              "bounds": {
+                "x": 404,
+                "y": 612,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.76K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 672,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.75K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 704,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.74K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 736,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.73K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 768,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.72K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 800,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.71K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 864,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.70K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 896,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.69K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 928,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 386,
+                "y": 174,
+                "width": 26,
+                "height": 26
+              }
+            }
+          ],
+          "hidden_or_offscreen": [
+            {
+              "role": "AXButton",
+              "label": "$44.78 available",
+              "test_id": "perps-pro-order-form-add-funds",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1042,
+                "width": 260,
+                "height": 46
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Reduce only",
+              "test_id": "perps-pro-order-form-reduce-only",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 1117,
+                "width": 236,
+                "height": 22
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Place order",
+              "test_id": "perps-pro-order-form-place-order",
+              "enabled": false,
+              "bounds": {
+                "x": 8,
+                "y": 1168,
+                "width": 260,
+                "height": 48
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "test_id": "perps-pro-order-form-summary-fees-button",
+              "enabled": true,
+              "bounds": {
+                "x": 40,
+                "y": 1306,
+                "width": 20,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.68K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 960,
+                "width": 132,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.67K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 992,
+                "width": 132,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Buy: 40%",
+              "test_id": "perps-pro-market-order-book-panel-buy-percent",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 1040,
+                "width": 42,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Sell: 60%",
+              "test_id": "perps-pro-market-order-book-panel-sell-percent",
+              "enabled": true,
+              "bounds": {
+                "x": 390,
+                "y": 1040,
+                "width": 42,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Positions, Positions",
+              "test_id": "perps-pro-market-positions-panel-tab-positions",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1357,
+                "width": 70,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Orders, Orders",
+              "test_id": "perps-pro-market-positions-panel-tab-orders",
+              "enabled": true,
+              "bounds": {
+                "x": 102,
+                "y": 1357,
+                "width": 53,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Chase, Chase",
+              "test_id": "perps-pro-market-positions-panel-tab-chase",
+              "enabled": true,
+              "bounds": {
+                "x": 179,
+                "y": 1357,
+                "width": 49,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "TWAP, TWAP",
+              "test_id": "perps-pro-market-positions-panel-tab-twap",
+              "enabled": true,
+              "bounds": {
+                "x": 252,
+                "y": 1357,
+                "width": 49,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Order history",
+              "test_id": "perps-pro-market-positions-history",
+              "enabled": true,
+              "bounds": {
+                "x": 400,
+                "y": 1357,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Sort positions",
+              "test_id": "perps-pro-market-positions-sort-button",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1401,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "All sides",
+              "test_id": "perps-pro-market-positions-side-filter-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 1401,
+                "width": 105,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "BTC only",
+              "test_id": "perps-pro-market-positions-ticker-only",
+              "enabled": true,
+              "bounds": {
+                "x": 169,
+                "y": 1406,
+                "width": 94,
+                "height": 22
+              },
+              "reason": "hidden_or_offscreen"
+            }
+          ],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "open-order-type-sheet-twap",
+      "action": "ui.press",
+      "intent": "Open the order type chooser to reach the Advanced tab",
+      "startedAt": "2026-09-14T08:45:45.632Z",
+      "endedAt": "2026-09-14T08:45:50.655Z",
+      "durationMs": 5023,
+      "ok": true,
+      "next": "advanced-tab-twap",
+      "output": {
+        "ok": true,
+        "testId": "perps-pro-order-form-order-type",
+        "deviceName": "mmdev-3"
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "88E7B7DE-CBC3-42A3-A23B-0F38D3D5BB17",
+          "name": "MetaMask",
+          "nodeCount": 11,
+          "truncated": false,
+          "route": "PerpsMarketDetails"
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 386,
+                "y": 174,
+                "width": 26,
+                "height": 26
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "test_id": "perps-order-type-bottom-sheet-close",
+              "enabled": true,
+              "bounds": {
+                "x": 399,
+                "y": 612,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Basic, Basic",
+              "test_id": "perps-order-type-tab-basic",
+              "enabled": true,
+              "bounds": {
+                "x": 17,
+                "y": 656,
+                "width": 42,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Triggered, Triggered",
+              "test_id": "perps-order-type-tab-triggered",
+              "enabled": true,
+              "bounds": {
+                "x": 83,
+                "y": 656,
+                "width": 75,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Advanced, Advanced",
+              "test_id": "perps-order-type-tab-advanced",
+              "enabled": true,
+              "bounds": {
+                "x": 182,
+                "y": 656,
+                "width": 78,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "perps-order-type-twap-icon-light, TWAP, Split orders to execute at regular time interval",
+              "test_id": "perps-order-type-twap",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 688,
+                "width": 438,
+                "height": 78
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "perps-order-type-scale-icon-light, Scale, Multiple limit orders spread across a price range",
+              "test_id": "perps-order-type-scale",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 766,
+                "width": 438,
+                "height": 78
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "perps-order-type-chase-icon-light, Chase, Auto adjust limit order to the best price",
+              "test_id": "perps-order-type-chase",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 844,
+                "width": 438,
+                "height": 78
+              }
+            }
+          ],
+          "hidden_or_offscreen": [],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "advanced-tab-twap",
+      "action": "ui.press",
+      "intent": "Show the Advanced tab that lists TWAP, Scale and Chase",
+      "startedAt": "2026-09-14T08:45:50.953Z",
+      "endedAt": "2026-09-14T08:45:54.862Z",
+      "durationMs": 3909,
+      "ok": true,
+      "next": "assert-twap-option-copy",
+      "output": {
+        "ok": true,
+        "testId": "perps-order-type-tab-advanced",
+        "deviceName": "mmdev-3"
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "88E7B7DE-CBC3-42A3-A23B-0F38D3D5BB17",
+          "name": "MetaMask",
+          "nodeCount": 11,
+          "truncated": false,
+          "route": "PerpsMarketDetails"
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 386,
+                "y": 174,
+                "width": 26,
+                "height": 26
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "test_id": "perps-order-type-bottom-sheet-close",
+              "enabled": true,
+              "bounds": {
+                "x": 399,
+                "y": 612,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Basic, Basic",
+              "test_id": "perps-order-type-tab-basic",
+              "enabled": true,
+              "bounds": {
+                "x": 17,
+                "y": 656,
+                "width": 42,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Triggered, Triggered",
+              "test_id": "perps-order-type-tab-triggered",
+              "enabled": true,
+              "bounds": {
+                "x": 83,
+                "y": 656,
+                "width": 75,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Advanced, Advanced",
+              "test_id": "perps-order-type-tab-advanced",
+              "enabled": true,
+              "bounds": {
+                "x": 182,
+                "y": 656,
+                "width": 78,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "perps-order-type-twap-icon-light, TWAP, Split orders to execute at regular time interval",
+              "test_id": "perps-order-type-twap",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 688,
+                "width": 438,
+                "height": 78
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "perps-order-type-scale-icon-light, Scale, Multiple limit orders spread across a price range",
+              "test_id": "perps-order-type-scale",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 766,
+                "width": 438,
+                "height": 78
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "perps-order-type-chase-icon-light, Chase, Auto adjust limit order to the best price",
+              "test_id": "perps-order-type-chase",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 844,
+                "width": 438,
+                "height": 78
+              }
+            }
+          ],
+          "hidden_or_offscreen": [],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "assert-twap-option-copy",
+      "action": "ui.wait_for",
+      "intent": "Prove the TWAP description matches the Figma Advanced tab copy",
+      "startedAt": "2026-09-14T08:45:55.291Z",
+      "endedAt": "2026-09-14T08:45:59.139Z",
+      "durationMs": 3848,
+      "ok": true,
+      "next": "assert-scale-option-copy",
+      "output": {
+        "matched": true,
+        "text": "Split orders to execute at regular time interval",
+        "textMatch": "contains",
+        "expected": "visible",
+        "present": true,
+        "visible": true,
+        "visibility": "viewport",
+        "rect": {
+          "x": 1,
+          "y": 688,
+          "width": 438,
+          "height": 78.0001220703125
+        }
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "88E7B7DE-CBC3-42A3-A23B-0F38D3D5BB17",
+          "name": "MetaMask",
+          "nodeCount": 11,
+          "truncated": false,
+          "route": "PerpsMarketDetails"
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 386,
+                "y": 174,
+                "width": 26,
+                "height": 26
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "test_id": "perps-order-type-bottom-sheet-close",
+              "enabled": true,
+              "bounds": {
+                "x": 399,
+                "y": 612,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Basic, Basic",
+              "test_id": "perps-order-type-tab-basic",
+              "enabled": true,
+              "bounds": {
+                "x": 17,
+                "y": 656,
+                "width": 42,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Triggered, Triggered",
+              "test_id": "perps-order-type-tab-triggered",
+              "enabled": true,
+              "bounds": {
+                "x": 83,
+                "y": 656,
+                "width": 75,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Advanced, Advanced",
+              "test_id": "perps-order-type-tab-advanced",
+              "enabled": true,
+              "bounds": {
+                "x": 182,
+                "y": 656,
+                "width": 78,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "perps-order-type-twap-icon-light, TWAP, Split orders to execute at regular time interval",
+              "test_id": "perps-order-type-twap",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 688,
+                "width": 438,
+                "height": 78
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "perps-order-type-scale-icon-light, Scale, Multiple limit orders spread across a price range",
+              "test_id": "perps-order-type-scale",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 766,
+                "width": 438,
+                "height": 78
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "perps-order-type-chase-icon-light, Chase, Auto adjust limit order to the best price",
+              "test_id": "perps-order-type-chase",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 844,
+                "width": 438,
+                "height": 78
+              }
+            }
+          ],
+          "hidden_or_offscreen": [],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "assert-scale-option-copy",
+      "action": "ui.wait_for",
+      "intent": "Prove the Scale description matches the Figma Advanced tab copy",
+      "startedAt": "2026-09-14T08:45:59.417Z",
+      "endedAt": "2026-09-14T08:46:02.489Z",
+      "durationMs": 3072,
+      "ok": true,
+      "next": "assert-chase-option-copy",
+      "output": {
+        "matched": true,
+        "text": "Multiple limit orders spread across a price range",
+        "textMatch": "contains",
+        "expected": "visible",
+        "present": true,
+        "visible": true,
+        "visibility": "viewport",
+        "rect": {
+          "x": 1,
+          "y": 766,
+          "width": 438,
+          "height": 78
+        }
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "88E7B7DE-CBC3-42A3-A23B-0F38D3D5BB17",
+          "name": "MetaMask",
+          "nodeCount": 11,
+          "truncated": false,
+          "route": "PerpsMarketDetails"
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 386,
+                "y": 174,
+                "width": 26,
+                "height": 26
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "test_id": "perps-order-type-bottom-sheet-close",
+              "enabled": true,
+              "bounds": {
+                "x": 399,
+                "y": 612,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Basic, Basic",
+              "test_id": "perps-order-type-tab-basic",
+              "enabled": true,
+              "bounds": {
+                "x": 17,
+                "y": 656,
+                "width": 42,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Triggered, Triggered",
+              "test_id": "perps-order-type-tab-triggered",
+              "enabled": true,
+              "bounds": {
+                "x": 83,
+                "y": 656,
+                "width": 75,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Advanced, Advanced",
+              "test_id": "perps-order-type-tab-advanced",
+              "enabled": true,
+              "bounds": {
+                "x": 182,
+                "y": 656,
+                "width": 78,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "perps-order-type-twap-icon-light, TWAP, Split orders to execute at regular time interval",
+              "test_id": "perps-order-type-twap",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 688,
+                "width": 438,
+                "height": 78
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "perps-order-type-scale-icon-light, Scale, Multiple limit orders spread across a price range",
+              "test_id": "perps-order-type-scale",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 766,
+                "width": 438,
+                "height": 78
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "perps-order-type-chase-icon-light, Chase, Auto adjust limit order to the best price",
+              "test_id": "perps-order-type-chase",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 844,
+                "width": 438,
+                "height": 78
+              }
+            }
+          ],
+          "hidden_or_offscreen": [],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "assert-chase-option-copy",
+      "action": "ui.wait_for",
+      "intent": "Prove the Chase description matches the Figma Advanced tab copy",
+      "startedAt": "2026-09-14T08:46:02.729Z",
+      "endedAt": "2026-09-14T08:46:05.851Z",
+      "durationMs": 3122,
+      "ok": true,
+      "next": "capture-order-type-sheet",
+      "output": {
+        "matched": true,
+        "text": "Auto adjust limit order to the best price",
+        "textMatch": "contains",
+        "expected": "visible",
+        "present": true,
+        "visible": true,
+        "visibility": "viewport",
+        "rect": {
+          "x": 1,
+          "y": 844,
+          "width": 438,
+          "height": 78
+        }
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "88E7B7DE-CBC3-42A3-A23B-0F38D3D5BB17",
+          "name": "MetaMask",
+          "nodeCount": 11,
+          "truncated": false,
+          "route": "PerpsMarketDetails"
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 386,
+                "y": 174,
+                "width": 26,
+                "height": 26
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "test_id": "perps-order-type-bottom-sheet-close",
+              "enabled": true,
+              "bounds": {
+                "x": 399,
+                "y": 612,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Basic, Basic",
+              "test_id": "perps-order-type-tab-basic",
+              "enabled": true,
+              "bounds": {
+                "x": 17,
+                "y": 656,
+                "width": 42,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Triggered, Triggered",
+              "test_id": "perps-order-type-tab-triggered",
+              "enabled": true,
+              "bounds": {
+                "x": 83,
+                "y": 656,
+                "width": 75,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Advanced, Advanced",
+              "test_id": "perps-order-type-tab-advanced",
+              "enabled": true,
+              "bounds": {
+                "x": 182,
+                "y": 656,
+                "width": 78,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "perps-order-type-twap-icon-light, TWAP, Split orders to execute at regular time interval",
+              "test_id": "perps-order-type-twap",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 688,
+                "width": 438,
+                "height": 78
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "perps-order-type-scale-icon-light, Scale, Multiple limit orders spread across a price range",
+              "test_id": "perps-order-type-scale",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 766,
+                "width": 438,
+                "height": 78
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "perps-order-type-chase-icon-light, Chase, Auto adjust limit order to the best price",
+              "test_id": "perps-order-type-chase",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 844,
+                "width": 438,
+                "height": 78
+              }
+            }
+          ],
+          "hidden_or_offscreen": [],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "capture-order-type-sheet",
+      "action": "ui.screenshot",
+      "intent": "Preserve the Advanced tab copy as reviewer evidence",
+      "startedAt": "2026-09-14T08:46:05.988Z",
+      "endedAt": "2026-09-14T08:46:10.701Z",
+      "durationMs": 4713,
+      "ok": true,
+      "next": "select-twap",
+      "output": {
+        "captured": true,
+        "path": "screenshots/evidence-order-type-advanced.png",
+        "artifact": {
+          "path": "screenshots/evidence-order-type-advanced.png",
+          "type": "screenshot",
+          "nodeId": "capture-order-type-sheet",
+          "label": "ui.screenshot screenshot",
+          "category": "evidence",
+          "mimeType": "image/png",
+          "metadata": {
+            "provider": "simctl",
+            "mode": "xcrun simctl io screenshot",
+            "selectedDevice": "mmdev-3"
+          }
+        }
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "88E7B7DE-CBC3-42A3-A23B-0F38D3D5BB17",
+          "name": "MetaMask",
+          "nodeCount": 11,
+          "truncated": false,
+          "route": "PerpsMarketDetails"
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 386,
+                "y": 174,
+                "width": 26,
+                "height": 26
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "test_id": "perps-order-type-bottom-sheet-close",
+              "enabled": true,
+              "bounds": {
+                "x": 399,
+                "y": 612,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Basic, Basic",
+              "test_id": "perps-order-type-tab-basic",
+              "enabled": true,
+              "bounds": {
+                "x": 17,
+                "y": 656,
+                "width": 42,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Triggered, Triggered",
+              "test_id": "perps-order-type-tab-triggered",
+              "enabled": true,
+              "bounds": {
+                "x": 83,
+                "y": 656,
+                "width": 75,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Advanced, Advanced",
+              "test_id": "perps-order-type-tab-advanced",
+              "enabled": true,
+              "bounds": {
+                "x": 182,
+                "y": 656,
+                "width": 78,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "perps-order-type-twap-icon-light, TWAP, Split orders to execute at regular time interval",
+              "test_id": "perps-order-type-twap",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 688,
+                "width": 438,
+                "height": 78
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "perps-order-type-scale-icon-light, Scale, Multiple limit orders spread across a price range",
+              "test_id": "perps-order-type-scale",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 766,
+                "width": 438,
+                "height": 78
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "perps-order-type-chase-icon-light, Chase, Auto adjust limit order to the best price",
+              "test_id": "perps-order-type-chase",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 844,
+                "width": 438,
+                "height": 78
+              }
+            }
+          ],
+          "hidden_or_offscreen": [],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "select-twap",
+      "action": "ui.press",
+      "intent": "Switch the order form to the TWAP order type",
+      "startedAt": "2026-09-14T08:46:10.890Z",
+      "endedAt": "2026-09-14T08:46:18.243Z",
+      "durationMs": 7353,
+      "ok": true,
+      "next": "assert-twap-runtime-label",
+      "output": {
+        "ok": true,
+        "testId": "perps-order-type-twap",
+        "deviceName": "mmdev-3"
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "88E7B7DE-CBC3-42A3-A23B-0F38D3D5BB17",
+          "name": "MetaMask",
+          "nodeCount": 75,
+          "truncated": false,
+          "route": "PerpsMarketDetails"
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXButton",
+              "label": "Browse markets",
+              "test_id": "perps-pro-market-header-market-list-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 68,
+                "width": 224,
+                "height": 52
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Back",
+              "test_id": "perps-pro-market-header-back-button",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 82,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Perps balance",
+              "test_id": "perps-pro-market-header-wallet-button",
+              "enabled": true,
+              "bounds": {
+                "x": 284,
+                "y": 78,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Remove from watchlist",
+              "test_id": "perps-pro-market-header-favorite-button",
+              "enabled": true,
+              "bounds": {
+                "x": 328,
+                "y": 78,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Currently Pro mode",
+              "test_id": "perps-mode-toggle-pro",
+              "enabled": true,
+              "bounds": {
+                "x": 368,
+                "y": 78,
+                "width": 56,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Collapse chart",
+              "test_id": "perps-pro-market-chart-toggle-button",
+              "enabled": true,
+              "bounds": {
+                "x": 392,
+                "y": 148,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "1m",
+              "test_id": "perps-pro-market-chart-period-selector-period-1m",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 218,
+                "width": 24,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "5m",
+              "test_id": "perps-pro-market-chart-period-selector-period-5m",
+              "enabled": true,
+              "bounds": {
+                "x": 40,
+                "y": 218,
+                "width": 26,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "15m",
+              "test_id": "perps-pro-market-chart-period-selector-period-15m",
+              "enabled": true,
+              "bounds": {
+                "x": 74,
+                "y": 218,
+                "width": 34,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "1h",
+              "test_id": "perps-pro-market-chart-period-selector-period-1h",
+              "enabled": true,
+              "bounds": {
+                "x": 116,
+                "y": 218,
+                "width": 21,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "1d",
+              "test_id": "perps-pro-market-chart-period-selector-period-1d",
+              "enabled": true,
+              "bounds": {
+                "x": 145,
+                "y": 218,
+                "width": 21,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "More",
+              "test_id": "perps-pro-market-chart-period-selector-more-button",
+              "enabled": true,
+              "bounds": {
+                "x": 174,
+                "y": 218,
+                "width": 58,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Fullscreen chart",
+              "test_id": "perps-pro-market-chart-fullscreen-button",
+              "enabled": true,
+              "bounds": {
+                "x": 408,
+                "y": 220,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Long",
+              "test_id": "perps-pro-order-form-direction-long",
+              "enabled": true,
+              "bounds": {
+                "x": 13,
+                "y": 625,
+                "width": 123,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Short",
+              "test_id": "perps-pro-order-form-direction-short",
+              "enabled": true,
+              "bounds": {
+                "x": 140,
+                "y": 625,
+                "width": 123,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Isolated",
+              "test_id": "perps-pro-order-form-margin-mode",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 678,
+                "width": 68,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "3x",
+              "test_id": "perps-pro-order-form-leverage",
+              "enabled": true,
+              "bounds": {
+                "x": 84,
+                "y": 678,
+                "width": 33,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "TWAP",
+              "test_id": "perps-pro-order-form-order-type",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 726,
+                "width": 260,
+                "height": 54
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Runtime (5m – 24h), 0h 30m",
+              "test_id": "perps-pro-order-form-twap-duration-button",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 781,
+                "width": 260,
+                "height": 54
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "About TWAP runtime",
+              "test_id": "perps-pro-order-form-twap-duration-info",
+              "enabled": true,
+              "bounds": {
+                "x": 236,
+                "y": 787,
+                "width": 20,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Randomize",
+              "test_id": "perps-pro-order-form-twap-randomize",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 852,
+                "width": 236,
+                "height": 22
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Size (USD)",
+              "test_id": "perps-pro-order-form-size-field",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 905,
+                "width": 260,
+                "height": 78
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Switch size denomination: USD",
+              "test_id": "perps-pro-order-form-size-unit",
+              "enabled": true,
+              "bounds": {
+                "x": 232,
+                "y": 917,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Hide order book",
+              "test_id": "perps-pro-market-order-book-collapse",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 612,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Order book settings",
+              "test_id": "perps-pro-market-order-book-panel-grouping-trigger",
+              "enabled": true,
+              "bounds": {
+                "x": 404,
+                "y": 612,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.73K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 672,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.72K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 704,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.71K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 736,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.70K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 768,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.69K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 800,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.68K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 864,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.67K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 896,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.66K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 928,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 386,
+                "y": 174,
+                "width": 26,
+                "height": 26
+              }
+            }
+          ],
+          "hidden_or_offscreen": [
+            {
+              "role": "AXButton",
+              "label": "$44.78 available",
+              "test_id": "perps-pro-order-form-add-funds",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1042,
+                "width": 260,
+                "height": 46
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Reduce only",
+              "test_id": "perps-pro-order-form-reduce-only",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 1117,
+                "width": 236,
+                "height": 22
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Place order",
+              "test_id": "perps-pro-order-form-place-order",
+              "enabled": false,
+              "bounds": {
+                "x": 8,
+                "y": 1168,
+                "width": 260,
+                "height": 48
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "test_id": "perps-pro-order-form-summary-fees-button",
+              "enabled": true,
+              "bounds": {
+                "x": 40,
+                "y": 1306,
+                "width": 20,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.65K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 960,
+                "width": 132,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.64K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 992,
+                "width": 132,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Buy: 51%",
+              "test_id": "perps-pro-market-order-book-panel-buy-percent",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 1040,
+                "width": 39,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Sell: 49%",
+              "test_id": "perps-pro-market-order-book-panel-sell-percent",
+              "enabled": true,
+              "bounds": {
+                "x": 390,
+                "y": 1040,
+                "width": 42,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Positions, Positions",
+              "test_id": "perps-pro-market-positions-panel-tab-positions",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1357,
+                "width": 70,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Orders, Orders",
+              "test_id": "perps-pro-market-positions-panel-tab-orders",
+              "enabled": true,
+              "bounds": {
+                "x": 102,
+                "y": 1357,
+                "width": 53,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Chase, Chase",
+              "test_id": "perps-pro-market-positions-panel-tab-chase",
+              "enabled": true,
+              "bounds": {
+                "x": 179,
+                "y": 1357,
+                "width": 49,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "TWAP, TWAP",
+              "test_id": "perps-pro-market-positions-panel-tab-twap",
+              "enabled": true,
+              "bounds": {
+                "x": 252,
+                "y": 1357,
+                "width": 49,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Order history",
+              "test_id": "perps-pro-market-positions-history",
+              "enabled": true,
+              "bounds": {
+                "x": 400,
+                "y": 1357,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Sort positions",
+              "test_id": "perps-pro-market-positions-sort-button",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1401,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "All sides",
+              "test_id": "perps-pro-market-positions-side-filter-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 1401,
+                "width": 105,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "BTC only",
+              "test_id": "perps-pro-market-positions-ticker-only",
+              "enabled": true,
+              "bounds": {
+                "x": 169,
+                "y": 1406,
+                "width": 94,
+                "height": 22
+              },
+              "reason": "hidden_or_offscreen"
+            }
+          ],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "assert-twap-runtime-label",
+      "action": "ui.wait_for",
+      "intent": "Confirm the TWAP runtime row is rendered",
+      "startedAt": "2026-09-14T08:46:18.590Z",
+      "endedAt": "2026-09-14T08:46:24.302Z",
+      "durationMs": 5712,
+      "ok": true,
+      "next": "assert-twap-runtime-info",
+      "output": {
+        "matched": true,
+        "testId": "perps-pro-order-form-twap-duration-label",
+        "expected": "visible",
+        "present": true,
+        "visible": true,
+        "visibility": "viewport",
+        "rect": {
+          "x": 8,
+          "y": 781,
+          "width": 259.6666564941406,
+          "height": 54
+        }
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "88E7B7DE-CBC3-42A3-A23B-0F38D3D5BB17",
+          "name": "MetaMask",
+          "nodeCount": 75,
+          "truncated": false,
+          "route": "PerpsMarketDetails"
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXButton",
+              "label": "Browse markets",
+              "test_id": "perps-pro-market-header-market-list-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 68,
+                "width": 224,
+                "height": 52
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Back",
+              "test_id": "perps-pro-market-header-back-button",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 82,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Perps balance",
+              "test_id": "perps-pro-market-header-wallet-button",
+              "enabled": true,
+              "bounds": {
+                "x": 284,
+                "y": 78,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Remove from watchlist",
+              "test_id": "perps-pro-market-header-favorite-button",
+              "enabled": true,
+              "bounds": {
+                "x": 328,
+                "y": 78,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Currently Pro mode",
+              "test_id": "perps-mode-toggle-pro",
+              "enabled": true,
+              "bounds": {
+                "x": 368,
+                "y": 78,
+                "width": 56,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Collapse chart",
+              "test_id": "perps-pro-market-chart-toggle-button",
+              "enabled": true,
+              "bounds": {
+                "x": 392,
+                "y": 148,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "1m",
+              "test_id": "perps-pro-market-chart-period-selector-period-1m",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 218,
+                "width": 24,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "5m",
+              "test_id": "perps-pro-market-chart-period-selector-period-5m",
+              "enabled": true,
+              "bounds": {
+                "x": 40,
+                "y": 218,
+                "width": 26,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "15m",
+              "test_id": "perps-pro-market-chart-period-selector-period-15m",
+              "enabled": true,
+              "bounds": {
+                "x": 74,
+                "y": 218,
+                "width": 34,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "1h",
+              "test_id": "perps-pro-market-chart-period-selector-period-1h",
+              "enabled": true,
+              "bounds": {
+                "x": 116,
+                "y": 218,
+                "width": 21,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "1d",
+              "test_id": "perps-pro-market-chart-period-selector-period-1d",
+              "enabled": true,
+              "bounds": {
+                "x": 145,
+                "y": 218,
+                "width": 21,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "More",
+              "test_id": "perps-pro-market-chart-period-selector-more-button",
+              "enabled": true,
+              "bounds": {
+                "x": 174,
+                "y": 218,
+                "width": 58,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Fullscreen chart",
+              "test_id": "perps-pro-market-chart-fullscreen-button",
+              "enabled": true,
+              "bounds": {
+                "x": 408,
+                "y": 220,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Long",
+              "test_id": "perps-pro-order-form-direction-long",
+              "enabled": true,
+              "bounds": {
+                "x": 13,
+                "y": 625,
+                "width": 123,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Short",
+              "test_id": "perps-pro-order-form-direction-short",
+              "enabled": true,
+              "bounds": {
+                "x": 140,
+                "y": 625,
+                "width": 123,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Isolated",
+              "test_id": "perps-pro-order-form-margin-mode",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 678,
+                "width": 68,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "3x",
+              "test_id": "perps-pro-order-form-leverage",
+              "enabled": true,
+              "bounds": {
+                "x": 84,
+                "y": 678,
+                "width": 33,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "TWAP",
+              "test_id": "perps-pro-order-form-order-type",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 726,
+                "width": 260,
+                "height": 54
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Runtime (5m – 24h), 0h 30m",
+              "test_id": "perps-pro-order-form-twap-duration-button",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 781,
+                "width": 260,
+                "height": 54
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "About TWAP runtime",
+              "test_id": "perps-pro-order-form-twap-duration-info",
+              "enabled": true,
+              "bounds": {
+                "x": 236,
+                "y": 787,
+                "width": 20,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Randomize",
+              "test_id": "perps-pro-order-form-twap-randomize",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 852,
+                "width": 236,
+                "height": 22
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Size (USD)",
+              "test_id": "perps-pro-order-form-size-field",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 905,
+                "width": 260,
+                "height": 78
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Switch size denomination: USD",
+              "test_id": "perps-pro-order-form-size-unit",
+              "enabled": true,
+              "bounds": {
+                "x": 232,
+                "y": 917,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Hide order book",
+              "test_id": "perps-pro-market-order-book-collapse",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 612,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Order book settings",
+              "test_id": "perps-pro-market-order-book-panel-grouping-trigger",
+              "enabled": true,
+              "bounds": {
+                "x": 404,
+                "y": 612,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.73K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 672,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.72K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 704,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.71K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 736,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.70K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 768,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.69K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 800,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.68K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 864,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.67K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 896,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.66K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 928,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 386,
+                "y": 174,
+                "width": 26,
+                "height": 26
+              }
+            }
+          ],
+          "hidden_or_offscreen": [
+            {
+              "role": "AXButton",
+              "label": "$44.78 available",
+              "test_id": "perps-pro-order-form-add-funds",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1042,
+                "width": 260,
+                "height": 46
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Reduce only",
+              "test_id": "perps-pro-order-form-reduce-only",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 1117,
+                "width": 236,
+                "height": 22
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Place order",
+              "test_id": "perps-pro-order-form-place-order",
+              "enabled": false,
+              "bounds": {
+                "x": 8,
+                "y": 1168,
+                "width": 260,
+                "height": 48
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "test_id": "perps-pro-order-form-summary-fees-button",
+              "enabled": true,
+              "bounds": {
+                "x": 40,
+                "y": 1306,
+                "width": 20,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.65K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 960,
+                "width": 132,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.64K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 992,
+                "width": 132,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Buy: 51%",
+              "test_id": "perps-pro-market-order-book-panel-buy-percent",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 1040,
+                "width": 39,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Sell: 49%",
+              "test_id": "perps-pro-market-order-book-panel-sell-percent",
+              "enabled": true,
+              "bounds": {
+                "x": 390,
+                "y": 1040,
+                "width": 42,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Positions, Positions",
+              "test_id": "perps-pro-market-positions-panel-tab-positions",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1357,
+                "width": 70,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Orders, Orders",
+              "test_id": "perps-pro-market-positions-panel-tab-orders",
+              "enabled": true,
+              "bounds": {
+                "x": 102,
+                "y": 1357,
+                "width": 53,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Chase, Chase",
+              "test_id": "perps-pro-market-positions-panel-tab-chase",
+              "enabled": true,
+              "bounds": {
+                "x": 179,
+                "y": 1357,
+                "width": 49,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "TWAP, TWAP",
+              "test_id": "perps-pro-market-positions-panel-tab-twap",
+              "enabled": true,
+              "bounds": {
+                "x": 252,
+                "y": 1357,
+                "width": 49,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Order history",
+              "test_id": "perps-pro-market-positions-history",
+              "enabled": true,
+              "bounds": {
+                "x": 400,
+                "y": 1357,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Sort positions",
+              "test_id": "perps-pro-market-positions-sort-button",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1401,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "All sides",
+              "test_id": "perps-pro-market-positions-side-filter-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 1401,
+                "width": 105,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "BTC only",
+              "test_id": "perps-pro-market-positions-ticker-only",
+              "enabled": true,
+              "bounds": {
+                "x": 169,
+                "y": 1406,
+                "width": 94,
+                "height": 22
+              },
+              "reason": "hidden_or_offscreen"
+            }
+          ],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "assert-twap-runtime-info",
+      "action": "ui.wait_for",
+      "intent": "Prove the Figma info affordance on the Runtime row exists (G4)",
+      "startedAt": "2026-09-14T08:46:24.661Z",
+      "endedAt": "2026-09-14T08:46:30.642Z",
+      "durationMs": 5981,
+      "ok": true,
+      "next": "assert-twap-randomize",
+      "output": {
+        "matched": true,
+        "testId": "perps-pro-order-form-twap-duration-info",
+        "expected": "visible",
+        "present": true,
+        "visible": true,
+        "visibility": "viewport",
+        "rect": {
+          "x": 235.6666717529297,
+          "y": 787,
+          "width": 20,
+          "height": 20
+        }
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "88E7B7DE-CBC3-42A3-A23B-0F38D3D5BB17",
+          "name": "MetaMask",
+          "nodeCount": 75,
+          "truncated": false,
+          "route": "PerpsMarketDetails"
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXButton",
+              "label": "Browse markets",
+              "test_id": "perps-pro-market-header-market-list-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 68,
+                "width": 224,
+                "height": 52
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Back",
+              "test_id": "perps-pro-market-header-back-button",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 82,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Perps balance",
+              "test_id": "perps-pro-market-header-wallet-button",
+              "enabled": true,
+              "bounds": {
+                "x": 284,
+                "y": 78,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Remove from watchlist",
+              "test_id": "perps-pro-market-header-favorite-button",
+              "enabled": true,
+              "bounds": {
+                "x": 328,
+                "y": 78,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Currently Pro mode",
+              "test_id": "perps-mode-toggle-pro",
+              "enabled": true,
+              "bounds": {
+                "x": 368,
+                "y": 78,
+                "width": 56,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Collapse chart",
+              "test_id": "perps-pro-market-chart-toggle-button",
+              "enabled": true,
+              "bounds": {
+                "x": 392,
+                "y": 148,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "1m",
+              "test_id": "perps-pro-market-chart-period-selector-period-1m",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 218,
+                "width": 24,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "5m",
+              "test_id": "perps-pro-market-chart-period-selector-period-5m",
+              "enabled": true,
+              "bounds": {
+                "x": 40,
+                "y": 218,
+                "width": 26,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "15m",
+              "test_id": "perps-pro-market-chart-period-selector-period-15m",
+              "enabled": true,
+              "bounds": {
+                "x": 74,
+                "y": 218,
+                "width": 34,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "1h",
+              "test_id": "perps-pro-market-chart-period-selector-period-1h",
+              "enabled": true,
+              "bounds": {
+                "x": 116,
+                "y": 218,
+                "width": 21,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "1d",
+              "test_id": "perps-pro-market-chart-period-selector-period-1d",
+              "enabled": true,
+              "bounds": {
+                "x": 145,
+                "y": 218,
+                "width": 21,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "More",
+              "test_id": "perps-pro-market-chart-period-selector-more-button",
+              "enabled": true,
+              "bounds": {
+                "x": 174,
+                "y": 218,
+                "width": 58,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Fullscreen chart",
+              "test_id": "perps-pro-market-chart-fullscreen-button",
+              "enabled": true,
+              "bounds": {
+                "x": 408,
+                "y": 220,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Long",
+              "test_id": "perps-pro-order-form-direction-long",
+              "enabled": true,
+              "bounds": {
+                "x": 13,
+                "y": 625,
+                "width": 123,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Short",
+              "test_id": "perps-pro-order-form-direction-short",
+              "enabled": true,
+              "bounds": {
+                "x": 140,
+                "y": 625,
+                "width": 123,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Isolated",
+              "test_id": "perps-pro-order-form-margin-mode",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 678,
+                "width": 68,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "3x",
+              "test_id": "perps-pro-order-form-leverage",
+              "enabled": true,
+              "bounds": {
+                "x": 84,
+                "y": 678,
+                "width": 33,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "TWAP",
+              "test_id": "perps-pro-order-form-order-type",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 726,
+                "width": 260,
+                "height": 54
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Runtime (5m – 24h), 0h 30m",
+              "test_id": "perps-pro-order-form-twap-duration-button",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 781,
+                "width": 260,
+                "height": 54
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "About TWAP runtime",
+              "test_id": "perps-pro-order-form-twap-duration-info",
+              "enabled": true,
+              "bounds": {
+                "x": 236,
+                "y": 787,
+                "width": 20,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Randomize",
+              "test_id": "perps-pro-order-form-twap-randomize",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 852,
+                "width": 236,
+                "height": 22
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Size (USD)",
+              "test_id": "perps-pro-order-form-size-field",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 905,
+                "width": 260,
+                "height": 78
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Switch size denomination: USD",
+              "test_id": "perps-pro-order-form-size-unit",
+              "enabled": true,
+              "bounds": {
+                "x": 232,
+                "y": 917,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Hide order book",
+              "test_id": "perps-pro-market-order-book-collapse",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 612,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Order book settings",
+              "test_id": "perps-pro-market-order-book-panel-grouping-trigger",
+              "enabled": true,
+              "bounds": {
+                "x": 404,
+                "y": 612,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.73K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 672,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.72K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 704,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.71K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 736,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.70K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 768,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.69K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 800,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.68K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 864,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.67K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 896,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.66K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 928,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 386,
+                "y": 174,
+                "width": 26,
+                "height": 26
+              }
+            }
+          ],
+          "hidden_or_offscreen": [
+            {
+              "role": "AXButton",
+              "label": "$44.78 available",
+              "test_id": "perps-pro-order-form-add-funds",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1042,
+                "width": 260,
+                "height": 46
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Reduce only",
+              "test_id": "perps-pro-order-form-reduce-only",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 1117,
+                "width": 236,
+                "height": 22
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Place order",
+              "test_id": "perps-pro-order-form-place-order",
+              "enabled": false,
+              "bounds": {
+                "x": 8,
+                "y": 1168,
+                "width": 260,
+                "height": 48
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "test_id": "perps-pro-order-form-summary-fees-button",
+              "enabled": true,
+              "bounds": {
+                "x": 40,
+                "y": 1306,
+                "width": 20,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.65K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 960,
+                "width": 132,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.64K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 992,
+                "width": 132,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Buy: 53%",
+              "test_id": "perps-pro-market-order-book-panel-buy-percent",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 1040,
+                "width": 41,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Sell: 47%",
+              "test_id": "perps-pro-market-order-book-panel-sell-percent",
+              "enabled": true,
+              "bounds": {
+                "x": 391,
+                "y": 1040,
+                "width": 41,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Positions, Positions",
+              "test_id": "perps-pro-market-positions-panel-tab-positions",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1357,
+                "width": 70,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Orders, Orders",
+              "test_id": "perps-pro-market-positions-panel-tab-orders",
+              "enabled": true,
+              "bounds": {
+                "x": 102,
+                "y": 1357,
+                "width": 53,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Chase, Chase",
+              "test_id": "perps-pro-market-positions-panel-tab-chase",
+              "enabled": true,
+              "bounds": {
+                "x": 179,
+                "y": 1357,
+                "width": 49,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "TWAP, TWAP",
+              "test_id": "perps-pro-market-positions-panel-tab-twap",
+              "enabled": true,
+              "bounds": {
+                "x": 252,
+                "y": 1357,
+                "width": 49,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Order history",
+              "test_id": "perps-pro-market-positions-history",
+              "enabled": true,
+              "bounds": {
+                "x": 400,
+                "y": 1357,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Sort positions",
+              "test_id": "perps-pro-market-positions-sort-button",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1401,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "All sides",
+              "test_id": "perps-pro-market-positions-side-filter-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 1401,
+                "width": 105,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "BTC only",
+              "test_id": "perps-pro-market-positions-ticker-only",
+              "enabled": true,
+              "bounds": {
+                "x": 169,
+                "y": 1406,
+                "width": 94,
+                "height": 22
+              },
+              "reason": "hidden_or_offscreen"
+            }
+          ],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "assert-twap-randomize",
+      "action": "ui.wait_for",
+      "intent": "Confirm the Randomize control from the Figma TWAP frame is present",
+      "startedAt": "2026-09-14T08:46:30.849Z",
+      "endedAt": "2026-09-14T08:46:37.456Z",
+      "durationMs": 6607,
+      "ok": true,
+      "next": "set-twap-size",
+      "output": {
+        "matched": true,
+        "testId": "perps-pro-order-form-twap-randomize",
+        "expected": "visible",
+        "present": true,
+        "visible": true,
+        "visibility": "viewport",
+        "rect": {
+          "x": 20,
+          "y": 851.6666660308838,
+          "width": 235.6666717529297,
+          "height": 22
+        }
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "88E7B7DE-CBC3-42A3-A23B-0F38D3D5BB17",
+          "name": "MetaMask",
+          "nodeCount": 75,
+          "truncated": false,
+          "route": "PerpsMarketDetails"
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXButton",
+              "label": "Browse markets",
+              "test_id": "perps-pro-market-header-market-list-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 68,
+                "width": 224,
+                "height": 52
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Back",
+              "test_id": "perps-pro-market-header-back-button",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 82,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Perps balance",
+              "test_id": "perps-pro-market-header-wallet-button",
+              "enabled": true,
+              "bounds": {
+                "x": 284,
+                "y": 78,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Remove from watchlist",
+              "test_id": "perps-pro-market-header-favorite-button",
+              "enabled": true,
+              "bounds": {
+                "x": 328,
+                "y": 78,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Currently Pro mode",
+              "test_id": "perps-mode-toggle-pro",
+              "enabled": true,
+              "bounds": {
+                "x": 368,
+                "y": 78,
+                "width": 56,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Collapse chart",
+              "test_id": "perps-pro-market-chart-toggle-button",
+              "enabled": true,
+              "bounds": {
+                "x": 392,
+                "y": 148,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "1m",
+              "test_id": "perps-pro-market-chart-period-selector-period-1m",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 218,
+                "width": 24,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "5m",
+              "test_id": "perps-pro-market-chart-period-selector-period-5m",
+              "enabled": true,
+              "bounds": {
+                "x": 40,
+                "y": 218,
+                "width": 26,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "15m",
+              "test_id": "perps-pro-market-chart-period-selector-period-15m",
+              "enabled": true,
+              "bounds": {
+                "x": 74,
+                "y": 218,
+                "width": 34,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "1h",
+              "test_id": "perps-pro-market-chart-period-selector-period-1h",
+              "enabled": true,
+              "bounds": {
+                "x": 116,
+                "y": 218,
+                "width": 21,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "1d",
+              "test_id": "perps-pro-market-chart-period-selector-period-1d",
+              "enabled": true,
+              "bounds": {
+                "x": 145,
+                "y": 218,
+                "width": 21,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "More",
+              "test_id": "perps-pro-market-chart-period-selector-more-button",
+              "enabled": true,
+              "bounds": {
+                "x": 174,
+                "y": 218,
+                "width": 58,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Fullscreen chart",
+              "test_id": "perps-pro-market-chart-fullscreen-button",
+              "enabled": true,
+              "bounds": {
+                "x": 408,
+                "y": 220,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Long",
+              "test_id": "perps-pro-order-form-direction-long",
+              "enabled": true,
+              "bounds": {
+                "x": 13,
+                "y": 625,
+                "width": 123,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Short",
+              "test_id": "perps-pro-order-form-direction-short",
+              "enabled": true,
+              "bounds": {
+                "x": 140,
+                "y": 625,
+                "width": 123,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Isolated",
+              "test_id": "perps-pro-order-form-margin-mode",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 678,
+                "width": 68,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "3x",
+              "test_id": "perps-pro-order-form-leverage",
+              "enabled": true,
+              "bounds": {
+                "x": 84,
+                "y": 678,
+                "width": 33,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "TWAP",
+              "test_id": "perps-pro-order-form-order-type",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 726,
+                "width": 260,
+                "height": 54
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Runtime (5m – 24h), 0h 30m",
+              "test_id": "perps-pro-order-form-twap-duration-button",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 781,
+                "width": 260,
+                "height": 54
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "About TWAP runtime",
+              "test_id": "perps-pro-order-form-twap-duration-info",
+              "enabled": true,
+              "bounds": {
+                "x": 236,
+                "y": 787,
+                "width": 20,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Randomize",
+              "test_id": "perps-pro-order-form-twap-randomize",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 852,
+                "width": 236,
+                "height": 22
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Size (USD)",
+              "test_id": "perps-pro-order-form-size-field",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 905,
+                "width": 260,
+                "height": 78
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Switch size denomination: USD",
+              "test_id": "perps-pro-order-form-size-unit",
+              "enabled": true,
+              "bounds": {
+                "x": 232,
+                "y": 917,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Hide order book",
+              "test_id": "perps-pro-market-order-book-collapse",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 612,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Order book settings",
+              "test_id": "perps-pro-market-order-book-panel-grouping-trigger",
+              "enabled": true,
+              "bounds": {
+                "x": 404,
+                "y": 612,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.73K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 672,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.72K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 704,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.71K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 736,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.70K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 768,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.69K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 800,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.68K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 864,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.67K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 896,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.66K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 928,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 386,
+                "y": 174,
+                "width": 26,
+                "height": 26
+              }
+            }
+          ],
+          "hidden_or_offscreen": [
+            {
+              "role": "AXButton",
+              "label": "$44.78 available",
+              "test_id": "perps-pro-order-form-add-funds",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1042,
+                "width": 260,
+                "height": 46
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Reduce only",
+              "test_id": "perps-pro-order-form-reduce-only",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 1117,
+                "width": 236,
+                "height": 22
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Place order",
+              "test_id": "perps-pro-order-form-place-order",
+              "enabled": false,
+              "bounds": {
+                "x": 8,
+                "y": 1168,
+                "width": 260,
+                "height": 48
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "test_id": "perps-pro-order-form-summary-fees-button",
+              "enabled": true,
+              "bounds": {
+                "x": 40,
+                "y": 1306,
+                "width": 20,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.65K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 960,
+                "width": 132,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.64K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 992,
+                "width": 132,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Buy: 57%",
+              "test_id": "perps-pro-market-order-book-panel-buy-percent",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 1040,
+                "width": 40,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Sell: 43%",
+              "test_id": "perps-pro-market-order-book-panel-sell-percent",
+              "enabled": true,
+              "bounds": {
+                "x": 390,
+                "y": 1040,
+                "width": 42,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Positions, Positions",
+              "test_id": "perps-pro-market-positions-panel-tab-positions",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1357,
+                "width": 70,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Orders, Orders",
+              "test_id": "perps-pro-market-positions-panel-tab-orders",
+              "enabled": true,
+              "bounds": {
+                "x": 102,
+                "y": 1357,
+                "width": 53,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Chase, Chase",
+              "test_id": "perps-pro-market-positions-panel-tab-chase",
+              "enabled": true,
+              "bounds": {
+                "x": 179,
+                "y": 1357,
+                "width": 49,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "TWAP, TWAP",
+              "test_id": "perps-pro-market-positions-panel-tab-twap",
+              "enabled": true,
+              "bounds": {
+                "x": 252,
+                "y": 1357,
+                "width": 49,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Order history",
+              "test_id": "perps-pro-market-positions-history",
+              "enabled": true,
+              "bounds": {
+                "x": 400,
+                "y": 1357,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Sort positions",
+              "test_id": "perps-pro-market-positions-sort-button",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1401,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "All sides",
+              "test_id": "perps-pro-market-positions-side-filter-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 1401,
+                "width": 105,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "BTC only",
+              "test_id": "perps-pro-market-positions-ticker-only",
+              "enabled": true,
+              "bounds": {
+                "x": 169,
+                "y": 1406,
+                "width": 94,
+                "height": 22
+              },
+              "reason": "hidden_or_offscreen"
+            }
+          ],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "set-twap-size",
+      "action": "ui.set_input",
+      "intent": "Enter a size so the TWAP summary section renders populated rows",
+      "startedAt": "2026-09-14T08:46:37.737Z",
+      "endedAt": "2026-09-14T08:46:53.087Z",
+      "durationMs": 15350,
+      "ok": true,
+      "next": "assert-twap-summary-runtime",
+      "output": {
+        "ok": true,
+        "testId": "perps-pro-order-form-size-input",
+        "value": "50",
+        "deviceName": "mmdev-3"
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "88E7B7DE-CBC3-42A3-A23B-0F38D3D5BB17",
+          "name": "MetaMask",
+          "nodeCount": 76,
+          "truncated": false,
+          "route": "PerpsMarketDetails"
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXButton",
+              "label": "Browse markets",
+              "test_id": "perps-pro-market-header-market-list-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 68,
+                "width": 224,
+                "height": 52
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Back",
+              "test_id": "perps-pro-market-header-back-button",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 82,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Perps balance",
+              "test_id": "perps-pro-market-header-wallet-button",
+              "enabled": true,
+              "bounds": {
+                "x": 284,
+                "y": 78,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Remove from watchlist",
+              "test_id": "perps-pro-market-header-favorite-button",
+              "enabled": true,
+              "bounds": {
+                "x": 328,
+                "y": 78,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Currently Pro mode",
+              "test_id": "perps-mode-toggle-pro",
+              "enabled": true,
+              "bounds": {
+                "x": 368,
+                "y": 78,
+                "width": 56,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Collapse chart",
+              "test_id": "perps-pro-market-chart-toggle-button",
+              "enabled": true,
+              "bounds": {
+                "x": 392,
+                "y": 148,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "1m",
+              "test_id": "perps-pro-market-chart-period-selector-period-1m",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 218,
+                "width": 24,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "5m",
+              "test_id": "perps-pro-market-chart-period-selector-period-5m",
+              "enabled": true,
+              "bounds": {
+                "x": 40,
+                "y": 218,
+                "width": 26,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "15m",
+              "test_id": "perps-pro-market-chart-period-selector-period-15m",
+              "enabled": true,
+              "bounds": {
+                "x": 74,
+                "y": 218,
+                "width": 34,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "1h",
+              "test_id": "perps-pro-market-chart-period-selector-period-1h",
+              "enabled": true,
+              "bounds": {
+                "x": 116,
+                "y": 218,
+                "width": 21,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "1d",
+              "test_id": "perps-pro-market-chart-period-selector-period-1d",
+              "enabled": true,
+              "bounds": {
+                "x": 145,
+                "y": 218,
+                "width": 21,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "More",
+              "test_id": "perps-pro-market-chart-period-selector-more-button",
+              "enabled": true,
+              "bounds": {
+                "x": 174,
+                "y": 218,
+                "width": 58,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Fullscreen chart",
+              "test_id": "perps-pro-market-chart-fullscreen-button",
+              "enabled": true,
+              "bounds": {
+                "x": 408,
+                "y": 220,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Long",
+              "test_id": "perps-pro-order-form-direction-long",
+              "enabled": true,
+              "bounds": {
+                "x": 13,
+                "y": 625,
+                "width": 123,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Short",
+              "test_id": "perps-pro-order-form-direction-short",
+              "enabled": true,
+              "bounds": {
+                "x": 140,
+                "y": 625,
+                "width": 123,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Isolated",
+              "test_id": "perps-pro-order-form-margin-mode",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 678,
+                "width": 68,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "3x",
+              "test_id": "perps-pro-order-form-leverage",
+              "enabled": true,
+              "bounds": {
+                "x": 84,
+                "y": 678,
+                "width": 33,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "TWAP",
+              "test_id": "perps-pro-order-form-order-type",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 726,
+                "width": 260,
+                "height": 54
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Runtime (5m – 24h), 0h 30m",
+              "test_id": "perps-pro-order-form-twap-duration-button",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 781,
+                "width": 260,
+                "height": 54
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "About TWAP runtime",
+              "test_id": "perps-pro-order-form-twap-duration-info",
+              "enabled": true,
+              "bounds": {
+                "x": 236,
+                "y": 787,
+                "width": 20,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Randomize",
+              "test_id": "perps-pro-order-form-twap-randomize",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 852,
+                "width": 236,
+                "height": 22
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Size (USD)",
+              "test_id": "perps-pro-order-form-size-field",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 905,
+                "width": 260,
+                "height": 78
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Switch size denomination: USD",
+              "test_id": "perps-pro-order-form-size-unit",
+              "enabled": true,
+              "bounds": {
+                "x": 232,
+                "y": 917,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Hide order book",
+              "test_id": "perps-pro-market-order-book-collapse",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 612,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Order book settings",
+              "test_id": "perps-pro-market-order-book-panel-grouping-trigger",
+              "enabled": true,
+              "bounds": {
+                "x": 404,
+                "y": 612,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.73K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 672,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.72K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 704,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.71K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 736,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.70K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 768,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.69K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 800,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.68K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 864,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.67K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 896,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.66K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 928,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 386,
+                "y": 174,
+                "width": 26,
+                "height": 26
+              }
+            }
+          ],
+          "hidden_or_offscreen": [
+            {
+              "role": "AXButton",
+              "label": "$44.78 available",
+              "test_id": "perps-pro-order-form-add-funds",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1042,
+                "width": 260,
+                "height": 46
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Reduce only",
+              "test_id": "perps-pro-order-form-reduce-only",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 1117,
+                "width": 236,
+                "height": 22
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Place order",
+              "test_id": "perps-pro-order-form-place-order",
+              "enabled": false,
+              "bounds": {
+                "x": 8,
+                "y": 1204,
+                "width": 260,
+                "height": 48
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "test_id": "perps-pro-order-form-summary-fees-button",
+              "enabled": true,
+              "bounds": {
+                "x": 40,
+                "y": 1342,
+                "width": 20,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.65K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 960,
+                "width": 132,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.64K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 992,
+                "width": 132,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Buy: 50%",
+              "test_id": "perps-pro-market-order-book-panel-buy-percent",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 1040,
+                "width": 41,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Sell: 50%",
+              "test_id": "perps-pro-market-order-book-panel-sell-percent",
+              "enabled": true,
+              "bounds": {
+                "x": 391,
+                "y": 1040,
+                "width": 41,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Positions, Positions",
+              "test_id": "perps-pro-market-positions-panel-tab-positions",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1393,
+                "width": 70,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Orders, Orders",
+              "test_id": "perps-pro-market-positions-panel-tab-orders",
+              "enabled": true,
+              "bounds": {
+                "x": 102,
+                "y": 1393,
+                "width": 53,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Chase, Chase",
+              "test_id": "perps-pro-market-positions-panel-tab-chase",
+              "enabled": true,
+              "bounds": {
+                "x": 179,
+                "y": 1393,
+                "width": 49,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "TWAP, TWAP",
+              "test_id": "perps-pro-market-positions-panel-tab-twap",
+              "enabled": true,
+              "bounds": {
+                "x": 252,
+                "y": 1393,
+                "width": 49,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Order history",
+              "test_id": "perps-pro-market-positions-history",
+              "enabled": true,
+              "bounds": {
+                "x": 400,
+                "y": 1393,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Sort positions",
+              "test_id": "perps-pro-market-positions-sort-button",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1437,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "All sides",
+              "test_id": "perps-pro-market-positions-side-filter-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 1437,
+                "width": 105,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "BTC only",
+              "test_id": "perps-pro-market-positions-ticker-only",
+              "enabled": true,
+              "bounds": {
+                "x": 169,
+                "y": 1442,
+                "width": 94,
+                "height": 22
+              },
+              "reason": "hidden_or_offscreen"
+            }
+          ],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "assert-twap-summary-runtime",
+      "action": "ui.wait_for",
+      "intent": "Prove the Figma Runtime summary row exists for TWAP (G3)",
+      "startedAt": "2026-09-14T08:46:53.361Z",
+      "endedAt": "2026-09-14T08:47:02.371Z",
+      "durationMs": 9010,
+      "ok": true,
+      "next": "assert-twap-summary-size-per-suborder",
+      "output": {
+        "matched": true,
+        "testId": "perps-pro-order-form-summary-twap-runtime",
+        "expected": "present",
+        "present": true,
+        "visible": true,
+        "visibility": "tree"
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "88E7B7DE-CBC3-42A3-A23B-0F38D3D5BB17",
+          "name": "MetaMask",
+          "nodeCount": 76,
+          "truncated": false,
+          "route": "PerpsMarketDetails"
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXButton",
+              "label": "Browse markets",
+              "test_id": "perps-pro-market-header-market-list-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 68,
+                "width": 224,
+                "height": 52
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Back",
+              "test_id": "perps-pro-market-header-back-button",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 82,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Perps balance",
+              "test_id": "perps-pro-market-header-wallet-button",
+              "enabled": true,
+              "bounds": {
+                "x": 284,
+                "y": 78,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Remove from watchlist",
+              "test_id": "perps-pro-market-header-favorite-button",
+              "enabled": true,
+              "bounds": {
+                "x": 328,
+                "y": 78,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Currently Pro mode",
+              "test_id": "perps-mode-toggle-pro",
+              "enabled": true,
+              "bounds": {
+                "x": 368,
+                "y": 78,
+                "width": 56,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Collapse chart",
+              "test_id": "perps-pro-market-chart-toggle-button",
+              "enabled": true,
+              "bounds": {
+                "x": 392,
+                "y": 148,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "1m",
+              "test_id": "perps-pro-market-chart-period-selector-period-1m",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 218,
+                "width": 24,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "5m",
+              "test_id": "perps-pro-market-chart-period-selector-period-5m",
+              "enabled": true,
+              "bounds": {
+                "x": 40,
+                "y": 218,
+                "width": 26,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "15m",
+              "test_id": "perps-pro-market-chart-period-selector-period-15m",
+              "enabled": true,
+              "bounds": {
+                "x": 74,
+                "y": 218,
+                "width": 34,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "1h",
+              "test_id": "perps-pro-market-chart-period-selector-period-1h",
+              "enabled": true,
+              "bounds": {
+                "x": 116,
+                "y": 218,
+                "width": 21,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "1d",
+              "test_id": "perps-pro-market-chart-period-selector-period-1d",
+              "enabled": true,
+              "bounds": {
+                "x": 145,
+                "y": 218,
+                "width": 21,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "More",
+              "test_id": "perps-pro-market-chart-period-selector-more-button",
+              "enabled": true,
+              "bounds": {
+                "x": 174,
+                "y": 218,
+                "width": 58,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Fullscreen chart",
+              "test_id": "perps-pro-market-chart-fullscreen-button",
+              "enabled": true,
+              "bounds": {
+                "x": 408,
+                "y": 220,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Long",
+              "test_id": "perps-pro-order-form-direction-long",
+              "enabled": true,
+              "bounds": {
+                "x": 13,
+                "y": 625,
+                "width": 123,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Short",
+              "test_id": "perps-pro-order-form-direction-short",
+              "enabled": true,
+              "bounds": {
+                "x": 140,
+                "y": 625,
+                "width": 123,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Isolated",
+              "test_id": "perps-pro-order-form-margin-mode",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 678,
+                "width": 68,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "3x",
+              "test_id": "perps-pro-order-form-leverage",
+              "enabled": true,
+              "bounds": {
+                "x": 84,
+                "y": 678,
+                "width": 33,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "TWAP",
+              "test_id": "perps-pro-order-form-order-type",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 726,
+                "width": 260,
+                "height": 54
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Runtime (5m – 24h), 0h 30m",
+              "test_id": "perps-pro-order-form-twap-duration-button",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 781,
+                "width": 260,
+                "height": 54
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "About TWAP runtime",
+              "test_id": "perps-pro-order-form-twap-duration-info",
+              "enabled": true,
+              "bounds": {
+                "x": 236,
+                "y": 787,
+                "width": 20,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Randomize",
+              "test_id": "perps-pro-order-form-twap-randomize",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 852,
+                "width": 236,
+                "height": 22
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Size (USD)",
+              "test_id": "perps-pro-order-form-size-field",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 905,
+                "width": 260,
+                "height": 78
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Switch size denomination: USD",
+              "test_id": "perps-pro-order-form-size-unit",
+              "enabled": true,
+              "bounds": {
+                "x": 232,
+                "y": 917,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Hide order book",
+              "test_id": "perps-pro-market-order-book-collapse",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 612,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Order book settings",
+              "test_id": "perps-pro-market-order-book-panel-grouping-trigger",
+              "enabled": true,
+              "bounds": {
+                "x": 404,
+                "y": 612,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.73K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 672,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.72K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 704,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.71K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 736,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.70K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 768,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.69K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 800,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.68K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 864,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.67K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 896,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.66K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 928,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 386,
+                "y": 174,
+                "width": 26,
+                "height": 26
+              }
+            }
+          ],
+          "hidden_or_offscreen": [
+            {
+              "role": "AXButton",
+              "label": "$44.78 available",
+              "test_id": "perps-pro-order-form-add-funds",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1042,
+                "width": 260,
+                "height": 46
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Reduce only",
+              "test_id": "perps-pro-order-form-reduce-only",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 1117,
+                "width": 236,
+                "height": 22
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Place order",
+              "test_id": "perps-pro-order-form-place-order",
+              "enabled": false,
+              "bounds": {
+                "x": 8,
+                "y": 1204,
+                "width": 260,
+                "height": 48
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "test_id": "perps-pro-order-form-summary-fees-button",
+              "enabled": true,
+              "bounds": {
+                "x": 40,
+                "y": 1342,
+                "width": 20,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.65K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 960,
+                "width": 132,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.62K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 992,
+                "width": 132,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Buy: 19%",
+              "test_id": "perps-pro-market-order-book-panel-buy-percent",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 1040,
+                "width": 39,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Sell: 81%",
+              "test_id": "perps-pro-market-order-book-panel-sell-percent",
+              "enabled": true,
+              "bounds": {
+                "x": 393,
+                "y": 1040,
+                "width": 39,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Positions, Positions",
+              "test_id": "perps-pro-market-positions-panel-tab-positions",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1393,
+                "width": 70,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Orders, Orders",
+              "test_id": "perps-pro-market-positions-panel-tab-orders",
+              "enabled": true,
+              "bounds": {
+                "x": 102,
+                "y": 1393,
+                "width": 53,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Chase, Chase",
+              "test_id": "perps-pro-market-positions-panel-tab-chase",
+              "enabled": true,
+              "bounds": {
+                "x": 179,
+                "y": 1393,
+                "width": 49,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "TWAP, TWAP",
+              "test_id": "perps-pro-market-positions-panel-tab-twap",
+              "enabled": true,
+              "bounds": {
+                "x": 252,
+                "y": 1393,
+                "width": 49,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Order history",
+              "test_id": "perps-pro-market-positions-history",
+              "enabled": true,
+              "bounds": {
+                "x": 400,
+                "y": 1393,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Sort positions",
+              "test_id": "perps-pro-market-positions-sort-button",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1437,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "All sides",
+              "test_id": "perps-pro-market-positions-side-filter-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 1437,
+                "width": 105,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "BTC only",
+              "test_id": "perps-pro-market-positions-ticker-only",
+              "enabled": true,
+              "bounds": {
+                "x": 169,
+                "y": 1442,
+                "width": 94,
+                "height": 22
+              },
+              "reason": "hidden_or_offscreen"
+            }
+          ],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "assert-twap-summary-size-per-suborder",
+      "action": "ui.wait_for",
+      "intent": "Prove the Figma Size per suborder summary row exists for TWAP (G3)",
+      "startedAt": "2026-09-14T08:47:02.737Z",
+      "endedAt": "2026-09-14T08:47:16.747Z",
+      "durationMs": 14010,
+      "ok": true,
+      "next": "assert-twap-summary-hides-liquidation",
+      "output": {
+        "matched": true,
+        "testId": "perps-pro-order-form-summary-twap-size-per-suborder",
+        "expected": "present",
+        "present": true,
+        "visible": true,
+        "visibility": "tree"
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "88E7B7DE-CBC3-42A3-A23B-0F38D3D5BB17",
+          "name": "MetaMask",
+          "nodeCount": 76,
+          "truncated": false,
+          "route": "PerpsMarketDetails"
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXButton",
+              "label": "Browse markets",
+              "test_id": "perps-pro-market-header-market-list-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 68,
+                "width": 224,
+                "height": 52
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Back",
+              "test_id": "perps-pro-market-header-back-button",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 82,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Perps balance",
+              "test_id": "perps-pro-market-header-wallet-button",
+              "enabled": true,
+              "bounds": {
+                "x": 284,
+                "y": 78,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Remove from watchlist",
+              "test_id": "perps-pro-market-header-favorite-button",
+              "enabled": true,
+              "bounds": {
+                "x": 328,
+                "y": 78,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Currently Pro mode",
+              "test_id": "perps-mode-toggle-pro",
+              "enabled": true,
+              "bounds": {
+                "x": 368,
+                "y": 78,
+                "width": 56,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Collapse chart",
+              "test_id": "perps-pro-market-chart-toggle-button",
+              "enabled": true,
+              "bounds": {
+                "x": 392,
+                "y": 148,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "1m",
+              "test_id": "perps-pro-market-chart-period-selector-period-1m",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 218,
+                "width": 24,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "5m",
+              "test_id": "perps-pro-market-chart-period-selector-period-5m",
+              "enabled": true,
+              "bounds": {
+                "x": 40,
+                "y": 218,
+                "width": 26,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "15m",
+              "test_id": "perps-pro-market-chart-period-selector-period-15m",
+              "enabled": true,
+              "bounds": {
+                "x": 74,
+                "y": 218,
+                "width": 34,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "1h",
+              "test_id": "perps-pro-market-chart-period-selector-period-1h",
+              "enabled": true,
+              "bounds": {
+                "x": 116,
+                "y": 218,
+                "width": 21,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "1d",
+              "test_id": "perps-pro-market-chart-period-selector-period-1d",
+              "enabled": true,
+              "bounds": {
+                "x": 145,
+                "y": 218,
+                "width": 21,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "More",
+              "test_id": "perps-pro-market-chart-period-selector-more-button",
+              "enabled": true,
+              "bounds": {
+                "x": 174,
+                "y": 218,
+                "width": 58,
+                "height": 28
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Fullscreen chart",
+              "test_id": "perps-pro-market-chart-fullscreen-button",
+              "enabled": true,
+              "bounds": {
+                "x": 408,
+                "y": 220,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Long",
+              "test_id": "perps-pro-order-form-direction-long",
+              "enabled": true,
+              "bounds": {
+                "x": 13,
+                "y": 625,
+                "width": 123,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Short",
+              "test_id": "perps-pro-order-form-direction-short",
+              "enabled": true,
+              "bounds": {
+                "x": 140,
+                "y": 625,
+                "width": 123,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Isolated",
+              "test_id": "perps-pro-order-form-margin-mode",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 678,
+                "width": 68,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "3x",
+              "test_id": "perps-pro-order-form-leverage",
+              "enabled": true,
+              "bounds": {
+                "x": 84,
+                "y": 678,
+                "width": 33,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "TWAP",
+              "test_id": "perps-pro-order-form-order-type",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 726,
+                "width": 260,
+                "height": 54
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Runtime (5m – 24h), 0h 30m",
+              "test_id": "perps-pro-order-form-twap-duration-button",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 781,
+                "width": 260,
+                "height": 54
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "About TWAP runtime",
+              "test_id": "perps-pro-order-form-twap-duration-info",
+              "enabled": true,
+              "bounds": {
+                "x": 236,
+                "y": 787,
+                "width": 20,
+                "height": 20
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Randomize",
+              "test_id": "perps-pro-order-form-twap-randomize",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 852,
+                "width": 236,
+                "height": 22
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Size (USD)",
+              "test_id": "perps-pro-order-form-size-field",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 905,
+                "width": 260,
+                "height": 78
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Switch size denomination: USD",
+              "test_id": "perps-pro-order-form-size-unit",
+              "enabled": true,
+              "bounds": {
+                "x": 232,
+                "y": 917,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Hide order book",
+              "test_id": "perps-pro-market-order-book-collapse",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 612,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Order book settings",
+              "test_id": "perps-pro-market-order-book-panel-grouping-trigger",
+              "enabled": true,
+              "bounds": {
+                "x": 404,
+                "y": 612,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.69K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 672,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.68K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 704,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.67K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 736,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.66K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 768,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.65K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-ask-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 800,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.64K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-0",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 864,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.63K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-1",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 896,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.62K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-2",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 928,
+                "width": 132,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 386,
+                "y": 174,
+                "width": 26,
+                "height": 26
+              }
+            }
+          ],
+          "hidden_or_offscreen": [
+            {
+              "role": "AXButton",
+              "label": "$44.78 available",
+              "test_id": "perps-pro-order-form-add-funds",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1042,
+                "width": 260,
+                "height": 46
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Reduce only",
+              "test_id": "perps-pro-order-form-reduce-only",
+              "enabled": true,
+              "bounds": {
+                "x": 20,
+                "y": 1117,
+                "width": 236,
+                "height": 22
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Place order",
+              "test_id": "perps-pro-order-form-place-order",
+              "enabled": false,
+              "bounds": {
+                "x": 8,
+                "y": 1204,
+                "width": 260,
+                "height": 48
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "test_id": "perps-pro-order-form-summary-fees-button",
+              "enabled": true,
+              "bounds": {
+                "x": 40,
+                "y": 1342,
+                "width": 20,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.61K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-3",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 960,
+                "width": 132,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Use $77.62K as limit price",
+              "test_id": "perps-pro-market-order-book-panel-bid-row-4",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 992,
+                "width": 132,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Buy: 51%",
+              "test_id": "perps-pro-market-order-book-panel-buy-percent",
+              "enabled": true,
+              "bounds": {
+                "x": 300,
+                "y": 1040,
+                "width": 39,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Sell: 49%",
+              "test_id": "perps-pro-market-order-book-panel-sell-percent",
+              "enabled": true,
+              "bounds": {
+                "x": 390,
+                "y": 1040,
+                "width": 42,
+                "height": 20
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Positions, Positions",
+              "test_id": "perps-pro-market-positions-panel-tab-positions",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1393,
+                "width": 70,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Orders, Orders",
+              "test_id": "perps-pro-market-positions-panel-tab-orders",
+              "enabled": true,
+              "bounds": {
+                "x": 102,
+                "y": 1393,
+                "width": 53,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Chase, Chase",
+              "test_id": "perps-pro-market-positions-panel-tab-chase",
+              "enabled": true,
+              "bounds": {
+                "x": 179,
+                "y": 1393,
+                "width": 49,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "TWAP, TWAP",
+              "test_id": "perps-pro-market-positions-panel-tab-twap",
+              "enabled": true,
+              "bounds": {
+                "x": 252,
+                "y": 1393,
+                "width": 49,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Order history",
+              "test_id": "perps-pro-market-positions-history",
+              "enabled": true,
+              "bounds": {
+                "x": 400,
+                "y": 1393,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Sort positions",
+              "test_id": "perps-pro-market-positions-sort-button",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 1437,
+                "width": 32,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "All sides",
+              "test_id": "perps-pro-market-positions-side-filter-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 1437,
+                "width": 105,
+                "height": 32
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "BTC only",
+              "test_id": "perps-pro-market-positions-ticker-only",
+              "enabled": true,
+              "bounds": {
+                "x": 169,
+                "y": 1442,
+                "width": 94,
+                "height": 22
+              },
+              "reason": "hidden_or_offscreen"
+            }
+          ],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "assert-twap-summary-hides-liquidation",
+      "action": "ui.wait_for",
+      "intent": "Prove Est Liquidation is dropped for TWAP as in the Figma summary frame",
+      "startedAt": "2026-09-14T08:47:17.498Z",
+      "endedAt": "2026-09-14T08:47:31.511Z",
+      "durationMs": 14013,
+      "ok": true,
+      "next": "assert-twap-summary-hides-slippage",
+      "output": {
+        "matched": true,
+        "testId": "perps-pro-order-form-summary-liquidation",
+        "expected": "not_present",
+        "present": false,
+        "visible": false,
+        "visibility": "tree"
+      },
+      "observationWarnings": [
+        {
+          "ref": "ui.screen",
+          "message": "Mobile CDP bridge command timed out after 2000ms: node ../metamask-harness/adapters/mobile/bridge-runtime/cdp-bridge.cjs get-route"
+        },
+        {
+          "ref": "ui.visible",
+          "message": "Mobile CDP bridge command timed out after 2000ms: node ../metamask-harness/adapters/mobile/bridge-runtime/cdp-bridge.cjs get-route"
+        }
+      ]
+    },
+    {
+      "nodeId": "assert-twap-summary-hides-slippage",
+      "action": "ui.wait_for",
+      "intent": "Prove Slippage is dropped for TWAP as in the Figma summary frame",
+      "startedAt": "2026-09-14T08:47:31.634Z",
+      "endedAt": "2026-09-14T08:47:42.004Z",
+      "durationMs": 10370,
+      "ok": false,
+      "cause_class": "unknown",
+      "error": "Timed out waiting for mobile testID \"perps-pro-order-form-summary-slippage\" to be not_present; last result=null; last bridge error=Mobile CDP bridge command timed out after 4737ms: node ../metamask-harness/adapters/mobile/bridge-runtime/cdp-bridge.cjs eval-async (function(){\n    const api = globalThis.__AGENTIC__;\n    if (!api || typeof api.queryUiTarget !== 'function') {\n      return Promise.resolve(JSON.stringify({ unsupported: true }));\n    }\n    return api.queryUiTarget({\"testId\":\"perps-pro-order-form-summary-slippage\",\"visibility\":\"tree\"}).then(function(result){\n      return JSON.stringify(result);\n    });\n  })()."
+    }
+  ]
+}

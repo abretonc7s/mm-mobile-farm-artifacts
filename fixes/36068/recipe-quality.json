@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "verdict": "pass",
+  "compact": {
+    "verdict": "PASS",
+    "reasons": [
+      "Recipe run artifacts/recipe-run/summary.json reports pass with 37/37 nodes and zero application warnings or errors.",
+      "Reverting the change fails the recipe at four independent nodes: assert-chase-option-copy, assert-twap-runtime-info, assert-twap-summary-runtime and assert-twap-summary-size-per-suborder.",
+      "Negative assertions assert-twap-summary-hides-liquidation and assert-twap-summary-hides-slippage use expected=not_present, so an implementation that adds the Figma rows without removing Est Liquidation and Slippage also fails.",
+      "Every user-visible acceptance criterion is mapped to a node and evidence file in artifacts/recipe-coverage.md, with reasoned N/A for the two agreed deviations from the Figma design.",
+      "Screenshot evidence is limited to states the recipe asserted first: evidence-order-type-advanced.png, evidence-twap-summary.png, evidence-scale-form.png and evidence-chase-form.png."
+    ],
+    "better_version_guidance": []
+  },
+  "dimensions": {},
+  "structural_findings": [],
+  "contextual_findings": [],
+  "suggested_recipe_delta": [],
+  "training_fields": {
+    "proof_mode": "unknown"
+  },
+  "meta": {
+    "producer": "worker",
+    "fallback_used": false,
+    "legacy_task": false,
+    "artifact_required": true,
+    "source_signals": [
+      "recipe-quality.json"
+    ]
+  }
+}

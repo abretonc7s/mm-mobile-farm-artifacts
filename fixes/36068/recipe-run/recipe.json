@@ -1,0 +1,281 @@
+{
+  "$schema": "https://farmslot.io/schemas/recipe-v1.schema.json",
+  "title": "TAT-3953 advanced order types match Figma",
+  "description": "Opens the Pro order form for BTC and proves the TWAP, Scale and Chase order types render the copy and summary rows from Figma section 12187:36456, including the TWAP Runtime and Size per suborder summary rows and the Runtime info affordance.",
+  "workflow": {
+    "entry": "status",
+    "nodes": {
+      "status": {
+        "action": "app.status",
+        "next": "cdp",
+        "intent": "Resolve the Mobile checkout and adapter status before the proof"
+      },
+      "cdp": {
+        "action": "cdp.target",
+        "required": true,
+        "timeout_ms": 15000,
+        "next": "ensure-unlocked",
+        "intent": "Confirm the React Native debug bridge is reachable"
+      },
+      "ensure-unlocked": {
+        "action": "metamask.wallet.ensure_unlocked",
+        "next": "open-market",
+        "target_timeout_ms": 45000,
+        "unlock_timeout_ms": 45000,
+        "intent": "Ensure the wallet is unlocked before opening the Pro order form"
+      },
+      "open-market": {
+        "action": "ui.navigate",
+        "page": "perps-market",
+        "market": "BTC",
+        "next": "await-order-form",
+        "intent": "Open the BTC market view; the next node proves the Pro order form is the one on screen"
+      },
+      "await-order-form": {
+        "action": "ui.wait_for",
+        "test_id": "perps-pro-order-form-order-type",
+        "expected": "visible",
+        "timeout_ms": 30000,
+        "next": "open-order-type-sheet-twap",
+        "intent": "Confirm the Pro order form order-type control is on screen"
+      },
+      "open-order-type-sheet-twap": {
+        "action": "ui.press",
+        "test_id": "perps-pro-order-form-order-type",
+        "settle": true,
+        "next": "advanced-tab-twap",
+        "intent": "Open the order type chooser to reach the Advanced tab"
+      },
+      "advanced-tab-twap": {
+        "action": "ui.press",
+        "test_id": "perps-order-type-tab-advanced",
+        "settle": true,
+        "next": "assert-twap-option-copy",
+        "intent": "Show the Advanced tab that lists TWAP, Scale and Chase"
+      },
+      "assert-twap-option-copy": {
+        "action": "ui.wait_for",
+        "text": "Split orders to execute at regular time interval",
+        "expected": "visible",
+        "timeout_ms": 10000,
+        "next": "assert-scale-option-copy",
+        "intent": "Prove the TWAP description matches the Figma Advanced tab copy"
+      },
+      "assert-scale-option-copy": {
+        "action": "ui.wait_for",
+        "text": "Multiple limit orders spread across a price range",
+        "expected": "visible",
+        "timeout_ms": 10000,
+        "next": "assert-chase-option-copy",
+        "intent": "Prove the Scale description matches the Figma Advanced tab copy"
+      },
+      "assert-chase-option-copy": {
+        "action": "ui.wait_for",
+        "text": "Auto adjust limit order to the best price",
+        "expected": "visible",
+        "timeout_ms": 10000,
+        "next": "capture-order-type-sheet",
+        "intent": "Prove the Chase description matches the Figma Advanced tab copy"
+      },
+      "capture-order-type-sheet": {
+        "action": "ui.screenshot",
+        "path": "screenshots/evidence-order-type-advanced.png",
+        "label": "Advanced tab listing TWAP, Scale and Chase with their Figma descriptions",
+        "next": "select-twap",
+        "intent": "Preserve the Advanced tab copy as reviewer evidence"
+      },
+      "select-twap": {
+        "action": "ui.press",
+        "test_id": "perps-order-type-twap",
+        "settle": true,
+        "next": "assert-twap-runtime-label",
+        "intent": "Switch the order form to the TWAP order type"
+      },
+      "assert-twap-runtime-label": {
+        "action": "ui.wait_for",
+        "test_id": "perps-pro-order-form-twap-duration-label",
+        "expected": "visible",
+        "timeout_ms": 15000,
+        "next": "assert-twap-runtime-info",
+        "intent": "Confirm the TWAP runtime row is rendered"
+      },
+      "assert-twap-runtime-info": {
+        "action": "ui.wait_for",
+        "test_id": "perps-pro-order-form-twap-duration-info",
+        "expected": "visible",
+        "timeout_ms": 15000,
+        "next": "assert-twap-randomize",
+        "intent": "Prove the Figma info affordance on the Runtime row exists (G4)"
+      },
+      "assert-twap-randomize": {
+        "action": "ui.wait_for",
+        "test_id": "perps-pro-order-form-twap-randomize",
+        "expected": "visible",
+        "timeout_ms": 10000,
+        "next": "set-twap-size",
+        "intent": "Confirm the Randomize control from the Figma TWAP frame is present"
+      },
+      "set-twap-size": {
+        "action": "ui.set_input",
+        "test_id": "perps-pro-order-form-size-input",
+        "value": "50",
+        "settle": true,
+        "next": "assert-twap-summary-runtime",
+        "intent": "Enter a size so the TWAP summary section renders populated rows"
+      },
+      "assert-twap-summary-runtime": {
+        "action": "ui.wait_for",
+        "test_id": "perps-pro-order-form-summary-twap-runtime",
+        "expected": "present",
+        "timeout_ms": 15000,
+        "next": "assert-twap-summary-size-per-suborder",
+        "intent": "Prove the Figma Runtime summary row exists for TWAP (G3)"
+      },
+      "assert-twap-summary-size-per-suborder": {
+        "action": "ui.wait_for",
+        "test_id": "perps-pro-order-form-summary-twap-size-per-suborder",
+        "expected": "present",
+        "timeout_ms": 15000,
+        "next": "assert-twap-summary-hides-liquidation",
+        "intent": "Prove the Figma Size per suborder summary row exists for TWAP (G3)"
+      },
+      "assert-twap-summary-hides-liquidation": {
+        "action": "ui.wait_for",
+        "test_id": "perps-pro-order-form-summary-liquidation",
+        "expected": "not_present",
+        "timeout_ms": 10000,
+        "next": "assert-twap-summary-hides-slippage",
+        "intent": "Prove Est Liquidation is dropped for TWAP as in the Figma summary frame"
+      },
+      "assert-twap-summary-hides-slippage": {
+        "action": "ui.wait_for",
+        "test_id": "perps-pro-order-form-summary-slippage",
+        "expected": "not_present",
+        "timeout_ms": 10000,
+        "next": "capture-twap",
+        "intent": "Prove Slippage is dropped for TWAP as in the Figma summary frame"
+      },
+      "capture-twap": {
+        "action": "ui.screenshot",
+        "path": "screenshots/evidence-twap-form.png",
+        "label": "TWAP order form showing Runtime with its info affordance and Randomize",
+        "next": "scroll-twap-summary",
+        "intent": "Show the TWAP order panel a trader sees when choosing the order type"
+      },
+      "open-order-type-sheet-scale": {
+        "action": "ui.press",
+        "test_id": "perps-pro-order-form-order-type",
+        "settle": true,
+        "next": "advanced-tab-scale",
+        "intent": "Reopen the order type chooser to switch to Scale"
+      },
+      "advanced-tab-scale": {
+        "action": "ui.press",
+        "test_id": "perps-order-type-tab-advanced",
+        "settle": true,
+        "next": "select-scale",
+        "intent": "Show the Advanced tab again"
+      },
+      "select-scale": {
+        "action": "ui.press",
+        "test_id": "perps-order-type-scale",
+        "settle": true,
+        "next": "assert-scale-start",
+        "intent": "Switch the order form to the Scale order type"
+      },
+      "assert-scale-start": {
+        "action": "ui.wait_for",
+        "text": "Start (USD)",
+        "expected": "visible",
+        "timeout_ms": 15000,
+        "next": "assert-scale-end",
+        "intent": "Prove the Scale start field copy matches Figma"
+      },
+      "assert-scale-end": {
+        "action": "ui.wait_for",
+        "text": "End (USD)",
+        "expected": "visible",
+        "timeout_ms": 10000,
+        "next": "assert-scale-order-count",
+        "intent": "Prove the Scale end field copy matches Figma"
+      },
+      "assert-scale-order-count": {
+        "action": "ui.wait_for",
+        "text": "Order count",
+        "expected": "visible",
+        "timeout_ms": 10000,
+        "next": "assert-scale-size-skew",
+        "intent": "Prove the Scale order count field copy matches Figma"
+      },
+      "assert-scale-size-skew": {
+        "action": "ui.wait_for",
+        "text": "Size skew",
+        "expected": "present",
+        "timeout_ms": 10000,
+        "next": "capture-scale",
+        "intent": "Prove the Scale size skew field copy matches Figma"
+      },
+      "capture-scale": {
+        "action": "ui.screenshot",
+        "path": "screenshots/evidence-scale-form.png",
+        "label": "Scale order form showing Start, End, Order count and Size skew",
+        "next": "open-order-type-sheet-chase",
+        "intent": "Show the Scale order panel a trader sees when choosing the order type"
+      },
+      "open-order-type-sheet-chase": {
+        "action": "ui.press",
+        "test_id": "perps-pro-order-form-order-type",
+        "settle": true,
+        "next": "advanced-tab-chase",
+        "intent": "Reopen the order type chooser to switch to Chase"
+      },
+      "advanced-tab-chase": {
+        "action": "ui.press",
+        "test_id": "perps-order-type-tab-advanced",
+        "settle": true,
+        "next": "select-chase",
+        "intent": "Show the Advanced tab again"
+      },
+      "select-chase": {
+        "action": "ui.press",
+        "test_id": "perps-order-type-chase",
+        "settle": true,
+        "next": "assert-chase-max-distance",
+        "intent": "Switch the order form to the Chase order type"
+      },
+      "assert-chase-max-distance": {
+        "action": "ui.wait_for",
+        "text": "Max distance (USD)",
+        "expected": "visible",
+        "timeout_ms": 15000,
+        "next": "capture-chase",
+        "intent": "Prove the Chase max distance field copy matches Figma"
+      },
+      "capture-chase": {
+        "action": "ui.screenshot",
+        "path": "screenshots/evidence-chase-form.png",
+        "label": "Chase order form showing the reference price and Max distance (USD)",
+        "next": "done",
+        "intent": "Show the Chase order panel a trader sees when choosing the order type"
+      },
+      "done": {
+        "action": "end",
+        "status": "pass"
+      },
+      "scroll-twap-summary": {
+        "action": "ui.scroll",
+        "test_id": "perps-pro-order-form-summary-twap-runtime",
+        "scroll_into_view": true,
+        "next": "capture-twap-summary",
+        "intent": "Bring the TWAP summary section into the visible area"
+      },
+      "capture-twap-summary": {
+        "action": "ui.screenshot",
+        "path": "screenshots/evidence-twap-summary.png",
+        "label": "TWAP summary listing Runtime and Size per suborder, with no Est Liquidation or Slippage",
+        "next": "open-order-type-sheet-scale",
+        "intent": "Show the summary rows a trader reads before placing a TWAP order"
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "originalFamilyScopeSummary": "Align advanced order type UI with Figma design for TWAP, CHASE, and SCALE orders",
+  "currentTriggerSummary": "pr-complete: Align advanced order type UI with Figma design for TWAP, CHASE, and SCALE orders",
+  "scopeVerdict": "full-scope-addressed",
+  "notes": "Branch rebased onto origin/main without conflicts; the only reviewer finding (cursor[bot] nested runtime info button) is fixed by moving the ButtonIcon out of the duration ButtonBase with hitSlop, keeping the Figma layout. The TWAP/Scale/Chase changes from the parent run are otherwise untouched, so the original family scope stays covered."
+}

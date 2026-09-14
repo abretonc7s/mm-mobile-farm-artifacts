@@ -1,0 +1,37 @@
+start-metro: stale metro.pid (pid 42931 no longer alive); cleaning up
+Starting Metro on port 8063 (workers=4)
+(Full log: /Users/deeeed/dev/metamask/metamask-mobile-3/temp/recipe/runtime/metro.log — mm-harness logs | mm-harness logs --full)
+mm-harness | Metro bundler
+mm-harness | full log: /Users/deeeed/dev/metamask/metamask-mobile-3/temp/recipe/runtime/metro.log
+mm-harness | full stream: mm-harness logs --full
+
+  * (waiting for first build event...)
+mm-harness | Metro bundler
+mm-harness | full log: /Users/deeeed/dev/metamask/metamask-mobile-3/temp/recipe/runtime/metro.log
+mm-harness | full stream: mm-harness logs --full
+
+  * » ios: paths-project-pbxproj: Found multiple project.pbxproj file paths, using "ios/MetaMask.xcodeproj/project.pbxproj". Ignored paths: ["ios/branch-ios-sdk/carthage-files/BranchSDK.xcodeproj/project.pbxproj"]
+Metro ready on port 8063
+  Next: mm-harness logs  (tail Metro)
+Prewarming ios bundle before launching dev client (set MOBILE_BUNDLE_PREWARM=0 to skip)
+  url: http://localhost:8063/index.bundle?platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable
+Bundle progress: iOS ./index.js ░░░░░░░░░░░░░░░░  0.0% (0/1) [metro-progress 2026-09-14T08:42:05.113Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓░░░░░░░░░ 47.4% (4620/6988) [metro-progress 2026-09-14T08:42:08.618Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓▓░░░░░░░ 60.3% (10785/13885) [metro-progress 2026-09-14T08:42:13.454Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓▓▓▓▓░░░░ 75.2% (14134/16303) [metro-progress 2026-09-14T08:42:17.115Z]
+Bundle progress: iOS ./index.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░ 92.0% (18704/19496) [metro-progress 2026-09-14T08:42:20.641Z]
+ios bundle ready
+Restarting iOS dev client io.metamask.MetaMask on 88E7B7DE-CBC3-42A3-A23B-0F38D3D5BB17
+Launching iOS dev client io.metamask.MetaMask on 88E7B7DE-CBC3-42A3-A23B-0F38D3D5BB17
+open-device: iOS dev client opened (io.metamask.MetaMask on 88E7B7DE-CBC3-42A3-A23B-0F38D3D5BB17)
+  Next: mm-harness logs   # tail Metro
+Device console → app-console.log (CDP forwarder pid 6323)
+Waiting for Mobile bridge (0.0s elapsed, 180.0s remaining): Metro running; no React Native debug target yet (iOS Bundled 18256ms index.js (20455 modules))
+Waiting for Mobile bridge (10.1s elapsed, 169.9s remaining): Metro running; no React Native debug target yet (iOS Bundled 571ms index.js (1 module))
+Waiting for Mobile bridge (20.9s elapsed, 159.1s remaining): React Native target answered; waiting for an in-app route (iOS Bundled 571ms index.js (1 module))
+Mobile bridge ready (23.1s)
+→ verify (mobile) — target: /Users/deeeed/dev/metamask/metamask-mobile-3
+Fixture status: READY (temp/recipe/runtime/wallet-fixture.json, accounts=4).
+Mobile harness verify pass: /Users/deeeed/dev/metamask/metamask-mobile-3/temp/recipe/harness/mobile/verify/20260914T084253Z/summary.json
+✓ verify mobile passed (71.0s)
+  Next: mm-harness status --target /Users/deeeed/dev/metamask/metamask-mobile-3 --json
