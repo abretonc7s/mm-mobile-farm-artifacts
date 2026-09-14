@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "scope": "recipe-run-application",
+  "status": "review",
+  "nonBlocking": true,
+  "note": "Observed 2 distinct application warning/error event(s) during the recipe run; showing 2 preview(s) and omitting 0. Relation to the task is not determined.",
+  "source": {
+    "label": "app",
+    "path": "/Users/deeeed/dev/metamask/metamask-mobile-2/temp/recipe/runtime/app-console.log",
+    "startOffset": 32880,
+    "endOffset": 61362,
+    "bytesRead": 28482,
+    "truncated": false,
+    "inAppBuffer": "unavailable",
+    "rawArtifact": "diagnostics-app-log.txt",
+    "redacted": true
+  },
+  "counts": {
+    "total": 2,
+    "warning": 2,
+    "error": 0,
+    "exception": 0
+  },
+  "displayedFindingCount": 2,
+  "omittedFindingCount": 0,
+  "findings": [
+    {
+      "level": "warning",
+      "fingerprint": "5ca048045073",
+      "preview": "WARN  02:47:48.055 [console:mm-2] The result function returned its own inputs without modification. e.g",
+      "count": 4
+    },
+    {
+      "level": "warning",
+      "fingerprint": "f2aedf9ebff0",
+      "preview": "WARN  02:47:50.219 [console:mm-2] [MetaMask DEBUG]: { message: \"Terminal global snapshot returned 400: bad request\", stack: \"Error: Terminal global snapshot returned 400: bad request\\n    at ?anon_0_ (http://127.0.0.1:8062/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.byteco",
+      "count": 2
+    }
+  ]
+}

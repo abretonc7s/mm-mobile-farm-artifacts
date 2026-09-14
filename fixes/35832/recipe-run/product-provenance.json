@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "adapter": "mobile",
+  "repository": "metamask-mobile-2",
+  "git_ref": "7690b91b7f3f27a36ede9305d7372f3542202af7",
+  "branch": "TAT-3786-fix-fix-perps-pro-back-nav",
+  "dirty": false
+}

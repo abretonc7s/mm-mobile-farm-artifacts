@@ -1,0 +1,40 @@
+{
+  "verdict": "pass",
+  "reasons": [
+    "Re-validation on 7690b91b7f after rebase onto origin/main: 18/18 recipe nodes passed, including both AC graphs.",
+    "AC1 mixed proof: wait_for perps-watchlist-header and perps-market-add-funds-button both viewport-visible; inspected PNG shows Perps Testnet home with Withdraw/Add funds and Watchlist, not wallet home.",
+    "AC2 mixed proof: wait_for perps-pro-order-form-place-order then Lite long-button; inspected PNGs show Pro workstation (Pro pill, Isolated 3x, order book, Place order) then Lite market (Lite pill, Long/Short).",
+    "No forbidden patterns in the inherited recipe: no switch/default, no eval_sync, no wait substituting for ui.wait_for, no fiber-only visual proof.",
+    "First unlock attempt failed the stability window (environment); restart then a full pass. Unlock is setup, not an AC mutation."
+  ],
+  "betterVersionGuidance": [],
+  "dimensions": {
+    "intent_clarity": {
+      "status": "pass",
+      "reason": "Node intents describe the user-visible goal of each step.",
+      "evidence": [
+        "artifacts/recipe.json node intents"
+      ]
+    },
+    "coverage": {
+      "status": "pass",
+      "reason": "2/2 ACs PROVEN on this re-validation run.",
+      "evidence": [
+        "artifacts/recipe-coverage.md",
+        "artifacts/recipe-run/trace.json"
+      ]
+    },
+    "evidence_fit": {
+      "status": "pass",
+      "reason": "Visual/mixed claims are gated on wait_for of the claimed target, then the PNG was inspected.",
+      "evidence": [
+        "artifacts/recipe-run/screenshots/evidence-ac1-back-lands-on-perps-home.png",
+        "artifacts/recipe-run/screenshots/evidence-ac2-pro-workstation.png",
+        "artifacts/recipe-run/screenshots/evidence-ac2-lite-return.png"
+      ]
+    }
+  },
+  "trainingFields": {
+    "proof_mode": "mixed"
+  }
+}

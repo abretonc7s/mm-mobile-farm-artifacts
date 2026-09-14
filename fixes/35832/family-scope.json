@@ -1,0 +1,6 @@
+{
+  "originalFamilyScopeSummary": "Fix back navigation from perps pro to return to perps home instead of wallet home",
+  "currentTriggerSummary": "pr-complete: fix(perps): transition first time lite -> pro",
+  "scopeVerdict": "full-scope-addressed",
+  "notes": "TAT-3786 is implemented: after Lite→Pro→Lite the header back arrow lands on Perps home. Rebase onto origin/main preserved withHomeDroppedFromHistory on Home→Pro resets and kept main's lastViewedMarketSymbol. Inherited recipe re-ran on 7690b91b7f: 18/18 nodes passed. Inspected PNGs show Pro workstation, Lite market return, and Perps home (not wallet). Remaining review comments were already-fixed bugbot or false-positive flaky-test findings."
+}

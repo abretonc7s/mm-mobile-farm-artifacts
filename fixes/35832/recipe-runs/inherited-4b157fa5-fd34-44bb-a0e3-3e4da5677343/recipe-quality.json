@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "verdict": "pass",
+  "compact": {
+    "verdict": "PASS",
+    "reasons": [
+      "Both ACs are exercised end-to-end through the real user path: Perps home -> tap BTC row -> Lite -> Pro -> Lite -> header back arrow, using only ui.press/ui.navigate and the typed metamask.perps.ensure_mode action.",
+      "The graph validates (mm-harness run --plan exits 0) and every ac<N>- node has a passing entry in artifacts/trace.json.",
+      "A sibling recipe-baseline.json asserts the buggy values and passes against pre-fix code, producing honest before-evidence; the verify recipe asserts the fixed values and fails on pre-fix code, so it genuinely tests the fix.",
+      "Both visual/mixed screenshots are preceded by a ui.wait_for on the claimed target, and the before/after PNGs show opposite destinations (wallet home token list vs Perps home balance screen).",
+      "No forbidden patterns: no switch/default, no eval_sync, no wait substituting for ui.wait_for, no fiber-only proof for a visual claim, and no UI value injection."
+    ],
+    "better_version_guidance": []
+  },
+  "dimensions": {
+    "intent_clarity": {
+      "status": "pass",
+      "reason": "Every node intent states the human-visible goal rather than restating the action, selector, or node id.",
+      "evidence": [
+        "artifacts/recipe.json node intents",
+        "mm-harness run --plan reports no workflow.invalid_intent findings."
+      ]
+    },
+    "coverage": {
+      "status": "pass",
+      "reason": "2/2 ACs PROVEN, none untestable, weak, or missing.",
+      "evidence": [
+        "artifacts/recipe-coverage.md coverage matrix."
+      ]
+    },
+    "evidence_fit": {
+      "status": "pass",
+      "reason": "AC1 (mixed) is carried by state assertions plus a before/after screenshot pair; AC2 (visual) by screenshots gated on ui.wait_for targets. No screenshot is used as proof for hidden behavior.",
+      "evidence": [
+        "artifacts/before-evidence-ac1-back-lands-on-perps-home.png vs artifacts/after-ac1-back-lands-on-perps-home.png",
+        "artifacts/after-ac2-pro-workstation.png",
+        "artifacts/after-ac2-lite-return.png."
+      ]
+    },
+    "revert_sensitivity": {
+      "status": "pass",
+      "reason": "Reverting the fix makes both new unit tests fail and makes the verify recipe's AC1 assertion fail, while the baseline recipe passes only against buggy code.",
+      "evidence": [
+        "Reverted-fix jest run reported 2 failed, 13 passed",
+        "baseline recipe run exited 0 pre-fix and the verify recipe exits 0 post-fix."
+      ]
+    }
+  },
+  "structural_findings": [],
+  "contextual_findings": [],
+  "suggested_recipe_delta": [],
+  "training_fields": {
+    "proof_mode": "unknown"
+  },
+  "meta": {
+    "producer": "worker",
+    "fallback_used": false,
+    "legacy_task": false,
+    "artifact_required": true,
+    "source_signals": [
+      "recipe-quality.json"
+    ]
+  }
+}

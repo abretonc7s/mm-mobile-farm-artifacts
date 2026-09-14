@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "runner": {
+      "source": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness",
+      "git_ref": "unknown",
+      "name": "@metamask/recipe-runner"
+    }
+  },
+  "entries": [
+    {
+      "nodeId": "setup-status",
+      "action": "app.status",
+      "intent": "Confirm the mobile bridge is reachable",
+      "startedAt": "2026-09-14T02:47:44.670Z",
+      "endedAt": "2026-09-14T02:47:44.729Z",
+      "durationMs": 59,
+      "ok": true,
+      "next": "setup-unlock",
+      "output": {
+        "platform": "mobile",
+        "projectRoot": "/Users/deeeed/dev/metamask/metamask-mobile-2",
+        "compatibilityMode": "runner bridge with injected app bridge",
+        "shape": {
+          "packageName": "metamask",
+          "packageJsonStatus": "valid",
+          "packageJsonError": null,
+          "extensionProject": false,
+          "mobileProject": true,
+          "agenticService": true,
+          "mobileProductHarness": false,
+          "mobileBridgeScript": true,
+          "extensionRuntime": false,
+          "injectedHarness": true,
+          "walletFixture": true
+        }
+      }
+    },
+    {
+      "nodeId": "setup-unlock",
+      "action": "metamask.wallet.ensure_unlocked",
+      "intent": "Make the wallet usable before the journey starts",
+      "startedAt": "2026-09-14T02:47:44.765Z",
+      "endedAt": "2026-09-14T02:48:15.038Z",
+      "durationMs": 30273,
+      "ok": false,
+      "cause_class": "unknown",
+      "error": "Live adapter /Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness/library/actions/mobile/wallet/ensure_unlocked.mjs exited 1: file:///Users/deeeed/dev/metamask/metamask-mobile-2/[eval1]:16637\n    throw new Error(\"Mobile wallet did not remain unlocked for the required stability window.\");\n          ^\n\nError: Mobile wallet did not remain unlocked for the required stability window.\n    at ensureUnlocked (file:///Users/deeeed/dev/metamask/metamask-mobile-2/[eval1]:16637:11)\n    at async runAdapter (file:///Users/deeeed/dev/metamask/metamask-mobile-2/[eval1]:13597:20)\n\nNode.js v24.19.0\n"
+    }
+  ]
+}
