@@ -3,50 +3,38 @@
   "scope": "recipe-run-application",
   "status": "review",
   "nonBlocking": true,
-  "note": "Observed 4 distinct application warning/error event(s) during the recipe run; showing 4 preview(s) and omitting 0. Relation to the task is not determined.",
+  "note": "Observed 2 distinct application warning/error event(s) during the recipe run; showing 2 preview(s) and omitting 0. Relation to the task is not determined.",
   "source": {
     "label": "app",
-    "path": "/Users/deeeed/dev/metamask/metamask-mobile-2/temp/recipe/runtime/app-console.log",
-    "startOffset": 32916,
-    "endOffset": 82027,
-    "bytesRead": 49111,
+    "path": "/Users/deeeed/dev/metamask/metamask-mobile-1/temp/recipe/runtime/app-console.log",
+    "startOffset": 117518,
+    "endOffset": 119926,
+    "bytesRead": 2408,
     "truncated": false,
     "inAppBuffer": "collected",
     "rawArtifact": "diagnostics-app-log.txt",
     "redacted": true
   },
   "counts": {
-    "total": 4,
-    "warning": 4,
-    "error": 0,
+    "total": 2,
+    "warning": 0,
+    "error": 2,
     "exception": 0
   },
-  "displayedFindingCount": 4,
+  "displayedFindingCount": 2,
   "omittedFindingCount": 0,
   "findings": [
     {
-      "level": "warning",
-      "fingerprint": "5ca048045073",
-      "preview": "WARN  09:01:37.390 [console:mm-2] The result function returned its own inputs without modification. e.g",
-      "count": 3
+      "level": "error",
+      "fingerprint": "4239370bc8e9",
+      "preview": "ERROR  15:43:51.139 [console:mmdev-1] A query that was dehydrated as pending ended up rejecting. [[\"MoneyAccountBalanceService:getMoneyAccountBalance\",\"0xf62b4ed01965f4dabc34a1297845124f2421ef95\"]]: Error: missing revert data in call exception; Transaction reverted without a reason string [ See: https://links.ethers.or",
+      "count": 1
     },
     {
-      "level": "warning",
-      "fingerprint": "f2aedf9ebff0",
-      "preview": "WARN  09:01:39.497 [console:mm-2] [MetaMask DEBUG]: { message: \"Terminal global snapshot returned 400: bad request\", stack: \"Error: Terminal global snapshot returned 400: bad request\\n    at ?anon_0_ (http://127.0.0.1:8062/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.byteco",
-      "count": 3
-    },
-    {
-      "level": "warning",
-      "fingerprint": "3c23a3f9a90b",
-      "preview": "The result function returned its own inputs without modification. e.g\n`createSelector([state => state.todos], todos => todos)`\nThis could lead to inefficient memoization and unnecessary re-renders.\nEnsure transformation logic is in the result function, and extraction logic is in the input selectors. Error\n    at runIde",
-      "count": 3
-    },
-    {
-      "level": "warning",
-      "fingerprint": "7375cb40da64",
-      "preview": "[MetaMask DEBUG]: Error: Terminal global snapshot returned 400: bad request\n    at ?anon_0_ (http://127.0.0.1:8062/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:1385501:26)\n    at next (native)\n    a",
-      "count": 3
+      "level": "error",
+      "fingerprint": "50dd455888fa",
+      "preview": "A query that was dehydrated as pending ended up rejecting. [[\"MoneyAccountBalanceService:getMoneyAccountBalance\",\"0xf62b4ed01965f4dabc34a1297845124f2421ef95\"]]: Error: missing revert data in call exception; Transaction reverted without a reason string [ See: https://links.ethers.org/v5-errors-CALL_EXCEPTION ] (data=\"0x",
+      "count": 1
     }
   ]
 }

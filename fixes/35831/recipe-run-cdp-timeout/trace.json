@@ -1,0 +1,99 @@
+{
+  "metadata": {
+    "runner": {
+      "source": "/Users/deeeed/dev/metamask/metamask-harness",
+      "git_ref": "e39c127281fcb4b7cadffddca17804cb11dbeb38",
+      "name": "@metamask/recipe-runner"
+    }
+  },
+  "entries": [
+    {
+      "nodeId": "wallet",
+      "action": "metamask.wallet.read_state",
+      "intent": "Verify the selected account before inspecting its positions",
+      "startedAt": "2026-09-14T15:41:55.346Z",
+      "endedAt": "2026-09-14T15:41:55.638Z",
+      "durationMs": 292,
+      "ok": true,
+      "next": "account",
+      "output": {
+        "action": "metamask.wallet.read_state",
+        "source": "mobile-agentic-status",
+        "account": {
+          "address": "0x8dc623e964475d4d669da601fd15ea9125469003",
+          "id": "0285a92b-905c-4814-8a16-52fe1db60357",
+          "name": "dev1"
+        },
+        "route": {
+          "key": "Login-Up8uMRBHSbqPv8g0Xpryk",
+          "name": "Login"
+        },
+        "deviceName": "mmdev-1",
+        "platform": "ios",
+        "redacted": true,
+        "proofPath": "agentic-wallet-status",
+        "liveAdapter": "/Users/deeeed/dev/metamask/metamask-harness/library/actions/mobile/wallet/read_state.mjs"
+      }
+    },
+    {
+      "nodeId": "account",
+      "action": "assert_output",
+      "intent": "Require the intended account; never substitute another wallet",
+      "startedAt": "2026-09-14T15:41:55.718Z",
+      "endedAt": "2026-09-14T15:41:55.796Z",
+      "durationMs": 78,
+      "ok": true,
+      "next": "unlock",
+      "output": {
+        "source": "wallet",
+        "stream": "stdout",
+        "assertion": {
+          "path": "$.account.address",
+          "operator": "eq",
+          "value": "0x8dc623e964475d4d669da601fd15ea9125469003",
+          "actual": "0x8dc623e964475d4d669da601fd15ea9125469003"
+        }
+      }
+    },
+    {
+      "nodeId": "unlock",
+      "action": "metamask.wallet.ensure_unlocked",
+      "intent": "Unlock the selected fixture wallet through its supported flow",
+      "startedAt": "2026-09-14T15:41:55.866Z",
+      "endedAt": "2026-09-14T15:42:10.076Z",
+      "durationMs": 14210,
+      "ok": true,
+      "next": "environment",
+      "output": {
+        "action": "metamask.wallet.ensure_unlocked",
+        "unlocked": true,
+        "keyringUnlocked": true,
+        "account": {
+          "address": "0x8dc623e964475d4d669da601fd15ea9125469003",
+          "id": "0285a92b-905c-4814-8a16-52fe1db60357",
+          "name": "dev1"
+        },
+        "route": {
+          "key": "WalletView-ser8xnIaRS1n5zU9KrNHx",
+          "name": "WalletView"
+        },
+        "deviceName": "mmdev-1",
+        "platform": "ios",
+        "redacted": true,
+        "proofPath": "agentic-wallet-unlock",
+        "liveAdapter": "/Users/deeeed/dev/metamask/metamask-harness/library/actions/mobile/wallet/ensure_unlocked.mjs"
+      }
+    },
+    {
+      "nodeId": "environment",
+      "action": "command",
+      "intent": "Verify dev1, Hyperliquid and testnet before reading the real Cross fixture",
+      "startedAt": "2026-09-14T15:42:10.478Z",
+      "endedAt": "2026-09-14T15:42:21.567Z",
+      "durationMs": 11089,
+      "ok": false,
+      "cause_class": "unknown",
+      "error": "Command exited with 1: node temp/tasks/feat/tat-3519-0908-104128/artifacts/selected-account-cross-setup.ts inspect\n(node:10720) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/deeeed/dev/metamask/metamask-mobile-1/temp/tasks/feat/tat-3519-0908-104128/artifacts/selected-account-cross-setup.ts is not specified and it doesn't parse as CommonJS.\nReparsing as ES module because module syntax was detected. This incurs a performance overhead.\nTo eliminate this warning, add \"type\": \"module\" to /Users/deeeed/dev/metamask/metamask-mobile-1/package.json.\n(Use `node --trace-warnings ...` to show where the warning was created)\nfile:///Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness/library/actions/mobile/platform/bridge.mjs:530\n    const error = new Error(`Mobile CDP bridge command failed: ${command}\\n${redactBridgeOutput(result.stderr || result.stdout, sensitiveBridgeArgs(args))}`);\n                  ^\n\nError: Mobile CDP bridge command failed: node ../../../.npm-global/lib/node_modules/@deeeed/metamask-harness/adapters/mobile/bridge-runtime/cdp-bridge.cjs eval-async (function(){var c=Engine.context.PerpsController; var a=Engine.context.AccountsController.getSelectedAccount(); if(a.address.toLowerCase()!==\"0x8dc623e964475d4d669da601fd15ea9125469003\" || c.state.activeProvider!=='hyperliquid' || c.state.isTestnet!==true) throw new Error('Selected account/provider/testnet identity mismatch'); return JSON.stringify({address:a.address,provider:c.state.activeProvider,isTestnet:c.state.isTestnet});})()\nERROR[CDP_TIMEOUT]: CDP command timed out: Runtime.evaluate\nNext: the app is reloading or busy — retry, or `mm-harness launch <platform>` to foreground it.\n\n    at bridgeCommand (file:///Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness/library/actions/mobile/platform/bridge.mjs:530:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async evalAsync (file:///Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness/library/actions/mobile/platform/bridge.mjs:605:29)\n    at async file:///Users/deeeed/dev/metamask/metamask-mobile-1/temp/tasks/feat/tat-3519-0908-104128/artifacts/selected-account-cross-setup.ts:29:18 {\n  code: 'CDP_TIMEOUT'\n}\n\nNode.js v24.16.0\n"
+    }
+  ]
+}

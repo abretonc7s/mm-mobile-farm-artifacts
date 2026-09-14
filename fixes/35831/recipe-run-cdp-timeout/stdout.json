@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "command": "run",
+  "adapter": "mobile",
+  "status": "fail",
+  "exitCode": 1,
+  "recovered": [],
+  "mutations": [],
+  "reportPath": "/Users/deeeed/dev/metamask/metamask-mobile-1/temp/tasks/fix/35831-0914-231255/artifacts/recipe-run/report.md",
+  "result": {
+    "status": "fail",
+    "summaryPath": "/Users/deeeed/dev/metamask/metamask-mobile-1/temp/tasks/fix/35831-0914-231255/artifacts/recipe-run/summary.json",
+    "tracePath": "/Users/deeeed/dev/metamask/metamask-mobile-1/temp/tasks/fix/35831-0914-231255/artifacts/recipe-run/trace.json",
+    "artifactManifestPath": "/Users/deeeed/dev/metamask/metamask-mobile-1/temp/tasks/fix/35831-0914-231255/artifacts/recipe-run/artifact-manifest.json",
+    "recipePath": "/Users/deeeed/dev/metamask/metamask-mobile-1/temp/tasks/fix/35831-0914-231255/artifacts/recipe-run/recipe.json",
+    "diagnosticsPath": "/Users/deeeed/dev/metamask/metamask-mobile-1/temp/tasks/fix/35831-0914-231255/artifacts/recipe-run/diagnostics.json",
+    "sideFindings": {
+      "status": "review",
+      "note": "Observed 6 distinct application warning/error event(s) during the recipe run; showing 6 preview(s) and omitting 0. Relation to the task is not determined.",
+      "counts": {
+        "total": 6,
+        "warning": 6,
+        "error": 0,
+        "exception": 0
+      }
+    }
+  },
+  "error": {
+    "code": "RECIPE_EXECUTION_FAILED",
+    "message": "recipe execution failed; inspect the persisted result and evidence paths",
+    "userAction": "mm-harness last --target '/Users/deeeed/dev/metamask/metamask-mobile-1' --json"
+  }
+}

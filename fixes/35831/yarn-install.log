@@ -1,0 +1,39 @@
+➤ YN0000: · Yarn 4.14.1
+➤ YN0000: ┌ Resolution step
+➤ YN0000: └ Completed in 1s 273ms
+➤ YN0000: ┌ Post-resolution validation
+➤ YN0060: │ @metamask/network-controller is listed by your project with version 36.0.0 (pac0316), which doesn't satisfy what @metamask/sample-controllers requests (^25.0.0).
+➤ YN0060: │ @metamask/providers is listed by your project with version 18.3.1 (p430fd0), which doesn't satisfy what @metamask/account-tree-controller and other dependencies request (but they have non-overlapping ranges!).
+➤ YN0060: │ @react-native-masked-view/masked-view is listed by your project with version 0.3.2 (p74f5fe), which doesn't satisfy what react-native-skeleton-placeholder requests (~0.2.3).
+➤ YN0060: │ @storybook/addon-controls is listed by your project with version 7.5.1 (pe5efee), which doesn't satisfy what @storybook/addon-ondevice-controls requests (^6.5.14).
+➤ YN0060: │ @types/react is listed by your project with version 19.2.17 (p83a773), which doesn't satisfy what @testing-library/react-hooks and other dependencies request (but they have non-overlapping ranges!).
+➤ YN0060: │ react is listed by your project with version 19.2.0 (p8f4e78), which doesn't satisfy what @react-native/jest-preset and other dependencies request (but they have non-overlapping ranges!).
+➤ YN0060: │ react-dom is listed by your project with version 19.2.0 (p8c22a5), which doesn't satisfy what @storybook/addon-controls and other dependencies request (but they have non-overlapping ranges!).
+➤ YN0060: │ react-native is listed by your project with version 0.83.6 (p9a1cdb), which doesn't satisfy what @veriff/react-native-sdk and other dependencies request (but they have non-overlapping ranges!).
+➤ YN0060: │ react-native-get-random-values is listed by your project with version 2.0.0 (p986198), which doesn't satisfy what @segment/analytics-react-native and other dependencies request (^1.0.0).
+➤ YN0060: │ react-native-nitro-modules is listed by your project with version 0.35.10 (p0ab6d6), which doesn't satisfy what @metamask/native-utils and other dependencies request (but they have non-overlapping ranges!).
+➤ YN0060: │ react-native-svg is listed by your project with version 15.15.5 (p538add), which doesn't satisfy what react-native-jazzicon and other dependencies request (but they have non-overlapping ranges!).
+➤ YN0060: │ react-native-worklets is listed by your project with version 0.10.4 (pfe5fc0), which doesn't satisfy what expo-modules-core and other dependencies request (but they have non-overlapping ranges!).
+➤ YN0060: │ react-test-renderer is listed by your project with version 19.2.0 (p1be1f3), which doesn't satisfy what @testing-library/react-hooks and other dependencies request (but they have non-overlapping ranges!).
+➤ YN0060: │ readable-stream is listed by your project with version 2.3.7 (pa044f7), which doesn't satisfy what @metamask/sdk-communication-layer requests (^3.6.2).
+➤ YN0060: │ typescript is listed by your project with version 5.8.3 (pb8ca5f), which doesn't satisfy what @metamask/eslint-config-typescript and other dependencies request (>=5.4.0 <5.6.0-0).
+➤ YN0002: │ metamask@workspace:. doesn't provide @metamask/eslint-config (pb86ea5), requested by @metamask/eslint-config-typescript.
+➤ YN0002: │ metamask@workspace:. doesn't provide @metamask/eth-block-tracker (p71f732), requested by @metamask/transaction-controller.
+➤ YN0002: │ metamask@workspace:. doesn't provide @react-native-community/cli-tools (pb05676), requested by react-native-release-profiler.
+➤ YN0002: │ metamask@workspace:. doesn't provide @react-native/js-polyfills (p3c6f6d), requested by @lavamoat/react-native-lockdown.
+➤ YN0002: │ metamask@workspace:. doesn't provide @redux-saga/is (p39e883), requested by redux-saga-test-plan.
+➤ YN0002: │ metamask@workspace:. doesn't provide @redux-saga/symbols (p8ae4f4), requested by redux-saga-test-plan.
+➤ YN0002: │ metamask@workspace:. doesn't provide @types/react-native (pf56bde), requested by @expensify/react-native-wallet and other dependencies.
+➤ YN0002: │ metamask@workspace:. doesn't provide cross-fetch (pc9f515), requested by @metamask/sdk-communication-layer.
+➤ YN0002: │ metamask@workspace:. doesn't provide playwright (pecb5b9), requested by @metamask/client-mcp-core.
+➤ YN0086: │ Some peer dependencies are incorrectly met by your project; run yarn explain peer-requirements <hash> for details, where <hash> is the six-letter p-prefixed code.
+➤ YN0086: │ Some peer dependencies are incorrectly met by dependencies; run yarn explain peer-requirements for details.
+➤ YN0000: └ Completed in 0s 271ms
+➤ YN0000: ┌ Fetch step
+➤ YN0013: │ 33 packages were added to the project, and 29 were removed (+ 669.76 KiB).
+➤ YN0000: └ Completed in 3s 526ms
+➤ YN0000: ┌ Link step
+➤ YN0008: │ metamask@workspace:. must be rebuilt because its dependency tree changed
+➤ YN0000: └ Completed in 53s 570ms
+➤ YN0000: · Done with warnings in 1m 1s
+exit=0

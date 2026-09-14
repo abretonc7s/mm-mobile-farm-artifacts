@@ -1,37 +1,12 @@
 {
   "version": 1,
   "preferred_mode": "screenshots",
-  "summary": "pr-complete re-validation run. IMPORTANT PROVENANCE: every media item below was produced by the inherited authoring run (family bed00bf7-24a8-4c5f-bdc3-7cbc1764bcb0), not by this run. This run produced no new screenshots or video, because the inherited recipe stopped at its require-cross fixture precondition (zero open positions on the testnet account) before any screenshot node executed. The media is referenced here so the display criteria retain their visual proof; it is not re-claimed as fresh evidence for the rebased HEAD. This run's own evidence is state-only: runtime health, the recipe node trace, and the post-rebase local CI gate (112/112 tests).",
+  "summary": "No new visual evidence this PR-complete round. Recipe ran on rebased HEAD 2204c40070c (recipe-run/) and failed at require-cross before any display node: controller returned positions [] for dev1 on Hyperliquid testnet (identity verified). First attempt (recipe-run-cdp-timeout/) hit CDP_TIMEOUT in the environment node right after unlock and was retried once. Earlier screenshots and video under recipe-runs/inherited-bed00bf7-24a8-4c5f-bdc3-7cbc1764bcb0 are historical, not current proof.",
   "before_after_pairs": [],
-  "standalone": [
-    {
-      "label": "Pro Cross position with venue liquidation and Margin used (inherited)",
-      "covers": ["AC7-current", "AC8", "AC11"],
-      "file": "recipe-runs/inherited-bed00bf7-24a8-4c5f-bdc3-7cbc1764bcb0/recipe-run-recorded-2/screenshots/cross-summary-pro.png"
-    },
-    {
-      "label": "Lite Cross position and Margin used (inherited)",
-      "covers": ["AC7-current", "AC11"],
-      "file": "recipe-runs/inherited-bed00bf7-24a8-4c5f-bdc3-7cbc1764bcb0/recipe-run-recorded-2/screenshots/cross-summary-lite.png"
-    },
-    {
-      "label": "Pro explicitly displays No liquidation price (inherited)",
-      "covers": ["AC8b"],
-      "file": "recipe-runs/inherited-bed00bf7-24a8-4c5f-bdc3-7cbc1764bcb0/recipe-run-linked-null-3/screenshots/cross-position-pro.png"
-    },
-    {
-      "label": "Null liquidation explanation states the shared-balance risk (inherited)",
-      "covers": ["AC8b", "AC10"],
-      "file": "recipe-runs/inherited-bed00bf7-24a8-4c5f-bdc3-7cbc1764bcb0/recipe-run-linked-null-3/screenshots/cross-explanation-lite.png"
-    }
-  ],
-  "omit": [
-    "recipe-run/summary.json",
-    "recipe-run/trace.json"
-  ],
+  "standalone": [],
+  "omit": [],
   "videos": {
-    "after": "recipe-runs/inherited-bed00bf7-24a8-4c5f-bdc3-7cbc1764bcb0/after.mp4",
     "preferred": false,
-    "note": "Inherited from the authoring run (passing 37/37-action numeric recipe on mm-2). Not recorded by this pr-complete run; no video was captured this round."
+    "note": "No recording this round; the run stopped at the fixture precondition."
   }
 }

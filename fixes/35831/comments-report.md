@@ -1,150 +1,52 @@
-# PR #35831 — Comment Triage Report
+# PR #35831 comments report
 
-Branch: `TAT-3519-feat-mobile-pro-cross-margin`
-Triaged at HEAD: (see final section)
+Live fetch 2026-09-14 against pre-rebase head `9b0472a4d4a`.
 
-## Fetch results
+- Inline review comments: 0
+- CHANGES_REQUESTED reviews: 0 (no reviews at all)
+- Conversation comments: 8
 
-- Inline review comments (`pulls/35831/comments`, `in_reply_to_id == null`): **0**
-- `CHANGES_REQUESTED` reviews: **0** (no reviews of any state exist on this PR)
-- Issue/conversation comments: **7** (5 bot, 2 human — both authored by the PR author in earlier runs)
+| # | Source | Author | Where | Triage | Action |
+|---|--------|--------|-------|--------|--------|
+| 1 | issue_comment 5632566796 | github-actions[bot] | Performance Test Results | OUT OF SCOPE | "Perps open position and close it" failed with `no_performance_metrics` (no metrics collected), not a regression. Profiling shows no metric over the +10% baseline margin; check is non-blocking. PR diff is display-only and does not touch the open/close order flow. No code change. |
+| 2 | issue_comment 5581571760 | github-actions[bot] | Flaky unit test detection | FALSE POSITIVE (no-op) | Body reports all earlier findings fixed; metadata `findings: []` for all 5 files at `9b0472a4`. Already answered in 5581695034 and 5632089383. No reply needed. |
 
-## Triage table
+Skipped without reply (status-only automation / own notes): CLA (5578350099), Smart E2E selection (5632142400), SonarQube quality gate passed (5632252432), 3 own earlier triage notes (5581695034, 5619337354, 5632089383).
 
-| # | ID | Author | Source | File | Triage | Action |
-|---|----|--------|--------|------|--------|--------|
-| 1 | 5578350099 | github-actions[bot] | issue_comment | — | STATUS-ONLY (skipped) | CLA signature status. No reply. |
-| 2 | 5581113223 | github-actions[bot] | issue_comment | — | OUT OF SCOPE | Perf test "Perps add funds" quality-gates exceeded on commit `732dc86` (pre-rebase). Explicitly non-blocking; the add-funds flow is untouched by this PR's diff (display-only changes to position cards + a feature-flag selector). |
-| 3 | 5581571760 | github-actions[bot] | issue_comment | 5 perps test files | FALSE POSITIVE | Flaky-test detection. The rendered body reports **"All previously detected unit test flakiness issues in this PR have been fixed"** and its metadata block carries `"findings": []` for all five analyzed files. No outstanding finding to fix. |
-| 4 | 5581695034 | abretonc7s (PR author) | issue_comment | — | ALREADY HANDLED | Author's own prior triage of #3. Not a reviewer request; no reply (would be self-reply). |
-| 5 | 5619337354 | abretonc7s (PR author) | issue_comment | — | ALREADY HANDLED | Author's own prior rebase/blocker-cleared note. Not a reviewer request; no reply. |
-| 6 | 5621086006 | github-actions[bot] | issue_comment | — | STATUS-ONLY (skipped) | Smart E2E tag selection summary. No reply. |
-| 7 | 5621245345 | sonarqubecloud[bot] | issue_comment | — | STATUS-ONLY (skipped) | **Quality Gate passed** — 0 security hotspots, 98.9% coverage on new code, 0.0% duplication. The 3 "new issues" did not fail the gate and carry no inline comment on this PR. No reply. |
+## PR context
 
-**Skipped without reply (routine status-only automation): 3** (#1 CLA, #6 E2E selection, #7 Sonar gate-passed).
+Display-only Cross margin support for existing positions (Lite `PerpsPositionCard`, Pro `PerpsProPositionCard`, `PerpsCard` list badge), shared-collateral info button, non-editable "Margin used", gated behind `perpsCrossMarginEnabled` (default false). 17 files.
 
-## CI status
+Note: `check-pr-labels` fails only because the PR still carries the `blocked` label. The Core dependency blocker was cleared on 2026-09-10; label removal is left to the author.
 
-Checked via `gh pr checks 35831`. One non-skipped failure:
+## Integration
 
-- **`check-pr-labels` — FAIL:** `PR cannot be merged because it still contains this label: blocked`.
-  **Triage: OUT OF SCOPE for a code fix.** The `blocked` label is an intentional author/product hold, consistent with the PR title suffix `[NOT-READY-NEED-DESIGN]`. It is a process gate, not a defect, and removing it is a product decision outside a review-comment worker's remit. No code change can clear it.
+`rebased` onto origin/main `f9fff6ad167`: 6 commits replayed cleanly, linear, no merge commit. Pre-rebase remote `9b0472a4d4a` → local `2204c40070c`. Main changed `yarn.lock`/`package.json`/`ios/Podfile.lock`; `yarn install --immutable` exit 0.
 
-All other checks: `Unit tests (0..9)` pass, `Verify feature flags are registered` pass, `Validate E2E Fixtures` pass, Sonar gate pass. `policy-bot` pending; the remaining entries are `skipping`.
+## Local gate (post-rebase)
 
-## Integration (step 3)
+- Scoped ESLint `--max-warnings=0` on all 16 PR TS/TSX files: exit 0
+- `yarn format:check`: clean
+- Type check: LSP diagnostics, 0 errors on the 6 changed source files. Full `yarn lint:tsc` not run from the worker pane per slot rules; CI runs it.
+- Jest, 6 affected suites: 278/278 pass
+- `git status --porcelain`: clean
 
-Rebased `TAT-3519-feat-mobile-pro-cross-margin` onto `origin/main` (`91a66f077a`). Six branch commits replayed cleanly, no conflicts, no merge commit. `main` moved `yarn.lock`/`package.json`/`ios/Podfile.lock`, so `yarn install --immutable` was re-run (completed with pre-existing peer warnings only).
+## Recipe re-validation: FAIL at fixture precondition (environmental)
 
-Pre-rebase remote SHA: `4d0f2b7f1009ff49d08f0d36759eff01092803bc` (local HEAD matched remote exactly before the rebase).
-Integration status: `rebased`.
+Inherited AC coverage (`artifacts/recipe.json`): Lite + Pro Cross badge, venue liquidation price or explicit no-price state, shared-collateral explanation sheet, non-editable "Margin used". Requires exactly one live Cross ETH position on dev1 (`0x8dc623e9…9003`), no trades created.
 
-## Step 6 — fixes applied
+- Runtime healthy: `mm-harness launch ios --verify` passed, doctor live, fixture READY.
+- Precondition fails before any PR assertion. Hyperliquid testnet `clearinghouseState` for the account: `assetPositions: []`, `accountValue: "0.0"`; `frontendOpenOrders`: 0; `spotClearinghouseState` USDC 629.306541 (unified collateral, so the account is funded) (`artifacts/venue-precondition.txt`). `require-cross` (`$.positions length_eq 1`) cannot pass. Building a Cross fixture needs authorized testnet trades plus cleanup, which is outside this mechanical re-run; the recipe itself creates no trades.
+- Recipe executed (`mm-harness run … --slot macwork-mmdev-1`). The parent helper was missing from this slot and hardcoded `IOS_SIMULATOR: mm-2`, `WATCHER_PORT: 8062`, so a copy was staged at the recipe's path with only those two values changed to `mmdev-1`/`8061`. The recipe calls only its read-only `inspect` operation.
+- Attempt 1 (`recipe-run-cdp-timeout/`): `wallet`, `account`, `unlock` pass; `environment` fails with `CDP_TIMEOUT` on `Runtime.evaluate` right after unlock (app busy). Retried once.
+- Attempt 2 (`recipe-run/`): identity verified (dev1, hyperliquid, `isTestnet: true`); controller `positions: []`; fails at `require-cross` (`cause_class: subject`) before any display assertion.
+- No branch commit touches fixture setup. Unit/view tests above cover the display logic.
 
-**None.** No comment triaged REAL, so no code change was made. Verification that this is not a
-premature no-change:
+## Result
 
-- The flaky-detection metadata block (base64, decoded) reports `findings: []` for **all five**
-  analyzed test files, confirming the rendered "all issues fixed" text rather than relying on it.
-- Sonar's quality gate **passed** and posted no inline comment.
-- The only failing check (`check-pr-labels`) is a label-process gate with no code remedy.
-
-## Step 9 — bounded local CI gate (post-rebase)
-
-Run against the rebased base `91a66f077a`:
-
-| Gate | Result |
-|---|---|
-| Scoped ESLint `--max-warnings=0` (16 PR files) | **PASS** — no output |
-| `yarn lint:tsc` | **PASS** — 0 errors |
-| `yarn format:check` | **PASS** — "All matched files use Prettier code style!" |
-| Working tree clean (`git status --porcelain`) | **PASS** — empty |
-| Affected suites (5 files) | **PASS** — 112/112 tests |
-
-Suites run: `PerpsPositionsView`, `PerpsProPositionCard`, `PerpsCard`,
-`PerpsCrossMarginInfoButton`, `PerpsPositionCard`.
-
-## Step 10 — recipe re-validation
-
-Recipe: `artifacts/recipe.json` (present; `RECIPE_SOURCE: family-inherited`, trusted).
-Actions used are all standard validation primitives — `metamask.wallet.*`, `ui.navigate|press|scroll|screenshot|wait_for`, `assert_json`, `assert_output`, `command`, `switch`, `end`. No adversarial primitive.
-
-**Inherited AC coverage** (from the recipe description + `inputs/inherited/report.md`): the recipe
-proves, on exactly one real Cross position, the Cross badge, the venue liquidation display for both
-the null and numeric fixtures, the shared-collateral explanation, and the non-editable "Margin used"
-label in both Lite and Pro. Mixed-book grouping, compact rows, and privacy masking are explicitly
-delegated to component tests, not to this recipe.
-
-**Runtime health:** UP. `launch ios --verify` passed (13.7s; fixture READY, 4 accounts) and
-`doctor --expect-live` reported Metro `up`, device `mm-2` Booted, capture providers available.
-
-**Result: FAIL at the precondition gate — environmental, not a regression.**
-
-| # | Node | Action | Result |
-|---|------|--------|--------|
-| 1 | `wallet` | `metamask.wallet.read_state` | pass |
-| 2 | `account` | `assert_output` | pass |
-| 3 | `unlock` | `metamask.wallet.ensure_unlocked` | pass |
-| 4 | `environment` | `command` | pass |
-| 5 | `positions` | `command` | pass |
-| 6 | `require-cross` | `assert_json` | **fail** |
-
-5 passed / 1 failed of 6. The failure is:
-`$.positions length_eq 1` against `selected-account-live-positions.json`, which currently holds
-`positions: []` (zero open positions on the testnet account).
-
-`require-cross`'s own stated intent is *"Require exactly one live position so shared value selectors
-cannot match another market"* — it is a fixture precondition, not an assertion about this PR. Execution
-stopped there and **never reached a single node that touches this PR's display code** (`pro-open`,
-`pro-scroll`, and every badge/liquidation/margin assertion are downstream of it).
-
-Attribution per step 10's RUNTIME/ASSERT FAIL rule: `git diff origin/main...HEAD --name-only` shows the
-branch touches **no** fixture, runtime, or `temp/` data — only perps components, tests, selectors,
-locales, and the flag registry. The failure is therefore caused by neither the review fixes (there were
-none) nor the rebase. It is the same environmental condition documented in PR comment 5619337354: the
-positions used for the original validation were closed at the end of that run. Logged as
-**unrelated/environmental**; continuing per the checklist.
-
-## Step 11 — commit and push
-
-**No fix commit created** — no comment triaged REAL, so an empty commit was deliberately avoided.
-
-The rebase from step 3 still needed publishing, so the integrated history was force-pushed under a
-lease. Remote was verified unmoved (`4d0f2b7f100` expected == actual) immediately before the push.
-
-- Before: `4d0f2b7f1009ff49d08f0d36759eff01092803bc`
-- After:  `9b0472a4d4ad6e1981d9be1af041e3fa7b01c8b6`
-
-No leftover lint changes; working tree clean after push.
-
-## Step 12 — replies
-
-- **Inline review comments: none exist**, so no inline replies were posted and no review threads were
-  resolved. GraphQL `reviewThreads` returns **0** nodes — nothing to pass to `resolveReviewThread`.
-- **One consolidated top-level response posted** covering the flaky-detection finding (FALSE POSITIVE,
-  verified via decoded metadata), the performance-test failure (OUT OF SCOPE), the Sonar gate, the
-  post-rebase gate results, the recipe precondition failure, and the intentional `blocked` label:
-  https://github.com/MetaMask/metamask-mobile/pull/35831#issuecomment-5632089383
-- **No reply** to comments 5581695034 and 5619337354 — both are the PR author's own earlier triage
-  notes, not reviewer requests; replying would be a self-reply.
-- **No reply** to the 3 routine status-only automation comments (CLA, Smart E2E selection, Sonar
-  gate-passed).
-
----
-
-## Final summary
-
-- **Total comments triaged: 7** — 0 REAL, 1 FALSE POSITIVE (flaky detection), 1 OUT OF SCOPE
-  (performance test), 2 already-handled author notes, 3 status-only automation skipped without reply.
-- **Inline review comments: 0. `CHANGES_REQUESTED` reviews: 0.**
-- **Commit SHA for fixes: none** — no code change was required, so no empty commit was created.
-- **Files changed this run: none.** Branch content is unchanged; only its base moved.
-- **Branch tip:** `9b0472a4d4ad6e1981d9be1af041e3fa7b01c8b6` (was `4d0f2b7f1009ff49d08f0d36759eff01092803bc`).
-- **Recipe re-validation: FAIL (environmental).** Stops at the `require-cross` fixture precondition —
-  zero open positions on the testnet account. 5/6 nodes pass; no assertion on this PR's code was
-  reached. Not attributable to the branch or the rebase.
-- **Integration status (step 3): `rebased`** onto `origin/main` `91a66f077a`, clean, linear, no merge
-  commit; `yarn install --immutable` re-run for the lockfile move.
-- **Local CI gate: all green** — ESLint, `lint:tsc`, `format:check`, clean tree, 112/112 tests.
-- **Remaining merge blocker:** `check-pr-labels` fails on the intentional `blocked` label, matching
-  the `[NOT-READY-NEED-DESIGN]` title. Product hold, deliberately left in place.
+- Total actionable: 2 (0 REAL, 1 FALSE POSITIVE, 1 OUT OF SCOPE)
+- Fix commit: none (no code change needed)
+- Files changed: none beyond rebase
+- Recipe re-validation: FAIL at `require-cross` precondition (no live Cross position on dev1); no PR display assertion reached
+- Integration status: `rebased` (see `integration-status.txt`); pushed `2204c40070c` with `--force-with-lease` against `9b0472a4d4a`
+- Replies: no inline threads to resolve; one consolidated top-level reply posted: https://github.com/MetaMask/metamask-mobile/pull/35831#issuecomment-5666569084

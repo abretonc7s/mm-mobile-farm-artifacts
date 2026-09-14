@@ -1,0 +1,8 @@
+{
+  "verdict": "warn",
+  "reasons": [
+    "Recipe ran on rebased HEAD 2204c40070c and failed at require-cross: selected-account-live-positions.json shows identity dev1/hyperliquid/isTestnet true with positions [] (recipe-run/trace.json); no badge, liquidation, explanation or Margin used node executed, so runtime ACs are unproven this round.",
+    "First attempt failed with CDP_TIMEOUT in the environment node right after unlock (recipe-run-cdp-timeout/trace.json); one retry reached the real precondition; venue read agrees (venue-precondition.txt: zero positions, zero open orders).",
+    "Parent helper hardcoded mm-2/8062; staged slot copy changes only simulator and watcher port and the recipe calls only its read-only inspect operation. Display logic re-checked statically: Jest 278/278, scoped ESLint exit 0, LSP 0 type errors."
+  ]
+}

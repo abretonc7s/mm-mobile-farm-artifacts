@@ -1,87 +1,29 @@
 {
   "version": 1,
   "verdict": "warn",
+  "compact": {
+    "verdict": "WARN",
+    "reasons": [
+      "Recipe ran on rebased HEAD 2204c40070c and failed at require-cross: selected-account-live-positions.json shows identity dev1/hyperliquid/isTestnet true with positions [] (recipe-run/trace.json); no badge, liquidation, explanation or Margin used node executed, so runtime ACs are unproven this round.",
+      "First attempt failed with CDP_TIMEOUT in the environment node right after unlock (recipe-run-cdp-timeout/trace.json); one retry reached the real precondition; venue read agrees (venue-precondition.txt: zero positions, zero open orders).",
+      "Parent helper hardcoded mm-2/8062; staged slot copy changes only simulator and watcher port and the recipe calls only its read-only inspect operation. Display logic re-checked statically: Jest 278/278, scoped ESLint exit 0, LSP 0 type errors."
+    ],
+    "better_version_guidance": []
+  },
+  "dimensions": {},
+  "structural_findings": [],
+  "contextual_findings": [],
+  "suggested_recipe_delta": [],
+  "training_fields": {
+    "proof_mode": "unknown"
+  },
   "meta": {
     "producer": "worker",
     "fallback_used": false,
     "legacy_task": false,
     "artifact_required": true,
     "source_signals": [
-      "recipe.json",
-      "recipe-run/summary.json",
-      "recipe-run/trace.json",
-      "evidence-manifest.json",
-      "recipe-coverage.md",
-      "comments-report.md"
-    ]
-  },
-  "dimensions": {
-    "claim_alignment": {
-      "status": "pass",
-      "reason": "The inherited recipe's assertions still map to this PR's claims: Cross badge, numeric and null venue liquidation, shared-collateral explanation, and Margin used with edit suppression. This run authored no recipe and changed no assertion.",
-      "evidence": ["recipe.json", "recipe-coverage.md"]
-    },
-    "runtime_proof": {
-      "status": "fail",
-      "reason": "Re-validation did not reach any display assertion on the rebased HEAD. 5 of 6 nodes passed (wallet, account, unlock, environment, positions) and the run stopped at require-cross, a fixture precondition asserting exactly one live position against an account that currently holds zero. No node touching this PR's code executed.",
-      "evidence": ["recipe-run/summary.json", "recipe-run/trace.json"]
-    },
-    "visual_evidence": {
-      "status": "warn",
-      "reason": "No screenshot or video was captured this run; execution stopped before the first capture node. The manifest references the authoring run's media purely to retain visual proof for the criteria, explicitly marked as inherited rather than fresh.",
-      "evidence": ["evidence-manifest.json"]
-    },
-    "repeatability": {
-      "status": "fail",
-      "reason": "The recipe requires a live fixture it does not establish. The authoring run closed its positions and restored ETH to isolated 3x on completion, so every follow-up run fails the same gate. This is a structural replay defect, not a one-off environment glitch.",
-      "evidence": ["recipe-coverage.md", "inputs/inherited/recipe-coverage.md"]
-    }
-  },
-  "structural_findings": [
-    {
-      "code": "UNSEEDED_PRECONDITION",
-      "message": "require-cross asserts a live-position precondition that no earlier node establishes, so the recipe cannot self-start from a clean account. It gates the entire display-assertion subgraph.",
-      "dimension": "repeatability",
-      "evidence": ["recipe.json", "recipe-run/trace.json"]
-    }
-  ],
-  "contextual_findings": [
-    {
-      "code": "LIVE_FIXTURE_REPLAY",
-      "message": "Inherited finding, now realized: the fixture the recipe depends on was cleaned up by the authoring run, so this re-validation could not reproduce the display proof. Attribution was confirmed safe — the branch touches no fixture or runtime data.",
-      "dimension": "runtime_proof",
-      "evidence": ["comments-report.md", "recipe-coverage.md"]
-    }
-  ],
-  "suggested_recipe_delta": [
-    "Add a setup branch that opens one Cross position when the account has none, so require-cross becomes an assertion the recipe can satisfy rather than an unseeded gate.",
-    "Capture the venue liquidation expectation at run time instead of pinning a numeric value, so replay does not need a refreshed expectation.",
-    "Alternatively, split the fixture gate into its own preflight recipe so a failed precondition reports as setup-missing rather than as a failed validation run."
-  ],
-  "training_fields": {
-    "project": "metamask-mobile",
-    "flow_type": "pr-complete",
-    "task_type": "review-fix",
-    "claim_is_visual": true,
-    "proof_mode": "state",
-    "anti_patterns": [
-      "unseeded live-fixture precondition",
-      "recipe cleanup that invalidates its own replay"
-    ],
-    "good_patterns": [
-      "per-node failure attribution before blaming the branch",
-      "diff check confirming the branch touches no fixture data",
-      "decoding bot metadata instead of trusting rendered text"
-    ]
-  },
-  "compact": {
-    "verdict": "WARN",
-    "reasons": [
-      "The inherited recipe's claims still align with the PR, and the local gate is fully green (112/112 tests, ESLint/tsc/format clean).",
-      "But runtime re-validation proved nothing about the display code: it stopped at an unseeded live-position precondition, and no fresh visual evidence exists for the rebased HEAD."
-    ],
-    "better_version_guidance": [
-      "Make the recipe seed its own Cross position so require-cross is satisfiable from a clean account, and capture the venue expectation at run time."
+      "recipe-quality.json"
     ]
   }
 }

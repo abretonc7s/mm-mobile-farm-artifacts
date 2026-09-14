@@ -1,45 +1,16 @@
-# Recipe coverage — pr-complete re-validation run
+# Recipe coverage
 
-Scope: re-validation only. This run authored no recipe and added no acceptance criteria; it re-ran the
-inherited recipe against `branch + origin/main` after rebasing onto `91a66f077a`. The inherited
-criteria map is unchanged — see `inputs/inherited/recipe-coverage.md` for the authored slice.
+Scope: PR-complete re-validation of the inherited existing-position Cross display recipe (`artifacts/recipe.json`) against rebased HEAD `2204c40070c`. Proof mode planned: mixed state + visual. The recipe ran (`recipe-run/`) and stopped at `require-cross`, so every display criterion below is N/A with a reason. A first attempt (`recipe-run-cdp-timeout/`) hit `CDP_TIMEOUT` in `environment` and was retried once. Earlier passing runs (`recipe-runs/inherited-bed00bf7-…/recipe-run-recorded-2`, `recipe-run-linked-null-3`) are historical and not claimed as current proof.
 
-Proof mode this run: **state only**. No new visual evidence was produced, because execution stopped
-before the first screenshot node.
-
-## What this run actually proved
-
-| Criterion within this slice | Mode | Evidence this run | Status this run |
+| Criterion | Recipe nodes | Current evidence | Status |
 | --- | --- | --- | --- |
-| Runtime reachable on rebased HEAD | State | `launch ios --verify` pass (13.7s, fixture READY, 4 accounts); `doctor --expect-live` Metro up, `mm-2` Booted | Proved |
-| Wallet/account/unlock preamble | State | Recipe nodes `wallet`, `account`, `unlock` pass | Proved |
-| Environment + live position read | State | Recipe nodes `environment`, `positions` pass | Proved |
-| AC7 Cross badge | Mixed | — | **Not reached** |
-| AC8 numeric venue liquidation | Mixed | — | **Not reached** |
-| AC8b legitimate null liquidation | Mixed | — | **Not reached** |
-| AC10 shared liquidation explanation | Mixed | — | **Not reached** |
-| AC11 Margin used and edit suppression | Mixed | — | **Not reached** |
-| Existing privacy / isolated / compact-card contracts | State | 5 affected suites pass, 112/112 tests on the rebased base | Proved |
+| Precondition: dev1, Hyperliquid testnet, exactly one live Cross ETH position | `wallet`, `account`, `environment`, `positions`, `require-cross`, `require-cross-mode`, `require-cross-market` | `recipe-run/trace.json`: identity dev1/hyperliquid/testnet verified, controller `positions: []`; `venue-precondition.txt`: 0 venue positions, 0 open orders, spot USDC 629.31 | FAIL at `require-cross` |
+| AC7 Cross badge, Pro and Lite | `pro-tag`, `lite-tag`, summary captures | none this round | N/A: blocked by precondition |
+| AC8/AC8b venue liquidation price or explicit no-price state | `price-kind`, `require-*-price`, `pro-price`, `lite-price` | none this round | N/A: blocked by precondition |
+| AC10 shared-collateral explanation sheet | `pro-info`, `pro-explanation`, `lite-info`, `lite-explanation` | none this round | N/A: blocked by precondition |
+| AC11 "Margin used" label, edit control absent | `pro-margin`, `pro-no-edit`, `lite-margin`, `lite-no-edit` | none this round | N/A: blocked by precondition |
+| Display logic (static) | not a recipe node | Jest 6 suites 278/278 on rebased HEAD; scoped ESLint exit 0; LSP 0 type errors | Static only, not runtime proof |
 
-Run result: 5 passed / 1 failed of 6 nodes, `status: fail`, cause `subject: 1`.
+Why the display nodes did not run: the recipe creates no trades and requires an existing Cross fixture. Opening one means authorized testnet order placement plus cleanup, which is outside a mechanical PR-complete re-run. Runtime health itself was verified (`mm-harness launch ios --verify` pass, fixture READY).
 
-## Why the display criteria were not reached
-
-The run stops at `require-cross`, whose stated intent is *"Require exactly one live position so shared
-value selectors cannot match another market"*. It asserts `$.positions length_eq 1` against
-`selected-account-live-positions.json`, which currently holds `positions: []`. Every display assertion
-(`pro-open`, `pro-scroll`, and the badge / liquidation / explanation / margin nodes) is downstream of
-that gate.
-
-This is a precondition the recipe requires but does not establish. The inherited coverage document
-records the cause directly: *"Final fixtures have been closed, ETH restored to isolated 3x"* — the
-authored run closed its own positions on completion, so the fixture the recipe depends on no longer
-exists. `git diff origin/main...HEAD --name-only` confirms the branch touches no fixture, runtime, or
-`temp/` data, so the failure is attributable to neither the rebase nor any change in this PR.
-
-## Limits
-
-No visual proof, no Android execution, and no re-proof of AC7/AC8/AC8b/AC10/AC11 is claimed for this
-run. Replay requires re-seeding one authorized testnet Cross position and a refreshed venue
-liquidation expectation. Unit-level coverage of the display code stands on the 5 passing suites and
-Sonar's 98.9% new-code coverage.
+Replay needs: one Cross ETH position on dev1 opened by an authorized fixture step, a slot-portable helper (the staged copy here only swaps simulator/port), and a refreshed liquidation expectation.
