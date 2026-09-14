@@ -1,35 +1,83 @@
-# PR #36068 — comments report
+# Comments report — PR #36068
 
-## Triage
+Fetched live from GitHub (not the TASK.md snapshot). HEAD after rebase + push: `7f4a9f244f`.
 
-| # | Source | Author | File | Triage | Action |
-|---|--------|--------|------|--------|--------|
-| 1 | review_comment 3987456324 | cursor[bot] | PerpsProTwapFields.tsx:124 | REAL | Move runtime info `ButtonIcon` out of the duration `ButtonBase` (absolute sibling in a relative container) and add `hitSlop`. In RN the innermost touchable wins the responder, so a double-fire is unlikely, but the nested button collapses into the parent's accessibility node (unreachable for screen readers) and has a tiny tap target. |
-| 2 | issue_comment 5629090677 | github-actions[bot] (flaky-test-detection) | PerpsProOrderForm.test.tsx, PerpsOrderTypeBottomSheet.test.tsx | FALSE POSITIVE | Every suggested safeguard already exists at HEAD: `mockInputHandlesActive = true` in `beforeEach` (line 194), `jest.restoreAllMocks()` in `afterEach` (line 200), `jest.clearAllMocks()` in `beforeEach` of the bottom-sheet test (line 155). 0 failures across 489 runs / 30d. |
+## PR context
 
-Skipped status-only automation (no reply): 2 (CLA signature, SonarCloud quality gate). Review body 5176678532 (cursor[bot] summary) covered by #1.
-No CHANGES_REQUESTED reviews.
+Aligns TWAP / Scale / Chase Pro order UI with Figma `12187:36456`. Chase description copy, TWAP summary rows (`Runtime`, `Size per suborder` instead of Est Liquidation / Slippage), and the Runtime info affordance. Scale already matched.
 
-## Inherited AC coverage (parent run f3085f27)
+## Triage table
 
-Recipe `artifacts/recipe.json` (37 nodes, identical to inherited) passed 37/37 in the parent run: ac1 TWAP summary Runtime / Size per suborder with Est Liquidation and Slippage absent (state + screenshot), ac2 Scale field copy (visible text + screenshot), ac3 Chase description and Max distance (visible text + screenshot), ac4 Runtime ⓘ affordance (`perps-pro-order-form-twap-duration-info` visible). Deliberate deviations: runtime range `5m – 24h` (Hyperliquid 1,440-minute cap) and the existing Chase foreground-notice copy.
+| # | Author | File | Triage | Action |
+|---|--------|------|--------|--------|
+| 1 | cursor[bot] | PerpsProTwapFields.tsx | REAL | Already fixed on HEAD. Info `ButtonIcon` is an absolutely positioned sibling of the duration `ButtonBase` with 12pt `hitSlop`. Thread resolved; already replied. No further code change. |
+| 2 | cursor[bot] | usePerpsProOrderForm.ts | REAL | Already fixed on HEAD. Suborder size below `10 ** -szDecimals` renders `<{bound} {symbol}` instead of a rounded zero. Thread resolved; already replied. No further code change. |
+| 3 | github-actions[bot] | PerpsProOrderForm.test.tsx J9/J10; PerpsOrderTypeBottomSheet.test.tsx J3/J10 | FALSE POSITIVE | Suggested `beforeEach`/`afterEach` resets already exist. Historical failure rate 0/432 over 30d. Already replied. |
 
-## Recipe re-validation — PASS (37/37)
+## Skipped (status-only, no reply)
 
-- The first launch after the rebase failed. The mmdev-3 iOS dev client (Runway run `34547211786`, Sep 11 00:36) predates main's native dependency bump in #35615 (`react-native-reanimated` 4.5.3, `react-native-worklets` 0.10.4, gesture-handler 2.32), so the app threw `Exception in HostFunction` / `"MetaMask" has not been registered`. `--clear-metro` did not help.
-- Fix: refreshed only `macwork-mmdev-3` with `runway-update --slots macwork-mmdev-3 --run 34814181606`. That Expo Dev Build ran on main `c131648fc6`, the exact rebase base. The skill's own "latest" resolved a stale Sep 4 run (`33931142729`), so the run id was pinned.
-- Attempt 1 (`artifacts/recipe-run-attempt1/`): 19/20. `assert-twap-summary-hides-slippage` failed with `Mobile CDP bridge command timed out ... last result=null` at load average ~60–112, which is a bridge timeout, not a rendered Slippage row. A follow-up probe could not even find the Runtime row, and harness status reported `no-bridge`.
-- After `mm-harness launch ios --verify` (no rebuild), attempt 2 (`artifacts/recipe-run/`) passed 37/37 in 67s: Chase copy, TWAP Runtime ⓘ (`perps-pro-order-form-twap-duration-info` visible after the fix), Runtime and Size per suborder present, Est Liquidation and Slippage `not_present`, Scale copy, Chase Max distance.
-- Screenshots `evidence-twap-form.png` / `evidence-twap-summary.png` show the ⓘ icon still aligned on the Runtime label row after moving it out of the button.
+3 comments skipped:
 
-## Summary
+- `github-actions[bot]` CLA Signature Action (`5621519542`)
+- `github-actions[bot]` Smart E2E Test Selection (`5665574964`)
+- `sonarqubecloud[bot]` Quality Gate passed (`5665781740`) — QG passed; 1 new issue is informational and does not block merge
 
-- Total comments: 2 actionable (1 REAL, 1 FALSE POSITIVE, 0 OUT OF SCOPE). Skipped 2 status-only bot comments (CLA, SonarCloud).
-- Fix commit: `da9e1f7df8ba59b27e00628937256bc55dd25a70`, pushed with `--force-with-lease` against the pre-rebase remote SHA `a193f031bd`.
-- Files changed:
-  - `app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/PerpsProTwapFields.tsx`
-  - `app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/PerpsProTwapFields.test.tsx`
-- Local gate: changed-file ESLint pass, Prettier check pass, LSP diagnostics clean on both files; Jest `PerpsProTwapFields`, `PerpsProOrderForm` and `PerpsOrderTypeBottomSheet` 190/190 pass. Full `lint:tsc` not run (forbidden in worker slots); CI covers it.
-- Replies: inline reply on 3987456324 (thread resolved); consolidated issue comment 5661172001 for the flaky-test detection triage.
-- Recipe re-validation: PASS 37/37 (`artifacts/recipe-run/`) after the Runway refresh.
-- Integration status: `rebased` (`artifacts/integration-status.txt`). Clean rebase onto `origin/main` c131648fc6, no conflicts, `yarn install --immutable` re-run.
+Own prior replies (`abretonc7s` issue comment `5661172001` and two inline replies) are not new review input.
+
+No `CHANGES_REQUESTED` reviews. Human review: `michalconsensys` APPROVED.
+
+## Evidence for already-fixed REAL comments
+
+- `PerpsProTwapFields.tsx` lines 98–136: duration `ButtonBase` has no nested `ButtonIcon`. Sibling `Box.absolute` wraps `ButtonIcon` with `hitSlop={12}` and `testID={ids.TWAP_DURATION_INFO}`.
+- `usePerpsProOrderForm.ts` lines 3190–3199: `if (sizePerSuborder < smallestSize) return \`<\${smallestSize.toFixed(szDecimals)} ${symbol}\``.
+- `PerpsProOrderForm.test.tsx`: `beforeEach` sets `mockInputHandlesActive = true`; `afterEach` calls `jest.restoreAllMocks()`.
+- `PerpsOrderTypeBottomSheet.test.tsx`: `beforeEach` calls `jest.clearAllMocks()`; no `spyOn`.
+
+## New code this run
+
+None. Both REAL findings were fixed in earlier commits on this branch (`fdec304329`, `7f4a9f244f` after rebase). No review-fix commit this run. Step 11 still force-pushes because step 3 rebased onto `origin/main`.
+
+## CI note (not a review comment)
+
+Remote HEAD `75ee7f2157` has `statusCheckRollup=FAILURE`: Android Appium swap smoke (`appium-swap-android-smoke-1`) plus the aggregator `Check all jobs pass`. This PR does not touch swap. Rebase onto `origin/main` (`f9fff6ad16`) will re-run CI after the step 11 push.
+
+## Inherited AC coverage (step 10b)
+
+Recipe: `temp/tasks/fix/36068-0914-231005/artifacts/recipe.json` (family-inherited, 37 nodes). Parent report: `inputs/inherited/report.md`. Coverage: `inputs/inherited/recipe-coverage.md`.
+
+| AC | Proof | Recipe nodes |
+|---|---|---|
+| ac1 TWAP summary matches Figma | mixed | `assert-twap-summary-runtime`, `assert-twap-summary-size-per-suborder`, `assert-twap-summary-hides-liquidation`, `assert-twap-summary-hides-slippage`, `capture-twap-summary` |
+| ac2 Scale form matches Figma | visual | `assert-scale-start/end/order-count/size-skew`, `capture-scale` |
+| ac3 Chase copy and form match Figma | mixed | `assert-chase-option-copy`, `assert-chase-max-distance`, `capture-chase` |
+| ac4 Runtime info affordance | state | `assert-twap-runtime-info` |
+
+This run re-validates against `branch + origin/main` after rebase. No new recipe.
+
+## Replies (step 12)
+
+Already replied on a previous run. No second reply:
+
+- review_comment `3987456324` (cursor[bot], nested info button) — replied `4003416588`, thread resolved
+- review_comment `4003455849` (cursor[bot], suborder size zero) — replied `4003874493`, thread resolved
+- issue_comment `5629090677` (flaky-test detection) — replied `5661172001`
+
+Skipped status-only: CLA, Smart E2E, SonarQube QG (3). No new CHANGES_REQUESTED.
+
+## Recipe re-validation (step 10)
+
+Result: **PASS** — 37/37 nodes, 63s, `artifacts/recipe-run/`.
+
+First attempt failed at `ensure-unlocked` (stability window during account-discovery timeouts). Second attempt failed at `await-order-form` because the slot was in Lite mode (`perps-mode-toggle-lite`). Neither failure is in this PR's files. Switched to Pro with `metamask.perps.ensure_mode mode=pro`, then the same inherited recipe passed.
+
+Side findings on the passing run: 3 non-blocking app events (circuit-breaker / account discovery). Not related to TWAP/Scale/Chase copy.
+
+## Totals (step 13)
+
+- Total comments triaged: 3 (2 REAL, 1 FALSE POSITIVE, 0 OUT OF SCOPE)
+- Skipped status-only: 3 (CLA, Smart E2E, SonarQube)
+- Commit SHA for fixes: none this run (already on `fdec304329` and `7f4a9f244f`)
+- Files changed this run: none
+- Recipe re-validation: PASS (37/37)
+- Integration status: rebased
+- Pushed: `75ee7f2157` → `7f4a9f244f` with `--force-with-lease`

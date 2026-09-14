@@ -1,0 +1,568 @@
+{
+  "metadata": {
+    "runner": {
+      "source": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness",
+      "git_ref": "unknown",
+      "name": "@metamask/recipe-runner"
+    }
+  },
+  "entries": [
+    {
+      "nodeId": "status",
+      "action": "app.status",
+      "intent": "Resolve the Mobile checkout and adapter status before the proof",
+      "startedAt": "2026-09-14T15:53:28.575Z",
+      "endedAt": "2026-09-14T15:53:28.705Z",
+      "durationMs": 130,
+      "ok": true,
+      "next": "cdp",
+      "output": {
+        "platform": "mobile",
+        "projectRoot": "/Users/deeeed/dev/metamask/metamask-mobile-2",
+        "compatibilityMode": "runner bridge with injected app bridge",
+        "shape": {
+          "packageName": "metamask",
+          "packageJsonStatus": "valid",
+          "packageJsonError": null,
+          "extensionProject": false,
+          "mobileProject": true,
+          "agenticService": true,
+          "mobileProductHarness": false,
+          "mobileBridgeScript": true,
+          "extensionRuntime": false,
+          "injectedHarness": true,
+          "walletFixture": true
+        }
+      }
+    },
+    {
+      "nodeId": "cdp",
+      "action": "cdp.target",
+      "intent": "Confirm the React Native debug bridge is reachable",
+      "startedAt": "2026-09-14T15:53:28.800Z",
+      "endedAt": "2026-09-14T15:53:28.991Z",
+      "durationMs": 191,
+      "ok": true,
+      "next": "ensure-unlocked",
+      "output": {
+        "platform": "mobile",
+        "transport": "react-native-debug-bridge",
+        "cdpPort": null,
+        "metroPort": "8062",
+        "timeoutMs": 15000,
+        "reachable": true,
+        "bridge": "runner:adapters/mobile/bridge-runtime/cdp-bridge.cjs",
+        "targetCount": 1,
+        "deviceName": "mm-2",
+        "routeName": "WalletView",
+        "accountPresent": true
+      }
+    },
+    {
+      "nodeId": "ensure-unlocked",
+      "action": "metamask.wallet.ensure_unlocked",
+      "intent": "Ensure the wallet is unlocked before opening the Pro order form",
+      "startedAt": "2026-09-14T15:53:29.051Z",
+      "endedAt": "2026-09-14T15:53:30.544Z",
+      "durationMs": 1493,
+      "ok": true,
+      "next": "open-market",
+      "output": {
+        "action": "metamask.wallet.ensure_unlocked",
+        "unlocked": true,
+        "alreadyUnlocked": true,
+        "keyringUnlocked": true,
+        "account": {
+          "address": "0x8dc623e964475d4d669da601fd15ea9125469003",
+          "id": "0285a92b-905c-4814-8a16-52fe1db60357",
+          "name": "dev1"
+        },
+        "deviceName": "mm-2",
+        "platform": "ios",
+        "redacted": true,
+        "proofPath": "agentic-wallet-status",
+        "liveAdapter": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness/library/actions/mobile/wallet/ensure_unlocked.mjs"
+      }
+    },
+    {
+      "nodeId": "open-market",
+      "action": "ui.navigate",
+      "intent": "Open the BTC market view; the next node proves the Pro order form is the one on screen",
+      "startedAt": "2026-09-14T15:53:30.648Z",
+      "endedAt": "2026-09-14T15:53:34.335Z",
+      "durationMs": 3687,
+      "ok": true,
+      "next": "await-order-form",
+      "output": {
+        "action": "ui.navigate",
+        "page": "perps-market",
+        "route": "PerpsMarketDetails",
+        "params": {
+          "market": {
+            "symbol": "BTC"
+          }
+        },
+        "navigation": {
+          "navigated": "PerpsMarketDetails",
+          "params": {
+            "market": {
+              "symbol": "BTC"
+            }
+          },
+          "previousRoute": {
+            "key": "WalletView-YIH6T57Yv27vOrQwHH5il",
+            "name": "WalletView"
+          },
+          "currentRoute": {
+            "key": "PerpsMarketDetails-joT0-gm8lcgMUEtoQAJAu",
+            "name": "PerpsMarketDetails",
+            "params": {
+              "market": {
+                "symbol": "BTC"
+              }
+            }
+          },
+          "deviceName": "mm-2",
+          "platform": "ios",
+          "verifiedRoute": "PerpsMarketDetails"
+        },
+        "proofPath": "agentic-navigation",
+        "liveAdapter": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness/library/actions/mobile/ui/navigate.mjs"
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "2A68C927-6FAF-48E1-84D0-F03EE34F00A9",
+          "name": "MetaMask",
+          "nodeCount": 50,
+          "truncated": false,
+          "route": "PerpsMarketDetails"
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXButton",
+              "label": "Browse markets",
+              "test_id": "perps-market-header-market-list-button",
+              "enabled": true,
+              "bounds": {
+                "x": 48,
+                "y": 68,
+                "width": 230,
+                "height": 52
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Back",
+              "test_id": "perps-market-header-back-button",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 82,
+                "width": 24,
+                "height": 24
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Remove from watchlist",
+              "test_id": "perps-market-header-favorite-button",
+              "enabled": true,
+              "bounds": {
+                "x": 290,
+                "y": 78,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Currently Lite mode",
+              "test_id": "perps-mode-toggle-lite",
+              "enabled": true,
+              "bounds": {
+                "x": 330,
+                "y": 78,
+                "width": 56,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Fullscreen chart",
+              "test_id": "perps-market-details-fullscreen-chart-button",
+              "enabled": true,
+              "bounds": {
+                "x": 354,
+                "y": 155,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "1min",
+              "test_id": "perps-market-details-view-candle-period-selector-period-1m",
+              "enabled": true,
+              "bounds": {
+                "x": 21,
+                "y": 594,
+                "width": 62,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "3min",
+              "test_id": "perps-market-details-view-candle-period-selector-period-3m",
+              "enabled": true,
+              "bounds": {
+                "x": 87,
+                "y": 594,
+                "width": 65,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "5min",
+              "test_id": "perps-market-details-view-candle-period-selector-period-5m",
+              "enabled": true,
+              "bounds": {
+                "x": 156,
+                "y": 594,
+                "width": 65,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "15min",
+              "test_id": "perps-market-details-view-candle-period-selector-period-15m",
+              "enabled": true,
+              "bounds": {
+                "x": 225,
+                "y": 594,
+                "width": 70,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "More",
+              "test_id": "perps-market-details-view-candle-period-selector-more-button",
+              "enabled": true,
+              "bounds": {
+                "x": 299,
+                "y": 594,
+                "width": 82,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Long",
+              "test_id": "perps-market-details-long-button",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 766,
+                "width": 179,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Short",
+              "test_id": "perps-market-details-short-button",
+              "enabled": true,
+              "bounds": {
+                "x": 207,
+                "y": 766,
+                "width": 179,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 348,
+                "y": 96,
+                "width": 26,
+                "height": 26
+              }
+            }
+          ],
+          "hidden_or_offscreen": [
+            {
+              "role": "AXGenericElement",
+              "test_id": "perps-market-details-open-interest-info-icon",
+              "enabled": true,
+              "bounds": {
+                "x": 313,
+                "y": 879,
+                "width": 24,
+                "height": 24
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "test_id": "perps-market-details-funding-rate-info-icon",
+              "enabled": true,
+              "bounds": {
+                "x": 115,
+                "y": 939,
+                "width": 24,
+                "height": 24
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXGenericElement",
+              "test_id": "perps-market-details-oracle-price-info-icon",
+              "enabled": true,
+              "bounds": {
+                "x": 303,
+                "y": 939,
+                "width": 24,
+                "height": 24
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Order book",
+              "test_id": "perps-order-book-view",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 999,
+                "width": 370,
+                "height": 48
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Related markets",
+              "test_id": "perps-related-markets-header",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1100,
+                "width": 402,
+                "height": 44
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "ETH, +0.87%",
+              "test_id": "perps-market-tile-card-ETH",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 1144,
+                "width": 136,
+                "height": 40
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "SOL, +1.59%",
+              "test_id": "perps-market-tile-card-SOL",
+              "enabled": true,
+              "bounds": {
+                "x": 160,
+                "y": 1144,
+                "width": 133,
+                "height": 40
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "AVAX, +1.18%",
+              "test_id": "perps-market-tile-card-AVAX",
+              "enabled": true,
+              "bounds": {
+                "x": 302,
+                "y": 1144,
+                "width": 142,
+                "height": 40
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "ARB, -2.64%",
+              "test_id": "perps-market-tile-card-ARB",
+              "enabled": true,
+              "bounds": {
+                "x": 452,
+                "y": 1144,
+                "width": 135,
+                "height": 40
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "BNB, +0.25%",
+              "test_id": "perps-market-tile-card-BNB",
+              "enabled": true,
+              "bounds": {
+                "x": 595,
+                "y": 1144,
+                "width": 138,
+                "height": 40
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "SUI, +1.64%",
+              "test_id": "perps-market-tile-card-SUI",
+              "enabled": true,
+              "bounds": {
+                "x": 740,
+                "y": 1144,
+                "width": 129,
+                "height": 40
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "DOGE, +0.58%",
+              "test_id": "perps-market-tile-card-DOGE",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 1192,
+                "width": 149,
+                "height": 40
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "ADA, +1.20%",
+              "test_id": "perps-market-tile-card-ADA",
+              "enabled": true,
+              "bounds": {
+                "x": 173,
+                "y": 1192,
+                "width": 136,
+                "height": 40
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "INJ, +1.65%",
+              "test_id": "perps-market-tile-card-INJ",
+              "enabled": true,
+              "bounds": {
+                "x": 316,
+                "y": 1192,
+                "width": 128,
+                "height": 40
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "OP, +0.58%",
+              "test_id": "perps-market-tile-card-OP",
+              "enabled": true,
+              "bounds": {
+                "x": 452,
+                "y": 1192,
+                "width": 129,
+                "height": 40
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "FIL, +2.42%",
+              "test_id": "perps-market-tile-card-FIL",
+              "enabled": true,
+              "bounds": {
+                "x": 589,
+                "y": 1192,
+                "width": 129,
+                "height": 40
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "APT, -1.66%",
+              "test_id": "perps-market-tile-card-APT",
+              "enabled": true,
+              "bounds": {
+                "x": 726,
+                "y": 1192,
+                "width": 131,
+                "height": 40
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Recent activity",
+              "test_id": "see-all-button",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1285,
+                "width": 402,
+                "height": 44
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Learn the basics of perps",
+              "test_id": "perps-tutorial-card",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1648,
+                "width": 402,
+                "height": 48
+              },
+              "reason": "hidden_or_offscreen"
+            }
+          ],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "await-order-form",
+      "action": "ui.wait_for",
+      "intent": "Confirm the Pro order form order-type control is on screen",
+      "startedAt": "2026-09-14T15:53:34.422Z",
+      "endedAt": "2026-09-14T15:54:04.812Z",
+      "durationMs": 30390,
+      "ok": false,
+      "cause_class": "unknown",
+      "error": "Timed out waiting for mobile testID \"perps-pro-order-form-order-type\" to be visible; last result={\"present\":false,\"visible\":false,\"visibility\":\"viewport\",\"testId\":\"perps-pro-order-form-order-type\"}; last bridge error=Mobile CDP bridge command timed out after 99ms: node ../../../.npm-global/lib/node_modules/@deeeed/metamask-harness/adapters/mobile/bridge-runtime/cdp-bridge.cjs eval-async (function(){\n    const api = globalThis.__AGENTIC__;\n    if (!api || typeof api.queryUiTarget !== 'function') {\n      return Promise.resolve(JSON.stringify({ unsupported: true }));\n    }\n    return api.queryUiTarget({\"testId\":\"perps-pro-order-form-order-type\",\"visibility\":\"viewport\"}).then(function(result){\n      return JSON.stringify(result);\n    });\n  })()."
+    }
+  ]
+}

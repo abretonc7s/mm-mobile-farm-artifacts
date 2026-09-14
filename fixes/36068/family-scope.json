@@ -1,6 +1,6 @@
 {
   "originalFamilyScopeSummary": "Align advanced order type UI with Figma design for TWAP, CHASE, and SCALE orders",
-  "currentTriggerSummary": "pr-complete: Align advanced order type UI with Figma design for TWAP, CHASE, and SCALE orders",
+  "currentTriggerSummary": "pr-complete: feat(perps): match Final figma design for advanced order types",
   "scopeVerdict": "full-scope-addressed",
-  "notes": "Branch rebased onto origin/main without conflicts; the only reviewer finding (cursor[bot] nested runtime info button) is fixed by moving the ButtonIcon out of the duration ButtonBase with hitSlop, keeping the Figma layout. The TWAP/Scale/Chase changes from the parent run are otherwise untouched, so the original family scope stays covered."
+  "notes": "Inherited recipe re-validated 37/37 on rebased HEAD 7f4a9f244f. TWAP summary rows, Chase Figma copy, Scale field copy, and Runtime info affordance all still pass. Two prior REAL bugbot findings remain fixed (sibling info button + suborder <min-size bound). Scale is unchanged and still matches. Deliberate deviations (TWAP 5m–24h cap, Chase notice wording) are unchanged."
 }

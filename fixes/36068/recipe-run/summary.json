@@ -9,24 +9,24 @@
     "environment": 0,
     "unknown": 0
   },
-  "startedAt": "2026-09-14T08:55:53.075Z",
-  "endedAt": "2026-09-14T08:56:59.697Z",
-  "durationMs": 66622,
+  "startedAt": "2026-09-14T15:55:29.792Z",
+  "endedAt": "2026-09-14T15:56:32.321Z",
+  "durationMs": 62529,
   "harness": {
     "name": "@farmslot/recipe-harness",
     "version": "0.16.2",
     "action_manifest_schema": "https://farmslot.io/schemas/action-manifest-v1.schema.json"
   },
   "runner": {
-    "source": "/Users/deeeed/dev/metamask/metamask-harness",
-    "git_ref": "e39c127281fcb4b7cadffddca17804cb11dbeb38",
+    "source": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness",
+    "git_ref": "unknown",
     "name": "@metamask/recipe-runner"
   },
   "recipeLibraries": {
     "sources": [
       {
         "name": "metamask",
-        "root": "/Users/deeeed/dev/metamask/metamask-harness/library",
+        "root": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness/library",
         "recipeCount": 22,
         "provenance": {
           "kind": "bundled",
@@ -41,8 +41,8 @@
     "status": "review",
     "nonBlocking": true,
     "counts": {
-      "total": 1,
-      "warning": 0,
+      "total": 3,
+      "warning": 2,
       "error": 1,
       "exception": 0
     },

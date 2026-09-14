@@ -1,20 +1,20 @@
 {
   "version": 1,
   "preferred_mode": "screenshots",
-  "summary": "Advanced order types rendered against Figma section 12187:36456.",
+  "summary": "PR-complete re-validation of advanced order types against Figma section 12187:36456 after rebase onto origin/main.",
   "before_after_pairs": [
     {
       "label": "Advanced tab: Chase description now reads \"Auto adjust limit order to the best price\"",
       "covers": ["ac3"],
-      "before": "before-ordertype-sheet.png",
-      "after": "evidence-order-type-advanced.png",
-      "note": "Before shows the Basic tab of the same sheet; after shows the Advanced tab with all three Figma descriptions."
+      "before": "recipe-runs/inherited-f3085f27-4523-4e77-9b1e-110c033e4e47/before-ordertype-sheet.png",
+      "after": "recipe-run/screenshots/evidence-order-type-advanced.png",
+      "note": "After screenshot from this run's passing recipe."
     },
     {
       "label": "TWAP summary: Runtime and Size per suborder replace Est Liquidation and Slippage",
       "covers": ["ac1"],
-      "before": "before-twap.png",
-      "after": "evidence-twap-summary.png",
+      "before": "recipe-runs/inherited-f3085f27-4523-4e77-9b1e-110c033e4e47/before-twap.png",
+      "after": "recipe-run/screenshots/evidence-twap-summary.png",
       "note": "After also shows the Runtime row carrying its info affordance."
     }
   ],
@@ -22,19 +22,19 @@
     {
       "label": "Scale form with Start (USD), End (USD), Order count and Size skew",
       "covers": ["ac2"],
-      "file": "evidence-scale-form.png",
+      "file": "recipe-run/screenshots/evidence-scale-form.png",
       "note": "Unchanged by this PR; included to show Scale still matches the Figma frame."
     },
     {
       "label": "Chase form with the live reference price and Max distance (USD)",
       "covers": ["ac3"],
-      "file": "evidence-chase-form.png"
+      "file": "recipe-run/screenshots/evidence-chase-form.png"
     }
   ],
-  "omit": ["evidence-twap-form.png", "before-scale.png", "before-chase.png"],
+  "omit": ["recipe-run/screenshots/evidence-twap-form.png"],
   "videos": {
-    "after": "after.mp4",
+    "after": "recipe-runs/inherited-f3085f27-4523-4e77-9b1e-110c033e4e47/after.mp4",
     "preferred": false,
-    "note": "Full recipe run across all three order types."
+    "note": "Parent-run video. This re-validation used screenshots from artifacts/recipe-run/screenshots/."
   }
 }

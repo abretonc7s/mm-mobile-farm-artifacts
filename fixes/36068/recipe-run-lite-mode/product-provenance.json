@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "adapter": "mobile",
+  "repository": "metamask-mobile-2",
+  "git_ref": "7f4a9f244f0fffcecb88ebc64130196bed87ecab",
+  "branch": "TAT-3953-feat-match-figma-advanced-orders",
+  "dirty": false
+}

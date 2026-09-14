@@ -8,11 +8,26 @@
     "review_state": "COMMENTED",
     "source_kind": "bugbot",
     "path": "app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/PerpsProTwapFields.tsx",
-    "line": 124,
-    "body": "### Info button nested in duration pressable\n\n**Medium Severity**\n\nThe TWAP runtime info `ButtonIcon` is nested inside the duration `ButtonBase`. Tapping the info affordance can also fire `onDurationPress`, so the duration picker can open together with the runtime tooltip—or steal the tap entirely. The new info control never received `hitSlop`, so the inner target is also much smaller than the parent row.",
+    "line": null,
+    "body": "The TWAP runtime info ButtonIcon is nested inside the duration ButtonBase. Tapping the info affordance can also fire onDurationPress, so the duration picker can open together with the runtime tooltip—or steal the tap entirely. The new info control never received hitSlop, so the inner target is also much smaller than the parent row.",
     "triage": "REAL",
-    "action": "Moved the info ButtonIcon out of the duration ButtonBase into an absolutely positioned sibling, added a 12pt hitSlop, and asserted in the unit test that pressing it does not call onDurationPress.",
-    "fixed_in_commit": "da9e1f7df8ba59b27e00628937256bc55dd25a70"
+    "action": "Already fixed on HEAD: info ButtonIcon is an absolutely positioned sibling with 12pt hitSlop. Thread resolved; already replied. No new code this run.",
+    "fixed_in_commit": "fdec304329"
+  },
+  {
+    "comment_id": 4003455849,
+    "review_id": "5195545514",
+    "author_login": "cursor[bot]",
+    "author_type": "Bot",
+    "reviewer_login": "cursor[bot]",
+    "review_state": "COMMENTED",
+    "source_kind": "bugbot",
+    "path": "app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.ts",
+    "line": null,
+    "body": "Size per suborder is formatted with toFixed(szDecimals) after dividing total size by the 30-second suborder count. Long runtimes on high-priced assets can round a real non-zero fill down to 0.00000, so the summary shows empty size for a valid TWAP.",
+    "triage": "REAL",
+    "action": "Already fixed on HEAD: suborder size below 10 ** -szDecimals renders <{bound} {symbol}. Thread resolved; already replied. No new code this run.",
+    "fixed_in_commit": "7f4a9f244f"
   },
   {
     "comment_id": 5629090677,
@@ -21,12 +36,12 @@
     "author_type": "Bot",
     "reviewer_login": "github-actions[bot]",
     "review_state": null,
-    "source_kind": "bot",
-    "path": "app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/PerpsProOrderForm.test.tsx; app/components/UI/Perps/components/PerpsOrderTypeBottomSheet/PerpsOrderTypeBottomSheet.test.tsx",
-    "line": null,
-    "body": "Flaky unit test detection: J9 module-level mutable `let mockInputHandlesActive` not reset in beforeEach (high); J10 jest.spyOn(Keyboard, 'dismiss') without jest.restoreAllMocks() in afterEach (medium); PerpsOrderTypeBottomSheet J3 shared mockTrack mock state (high) and J10 missing restoreAllMocks (medium).",
+    "source_kind": "ci",
+    "path": "app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/PerpsProOrderForm.test.tsx",
+    "line": 0,
+    "body": "Flaky unit test detection: J9 module-level mockInputHandlesActive not reset; J10 jest.spyOn(Keyboard, dismiss) without restoreAllMocks; PerpsOrderTypeBottomSheet J3 shared mockTrack / J10 spyOn. Historical failure rate 0/432 over 30d. Informational only.",
     "triage": "FALSE_POSITIVE",
-    "action": "Every suggested safeguard already exists at HEAD (beforeEach reset, afterEach restoreAllMocks, beforeEach clearAllMocks), with 0/489 failures over 30 days; replied with a consolidated issue comment.",
+    "action": "beforeEach/afterEach safeguards already exist in both files. Already replied. No change.",
     "fixed_in_commit": null
   }
 ]

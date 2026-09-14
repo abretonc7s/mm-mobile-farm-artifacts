@@ -3,8 +3,8 @@
   "runStatus": "pass",
   "provenance": {
     "runner": {
-      "source": "/Users/deeeed/dev/metamask/metamask-harness",
-      "git_ref": "e39c127281fcb4b7cadffddca17804cb11dbeb38",
+      "source": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness",
+      "git_ref": "unknown",
       "name": "@metamask/recipe-runner"
     }
   },
@@ -31,7 +31,7 @@
       "metadata": {
         "provider": "simctl",
         "mode": "xcrun simctl io screenshot",
-        "selectedDevice": "mmdev-3"
+        "selectedDevice": "mm-2"
       }
     },
     {
@@ -44,7 +44,7 @@
       "metadata": {
         "provider": "simctl",
         "mode": "xcrun simctl io screenshot",
-        "selectedDevice": "mmdev-3"
+        "selectedDevice": "mm-2"
       }
     },
     {
@@ -57,7 +57,7 @@
       "metadata": {
         "provider": "simctl",
         "mode": "xcrun simctl io screenshot",
-        "selectedDevice": "mmdev-3"
+        "selectedDevice": "mm-2"
       }
     },
     {
@@ -70,7 +70,7 @@
       "metadata": {
         "provider": "simctl",
         "mode": "xcrun simctl io screenshot",
-        "selectedDevice": "mmdev-3"
+        "selectedDevice": "mm-2"
       }
     },
     {
@@ -83,7 +83,7 @@
       "metadata": {
         "provider": "simctl",
         "mode": "xcrun simctl io screenshot",
-        "selectedDevice": "mmdev-3"
+        "selectedDevice": "mm-2"
       }
     },
     {
@@ -133,7 +133,7 @@
       "category": "system",
       "metadata": {
         "adapter": "mobile",
-        "git_ref": "da9e1f7df8ba59b27e00628937256bc55dd25a70",
+        "git_ref": "7f4a9f244f0fffcecb88ebc64130196bed87ecab",
         "branch": "TAT-3953-feat-match-figma-advanced-orders",
         "dirty": false
       }

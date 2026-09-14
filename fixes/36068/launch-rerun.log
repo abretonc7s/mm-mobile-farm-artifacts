@@ -1,8 +1,0 @@
-Device console → app-console.log (CDP forwarder pid 52726)
-Waiting for Mobile bridge (0.5s elapsed, 5.5s remaining): React Native target answered; waiting for an in-app route (iOS Bundled 571ms index.js (1 module))
-Mobile bridge ready (2.9s)
-→ verify (mobile) — target: /Users/deeeed/dev/metamask/metamask-mobile-3
-Fixture status: READY (temp/recipe/runtime/wallet-fixture.json, accounts=4).
-Mobile harness verify pass: /Users/deeeed/dev/metamask/metamask-mobile-3/temp/recipe/harness/mobile/verify/20260914T085154Z/summary.json
-✓ verify mobile passed (187.5s)
-  Next: mm-harness status --target /Users/deeeed/dev/metamask/metamask-mobile-3 --json

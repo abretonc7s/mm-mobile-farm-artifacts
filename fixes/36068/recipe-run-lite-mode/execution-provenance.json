@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "valid": true,
+  "snapshots": [
+    {
+      "phase": "start",
+      "capturedAt": "2026-09-14T15:53:27.258Z",
+      "recipeDigest": "sha256:2563fd671b492426f4f45704efddee8a1aa66dc8fc20902b30f4dfb4581663f5",
+      "product": {
+        "head": "7f4a9f244f0fffcecb88ebc64130196bed87ecab",
+        "status": "",
+        "sourceFingerprint": "e7b46c57470c3ed9e5069b2fc9cfe627b13e729005fd4a51e0a532d79ffcbdd0"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "9a93f33ec651177f44c9cd9c52268e76b91b8ef0b66de90107cf36fd57f37a65"
+      },
+      "libraries": [
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "d5743ef50d86c67894248d4fa0e6d1ca0511be46e72409bb08ed44c464074b81"
+        }
+      ],
+      "helpers": []
+    },
+    {
+      "phase": "pre-execute",
+      "capturedAt": "2026-09-14T15:53:27.940Z",
+      "recipeDigest": "sha256:2563fd671b492426f4f45704efddee8a1aa66dc8fc20902b30f4dfb4581663f5",
+      "product": {
+        "head": "7f4a9f244f0fffcecb88ebc64130196bed87ecab",
+        "status": "",
+        "sourceFingerprint": "e7b46c57470c3ed9e5069b2fc9cfe627b13e729005fd4a51e0a532d79ffcbdd0"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "9a93f33ec651177f44c9cd9c52268e76b91b8ef0b66de90107cf36fd57f37a65"
+      },
+      "libraries": [
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "d5743ef50d86c67894248d4fa0e6d1ca0511be46e72409bb08ed44c464074b81"
+        }
+      ],
+      "helpers": []
+    },
+    {
+      "phase": "end",
+      "capturedAt": "2026-09-14T15:54:05.025Z",
+      "recipeDigest": "sha256:2563fd671b492426f4f45704efddee8a1aa66dc8fc20902b30f4dfb4581663f5",
+      "product": {
+        "head": "7f4a9f244f0fffcecb88ebc64130196bed87ecab",
+        "status": "",
+        "sourceFingerprint": "e7b46c57470c3ed9e5069b2fc9cfe627b13e729005fd4a51e0a532d79ffcbdd0"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "9a93f33ec651177f44c9cd9c52268e76b91b8ef0b66de90107cf36fd57f37a65"
+      },
+      "libraries": [
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "d5743ef50d86c67894248d4fa0e6d1ca0511be46e72409bb08ed44c464074b81"
+        }
+      ],
+      "helpers": []
+    }
+  ],
+  "drift": []
+}

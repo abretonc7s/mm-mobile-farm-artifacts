@@ -2,519 +2,532 @@
   "schemaVersion": 1,
   "id": "run-network",
   "status": "partial",
-  "startedAtEpochMs": 1789376151714,
-  "endedAtEpochMs": 1789376224888,
+  "startedAtEpochMs": 1789401329061,
+  "endedAtEpochMs": 1789401393129,
   "maxDurationMs": 3600000,
   "reconnects": 0,
   "droppedRequests": 0,
   "unavailableReasons": [],
   "coverageGapReasons": [],
-  "uninspectableBodyRequests": 5,
+  "uninspectableBodyRequests": 6,
   "projectedBodyFields": [
     "type"
   ],
-  "totalRequests": 9,
+  "totalRequests": 11,
   "requestsByMethod": {
-    "GET": 4,
+    "GET": 5,
     "HEAD": 1,
-    "POST": 4
+    "POST": 5
   },
   "requestsByHost": {
     "clients3.google.com": 1,
-    "dust.k8s.cluster-007.p-use-1.braze.com": 1,
+    "fn.segmentapis.com": 1,
     "mainnet.infura.io": 4,
     "money.api.cx.metamask.io": 2,
-    "tokens.api.cx.metamask.io": 1
+    "price.api.cx.metamask.io": 1,
+    "tokens.api.cx.metamask.io": 2
   },
   "requestsByType": {
-    "unknown": 9
+    "unknown": 11
   },
   "requests": [
     {
-      "elapsedMs": 229,
+      "elapsedMs": 10646,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 11455,
       "host": "tokens.api.cx.metamask.io",
       "path": "/v3/assets",
       "method": "GET"
     },
     {
-      "elapsedMs": 12154,
+      "elapsedMs": 28763,
       "host": "mainnet.infura.io",
       "path": "/v3/144385cceddc41f88d960aca519f794e",
       "method": "POST"
     },
     {
-      "elapsedMs": 12423,
+      "elapsedMs": 29030,
       "host": "mainnet.infura.io",
       "path": "/v3/144385cceddc41f88d960aca519f794e",
       "method": "POST"
     },
     {
-      "elapsedMs": 27958,
-      "host": "money.api.cx.metamask.io",
-      "path": "/v1/positions/<redacted>",
-      "method": "GET"
-    },
-    {
-      "elapsedMs": 42770,
-      "host": "mainnet.infura.io",
-      "path": "/v3/144385cceddc41f88d960aca519f794e",
-      "method": "POST"
-    },
-    {
-      "elapsedMs": 43041,
-      "host": "mainnet.infura.io",
-      "path": "/v3/144385cceddc41f88d960aca519f794e",
-      "method": "POST"
-    },
-    {
-      "elapsedMs": 48451,
-      "host": "dust.k8s.cluster-007.p-use-1.braze.com",
-      "path": "/sse",
-      "method": "GET"
-    },
-    {
-      "elapsedMs": 57448,
+      "elapsedMs": 38935,
       "host": "clients3.google.com",
       "path": "/generate_204",
       "method": "HEAD"
     },
     {
-      "elapsedMs": 59055,
+      "elapsedMs": 41145,
+      "host": "tokens.api.cx.metamask.io",
+      "path": "/v3/assets",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 41596,
       "host": "money.api.cx.metamask.io",
       "path": "/v1/positions/<redacted>",
       "method": "GET"
+    },
+    {
+      "elapsedMs": 42499,
+      "host": "fn.segmentapis.com",
+      "path": "/",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 51829,
+      "host": "price.api.cx.metamask.io",
+      "path": "/v3/spot-prices",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 59321,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 59588,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
     }
   ],
   "nodeEvents": [
     {
       "action": "app.status",
-      "elapsedMs": 1405,
+      "elapsedMs": 789,
       "nodeId": "status",
       "status": "running"
     },
     {
       "action": "app.status",
-      "elapsedMs": 1406,
+      "elapsedMs": 790,
       "nodeId": "status",
       "status": "passed"
     },
     {
       "action": "cdp.target",
-      "elapsedMs": 1485,
+      "elapsedMs": 917,
       "nodeId": "cdp",
       "status": "running"
     },
     {
       "action": "cdp.target",
-      "elapsedMs": 1559,
+      "elapsedMs": 962,
       "nodeId": "cdp",
       "status": "passed"
     },
     {
       "action": "metamask.wallet.ensure_unlocked",
-      "elapsedMs": 1641,
+      "elapsedMs": 1132,
       "nodeId": "ensure-unlocked",
       "status": "running"
     },
     {
       "action": "metamask.wallet.ensure_unlocked",
-      "elapsedMs": 2691,
+      "elapsedMs": 2290,
       "nodeId": "ensure-unlocked",
       "status": "passed"
     },
     {
       "action": "ui.navigate",
-      "elapsedMs": 2957,
+      "elapsedMs": 2406,
       "nodeId": "open-market",
       "status": "running"
     },
     {
       "action": "ui.navigate",
-      "elapsedMs": 3216,
+      "elapsedMs": 2696,
       "nodeId": "open-market",
       "status": "passed"
     },
     {
       "action": "ui.wait_for",
-      "elapsedMs": 4668,
+      "elapsedMs": 4141,
       "nodeId": "await-order-form",
       "status": "running"
     },
     {
       "action": "ui.wait_for",
-      "elapsedMs": 4926,
+      "elapsedMs": 4425,
       "nodeId": "await-order-form",
       "status": "passed"
     },
     {
       "action": "ui.press",
-      "elapsedMs": 5723,
+      "elapsedMs": 5589,
       "nodeId": "open-order-type-sheet-twap",
       "status": "running"
     },
     {
       "action": "ui.press",
-      "elapsedMs": 6031,
+      "elapsedMs": 5888,
       "nodeId": "open-order-type-sheet-twap",
       "status": "passed"
     },
     {
       "action": "ui.press",
-      "elapsedMs": 6627,
+      "elapsedMs": 6622,
       "nodeId": "advanced-tab-twap",
       "status": "running"
     },
     {
       "action": "ui.press",
-      "elapsedMs": 6927,
+      "elapsedMs": 6918,
       "nodeId": "advanced-tab-twap",
       "status": "passed"
     },
     {
       "action": "ui.wait_for",
-      "elapsedMs": 7909,
+      "elapsedMs": 7729,
       "nodeId": "assert-twap-option-copy",
       "status": "running"
     },
     {
       "action": "ui.wait_for",
-      "elapsedMs": 8238,
+      "elapsedMs": 8002,
       "nodeId": "assert-twap-option-copy",
       "status": "passed"
     },
     {
       "action": "ui.wait_for",
-      "elapsedMs": 8763,
+      "elapsedMs": 8787,
       "nodeId": "assert-scale-option-copy",
       "status": "running"
     },
     {
       "action": "ui.wait_for",
-      "elapsedMs": 9087,
+      "elapsedMs": 9078,
       "nodeId": "assert-scale-option-copy",
       "status": "passed"
     },
     {
       "action": "ui.wait_for",
-      "elapsedMs": 9700,
+      "elapsedMs": 9854,
       "nodeId": "assert-chase-option-copy",
       "status": "running"
     },
     {
       "action": "ui.wait_for",
-      "elapsedMs": 9983,
+      "elapsedMs": 10139,
       "nodeId": "assert-chase-option-copy",
       "status": "passed"
     },
     {
       "action": "ui.screenshot",
-      "elapsedMs": 10592,
+      "elapsedMs": 11007,
       "nodeId": "capture-order-type-sheet",
       "status": "running"
     },
     {
       "action": "ui.screenshot",
-      "elapsedMs": 11207,
+      "elapsedMs": 11300,
       "nodeId": "capture-order-type-sheet",
       "status": "passed"
     },
     {
       "action": "ui.press",
-      "elapsedMs": 12856,
+      "elapsedMs": 12425,
       "nodeId": "select-twap",
       "status": "running"
     },
     {
       "action": "ui.press",
-      "elapsedMs": 13284,
+      "elapsedMs": 12694,
       "nodeId": "select-twap",
       "status": "passed"
     },
     {
       "action": "ui.wait_for",
-      "elapsedMs": 15121,
+      "elapsedMs": 15278,
       "nodeId": "assert-twap-runtime-label",
       "status": "running"
     },
     {
       "action": "ui.wait_for",
-      "elapsedMs": 15401,
+      "elapsedMs": 15602,
       "nodeId": "assert-twap-runtime-label",
       "status": "passed"
     },
     {
       "action": "ui.wait_for",
-      "elapsedMs": 16607,
+      "elapsedMs": 17361,
       "nodeId": "assert-twap-runtime-info",
       "status": "running"
     },
     {
       "action": "ui.wait_for",
-      "elapsedMs": 16907,
+      "elapsedMs": 17687,
       "nodeId": "assert-twap-runtime-info",
       "status": "passed"
     },
     {
       "action": "ui.wait_for",
-      "elapsedMs": 17732,
+      "elapsedMs": 19472,
       "nodeId": "assert-twap-randomize",
       "status": "running"
     },
     {
       "action": "ui.wait_for",
-      "elapsedMs": 17997,
+      "elapsedMs": 19787,
       "nodeId": "assert-twap-randomize",
       "status": "passed"
     },
     {
       "action": "ui.set_input",
-      "elapsedMs": 19424,
+      "elapsedMs": 21420,
       "nodeId": "set-twap-size",
       "status": "running"
     },
     {
       "action": "ui.set_input",
-      "elapsedMs": 19783,
+      "elapsedMs": 21739,
       "nodeId": "set-twap-size",
       "status": "passed"
     },
     {
       "action": "ui.wait_for",
-      "elapsedMs": 21655,
+      "elapsedMs": 23953,
       "nodeId": "assert-twap-summary-runtime",
       "status": "running"
     },
     {
       "action": "ui.wait_for",
-      "elapsedMs": 21981,
+      "elapsedMs": 24307,
       "nodeId": "assert-twap-summary-runtime",
       "status": "passed"
     },
     {
       "action": "ui.wait_for",
-      "elapsedMs": 24523,
+      "elapsedMs": 27327,
       "nodeId": "assert-twap-summary-size-per-suborder",
       "status": "running"
     },
     {
       "action": "ui.wait_for",
-      "elapsedMs": 24869,
+      "elapsedMs": 27790,
       "nodeId": "assert-twap-summary-size-per-suborder",
       "status": "passed"
     },
     {
       "action": "ui.wait_for",
-      "elapsedMs": 26324,
+      "elapsedMs": 29911,
       "nodeId": "assert-twap-summary-hides-liquidation",
       "status": "running"
     },
     {
       "action": "ui.wait_for",
-      "elapsedMs": 26586,
+      "elapsedMs": 30194,
       "nodeId": "assert-twap-summary-hides-liquidation",
       "status": "passed"
     },
     {
       "action": "ui.wait_for",
-      "elapsedMs": 28731,
+      "elapsedMs": 31819,
       "nodeId": "assert-twap-summary-hides-slippage",
       "status": "running"
     },
     {
       "action": "ui.wait_for",
-      "elapsedMs": 29019,
+      "elapsedMs": 32178,
       "nodeId": "assert-twap-summary-hides-slippage",
       "status": "passed"
     },
     {
       "action": "ui.screenshot",
-      "elapsedMs": 30081,
+      "elapsedMs": 34204,
       "nodeId": "capture-twap",
       "status": "running"
     },
     {
       "action": "ui.screenshot",
-      "elapsedMs": 30344,
+      "elapsedMs": 34548,
       "nodeId": "capture-twap",
       "status": "passed"
     },
     {
       "action": "ui.scroll",
-      "elapsedMs": 32276,
+      "elapsedMs": 36039,
       "nodeId": "scroll-twap-summary",
       "status": "running"
     },
     {
       "action": "ui.scroll",
-      "elapsedMs": 32601,
+      "elapsedMs": 36331,
       "nodeId": "scroll-twap-summary",
       "status": "passed"
     },
     {
       "action": "ui.screenshot",
-      "elapsedMs": 33945,
+      "elapsedMs": 38038,
       "nodeId": "capture-twap-summary",
       "status": "running"
     },
     {
       "action": "ui.screenshot",
-      "elapsedMs": 34241,
+      "elapsedMs": 38348,
       "nodeId": "capture-twap-summary",
       "status": "passed"
     },
     {
       "action": "ui.press",
-      "elapsedMs": 35847,
+      "elapsedMs": 40015,
       "nodeId": "open-order-type-sheet-scale",
       "status": "running"
     },
     {
       "action": "ui.press",
-      "elapsedMs": 36177,
+      "elapsedMs": 40296,
       "nodeId": "open-order-type-sheet-scale",
       "status": "passed"
     },
     {
       "action": "ui.press",
-      "elapsedMs": 36857,
+      "elapsedMs": 41362,
       "nodeId": "advanced-tab-scale",
       "status": "running"
     },
     {
       "action": "ui.press",
-      "elapsedMs": 37167,
+      "elapsedMs": 41615,
       "nodeId": "advanced-tab-scale",
       "status": "passed"
     },
     {
       "action": "ui.press",
-      "elapsedMs": 37722,
+      "elapsedMs": 42524,
       "nodeId": "select-scale",
       "status": "running"
     },
     {
       "action": "ui.press",
-      "elapsedMs": 38029,
+      "elapsedMs": 42841,
       "nodeId": "select-scale",
       "status": "passed"
     },
     {
       "action": "ui.wait_for",
-      "elapsedMs": 40962,
+      "elapsedMs": 44259,
       "nodeId": "assert-scale-start",
       "status": "running"
     },
     {
       "action": "ui.wait_for",
-      "elapsedMs": 41246,
+      "elapsedMs": 44552,
       "nodeId": "assert-scale-start",
       "status": "passed"
     },
     {
       "action": "ui.wait_for",
-      "elapsedMs": 42565,
+      "elapsedMs": 46580,
       "nodeId": "assert-scale-end",
       "status": "running"
     },
     {
       "action": "ui.wait_for",
-      "elapsedMs": 42867,
+      "elapsedMs": 46900,
       "nodeId": "assert-scale-end",
       "status": "passed"
     },
     {
       "action": "ui.wait_for",
-      "elapsedMs": 44295,
+      "elapsedMs": 49982,
       "nodeId": "assert-scale-order-count",
       "status": "running"
     },
     {
       "action": "ui.wait_for",
-      "elapsedMs": 44561,
+      "elapsedMs": 50319,
       "nodeId": "assert-scale-order-count",
       "status": "passed"
     },
     {
       "action": "ui.wait_for",
-      "elapsedMs": 45444,
+      "elapsedMs": 52041,
       "nodeId": "assert-scale-size-skew",
       "status": "running"
     },
     {
       "action": "ui.wait_for",
-      "elapsedMs": 45735,
+      "elapsedMs": 52347,
       "nodeId": "assert-scale-size-skew",
       "status": "passed"
     },
     {
       "action": "ui.screenshot",
-      "elapsedMs": 48177,
+      "elapsedMs": 53588,
       "nodeId": "capture-scale",
       "status": "running"
     },
     {
       "action": "ui.screenshot",
-      "elapsedMs": 48913,
+      "elapsedMs": 53863,
       "nodeId": "capture-scale",
       "status": "passed"
     },
     {
       "action": "ui.press",
-      "elapsedMs": 54646,
+      "elapsedMs": 55121,
       "nodeId": "open-order-type-sheet-chase",
       "status": "running"
     },
     {
       "action": "ui.press",
-      "elapsedMs": 55028,
+      "elapsedMs": 55410,
       "nodeId": "open-order-type-sheet-chase",
       "status": "passed"
     },
     {
       "action": "ui.press",
-      "elapsedMs": 56945,
+      "elapsedMs": 56400,
       "nodeId": "advanced-tab-chase",
       "status": "running"
     },
     {
       "action": "ui.press",
-      "elapsedMs": 57357,
+      "elapsedMs": 56701,
       "nodeId": "advanced-tab-chase",
       "status": "passed"
     },
     {
       "action": "ui.press",
-      "elapsedMs": 60216,
+      "elapsedMs": 57653,
       "nodeId": "select-chase",
       "status": "running"
     },
     {
       "action": "ui.press",
-      "elapsedMs": 60720,
+      "elapsedMs": 57998,
       "nodeId": "select-chase",
       "status": "passed"
     },
     {
       "action": "ui.wait_for",
-      "elapsedMs": 63016,
+      "elapsedMs": 59679,
       "nodeId": "assert-chase-max-distance",
       "status": "running"
     },
     {
       "action": "ui.wait_for",
-      "elapsedMs": 63294,
+      "elapsedMs": 60025,
       "nodeId": "assert-chase-max-distance",
       "status": "passed"
     },
     {
       "action": "ui.screenshot",
-      "elapsedMs": 65945,
+      "elapsedMs": 61430,
       "nodeId": "capture-chase",
       "status": "running"
     },
     {
       "action": "ui.screenshot",
-      "elapsedMs": 66286,
+      "elapsedMs": 61800,
       "nodeId": "capture-chase",
       "status": "passed"
     }

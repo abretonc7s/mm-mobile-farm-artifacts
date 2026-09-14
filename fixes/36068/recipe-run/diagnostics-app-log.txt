@@ -1,135 +1,60 @@
- LOG  08:55:53.208 [console:mmdev-3] [MetaMask DEBUG]: AssetsController state persisted successfully
- DEBUG  08:55:53.448 [console:mmdev-3] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00065", orderType: "twap", leverage: 3, currentPrice: 77675.5, existingPositionLeverage: undefined, usdAmount: "50", reduceOnly: false, isFullClose: false, … }
- DEBUG  08:55:53.449 [console:mmdev-3] Validating USD amount (source of truth): { usdAmount: 50, minimumRequired: 10 }
- DEBUG  08:55:53.449 [console:mmdev-3] usePerpsOrderValidation: Validation result { isValid: false, error: "ORDER_TWAP_NOTIONAL_TOO_SMALL" }
- DEBUG  08:55:54.515 [console:mmdev-3] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00065", orderType: "twap", leverage: 3, currentPrice: 77680.5, existingPositionLeverage: undefined, usdAmount: "50", reduceOnly: false, isFullClose: false, … }
- DEBUG  08:55:54.515 [console:mmdev-3] Validating USD amount (source of truth): { usdAmount: 50, minimumRequired: 10 }
- DEBUG  08:55:54.516 [console:mmdev-3] usePerpsOrderValidation: Validation result { isValid: false, error: "ORDER_TWAP_NOTIONAL_TOO_SMALL" }
- DEBUG  08:55:56.876 [console:mmdev-3] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00065", orderType: "twap", leverage: 3, currentPrice: 77679, existingPositionLeverage: undefined, usdAmount: "50", reduceOnly: false, isFullClose: false, … }
- DEBUG  08:55:56.876 [console:mmdev-3] Validating USD amount (source of truth): { usdAmount: 50, minimumRequired: 10 }
- DEBUG  08:55:56.876 [console:mmdev-3] usePerpsOrderValidation: Validation result { isValid: false, error: "ORDER_TWAP_NOTIONAL_TOO_SMALL" }
- DEBUG  08:55:59.056 [console:mmdev-3] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00065", orderType: "twap", leverage: 3, currentPrice: 77680.5, existingPositionLeverage: undefined, usdAmount: "50", reduceOnly: false, isFullClose: false, … }
- DEBUG  08:55:59.056 [console:mmdev-3] Validating USD amount (source of truth): { usdAmount: 50, minimumRequired: 10 }
- DEBUG  08:55:59.056 [console:mmdev-3] usePerpsOrderValidation: Validation result { isValid: false, error: "ORDER_TWAP_NOTIONAL_TOO_SMALL" }
- DEBUG  08:56:00.148 [console:mmdev-3] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00065", orderType: "twap", leverage: 3, currentPrice: 77680, existingPositionLeverage: undefined, usdAmount: "50", reduceOnly: false, isFullClose: false, … }
- DEBUG  08:56:00.149 [console:mmdev-3] Validating USD amount (source of truth): { usdAmount: 50, minimumRequired: 10 }
- DEBUG  08:56:00.149 [console:mmdev-3] usePerpsOrderValidation: Validation result { isValid: false, error: "ORDER_TWAP_NOTIONAL_TOO_SMALL" }
- DEBUG  08:56:02.467 [console:mmdev-3] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00065", orderType: "twap", leverage: 3, currentPrice: 77672.5, existingPositionLeverage: undefined, usdAmount: "50", reduceOnly: false, isFullClose: false, … }
- DEBUG  08:56:02.468 [console:mmdev-3] Validating USD amount (source of truth): { usdAmount: 50, minimumRequired: 10 }
- DEBUG  08:56:02.468 [console:mmdev-3] usePerpsOrderValidation: Validation result { isValid: false, error: "ORDER_TWAP_NOTIONAL_TOO_SMALL" }
- DEBUG  08:56:03.548 [console:mmdev-3] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00065", orderType: "twap", leverage: 3, currentPrice: 77667.5, existingPositionLeverage: undefined, usdAmount: "50", reduceOnly: false, isFullClose: false, … }
- DEBUG  08:56:03.549 [console:mmdev-3] Validating USD amount (source of truth): { usdAmount: 50, minimumRequired: 10 }
- DEBUG  08:56:03.549 [console:mmdev-3] usePerpsOrderValidation: Validation result { isValid: false, error: "ORDER_TWAP_NOTIONAL_TOO_SMALL" }
- DEBUG  08:56:04.765 [console:mmdev-3] [Order Debug] setStopLossPrice state update: { previousStopLoss: undefined, newStopLoss: undefined, actualNewValue: undefined, wasCleared: true }
- DEBUG  08:56:04.809 [console:mmdev-3] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00065", orderType: "twap", leverage: 3, currentPrice: 77658.5, existingPositionLeverage: undefined, usdAmount: "50", reduceOnly: false, isFullClose: false, … }
- DEBUG  08:56:04.809 [console:mmdev-3] Validating USD amount (source of truth): { usdAmount: 50, minimumRequired: 10 }
- DEBUG  08:56:04.809 [console:mmdev-3] usePerpsOrderValidation: Validation result { isValid: false, error: "ORDER_TWAP_NOTIONAL_TOO_SMALL" }
- LOG  08:56:04.847 [console:mmdev-3] [MetaMask DEBUG]: AssetsController state persisted successfully
- DEBUG  08:56:06.832 [console:mmdev-3] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00065", orderType: "twap", leverage: 3, currentPrice: 77664, existingPositionLeverage: undefined, usdAmount: "50", reduceOnly: false, isFullClose: false, … }
- DEBUG  08:56:06.832 [console:mmdev-3] Validating USD amount (source of truth): { usdAmount: 50, minimumRequired: 10 }
- DEBUG  08:56:06.832 [console:mmdev-3] usePerpsOrderValidation: Validation result { isValid: false, error: "ORDER_TWAP_NOTIONAL_TOO_SMALL" }
- DEBUG  08:56:07.897 [console:mmdev-3] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00065", orderType: "twap", leverage: 3, currentPrice: 77666.5, existingPositionLeverage: undefined, usdAmount: "50", reduceOnly: false, isFullClose: false, … }
- DEBUG  08:56:07.898 [console:mmdev-3] Validating USD amount (source of truth): { usdAmount: 50, minimumRequired: 10 }
- DEBUG  08:56:07.898 [console:mmdev-3] usePerpsOrderValidation: Validation result { isValid: false, error: "ORDER_TWAP_NOTIONAL_TOO_SMALL" }
- DEBUG  08:56:09.214 [console:mmdev-3] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00065", orderType: "twap", leverage: 3, currentPrice: 77667.5, existingPositionLeverage: undefined, usdAmount: "50", reduceOnly: false, isFullClose: false, … }
- DEBUG  08:56:09.214 [console:mmdev-3] Validating USD amount (source of truth): { usdAmount: 50, minimumRequired: 10 }
- DEBUG  08:56:09.214 [console:mmdev-3] usePerpsOrderValidation: Validation result { isValid: false, error: "ORDER_TWAP_NOTIONAL_TOO_SMALL" }
- DEBUG  08:56:10.332 [console:mmdev-3] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00065", orderType: "twap", leverage: 3, currentPrice: 77674.5, existingPositionLeverage: undefined, usdAmount: "50", reduceOnly: false, isFullClose: false, … }
- DEBUG  08:56:10.332 [console:mmdev-3] Validating USD amount (source of truth): { usdAmount: 50, minimumRequired: 10 }
- DEBUG  08:56:10.333 [console:mmdev-3] usePerpsOrderValidation: Validation result { isValid: false, error: "ORDER_TWAP_NOTIONAL_TOO_SMALL" }
- DEBUG  08:56:12.615 [console:mmdev-3] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00065", orderType: "twap", leverage: 3, currentPrice: 77672, existingPositionLeverage: undefined, usdAmount: "50", reduceOnly: false, isFullClose: false, … }
- DEBUG  08:56:12.616 [console:mmdev-3] Validating USD amount (source of truth): { usdAmount: 50, minimumRequired: 10 }
- DEBUG  08:56:12.616 [console:mmdev-3] usePerpsOrderValidation: Validation result { isValid: false, error: "ORDER_TWAP_NOTIONAL_TOO_SMALL" }
- DEBUG  08:56:13.665 [console:mmdev-3] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00065", orderType: "twap", leverage: 3, currentPrice: 77679, existingPositionLeverage: undefined, usdAmount: "50", reduceOnly: false, isFullClose: false, … }
- DEBUG  08:56:13.666 [console:mmdev-3] Validating USD amount (source of truth): { usdAmount: 50, minimumRequired: 10 }
- DEBUG  08:56:13.666 [console:mmdev-3] usePerpsOrderValidation: Validation result { isValid: false, error: "ORDER_TWAP_NOTIONAL_TOO_SMALL" }
- DEBUG  08:56:14.882 [console:mmdev-3] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00065", orderType: "twap", leverage: 3, currentPrice: 77681.5, existingPositionLeverage: undefined, usdAmount: "50", reduceOnly: false, isFullClose: false, … }
- DEBUG  08:56:14.882 [console:mmdev-3] Validating USD amount (source of truth): { usdAmount: 50, minimumRequired: 10 }
- DEBUG  08:56:14.883 [console:mmdev-3] usePerpsOrderValidation: Validation result { isValid: false, error: "ORDER_TWAP_NOTIONAL_TOO_SMALL" }
- DEBUG  08:56:15.982 [console:mmdev-3] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00065", orderType: "twap", leverage: 3, currentPrice: 77677, existingPositionLeverage: undefined, usdAmount: "50", reduceOnly: false, isFullClose: false, … }
- DEBUG  08:56:15.990 [console:mmdev-3] Validating USD amount (source of truth): { usdAmount: 50, minimumRequired: 10 }
- DEBUG  08:56:15.990 [console:mmdev-3] usePerpsOrderValidation: Validation result { isValid: false, error: "ORDER_TWAP_NOTIONAL_TOO_SMALL" }
- DEBUG  08:56:18.132 [console:mmdev-3] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00065", orderType: "twap", leverage: 3, currentPrice: 77679, existingPositionLeverage: undefined, usdAmount: "50", reduceOnly: false, isFullClose: false, … }
- DEBUG  08:56:18.132 [console:mmdev-3] Validating USD amount (source of truth): { usdAmount: 50, minimumRequired: 10 }
- DEBUG  08:56:18.133 [console:mmdev-3] usePerpsOrderValidation: Validation result { isValid: false, error: "ORDER_TWAP_NOTIONAL_TOO_SMALL" }
- ERROR  08:56:19.016 [console:mmdev-3] A query that was dehydrated as pending ended up rejecting. [["MoneyAccountBalanceService:getMoneyAccountBalance","0xf62b4ed01965f4dabc34a1297845124f2421ef95"]]: Error: Execution prevented because the circuit breaker is open; The error will be redacted in production builds
- DEBUG  08:56:19.192 [console:mmdev-3] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00065", orderType: "twap", leverage: 3, currentPrice: 77681.5, existingPositionLeverage: undefined, usdAmount: "50", reduceOnly: false, isFullClose: false, … }
- DEBUG  08:56:19.193 [console:mmdev-3] Validating USD amount (source of truth): { usdAmount: 50, minimumRequired: 10 }
- DEBUG  08:56:19.193 [console:mmdev-3] usePerpsOrderValidation: Validation result { isValid: false, error: "ORDER_TWAP_NOTIONAL_TOO_SMALL" }
- LOG  08:56:23.150 [console:mmdev-3] [MetaMask DEBUG]: AssetsController state persisted successfully
- DEBUG  08:56:23.615 [console:mmdev-3] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00065", orderType: "twap", leverage: 3, currentPrice: 77686.5, existingPositionLeverage: undefined, usdAmount: "50", reduceOnly: false, isFullClose: false, … }
- DEBUG  08:56:23.616 [console:mmdev-3] Validating USD amount (source of truth): { usdAmount: 50, minimumRequired: 10 }
- DEBUG  08:56:23.616 [console:mmdev-3] usePerpsOrderValidation: Validation result { isValid: false, error: "ORDER_TWAP_NOTIONAL_TOO_SMALL" }
- LOG  08:56:23.652 [console:mmdev-3] [MetaMask DEBUG]: SnapController state persisted successfully
- DEBUG  08:56:24.615 [console:mmdev-3] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00065", orderType: "twap", leverage: 3, currentPrice: 77678, existingPositionLeverage: undefined, usdAmount: "50", reduceOnly: false, isFullClose: false, … }
- DEBUG  08:56:24.616 [console:mmdev-3] Validating USD amount (source of truth): { usdAmount: 50, minimumRequired: 10 }
- DEBUG  08:56:24.616 [console:mmdev-3] usePerpsOrderValidation: Validation result { isValid: false, error: "ORDER_TWAP_NOTIONAL_TOO_SMALL" }
- DEBUG  08:56:28.182 [console:mmdev-3] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00065", orderType: "twap", leverage: 3, currentPrice: 77679, existingPositionLeverage: undefined, usdAmount: "50", reduceOnly: false, isFullClose: false, … }
- DEBUG  08:56:28.182 [console:mmdev-3] Validating USD amount (source of truth): { usdAmount: 50, minimumRequired: 10 }
- DEBUG  08:56:28.183 [console:mmdev-3] usePerpsOrderValidation: Validation result { isValid: false, error: "ORDER_TWAP_NOTIONAL_TOO_SMALL" }
- DEBUG  08:56:29.415 [console:mmdev-3] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00065", orderType: "twap", leverage: 3, currentPrice: 77686.5, existingPositionLeverage: undefined, usdAmount: "50", reduceOnly: false, isFullClose: false, … }
- DEBUG  08:56:29.416 [console:mmdev-3] Validating USD amount (source of truth): { usdAmount: 50, minimumRequired: 10 }
- DEBUG  08:56:29.416 [console:mmdev-3] usePerpsOrderValidation: Validation result { isValid: false, error: "ORDER_TWAP_NOTIONAL_TOO_SMALL" }
- INFO  08:56:29.485 [console:mmdev-3] TRACK event saved { type: "track", event: "Perp UI Interaction", properties: Object }
- DEBUG  08:56:29.487 [console:mmdev-3] [Order Debug] setStopLossPrice state update: { previousStopLoss: undefined, newStopLoss: undefined, actualNewValue: undefined, wasCleared: true }
- DEBUG  08:56:29.624 [console:mmdev-3] HyperLiquid Fee Calculation Started { orderType: "limit", isMaker: false, amount: "50", symbol: "BTC", isHip3Asset: false, hip3Multiplier: 1, baseFeeRate: 0.00045, baseTakerRate: 0.00045, baseMakerRate: 0.00015 }
- DEBUG  08:56:29.625 [console:mmdev-3] User Address Retrieved { userAddress: "0x8dc623e964475d4d669da601fd15ea9125469003", network: "mainnet" }
- DEBUG  08:56:29.625 [console:mmdev-3] Fetching Fresh Fee Rates from HyperLiquid API { cacheHit: false, userAddress: "0x8dc623e964475d4d669da601fd15ea9125469003" }
- LOG  08:56:29.737 [console:mmdev-3] [MetaMask DEBUG]: PerpsController state persisted successfully
- DEBUG  08:56:29.794 [console:mmdev-3] HyperLiquid userFees API Response { userCrossRate: "0.00045", userAddRate: "0.00015", activeReferralDiscount: "0.04", activeStakingDiscount: Object }
- DEBUG  08:56:29.794 [console:mmdev-3] Fee Discount Calculation { discounts: Object, rates: Object }
- DEBUG  08:56:29.794 [console:mmdev-3] Fee Rates Validated and Cached { selectedRate: 0.000432, selectedRatePercentage: "0.0432%", discountApplied: true, isHip3Asset: false, hip3Multiplier: 1, cacheExpiry: "2026-09-14T09:01:29.794Z" }
- DEBUG  08:56:29.795 [console:mmdev-3] Final Fee Calculation Result { orderType: "limit", amount: "50", fees: Object, usingFallbackRates: false }
- DEBUG  08:56:29.795 [console:mmdev-3] Rewards: Fetching fee discount via controller { address: "0x8dc623e964475d4d669da601fd15ea9125469003", caipAccountId: "eip155:1:0x8Dc623E964475D4d669da601Fd15ea9125469003" }
- DEBUG  08:56:29.795 [console:mmdev-3] Rewards: No fee discount available { address: "0x8dc623e964475d4d669da601fd15ea9125469003", caipAccountId: "eip155:1:0x8Dc623E964475D4d669da601Fd15ea9125469003" }
- DEBUG  08:56:29.795 [console:mmdev-3] Rewards: Calculating points with discounted fee { originalRate: 0.001, discountPercentage: undefined, adjustedRate: 0.001, amount: 50, actualFeeUSD: 0.05 }
- DEBUG  08:56:29.796 [console:mmdev-3] Rewards: Points estimation request via controller { estimatePointsDto: Object, symbol: "BTC", size: 50, isClose: false }
- DEBUG  08:56:29.796 [console:mmdev-3] Rewards: Points estimated via controller { pointsEstimate: 0, bonusBips: 0, symbol: "BTC", size: 50, isClose: false, duration: "0ms" }
- DEBUG  08:56:29.796 [console:mmdev-3] Rewards: Cached points calculation parameters { address: "0x8dc623e964475d4d669da601fd15ea9125469003", bonusBips: 0, basePointsPerDollar: 0, cacheExpiry: "2026-09-14T09:01:29.796Z" }
- DEBUG  08:56:29.915 [console:mmdev-3] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00065", orderType: "limit", leverage: 3, currentPrice: 77686.5, existingPositionLeverage: undefined, reduceOnly: false, isFullClose: false, providerId: "hyperliquid" }
- DEBUG  08:56:29.916 [console:mmdev-3] usePerpsOrderValidation: Validation result { isValid: false, error: "ORDER_LIMIT_PRICE_REQUIRED" }
- DEBUG  08:56:31.999 [console:mmdev-3] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00065", orderType: "limit", leverage: 3, currentPrice: 77680, existingPositionLeverage: undefined, reduceOnly: false, isFullClose: false, providerId: "hyperliquid" }
- DEBUG  08:56:31.999 [console:mmdev-3] usePerpsOrderValidation: Validation result { isValid: false, error: "ORDER_LIMIT_PRICE_REQUIRED" }
- DEBUG  08:56:34.449 [console:mmdev-3] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00065", orderType: "limit", leverage: 3, currentPrice: 77686.5, existingPositionLeverage: undefined, reduceOnly: false, isFullClose: false, providerId: "hyperliquid" }
- DEBUG  08:56:34.450 [console:mmdev-3] usePerpsOrderValidation: Validation result { isValid: false, error: "ORDER_LIMIT_PRICE_REQUIRED" }
- LOG  08:56:35.253 [console:mmdev-3] [MetaMask DEBUG]: AssetsController state persisted successfully
- DEBUG  08:56:41.016 [console:mmdev-3] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00065", orderType: "limit", leverage: 3, currentPrice: 77679, existingPositionLeverage: undefined, reduceOnly: false, isFullClose: false, providerId: "hyperliquid" }
- DEBUG  08:56:41.017 [console:mmdev-3] usePerpsOrderValidation: Validation result { isValid: false, error: "ORDER_LIMIT_PRICE_REQUIRED" }
- DEBUG  08:56:42.133 [console:mmdev-3] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00065", orderType: "limit", leverage: 3, currentPrice: 77666.5, existingPositionLeverage: undefined, reduceOnly: false, isFullClose: false, providerId: "hyperliquid" }
- DEBUG  08:56:42.133 [console:mmdev-3] usePerpsOrderValidation: Validation result { isValid: false, error: "ORDER_LIMIT_PRICE_REQUIRED" }
- DEBUG  08:56:44.283 [console:mmdev-3] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00065", orderType: "limit", leverage: 3, currentPrice: 77671, existingPositionLeverage: undefined, reduceOnly: false, isFullClose: false, providerId: "hyperliquid" }
- DEBUG  08:56:44.283 [console:mmdev-3] usePerpsOrderValidation: Validation result { isValid: false, error: "ORDER_LIMIT_PRICE_REQUIRED" }
- DEBUG  08:56:48.183 [console:mmdev-3] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00065", orderType: "limit", leverage: 3, currentPrice: 77667.2, existingPositionLeverage: undefined, reduceOnly: false, isFullClose: false, providerId: "hyperliquid" }
- DEBUG  08:56:48.183 [console:mmdev-3] usePerpsOrderValidation: Validation result { isValid: false, error: "ORDER_LIMIT_PRICE_REQUIRED" }
- DEBUG  08:56:49.366 [console:mmdev-3] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00065", orderType: "limit", leverage: 3, currentPrice: 77666.5, existingPositionLeverage: undefined, reduceOnly: false, isFullClose: false, providerId: "hyperliquid" }
- DEBUG  08:56:49.367 [console:mmdev-3] usePerpsOrderValidation: Validation result { isValid: false, error: "ORDER_LIMIT_PRICE_REQUIRED" }
- ERROR  08:56:50.067 [console:mmdev-3] A query that was dehydrated as pending ended up rejecting. [["MoneyAccountBalanceService:getMoneyAccountBalance","0xf62b4ed01965f4dabc34a1297845124f2421ef95"]]: Error: Execution prevented because the circuit breaker is open; The error will be redacted in production builds
- LOG  08:56:50.319 [console:mmdev-3] [MetaMask DEBUG]: AssetsController state persisted successfully
- DEBUG  08:56:51.722 [console:mmdev-3] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00065", orderType: "limit", leverage: 3, currentPrice: 77667, existingPositionLeverage: undefined, reduceOnly: false, isFullClose: false, providerId: "hyperliquid" }
- DEBUG  08:56:51.723 [console:mmdev-3] usePerpsOrderValidation: Validation result { isValid: false, error: "ORDER_LIMIT_PRICE_REQUIRED" }
- INFO  08:56:52.071 [console:mmdev-3] TRACK event saved { type: "track", event: "Perp UI Interaction", properties: Object }
- DEBUG  08:56:52.073 [console:mmdev-3] [Order Debug] setStopLossPrice state update: { previousStopLoss: undefined, newStopLoss: undefined, actualNewValue: undefined, wasCleared: true }
- DEBUG  08:56:52.219 [console:mmdev-3] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00065", orderType: "chase", leverage: 3, currentPrice: 77667, existingPositionLeverage: undefined, usdAmount: "50", reduceOnly: false, isFullClose: false, … }
- DEBUG  08:56:52.238 [console:mmdev-3] Validating USD amount (source of truth): { usdAmount: 50, minimumRequired: 10 }
- DEBUG  08:56:52.239 [console:mmdev-3] HyperLiquid Fee Calculation Started { orderType: "chase", isMaker: true, amount: "50", symbol: "BTC", isHip3Asset: false, hip3Multiplier: 1, baseFeeRate: 0.00015, baseTakerRate: 0.00045, baseMakerRate: 0.00015 }
- DEBUG  08:56:52.239 [console:mmdev-3] User Address Retrieved { userAddress: "0x8dc623e964475d4d669da601fd15ea9125469003", network: "mainnet" }
- DEBUG  08:56:52.239 [console:mmdev-3] 📦 Using Cached Fee Rates { cacheHit: true, perpsTakerRate: 0.000432, perpsMakerRate: 0.00014399999999999998, spotTakerRate: 0.000672, spotMakerRate: 0.000384, selectedRate: 0.00014399999999999998, isHip3Asset: false, hip3Multiplier: 1, cacheExpiry: "2026-09-14T09:01:29.794Z", cacheAge: "22s" }
- DEBUG  08:56:52.239 [console:mmdev-3] Final Fee Calculation Result { orderType: "chase", amount: "50", fees: Object, usingFallbackRates: false }
- DEBUG  08:56:52.240 [console:mmdev-3] usePerpsOrderValidation: Validation result { isValid: true }
- DEBUG  08:56:52.240 [console:mmdev-3] Rewards: Fetching fee discount via controller { address: "0x8dc623e964475d4d669da601fd15ea9125469003", caipAccountId: "eip155:1:0x8Dc623E964475D4d669da601Fd15ea9125469003" }
- DEBUG  08:56:52.240 [console:mmdev-3] Rewards: No fee discount available { address: "0x8dc623e964475d4d669da601fd15ea9125469003", caipAccountId: "eip155:1:0x8Dc623E964475D4d669da601Fd15ea9125469003" }
- DEBUG  08:56:52.240 [console:mmdev-3] Rewards: Calculating points with discounted fee { originalRate: 0.001, discountPercentage: undefined, adjustedRate: 0.001, amount: 50, actualFeeUSD: 0.05 }
- DEBUG  08:56:52.241 [console:mmdev-3] Rewards: Points estimation request via controller { estimatePointsDto: Object, symbol: "BTC", size: 50, isClose: false }
- DEBUG  08:56:52.241 [console:mmdev-3] Rewards: Points estimated via controller { pointsEstimate: 0, bonusBips: 0, symbol: "BTC", size: 50, isClose: false, duration: "0ms" }
- DEBUG  08:56:52.241 [console:mmdev-3] Rewards: Cached points calculation parameters { address: "0x8dc623e964475d4d669da601fd15ea9125469003", bonusBips: 0, basePointsPerDollar: 0, cacheExpiry: "2026-09-14T09:01:52.241Z" }
- LOG  08:56:52.477 [console:mmdev-3] [MetaMask DEBUG]: PerpsController state persisted successfully
- LOG  08:56:53.153 [console:mmdev-3] [MetaMask DEBUG]: AssetsController state persisted successfully
- DEBUG  08:56:54.600 [console:mmdev-3] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00065", orderType: "chase", leverage: 3, currentPrice: 77666.5, existingPositionLeverage: undefined, usdAmount: "50", reduceOnly: false, isFullClose: false, … }
- DEBUG  08:56:54.600 [console:mmdev-3] Validating USD amount (source of truth): { usdAmount: 50, minimumRequired: 10 }
- DEBUG  08:56:54.600 [console:mmdev-3] usePerpsOrderValidation: Validation result { isValid: true }
- DEBUG  08:56:59.666 [console:mmdev-3] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00065", orderType: "chase", leverage: 3, currentPrice: 77670, existingPositionLeverage: undefined, usdAmount: "50", reduceOnly: false, isFullClose: false, … }
- DEBUG  08:56:59.667 [console:mmdev-3] Validating USD amount (source of truth): { usdAmount: 50, minimumRequired: 10 }
- DEBUG  08:56:59.667 [console:mmdev-3] usePerpsOrderValidation: Validation result { isValid: true }
- DEBUG  08:57:04.196 [console:mmdev-3] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00065", orderType: "chase", leverage: 3, currentPrice: 77667, existingPositionLeverage: undefined, usdAmount: "50", reduceOnly: false, isFullClose: false, … }
- DEBUG  08:57:04.197 [console:mmdev-3] Validating USD amount (source of truth): { usdAmount: 50, minimumRequired: 10 }
- DEBUG  08:57:04.197 [console:mmdev-3] usePerpsOrderValidation: Validation result { isValid: true }
+ WARN  15:55:32.608 [console:mm-2] { message: "premature close", stack: "Error: premature close\n    at onclosenexttick (http://127.0.0.1:8062/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:1201125:97)\n    at apply (native)\n    at anonymous (http://127.0.0.1:8062/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:137762:19)\n    at drainQueue (http://127.0.0.1:8062/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:137733:39)" }
+ LOG  15:55:32.843 [console:mm-2] [MetaMask DEBUG]: SnapController state persisted successfully
+ ERROR  15:55:38.990 [console:mm-2] A query that was dehydrated as pending ended up rejecting. [["MoneyAccountBalanceService:getMoneyAccountBalance","0xf62b4ed01965f4dabc34a1297845124f2421ef95"]]: Error: Execution prevented because the circuit breaker is open; The error will be redacted in production builds
+ LOG  15:55:40.725 [console:mm-2] [MetaMask DEBUG]: AssetsController state persisted successfully
+ INFO  15:55:41.549 [console:mm-2] TRACK event saved { type: "track", event: "Perp UI Interaction", properties: Object }
+ DEBUG  15:55:41.551 [console:mm-2] [Order Debug] setStopLossPrice state update: { previousStopLoss: undefined, newStopLoss: undefined, actualNewValue: undefined, wasCleared: true }
+ DEBUG  15:55:41.652 [console:mm-2] HyperLiquid Fee Calculation Started { orderType: "twap", isMaker: false, amount: "0", symbol: "BTC", isHip3Asset: false, hip3Multiplier: 1, baseFeeRate: 0.00045, baseTakerRate: 0.00045, baseMakerRate: 0.00015 }
+ DEBUG  15:55:41.656 [console:mm-2] User Address Retrieved { userAddress: "0x8dc623e964475d4d669da601fd15ea9125469003", network: "testnet" }
+ DEBUG  15:55:41.657 [console:mm-2] 📦 Using Cached Fee Rates { cacheHit: true, perpsTakerRate: 0.000432, perpsMakerRate: 0.00014399999999999998, spotTakerRate: 0.000672, spotMakerRate: 0.000384, selectedRate: 0.000432, isHip3Asset: false, hip3Multiplier: 1, cacheExpiry: "2026-09-14T16:00:14.587Z", cacheAge: "27s" }
+ DEBUG  15:55:41.657 [console:mm-2] Final Fee Calculation Result { orderType: "twap", amount: "0", fees: Object, usingFallbackRates: false }
+ DEBUG  15:55:41.657 [console:mm-2] Rewards: Using cached fee discount { address: "0x8dc623e964475d4d669da601fd15ea9125469003", discountBips: 0, cacheAge: "26s" }
+ LOG  15:55:41.756 [console:mm-2] [MetaMask DEBUG]: PerpsController state persisted successfully
+ DEBUG  15:55:50.665 [console:mm-2] HyperLiquid Fee Calculation Started { orderType: "twap", isMaker: false, amount: "50", symbol: "BTC", isHip3Asset: false, hip3Multiplier: 1, baseFeeRate: 0.00045, baseTakerRate: 0.00045, baseMakerRate: 0.00015 }
+ DEBUG  15:55:50.666 [console:mm-2] User Address Retrieved { userAddress: "0x8dc623e964475d4d669da601fd15ea9125469003", network: "testnet" }
+ DEBUG  15:55:50.666 [console:mm-2] 📦 Using Cached Fee Rates { cacheHit: true, perpsTakerRate: 0.000432, perpsMakerRate: 0.00014399999999999998, spotTakerRate: 0.000672, spotMakerRate: 0.000384, selectedRate: 0.000432, isHip3Asset: false, hip3Multiplier: 1, cacheExpiry: "2026-09-14T16:00:14.587Z", cacheAge: "36s" }
+ DEBUG  15:55:50.666 [console:mm-2] Final Fee Calculation Result { orderType: "twap", amount: "50", fees: Object, usingFallbackRates: false }
+ DEBUG  15:55:50.666 [console:mm-2] Rewards: Using cached fee discount { address: "0x8dc623e964475d4d669da601fd15ea9125469003", discountBips: 0, cacheAge: "35s" }
+ DEBUG  15:55:50.667 [console:mm-2] Rewards: Calculating points with discounted fee { originalRate: 0, discountPercentage: 0, adjustedRate: 0, amount: 50, actualFeeUSD: 0 }
+ DEBUG  15:55:50.668 [console:mm-2] Rewards: Points estimation request via controller { estimatePointsDto: Object, symbol: "BTC", size: 50, isClose: false }
+ DEBUG  15:55:50.668 [console:mm-2] Rewards: Points estimated via controller { pointsEstimate: 0, bonusBips: 0, symbol: "BTC", size: 50, isClose: false, duration: "0ms" }
+ DEBUG  15:55:50.957 [console:mm-2] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00064", orderType: "twap", leverage: 3, currentPrice: 78577, existingPositionLeverage: undefined, usdAmount: "50", reduceOnly: false, isFullClose: false, … }
+ DEBUG  15:55:50.960 [console:mm-2] Validating USD amount (source of truth): { usdAmount: 50, minimumRequired: 10 }
+ DEBUG  15:55:50.960 [console:mm-2] usePerpsOrderValidation: Validation result { isValid: false, error: "ORDER_TWAP_NOTIONAL_TOO_SMALL" }
+ LOG  15:55:58.574 [console:mm-2] [MetaMask DEBUG]: AssetsController state persisted successfully
+ ERROR  15:56:10.139 [console:mm-2] A query that was dehydrated as pending ended up rejecting. [["MoneyAccountBalanceService:getMoneyAccountBalance","0xf62b4ed01965f4dabc34a1297845124f2421ef95"]]: Error: Execution prevented because the circuit breaker is open; The error will be redacted in production builds
+ LOG  15:56:10.448 [console:mm-2] [MetaMask DEBUG]: AssetsController state persisted successfully
+ LOG  15:56:10.691 [console:mm-2] [MetaMask DEBUG]: AssetsController state persisted successfully
+ LOG  15:56:11.193 [console:mm-2] [MetaMask DEBUG]: SnapController state persisted successfully
+ INFO  15:56:11.686 [console:mm-2] TRACK event saved { type: "track", event: "Perp UI Interaction", properties: Object }
+ DEBUG  15:56:11.688 [console:mm-2] [Order Debug] setStopLossPrice state update: { previousStopLoss: undefined, newStopLoss: undefined, actualNewValue: undefined, wasCleared: true }
+ DEBUG  15:56:11.793 [console:mm-2] HyperLiquid Fee Calculation Started { orderType: "limit", isMaker: false, amount: "50", symbol: "BTC", isHip3Asset: false, hip3Multiplier: 1, baseFeeRate: 0.00045, baseTakerRate: 0.00045, baseMakerRate: 0.00015 }
+ DEBUG  15:56:11.793 [console:mm-2] User Address Retrieved { userAddress: "0x8dc623e964475d4d669da601fd15ea9125469003", network: "testnet" }
+ DEBUG  15:56:11.794 [console:mm-2] 📦 Using Cached Fee Rates { cacheHit: true, perpsTakerRate: 0.000432, perpsMakerRate: 0.00014399999999999998, spotTakerRate: 0.000672, spotMakerRate: 0.000384, selectedRate: 0.000432, isHip3Asset: false, hip3Multiplier: 1, cacheExpiry: "2026-09-14T16:00:14.587Z", cacheAge: "57s" }
+ DEBUG  15:56:11.794 [console:mm-2] Final Fee Calculation Result { orderType: "limit", amount: "50", fees: Object, usingFallbackRates: false }
+ DEBUG  15:56:11.794 [console:mm-2] Rewards: Using cached fee discount { address: "0x8dc623e964475d4d669da601fd15ea9125469003", discountBips: 0, cacheAge: "56s" }
+ DEBUG  15:56:11.794 [console:mm-2] Rewards: Calculating points with discounted fee { originalRate: 0.001, discountPercentage: 0, adjustedRate: 0.001, amount: 50, actualFeeUSD: 0.05 }
+ DEBUG  15:56:11.795 [console:mm-2] Rewards: Points estimation request via controller { estimatePointsDto: Object, symbol: "BTC", size: 50, isClose: false }
+ DEBUG  15:56:11.795 [console:mm-2] Rewards: Points estimated via controller { pointsEstimate: 0, bonusBips: 0, symbol: "BTC", size: 50, isClose: false, duration: "0ms" }
+ DEBUG  15:56:11.795 [console:mm-2] Rewards: Cached points calculation parameters { address: "0x8dc623e964475d4d669da601fd15ea9125469003", bonusBips: 0, basePointsPerDollar: 0, cacheExpiry: "2026-09-14T16:01:11.795Z" }
+ LOG  15:56:11.906 [console:mm-2] [MetaMask DEBUG]: PerpsController state persisted successfully
+ DEBUG  15:56:12.090 [console:mm-2] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00064", orderType: "limit", leverage: 3, currentPrice: 78577, existingPositionLeverage: undefined, reduceOnly: false, isFullClose: false, providerId: "hyperliquid" }
+ DEBUG  15:56:12.090 [console:mm-2] usePerpsOrderValidation: Validation result { isValid: false, error: "ORDER_LIMIT_PRICE_REQUIRED" }
+ INFO  15:56:12.277 [console:mm-2] Sent 4 events
+ LOG  15:56:22.106 [console:mm-2] [MetaMask DEBUG]: AssetsController state persisted successfully
+ INFO  15:56:26.792 [console:mm-2] TRACK event saved { type: "track", event: "Perp UI Interaction", properties: Object }
+ DEBUG  15:56:26.798 [console:mm-2] [Order Debug] setStopLossPrice state update: { previousStopLoss: undefined, newStopLoss: undefined, actualNewValue: undefined, wasCleared: true }
+ DEBUG  15:56:26.914 [console:mm-2] usePerpsOrderValidation: Validating order params { symbol: "BTC", isBuy: true, size: "0.00064", orderType: "chase", leverage: 3, currentPrice: 78577, existingPositionLeverage: undefined, usdAmount: "50", reduceOnly: false, isFullClose: false, … }
+ DEBUG  15:56:26.931 [console:mm-2] Validating USD amount (source of truth): { usdAmount: 50, minimumRequired: 10 }
+ DEBUG  15:56:26.936 [console:mm-2] HyperLiquid Fee Calculation Started { orderType: "chase", isMaker: true, amount: "50", symbol: "BTC", isHip3Asset: false, hip3Multiplier: 1, baseFeeRate: 0.00015, baseTakerRate: 0.00045, baseMakerRate: 0.00015 }
+ DEBUG  15:56:26.936 [console:mm-2] User Address Retrieved { userAddress: "0x8dc623e964475d4d669da601fd15ea9125469003", network: "testnet" }
+ DEBUG  15:56:26.936 [console:mm-2] 📦 Using Cached Fee Rates { cacheHit: true, perpsTakerRate: 0.000432, perpsMakerRate: 0.00014399999999999998, spotTakerRate: 0.000672, spotMakerRate: 0.000384, selectedRate: 0.00014399999999999998, isHip3Asset: false, hip3Multiplier: 1, cacheExpiry: "2026-09-14T16:00:14.587Z", cacheAge: "72s" }
+ DEBUG  15:56:26.937 [console:mm-2] Final Fee Calculation Result { orderType: "chase", amount: "50", fees: Object, usingFallbackRates: false }
+ DEBUG  15:56:26.937 [console:mm-2] usePerpsOrderValidation: Validation result { isValid: true }
+ DEBUG  15:56:26.937 [console:mm-2] Rewards: Using cached fee discount { address: "0x8dc623e964475d4d669da601fd15ea9125469003", discountBips: 0, cacheAge: "71s" }
+ DEBUG  15:56:26.937 [console:mm-2] Rewards: Calculating points with discounted fee { originalRate: 0.001, discountPercentage: 0, adjustedRate: 0.001, amount: 50, actualFeeUSD: 0.05 }
+ DEBUG  15:56:26.937 [console:mm-2] Rewards: Points estimation request via controller { estimatePointsDto: Object, symbol: "BTC", size: 50, isClose: false }
+ DEBUG  15:56:26.938 [console:mm-2] Rewards: Points estimated via controller { pointsEstimate: 0, bonusBips: 0, symbol: "BTC", size: 50, isClose: false, duration: "0ms" }
+ DEBUG  15:56:26.938 [console:mm-2] Rewards: Cached points calculation parameters { address: "0x8dc623e964475d4d669da601fd15ea9125469003", bonusBips: 0, basePointsPerDollar: 0, cacheExpiry: "2026-09-14T16:01:26.937Z" }
+ LOG  15:56:27.054 [console:mm-2] [MetaMask DEBUG]: PerpsController state persisted successfully
+ LOG  15:56:29.131 [console:mm-2] [MetaMask DEBUG]: AssetsController state persisted successfully
