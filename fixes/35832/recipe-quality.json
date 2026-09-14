@@ -4,37 +4,45 @@
   "compact": {
     "verdict": "PASS",
     "reasons": [
-      "Re-validation on 7690b91b7f after rebase onto origin/main: 18/18 recipe nodes passed, including both AC graphs.",
-      "AC1 mixed proof: wait_for perps-watchlist-header and perps-market-add-funds-button both viewport-visible; inspected PNG shows Perps Testnet home with Withdraw/Add funds and Watchlist, not wallet home.",
-      "AC2 mixed proof: wait_for perps-pro-order-form-place-order then Lite long-button; inspected PNGs show Pro workstation (Pro pill, Isolated 3x, order book, Place order) then Lite market (Lite pill, Long/Short).",
-      "No forbidden patterns in the inherited recipe: no switch/default, no eval_sync, no wait substituting for ui.wait_for, no fiber-only visual proof.",
-      "First unlock attempt failed the stability window (environment); restart then a full pass. Unlock is setup, not an AC mutation."
+      "Both ACs are exercised end-to-end through the real user path: Perps home -> tap BTC row -> Lite -> Pro -> Lite -> header back arrow, using only ui.press/ui.navigate and the typed metamask.perps.ensure_mode action.",
+      "The graph validates (mm-harness run --plan exits 0) and every ac<N>- node has a passing entry in artifacts/trace.json.",
+      "A sibling recipe-baseline.json asserts the buggy values and passes against pre-fix code, producing honest before-evidence; the verify recipe asserts the fixed values and fails on pre-fix code, so it genuinely tests the fix.",
+      "Both visual/mixed screenshots are preceded by a ui.wait_for on the claimed target, and the before/after PNGs show opposite destinations (wallet home token list vs Perps home balance screen).",
+      "No forbidden patterns: no switch/default, no eval_sync, no wait substituting for ui.wait_for, no fiber-only proof for a visual claim, and no UI value injection."
     ],
     "better_version_guidance": []
   },
   "dimensions": {
     "intent_clarity": {
       "status": "pass",
-      "reason": "Node intents describe the user-visible goal of each step.",
+      "reason": "Every node intent states the human-visible goal rather than restating the action, selector, or node id.",
       "evidence": [
-        "artifacts/recipe.json node intents"
+        "artifacts/recipe.json node intents",
+        "mm-harness run --plan reports no workflow.invalid_intent findings."
       ]
     },
     "coverage": {
       "status": "pass",
-      "reason": "2/2 ACs PROVEN on this re-validation run.",
+      "reason": "2/2 ACs PROVEN, none untestable, weak, or missing.",
       "evidence": [
-        "artifacts/recipe-coverage.md",
-        "artifacts/recipe-run/trace.json"
+        "artifacts/recipe-coverage.md coverage matrix."
       ]
     },
     "evidence_fit": {
       "status": "pass",
-      "reason": "Visual/mixed claims are gated on wait_for of the claimed target, then the PNG was inspected.",
+      "reason": "AC1 (mixed) is carried by state assertions plus a before/after screenshot pair; AC2 (visual) by screenshots gated on ui.wait_for targets. No screenshot is used as proof for hidden behavior.",
       "evidence": [
-        "artifacts/recipe-run/screenshots/evidence-ac1-back-lands-on-perps-home.png",
-        "artifacts/recipe-run/screenshots/evidence-ac2-pro-workstation.png",
-        "artifacts/recipe-run/screenshots/evidence-ac2-lite-return.png"
+        "artifacts/before-evidence-ac1-back-lands-on-perps-home.png vs artifacts/after-ac1-back-lands-on-perps-home.png",
+        "artifacts/after-ac2-pro-workstation.png",
+        "artifacts/after-ac2-lite-return.png."
+      ]
+    },
+    "revert_sensitivity": {
+      "status": "pass",
+      "reason": "Reverting the fix makes both new unit tests fail and makes the verify recipe's AC1 assertion fail, while the baseline recipe passes only against buggy code.",
+      "evidence": [
+        "Reverted-fix jest run reported 2 failed, 13 passed",
+        "baseline recipe run exited 0 pre-fix and the verify recipe exits 0 post-fix."
       ]
     }
   },
@@ -42,7 +50,7 @@
   "contextual_findings": [],
   "suggested_recipe_delta": [],
   "training_fields": {
-    "proof_mode": "mixed"
+    "proof_mode": "unknown"
   },
   "meta": {
     "producer": "worker",

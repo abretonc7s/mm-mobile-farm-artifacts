@@ -22,45 +22,6 @@
       "category": "system"
     },
     {
-      "path": "screenshots/evidence-ac2-pro-workstation.png",
-      "type": "screenshot",
-      "nodeId": "ac2-screenshot-pro",
-      "label": "ui.screenshot screenshot",
-      "category": "evidence",
-      "mimeType": "image/png",
-      "metadata": {
-        "provider": "simctl",
-        "mode": "xcrun simctl io screenshot",
-        "selectedDevice": "mm-2"
-      }
-    },
-    {
-      "path": "screenshots/evidence-ac2-lite-return.png",
-      "type": "screenshot",
-      "nodeId": "ac2-screenshot-lite-return",
-      "label": "ui.screenshot screenshot",
-      "category": "evidence",
-      "mimeType": "image/png",
-      "metadata": {
-        "provider": "simctl",
-        "mode": "xcrun simctl io screenshot",
-        "selectedDevice": "mm-2"
-      }
-    },
-    {
-      "path": "screenshots/evidence-ac1-back-lands-on-perps-home.png",
-      "type": "screenshot",
-      "nodeId": "ac1-screenshot-landing",
-      "label": "ui.screenshot screenshot",
-      "category": "evidence",
-      "mimeType": "image/png",
-      "metadata": {
-        "provider": "simctl",
-        "mode": "xcrun simctl io screenshot",
-        "selectedDevice": "mm-2"
-      }
-    },
-    {
       "path": "summary.json",
       "type": "summary",
       "label": "Run summary",
@@ -73,52 +34,25 @@
       "category": "system"
     },
     {
-      "path": "execution-provenance.json",
-      "type": "json",
-      "label": "Execution provenance",
-      "category": "system",
-      "metadata": {
-        "valid": true,
-        "errorCode": null
-      }
+      "path": "screenshots/after-ac1-back-lands-on-perps-home.png",
+      "type": "screenshot",
+      "label": "AC1: back arrow returns the user to Perps home",
+      "category": "evidence",
+      "mimeType": "image/png"
     },
     {
-      "path": "diagnostics.json",
-      "type": "json",
-      "label": "Run-scoped application diagnostics",
-      "category": "diagnostic"
+      "path": "screenshots/after-ac2-pro-workstation.png",
+      "type": "screenshot",
+      "label": "AC2: Pro workstation reached from Lite",
+      "category": "evidence",
+      "mimeType": "image/png"
     },
     {
-      "path": "diagnostics-app-log.txt",
-      "type": "log",
-      "label": "Redacted run-scoped application log slice",
-      "category": "diagnostic"
-    },
-    {
-      "path": "network/run-summary.json",
-      "type": "report",
-      "label": "Automatic network observation",
-      "category": "diagnostic"
-    },
-    {
-      "path": "product-provenance.json",
-      "type": "json",
-      "label": "Product checkout provenance",
-      "category": "system",
-      "metadata": {
-        "adapter": "mobile",
-        "git_ref": "7690b91b7f3f27a36ede9305d7372f3542202af7",
-        "branch": "TAT-3786-fix-fix-perps-pro-back-nav",
-        "dirty": false
-      }
-    },
-    {
-      "path": "report.md",
-      "type": "report",
-      "label": "Human run report",
-      "category": "system"
+      "path": "screenshots/before-evidence-ac1-back-lands-on-perps-home.png",
+      "type": "screenshot",
+      "label": "AC1 before: wallet home",
+      "category": "evidence",
+      "mimeType": "image/png"
     }
-  ],
-  "recovered": [],
-  "mutations": []
+  ]
 }

@@ -2,5 +2,5 @@
   "originalFamilyScopeSummary": "Fix back navigation from perps pro to return to perps home instead of wallet home",
   "currentTriggerSummary": "pr-complete: fix(perps): transition first time lite -> pro",
   "scopeVerdict": "full-scope-addressed",
-  "notes": "TAT-3786 is implemented: after Lite→Pro→Lite the header back arrow lands on Perps home. Rebase onto origin/main preserved withHomeDroppedFromHistory on Home→Pro resets and kept main's lastViewedMarketSymbol. Inherited recipe re-ran on 7690b91b7f: 18/18 nodes passed. Inspected PNGs show Pro workstation, Lite market return, and Perps home (not wallet). Remaining review comments were already-fixed bugbot or false-positive flaky-test findings."
+  "notes": "TAT-3786 is the header back arrow after a first-time Lite→Pro round trip landing on wallet instead of Perps home. The branch already stamped dropped-Home routes and gated header goBack. This run closed the remaining holes Michal flagged: typed stamp, push-path stamp, list back fallback, and beforeRemove for swipe/hardware back. The original ticket AC (tap < after Lite→Pro→Lite → Perps home) remains the primary claim; gesture/list paths are the same parent-aware goBack failure."
 }

@@ -1,0 +1,11 @@
+[
+  {
+    "author": "michalconsensys",
+    "body": "**Should-fix** (`app/components/UI/Perps/types/navigation.ts`)\n\n`homeDroppedFromHistory` is not on `PerpsMarketDetails` (or the other routes this PR stamps). Extra params will keep compiling, which is how Home→Pro resets and the header picker replace already dropped the stamp.\n\nPlease add the flag to `PerpsStackParamList` (at least `PerpsMarketDetails`, and any other route `dropPerpsHomeFromStackHistory` / `withHomeDroppedFromHistory` writes) so new resets and pushes cannot omit it silently.",
+    "created_at": "2026-09-14T14:18:11Z",
+    "html_url": "https://github.com/MetaMask/metamask-mobile/pull/35832#issuecomment-5665437346",
+    "id": 5665437346,
+    "source": "issue_comment",
+    "user_type": "User"
+  }
+]

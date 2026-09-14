@@ -1,22 +1,26 @@
 {
   "version": 1,
   "preferred_mode": "screenshots",
-  "summary": "After rebase onto origin/main, back from the market page after a Lite/Pro round trip still returns to Perps home instead of wallet.",
+  "summary": "Back from the market page after a Lite/Pro round trip now returns to Perps home instead of dropping the user out to the wallet.",
+  "before_after_pairs": [
+    {
+      "label": "Back arrow after a Lite -> Pro -> Lite round trip: wallet home (before) vs Perps home (after)",
+      "covers": ["ac1"],
+      "before": "before-evidence-ac1-back-lands-on-perps-home.png",
+      "after": "after-ac1-back-lands-on-perps-home.png"
+    }
+  ],
   "standalone": [
     {
-      "label": "AC1: back arrow returns the user to Perps home",
-      "covers": ["AC1"],
-      "file": "recipe-run/screenshots/evidence-ac1-back-lands-on-perps-home.png"
-    },
-    {
-      "label": "AC2: Pro workstation reached from Lite",
-      "covers": ["AC2"],
-      "file": "recipe-run/screenshots/evidence-ac2-pro-workstation.png"
-    },
-    {
-      "label": "AC2: Lite market page after returning from Pro",
-      "covers": ["AC2"],
-      "file": "recipe-run/screenshots/evidence-ac2-lite-return.png"
+      "label": "The Lite -> Pro workstation switch still works on the market page",
+      "covers": ["ac2"],
+      "file": "after-ac2-pro-workstation.png"
     }
-  ]
+  ],
+  "omit": ["after-ac2-lite-return.png"],
+  "videos": {
+    "before": "before.mp4",
+    "after": "after.mp4",
+    "preferred": false
+  }
 }

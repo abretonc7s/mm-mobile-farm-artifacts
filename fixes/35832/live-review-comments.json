@@ -1,0 +1,16 @@
+[
+  {
+    "author": "michalconsensys",
+    "body": "**Should-fix:** `preserveHomeDroppedFromHistory` is only applied on this `replaceOnSelect` reset.\n\nThe non-replace path still does `StackActions.push(Routes.PERPS.MARKET_DETAILS, detailsParams)` with unstamped params. A later focused market with no Perps history then looks like an Explore entry and the new back check pops out of Perps.\n\nStamp the pushed params the same way as this replace.",
+    "created_at": "2026-09-14T14:18:03Z",
+    "html_url": "https://github.com/MetaMask/metamask-mobile/pull/35832#discussion_r4006112200",
+    "id": 4006112200,
+    "in_reply_to_id": null,
+    "line": 354,
+    "original_line": 354,
+    "path": "app/components/UI/Perps/Views/PerpsMarketListView/PerpsMarketListView.tsx",
+    "side": "RIGHT",
+    "source": "review_comment",
+    "user_type": "User"
+  }
+]
