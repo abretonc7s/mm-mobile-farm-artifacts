@@ -1,0 +1,6 @@
+{
+  "originalFamilyScopeSummary": "Fix %RoE input validation and UI state for SL/TP with positive and negative values",
+  "currentTriggerSummary": "pr-complete: feat(perps): allow user to input positive %RoE values for SL, and negative %RoE values for TP",
+  "scopeVerdict": "full-scope-addressed",
+  "notes": "The PR covers signed TP/SL badge state, trigger-price recomputation, open-position and new-order validation, placeholders, colors, analytics, and tests. This run also fixed the remaining positive-SL maximum-boundary sign inversion."
+}

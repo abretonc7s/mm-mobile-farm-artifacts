@@ -1,0 +1,4 @@
+- A loss-protection clamp must preserve the RoE sign; using `Math.abs` collapsed gain-side and loss-side stop losses into the same branch.
+- Typical `+5%` coverage missed the defect. The accepted `+99%` boundary at 1x exposes the sign inversion directly for both long and short calculations.
+- Hook tests that toggle a sign and then enter a magnitude should use separate `act` calls so the second handler observes the rerendered sign state.
+- Runtime evidence and code correctness are separate signals: focused tests passed, while recipe re-validation was skipped because the prepared app did not expose its automation bridge.

@@ -1,0 +1,32 @@
+[
+  {
+    "comment_id": 4006517083,
+    "review_id": "5199308631",
+    "author_login": "cursor[bot]",
+    "author_type": "Bot",
+    "reviewer_login": "cursor[bot]",
+    "review_state": "COMMENTED",
+    "source_kind": "bugbot",
+    "path": "app/components/UI/Perps/hooks/usePerpsTPSLForm.ts",
+    "line": 615,
+    "body": "### Positive SL RoE flips to a loss\n\n**High Severity**\n\nA gain-side stop loss now sends a positive RoE into `calculatePriceForRoE`, but that helper still treats any SL whose absolute RoE is at least `leverage * 99` as a max loss and forces the value negative. The badge and % field keep showing a gain while the trigger is computed as a large loss, and that price can still pass side-of-current and liquidation checks.",
+    "triage": "REAL",
+    "action": "Changed the maximum-loss clamp to affect only negative stop-loss RoE and added positive boundary regressions.",
+    "fixed_in_commit": "9d36e251ec2502d94ad523a159c3c16884ed6151"
+  },
+  {
+    "comment_id": 5666013671,
+    "review_id": null,
+    "author_login": "github-actions[bot]",
+    "author_type": "Bot",
+    "reviewer_login": "github-actions[bot]",
+    "review_state": null,
+    "source_kind": "ci",
+    "path": "app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.test.tsx",
+    "line": 103,
+    "body": "<!-- metamask-flaky-test-detection -->\n## Flaky unit test detection\n\nHistorical failure rate: `PerpsTPSLView.test.tsx` had 0/141 failures over 7 days, 0/230 over 15 days, and 0/432 over 30 days.\n\nAI-detected pattern J9 — module-level mutable `mockRouteParams` binding not reset in `beforeEach`. The comment reports that individual tests reassign the value, allowing state to bleed into later tests, and suggests resetting `mockRouteParams = { ...defaultRouteParams }` in `beforeEach`.",
+    "triage": "FALSE_POSITIVE",
+    "action": "No change because the outer beforeEach already resets mockRouteParams to a fresh default object before every test.",
+    "fixed_in_commit": null
+  }
+]

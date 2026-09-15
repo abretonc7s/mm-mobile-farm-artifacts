@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "preferred_mode": "screenshots",
+  "summary": "Inherited evidence for Auto Close RoE signs, toggles, placeholders, signed trigger math, and new-order validation.",
+  "before_after_pairs": [
+    {
+      "label": "Empty Auto Close RoE fields gain tappable signs",
+      "covers": ["ac-tp1", "ac-sl1", "ac-tp8", "ac-sl8"],
+      "before": "before-autoclose-baseline.png",
+      "after": "after-ac-defaults.png",
+      "note": "Before: no sign control. After: green + on TP and red - on SL."
+    }
+  ],
+  "standalone": [
+    {
+      "label": "TP badge toggled to loss",
+      "covers": ["ac-tp2", "ac-tp3", "ac-tp8"],
+      "file": "after-ac-tp-minus-empty.png"
+    },
+    {
+      "label": "Positive TP trigger",
+      "covers": ["ac-tp5"],
+      "file": "after-ac-tp-plus-filled.png"
+    },
+    {
+      "label": "Negative TP new-order validation",
+      "covers": ["ac-tp5", "ac-tp7"],
+      "file": "after-ac-tp-minus-filled.png"
+    },
+    {
+      "label": "SL badge toggled to gain",
+      "covers": ["ac-sl2", "ac-sl3", "ac-sl8"],
+      "file": "after-ac-sl-plus-empty.png"
+    },
+    {
+      "label": "Positive SL new-order validation",
+      "covers": ["ac-sl5", "ac-sl7"],
+      "file": "after-ac-sl-plus-filled.png"
+    }
+  ],
+  "omit": ["after-ac-sl-minus-filled.png"]
+}

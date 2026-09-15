@@ -1,0 +1,12 @@
+{
+  "status": "fail",
+  "total": 1,
+  "passed": 0,
+  "failed": 1,
+  "cause_counts": {
+    "subject": 0,
+    "harness": 0,
+    "environment": 1,
+    "unknown": 0
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "verdict": "pass",
+  "compact": {
+    "verdict": "PASS",
+    "reasons": [
+      "Recipe ran 31/31 nodes pass on iOS mm-3 against the live Auto Close sheet.",
+      "Visual ACs have wait_for on the claimed badge or copy, then a screenshot that was read: default +/−, % Loss / % Gain placeholders, +25% trigger above market, −25% TP error, +5% SL error.",
+      "Existing side-of-current validation still blocks opposite-sign TP/SL on a new long.",
+      "TP6/SL6 (open position already in P&L) are proven by usePerpsTPSLForm tests with fixed entry/current prices; live PnL is not a controllable recipe input.",
+      "Graph starts from metamask.perps.start_state, uses only manifest-declared actions, and has no unconditional pass."
+    ],
+    "better_version_guidance": [
+      "If a later run can land a testnet position already in profit or loss, add Auto Close nodes that type a floor-gain SL / cut-loss TP and wait_for the error testID to be absent."
+    ]
+  },
+  "dimensions": {
+    "coverage": {
+      "status": "pass",
+      "reason": "Every derived AC has a recipe node or a focused hook test; none missing.",
+      "evidence": [
+        "artifacts/recipe-coverage.md",
+        "artifacts/recipe-run/summary.json"
+      ]
+    },
+    "graph": {
+      "status": "pass",
+      "reason": "start_state then visible waits; no unconditional pass.",
+      "evidence": [
+        "artifacts/recipe.json"
+      ]
+    },
+    "evidence": {
+      "status": "pass",
+      "reason": "wait_for on the claimed badge or copy precedes each screenshot; PNGs were read.",
+      "evidence": [
+        "artifacts/after-ac-defaults.png",
+        "artifacts/after-ac-tp-minus-filled.png",
+        "artifacts/after-ac-sl-plus-filled.png"
+      ]
+    },
+    "assertions": {
+      "status": "pass",
+      "reason": "Badge wait_for, placeholder text, and TP/SL error testIDs fail if the feature is removed.",
+      "evidence": [
+        "artifacts/recipe-run/report.md"
+      ]
+    },
+    "flakeRisk": {
+      "status": "pass",
+      "reason": "Waits on testIDs and copy; no sleeps; start_state is idempotent.",
+      "evidence": [
+        "artifacts/recipe-run/summary.json"
+      ]
+    }
+  },
+  "structural_findings": [],
+  "contextual_findings": [],
+  "suggested_recipe_delta": [],
+  "training_fields": {
+    "proof_mode": "unknown"
+  },
+  "meta": {
+    "producer": "worker",
+    "fallback_used": false,
+    "legacy_task": false,
+    "artifact_required": true,
+    "source_signals": [
+      "recipe-quality.json"
+    ]
+  }
+}

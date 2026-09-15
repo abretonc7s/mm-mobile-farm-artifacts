@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "verdict": "warn",
+  "compact": {
+    "verdict": "WARN",
+    "reasons": [
+      "The trusted inherited recipe passed 31/31 nodes on iOS.",
+      "Badge, placeholder, signed-trigger, and validation claims use explicit waits before screenshots.",
+      "Open-position PnL cases and the positive-SL maximum boundary are covered by focused hook and utility tests.",
+      "The graph starts from metamask.perps.start_state, uses manifest-declared actions, and has no unconditional pass."
+    ],
+    "better_version_guidance": [
+      "When the prepared mobile bridge is available, rerun the inherited recipe and add a controllable live open-position case if the fixture supports one."
+    ]
+  },
+  "dimensions": {
+    "coverage": {
+      "status": "pass",
+      "reason": "All derived ACs have inherited recipe evidence or focused unit coverage.",
+      "evidence": [
+        "artifacts/recipe-coverage.md",
+        "artifacts/comments-report.md"
+      ]
+    },
+    "graph": {
+      "status": "pass",
+      "reason": "The inherited graph starts from a deterministic Perps state and terminates only after its assertions.",
+      "evidence": ["artifacts/recipe.json"]
+    },
+    "evidence": {
+      "status": "pass",
+      "reason": "The latest valid family package records screenshot evidence for every visual claim.",
+      "evidence": [
+        "artifacts/latest-valid-recipe-run.json",
+        "artifacts/evidence-manifest.json"
+      ]
+    },
+    "assertions": {
+      "status": "pass",
+      "reason": "Test-ID and text waits fail when badges, placeholders, or validation errors are absent.",
+      "evidence": ["artifacts/recipe.json"]
+    },
+    "flakeRisk": {
+      "status": "pass",
+      "reason": "The recipe uses state-based waits and no fixed sleeps.",
+      "evidence": ["artifacts/recipe.json"]
+    }
+  },
+  "structural_findings": [],
+  "contextual_findings": [
+    {
+      "code": "runtime_bridge_unavailable",
+      "message": "Current-run recipe execution was skipped because the prepared iOS app did not expose the automation bridge.",
+      "dimension": "evidence",
+      "evidence": ["temp/recipe/runtime/bridge-status.log"]
+    }
+  ],
+  "suggested_recipe_delta": [],
+  "training_fields": {
+    "proof_mode": "mixed"
+  },
+  "meta": {
+    "producer": "worker",
+    "fallback_used": false,
+    "legacy_task": false,
+    "artifact_required": true,
+    "source_signals": [
+      "inherited-family-package",
+      "focused-tests"
+    ]
+  }
+}

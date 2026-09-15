@@ -1,0 +1,318 @@
+{
+  "$schema": "https://farmslot.io/schemas/recipe-v1.schema.json",
+  "title": "TAT-3561 Auto Close RoE sign toggle",
+  "description": "Proves the Auto Close TP/SL %RoE +/− badges: defaults (+ TP / − SL), toggle, sign-aware empty placeholders, signed RoE recomputing the trigger price, preset sign snap, and existing side-of-current validation still blocking an invalid opposite-sign order on a new long.",
+  "paramsSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "market": {
+        "type": "string",
+        "default": "ETH",
+        "description": "Perps market to open the Auto Close sheet from."
+      },
+      "timeout_ms": {
+        "type": "integer",
+        "minimum": 1000,
+        "default": 45000
+      }
+    }
+  },
+  "proofTargets": [
+    {
+      "id": "ac-tp1",
+      "claim": "TP RoE badge defaults to +"
+    },
+    {
+      "id": "ac-sl1",
+      "claim": "SL RoE badge defaults to -"
+    },
+    {
+      "id": "ac-tp2",
+      "claim": "Tapping the TP badge flips + to - and back"
+    },
+    {
+      "id": "ac-sl2",
+      "claim": "Tapping the SL badge flips - to +"
+    },
+    {
+      "id": "ac-tp3",
+      "claim": "TP empty placeholder reads % Loss when the badge is - and % Profit when +"
+    },
+    {
+      "id": "ac-sl3",
+      "claim": "SL empty placeholder reads % Gain when the badge is +"
+    },
+    {
+      "id": "ac-tp5",
+      "claim": "TP +25% preset fills a positive RoE and a trigger price; toggling to - keeps the magnitude and recomputes the trigger"
+    },
+    {
+      "id": "ac-sl5",
+      "claim": "SL -5% preset fills a negative RoE; toggling to + keeps the magnitude and recomputes the trigger"
+    },
+    {
+      "id": "ac-tp7",
+      "claim": "A negative TP RoE on a new long is still blocked by existing take-profit side-of-current validation"
+    },
+    {
+      "id": "ac-sl7",
+      "claim": "A positive SL RoE on a new long is still blocked by existing stop-loss side-of-current validation"
+    },
+    {
+      "id": "ac-tp8",
+      "claim": "+ badge uses success color and - badge uses error color on TP"
+    },
+    {
+      "id": "ac-sl8",
+      "claim": "+ badge uses success color and - badge uses error color on SL"
+    }
+  ],
+  "workflow": {
+    "entry": "start-state",
+    "nodes": {
+      "start-state": {
+        "action": "metamask.perps.start_state",
+        "profile": "clean_market_testnet",
+        "market": "{{params.market}}",
+        "network": "testnet",
+        "page": "market_details",
+        "market_mode": "lite",
+        "unlock_timeout_ms": 60000,
+        "intent": "Unlock the fixture wallet and open the requested Perps market on testnet in Lite mode",
+        "next": "ensure-lite"
+      },
+      "ensure-lite": {
+        "action": "metamask.perps.ensure_mode",
+        "mode": "lite",
+        "timeout_ms": "{{params.timeout_ms}}",
+        "intent": "Force Lite so the Long control opens the order ticket with Auto close",
+        "next": "wait-long"
+      },
+      "wait-long": {
+        "action": "ui.wait_for",
+        "test_id": "perps-market-details-long-button",
+        "expected": "visible",
+        "timeout_ms": "{{params.timeout_ms}}",
+        "intent": "Confirm the Lite Long control is visible",
+        "next": "press-long"
+      },
+      "press-long": {
+        "action": "ui.press",
+        "test_id": "perps-market-details-long-button",
+        "intent": "Open a new long order ticket",
+        "next": "wait-autoclose-row"
+      },
+      "wait-autoclose-row": {
+        "action": "ui.wait_for",
+        "test_id": "perps-order-view-stop-loss-button",
+        "expected": "visible",
+        "timeout_ms": "{{params.timeout_ms}}",
+        "intent": "Confirm the Auto close row is visible on the order ticket",
+        "next": "press-autoclose-row"
+      },
+      "press-autoclose-row": {
+        "action": "ui.press",
+        "test_id": "perps-order-view-stop-loss-button",
+        "intent": "Open the Auto Close TP/SL sheet",
+        "next": "wait-sheet"
+      },
+      "wait-sheet": {
+        "action": "ui.wait_for",
+        "test_id": "perps-tpsl-bottomsheet",
+        "expected": "visible",
+        "timeout_ms": "{{params.timeout_ms}}",
+        "intent": "Confirm Auto Close is on screen",
+        "next": "wait-tp-percent"
+      },
+      "wait-tp-percent": {
+        "action": "ui.wait_for",
+        "test_id": "perps-tpsl-tp-percentage-input",
+        "expected": "visible",
+        "timeout_ms": "{{params.timeout_ms}}",
+        "intent": "Confirm the TP %RoE field is visible before asserting badges",
+        "next": "wait-tp-badge"
+      },
+      "wait-tp-badge": {
+        "action": "ui.wait_for",
+        "test_id": "perps-tpsl-tp-roe-sign-badge",
+        "expected": "visible",
+        "timeout_ms": "{{params.timeout_ms}}",
+        "intent": "AC-TP1: TP RoE sign badge is visible at default +",
+        "proves": ["ac-tp1"],
+        "next": "wait-sl-badge"
+      },
+      "wait-sl-badge": {
+        "action": "ui.wait_for",
+        "test_id": "perps-tpsl-sl-roe-sign-badge",
+        "expected": "visible",
+        "timeout_ms": "{{params.timeout_ms}}",
+        "intent": "AC-SL1: SL RoE sign badge is visible at default -",
+        "proves": ["ac-sl1"],
+        "next": "capture-defaults"
+      },
+      "capture-defaults": {
+        "action": "ui.screenshot",
+        "path": "screenshots/after-ac-defaults.png",
+        "label": "AC-TP1/SL1/TP8/SL8: default + TP and - SL badges with sign colors",
+        "intent": "Show the empty Auto Close sheet with default + TP and - SL badges",
+        "proves": ["ac-tp1", "ac-sl1", "ac-tp8", "ac-sl8"],
+        "next": "toggle-tp-minus"
+      },
+      "toggle-tp-minus": {
+        "action": "ui.press",
+        "test_id": "perps-tpsl-tp-roe-sign-badge",
+        "intent": "AC-TP2: tap the TP + badge to flip it to -",
+        "proves": ["ac-tp2"],
+        "next": "wait-tp-loss-placeholder"
+      },
+      "wait-tp-loss-placeholder": {
+        "action": "ui.wait_for",
+        "text": "% Loss",
+        "expected": "visible",
+        "timeout_ms": 10000,
+        "intent": "AC-TP3: TP empty state reads % Loss after flipping to -",
+        "proves": ["ac-tp3"],
+        "next": "capture-tp-minus-empty"
+      },
+      "capture-tp-minus-empty": {
+        "action": "ui.screenshot",
+        "path": "screenshots/after-ac-tp-minus-empty.png",
+        "label": "AC-TP2/TP3/TP8: TP badge is - with % Loss placeholder and error color",
+        "intent": "Show TP badge as - with the % Loss empty placeholder",
+        "proves": ["ac-tp2", "ac-tp3", "ac-tp8"],
+        "next": "toggle-tp-plus"
+      },
+      "toggle-tp-plus": {
+        "action": "ui.press",
+        "test_id": "perps-tpsl-tp-roe-sign-badge",
+        "intent": "AC-TP2: tap the TP - badge to flip it back to +",
+        "proves": ["ac-tp2"],
+        "next": "wait-tp-profit-placeholder"
+      },
+      "wait-tp-profit-placeholder": {
+        "action": "ui.wait_for",
+        "text": "% Profit",
+        "expected": "visible",
+        "timeout_ms": 10000,
+        "intent": "AC-TP3: TP empty state reads % Profit after flipping back to +",
+        "proves": ["ac-tp3"],
+        "next": "press-tp-preset-25"
+      },
+      "press-tp-preset-25": {
+        "action": "ui.press",
+        "test_id": "perps-tpsl-take-profit-percentage-button-25",
+        "intent": "AC-TP5: fill TP RoE via the +25% preset",
+        "proves": ["ac-tp5"],
+        "next": "wait-tp-price-after-preset"
+      },
+      "wait-tp-price-after-preset": {
+        "action": "ui.wait_for",
+        "test_id": "perps-tpsl-tp-input",
+        "expected": "visible",
+        "timeout_ms": 10000,
+        "intent": "Confirm the TP trigger price field is still visible after the preset",
+        "next": "capture-tp-plus-filled"
+      },
+      "capture-tp-plus-filled": {
+        "action": "ui.screenshot",
+        "path": "screenshots/after-ac-tp-plus-filled.png",
+        "label": "AC-TP5: TP +25% filled with a trigger price above current and + badge",
+        "intent": "Show TP +25% RoE filled with a trigger price above market",
+        "proves": ["ac-tp5", "ac-tp8"],
+        "next": "toggle-tp-minus-filled"
+      },
+      "toggle-tp-minus-filled": {
+        "action": "ui.press",
+        "test_id": "perps-tpsl-tp-roe-sign-badge",
+        "intent": "AC-TP5: flip filled TP from + to - so the trigger recomputes for a negative return",
+        "proves": ["ac-tp5"],
+        "next": "wait-tp-error"
+      },
+      "wait-tp-error": {
+        "action": "ui.wait_for",
+        "test_id": "perps-tpsl-tp-error",
+        "expected": "visible",
+        "timeout_ms": 10000,
+        "intent": "AC-TP7: negative TP on a new long still fails side-of-current validation",
+        "proves": ["ac-tp7"],
+        "next": "capture-tp-minus-filled"
+      },
+      "capture-tp-minus-filled": {
+        "action": "ui.screenshot",
+        "path": "screenshots/after-ac-tp-minus-filled.png",
+        "label": "AC-TP5/TP7: TP -25% recomputed trigger with validation error on a new long",
+        "intent": "Show a negative TP RoE on a new long with the existing side-of-current error",
+        "proves": ["ac-tp5", "ac-tp7", "ac-tp8"],
+        "next": "toggle-sl-plus-empty"
+      },
+      "toggle-sl-plus-empty": {
+        "action": "ui.press",
+        "test_id": "perps-tpsl-sl-roe-sign-badge",
+        "intent": "AC-SL2: tap the default SL - badge to flip it to +",
+        "proves": ["ac-sl2"],
+        "next": "wait-sl-gain-placeholder"
+      },
+      "wait-sl-gain-placeholder": {
+        "action": "ui.wait_for",
+        "text": "% Gain",
+        "expected": "visible",
+        "timeout_ms": 10000,
+        "intent": "AC-SL3: SL empty state reads % Gain after flipping to +",
+        "proves": ["ac-sl3"],
+        "next": "capture-sl-plus-empty"
+      },
+      "capture-sl-plus-empty": {
+        "action": "ui.screenshot",
+        "path": "screenshots/after-ac-sl-plus-empty.png",
+        "label": "AC-SL2/SL3/SL8: SL badge is + with % Gain placeholder and success color",
+        "intent": "Show SL badge as + with the % Gain empty placeholder",
+        "proves": ["ac-sl2", "ac-sl3", "ac-sl8"],
+        "next": "press-sl-preset-5"
+      },
+      "press-sl-preset-5": {
+        "action": "ui.press",
+        "test_id": "perps-tpsl-stop-loss-percentage-button--5",
+        "intent": "AC-SL5: fill SL RoE via the -5% preset (snaps the badge back to -)",
+        "proves": ["ac-sl5"],
+        "next": "capture-sl-minus-filled"
+      },
+      "capture-sl-minus-filled": {
+        "action": "ui.screenshot",
+        "path": "screenshots/after-ac-sl-minus-filled.png",
+        "label": "AC-SL5: SL -5% filled with a trigger price below current and - badge",
+        "intent": "Show SL -5% RoE filled with a trigger price below market",
+        "proves": ["ac-sl5", "ac-sl8"],
+        "next": "toggle-sl-plus-filled"
+      },
+      "toggle-sl-plus-filled": {
+        "action": "ui.press",
+        "test_id": "perps-tpsl-sl-roe-sign-badge",
+        "intent": "AC-SL5: flip filled SL from - to + so the trigger recomputes for a positive return",
+        "proves": ["ac-sl5"],
+        "next": "wait-sl-error"
+      },
+      "wait-sl-error": {
+        "action": "ui.wait_for",
+        "test_id": "perps-tpsl-sl-error",
+        "expected": "visible",
+        "timeout_ms": 10000,
+        "intent": "AC-SL7: positive SL on a new long still fails side-of-current validation",
+        "proves": ["ac-sl7"],
+        "next": "capture-sl-plus-filled"
+      },
+      "capture-sl-plus-filled": {
+        "action": "ui.screenshot",
+        "path": "screenshots/after-ac-sl-plus-filled.png",
+        "label": "AC-SL5/SL7: SL +5% recomputed trigger with validation error on a new long",
+        "intent": "Show a positive SL RoE on a new long with the existing side-of-current error",
+        "proves": ["ac-sl5", "ac-sl7", "ac-sl8"],
+        "next": "done"
+      },
+      "done": {
+        "action": "end",
+        "status": "pass"
+      }
+    }
+  }
+}

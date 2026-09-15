@@ -1,0 +1,9 @@
+[
+  {
+    "nodeId": "start-state",
+    "action": "metamask.perps.start_state",
+    "ok": false,
+    "cause_class": "environment",
+    "error": "Preflight failed: the React Native target answered without __AGENTIC__; recipe execution was skipped."
+  }
+]

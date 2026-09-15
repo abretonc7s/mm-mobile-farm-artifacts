@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "preferred_mode": "screenshots",
+  "summary": "Auto Close %RoE +/− badges: defaults, toggle, placeholders, signed trigger math, and existing side-of-current errors on a new long.",
+  "before_after_pairs": [
+    {
+      "label": "Empty Auto Close %RoE fields gain tappable +/− badges (TP defaults to +, SL to −)",
+      "covers": ["ac-tp1", "ac-sl1", "ac-tp8", "ac-sl8"],
+      "before": "before-autoclose-baseline.png",
+      "after": "after-ac-defaults.png",
+      "note": "Before: no sign control. After: green + on TP, red − on SL."
+    }
+  ],
+  "standalone": [
+    {
+      "label": "TP badge flipped to − with % Loss empty placeholder",
+      "covers": ["ac-tp2", "ac-tp3", "ac-tp8"],
+      "file": "after-ac-tp-minus-empty.png"
+    },
+    {
+      "label": "TP +25% fills a trigger above current with expected profit",
+      "covers": ["ac-tp5"],
+      "file": "after-ac-tp-plus-filled.png"
+    },
+    {
+      "label": "TP −25% recomputes the trigger below current and keeps the existing side-of-current error",
+      "covers": ["ac-tp5", "ac-tp7"],
+      "file": "after-ac-tp-minus-filled.png"
+    },
+    {
+      "label": "SL badge flipped to + with % Gain empty placeholder",
+      "covers": ["ac-sl2", "ac-sl3", "ac-sl8"],
+      "file": "after-ac-sl-plus-empty.png"
+    },
+    {
+      "label": "SL +5% recomputes the trigger above current and keeps the existing side-of-current error",
+      "covers": ["ac-sl5", "ac-sl7"],
+      "file": "after-ac-sl-plus-filled.png"
+    }
+  ],
+  "omit": ["after-ac-sl-minus-filled.png"]
+}

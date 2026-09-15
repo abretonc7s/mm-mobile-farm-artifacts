@@ -1,0 +1,5 @@
+- `PERPS_EVENT_VALUE.ACTION.TP` / `.SL` already exist. Passing `'tp'` / `'sl'` is a perps anti-pattern even when the string matches. Already fixed in `ac6fc667c20`.
+- Self-review `review-feedback.md` may land as `review-feedback.rev-grok.md` or under `review-loop-1/`. Same content.
+- Recipe after a JS-only analytics constant swap still needs `app.lifecycle restart` because the slot treats source as stale (`MOBILE_SOURCE_NOT_LOADED`).
+- `mm-harness checklist mark` ignores `--checklist`/`--signal` when `checklist-target.json` points at a completed grok signal. Point the target back at `SELF-REVIEW-FIX.md` before marking remaining fix steps.
+- Skip the local PR-description rewrite for a two-line constant swap. No behavior or test coverage change.
