@@ -1,12 +1,43 @@
 {
   "version": 1,
   "preferred_mode": "screenshots",
-  "summary": "No new visual evidence this PR-complete round. Recipe ran on rebased HEAD 2204c40070c (recipe-run/) and failed at require-cross before any display node: controller returned positions [] for dev1 on Hyperliquid testnet (identity verified). First attempt (recipe-run-cdp-timeout/) hit CDP_TIMEOUT in the environment node right after unlock and was retried once. Earlier screenshots and video under recipe-runs/inherited-bed00bf7-24a8-4c5f-bdc3-7cbc1764bcb0 are historical, not current proof.",
+  "summary": "Live Hyperliquid testnet Cross ETH position (0.0051 @ 2394.1, leverage.type=cross, venue liquidationPx null) on dev1. Recipe passed 41/41 against the review-fix commit b11117780de, proving the renamed position-scoped label, the Cross badge, the explicit no-liquidation state and the shared-collateral explanation in both Pro and Lite. No before screenshot is claimed.",
   "before_after_pairs": [],
-  "standalone": [],
+  "standalone": [
+    {
+      "label": "Pro Cross position: 'Position margin used' with Cross badge and 'No liquidation price'",
+      "covers": ["AC7-current", "AC8b", "AC11"],
+      "file": "recipe-run/screenshots/cross-summary-pro.png"
+    },
+    {
+      "label": "Pro liquidation value and Cross information affordance",
+      "covers": ["AC8b"],
+      "file": "recipe-run/screenshots/cross-position-pro.png"
+    },
+    {
+      "label": "Pro shared-collateral explanation: liquidation can affect the entire cross balance",
+      "covers": ["AC8b", "AC10"],
+      "file": "recipe-run/screenshots/cross-explanation-pro.png"
+    },
+    {
+      "label": "Lite Cross position summary after badge and label assertions",
+      "covers": ["AC7-current", "AC11"],
+      "file": "recipe-run/screenshots/cross-summary-lite.png"
+    },
+    {
+      "label": "Lite liquidation value with no margin edit control",
+      "covers": ["AC8b", "AC11"],
+      "file": "recipe-run/screenshots/cross-position-lite.png"
+    },
+    {
+      "label": "Lite shared-collateral explanation",
+      "covers": ["AC8b", "AC10"],
+      "file": "recipe-run/screenshots/cross-explanation-lite.png"
+    }
+  ],
   "omit": [],
   "videos": {
     "preferred": false,
-    "note": "No recording this round; the run stopped at the fixture precondition."
+    "note": "No video captured this round; 41/41 node trace and six screenshots are in artifacts/recipe-run."
   }
 }

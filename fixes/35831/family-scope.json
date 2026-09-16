@@ -2,5 +2,5 @@
   "originalFamilyScopeSummary": "Enable cross margin mode for Pro traders to share collateral across positions and reduce liquidation risk",
   "currentTriggerSummary": "pr-complete: feat(perps): mobile | Pro mode | Cross margin",
   "scopeVerdict": "partial-symptom-only",
-  "notes": "This PR-complete round addressed PR state only: rebased onto origin/main f9fff6ad167, no inline or CHANGES_REQUESTED review comments, one non-blocking perf-bot result triaged out of scope. PR #35831 itself delivers the display slice of the epic (Cross badge, shared-collateral liquidation explanation, non-editable Margin used, behind perpsCrossMarginEnabled). Epic ACs for selecting Cross, first-time confirmation, per-market default and blocking mode changes with open positions are outside this PR's diff."
+  "notes": "This PR is the existing-Cross-position display slice of TAT-3519 behind perpsCrossMarginEnabled. This run addressed four CHANGES_REQUESTED review comments (duplicate i18n keys, ambiguous margin label, double cast, privacy test coverage). Cross selection, confirmation sheet, per-market defaults and mode-change blocking (epic AC1-AC6) remain out of this PR."
 }

@@ -1,166 +1,414 @@
 {
   "schemaVersion": 1,
   "id": "run-network",
-  "status": "unavailable",
-  "startedAtEpochMs": 1789400602263,
-  "endedAtEpochMs": 1789400637128,
+  "status": "partial",
+  "startedAtEpochMs": 1789517015815,
+  "endedAtEpochMs": 1789517078714,
   "maxDurationMs": 3600000,
   "reconnects": 0,
   "droppedRequests": 0,
-  "unavailableReasons": [
-    "CDP command timed out: Network.enable"
-  ],
+  "unavailableReasons": [],
   "coverageGapReasons": [],
-  "uninspectableBodyRequests": 4,
+  "uninspectableBodyRequests": 41,
   "projectedBodyFields": [
     "type"
   ],
-  "totalRequests": 22,
+  "totalRequests": 57,
   "requestsByMethod": {
-    "GET": 3,
+    "GET": 40,
     "HEAD": 1,
-    "POST": 18
+    "POST": 16
   },
   "requestsByHost": {
-    "127.0.0.1": 2,
+    "api.hyperliquid-testnet.xyz": 11,
+    "app.hyperliquid.xyz": 1,
     "clients3.google.com": 1,
-    "fn.segmentapis.com": 2,
-    "mainnet.infura.io": 6,
-    "monad-mainnet.infura.io": 8,
-    "money.api.cx.metamask.io": 3
+    "compliance.api.cx.metamask.io": 1,
+    "digest.dev-api.cx.metamask.io": 1,
+    "mainnet.infura.io": 4,
+    "money.api.cx.metamask.io": 3,
+    "raw.githubusercontent.com": 28,
+    "rewards.uat-api.cx.metamask.io": 1,
+    "terminal.dev-api.cx.metamask.io": 6
   },
   "requestsByType": {
-    "unknown": 22
+    "allMids": 1,
+    "candleSnapshot": 9,
+    "meta": 1,
+    "unknown": 46
   },
   "requests": [
     {
-      "elapsedMs": 13482,
-      "host": "fn.segmentapis.com",
-      "path": "/",
-      "method": "POST"
-    },
-    {
-      "elapsedMs": 13482,
-      "host": "mainnet.infura.io",
-      "path": "/v3/144385cceddc41f88d960aca519f794e",
-      "method": "POST"
-    },
-    {
-      "elapsedMs": 13482,
-      "host": "mainnet.infura.io",
-      "path": "/v3/144385cceddc41f88d960aca519f794e",
-      "method": "POST"
-    },
-    {
-      "elapsedMs": 13483,
-      "host": "monad-mainnet.infura.io",
-      "path": "/v3/144385cceddc41f88d960aca519f794e",
-      "method": "POST"
-    },
-    {
-      "elapsedMs": 13483,
-      "host": "monad-mainnet.infura.io",
-      "path": "/v3/144385cceddc41f88d960aca519f794e",
-      "method": "POST"
-    },
-    {
-      "elapsedMs": 13483,
-      "host": "monad-mainnet.infura.io",
-      "path": "/v3/144385cceddc41f88d960aca519f794e",
-      "method": "POST"
-    },
-    {
-      "elapsedMs": 13483,
-      "host": "monad-mainnet.infura.io",
-      "path": "/v3/144385cceddc41f88d960aca519f794e",
-      "method": "POST"
-    },
-    {
-      "elapsedMs": 13483,
+      "elapsedMs": 241,
       "host": "money.api.cx.metamask.io",
       "path": "/v1/positions/<redacted>",
       "method": "GET"
     },
     {
-      "elapsedMs": 13483,
+      "elapsedMs": 8724,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "candleSnapshot"
+      }
+    },
+    {
+      "elapsedMs": 8724,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "candleSnapshot"
+      }
+    },
+    {
+      "elapsedMs": 8725,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "candleSnapshot"
+      }
+    },
+    {
+      "elapsedMs": 8725,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "candleSnapshot"
+      }
+    },
+    {
+      "elapsedMs": 8725,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "candleSnapshot"
+      }
+    },
+    {
+      "elapsedMs": 8725,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "candleSnapshot"
+      }
+    },
+    {
+      "elapsedMs": 8725,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "candleSnapshot"
+      }
+    },
+    {
+      "elapsedMs": 8725,
+      "host": "terminal.dev-api.cx.metamask.io",
+      "path": "/v2/perpetuals",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 8725,
+      "host": "digest.dev-api.cx.metamask.io",
+      "path": "/api/v1/asset-summary",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 8725,
+      "host": "compliance.api.cx.metamask.io",
+      "path": "/v1/wallet/batch",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 8725,
+      "host": "terminal.dev-api.cx.metamask.io",
+      "path": "/v1/perpetuals",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 8750,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/BTC.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 8750,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/ETH.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 8751,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/SOL.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 8751,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/DOGE.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 8751,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/ARB.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 8751,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/BNB.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 8796,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/ADA.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 8796,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/AVAX.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 8796,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/SUI.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 8796,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/HYPE.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 8835,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/VIRTUAL.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 8995,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/ONDO.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 9017,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/XLM.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 9068,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "allMids"
+      }
+    },
+    {
+      "elapsedMs": 9113,
+      "host": "app.hyperliquid.xyz",
+      "path": "/coins/VIRTUAL.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 9438,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/INJ.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 9717,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "candleSnapshot"
+      }
+    },
+    {
+      "elapsedMs": 9717,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "candleSnapshot"
+      }
+    },
+    {
+      "elapsedMs": 12933,
+      "host": "terminal.dev-api.cx.metamask.io",
+      "path": "/v1/perpetuals",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 12934,
+      "host": "terminal.dev-api.cx.metamask.io",
+      "path": "/v1/perpetuals",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 12934,
+      "host": "terminal.dev-api.cx.metamask.io",
+      "path": "/v1/perpetuals",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 12934,
+      "host": "terminal.dev-api.cx.metamask.io",
+      "path": "/v1/perpetuals",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 12935,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "meta"
+      }
+    },
+    {
+      "elapsedMs": 12935,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/ETH.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 13981,
+      "host": "rewards.uat-api.cx.metamask.io",
+      "path": "/vip/fees",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 18624,
       "host": "mainnet.infura.io",
       "path": "/v3/144385cceddc41f88d960aca519f794e",
       "method": "POST"
     },
     {
-      "elapsedMs": 13483,
+      "elapsedMs": 18901,
       "host": "mainnet.infura.io",
       "path": "/v3/144385cceddc41f88d960aca519f794e",
       "method": "POST"
     },
     {
-      "elapsedMs": 13484,
+      "elapsedMs": 31107,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 38455,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/ETH.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 38455,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/BTC.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 38455,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/ARB.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 38455,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/SOL.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 38456,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/DOGE.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 38456,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/BNB.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 38505,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/AVAX.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 38506,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/ADA.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 38506,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/SUI.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 38506,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/HYPE.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 38506,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/VIRTUAL.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 38506,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/INJ.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 38547,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/ONDO.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 49194,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 49474,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 54810,
       "host": "clients3.google.com",
       "path": "/generate_204",
       "method": "HEAD"
     },
     {
-      "elapsedMs": 13484,
-      "host": "monad-mainnet.infura.io",
-      "path": "/v3/144385cceddc41f88d960aca519f794e",
-      "method": "POST"
-    },
-    {
-      "elapsedMs": 13484,
-      "host": "monad-mainnet.infura.io",
-      "path": "/v3/144385cceddc41f88d960aca519f794e",
-      "method": "POST"
-    },
-    {
-      "elapsedMs": 13484,
-      "host": "monad-mainnet.infura.io",
-      "path": "/v3/144385cceddc41f88d960aca519f794e",
-      "method": "POST"
-    },
-    {
-      "elapsedMs": 13485,
-      "host": "monad-mainnet.infura.io",
-      "path": "/v3/144385cceddc41f88d960aca519f794e",
-      "method": "POST"
-    },
-    {
-      "elapsedMs": 13486,
-      "host": "money.api.cx.metamask.io",
-      "path": "/v1/positions/<redacted>",
-      "method": "GET"
-    },
-    {
-      "elapsedMs": 18227,
-      "host": "127.0.0.1",
-      "path": "/__sentry/context",
-      "method": "POST"
-    },
-    {
-      "elapsedMs": 18229,
-      "host": "127.0.0.1",
-      "path": "/__sentry/context",
-      "method": "POST"
-    },
-    {
-      "elapsedMs": 21522,
-      "host": "mainnet.infura.io",
-      "path": "/v3/144385cceddc41f88d960aca519f794e",
-      "method": "POST"
-    },
-    {
-      "elapsedMs": 21523,
-      "host": "mainnet.infura.io",
-      "path": "/v3/144385cceddc41f88d960aca519f794e",
-      "method": "POST"
-    },
-    {
-      "elapsedMs": 28605,
-      "host": "fn.segmentapis.com",
-      "path": "/",
-      "method": "POST"
-    },
-    {
-      "elapsedMs": 29588,
+      "elapsedMs": 62191,
       "host": "money.api.cx.metamask.io",
       "path": "/v1/positions/<redacted>",
       "method": "GET"
@@ -169,75 +417,483 @@
   "nodeEvents": [
     {
       "action": "metamask.wallet.read_state",
-      "elapsedMs": 18535,
+      "elapsedMs": 1885,
       "nodeId": "wallet",
       "status": "running"
     },
     {
       "action": "metamask.wallet.read_state",
-      "elapsedMs": 25005,
+      "elapsedMs": 2115,
       "nodeId": "wallet",
       "status": "passed"
     },
     {
       "action": "assert_output",
-      "elapsedMs": 25346,
+      "elapsedMs": 2254,
       "nodeId": "account",
       "status": "running"
     },
     {
       "action": "assert_output",
-      "elapsedMs": 25346,
+      "elapsedMs": 2254,
       "nodeId": "account",
       "status": "passed"
     },
     {
       "action": "metamask.wallet.ensure_unlocked",
-      "elapsedMs": 25732,
+      "elapsedMs": 2425,
       "nodeId": "unlock",
       "status": "running"
     },
     {
       "action": "metamask.wallet.ensure_unlocked",
-      "elapsedMs": 29462,
+      "elapsedMs": 3685,
       "nodeId": "unlock",
       "status": "passed"
     },
     {
       "action": "command",
-      "elapsedMs": 29907,
+      "elapsedMs": 3812,
       "nodeId": "environment",
       "status": "running"
     },
     {
       "action": "command",
-      "elapsedMs": 31980,
+      "elapsedMs": 4806,
       "nodeId": "environment",
       "status": "passed"
     },
     {
       "action": "command",
-      "elapsedMs": 32145,
+      "elapsedMs": 4902,
       "nodeId": "positions",
       "status": "running"
     },
     {
       "action": "command",
-      "elapsedMs": 33667,
+      "elapsedMs": 5883,
       "nodeId": "positions",
       "status": "passed"
     },
     {
       "action": "assert_json",
-      "elapsedMs": 33786,
+      "elapsedMs": 6075,
       "nodeId": "require-cross",
       "status": "running"
     },
     {
       "action": "assert_json",
-      "elapsedMs": 33787,
+      "elapsedMs": 6079,
       "nodeId": "require-cross",
-      "status": "failed"
+      "status": "passed"
+    },
+    {
+      "action": "assert_json",
+      "elapsedMs": 6267,
+      "nodeId": "require-cross-mode",
+      "status": "running"
+    },
+    {
+      "action": "assert_json",
+      "elapsedMs": 6268,
+      "nodeId": "require-cross-mode",
+      "status": "passed"
+    },
+    {
+      "action": "assert_json",
+      "elapsedMs": 6394,
+      "nodeId": "require-cross-market",
+      "status": "running"
+    },
+    {
+      "action": "assert_json",
+      "elapsedMs": 6394,
+      "nodeId": "require-cross-market",
+      "status": "passed"
+    },
+    {
+      "action": "switch",
+      "elapsedMs": 6540,
+      "nodeId": "price-kind",
+      "status": "running"
+    },
+    {
+      "action": "switch",
+      "elapsedMs": 6541,
+      "nodeId": "price-kind",
+      "status": "passed"
+    },
+    {
+      "action": "assert_json",
+      "elapsedMs": 6644,
+      "nodeId": "require-null-price",
+      "status": "running"
+    },
+    {
+      "action": "assert_json",
+      "elapsedMs": 6645,
+      "nodeId": "require-null-price",
+      "status": "passed"
+    },
+    {
+      "action": "assert_json",
+      "elapsedMs": 6727,
+      "nodeId": "require-null-falsy",
+      "status": "running"
+    },
+    {
+      "action": "assert_json",
+      "elapsedMs": 6727,
+      "nodeId": "require-null-falsy",
+      "status": "passed"
+    },
+    {
+      "action": "assert_json",
+      "elapsedMs": 6855,
+      "nodeId": "require-null-not-string",
+      "status": "running"
+    },
+    {
+      "action": "assert_json",
+      "elapsedMs": 6856,
+      "nodeId": "require-null-not-string",
+      "status": "passed"
+    },
+    {
+      "action": "assert_json",
+      "elapsedMs": 6973,
+      "nodeId": "require-null-not-zero",
+      "status": "running"
+    },
+    {
+      "action": "assert_json",
+      "elapsedMs": 6973,
+      "nodeId": "require-null-not-zero",
+      "status": "passed"
+    },
+    {
+      "action": "assert_json",
+      "elapsedMs": 7088,
+      "nodeId": "require-null-not-false",
+      "status": "running"
+    },
+    {
+      "action": "assert_json",
+      "elapsedMs": 7088,
+      "nodeId": "require-null-not-false",
+      "status": "passed"
+    },
+    {
+      "action": "ui.navigate",
+      "elapsedMs": 7214,
+      "nodeId": "pro-open",
+      "status": "running"
+    },
+    {
+      "action": "ui.navigate",
+      "elapsedMs": 15718,
+      "nodeId": "pro-open",
+      "status": "passed"
+    },
+    {
+      "action": "ui.scroll",
+      "elapsedMs": 16621,
+      "nodeId": "pro-scroll",
+      "status": "running"
+    },
+    {
+      "action": "ui.scroll",
+      "elapsedMs": 17512,
+      "nodeId": "pro-scroll",
+      "status": "passed"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 19480,
+      "nodeId": "pro-tag",
+      "status": "running"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 19809,
+      "nodeId": "pro-tag",
+      "status": "passed"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 21657,
+      "nodeId": "pro-margin",
+      "status": "running"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 21970,
+      "nodeId": "pro-margin",
+      "status": "passed"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 23095,
+      "nodeId": "pro-no-edit",
+      "status": "running"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 23355,
+      "nodeId": "pro-no-edit",
+      "status": "passed"
+    },
+    {
+      "action": "ui.screenshot",
+      "elapsedMs": 24296,
+      "nodeId": "pro-summary-capture",
+      "status": "running"
+    },
+    {
+      "action": "ui.screenshot",
+      "elapsedMs": 24563,
+      "nodeId": "pro-summary-capture",
+      "status": "passed"
+    },
+    {
+      "action": "ui.scroll",
+      "elapsedMs": 26287,
+      "nodeId": "pro-scroll-price",
+      "status": "running"
+    },
+    {
+      "action": "ui.scroll",
+      "elapsedMs": 26560,
+      "nodeId": "pro-scroll-price",
+      "status": "passed"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 27636,
+      "nodeId": "pro-price",
+      "status": "running"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 27967,
+      "nodeId": "pro-price",
+      "status": "passed"
+    },
+    {
+      "action": "ui.screenshot",
+      "elapsedMs": 28838,
+      "nodeId": "pro-position-capture",
+      "status": "running"
+    },
+    {
+      "action": "ui.screenshot",
+      "elapsedMs": 29092,
+      "nodeId": "pro-position-capture",
+      "status": "passed"
+    },
+    {
+      "action": "ui.press",
+      "elapsedMs": 30774,
+      "nodeId": "pro-info",
+      "status": "running"
+    },
+    {
+      "action": "ui.press",
+      "elapsedMs": 31051,
+      "nodeId": "pro-info",
+      "status": "passed"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 31622,
+      "nodeId": "pro-explanation",
+      "status": "running"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 32124,
+      "nodeId": "pro-explanation",
+      "status": "passed"
+    },
+    {
+      "action": "ui.screenshot",
+      "elapsedMs": 34265,
+      "nodeId": "pro-capture",
+      "status": "running"
+    },
+    {
+      "action": "ui.screenshot",
+      "elapsedMs": 34718,
+      "nodeId": "pro-capture",
+      "status": "passed"
+    },
+    {
+      "action": "ui.press",
+      "elapsedMs": 35173,
+      "nodeId": "pro-dismiss",
+      "status": "running"
+    },
+    {
+      "action": "ui.press",
+      "elapsedMs": 35435,
+      "nodeId": "pro-dismiss",
+      "status": "passed"
+    },
+    {
+      "action": "ui.navigate",
+      "elapsedMs": 36165,
+      "nodeId": "lite-open",
+      "status": "running"
+    },
+    {
+      "action": "ui.navigate",
+      "elapsedMs": 40875,
+      "nodeId": "lite-open",
+      "status": "passed"
+    },
+    {
+      "action": "ui.scroll",
+      "elapsedMs": 41854,
+      "nodeId": "lite-scroll",
+      "status": "running"
+    },
+    {
+      "action": "ui.scroll",
+      "elapsedMs": 42125,
+      "nodeId": "lite-scroll",
+      "status": "passed"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 43363,
+      "nodeId": "lite-tag",
+      "status": "running"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 43706,
+      "nodeId": "lite-tag",
+      "status": "passed"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 46036,
+      "nodeId": "lite-margin",
+      "status": "running"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 46317,
+      "nodeId": "lite-margin",
+      "status": "passed"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 47695,
+      "nodeId": "lite-no-edit",
+      "status": "running"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 47950,
+      "nodeId": "lite-no-edit",
+      "status": "passed"
+    },
+    {
+      "action": "ui.screenshot",
+      "elapsedMs": 49966,
+      "nodeId": "lite-summary-capture",
+      "status": "running"
+    },
+    {
+      "action": "ui.screenshot",
+      "elapsedMs": 50436,
+      "nodeId": "lite-summary-capture",
+      "status": "passed"
+    },
+    {
+      "action": "ui.scroll",
+      "elapsedMs": 51424,
+      "nodeId": "lite-scroll-price",
+      "status": "running"
+    },
+    {
+      "action": "ui.scroll",
+      "elapsedMs": 52383,
+      "nodeId": "lite-scroll-price",
+      "status": "passed"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 53386,
+      "nodeId": "lite-price",
+      "status": "running"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 53821,
+      "nodeId": "lite-price",
+      "status": "passed"
+    },
+    {
+      "action": "ui.screenshot",
+      "elapsedMs": 55304,
+      "nodeId": "lite-position-capture",
+      "status": "running"
+    },
+    {
+      "action": "ui.screenshot",
+      "elapsedMs": 55887,
+      "nodeId": "lite-position-capture",
+      "status": "passed"
+    },
+    {
+      "action": "ui.press",
+      "elapsedMs": 57089,
+      "nodeId": "lite-info",
+      "status": "running"
+    },
+    {
+      "action": "ui.press",
+      "elapsedMs": 57374,
+      "nodeId": "lite-info",
+      "status": "passed"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 58146,
+      "nodeId": "lite-explanation",
+      "status": "running"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 58581,
+      "nodeId": "lite-explanation",
+      "status": "passed"
+    },
+    {
+      "action": "ui.screenshot",
+      "elapsedMs": 59243,
+      "nodeId": "lite-capture",
+      "status": "running"
+    },
+    {
+      "action": "ui.screenshot",
+      "elapsedMs": 59772,
+      "nodeId": "lite-capture",
+      "status": "passed"
+    },
+    {
+      "action": "ui.press",
+      "elapsedMs": 60462,
+      "nodeId": "lite-dismiss",
+      "status": "running"
+    },
+    {
+      "action": "ui.press",
+      "elapsedMs": 60870,
+      "nodeId": "lite-dismiss",
+      "status": "passed"
     }
   ]
 }

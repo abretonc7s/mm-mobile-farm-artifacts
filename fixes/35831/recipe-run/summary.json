@@ -1,17 +1,17 @@
 {
-  "status": "fail",
-  "total": 6,
-  "passed": 5,
-  "failed": 1,
+  "status": "pass",
+  "total": 41,
+  "passed": 41,
+  "failed": 0,
   "cause_counts": {
-    "subject": 1,
+    "subject": 0,
     "harness": 0,
     "environment": 0,
     "unknown": 0
   },
-  "startedAt": "2026-09-14T15:43:40.543Z",
-  "endedAt": "2026-09-14T15:43:56.110Z",
-  "durationMs": 15567,
+  "startedAt": "2026-09-16T00:03:37.620Z",
+  "endedAt": "2026-09-16T00:04:37.679Z",
+  "durationMs": 60059,
   "harness": {
     "name": "@farmslot/recipe-harness",
     "version": "0.16.2",
@@ -19,7 +19,7 @@
   },
   "runner": {
     "source": "/Users/deeeed/dev/metamask/metamask-harness",
-    "git_ref": "e39c127281fcb4b7cadffddca17804cb11dbeb38",
+    "git_ref": "b0c7cca6c38fcbb80bbaa69491c159d2014e9cd9",
     "name": "@metamask/recipe-runner"
   },
   "recipeLibraries": {
@@ -41,9 +41,9 @@
     "status": "review",
     "nonBlocking": true,
     "counts": {
-      "total": 2,
-      "warning": 0,
-      "error": 2,
+      "total": 3,
+      "warning": 2,
+      "error": 1,
       "exception": 0
     },
     "diagnosticsPath": "diagnostics.json",

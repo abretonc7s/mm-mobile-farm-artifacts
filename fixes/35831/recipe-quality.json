@@ -1,12 +1,14 @@
 {
   "version": 1,
-  "verdict": "warn",
+  "verdict": "pass",
   "compact": {
-    "verdict": "WARN",
+    "verdict": "PASS",
     "reasons": [
-      "Recipe ran on rebased HEAD 2204c40070c and failed at require-cross: selected-account-live-positions.json shows identity dev1/hyperliquid/isTestnet true with positions [] (recipe-run/trace.json); no badge, liquidation, explanation or Margin used node executed, so runtime ACs are unproven this round.",
-      "First attempt failed with CDP_TIMEOUT in the environment node right after unlock (recipe-run-cdp-timeout/trace.json); one retry reached the real precondition; venue read agrees (venue-precondition.txt: zero positions, zero open orders).",
-      "Parent helper hardcoded mm-2/8062; staged slot copy changes only simulator and watcher port and the recipe calls only its read-only inspect operation. Display logic re-checked statically: Jest 278/278, scoped ESLint exit 0, LSP 0 type errors."
+      "Recipe ran green on the review-fix commit b11117780de: 41/41 nodes, 60s, six screenshots under artifacts/recipe-run.",
+      "Proof is a real Hyperliquid testnet Cross ETH position (0.0051 @ 2394.1, leverage.type=cross, venue liquidationPx literal null), asserted against both controller and fresh venue reads before any UI assertion.",
+      "The label renamed this round is proven visually: cross-summary-pro.png shows 'Position margin used' with the Cross badge and 'No liquidation price', distinct from the account summary's 'Margin used'.",
+      "Mutations cleaned up: fixture closed (60227080843), ETH leverage restored to the isolated 3x baseline, final state 0 positions / 0 orders.",
+      "Gaps stated rather than implied: numeric-liquidation fixture, Android, mixed-book grouping and account-wide refresh were not exercised this round."
     ],
     "better_version_guidance": []
   },

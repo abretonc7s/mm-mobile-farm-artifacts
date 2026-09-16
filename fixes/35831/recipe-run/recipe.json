@@ -1,7 +1,7 @@
 {
   "$schema": "https://farmslot.io/schemas/recipe-v1.schema.json",
   "title": "Existing cross-position display in Lite and Pro",
-  "description": "Requires exactly one real cross position on the selected account, so shared Pro selectors cannot match another market. Run separately for null and numeric liquidation fixtures. Asserts badges, venue liquidation display, explanation and non-editable Margin used in Lite and Pro. No trades are created. Mixed-book, compact-row and privacy behavior require the later component tests; the remaining epic stays open. The null branch requires an existing falsy JSON field, excluding empty string, zero and false, because this pinned runner cannot express literal null in an atomic assertion.",
+  "description": "Requires exactly one real cross position on the selected account, so shared Pro selectors cannot match another market. Run separately for null and numeric liquidation fixtures. Asserts badges, venue liquidation display, explanation and non-editable Position margin used in Lite and Pro. No trades are created. Mixed-book, compact-row and privacy behavior require the later component tests; the remaining epic stays open. The null branch requires an existing falsy JSON field, excluding empty string, zero and false, because this pinned runner cannot express literal null in an atomic assertion.",
   "paramsSchema": {
     "type": "object",
     "additionalProperties": false,
@@ -118,8 +118,8 @@
       },
       "pro-margin": {
         "action": "ui.wait_for",
-        "intent": "Require the cross collateral label",
-        "text": "Margin used",
+        "intent": "Require the position-scoped cross collateral label",
+        "text": "Position margin used",
         "text_match": "contains",
         "expected": "visible",
         "timeout_ms": 5000,
@@ -189,8 +189,8 @@
       },
       "lite-margin": {
         "action": "ui.wait_for",
-        "intent": "Require the cross collateral label",
-        "text": "Margin used",
+        "intent": "Require the position-scoped cross collateral label",
+        "text": "Position margin used",
         "text_match": "contains",
         "expected": "visible",
         "timeout_ms": 5000,

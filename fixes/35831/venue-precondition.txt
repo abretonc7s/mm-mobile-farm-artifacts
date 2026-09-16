@@ -1,5 +1,0 @@
-== clearinghouseState
-{"assetPositions": [], "accountValue": "0.0"}
-== frontendOpenOrders
-openOrders=0
-[{"coin": "USDC", "total": "629.306541", "hold": "0.0"}, {"coin": "TZERO", "total": "0.0", "hold": "0.0"}, {"coin": "USDEEE", "total": "0.0", "hold": "0.0"}, {"coin": "USDZZ", "total": "0.0", "hold": "0.0"}, {"coin": "NQ", "total": "0.0", "hold": "0.0"}, {"coin": "DENIM", "total": "0.0", "hold": "0.0"}, {"coin": "HORSE", "total": "0.0", "hold": "0.0"}, {"coin": "USDH", "total": "0.0", "hold": "0.0"}, {"coin": "TUSDC", "total": "0.0", "hold": "0.0"}, {"coin": "XAG", "total": "0.0", "hold": "0.0"}, {"coin": "TGUSD", "total": "0.0", "hold": "0.0"}, {"coin": "USDYP", "total": "0.0", "hold": "0.0"}, {"coin": "EZSUSD", "total": "0.0", "hold": "0.0"}, {"coin": "USDPR", "total": "0.0", "hold": "0.0"}]

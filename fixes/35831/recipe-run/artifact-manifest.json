@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "runStatus": "fail",
+  "runStatus": "pass",
   "provenance": {
     "runner": {
       "source": "/Users/deeeed/dev/metamask/metamask-harness",
-      "git_ref": "e39c127281fcb4b7cadffddca17804cb11dbeb38",
+      "git_ref": "b0c7cca6c38fcbb80bbaa69491c159d2014e9cd9",
       "name": "@metamask/recipe-runner"
     }
   },
@@ -20,6 +20,84 @@
       "type": "json",
       "label": "Resolved recipe dependency graph",
       "category": "system"
+    },
+    {
+      "path": "screenshots/cross-summary-pro.png",
+      "type": "screenshot",
+      "nodeId": "pro-summary-capture",
+      "label": "ui.screenshot screenshot",
+      "category": "evidence",
+      "mimeType": "image/png",
+      "metadata": {
+        "provider": "simctl",
+        "mode": "xcrun simctl io screenshot",
+        "selectedDevice": "mmdev-1"
+      }
+    },
+    {
+      "path": "screenshots/cross-position-pro.png",
+      "type": "screenshot",
+      "nodeId": "pro-position-capture",
+      "label": "ui.screenshot screenshot",
+      "category": "evidence",
+      "mimeType": "image/png",
+      "metadata": {
+        "provider": "simctl",
+        "mode": "xcrun simctl io screenshot",
+        "selectedDevice": "mmdev-1"
+      }
+    },
+    {
+      "path": "screenshots/cross-explanation-pro.png",
+      "type": "screenshot",
+      "nodeId": "pro-capture",
+      "label": "ui.screenshot screenshot",
+      "category": "evidence",
+      "mimeType": "image/png",
+      "metadata": {
+        "provider": "simctl",
+        "mode": "xcrun simctl io screenshot",
+        "selectedDevice": "mmdev-1"
+      }
+    },
+    {
+      "path": "screenshots/cross-summary-lite.png",
+      "type": "screenshot",
+      "nodeId": "lite-summary-capture",
+      "label": "ui.screenshot screenshot",
+      "category": "evidence",
+      "mimeType": "image/png",
+      "metadata": {
+        "provider": "simctl",
+        "mode": "xcrun simctl io screenshot",
+        "selectedDevice": "mmdev-1"
+      }
+    },
+    {
+      "path": "screenshots/cross-position-lite.png",
+      "type": "screenshot",
+      "nodeId": "lite-position-capture",
+      "label": "ui.screenshot screenshot",
+      "category": "evidence",
+      "mimeType": "image/png",
+      "metadata": {
+        "provider": "simctl",
+        "mode": "xcrun simctl io screenshot",
+        "selectedDevice": "mmdev-1"
+      }
+    },
+    {
+      "path": "screenshots/cross-explanation-lite.png",
+      "type": "screenshot",
+      "nodeId": "lite-capture",
+      "label": "ui.screenshot screenshot",
+      "category": "evidence",
+      "mimeType": "image/png",
+      "metadata": {
+        "provider": "simctl",
+        "mode": "xcrun simctl io screenshot",
+        "selectedDevice": "mmdev-1"
+      }
     },
     {
       "path": "summary.json",
@@ -68,10 +146,16 @@
       "category": "system",
       "metadata": {
         "adapter": "mobile",
-        "git_ref": "2204c40070c632a0850c6f098bcc5eb5e0d88bee",
+        "git_ref": "b11117780de5851020800714d00cc0825b2aeea3",
         "branch": "TAT-3519-feat-mobile-pro-cross-margin",
         "dirty": false
       }
+    },
+    {
+      "path": "report.md",
+      "type": "report",
+      "label": "Human run report",
+      "category": "system"
     }
   ],
   "recovered": [],

@@ -1,16 +1,22 @@
-# Recipe coverage
+# Recipe coverage — PR #35831 review round
 
-Scope: PR-complete re-validation of the inherited existing-position Cross display recipe (`artifacts/recipe.json`) against rebased HEAD `2204c40070c`. Proof mode planned: mixed state + visual. The recipe ran (`recipe-run/`) and stopped at `require-cross`, so every display criterion below is N/A with a reason. A first attempt (`recipe-run-cdp-timeout/`) hit `CDP_TIMEOUT` in `environment` and was retried once. Earlier passing runs (`recipe-runs/inherited-bed00bf7-…/recipe-run-recorded-2`, `recipe-run-linked-null-3`) are historical and not claimed as current proof.
+Recipe executed against the review-fix commit `b11117780de` (rebased on `origin/main` `954c6fe85cf`): **41/41 nodes pass**, 60s, artifacts in `artifacts/recipe-run/`.
 
-| Criterion | Recipe nodes | Current evidence | Status |
-| --- | --- | --- | --- |
-| Precondition: dev1, Hyperliquid testnet, exactly one live Cross ETH position | `wallet`, `account`, `environment`, `positions`, `require-cross`, `require-cross-mode`, `require-cross-market` | `recipe-run/trace.json`: identity dev1/hyperliquid/testnet verified, controller `positions: []`; `venue-precondition.txt`: 0 venue positions, 0 open orders, spot USDC 629.31 | FAIL at `require-cross` |
-| AC7 Cross badge, Pro and Lite | `pro-tag`, `lite-tag`, summary captures | none this round | N/A: blocked by precondition |
-| AC8/AC8b venue liquidation price or explicit no-price state | `price-kind`, `require-*-price`, `pro-price`, `lite-price` | none this round | N/A: blocked by precondition |
-| AC10 shared-collateral explanation sheet | `pro-info`, `pro-explanation`, `lite-info`, `lite-explanation` | none this round | N/A: blocked by precondition |
-| AC11 "Margin used" label, edit control absent | `pro-margin`, `pro-no-edit`, `lite-margin`, `lite-no-edit` | none this round | N/A: blocked by precondition |
-| Display logic (static) | not a recipe node | Jest 6 suites 278/278 on rebased HEAD; scoped ESLint exit 0; LSP 0 type errors | Static only, not runtime proof |
+Fixture: dev1 (`0x8dc6…9003`), Hyperliquid testnet. One live Cross ETH position, 0.0051 @ 2394.1, `leverage.type=cross`, venue `liquidationPx: null` (order `60226912393`). The account's pre-existing isolated BTC position was closed first with explicit user authorization (order `60226752331`).
 
-Why the display nodes did not run: the recipe creates no trades and requires an existing Cross fixture. Opening one means authorized testnet order placement plus cleanup, which is outside a mechanical PR-complete re-run. Runtime health itself was verified (`mm-harness launch ios --verify` pass, fixture READY).
+| Proof target | Recipe node(s) | Evidence |
+|---|---|---|
+| Selected account is dev1, Hyperliquid, testnet | `wallet`, `account`, `environment` | PASS. `environment` stdout confirms address, provider, `isTestnet: true` |
+| Exactly one live Cross ETH position | `positions`, `require-cross`, `require-cross-mode`, `require-cross-market` | PASS. Controller and fresh venue read agree |
+| Venue liquidation is literal null (not "", 0, false) | `price-kind`, `require-null-price`, `require-null-falsy`, `require-null-not-string/zero/false` | PASS |
+| Cross badge in Pro and Lite | `pro-tag`, `lite-tag` | PASS. `cross-summary-pro.png` shows the `Cross` badge |
+| Position-scoped collateral label, renamed this round | `pro-margin`, `lite-margin` (text "Position margin used") | PASS. `cross-summary-pro.png` shows "Position margin used $12.23" beside the account-level values |
+| Margin edit control absent on Cross | `pro-no-edit`, `lite-no-edit` | PASS |
+| Explicit no-liquidation state | `pro-price`, `lite-price` | PASS. `cross-summary-pro.png` renders "No liquidation price" |
+| Shared-collateral explanation | `pro-info`, `pro-explanation`, `lite-info`, `lite-explanation` | PASS. Exact tooltip copy matched; `cross-explanation-{pro,lite}.png` |
+| Privacy masking with the Cross flag on | none (component-test scope) | `PerpsPositionCard.test.tsx` enables the flag, asserts masked dots and absent unmasked text |
+| Margin-mode error copy dedupe | none (not runtime-reachable in this slice) | One definition per key after the fix; verified in the diff |
 
-Replay needs: one Cross ETH position on dev1 opened by an authorized fixture step, a slot-portable helper (the staged copy here only swaps simulator/port), and a refreshed liquidation expectation.
+Not covered: Android, mixed-book grouping, account-wide refresh, the numeric-liquidation fixture this round (null branch only), and the Pro margin-mode picker (disabled in this slice).
+
+Cleanup: fixture closed (order `60227080843`), ETH leverage restored to the isolated 3x baseline, final read 0 positions / 0 orders.
