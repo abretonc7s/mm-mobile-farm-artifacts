@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "verdict": "pass",
+  "compact": {
+    "verdict": "PASS",
+    "reasons": [
+      "Both recipes validate with zero findings and both runs exited 0 with no failed node; the verify recipe asserts fixed values and the node-for-node identical baseline asserts the buggy values.",
+      "The recipe fails if the fix is reverted: ac2-assert-open-total and ac4-assert-home-open-total wait on the -$1.15 summed fee, which only renders once all four fills of order 60252966679 are merged, and ac3-assert-flip-test expects exit 0 where the baseline expects exit 1.",
+      "Both mixed ACs carry a before/after screenshot pair that was read and visibly shows one 8.29 SOL open going from four partial rows to one; both state ACs are backed by indexed Jest logs rather than screenshots.",
+      "No forbidden pattern is present: no switch, no eval_sync/eval_async/eval_ref, no wait nodes, no UI value injection - the SOL order was placed through the manifest-declared metamask.perps.place_order action."
+    ],
+    "better_version_guidance": []
+  },
+  "dimensions": {
+    "intent_clarity": {
+      "status": "pass",
+      "reason": "Every node intent states the human-visible goal rather than the action or selector, and the structural validator accepts both graphs.",
+      "evidence": [
+        "mm-harness run <recipe> --plan --json returned status pass with findings []"
+      ]
+    },
+    "coverage": {
+      "status": "pass",
+      "reason": "All four acceptance criteria are bound to ac<N>- prefixed nodes and all four are PROVEN; nothing is weak, missing or untestable.",
+      "evidence": [
+        "artifacts/recipe-coverage.md"
+      ]
+    },
+    "evidence_fit": {
+      "status": "pass",
+      "reason": "Visual ACs are proven by screenshots preceded by a ui.wait_for on the claimed target; state ACs are proven by indexed test logs, not by screenshots of hidden behaviour.",
+      "evidence": [
+        "after-ac2-market-detail.png",
+        "after-ac4-activity-page.png",
+        "transform-tests.log",
+        "flip-test.log"
+      ]
+    },
+    "negative_control": {
+      "status": "pass",
+      "reason": "The baseline recipe runs the same graph against the stashed pre-fix code and passes only because it asserts the buggy values, which the verify recipe asserts are gone.",
+      "evidence": [
+        "artifacts/recipe-baseline-run/trace.json",
+        "before-evidence-ac2-market-detail.png",
+        "before-evidence-ac4-activity-page.png"
+      ]
+    }
+  },
+  "structural_findings": [],
+  "contextual_findings": [],
+  "suggested_recipe_delta": [],
+  "training_fields": {
+    "proof_mode": "unknown"
+  },
+  "meta": {
+    "producer": "worker",
+    "fallback_used": false,
+    "legacy_task": false,
+    "artifact_required": true,
+    "source_signals": [
+      "inherited-recipe-quality",
+      "pr-complete-revalidation",
+      "recipe-quality.json"
+    ],
+    "revalidated": {
+      "run_id": "6d8a600a-03d9-4e66-a00e-be1b847e604d",
+      "recipe_unchanged": true,
+      "status": "pass",
+      "nodes": "27/27",
+      "note": "Inherited verdict carried forward: the recipe is byte-identical, and re-running it on the rebased branch reproduced pass with no failed node. The negative control (recipe-baseline.json) was authored and executed in the parent run and was not re-run here, since the recipe under test did not change."
+    }
+  }
+}

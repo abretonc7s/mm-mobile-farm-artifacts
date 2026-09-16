@@ -1,0 +1,27 @@
+# Recipe coverage — TAT-3931
+
+Recipe: `artifacts/recipe.json` (verify, asserts fixed values) · `artifacts/recipe-baseline.json`
+(baseline, asserts buggy values). Both graphs are node-for-node identical; only the asserted values
+and the screenshot filenames differ. Both runs exited 0 and no node failed in either
+`recipe-run/trace.json` or `recipe-baseline-run/trace.json`.
+
+Data prerequisite for every device AC: Hyperliquid **testnet** order `60252966679` on the slot
+fixture account (Trading, `0x316B…01fa`) — a SOL long placed during this run with
+`metamask.perps.place_order`, which filled in 4 fills of 2.92 + 0.4 + 2.35 + 2.62 = **8.29 SOL**
+(fees 0.40 + 0.06 + 0.33 + 0.36 = **$1.15**).
+
+| # | AC (verbatim) | Proof mode | Primary evidence | Recipe nodes (IDs) | Visual file if any | Evidence verdict | Justification |
+|---|---------------|------------|------------------|---------------------|--------------------|------------------|---------------|
+| 1 | "The trade activity sections should show all fills on open, close and flip." — **close**: a close order that filled in multiple fills renders as one activity row with the summed size, PnL and fee | state | test | `ac1-run-transform-tests`, `ac1-assert-transform-tests`, `ac1-index-test-log` | — | **PROVEN** | `transform-tests.log` records 120/120 passing, including `multi-second close aggregation (TAT-3931) › aggregates one close order filled across several seconds`, built from the exact 6-fill set read off the live account (order `37271558002`, 0.03+0.06+0.07+0.07+0.1+0.07 = 0.40 SOL spanning 74 s) which the pre-fix code rendered as 6 rows. The baseline run's `transform-tests-baseline.log` records the pre-fix contract instead. No visual: the only multi-second close on this account is from 2025-08-08, outside the 90-day `FillsLookbackMs` window and hundreds of rows deep in Activity; a close placed now fills inside one second and is already aggregated pre-fix, so the defect cannot be staged on screen. |
+| 2 | "The trade activity sections should show all fills on open, close and flip." — **open**: an open order that filled in multiple fills renders as one activity row with the summed size and fee | mixed | ui.screenshot + test | `ac2-nav-market`, `ac2-wait-trade-rows`, `ac2-assert-full-size`, `ac2-assert-open-total`, `ac2-scroll-to-trades`, `ac2-wait-trades-visible`, `ac2-screenshot-market-detail` | `before-evidence-ac2-market-detail.png` → `after-ac2-market-detail.png` | **PROVEN** | Before: SOL asset detail lists `Opened long 2.62 SOL −$0.36` and `Opened long 2.35 SOL −$0.33` as separate trades. After: one `Opened long 8.29 SOL −$1.15`. `ac2-assert-open-total` waits on the `-$1.15` total, which can only render once all four fills are summed — pre-fix the four rows carry −$0.40 / −$0.06 / −$0.33 / −$0.36 and no row reads −$1.15, so the verify recipe fails if the fix is reverted. |
+| 3 | "The trade activity sections should show all fills on open, close and flip." — **flip**: a position flip that filled in multiple fills renders as one activity row | state | test | `ac3-run-flip-test`, `ac3-assert-flip-test`, `ac3-index-flip-log` | — | **PROVEN** | `flip-test.log` records `Tests: 119 skipped, 1 passed` for `aggregates flip fills of one order and keeps the opening position size` (two `Long > Short` fills two seconds apart → one entry of 43.23, PnL −9, `startPosition` 37.66 from the earliest fill). The baseline run's `flip-test-baseline.log` records `115 skipped, 115 total` — zero passing — and `ac3-assert-flip-test` asserts exit code 1 there, so the node discriminates pre-fix from post-fix. No device evidence: no flip fill exists in this account's history and a multi-fill flip cannot be forced on Hyperliquid testnet. |
+| 4 | "This should apply to activity sections in Activity page (perps > Trade subsection), perps home and perps asset detail pages." | mixed | ui.screenshot + state | `ac4-nav-home`, `ac4-wait-home-rows`, `ac4-assert-home-full-size`, `ac4-assert-home-open-total`, `ac4-open-activity`, `gate-activity-perps-trades`, `ac4-wait-activity-row`, `ac4-screenshot-activity` (plus `ac2-*` for the asset detail page) | `before-evidence-ac4-activity-page.png` → `after-ac4-activity-page.png`, and the AC2 pair for the asset detail page | **PROVEN** | Activity page before: `Today` holds five rows (`Closed long 8.29 SOL` plus `Opened long` 2.92 / 0.4 / 2.35 / 2.62). After: `Today` holds two (`Closed long 8.29 SOL`, `Opened long 8.29 SOL −$1.15`), and the unrelated Sep 10 BTC trades stay separate, so nothing over-merges. Perps home is asserted on the same run by `ac4-assert-home-open-total` (the `-$1.15` total in its activity section); the asset detail page is covered by the AC2 pair. All three surfaces render from the one `transformFillsToTransactions` call changed by this fix. |
+
+Forbidden-pattern scan (step 13): no `switch`, no `eval_sync`/`eval_async`/`eval_ref`, no `wait`
+nodes at all, no fiber-only assertion standing in for a visual claim, every node prefixed
+`ac<N>-` / `setup-` / `gate-` / `teardown-`, screenshots present for both `mixed` ACs and not used
+as the sole proof for either `state` AC, no ES6+ in `command` bodies, and no UI value injection —
+the SOL order was placed through the manifest-declared `metamask.perps.place_order` action, not
+written into controller or store state.
+
+Overall recipe coverage: 4/4 ACs PROVEN (untestable: none, weak: 0, missing: 0)

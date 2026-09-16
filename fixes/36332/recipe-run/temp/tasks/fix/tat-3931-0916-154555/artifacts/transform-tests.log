@@ -1,0 +1,238 @@
+  console.warn
+    Unknown fill direction {
+      orderId: '',
+      symbol: 'BTC',
+      side: 'buy',
+      size: '0.1',
+      price: '50000',
+      fee: '0',
+      feeToken: 'USDC',
+      timestamp: 1640995200000,
+      pnl: '0',
+      direction: ''
+    }
+
+      400 |       // Will be set based on calculation below
+      401 |     } else if (!direction) {
+    > 402 |       console.warn('Unknown fill direction', fill);
+          |               ^
+      403 |       return acc;
+      404 |     } else if (direction === 'Spot Dust Conversion') {
+      405 |       // HL housekeeping — auto-conversion of spot dust to USDC, not a perps trade
+
+      at warn (app/components/UI/Perps/utils/transactionTransforms.ts:402:15)
+          at Array.reduce (<anonymous>)
+      at reduce (app/components/UI/Perps/utils/transactionTransforms.ts:366:26)
+      at Object.<anonymous> (app/components/UI/Perps/utils/transactionTransforms.test.ts:888:50)
+
+  console.warn
+    Unknown fill direction {
+      direction: '',
+      orderId: 'order1',
+      symbol: 'ETH',
+      side: 'buy',
+      size: '1',
+      price: '2000',
+      fee: '10',
+      timestamp: 1640995200000,
+      feeToken: 'USDC',
+      pnl: '0',
+      liquidation: undefined,
+      detailedOrderType: 'Market'
+    }
+
+      400 |       // Will be set based on calculation below
+      401 |     } else if (!direction) {
+    > 402 |       console.warn('Unknown fill direction', fill);
+          |               ^
+      403 |       return acc;
+      404 |     } else if (direction === 'Spot Dust Conversion') {
+      405 |       // HL housekeeping — auto-conversion of spot dust to USDC, not a perps trade
+
+      at warn (app/components/UI/Perps/utils/transactionTransforms.ts:402:15)
+          at Array.reduce (<anonymous>)
+      at reduce (app/components/UI/Perps/utils/transactionTransforms.ts:366:26)
+      at Object.<anonymous> (app/components/UI/Perps/utils/transactionTransforms.test.ts:1076:50)
+
+  console.warn
+    Unknown fill direction {
+      direction: '',
+      orderId: 'order1',
+      symbol: 'ETH',
+      side: 'buy',
+      size: '1',
+      price: '2000',
+      fee: '10',
+      timestamp: 1640995200000,
+      feeToken: 'USDC',
+      pnl: '0',
+      liquidation: undefined,
+      detailedOrderType: 'Market'
+    }
+
+      400 |       // Will be set based on calculation below
+      401 |     } else if (!direction) {
+    > 402 |       console.warn('Unknown fill direction', fill);
+          |               ^
+      403 |       return acc;
+      404 |     } else if (direction === 'Spot Dust Conversion') {
+      405 |       // HL housekeeping — auto-conversion of spot dust to USDC, not a perps trade
+
+      at warn (app/components/UI/Perps/utils/transactionTransforms.ts:402:15)
+          at Array.reduce (<anonymous>)
+      at reduce (app/components/UI/Perps/utils/transactionTransforms.ts:366:26)
+      at Object.<anonymous> (app/components/UI/Perps/utils/transactionTransforms.test.ts:1087:50)
+
+PASS app/components/UI/Perps/utils/transactionTransforms.test.ts (6.177 s)
+  transactionTransforms
+    aggregateFillsByOrder
+      split stop loss aggregation (bug fix)
+        ✓ aggregates split stop loss fills into single fill with combined PnL (2 ms)
+        ✓ aggregates split take profit fills into single fill (1 ms)
+      aggregation criteria
+        ✓ does not aggregate fills with different assets
+        ✓ does not aggregate fills with different close directions
+        ✓ does not aggregate fills in different seconds from different orders
+        ✓ aggregates fills within the same second
+      open and flip fills aggregate (TAT-3931)
+        ✓ aggregates Open Long fills of one order
+        ✓ aggregates Open Short fills of one order (1 ms)
+        ✓ aggregates Buy fills of one order (spot-perps)
+        ✓ aggregates flip fills of one order and keeps the opening position size
+        ✓ takes the opening position size from the largest fill when timestamps tie
+        ✓ keeps a negative opening position signed when timestamps tie
+        ✓ does not aggregate fills of different orders opening the same market
+        ✓ keeps two opens of different orders apart inside the same second (1 ms)
+        ✓ does not chain unrelated opens through an order that spans two seconds
+        ✓ does not aggregate an open and a close of the same order id
+      multi-second close aggregation (TAT-3931)
+        ✓ aggregates one close order filled across several seconds
+        ✓ links same-second and same-order groups into one entry
+      closeable directions aggregate
+        ✓ aggregates Sell fills (spot-perps close)
+        ✓ aggregates Auto-Deleveraging fills
+      VWAP calculation
+        ✓ calculates VWAP correctly for fills at different prices
+      metadata preservation
+        ✓ preserves detailedOrderType from first fill with it (1 ms)
+        ✓ preserves liquidation info from any fill
+        ✓ preserves startPosition from first fill with it
+        ✓ uses the last fill orderId and timestamp for the aggregated result
+      edge cases
+        ✓ returns empty array for empty input
+        ✓ returns single fill unchanged
+        ✓ sorts result by timestamp descending
+        ✓ handles mixed aggregatable and non-aggregatable fills
+    transformFillsToTransactions
+      ✓ transforms close position fill correctly (1 ms)
+      ✓ handles break-even PnL correctly
+      ✓ should handle flipped positions correctly
+      ✓ reports a multi-fill flip as one row sized from the whole order (TAT-3931) (2 ms)
+      ✓ sizes a tied-timestamp flip from the position the order started at
+      ✓ should handle empty fills array
+      ✓ should handle fills with empty direction field (36 ms)
+      ✓ should correctly identify take profit fills
+      ✓ should correctly identify stop loss fills
+      ✓ should correctly identify liquidation fills
+      ✓ correctly identifies auto-deleveraging fills with positive position
+      ✓ correctly identifies auto-deleveraging fills with negative position
+      ✓ filters out auto-deleveraging fills with invalid startPosition
+      ✓ filters out auto-deleveraging fills with missing startPosition
+      ✓ handles stop loss fills
+      ✓ handles missing direction gracefully (1 ms)
+      ✓ handles missing direction
+      ✓ silently skips Spot Dust Conversion fills without console.error (1 ms)
+      ✓ emits console.warn for unknown fill directions instead of console.error
+      ✓ emits console.warn for empty direction instead of console.error
+      ✓ aggregates split stop loss fills and shows combined PnL in transaction
+      ✓ uses timestamp as fallback ID when orderId is missing
+      ✓ strips hip3 prefix from symbol in subtitle
+      ✓ strips DEX prefix from symbol in subtitle
+      ✓ keeps regular symbols unchanged in subtitle
+      ✓ transforms Buy direction fill correctly
+      ✓ transforms Sell direction fill correctly
+      ✓ handles Sell direction with negative PnL correctly
+    transformOrdersToTransactions
+      ✓ preserves market price fields in transaction history (1 ms)
+      ✓ preserves limit price fields in transaction history
+      ✓ preserves stop_market price fields in transaction history
+      ✓ preserves stop_limit price fields in transaction history
+      ✓ preserves take_profit_market price fields in transaction history
+      ✓ preserves take_profit_limit price fields in transaction history
+      ✓ recovers stop_market from legacy order metadata
+      ✓ recovers stop_limit from legacy order metadata
+      ✓ recovers take_profit_market from legacy order metadata
+      ✓ recovers take_profit_limit from legacy order metadata
+      ✓ transforms filled order correctly (defaults to 100% without fill data) (1 ms)
+      ✓ transforms cancelled order correctly
+      ✓ transforms rejected order correctly
+      ✓ transforms triggered order correctly
+      ✓ transforms open order correctly
+      ✓ handles short orders correctly
+      ✓ formats closing long position as Close Long
+      ✓ formats closing short position as Close Short
+      ✓ handles market orders correctly
+      ✓ calculates filled percentage from size fields for open orders
+      ✓ handles zero size as 100% filled
+      ✓ strips hip3 prefix from symbol in subtitle
+      ✓ strips DEX prefix from symbol in subtitle
+      ✓ keeps regular symbols unchanged in subtitle
+      fill-based percentage calculation
+        ✓ calculates accurate percentage from fill data map
+        ✓ shows 0% for canceled order without any fills
+        ✓ shows 100% for fully filled order from fill data
+        ✓ handles partial fill then cancel scenario correctly
+        ✓ rounds percentage to whole number
+        ✓ handles multiple fills for same order
+        ✓ falls back to status-based logic when fill map not provided
+        ✓ falls back to 0% for rejected order without fill data
+        ✓ returns 0% for position-bound TP/SL orders with zero size (not filled yet)
+        ✓ returns 100% for regular order with zero remaining size (fully filled)
+    transformFundingToTransactions
+      ✓ transforms positive funding correctly
+      ✓ transforms negative funding correctly (1 ms)
+      ✓ preserves input order (sorting is handled by the consumer)
+      ✓ strips hip3 prefix from symbol in subtitle
+      ✓ strips DEX prefix from symbol in subtitle
+      ✓ keeps regular symbols unchanged in subtitle
+    transformUserHistoryToTransactions
+      ✓ transforms completed deposit correctly
+      ✓ transforms completed withdrawal correctly
+      ✓ filters out non-completed items
+      ✓ handles missing txHash
+    transformWithdrawalRequestsToTransactions
+      ✓ transforms completed withdrawal request correctly (1 ms)
+      ✓ transforms pending withdrawal with Pending subtitle
+      ✓ transforms failed withdrawal with Failed subtitle
+      ✓ uses Withdrawal title when amount is zero
+      ✓ handles missing txHash
+    transformDepositRequestsToTransactions
+      ✓ transforms completed deposit request correctly
+      ✓ handles zero amount deposits
+      ✓ handles zero string amount deposits
+      ✓ filters out non-completed deposit requests
+      ✓ handles missing txHash
+    edge cases
+      ✓ handles empty arrays
+      ✓ handles BigNumber edge cases (1 ms)
+    transformWalletPerpsDepositsToTransactions
+      ✓ transforms all provided transactions (filtering is done by the hook)
+      ✓ returns deposit PerpsTransaction with amount and Completed status
+      ✓ uses Deposit title when amount is zero or token data missing
+      ✓ maps failed status to Failed subtitle
+      ✓ maps pending status to Pending subtitle
+      ✓ uses tx.time and tx.hash when present
+      ✓ uses Deposit title and zero amount when getTokenTransferData returns undefined
+    walletPerpsWithdrawalsToRequests
+      ✓ converts wallet TransactionMeta to WithdrawalRequest format (1 ms)
+      ✓ maps wallet status to withdrawal request status
+      ✓ maps submitted status to pending
+      ✓ returns zero amount when getTokenTransferData returns undefined
+      ✓ uses tx.time and tx.hash
+      ✓ prefixes id with wallet-
+
+Test Suites: 1 passed, 1 total
+Tests:       126 passed, 126 total
+Snapshots:   0 total
+Time:        6.215 s
+Ran all test suites matching /app\/components\/UI\/Perps\/utils\/transactionTransforms.test.ts/i.

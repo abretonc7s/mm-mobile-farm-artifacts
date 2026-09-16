@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "adapter": "mobile",
+  "repository": "metamask-mobile-1",
+  "git_ref": "1da65345c1c1d962c35e7fb7b0f6f585d37ea633",
+  "branch": "TAT-3931-fix-fix-perps-activity-multi-fill",
+  "dirty": false
+}

@@ -1,0 +1,221 @@
+{
+  "$schema": "https://farmslot.io/schemas/recipe-v1.schema.json",
+  "title": "Multi-fill perps orders appear as one activity row",
+  "description": "Proves a Perps order that filled in several fills is shown as a single activity row carrying the full size, on the Perps asset detail page, the Perps home activity section and the Activity page Perps > Trades subsection. Data prerequisite: Hyperliquid testnet order 60252966679 on the slot fixture account (Trading, 0x316B...01fa) - a SOL long opened during this run that filled in 4 fills of 2.92 + 0.4 + 2.35 + 2.62 = 8.29 SOL, established with metamask.perps.place_order.",
+  "workflow": {
+    "entry": "setup-restart",
+    "nodes": {
+      "setup-restart": {
+        "action": "app.lifecycle",
+        "intent": "Start from a freshly launched app so the trade history loads from scratch",
+        "command": "restart",
+        "settle_ms": 4000,
+        "timeout_ms": 180000,
+        "next": "setup-status"
+      },
+      "setup-status": {
+        "action": "app.status",
+        "intent": "Confirm the mobile bridge is reachable",
+        "next": "setup-unlock"
+      },
+      "setup-unlock": {
+        "action": "metamask.wallet.ensure_unlocked",
+        "intent": "Reach a signed-in wallet so Perps history is readable",
+        "next": "ac1-run-transform-tests"
+      },
+      "ac1-run-transform-tests": {
+        "action": "command",
+        "intent": "Establish that one order's close, open and flip fills are summed into a single trade entry",
+        "cmd": "yarn jest app/components/UI/Perps/utils/transactionTransforms.test.ts --no-coverage > temp/tasks/fix/tat-3931-0916-154555/artifacts/transform-tests.log 2>&1\nstatus=$?\ntail -40 temp/tasks/fix/tat-3931-0916-154555/artifacts/transform-tests.log\nexit $status",
+        "timeout_ms": 900000,
+        "allow_failure": true,
+        "next": "ac1-assert-transform-tests"
+      },
+      "ac1-assert-transform-tests": {
+        "action": "assert_exit_code",
+        "intent": "Fail the proof when the fill-grouping rules for close, open and flip are not met",
+        "node": "ac1-run-transform-tests",
+        "expected": 0,
+        "next": "ac1-index-test-log"
+      },
+      "ac1-index-test-log": {
+        "action": "index_artifacts",
+        "intent": "Keep the fill-grouping test output as reviewable evidence",
+        "artifacts": [
+          {
+            "path": "temp/tasks/fix/tat-3931-0916-154555/artifacts/transform-tests.log",
+            "type": "log",
+            "label": "AC1/AC3 fill-grouping test output",
+            "covers": [
+              "ac1"
+            ]
+          }
+        ],
+        "next": "ac3-run-flip-test"
+      },
+      "setup-nav-perps-root": {
+        "action": "ui.navigate",
+        "intent": "Start from the Perps root so the asset detail page opens from a known place",
+        "page": "perps",
+        "timeout_ms": 45000,
+        "next": "ac2-nav-market"
+      },
+      "ac2-nav-market": {
+        "action": "ui.navigate",
+        "intent": "Reach the SOL asset detail page where this account's SOL trades are listed",
+        "page": "perps-market",
+        "market": "SOL",
+        "timeout_ms": 45000,
+        "next": "setup-ensure-lite"
+      },
+      "setup-ensure-lite": {
+        "action": "metamask.perps.ensure_mode",
+        "intent": "Make sure the asset detail page is the Lite layout that lists recent trades",
+        "mode": "lite",
+        "timeout_ms": 45000,
+        "next": "ac2-wait-trade-rows"
+      },
+      "ac2-wait-trade-rows": {
+        "action": "ui.wait_for",
+        "intent": "See the SOL trade rows finish loading on the asset detail page",
+        "test_id": "perps-market-trades-row-1",
+        "expected": "present",
+        "timeout_ms": 60000,
+        "next": "ac2-assert-full-size"
+      },
+      "ac2-assert-full-size": {
+        "action": "ui.wait_for",
+        "intent": "See the SOL trade reported at the full 8.29 SOL the user actually traded",
+        "text": "8.29 SOL",
+        "expected": "present",
+        "timeout_ms": 30000,
+        "next": "ac2-assert-open-total"
+      },
+      "ac2-scroll-to-trades": {
+        "action": "ui.scroll",
+        "intent": "Bring the SOL trade rows into the viewport the way a user scrolls to them",
+        "test_id": "perps-market-trades-list",
+        "scroll_into_view": true,
+        "timeout_ms": 30000,
+        "next": "ac2-wait-trades-visible"
+      },
+      "ac2-wait-trades-visible": {
+        "action": "ui.wait_for",
+        "intent": "Confirm the SOL trade rows are actually on screen before capturing them",
+        "test_id": "perps-market-trades-row-1",
+        "expected": "visible",
+        "timeout_ms": 30000,
+        "next": "ac2-screenshot-market-detail"
+      },
+      "ac2-screenshot-market-detail": {
+        "action": "ui.screenshot",
+        "intent": "Show the SOL asset detail page reporting the whole 8.29 SOL open as one trade",
+        "path": "screenshots/evidence-ac2-market-detail.png",
+        "label": "AC2: SOL asset detail reports the full 8.29 SOL opened",
+        "next": "ac4-nav-home"
+      },
+      "ac4-nav-home": {
+        "action": "ui.navigate",
+        "intent": "Reach the Perps home screen that summarises recent trades",
+        "page": "perps",
+        "timeout_ms": 45000,
+        "next": "ac4-wait-home-rows"
+      },
+      "ac4-wait-home-rows": {
+        "action": "ui.wait_for",
+        "intent": "See the Perps home trade rows finish loading",
+        "test_id": "perps-recent-activity-row-1",
+        "expected": "present",
+        "timeout_ms": 60000,
+        "next": "ac4-assert-home-full-size"
+      },
+      "ac4-assert-home-full-size": {
+        "action": "ui.wait_for",
+        "intent": "See the Perps home summary report the full 8.29 SOL traded",
+        "text": "8.29 SOL",
+        "expected": "present",
+        "timeout_ms": 30000,
+        "next": "ac4-assert-home-open-total"
+      },
+      "ac4-open-activity": {
+        "action": "ui.press",
+        "intent": "Open the full trade history the way a user does from the Perps home screen",
+        "text": "Recent activity",
+        "next": "gate-activity-perps-trades"
+      },
+      "gate-activity-perps-trades": {
+        "action": "ui.wait_for",
+        "intent": "Make sure the trade history really is filtered to Perps trades before reading it",
+        "test_id": "activity-screen-perps-filter-chip",
+        "expected": "visible",
+        "timeout_ms": 90000,
+        "next": "ac4-wait-activity-row"
+      },
+      "ac4-wait-activity-row": {
+        "action": "ui.wait_for",
+        "intent": "Reach the second trade row, which should read Opened long 8.29 SOL",
+        "test_id": "transaction-item-2",
+        "expected": "visible",
+        "timeout_ms": 240000,
+        "next": "ac4-screenshot-activity"
+      },
+      "ac4-screenshot-activity": {
+        "action": "ui.screenshot",
+        "intent": "Show the Activity trade list reporting the whole 8.29 SOL open as one trade",
+        "path": "screenshots/evidence-ac4-activity-page.png",
+        "label": "AC4: Activity page Perps > Trades reports the full 8.29 SOL opened",
+        "next": "teardown-done"
+      },
+      "teardown-done": {
+        "action": "end",
+        "status": "pass"
+      },
+      "ac2-assert-open-total": {
+        "action": "ui.wait_for",
+        "intent": "See the opened trade charge the 1.15 dollars that all four of its fills cost together",
+        "text": "-$1.15",
+        "expected": "present",
+        "timeout_ms": 60000,
+        "next": "ac2-scroll-to-trades"
+      },
+      "ac4-assert-home-open-total": {
+        "action": "ui.wait_for",
+        "intent": "See the Perps home summary charge the 1.15 dollars that all four fills cost together",
+        "text": "-$1.15",
+        "expected": "present",
+        "timeout_ms": 60000,
+        "next": "ac4-open-activity"
+      },
+      "ac3-run-flip-test": {
+        "action": "command",
+        "intent": "Establish that a position flip filled in several pieces is summed into one trade",
+        "cmd": "yarn jest app/components/UI/Perps/utils/transactionTransforms.test.ts -t \"aggregates flip fills of one order and keeps the opening position size\" --no-coverage > temp/tasks/fix/tat-3931-0916-154555/artifacts/flip-test.log 2>&1\nstatus=$?\ntail -20 temp/tasks/fix/tat-3931-0916-154555/artifacts/flip-test.log\ngrep -q \"Tests:.*1 passed\" temp/tasks/fix/tat-3931-0916-154555/artifacts/flip-test.log || exit 1\nexit $status",
+        "timeout_ms": 900000,
+        "allow_failure": true,
+        "next": "ac3-assert-flip-test"
+      },
+      "ac3-assert-flip-test": {
+        "action": "assert_exit_code",
+        "intent": "Fail the proof when a multi-fill flip is not summed into one trade",
+        "node": "ac3-run-flip-test",
+        "expected": 0,
+        "next": "ac3-index-flip-log"
+      },
+      "ac3-index-flip-log": {
+        "action": "index_artifacts",
+        "intent": "Keep the flip grouping test output as reviewable evidence",
+        "artifacts": [
+          {
+            "path": "temp/tasks/fix/tat-3931-0916-154555/artifacts/flip-test.log",
+            "type": "log",
+            "label": "AC3 flip grouping test output",
+            "covers": [
+              "ac3"
+            ]
+          }
+        ],
+        "next": "setup-nav-perps-root"
+      }
+    }
+  }
+}

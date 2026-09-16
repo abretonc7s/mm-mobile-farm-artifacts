@@ -1,0 +1,129 @@
+{
+  "version": 1,
+  "runStatus": "pass",
+  "provenance": {
+    "runner": {
+      "source": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness",
+      "git_ref": "unknown",
+      "name": "@metamask/recipe-runner"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "recipe.json",
+      "type": "recipe",
+      "label": "Executed recipe",
+      "category": "system"
+    },
+    {
+      "path": "recipe-resolution.json",
+      "type": "json",
+      "label": "Resolved recipe dependency graph",
+      "category": "system"
+    },
+    {
+      "path": "temp/tasks/fix/tat-3931-0916-154555/artifacts/transform-tests.log",
+      "type": "log",
+      "label": "AC1/AC3 fill-grouping test output",
+      "nodeId": "ac1-index-test-log",
+      "covers": [
+        "ac1"
+      ]
+    },
+    {
+      "path": "temp/tasks/fix/tat-3931-0916-154555/artifacts/flip-test.log",
+      "type": "log",
+      "label": "AC3 flip grouping test output",
+      "nodeId": "ac3-index-flip-log",
+      "covers": [
+        "ac3"
+      ]
+    },
+    {
+      "path": "screenshots/evidence-ac2-market-detail.png",
+      "type": "screenshot",
+      "nodeId": "ac2-screenshot-market-detail",
+      "label": "ui.screenshot screenshot",
+      "category": "evidence",
+      "mimeType": "image/png",
+      "metadata": {
+        "provider": "simctl",
+        "mode": "xcrun simctl io screenshot",
+        "selectedDevice": "mm-1"
+      }
+    },
+    {
+      "path": "screenshots/evidence-ac4-activity-page.png",
+      "type": "screenshot",
+      "nodeId": "ac4-screenshot-activity",
+      "label": "ui.screenshot screenshot",
+      "category": "evidence",
+      "mimeType": "image/png",
+      "metadata": {
+        "provider": "simctl",
+        "mode": "xcrun simctl io screenshot",
+        "selectedDevice": "mm-1"
+      }
+    },
+    {
+      "path": "summary.json",
+      "type": "summary",
+      "label": "Run summary",
+      "category": "system"
+    },
+    {
+      "path": "trace.json",
+      "type": "trace",
+      "label": "Execution trace",
+      "category": "system"
+    },
+    {
+      "path": "execution-provenance.json",
+      "type": "json",
+      "label": "Execution provenance",
+      "category": "system",
+      "metadata": {
+        "valid": true,
+        "errorCode": null
+      }
+    },
+    {
+      "path": "diagnostics.json",
+      "type": "json",
+      "label": "Run-scoped application diagnostics",
+      "category": "diagnostic"
+    },
+    {
+      "path": "diagnostics-app-log.txt",
+      "type": "log",
+      "label": "Redacted run-scoped application log slice",
+      "category": "diagnostic"
+    },
+    {
+      "path": "network/run-summary.json",
+      "type": "report",
+      "label": "Automatic network observation",
+      "category": "diagnostic"
+    },
+    {
+      "path": "product-provenance.json",
+      "type": "json",
+      "label": "Product checkout provenance",
+      "category": "system",
+      "metadata": {
+        "adapter": "mobile",
+        "git_ref": "1da65345c1c1d962c35e7fb7b0f6f585d37ea633",
+        "branch": "TAT-3931-fix-fix-perps-activity-multi-fill",
+        "dirty": false
+      }
+    },
+    {
+      "path": "report.md",
+      "type": "report",
+      "label": "Human run report",
+      "category": "system"
+    }
+  ],
+  "recovered": [],
+  "mutations": []
+}

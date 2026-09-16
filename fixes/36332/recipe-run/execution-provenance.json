@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "valid": true,
+  "snapshots": [
+    {
+      "phase": "start",
+      "capturedAt": "2026-09-16T12:51:03.213Z",
+      "recipeDigest": "sha256:a4931a96173b7a4c1b05509d22d9422bb0b003d39f3576e6f7312307d3e7d8ed",
+      "product": {
+        "head": "1da65345c1c1d962c35e7fb7b0f6f585d37ea633",
+        "status": "",
+        "sourceFingerprint": "4de915507d975fe595613fe9e4940ffa7da7bf6cf8a0734e4651f1896f901311"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "5a546375ae2c7892f95a59fe11e1fd9eeba02414a67d466084da347f7068e155"
+      },
+      "libraries": [
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "61c29c367c86f46e302c8eca24ce6367b235c2f476f57257a38aacc2fbb5ea5f"
+        }
+      ],
+      "helpers": [
+        {
+          "path": "app/components/UI/Perps/utils/transactionTransforms.test.ts",
+          "sourceFingerprint": "761082d9f31459d28a4a6b22c322553a15b2f7b2b992a2a5f8419b07c5ed039f"
+        }
+      ]
+    },
+    {
+      "phase": "pre-execute",
+      "capturedAt": "2026-09-16T12:51:03.522Z",
+      "recipeDigest": "sha256:a4931a96173b7a4c1b05509d22d9422bb0b003d39f3576e6f7312307d3e7d8ed",
+      "product": {
+        "head": "1da65345c1c1d962c35e7fb7b0f6f585d37ea633",
+        "status": "",
+        "sourceFingerprint": "4de915507d975fe595613fe9e4940ffa7da7bf6cf8a0734e4651f1896f901311"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "5a546375ae2c7892f95a59fe11e1fd9eeba02414a67d466084da347f7068e155"
+      },
+      "libraries": [
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "61c29c367c86f46e302c8eca24ce6367b235c2f476f57257a38aacc2fbb5ea5f"
+        }
+      ],
+      "helpers": [
+        {
+          "path": "app/components/UI/Perps/utils/transactionTransforms.test.ts",
+          "sourceFingerprint": "761082d9f31459d28a4a6b22c322553a15b2f7b2b992a2a5f8419b07c5ed039f"
+        }
+      ]
+    },
+    {
+      "phase": "end",
+      "capturedAt": "2026-09-16T12:52:22.887Z",
+      "recipeDigest": "sha256:a4931a96173b7a4c1b05509d22d9422bb0b003d39f3576e6f7312307d3e7d8ed",
+      "product": {
+        "head": "1da65345c1c1d962c35e7fb7b0f6f585d37ea633",
+        "status": "",
+        "sourceFingerprint": "4de915507d975fe595613fe9e4940ffa7da7bf6cf8a0734e4651f1896f901311"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "5a546375ae2c7892f95a59fe11e1fd9eeba02414a67d466084da347f7068e155"
+      },
+      "libraries": [
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "61c29c367c86f46e302c8eca24ce6367b235c2f476f57257a38aacc2fbb5ea5f"
+        }
+      ],
+      "helpers": [
+        {
+          "path": "app/components/UI/Perps/utils/transactionTransforms.test.ts",
+          "sourceFingerprint": "761082d9f31459d28a4a6b22c322553a15b2f7b2b992a2a5f8419b07c5ed039f"
+        }
+      ]
+    }
+  ],
+  "drift": []
+}

@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "preferred_mode": "screenshots",
+  "summary": "One SOL long that Hyperliquid filled in four pieces (2.92 + 0.4 + 2.35 + 2.62 = 8.29 SOL, $1.15 in fees), shown before and after the fix.",
+  "before_after_pairs": [
+    {
+      "label": "Activity > Perps > Trades: one 8.29 SOL open, four rows before and one row after",
+      "covers": ["ac2", "ac4"],
+      "before": "before-evidence-ac4-activity-page.png",
+      "after": "after-ac4-activity-page.png"
+    },
+    {
+      "label": "Perps asset detail (SOL): the same open reported at its full size and total fee",
+      "covers": ["ac2", "ac4"],
+      "before": "before-evidence-ac2-market-detail.png",
+      "after": "after-ac2-market-detail.png"
+    }
+  ],
+  "videos": {
+    "before": "before.mp4",
+    "after": "after.mp4",
+    "preferred": false
+  }
+}
