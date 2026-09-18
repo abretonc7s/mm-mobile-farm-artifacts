@@ -1,0 +1,11 @@
+{
+  "verdict": "pass",
+  "reasons": [
+    "The inherited recipe ran unmodified against the rebased branch with this round's review fixes applied and exited 0 with all 18 nodes passing (artifacts/recipe-run/report.md).",
+    "It is discriminating for the fix that changed the UI: ac1-wait-control and ac2-press-control resolve and press the rebuilt design-system Checkbox by its testID, so a broken swap would have failed the run rather than passed silently.",
+    "The visual claim is backed by values read off both PNGs: unchecked splits 0.00179 into 0.00163 + 0.00016 and 0.00128 into 0.00125 + 0.00003, matching the aggregated rows in the paired screenshot at the same scroll position.",
+    "ac2-wait-after-toggle waits on transaction-item-12, an index that only exists once the fills are listed individually, so the toggle is proven by list state and not only by a screenshot.",
+    "Two review fixes are not discriminable by this recipe and are proven at the unit layer instead, both verified to fail against the pre-fix code: the flattenFills dedupe removal and the content-derived row ids. Recorded as a coverage gap in artifacts/recipe-coverage.md rather than claimed as runtime proof.",
+    "No forbidden pattern: no eval_sync, no switch, no bare wait nodes, no injected UI values; all list state comes from the fixture account's real Hyperliquid testnet history."
+  ]
+}

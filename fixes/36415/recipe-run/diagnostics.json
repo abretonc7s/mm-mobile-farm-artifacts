@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "scope": "recipe-run-application",
+  "status": "review",
+  "nonBlocking": true,
+  "note": "Observed 109 distinct application warning/error event(s) during the recipe run; showing 20 preview(s) and omitting 89. Relation to the task is not determined.",
+  "source": {
+    "label": "app",
+    "path": "/Volumes/FD/dev/metamask/metamask-mobile-1/temp/recipe/runtime/app-console.log",
+    "startOffset": 130338,
+    "endOffset": 226646,
+    "bytesRead": 96308,
+    "truncated": false,
+    "inAppBuffer": "n/a",
+    "rawArtifact": "diagnostics-app-log.txt",
+    "redacted": true
+  },
+  "counts": {
+    "total": 109,
+    "warning": 16,
+    "error": 93,
+    "exception": 0
+  },
+  "displayedFindingCount": 20,
+  "omittedFindingCount": 89,
+  "findings": [
+    {
+      "level": "error",
+      "fingerprint": "55e6e0f4d013",
+      "preview": "ERROR  00:44:38.728 [console:mm-1] Removing harden.prototype",
+      "count": 1
+    },
+    {
+      "level": "error",
+      "fingerprint": "799deb27878e",
+      "preview": "ERROR  00:44:38.728 [console:mm-1] Tolerating undeletable harden.prototype === undefined",
+      "count": 1
+    },
+    {
+      "level": "error",
+      "fingerprint": "10a2f5c1518f",
+      "preview": "ERROR  00:44:38.728 [console:mm-1] Removing %InitialGetStackString%.prototype",
+      "count": 1
+    },
+    {
+      "level": "error",
+      "fingerprint": "6759274e6ead",
+      "preview": "ERROR  00:44:38.728 [console:mm-1] Tolerating undeletable %InitialGetStackString%.prototype === undefined",
+      "count": 1
+    },
+    {
+      "level": "error",
+      "fingerprint": "90a4b3ab1131",
+      "preview": "ERROR  00:44:38.729 [console:mm-1] SES Removing unpermitted intrinsics",
+      "count": 1
+    },
+    {
+      "level": "error",
+      "fingerprint": "cabbfa6e4d41",
+      "preview": "ERROR  00:44:38.729 [console:mm-1]   Removing intrinsics.Promise._l",
+      "count": 1
+    },
+    {
+      "level": "error",
+      "fingerprint": "d7934d83b438",
+      "preview": "ERROR  00:44:38.729 [console:mm-1]   Removing intrinsics.Promise._m",
+      "count": 1
+    },
+    {
+      "level": "error",
+      "fingerprint": "31755e7a9e93",
+      "preview": "ERROR  00:44:38.729 [console:mm-1]   Removing intrinsics.Promise._n",
+      "count": 1
+    },
+    {
+      "level": "error",
+      "fingerprint": "3e4087a78cc6",
+      "preview": "ERROR  00:44:38.729 [console:mm-1]   Removing intrinsics.Promise.resolve.prototype",
+      "count": 1
+    },
+    {
+      "level": "error",
+      "fingerprint": "639b44fefd5e",
+      "preview": "ERROR  00:44:38.729 [console:mm-1]   Tolerating undeletable intrinsics.Promise.resolve.prototype === undefined",
+      "count": 1
+    },
+    {
+      "level": "error",
+      "fingerprint": "3e384ba86172",
+      "preview": "ERROR  00:44:38.730 [console:mm-1]   Removing intrinsics.Promise.all.prototype",
+      "count": 1
+    },
+    {
+      "level": "error",
+      "fingerprint": "7b0d05a0780e",
+      "preview": "ERROR  00:44:38.730 [console:mm-1]   Tolerating undeletable intrinsics.Promise.all.prototype === undefined",
+      "count": 1
+    },
+    {
+      "level": "error",
+      "fingerprint": "83e76747febb",
+      "preview": "ERROR  00:44:38.730 [console:mm-1]   Removing intrinsics.Promise.allSettled.prototype",
+      "count": 1
+    },
+    {
+      "level": "error",
+      "fingerprint": "65a3f40f8694",
+      "preview": "ERROR  00:44:38.730 [console:mm-1]   Tolerating undeletable intrinsics.Promise.allSettled.prototype === undefined",
+      "count": 1
+    },
+    {
+      "level": "error",
+      "fingerprint": "07fceb915d7f",
+      "preview": "ERROR  00:44:38.730 [console:mm-1]   Removing intrinsics.Promise.reject.prototype",
+      "count": 1
+    },
+    {
+      "level": "error",
+      "fingerprint": "3192c54b826f",
+      "preview": "ERROR  00:44:38.730 [console:mm-1]   Tolerating undeletable intrinsics.Promise.reject.prototype === undefined",
+      "count": 1
+    },
+    {
+      "level": "error",
+      "fingerprint": "9863fb768bfd",
+      "preview": "ERROR  00:44:38.730 [console:mm-1]   Removing intrinsics.Promise.race.prototype",
+      "count": 1
+    },
+    {
+      "level": "error",
+      "fingerprint": "e6643c1fe640",
+      "preview": "ERROR  00:44:38.730 [console:mm-1]   Tolerating undeletable intrinsics.Promise.race.prototype === undefined",
+      "count": 1
+    },
+    {
+      "level": "error",
+      "fingerprint": "e2249bec885a",
+      "preview": "ERROR  00:44:38.730 [console:mm-1]   Removing intrinsics.Promise.any.prototype",
+      "count": 1
+    },
+    {
+      "level": "error",
+      "fingerprint": "00f3e7c0985b",
+      "preview": "ERROR  00:44:38.730 [console:mm-1]   Tolerating undeletable intrinsics.Promise.any.prototype === undefined",
+      "count": 1
+    }
+  ]
+}

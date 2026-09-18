@@ -1,0 +1,144 @@
+{
+  "$schema": "https://farmslot.io/schemas/recipe-v1.schema.json",
+  "title": "Aggregated control switches the Perps trade list between one row per order and every fill",
+  "description": "Proves the Aggregated pill on Activity > Perps > Trades collapses each order's fills into one row when checked and lists every execution when unchecked. Data prerequisite: the slot fixture account (Trading, 0x316B...01fa) on Hyperliquid testnet, whose trade history contains orders that filled in several pieces.",
+  "workflow": {
+    "entry": "setup-restart",
+    "nodes": {
+      "setup-restart": {
+        "action": "app.lifecycle",
+        "intent": "Start from a freshly launched app so the trade history loads from scratch",
+        "command": "restart",
+        "settle_ms": 4000,
+        "timeout_ms": 180000,
+        "next": "setup-status"
+      },
+      "setup-status": {
+        "action": "app.status",
+        "intent": "Confirm the mobile bridge is reachable",
+        "next": "setup-unlock"
+      },
+      "setup-unlock": {
+        "action": "metamask.wallet.ensure_unlocked",
+        "intent": "Reach a signed-in wallet so Perps history is readable",
+        "next": "ac1-run-transform-tests"
+      },
+      "setup-nav-perps-root": {
+        "action": "ui.navigate",
+        "intent": "Open the full trade history screen",
+        "route": "PerpsActivity",
+        "params": {
+          "showBackButton": true
+        },
+        "timeout_ms": 45000,
+        "next": "setup-open-type-filter"
+      },
+      "gate-perps-trades": {
+        "action": "ui.wait_for",
+        "intent": "Make sure the trade history really is filtered to Perps trades before reading it",
+        "test_id": "activity-screen-perps-filter-chip",
+        "expected": "visible",
+        "timeout_ms": 90000,
+        "next": "ac1-wait-control"
+      },
+      "ac1-wait-control": {
+        "action": "ui.wait_for",
+        "intent": "See the Aggregated control offered alongside the Perps and Trades filters",
+        "test_id": "activity-screen-aggregated-checkbox",
+        "expected": "visible",
+        "timeout_ms": 90000,
+        "next": "ac2-wait-rows"
+      },
+      "ac2-press-control": {
+        "action": "ui.press",
+        "intent": "Turn the Aggregated control off the way a user inspecting their executions would",
+        "test_id": "activity-screen-aggregated-checkbox",
+        "next": "ac2-wait-after-toggle"
+      },
+      "ac2-screenshot-individual": {
+        "action": "ui.screenshot",
+        "intent": "Show the same trade list breaking those orders into their individual executions",
+        "path": "screenshots/evidence-ac2-aggregated-off.png",
+        "label": "AC2: Aggregated off - one row per fill",
+        "next": "teardown-done"
+      },
+      "teardown-done": {
+        "action": "end",
+        "status": "pass"
+      },
+      "setup-open-type-filter": {
+        "action": "ui.press",
+        "intent": "Open the activity type picker the way a user narrowing to Perps does",
+        "test_id": "activity-screen-type-filter-chip",
+        "next": "setup-wait-type-sheet"
+      },
+      "setup-wait-type-sheet": {
+        "action": "ui.wait_for",
+        "intent": "See the type picker open before choosing Perps",
+        "test_id": "activity-screen-type-filter-option-perps",
+        "expected": "visible",
+        "timeout_ms": 30000,
+        "next": "setup-choose-perps"
+      },
+      "setup-choose-perps": {
+        "action": "ui.press",
+        "intent": "Narrow the activity list to Perps",
+        "test_id": "activity-screen-type-filter-option-perps",
+        "next": "gate-perps-trades"
+      },
+      "ac1-run-transform-tests": {
+        "action": "command",
+        "intent": "Establish that one order's fills are summed when aggregation is on and listed separately when off",
+        "cmd": "yarn jest app/components/UI/Perps/utils/transactionTransforms.test.ts -t \"aggregation\" --no-coverage > temp/tat-3932/artifacts/transform-tests.log 2>&1\nstatus=$?\ntail -20 temp/tat-3932/artifacts/transform-tests.log\ngrep -q \"Tests:.*passed\" temp/tat-3932/artifacts/transform-tests.log || exit 1\nexit $status",
+        "timeout_ms": 900000,
+        "allow_failure": true,
+        "next": "ac1-assert-transform-tests"
+      },
+      "ac1-assert-transform-tests": {
+        "action": "assert_exit_code",
+        "intent": "Fail the proof when the on/off fill grouping rules are not met",
+        "node": "ac1-run-transform-tests",
+        "expected": 0,
+        "next": "ac1-index-test-log"
+      },
+      "ac1-index-test-log": {
+        "action": "index_artifacts",
+        "intent": "Keep the fill grouping test output as reviewable evidence",
+        "artifacts": [
+          {
+            "path": "temp/tat-3932/artifacts/transform-tests.log",
+            "type": "log",
+            "label": "AC1 aggregate on/off test output",
+            "covers": [
+              "ac1"
+            ]
+          }
+        ],
+        "next": "setup-nav-perps-root"
+      },
+      "ac2-wait-rows": {
+        "action": "ui.wait_for",
+        "intent": "See the trade rows finish loading before reading them",
+        "test_id": "transaction-item-1",
+        "expected": "visible",
+        "timeout_ms": 240000,
+        "next": "ac2-screenshot-aggregated"
+      },
+      "ac2-screenshot-aggregated": {
+        "action": "ui.screenshot",
+        "intent": "Show the trade list with each order's fills combined into one row",
+        "path": "screenshots/evidence-ac2-aggregated-on.png",
+        "label": "AC2: Aggregated on - one row per order",
+        "next": "ac2-press-control"
+      },
+      "ac2-wait-after-toggle": {
+        "action": "ui.wait_for",
+        "intent": "See the list settle on the individual executions after the control is turned off",
+        "test_id": "transaction-item-12",
+        "expected": "visible",
+        "timeout_ms": 120000,
+        "next": "ac2-screenshot-individual"
+      }
+    }
+  }
+}

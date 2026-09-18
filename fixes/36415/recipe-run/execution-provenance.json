@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "valid": true,
+  "snapshots": [
+    {
+      "phase": "start",
+      "capturedAt": "2026-09-18T00:44:17.955Z",
+      "recipeDigest": "sha256:6d1f716d348b775fdce30a20a5342c4c54af19301d5fa0d91398554ec3fb25eb",
+      "product": {
+        "head": "c33f2fdd6c545b4c71fb702aebcf9d2714b10d74",
+        "status": " M app/components/UI/Perps/components/PerpsAggregatedFillsCheckbox/PerpsAggregatedFillsCheckbox.test.tsx\n M app/components/UI/Perps/components/PerpsAggregatedFillsCheckbox/PerpsAggregatedFillsCheckbox.tsx\n M app/components/UI/Perps/utils/transactionTransforms.test.ts\n M app/components/UI/Perps/utils/transactionTransforms.ts\n M app/components/Views/ActivityDetails/hooks/usePerpsActivityQuery.test.ts\n M app/components/Views/ActivityDetails/hooks/usePerpsActivityQuery.ts\n M app/components/Views/ActivityDetails/templates/Perps/usePerpsDetailsItem.test.ts\n M app/components/Views/ActivityDetails/templates/Perps/usePerpsDetailsItem.ts\n M app/components/Views/ActivityList/hooks/usePerpsActivityItems.test.ts\n M app/components/Views/ActivityList/hooks/usePerpsActivityItems.ts\n",
+        "sourceFingerprint": "98fac5c0a6812bfc6188b7755da7b77ce4eb0155e2c0b6dd8d1615789cee148f"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "179e97e01a57b12ac835bcdd4e01bce637fa0582a84e16edd10253483a87724d"
+      },
+      "libraries": [
+        {
+          "name": "perps",
+          "head": "a6a53226294ab58fbe06d49e688997543ec8ec9a",
+          "status": "",
+          "sourceFingerprint": "aba3889d180e485b861d19ac5bb8da8f498360f438aae958ba69d6912c462c55"
+        },
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "61c29c367c86f46e302c8eca24ce6367b235c2f476f57257a38aacc2fbb5ea5f"
+        }
+      ],
+      "helpers": [
+        {
+          "path": "app/components/UI/Perps/utils/transactionTransforms.test.ts",
+          "sourceFingerprint": "3d33fca07ef9811f01c17d18a858337065ec7dccaa9733da51079049c5f186b0"
+        }
+      ]
+    },
+    {
+      "phase": "pre-execute",
+      "capturedAt": "2026-09-18T00:44:22.883Z",
+      "recipeDigest": "sha256:6d1f716d348b775fdce30a20a5342c4c54af19301d5fa0d91398554ec3fb25eb",
+      "product": {
+        "head": "c33f2fdd6c545b4c71fb702aebcf9d2714b10d74",
+        "status": " M app/components/UI/Perps/components/PerpsAggregatedFillsCheckbox/PerpsAggregatedFillsCheckbox.test.tsx\n M app/components/UI/Perps/components/PerpsAggregatedFillsCheckbox/PerpsAggregatedFillsCheckbox.tsx\n M app/components/UI/Perps/utils/transactionTransforms.test.ts\n M app/components/UI/Perps/utils/transactionTransforms.ts\n M app/components/Views/ActivityDetails/hooks/usePerpsActivityQuery.test.ts\n M app/components/Views/ActivityDetails/hooks/usePerpsActivityQuery.ts\n M app/components/Views/ActivityDetails/templates/Perps/usePerpsDetailsItem.test.ts\n M app/components/Views/ActivityDetails/templates/Perps/usePerpsDetailsItem.ts\n M app/components/Views/ActivityList/hooks/usePerpsActivityItems.test.ts\n M app/components/Views/ActivityList/hooks/usePerpsActivityItems.ts\n",
+        "sourceFingerprint": "98fac5c0a6812bfc6188b7755da7b77ce4eb0155e2c0b6dd8d1615789cee148f"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "179e97e01a57b12ac835bcdd4e01bce637fa0582a84e16edd10253483a87724d"
+      },
+      "libraries": [
+        {
+          "name": "perps",
+          "head": "a6a53226294ab58fbe06d49e688997543ec8ec9a",
+          "status": "",
+          "sourceFingerprint": "aba3889d180e485b861d19ac5bb8da8f498360f438aae958ba69d6912c462c55"
+        },
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "61c29c367c86f46e302c8eca24ce6367b235c2f476f57257a38aacc2fbb5ea5f"
+        }
+      ],
+      "helpers": [
+        {
+          "path": "app/components/UI/Perps/utils/transactionTransforms.test.ts",
+          "sourceFingerprint": "3d33fca07ef9811f01c17d18a858337065ec7dccaa9733da51079049c5f186b0"
+        }
+      ]
+    },
+    {
+      "phase": "end",
+      "capturedAt": "2026-09-18T00:45:16.428Z",
+      "recipeDigest": "sha256:6d1f716d348b775fdce30a20a5342c4c54af19301d5fa0d91398554ec3fb25eb",
+      "product": {
+        "head": "c33f2fdd6c545b4c71fb702aebcf9d2714b10d74",
+        "status": " M app/components/UI/Perps/components/PerpsAggregatedFillsCheckbox/PerpsAggregatedFillsCheckbox.test.tsx\n M app/components/UI/Perps/components/PerpsAggregatedFillsCheckbox/PerpsAggregatedFillsCheckbox.tsx\n M app/components/UI/Perps/utils/transactionTransforms.test.ts\n M app/components/UI/Perps/utils/transactionTransforms.ts\n M app/components/Views/ActivityDetails/hooks/usePerpsActivityQuery.test.ts\n M app/components/Views/ActivityDetails/hooks/usePerpsActivityQuery.ts\n M app/components/Views/ActivityDetails/templates/Perps/usePerpsDetailsItem.test.ts\n M app/components/Views/ActivityDetails/templates/Perps/usePerpsDetailsItem.ts\n M app/components/Views/ActivityList/hooks/usePerpsActivityItems.test.ts\n M app/components/Views/ActivityList/hooks/usePerpsActivityItems.ts\n",
+        "sourceFingerprint": "98fac5c0a6812bfc6188b7755da7b77ce4eb0155e2c0b6dd8d1615789cee148f"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "179e97e01a57b12ac835bcdd4e01bce637fa0582a84e16edd10253483a87724d"
+      },
+      "libraries": [
+        {
+          "name": "perps",
+          "head": "a6a53226294ab58fbe06d49e688997543ec8ec9a",
+          "status": "",
+          "sourceFingerprint": "aba3889d180e485b861d19ac5bb8da8f498360f438aae958ba69d6912c462c55"
+        },
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "61c29c367c86f46e302c8eca24ce6367b235c2f476f57257a38aacc2fbb5ea5f"
+        }
+      ],
+      "helpers": [
+        {
+          "path": "app/components/UI/Perps/utils/transactionTransforms.test.ts",
+          "sourceFingerprint": "3d33fca07ef9811f01c17d18a858337065ec7dccaa9733da51079049c5f186b0"
+        }
+      ]
+    }
+  ],
+  "drift": []
+}

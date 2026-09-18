@@ -1,0 +1,160 @@
+PASS app/components/UI/Perps/utils/transactionTransforms.test.ts (6.503 s)
+  transactionTransforms
+    aggregateFillsByOrder
+      split stop loss aggregation (bug fix)
+        ✓ aggregates split stop loss fills into single fill with combined PnL (2 ms)
+        ✓ aggregates split take profit fills into single fill
+      aggregation criteria
+        ✓ does not aggregate fills with different assets
+        ✓ does not aggregate fills with different close directions (1 ms)
+        ✓ does not aggregate fills in different seconds from different orders
+        ✓ aggregates fills within the same second
+      open and flip fills aggregate (TAT-3931)
+        ○ skipped aggregates Open Long fills of one order
+        ○ skipped aggregates Open Short fills of one order
+        ○ skipped aggregates Buy fills of one order (spot-perps)
+        ○ skipped aggregates flip fills of one order and keeps the opening position size
+        ○ skipped takes the opening position size from the largest fill when timestamps tie
+        ○ skipped ignores a flip fill that already crossed to the other side
+        ○ skipped keeps a negative opening position signed when timestamps tie
+        ○ skipped does not aggregate fills of different orders opening the same market
+        ○ skipped keeps two opens of different orders apart inside the same second
+        ○ skipped does not chain unrelated opens through an order that spans two seconds
+        ○ skipped does not aggregate an open and a close of the same order id
+      multi-second close aggregation (TAT-3931)
+        ✓ aggregates one close order filled across several seconds
+        ✓ links same-second and same-order groups into one entry
+      closeable directions aggregate
+        ○ skipped aggregates Sell fills (spot-perps close)
+        ○ skipped aggregates Auto-Deleveraging fills
+      VWAP calculation
+        ○ skipped calculates VWAP correctly for fills at different prices
+      metadata preservation
+        ○ skipped preserves detailedOrderType from first fill with it
+        ○ skipped preserves liquidation info from any fill
+        ○ skipped preserves startPosition from first fill with it
+        ○ skipped uses the last fill orderId and timestamp for the aggregated result
+      edge cases
+        ○ skipped returns empty array for empty input
+        ○ skipped returns single fill unchanged
+        ○ skipped sorts result by timestamp descending
+        ○ skipped handles mixed aggregatable and non-aggregatable fills
+    transformFillsToTransactions
+      ✓ lists every execution separately when aggregation is turned off
+      ○ skipped transforms close position fill correctly
+      ○ skipped handles break-even PnL correctly
+      ○ skipped should handle flipped positions correctly
+      ○ skipped reports a multi-fill flip as one row sized from the whole order (TAT-3931)
+      ○ skipped sizes a short flip from the magnitude of the position it opened from
+      ○ skipped sizes a tied-timestamp flip from the position the order started at
+      ○ skipped gives individual executions ids that cannot collide with the aggregated row
+      ○ skipped keeps both executions when two fills of one order share timestamp, size and price
+      ○ skipped leaves existing execution ids unchanged when a newer fill is prepended
+      ○ skipped defaults to aggregating when no options are passed
+      ○ skipped should handle empty fills array
+      ○ skipped should handle fills with empty direction field
+      ○ skipped should correctly identify take profit fills
+      ○ skipped should correctly identify stop loss fills
+      ○ skipped should correctly identify liquidation fills
+      ○ skipped correctly identifies auto-deleveraging fills with positive position
+      ○ skipped correctly identifies auto-deleveraging fills with negative position
+      ○ skipped filters out auto-deleveraging fills with invalid startPosition
+      ○ skipped filters out auto-deleveraging fills with missing startPosition
+      ○ skipped handles stop loss fills
+      ○ skipped handles missing direction gracefully
+      ○ skipped handles missing direction
+      ○ skipped silently skips Spot Dust Conversion fills without console.error
+      ○ skipped emits console.warn for unknown fill directions instead of console.error
+      ○ skipped emits console.warn for empty direction instead of console.error
+      ○ skipped aggregates split stop loss fills and shows combined PnL in transaction
+      ○ skipped uses timestamp as fallback ID when orderId is missing
+      ○ skipped strips hip3 prefix from symbol in subtitle
+      ○ skipped strips DEX prefix from symbol in subtitle
+      ○ skipped keeps regular symbols unchanged in subtitle
+      ○ skipped transforms Buy direction fill correctly
+      ○ skipped transforms Sell direction fill correctly
+      ○ skipped handles Sell direction with negative PnL correctly
+    transformOrdersToTransactions
+      ○ skipped preserves market price fields in transaction history
+      ○ skipped preserves limit price fields in transaction history
+      ○ skipped preserves stop_market price fields in transaction history
+      ○ skipped preserves stop_limit price fields in transaction history
+      ○ skipped preserves take_profit_market price fields in transaction history
+      ○ skipped preserves take_profit_limit price fields in transaction history
+      ○ skipped recovers stop_market from legacy order metadata
+      ○ skipped recovers stop_limit from legacy order metadata
+      ○ skipped recovers take_profit_market from legacy order metadata
+      ○ skipped recovers take_profit_limit from legacy order metadata
+      ○ skipped transforms filled order correctly (defaults to 100% without fill data)
+      ○ skipped transforms cancelled order correctly
+      ○ skipped transforms rejected order correctly
+      ○ skipped transforms triggered order correctly
+      ○ skipped transforms open order correctly
+      ○ skipped handles short orders correctly
+      ○ skipped formats closing long position as Close Long
+      ○ skipped formats closing short position as Close Short
+      ○ skipped handles market orders correctly
+      ○ skipped calculates filled percentage from size fields for open orders
+      ○ skipped handles zero size as 100% filled
+      ○ skipped strips hip3 prefix from symbol in subtitle
+      ○ skipped strips DEX prefix from symbol in subtitle
+      ○ skipped keeps regular symbols unchanged in subtitle
+      fill-based percentage calculation
+        ○ skipped calculates accurate percentage from fill data map
+        ○ skipped shows 0% for canceled order without any fills
+        ○ skipped shows 100% for fully filled order from fill data
+        ○ skipped handles partial fill then cancel scenario correctly
+        ○ skipped rounds percentage to whole number
+        ○ skipped handles multiple fills for same order
+        ○ skipped falls back to status-based logic when fill map not provided
+        ○ skipped falls back to 0% for rejected order without fill data
+        ○ skipped returns 0% for position-bound TP/SL orders with zero size (not filled yet)
+        ○ skipped returns 100% for regular order with zero remaining size (fully filled)
+    transformFundingToTransactions
+      ○ skipped transforms positive funding correctly
+      ○ skipped transforms negative funding correctly
+      ○ skipped preserves input order (sorting is handled by the consumer)
+      ○ skipped strips hip3 prefix from symbol in subtitle
+      ○ skipped strips DEX prefix from symbol in subtitle
+      ○ skipped keeps regular symbols unchanged in subtitle
+    transformUserHistoryToTransactions
+      ○ skipped transforms completed deposit correctly
+      ○ skipped transforms completed withdrawal correctly
+      ○ skipped filters out non-completed items
+      ○ skipped handles missing txHash
+    transformWithdrawalRequestsToTransactions
+      ○ skipped transforms completed withdrawal request correctly
+      ○ skipped transforms pending withdrawal with Pending subtitle
+      ○ skipped transforms failed withdrawal with Failed subtitle
+      ○ skipped uses Withdrawal title when amount is zero
+      ○ skipped handles missing txHash
+    transformDepositRequestsToTransactions
+      ○ skipped transforms completed deposit request correctly
+      ○ skipped handles zero amount deposits
+      ○ skipped handles zero string amount deposits
+      ○ skipped filters out non-completed deposit requests
+      ○ skipped handles missing txHash
+    edge cases
+      ○ skipped handles empty arrays
+      ○ skipped handles BigNumber edge cases
+    transformWalletPerpsDepositsToTransactions
+      ○ skipped transforms all provided transactions (filtering is done by the hook)
+      ○ skipped returns deposit PerpsTransaction with amount and Completed status
+      ○ skipped uses Deposit title when amount is zero or token data missing
+      ○ skipped maps failed status to Failed subtitle
+      ○ skipped maps pending status to Pending subtitle
+      ○ skipped uses tx.time and tx.hash when present
+      ○ skipped uses Deposit title and zero amount when getTokenTransferData returns undefined
+    walletPerpsWithdrawalsToRequests
+      ○ skipped converts wallet TransactionMeta to WithdrawalRequest format
+      ○ skipped maps wallet status to withdrawal request status
+      ○ skipped maps submitted status to pending
+      ○ skipped returns zero amount when getTokenTransferData returns undefined
+      ○ skipped uses tx.time and tx.hash
+      ○ skipped prefixes id with wallet-
+
+Test Suites: 1 passed, 1 total
+Tests:       124 skipped, 9 passed, 133 total
+Snapshots:   0 total
+Time:        6.541 s
+Ran all test suites matching /app\/components\/UI\/Perps\/utils\/transactionTransforms.test.ts/i with tests matching "aggregation".

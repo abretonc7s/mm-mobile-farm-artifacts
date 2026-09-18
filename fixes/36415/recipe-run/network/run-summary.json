@@ -1,0 +1,229 @@
+{
+  "schemaVersion": 1,
+  "id": "run-network",
+  "status": "unavailable",
+  "startedAtEpochMs": 1789692262693,
+  "endedAtEpochMs": 1789692316685,
+  "maxDurationMs": 3600000,
+  "reconnects": 0,
+  "droppedRequests": 0,
+  "unavailableReasons": [
+    "CDP broker never observed the requested target"
+  ],
+  "coverageGapReasons": [],
+  "uninspectableBodyRequests": 0,
+  "projectedBodyFields": [
+    "type"
+  ],
+  "totalRequests": 0,
+  "requestsByMethod": {},
+  "requestsByHost": {},
+  "requestsByType": {},
+  "requests": [],
+  "nodeEvents": [
+    {
+      "action": "app.lifecycle",
+      "elapsedMs": 2385,
+      "nodeId": "setup-restart",
+      "status": "running"
+    },
+    {
+      "action": "app.lifecycle",
+      "elapsedMs": 23158,
+      "nodeId": "setup-restart",
+      "status": "passed"
+    },
+    {
+      "action": "app.status",
+      "elapsedMs": 23159,
+      "nodeId": "setup-status",
+      "status": "running"
+    },
+    {
+      "action": "app.status",
+      "elapsedMs": 23161,
+      "nodeId": "setup-status",
+      "status": "passed"
+    },
+    {
+      "action": "metamask.wallet.ensure_unlocked",
+      "elapsedMs": 23161,
+      "nodeId": "setup-unlock",
+      "status": "running"
+    },
+    {
+      "action": "metamask.wallet.ensure_unlocked",
+      "elapsedMs": 29296,
+      "nodeId": "setup-unlock",
+      "status": "passed"
+    },
+    {
+      "action": "command",
+      "elapsedMs": 29297,
+      "nodeId": "ac1-run-transform-tests",
+      "status": "running"
+    },
+    {
+      "action": "command",
+      "elapsedMs": 45855,
+      "nodeId": "ac1-run-transform-tests",
+      "status": "passed"
+    },
+    {
+      "action": "assert_exit_code",
+      "elapsedMs": 45856,
+      "nodeId": "ac1-assert-transform-tests",
+      "status": "running"
+    },
+    {
+      "action": "assert_exit_code",
+      "elapsedMs": 45856,
+      "nodeId": "ac1-assert-transform-tests",
+      "status": "passed"
+    },
+    {
+      "action": "index_artifacts",
+      "elapsedMs": 45856,
+      "nodeId": "ac1-index-test-log",
+      "status": "running"
+    },
+    {
+      "action": "index_artifacts",
+      "elapsedMs": 45865,
+      "nodeId": "ac1-index-test-log",
+      "status": "passed"
+    },
+    {
+      "action": "ui.navigate",
+      "elapsedMs": 45866,
+      "nodeId": "setup-nav-perps-root",
+      "status": "running"
+    },
+    {
+      "action": "ui.navigate",
+      "elapsedMs": 46638,
+      "nodeId": "setup-nav-perps-root",
+      "status": "passed"
+    },
+    {
+      "action": "ui.press",
+      "elapsedMs": 47146,
+      "nodeId": "setup-open-type-filter",
+      "status": "running"
+    },
+    {
+      "action": "ui.press",
+      "elapsedMs": 47500,
+      "nodeId": "setup-open-type-filter",
+      "status": "passed"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 48004,
+      "nodeId": "setup-wait-type-sheet",
+      "status": "running"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 48246,
+      "nodeId": "setup-wait-type-sheet",
+      "status": "passed"
+    },
+    {
+      "action": "ui.press",
+      "elapsedMs": 48496,
+      "nodeId": "setup-choose-perps",
+      "status": "running"
+    },
+    {
+      "action": "ui.press",
+      "elapsedMs": 48827,
+      "nodeId": "setup-choose-perps",
+      "status": "passed"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 49092,
+      "nodeId": "gate-perps-trades",
+      "status": "running"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 49666,
+      "nodeId": "gate-perps-trades",
+      "status": "passed"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 50018,
+      "nodeId": "ac1-wait-control",
+      "status": "running"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 50259,
+      "nodeId": "ac1-wait-control",
+      "status": "passed"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 50571,
+      "nodeId": "ac2-wait-rows",
+      "status": "running"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 50893,
+      "nodeId": "ac2-wait-rows",
+      "status": "passed"
+    },
+    {
+      "action": "ui.screenshot",
+      "elapsedMs": 51216,
+      "nodeId": "ac2-screenshot-aggregated",
+      "status": "running"
+    },
+    {
+      "action": "ui.screenshot",
+      "elapsedMs": 51515,
+      "nodeId": "ac2-screenshot-aggregated",
+      "status": "passed"
+    },
+    {
+      "action": "ui.press",
+      "elapsedMs": 51819,
+      "nodeId": "ac2-press-control",
+      "status": "running"
+    },
+    {
+      "action": "ui.press",
+      "elapsedMs": 52180,
+      "nodeId": "ac2-press-control",
+      "status": "passed"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 52516,
+      "nodeId": "ac2-wait-after-toggle",
+      "status": "running"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 52758,
+      "nodeId": "ac2-wait-after-toggle",
+      "status": "passed"
+    },
+    {
+      "action": "ui.screenshot",
+      "elapsedMs": 53057,
+      "nodeId": "ac2-screenshot-individual",
+      "status": "running"
+    },
+    {
+      "action": "ui.screenshot",
+      "elapsedMs": 53204,
+      "nodeId": "ac2-screenshot-individual",
+      "status": "passed"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "adapter": "mobile",
+  "repository": "metamask-mobile-1",
+  "git_ref": "c33f2fdd6c545b4c71fb702aebcf9d2714b10d74",
+  "branch": "TAT-3932-perps-aggregated-fills-checkbox",
+  "dirty": true
+}

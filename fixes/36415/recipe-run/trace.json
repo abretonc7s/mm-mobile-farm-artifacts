@@ -1,0 +1,3039 @@
+{
+  "metadata": {
+    "runner": {
+      "source": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness",
+      "git_ref": "unknown",
+      "name": "@metamask/recipe-runner"
+    }
+  },
+  "entries": [
+    {
+      "nodeId": "setup-restart",
+      "action": "app.lifecycle",
+      "intent": "Start from a freshly launched app so the trade history loads from scratch",
+      "startedAt": "2026-09-18T00:44:25.077Z",
+      "endedAt": "2026-09-18T00:44:45.852Z",
+      "durationMs": 20775,
+      "ok": true,
+      "next": "setup-status",
+      "output": {
+        "command": "restart",
+        "platform": "ios-simulator",
+        "deviceId": "mm-1",
+        "appId": "io.metamask.MetaMask",
+        "launchUrl": "expo-metamask://expo-development-client/?url=http%3A%2F%2Flocalhost%3A8061%3FdisableOnboarding%3D1",
+        "calls": [
+          {
+            "file": "xcrun",
+            "args": [
+              "simctl",
+              "terminate",
+              "mm-1",
+              "io.metamask.MetaMask"
+            ],
+            "stdout": "",
+            "stderr": "xcrun simctl terminate mm-1 io.metamask.MetaMask failed: Command failed: xcrun simctl terminate mm-1 io.metamask.MetaMask\nAn error was encountered processing the command (domain=NSPOSIXErrorDomain, code=3):\nSimulator device failed to terminate io.metamask.MetaMask.\nfound nothing to terminate\nUnderlying error (domain=NSPOSIXErrorDomain, code=3):\n\tThe request to terminate \"io.metamask.MetaMask\" failed. found nothing to terminate\n\tfound nothing to terminate\n\nAn error was encountered processing the command (domain=NSPOSIXErrorDomain, code=3):\nSimulator device failed to terminate io.metamask.MetaMask.\nfound nothing to terminate\nUnderlying error (domain=NSPOSIXErrorDomain, code=3):\n\tThe request to terminate \"io.metamask.MetaMask\" failed. found nothing to terminate\n\tfound nothing to terminate\n",
+            "ignoredFailure": true
+          },
+          {
+            "file": "curl",
+            "args": [
+              "-fsS",
+              "-o",
+              "/dev/null",
+              "--max-time",
+              "60",
+              "http://localhost:8061/index.bundle?platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable"
+            ],
+            "stdout": "",
+            "stderr": "",
+            "ignoredFailure": false
+          },
+          {
+            "file": "xcrun",
+            "args": [
+              "simctl",
+              "openurl",
+              "mm-1",
+              "expo-metamask://expo-development-client/?url=http%3A%2F%2Flocalhost%3A8061%3FdisableOnboarding%3D1"
+            ],
+            "stdout": "",
+            "stderr": "",
+            "ignoredFailure": false
+          }
+        ],
+        "settleMs": 4000
+      }
+    },
+    {
+      "nodeId": "setup-status",
+      "action": "app.status",
+      "intent": "Confirm the mobile bridge is reachable",
+      "startedAt": "2026-09-18T00:44:45.852Z",
+      "endedAt": "2026-09-18T00:44:45.854Z",
+      "durationMs": 2,
+      "ok": true,
+      "next": "setup-unlock",
+      "output": {
+        "platform": "mobile",
+        "projectRoot": "/Volumes/FD/dev/metamask/metamask-mobile-1",
+        "compatibilityMode": "runner bridge with injected app bridge",
+        "shape": {
+          "packageName": "metamask",
+          "packageJsonStatus": "valid",
+          "packageJsonError": null,
+          "extensionProject": false,
+          "mobileProject": true,
+          "agenticService": true,
+          "mobileProductHarness": false,
+          "mobileBridgeScript": true,
+          "extensionRuntime": false,
+          "injectedHarness": true,
+          "walletFixture": true
+        }
+      }
+    },
+    {
+      "nodeId": "setup-unlock",
+      "action": "metamask.wallet.ensure_unlocked",
+      "intent": "Reach a signed-in wallet so Perps history is readable",
+      "startedAt": "2026-09-18T00:44:45.854Z",
+      "endedAt": "2026-09-18T00:44:51.989Z",
+      "durationMs": 6135,
+      "ok": true,
+      "next": "ac1-run-transform-tests",
+      "output": {
+        "action": "metamask.wallet.ensure_unlocked",
+        "unlocked": true,
+        "keyringUnlocked": true,
+        "account": {
+          "address": "0x316bde155acd07609872a56bc32ccfb0b13201fa",
+          "id": "234870c9-4599-440f-986f-779ced252938",
+          "name": ""
+        },
+        "route": {
+          "key": "WalletView-AxA8_t29-Clch1fNbHkG0",
+          "name": "WalletView"
+        },
+        "deviceName": "mm-1",
+        "platform": "ios",
+        "redacted": true,
+        "proofPath": "agentic-wallet-unlock",
+        "liveAdapter": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness/library/actions/mobile/wallet/ensure_unlocked.mjs"
+      }
+    },
+    {
+      "nodeId": "ac1-run-transform-tests",
+      "action": "command",
+      "intent": "Establish that one order's fills are summed when aggregation is on and listed separately when off",
+      "startedAt": "2026-09-18T00:44:51.989Z",
+      "endedAt": "2026-09-18T00:45:08.549Z",
+      "durationMs": 16560,
+      "ok": true,
+      "next": "ac1-assert-transform-tests",
+      "output": {
+        "exitCode": 0,
+        "stdout": "      ○ skipped transforms all provided transactions (filtering is done by the hook)\n      ○ skipped returns deposit PerpsTransaction with amount and Completed status\n      ○ skipped uses Deposit title when amount is zero or token data missing\n      ○ skipped maps failed status to Failed subtitle\n      ○ skipped maps pending status to Pending subtitle\n      ○ skipped uses tx.time and tx.hash when present\n      ○ skipped uses Deposit title and zero amount when getTokenTransferData returns undefined\n    walletPerpsWithdrawalsToRequests\n      ○ skipped converts wallet TransactionMeta to WithdrawalRequest format\n      ○ skipped maps wallet status to withdrawal request status\n      ○ skipped maps submitted status to pending\n      ○ skipped returns zero amount when getTokenTransferData returns undefined\n      ○ skipped uses tx.time and tx.hash\n      ○ skipped prefixes id with wallet-\n\nTest Suites: 1 passed, 1 total\nTests:       124 skipped, 9 passed, 133 total\nSnapshots:   0 total\nTime:        6.541 s\nRan all test suites matching /app\\/components\\/UI\\/Perps\\/utils\\/transactionTransforms.test.ts/i with tests matching \"aggregation\".\n",
+        "stderr": ""
+      }
+    },
+    {
+      "nodeId": "ac1-assert-transform-tests",
+      "action": "assert_exit_code",
+      "intent": "Fail the proof when the on/off fill grouping rules are not met",
+      "startedAt": "2026-09-18T00:45:08.549Z",
+      "endedAt": "2026-09-18T00:45:08.549Z",
+      "durationMs": 0,
+      "ok": true,
+      "next": "ac1-index-test-log",
+      "output": {
+        "source": "ac1-run-transform-tests",
+        "expected": 0,
+        "actual": 0
+      }
+    },
+    {
+      "nodeId": "ac1-index-test-log",
+      "action": "index_artifacts",
+      "intent": "Keep the fill grouping test output as reviewable evidence",
+      "artifacts": [
+        {
+          "path": "temp/tat-3932/artifacts/transform-tests.log",
+          "type": "log",
+          "label": "AC1 aggregate on/off test output",
+          "nodeId": "ac1-index-test-log",
+          "covers": [
+            "ac1"
+          ]
+        }
+      ],
+      "startedAt": "2026-09-18T00:45:08.549Z",
+      "endedAt": "2026-09-18T00:45:08.558Z",
+      "durationMs": 9,
+      "ok": true,
+      "next": "setup-nav-perps-root",
+      "output": {
+        "artifacts": [
+          "temp/tat-3932/artifacts/transform-tests.log"
+        ]
+      }
+    },
+    {
+      "nodeId": "setup-nav-perps-root",
+      "action": "ui.navigate",
+      "intent": "Open the full trade history screen",
+      "startedAt": "2026-09-18T00:45:08.559Z",
+      "endedAt": "2026-09-18T00:45:09.839Z",
+      "durationMs": 1280,
+      "ok": true,
+      "next": "setup-open-type-filter",
+      "output": {
+        "action": "ui.navigate",
+        "route": "PerpsActivity",
+        "params": {
+          "showBackButton": true
+        },
+        "navigation": {
+          "navigated": "PerpsActivity",
+          "params": {
+            "showBackButton": true
+          },
+          "previousRoute": {
+            "key": "WalletView-AxA8_t29-Clch1fNbHkG0",
+            "name": "WalletView"
+          },
+          "currentRoute": {
+            "key": "PerpsActivity-u3jsVttED9F83KvgEWw1g",
+            "name": "PerpsActivity",
+            "params": {
+              "showBackButton": true
+            }
+          },
+          "deviceName": "mm-1",
+          "platform": "ios",
+          "verifiedRoute": "PerpsActivity"
+        },
+        "proofPath": "agentic-navigation",
+        "liveAdapter": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness/library/actions/mobile/ui/navigate.mjs"
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "F587CA77-A594-4EC4-A8EB-44A436E85110",
+          "name": "MetaMask",
+          "nodeCount": 7,
+          "truncated": false,
+          "route": "PerpsActivity"
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXGenericElement",
+              "test_id": "activity-screen-back-button",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 74,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Transactions",
+              "test_id": "activity-screen-type-filter-chip",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 166,
+                "width": 146,
+                "height": 40
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "All networks",
+              "test_id": "activity-screen-network-filter-chip",
+              "enabled": true,
+              "bounds": {
+                "x": 170,
+                "y": 166,
+                "width": 141,
+                "height": 40
+              }
+            },
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 386,
+                "y": 96,
+                "width": 26,
+                "height": 26
+              }
+            }
+          ],
+          "hidden_or_offscreen": [],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "setup-open-type-filter",
+      "action": "ui.press",
+      "intent": "Open the activity type picker the way a user narrowing to Perps does",
+      "startedAt": "2026-09-18T00:45:09.839Z",
+      "endedAt": "2026-09-18T00:45:10.697Z",
+      "durationMs": 858,
+      "ok": true,
+      "next": "setup-wait-type-sheet",
+      "output": {
+        "ok": true,
+        "testId": "activity-screen-type-filter-chip",
+        "deviceName": "mm-1"
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "F587CA77-A594-4EC4-A8EB-44A436E85110",
+          "name": "MetaMask",
+          "nodeCount": 9,
+          "truncated": false,
+          "route": "ActivityTypeFilter"
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXButton",
+              "label": "Transactions",
+              "test_id": "activity-screen-type-filter-option-transactions",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 674,
+                "width": 438,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Buy/Sell",
+              "test_id": "activity-screen-type-filter-option-buySell",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 722,
+                "width": 438,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Perps",
+              "test_id": "activity-screen-type-filter-option-perps",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 770,
+                "width": 438,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Predictions",
+              "test_id": "activity-screen-type-filter-option-predictions",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 818,
+                "width": 438,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Card",
+              "test_id": "activity-screen-type-filter-option-metamaskCard",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 866,
+                "width": 438,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 386,
+                "y": 96,
+                "width": 26,
+                "height": 26
+              }
+            }
+          ],
+          "hidden_or_offscreen": [],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "setup-wait-type-sheet",
+      "action": "ui.wait_for",
+      "intent": "See the type picker open before choosing Perps",
+      "startedAt": "2026-09-18T00:45:10.697Z",
+      "endedAt": "2026-09-18T00:45:11.189Z",
+      "durationMs": 492,
+      "ok": true,
+      "next": "setup-choose-perps",
+      "output": {
+        "matched": true,
+        "testId": "activity-screen-type-filter-option-perps",
+        "expected": "visible",
+        "present": true,
+        "visible": true,
+        "visibility": "viewport",
+        "rect": {
+          "x": 1,
+          "y": 770,
+          "width": 438,
+          "height": 48
+        }
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "F587CA77-A594-4EC4-A8EB-44A436E85110",
+          "name": "MetaMask",
+          "nodeCount": 9,
+          "truncated": false,
+          "route": "ActivityTypeFilter"
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXButton",
+              "label": "Transactions",
+              "test_id": "activity-screen-type-filter-option-transactions",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 674,
+                "width": 438,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Buy/Sell",
+              "test_id": "activity-screen-type-filter-option-buySell",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 722,
+                "width": 438,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Perps",
+              "test_id": "activity-screen-type-filter-option-perps",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 770,
+                "width": 438,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Predictions",
+              "test_id": "activity-screen-type-filter-option-predictions",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 818,
+                "width": 438,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Card",
+              "test_id": "activity-screen-type-filter-option-metamaskCard",
+              "enabled": true,
+              "bounds": {
+                "x": 1,
+                "y": 866,
+                "width": 438,
+                "height": 48
+              }
+            },
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 386,
+                "y": 96,
+                "width": 26,
+                "height": 26
+              }
+            }
+          ],
+          "hidden_or_offscreen": [],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "setup-choose-perps",
+      "action": "ui.press",
+      "intent": "Narrow the activity list to Perps",
+      "startedAt": "2026-09-18T00:45:11.189Z",
+      "endedAt": "2026-09-18T00:45:11.785Z",
+      "durationMs": 596,
+      "ok": true,
+      "next": "gate-perps-trades",
+      "output": {
+        "ok": true,
+        "testId": "activity-screen-type-filter-option-perps",
+        "deviceName": "mm-1"
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "F587CA77-A594-4EC4-A8EB-44A436E85110",
+          "name": "MetaMask",
+          "nodeCount": 8,
+          "truncated": false,
+          "route": "PerpsActivity"
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXGenericElement",
+              "test_id": "activity-screen-back-button",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 74,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Perps",
+              "test_id": "activity-screen-type-filter-chip",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 166,
+                "width": 92,
+                "height": 40
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Trades",
+              "test_id": "activity-screen-perps-filter-chip",
+              "enabled": true,
+              "bounds": {
+                "x": 116,
+                "y": 166,
+                "width": 101,
+                "height": 40
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Aggregated",
+              "test_id": "activity-screen-aggregated-checkbox",
+              "enabled": true,
+              "bounds": {
+                "x": 225,
+                "y": 166,
+                "width": 155,
+                "height": 40
+              }
+            },
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 386,
+                "y": 96,
+                "width": 26,
+                "height": 26
+              }
+            }
+          ],
+          "hidden_or_offscreen": [],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "gate-perps-trades",
+      "action": "ui.wait_for",
+      "intent": "Make sure the trade history really is filtered to Perps trades before reading it",
+      "startedAt": "2026-09-18T00:45:11.785Z",
+      "endedAt": "2026-09-18T00:45:12.711Z",
+      "durationMs": 926,
+      "ok": true,
+      "next": "ac1-wait-control",
+      "output": {
+        "matched": true,
+        "testId": "activity-screen-perps-filter-chip",
+        "expected": "visible",
+        "present": true,
+        "visible": true,
+        "visibility": "viewport",
+        "rect": {
+          "x": 115.66666412353516,
+          "y": 166,
+          "width": 101.00000762939453,
+          "height": 40
+        }
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "F587CA77-A594-4EC4-A8EB-44A436E85110",
+          "name": "MetaMask",
+          "nodeCount": 30,
+          "truncated": false,
+          "route": "PerpsActivity"
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXGenericElement",
+              "test_id": "activity-screen-back-button",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 74,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Perps",
+              "test_id": "activity-screen-type-filter-chip",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 166,
+                "width": 92,
+                "height": 40
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Trades",
+              "test_id": "activity-screen-perps-filter-chip",
+              "enabled": true,
+              "bounds": {
+                "x": 116,
+                "y": 166,
+                "width": 101,
+                "height": 40
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Aggregated",
+              "test_id": "activity-screen-aggregated-checkbox",
+              "enabled": true,
+              "bounds": {
+                "x": 225,
+                "y": 166,
+                "width": 155,
+                "height": 40
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00064 BTC, -$0.09",
+              "test_id": "transaction-item-1",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 266,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00049 BTC, -$0.03",
+              "test_id": "transaction-item-3",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 374,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Closed long, 0.00064 BTC, -$0.08",
+              "test_id": "transaction-item-4",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 438,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00097 BTC, -$0.10",
+              "test_id": "transaction-item-5",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 502,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00179 BTC, -$0.16",
+              "test_id": "transaction-item-6",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 566,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00128 BTC, -$0.21",
+              "test_id": "transaction-item-7",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 630,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00209 BTC, -$0.14",
+              "test_id": "transaction-item-8",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 694,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00209 BTC, -$0.12",
+              "test_id": "transaction-item-9",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 758,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00146 BTC, -$0.13",
+              "test_id": "transaction-item-10",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 822,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00852 BTC, -$1.13",
+              "test_id": "transaction-item-11",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 886,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 8.29 SOL, -$2.34",
+              "test_id": "transaction-item-12",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 950,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 386,
+                "y": 96,
+                "width": 26,
+                "height": 26
+              }
+            }
+          ],
+          "hidden_or_offscreen": [
+            {
+              "role": "AXButton",
+              "label": "Opened long, 8.29 SOL, -$1.15",
+              "test_id": "transaction-item-13",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1014,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.0054 BTC, -$2.28",
+              "test_id": "transaction-item-15",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1122,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00016 BTC, -$0.02",
+              "test_id": "transaction-item-17",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1230,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Opened long, 0.00016 BTC, -$0.02",
+              "test_id": "transaction-item-18",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1294,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00016 BTC, -$0.05",
+              "test_id": "transaction-item-19",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1358,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Opened long, 0.00016 BTC, -$0.02",
+              "test_id": "transaction-item-20",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1422,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.0082 ETH, -$0.06",
+              "test_id": "transaction-item-22",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1530,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            }
+          ],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "ac1-wait-control",
+      "action": "ui.wait_for",
+      "intent": "See the Aggregated control offered alongside the Perps and Trades filters",
+      "startedAt": "2026-09-18T00:45:12.711Z",
+      "endedAt": "2026-09-18T00:45:13.264Z",
+      "durationMs": 553,
+      "ok": true,
+      "next": "ac2-wait-rows",
+      "output": {
+        "matched": true,
+        "testId": "activity-screen-aggregated-checkbox",
+        "expected": "visible",
+        "present": true,
+        "visible": true,
+        "visibility": "viewport",
+        "rect": {
+          "x": 224.6666717529297,
+          "y": 166,
+          "width": 155.3333282470703,
+          "height": 40
+        }
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "F587CA77-A594-4EC4-A8EB-44A436E85110",
+          "name": "MetaMask",
+          "nodeCount": 30,
+          "truncated": false,
+          "route": "PerpsActivity"
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXGenericElement",
+              "test_id": "activity-screen-back-button",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 74,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Perps",
+              "test_id": "activity-screen-type-filter-chip",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 166,
+                "width": 92,
+                "height": 40
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Trades",
+              "test_id": "activity-screen-perps-filter-chip",
+              "enabled": true,
+              "bounds": {
+                "x": 116,
+                "y": 166,
+                "width": 101,
+                "height": 40
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Aggregated",
+              "test_id": "activity-screen-aggregated-checkbox",
+              "enabled": true,
+              "bounds": {
+                "x": 225,
+                "y": 166,
+                "width": 155,
+                "height": 40
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00064 BTC, -$0.09",
+              "test_id": "transaction-item-1",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 266,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00049 BTC, -$0.03",
+              "test_id": "transaction-item-3",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 374,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Closed long, 0.00064 BTC, -$0.08",
+              "test_id": "transaction-item-4",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 438,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00097 BTC, -$0.10",
+              "test_id": "transaction-item-5",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 502,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00179 BTC, -$0.16",
+              "test_id": "transaction-item-6",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 566,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00128 BTC, -$0.21",
+              "test_id": "transaction-item-7",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 630,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00209 BTC, -$0.14",
+              "test_id": "transaction-item-8",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 694,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00209 BTC, -$0.12",
+              "test_id": "transaction-item-9",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 758,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00146 BTC, -$0.13",
+              "test_id": "transaction-item-10",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 822,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00852 BTC, -$1.13",
+              "test_id": "transaction-item-11",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 886,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 8.29 SOL, -$2.34",
+              "test_id": "transaction-item-12",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 950,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 386,
+                "y": 96,
+                "width": 26,
+                "height": 26
+              }
+            }
+          ],
+          "hidden_or_offscreen": [
+            {
+              "role": "AXButton",
+              "label": "Opened long, 8.29 SOL, -$1.15",
+              "test_id": "transaction-item-13",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1014,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.0054 BTC, -$2.28",
+              "test_id": "transaction-item-15",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1122,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00016 BTC, -$0.02",
+              "test_id": "transaction-item-17",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1230,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Opened long, 0.00016 BTC, -$0.02",
+              "test_id": "transaction-item-18",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1294,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00016 BTC, -$0.05",
+              "test_id": "transaction-item-19",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1358,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Opened long, 0.00016 BTC, -$0.02",
+              "test_id": "transaction-item-20",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1422,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.0082 ETH, -$0.06",
+              "test_id": "transaction-item-22",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1530,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            }
+          ],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "ac2-wait-rows",
+      "action": "ui.wait_for",
+      "intent": "See the trade rows finish loading before reading them",
+      "startedAt": "2026-09-18T00:45:13.264Z",
+      "endedAt": "2026-09-18T00:45:13.909Z",
+      "durationMs": 645,
+      "ok": true,
+      "next": "ac2-screenshot-aggregated",
+      "output": {
+        "matched": true,
+        "testId": "transaction-item-1",
+        "expected": "visible",
+        "present": true,
+        "visible": true,
+        "visibility": "viewport",
+        "rect": {
+          "x": 0,
+          "y": 266,
+          "width": 440,
+          "height": 64
+        }
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "F587CA77-A594-4EC4-A8EB-44A436E85110",
+          "name": "MetaMask",
+          "nodeCount": 30,
+          "truncated": false,
+          "route": "PerpsActivity"
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXGenericElement",
+              "test_id": "activity-screen-back-button",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 74,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Perps",
+              "test_id": "activity-screen-type-filter-chip",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 166,
+                "width": 92,
+                "height": 40
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Trades",
+              "test_id": "activity-screen-perps-filter-chip",
+              "enabled": true,
+              "bounds": {
+                "x": 116,
+                "y": 166,
+                "width": 101,
+                "height": 40
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Aggregated",
+              "test_id": "activity-screen-aggregated-checkbox",
+              "enabled": true,
+              "bounds": {
+                "x": 225,
+                "y": 166,
+                "width": 155,
+                "height": 40
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00064 BTC, -$0.09",
+              "test_id": "transaction-item-1",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 266,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00049 BTC, -$0.03",
+              "test_id": "transaction-item-3",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 374,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Closed long, 0.00064 BTC, -$0.08",
+              "test_id": "transaction-item-4",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 438,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00097 BTC, -$0.10",
+              "test_id": "transaction-item-5",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 502,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00179 BTC, -$0.16",
+              "test_id": "transaction-item-6",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 566,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00128 BTC, -$0.21",
+              "test_id": "transaction-item-7",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 630,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00209 BTC, -$0.14",
+              "test_id": "transaction-item-8",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 694,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00209 BTC, -$0.12",
+              "test_id": "transaction-item-9",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 758,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00146 BTC, -$0.13",
+              "test_id": "transaction-item-10",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 822,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00852 BTC, -$1.13",
+              "test_id": "transaction-item-11",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 886,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 8.29 SOL, -$2.34",
+              "test_id": "transaction-item-12",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 950,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 386,
+                "y": 96,
+                "width": 26,
+                "height": 26
+              }
+            }
+          ],
+          "hidden_or_offscreen": [
+            {
+              "role": "AXButton",
+              "label": "Opened long, 8.29 SOL, -$1.15",
+              "test_id": "transaction-item-13",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1014,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.0054 BTC, -$2.28",
+              "test_id": "transaction-item-15",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1122,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00016 BTC, -$0.02",
+              "test_id": "transaction-item-17",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1230,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Opened long, 0.00016 BTC, -$0.02",
+              "test_id": "transaction-item-18",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1294,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00016 BTC, -$0.05",
+              "test_id": "transaction-item-19",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1358,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Opened long, 0.00016 BTC, -$0.02",
+              "test_id": "transaction-item-20",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1422,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.0082 ETH, -$0.06",
+              "test_id": "transaction-item-22",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1530,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            }
+          ],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "ac2-screenshot-aggregated",
+      "action": "ui.screenshot",
+      "intent": "Show the trade list with each order's fills combined into one row",
+      "startedAt": "2026-09-18T00:45:13.909Z",
+      "endedAt": "2026-09-18T00:45:14.512Z",
+      "durationMs": 603,
+      "ok": true,
+      "next": "ac2-press-control",
+      "output": {
+        "captured": true,
+        "path": "screenshots/evidence-ac2-aggregated-on.png",
+        "artifact": {
+          "path": "screenshots/evidence-ac2-aggregated-on.png",
+          "type": "screenshot",
+          "nodeId": "ac2-screenshot-aggregated",
+          "label": "ui.screenshot screenshot",
+          "category": "evidence",
+          "mimeType": "image/png",
+          "metadata": {
+            "provider": "simctl",
+            "mode": "xcrun simctl io screenshot",
+            "selectedDevice": "mm-1"
+          }
+        }
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "F587CA77-A594-4EC4-A8EB-44A436E85110",
+          "name": "MetaMask",
+          "nodeCount": 30,
+          "truncated": false,
+          "route": "PerpsActivity"
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXGenericElement",
+              "test_id": "activity-screen-back-button",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 74,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Perps",
+              "test_id": "activity-screen-type-filter-chip",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 166,
+                "width": 92,
+                "height": 40
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Trades",
+              "test_id": "activity-screen-perps-filter-chip",
+              "enabled": true,
+              "bounds": {
+                "x": 116,
+                "y": 166,
+                "width": 101,
+                "height": 40
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Aggregated",
+              "test_id": "activity-screen-aggregated-checkbox",
+              "enabled": true,
+              "bounds": {
+                "x": 225,
+                "y": 166,
+                "width": 155,
+                "height": 40
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00064 BTC, -$0.09",
+              "test_id": "transaction-item-1",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 266,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00049 BTC, -$0.03",
+              "test_id": "transaction-item-3",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 374,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Closed long, 0.00064 BTC, -$0.08",
+              "test_id": "transaction-item-4",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 438,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00097 BTC, -$0.10",
+              "test_id": "transaction-item-5",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 502,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00179 BTC, -$0.16",
+              "test_id": "transaction-item-6",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 566,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00128 BTC, -$0.21",
+              "test_id": "transaction-item-7",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 630,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00209 BTC, -$0.14",
+              "test_id": "transaction-item-8",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 694,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00209 BTC, -$0.12",
+              "test_id": "transaction-item-9",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 758,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00146 BTC, -$0.13",
+              "test_id": "transaction-item-10",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 822,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00852 BTC, -$1.13",
+              "test_id": "transaction-item-11",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 886,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 8.29 SOL, -$2.34",
+              "test_id": "transaction-item-12",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 950,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 386,
+                "y": 96,
+                "width": 26,
+                "height": 26
+              }
+            }
+          ],
+          "hidden_or_offscreen": [
+            {
+              "role": "AXButton",
+              "label": "Opened long, 8.29 SOL, -$1.15",
+              "test_id": "transaction-item-13",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1014,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.0054 BTC, -$2.28",
+              "test_id": "transaction-item-15",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1122,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00016 BTC, -$0.02",
+              "test_id": "transaction-item-17",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1230,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Opened long, 0.00016 BTC, -$0.02",
+              "test_id": "transaction-item-18",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1294,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00016 BTC, -$0.05",
+              "test_id": "transaction-item-19",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1358,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Opened long, 0.00016 BTC, -$0.02",
+              "test_id": "transaction-item-20",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1422,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.0082 ETH, -$0.06",
+              "test_id": "transaction-item-22",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1530,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            }
+          ],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "ac2-press-control",
+      "action": "ui.press",
+      "intent": "Turn the Aggregated control off the way a user inspecting their executions would",
+      "startedAt": "2026-09-18T00:45:14.512Z",
+      "endedAt": "2026-09-18T00:45:15.209Z",
+      "durationMs": 697,
+      "ok": true,
+      "next": "ac2-wait-after-toggle",
+      "output": {
+        "ok": true,
+        "testId": "activity-screen-aggregated-checkbox",
+        "deviceName": "mm-1"
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "F587CA77-A594-4EC4-A8EB-44A436E85110",
+          "name": "MetaMask",
+          "nodeCount": 30,
+          "truncated": false,
+          "route": "PerpsActivity"
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXGenericElement",
+              "test_id": "activity-screen-back-button",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 74,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Perps",
+              "test_id": "activity-screen-type-filter-chip",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 166,
+                "width": 92,
+                "height": 40
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Trades",
+              "test_id": "activity-screen-perps-filter-chip",
+              "enabled": true,
+              "bounds": {
+                "x": 116,
+                "y": 166,
+                "width": 101,
+                "height": 40
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Aggregated",
+              "test_id": "activity-screen-aggregated-checkbox",
+              "enabled": true,
+              "bounds": {
+                "x": 225,
+                "y": 166,
+                "width": 155,
+                "height": 40
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00064 BTC, -$0.09",
+              "test_id": "transaction-item-1",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 266,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00049 BTC, -$0.03",
+              "test_id": "transaction-item-3",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 374,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Closed long, 0.00064 BTC, -$0.08",
+              "test_id": "transaction-item-4",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 438,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00097 BTC, -$0.10",
+              "test_id": "transaction-item-5",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 502,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00163 BTC, -$0.14",
+              "test_id": "transaction-item-6",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 566,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00016 BTC, -$0.01",
+              "test_id": "transaction-item-7",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 630,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00125 BTC, -$0.20",
+              "test_id": "transaction-item-8",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 694,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00003 BTC, -$0.00",
+              "test_id": "transaction-item-9",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 758,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00207 BTC, -$0.14",
+              "test_id": "transaction-item-10",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 822,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00002 BTC, -$0.00",
+              "test_id": "transaction-item-11",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 886,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00179 BTC, -$0.11",
+              "test_id": "transaction-item-12",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 950,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 386,
+                "y": 96,
+                "width": 26,
+                "height": 26
+              }
+            }
+          ],
+          "hidden_or_offscreen": [
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00022 BTC, -$0.01",
+              "test_id": "transaction-item-13",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1014,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00008 BTC, -$0.00",
+              "test_id": "transaction-item-14",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1078,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00134 BTC, -$0.12",
+              "test_id": "transaction-item-15",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1142,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00012 BTC, -$0.01",
+              "test_id": "transaction-item-16",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1206,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00253 BTC, -$0.35",
+              "test_id": "transaction-item-17",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1270,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00599 BTC, -$0.79",
+              "test_id": "transaction-item-18",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1334,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 5.74 SOL, -$1.69",
+              "test_id": "transaction-item-19",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1398,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 1.19 SOL, -$0.30",
+              "test_id": "transaction-item-20",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1462,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 1.36 SOL, -$0.34",
+              "test_id": "transaction-item-21",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1526,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Opened long, 2.92 SOL, -$0.40",
+              "test_id": "transaction-item-22",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1590,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            }
+          ],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "ac2-wait-after-toggle",
+      "action": "ui.wait_for",
+      "intent": "See the list settle on the individual executions after the control is turned off",
+      "startedAt": "2026-09-18T00:45:15.209Z",
+      "endedAt": "2026-09-18T00:45:15.750Z",
+      "durationMs": 541,
+      "ok": true,
+      "next": "ac2-screenshot-individual",
+      "output": {
+        "matched": true,
+        "testId": "transaction-item-12",
+        "expected": "visible",
+        "present": true,
+        "visible": true,
+        "visibility": "viewport",
+        "rect": {
+          "x": 0,
+          "y": 950,
+          "width": 440,
+          "height": 64
+        }
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "F587CA77-A594-4EC4-A8EB-44A436E85110",
+          "name": "MetaMask",
+          "nodeCount": 30,
+          "truncated": false,
+          "route": "PerpsActivity"
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXGenericElement",
+              "test_id": "activity-screen-back-button",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 74,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Perps",
+              "test_id": "activity-screen-type-filter-chip",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 166,
+                "width": 92,
+                "height": 40
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Trades",
+              "test_id": "activity-screen-perps-filter-chip",
+              "enabled": true,
+              "bounds": {
+                "x": 116,
+                "y": 166,
+                "width": 101,
+                "height": 40
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Aggregated",
+              "test_id": "activity-screen-aggregated-checkbox",
+              "enabled": true,
+              "bounds": {
+                "x": 225,
+                "y": 166,
+                "width": 155,
+                "height": 40
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00064 BTC, -$0.09",
+              "test_id": "transaction-item-1",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 266,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00049 BTC, -$0.03",
+              "test_id": "transaction-item-3",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 374,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Closed long, 0.00064 BTC, -$0.08",
+              "test_id": "transaction-item-4",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 438,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00097 BTC, -$0.10",
+              "test_id": "transaction-item-5",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 502,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00163 BTC, -$0.14",
+              "test_id": "transaction-item-6",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 566,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00016 BTC, -$0.01",
+              "test_id": "transaction-item-7",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 630,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00125 BTC, -$0.20",
+              "test_id": "transaction-item-8",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 694,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00003 BTC, -$0.00",
+              "test_id": "transaction-item-9",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 758,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00207 BTC, -$0.14",
+              "test_id": "transaction-item-10",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 822,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00002 BTC, -$0.00",
+              "test_id": "transaction-item-11",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 886,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00179 BTC, -$0.11",
+              "test_id": "transaction-item-12",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 950,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 386,
+                "y": 96,
+                "width": 26,
+                "height": 26
+              }
+            }
+          ],
+          "hidden_or_offscreen": [
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00022 BTC, -$0.01",
+              "test_id": "transaction-item-13",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1014,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00008 BTC, -$0.00",
+              "test_id": "transaction-item-14",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1078,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00134 BTC, -$0.12",
+              "test_id": "transaction-item-15",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1142,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00012 BTC, -$0.01",
+              "test_id": "transaction-item-16",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1206,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00253 BTC, -$0.35",
+              "test_id": "transaction-item-17",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1270,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00599 BTC, -$0.79",
+              "test_id": "transaction-item-18",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1334,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 5.74 SOL, -$1.69",
+              "test_id": "transaction-item-19",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1398,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 1.19 SOL, -$0.30",
+              "test_id": "transaction-item-20",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1462,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 1.36 SOL, -$0.34",
+              "test_id": "transaction-item-21",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1526,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Opened long, 2.92 SOL, -$0.40",
+              "test_id": "transaction-item-22",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1590,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            }
+          ],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "ac2-screenshot-individual",
+      "action": "ui.screenshot",
+      "intent": "Show the same trade list breaking those orders into their individual executions",
+      "startedAt": "2026-09-18T00:45:15.750Z",
+      "endedAt": "2026-09-18T00:45:16.285Z",
+      "durationMs": 535,
+      "ok": true,
+      "next": "teardown-done",
+      "output": {
+        "captured": true,
+        "path": "screenshots/evidence-ac2-aggregated-off.png",
+        "artifact": {
+          "path": "screenshots/evidence-ac2-aggregated-off.png",
+          "type": "screenshot",
+          "nodeId": "ac2-screenshot-individual",
+          "label": "ui.screenshot screenshot",
+          "category": "evidence",
+          "mimeType": "image/png",
+          "metadata": {
+            "provider": "simctl",
+            "mode": "xcrun simctl io screenshot",
+            "selectedDevice": "mm-1"
+          }
+        }
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "F587CA77-A594-4EC4-A8EB-44A436E85110",
+          "name": "MetaMask",
+          "nodeCount": 30,
+          "truncated": false,
+          "route": "PerpsActivity"
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [
+            {
+              "role": "AXGenericElement",
+              "test_id": "activity-screen-back-button",
+              "enabled": true,
+              "bounds": {
+                "x": 8,
+                "y": 74,
+                "width": 32,
+                "height": 32
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Perps",
+              "test_id": "activity-screen-type-filter-chip",
+              "enabled": true,
+              "bounds": {
+                "x": 16,
+                "y": 166,
+                "width": 92,
+                "height": 40
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Trades",
+              "test_id": "activity-screen-perps-filter-chip",
+              "enabled": true,
+              "bounds": {
+                "x": 116,
+                "y": 166,
+                "width": 101,
+                "height": 40
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Aggregated",
+              "test_id": "activity-screen-aggregated-checkbox",
+              "enabled": true,
+              "bounds": {
+                "x": 225,
+                "y": 166,
+                "width": 155,
+                "height": 40
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00064 BTC, -$0.09",
+              "test_id": "transaction-item-1",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 266,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00049 BTC, -$0.03",
+              "test_id": "transaction-item-3",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 374,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXGenericElement",
+              "label": "Closed long, 0.00064 BTC, -$0.08",
+              "test_id": "transaction-item-4",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 438,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00097 BTC, -$0.10",
+              "test_id": "transaction-item-5",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 502,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00163 BTC, -$0.14",
+              "test_id": "transaction-item-6",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 566,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00016 BTC, -$0.01",
+              "test_id": "transaction-item-7",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 630,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00125 BTC, -$0.20",
+              "test_id": "transaction-item-8",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 694,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00003 BTC, -$0.00",
+              "test_id": "transaction-item-9",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 758,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00207 BTC, -$0.14",
+              "test_id": "transaction-item-10",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 822,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00002 BTC, -$0.00",
+              "test_id": "transaction-item-11",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 886,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00179 BTC, -$0.11",
+              "test_id": "transaction-item-12",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 950,
+                "width": 440,
+                "height": 64
+              }
+            },
+            {
+              "role": "AXImage",
+              "label": "gearshape.fill",
+              "test_id": "gearshape.fill",
+              "enabled": true,
+              "bounds": {
+                "x": 386,
+                "y": 96,
+                "width": 26,
+                "height": 26
+              }
+            }
+          ],
+          "hidden_or_offscreen": [
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00022 BTC, -$0.01",
+              "test_id": "transaction-item-13",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1014,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00008 BTC, -$0.00",
+              "test_id": "transaction-item-14",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1078,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00134 BTC, -$0.12",
+              "test_id": "transaction-item-15",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1142,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00012 BTC, -$0.01",
+              "test_id": "transaction-item-16",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1206,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00253 BTC, -$0.35",
+              "test_id": "transaction-item-17",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1270,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 0.00599 BTC, -$0.79",
+              "test_id": "transaction-item-18",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1334,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 5.74 SOL, -$1.69",
+              "test_id": "transaction-item-19",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1398,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 1.19 SOL, -$0.30",
+              "test_id": "transaction-item-20",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1462,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Closed long, 1.36 SOL, -$0.34",
+              "test_id": "transaction-item-21",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1526,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            },
+            {
+              "role": "AXButton",
+              "label": "Opened long, 2.92 SOL, -$0.40",
+              "test_id": "transaction-item-22",
+              "enabled": true,
+              "bounds": {
+                "x": 0,
+                "y": 1590,
+                "width": 440,
+                "height": 64
+              },
+              "reason": "hidden_or_offscreen"
+            }
+          ],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "teardown-done",
+      "action": "end",
+      "startedAt": "2026-09-18T00:45:16.285Z",
+      "endedAt": "2026-09-18T00:45:16.285Z",
+      "durationMs": 0,
+      "ok": true,
+      "status": "pass"
+    }
+  ]
+}

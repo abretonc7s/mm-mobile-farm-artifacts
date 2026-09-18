@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "preferred_mode": "screenshots",
+  "summary": "Paired screenshots of Activity > Perps > Trades on the iOS slot, taken from the same screen and scroll position with only the Aggregated control toggled between them, after this round's review fixes. They double as proof that the rebuilt design-system Checkbox renders and toggles correctly.",
+  "before_after_pairs": [
+    {
+      "label": "Aggregated on vs off",
+      "covers": ["ac2"],
+      "before": "recipe-run/screenshots/evidence-ac2-aggregated-on.png",
+      "after": "recipe-run/screenshots/evidence-ac2-aggregated-off.png",
+      "note": "Checked collapses each order to one row; unchecked lists every execution. The values add up: 0.00179 BTC -$0.16 splits into 0.00163 -$0.14 + 0.00016 -$0.01, and 0.00128 -$0.21 into 0.00125 -$0.20 + 0.00003 -$0.00. The control itself renders as a pill with a checked and an empty box respectively, which is the visual check on the ButtonBase-to-Checkbox swap."
+    }
+  ],
+  "standalone": [],
+  "omit": [
+    {
+      "file": "flattenFills-dedupe-removal",
+      "reason": "Not discriminable on the device: the fixture account's testnet history holds no two fills identical in orderId, timestamp, size and price, so the live list cannot show the difference. Proven instead by the unit test 'keeps both executions when two fills of one order share timestamp, size and price', verified to fail with the dedupe restored."
+    },
+    {
+      "file": "individual-row-id-stability",
+      "reason": "Id stability requires a newer fill to arrive mid-session, which the recipe cannot stage against live testnet history. Proven instead by 'leaves existing execution ids unchanged when a newer fill is prepended', which fails on the previous acc.length scheme."
+    }
+  ],
+  "videos": {
+    "preferred": false,
+    "note": "No recording captured; the recipe traverses one screen and the two stills carry the whole claim."
+  }
+}
