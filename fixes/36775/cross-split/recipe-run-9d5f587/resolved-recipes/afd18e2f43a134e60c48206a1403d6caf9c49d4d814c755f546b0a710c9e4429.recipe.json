@@ -1,0 +1,80 @@
+{
+  "$schema": "https://farmslot.io/schemas/recipe-v1.schema.json",
+  "title": "Converge Mobile Pro order start state",
+  "description": "Idempotently reaches Mobile Pro. An omitted account keeps the current selection; provider, network, and market use the declared smart defaults.",
+  "paramsSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "account": {
+        "type": "string",
+        "default": "",
+        "description": "Optional exact account name or EVM address. Omit it or leave it empty to keep the currently selected account."
+      },
+      "provider": {
+        "type": "string",
+        "default": "hyperliquid"
+      },
+      "network": {
+        "type": "string",
+        "enum": [
+          "testnet",
+          "mainnet"
+        ],
+        "default": "testnet"
+      },
+      "market": {
+        "type": "string",
+        "default": "BTC"
+      },
+      "trading_state": {
+        "type": "string",
+        "enum": [
+          "preserve",
+          "clean_selected_testnet_market"
+        ],
+        "default": "preserve"
+      }
+    }
+  },
+  "workflow": {
+    "entry": "choose-account",
+    "nodes": {
+      "choose-account": {
+        "action": "switch",
+        "value": "account:{{params.account}}",
+        "equals": "account:",
+        "cases": {
+          "match": "ensure-state"
+        },
+        "default": "select-account",
+        "intent": "Keep the selected account unless the caller requests a specific account."
+      },
+      "select-account": {
+        "action": "metamask.perps.start_state",
+        "account": "{{params.account}}",
+        "page": false,
+        "trading_state": "preserve",
+        "timeout_ms": 120000,
+        "intent": "Select the requested account without changing the current route or trading state.",
+        "next": "ensure-state"
+      },
+      "ensure-state": {
+        "action": "metamask.perps.start_state",
+        "provider": "{{params.provider}}",
+        "network": "{{params.network}}",
+        "market": "{{params.market}}",
+        "page": "market",
+        "market_mode": "pro",
+        "trading_state": "{{params.trading_state}}",
+        "timeout_ms": 120000,
+        "intent": "Reach and prove the requested account, provider, network, market, Pro mode, and trading-state policy.",
+        "next": "done"
+      },
+      "done": {
+        "action": "end",
+        "status": "pass"
+      }
+    }
+  }
+}

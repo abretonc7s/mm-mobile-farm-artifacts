@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "verdict": "pass",
+  "compact": {
+    "verdict": "PASS",
+    "reasons": [
+      "AC1 exercises the user path (Max -> Confirm) on a live testnet isolated position and asserts the exchange's success toast and absence of the rejection toast; before/after evidence shows the zero-headroom rejection versus acceptance after the offered max ticked down.",
+      "AC2 opens a fresh isolated SOL position at the transfer-margin floor and asserts the zero-state explanation visible, with baseline asserting it absent on pre-fix code.",
+      "AC3 re-validation is proven by focused unit tests run from the recipe with an exit-code assertion; the live race is not forceable on testnet.",
+      "AC4 is untestable pre-release (production Mixpanel metric).",
+      "AC5 drives the Pro margin-mode sheet with the flag on, places a $15 SOL order through the UI, asserts the position open and the Cross tag visible; baseline on pre-change code asserts Cross still reads Coming soon.",
+      "AC6 and AC7 are proven by view/unit tests run from the recipe with exit-code assertions; the flip rejection was reproduced live before disabling Reverse."
+    ],
+    "better_version_guidance": []
+  },
+  "dimensions": {
+    "intent_clarity": {
+      "status": "pass",
+      "reason": "Every node intent states the user-visible goal",
+      "evidence": [
+        "mm-harness run --plan found no invalid_intent errors"
+      ]
+    },
+    "coverage": {
+      "status": "pass",
+      "reason": "AC1-AC3 each have assertion nodes; AC4 untestable pre-release",
+      "evidence": [
+        "recipe-coverage.md"
+      ]
+    },
+    "evidence_fit": {
+      "status": "pass",
+      "reason": "Visual ACs have screenshots after ui.wait_for on the claimed target; AC3 uses test exit code",
+      "evidence": [
+        "after-ac1-*.png, after-ac2-zero-state.png, trace.json ac3-assert-tests-pass"
+      ]
+    },
+    "negative_check": {
+      "status": "pass",
+      "reason": "Baseline on pre-fix code asserts the zero-state explanation absent and captured the zero-headroom Max form",
+      "evidence": [
+        "recipe-baseline-run/, before-evidence-*.png"
+      ]
+    },
+    "state_hygiene": {
+      "status": "pass",
+      "reason": "SOL positions opened for AC2 and AC5 are closed in teardown; the cross flag override is cleared",
+      "evidence": [
+        "teardown-sol node in trace.json"
+      ]
+    }
+  },
+  "structural_findings": [],
+  "contextual_findings": [],
+  "suggested_recipe_delta": [],
+  "training_fields": {
+    "proof_mode": "unknown"
+  },
+  "meta": {
+    "producer": "worker",
+    "fallback_used": false,
+    "legacy_task": false,
+    "artifact_required": true,
+    "source_signals": [
+      "recipe-quality.json"
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "originalFamilyScopeSummary": "Fix remove-margin validation to derive max removable amount from live position state and prevent over-submission",
+  "currentTriggerSummary": "pr-complete for #36775 plus operator follow-up: check-pr-max-lines failed at 1326 lines; split without dropping behavior, tests or proof, and get Codex gpt-6-sol review on every final head",
+  "scopeVerdict": "full-scope-addressed",
+  "notes": "#36775 keeps the full remove-margin fix (headroom max, exchange-boundary validation, pre-submit re-check, zero-removable state) and passes its recipe 48/48 at bb56c34 with a clean Codex review; max-lines now passes (915 lines). The Cross-margin feature moved unchanged to draft #36782 (recipe 30/30) with two Codex findings listed as blockers there. The Mixpanel failure-rate target (<=14%) can only be confirmed post-release."
+}

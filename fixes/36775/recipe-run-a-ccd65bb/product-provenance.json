@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "adapter": "mobile",
+  "repository": "metamask-mobile-6",
+  "git_ref": "ccd65bb086c399b5e75cdde2186d1c97e7ffcfe6",
+  "branch": "TAT-3985-fix-fix-margin-removal-validation",
+  "dirty": false
+}

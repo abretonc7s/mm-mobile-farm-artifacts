@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "preferred_mode": "screenshots",
+  "summary": "Hyperliquid testnet, Trading account. Remove margin: Max keeps 1% headroom and is accepted; $0 removable is explained and disabled. Cross margin: with the flag on, Cross is selectable in Pro and opens a Cross position.",
+  "before_after_pairs": [
+    {
+      "label": "Max removal: exchange rejection before, accepted after the offered max ticked down",
+      "covers": [
+        "ac1"
+      ],
+      "before": "before-evidence-ac1-rejected-toast.png",
+      "after": "after-ac1-max-form.png"
+    },
+    {
+      "label": "Nothing removable: no explanation before, disabled with explanation after",
+      "covers": [
+        "ac2"
+      ],
+      "before": "before-evidence-ac2-zero-state.png",
+      "after": "after-ac2-zero-state.png"
+    },
+    {
+      "label": "Cross margin with the flag on: coming soon before, selectable after",
+      "covers": [
+        "ac5"
+      ],
+      "before": "before-evidence-ac5-margin-mode-sheet.png",
+      "after": "after-ac5-margin-mode-sheet.png"
+    }
+  ],
+  "standalone": [
+    {
+      "label": "Max removal accepted by the exchange",
+      "covers": [
+        "ac1"
+      ],
+      "file": "after-ac1-removed-toast.png"
+    },
+    {
+      "label": "Cross order opened a Cross position (Reverse disabled)",
+      "covers": [
+        "ac5",
+        "ac7"
+      ],
+      "file": "after-ac5-cross-position.png"
+    }
+  ],
+  "omit": [
+    "before-evidence-ac1-max-form.png"
+  ],
+  "videos": {
+    "before": "before.mp4",
+    "after": "after.mp4",
+    "preferred": false
+  }
+}

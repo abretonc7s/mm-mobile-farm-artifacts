@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "id": "run-network",
+  "status": "partial",
+  "startedAtEpochMs": 1790242242264,
+  "endedAtEpochMs": 1790242245657,
+  "maxDurationMs": 3600000,
+  "reconnects": 0,
+  "droppedRequests": 0,
+  "unavailableReasons": [],
+  "coverageGapReasons": [],
+  "uninspectableBodyRequests": 1,
+  "projectedBodyFields": [
+    "type"
+  ],
+  "totalRequests": 1,
+  "requestsByMethod": {
+    "GET": 1
+  },
+  "requestsByHost": {
+    "money.api.cx.metamask.io": 1
+  },
+  "requestsByType": {
+    "unknown": 1
+  },
+  "requests": [
+    {
+      "elapsedMs": 3345,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    }
+  ],
+  "nodeEvents": [
+    {
+      "action": "metamask.perps.start_state",
+      "elapsedMs": 670,
+      "nodeId": "setup-session/start",
+      "status": "running"
+    },
+    {
+      "action": "metamask.perps.start_state",
+      "elapsedMs": 2952,
+      "nodeId": "setup-session/start",
+      "status": "failed"
+    }
+  ]
+}

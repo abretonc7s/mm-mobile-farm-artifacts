@@ -1,0 +1,125 @@
+{
+  "$schema": "https://farmslot.io/schemas/recipe-v1.schema.json",
+  "title": "Select an explicit Mobile Perps venue",
+  "description": "Preserve trading state and require caller-selected account, provider, network, market and view mode. No venue defaults.",
+  "paramsSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "account": {
+        "type": "string"
+      },
+      "provider": {
+        "type": "string",
+        "enum": [
+          "hyperliquid",
+          "lighter"
+        ]
+      },
+      "network": {
+        "type": "string",
+        "enum": [
+          "testnet",
+          "mainnet"
+        ]
+      },
+      "market": {
+        "type": "string"
+      },
+      "market_mode": {
+        "type": "string",
+        "enum": [
+          "lite",
+          "pro"
+        ]
+      },
+      "ready_to_trade": {
+        "type": "boolean",
+        "default": false
+      },
+      "min_spendable_usd": {
+        "type": "number",
+        "default": 0
+      }
+    },
+    "required": [
+      "account",
+      "provider",
+      "network",
+      "market",
+      "market_mode"
+    ]
+  },
+  "workflow": {
+    "entry": "start",
+    "nodes": {
+      "start": {
+        "action": "metamask.perps.start_state",
+        "account": "{{params.account}}",
+        "provider": "{{params.provider}}",
+        "network": "{{params.network}}",
+        "market": "{{params.market}}",
+        "market_mode": "{{params.market_mode}}",
+        "page": "market",
+        "positions": false,
+        "orders": false,
+        "trading_state": "preserve",
+        "readyToTrade": "{{params.ready_to_trade}}",
+        "balance": {
+          "minSpendableUsd": "{{params.min_spendable_usd}}"
+        },
+        "target_timeout_ms": 15000,
+        "timeout_ms": 60000,
+        "intent": "Select and verify the explicit account, venue and network while preserving positions and orders.",
+        "next": "provider"
+      },
+      "provider": {
+        "action": "assert_output",
+        "source": "start",
+        "assert": {
+          "path": "$.provider.activeProvider",
+          "operator": "eq",
+          "value": "{{params.provider}}"
+        },
+        "intent": "Refuse an implicit or fallback venue.",
+        "next": "network"
+      },
+      "network": {
+        "action": "assert_output",
+        "source": "start",
+        "assert": {
+          "path": "$.network.requested",
+          "operator": "eq",
+          "value": "{{params.network}}"
+        },
+        "intent": "Require the requested network setup to complete.",
+        "next": "account"
+      },
+      "done": {
+        "action": "end",
+        "status": "pass"
+      },
+      "account": {
+        "action": "switch",
+        "value": "{{outputs.start.account.selected.address}}",
+        "equals": "{{params.account}}",
+        "cases": {
+          "match": "done"
+        },
+        "default": "account-name",
+        "intent": "Accept an exact selected account address, otherwise verify its name."
+      },
+      "account-name": {
+        "action": "assert_output",
+        "source": "start",
+        "assert": {
+          "path": "$.account.selected.name",
+          "operator": "eq",
+          "value": "{{params.account}}"
+        },
+        "intent": "Require the explicit account name when the caller supplied a name.",
+        "next": "done"
+      }
+    }
+  }
+}

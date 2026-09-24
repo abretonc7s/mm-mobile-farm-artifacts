@@ -1,0 +1,5 @@
+- The PR bundled two independent features (remove-margin fix + Cross orders); splitting by commit was clean because they touched disjoint files apart from en.json. Keep unrelated flag work out of bug-fix PRs to stay under the 1000-line gate.
+- Farmslot CI-watch tracked only the required checks, so check-pr-max-lines failing went unreported. It should watch all failing checks, not just required ones.
+- HyperLiquidProvider.getPositions returns [] on fetch errors, so an empty read never proves a position closed. The upstream worker's "position gone -> don't send" guard was unsound.
+- Codex review looped four rounds on when to release a client-side cap. Pick the freshness signal up front (stream position identity, not derived price-dependent values) instead of patching one edge case per round.
+- Recipe runs can fail on CDP broker timeouts at a press; check that the action never reached the app (metro log) before treating it as a regression.

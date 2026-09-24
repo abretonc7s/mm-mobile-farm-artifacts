@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "verdict": "pass",
+  "compact": {
+    "verdict": "PASS",
+    "reasons": [
+      "recipe-run 48/48 PASS at bb56c3435cf with state assertions after the mutating steps (add margin toast, removal toast, rejection toast absent, SOL position asserted open then closed in teardown)",
+      "AC1/AC2 have screenshot evidence from this run; AC3 proven by focused tests run inside the recipe",
+      "Cross nodes split into cross-split/recipe.json, 30/30 PASS at 9d5f5879753 on #36782's branch"
+    ],
+    "better_version_guidance": []
+  },
+  "dimensions": {},
+  "structural_findings": [],
+  "contextual_findings": [],
+  "suggested_recipe_delta": [],
+  "training_fields": {
+    "proof_mode": "unknown"
+  },
+  "meta": {
+    "producer": "worker",
+    "fallback_used": false,
+    "legacy_task": false,
+    "artifact_required": true,
+    "source_signals": [
+      "recipe-quality.json"
+    ]
+  }
+}

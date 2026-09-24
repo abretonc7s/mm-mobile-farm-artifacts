@@ -1,0 +1,317 @@
+{
+  "$schema": "https://farmslot.io/schemas/recipe-v1.schema.json",
+  "title": "Remove margin max is accepted and the zero state is explained",
+  "description": "TAT-3985: on an isolated BTC testnet position (Trading account), add $20 margin, remove the offered Max and require exchange acceptance, then require the zero-removable explanation on a fresh SOL position; pre-submit re-validation is proven by focused tests. Cross margin order placement moved to its own PR.",
+  "workflow": {
+    "entry": "setup-session",
+    "nodes": {
+      "setup-session": {
+        "action": "call",
+        "ref": "perps.venue-start-state",
+        "params": {
+          "account": "Trading",
+          "provider": "hyperliquid",
+          "network": "testnet",
+          "market": "BTC",
+          "market_mode": "lite"
+        },
+        "intent": "Select the funded Trading account on Hyperliquid testnet where the isolated BTC position lives",
+        "next": "setup-pin-screen-variant"
+      },
+      "setup-assert-position": {
+        "action": "metamask.perps.ensure_positions",
+        "market": "BTC",
+        "side": "long",
+        "state": "open",
+        "notional": "250",
+        "intent": "Converge the isolated BTC long the margin flow acts on, opening one if the testnet account has none",
+        "next": "setup-add-home"
+      },
+      "setup-add-home": {
+        "action": "ui.navigate",
+        "page": "home",
+        "intent": "Reset navigation so the market screen is the only margin entry point",
+        "next": "setup-add-nav"
+      },
+      "setup-add-nav": {
+        "action": "ui.navigate",
+        "page": "perps-market",
+        "market": "BTC",
+        "intent": "Open the BTC market holding the isolated position",
+        "next": "setup-lite-mode"
+      },
+      "setup-add-wait-margin-card": {
+        "action": "ui.wait_for",
+        "test_id": "position-card-margin",
+        "expected": "present",
+        "timeout_ms": 15000,
+        "intent": "Make sure the position margin card is mounted before opening margin actions",
+        "next": "setup-add-press-margin-card"
+      },
+      "setup-add-press-margin-card": {
+        "action": "ui.press",
+        "test_id": "position-card-margin",
+        "intent": "Open the margin action choice for the position to add headroom",
+        "next": "setup-press-add"
+      },
+      "setup-press-add": {
+        "action": "ui.press",
+        "test_id": "perps-adjust-margin-add-btn",
+        "intent": "Choose Add Margin so the position has margin that can later be removed",
+        "next": "setup-open-keypad"
+      },
+      "setup-open-keypad": {
+        "action": "ui.press",
+        "test_id": "perps-amount-display-touchable",
+        "intent": "Open the keypad to type the margin to add",
+        "next": "setup-key-2"
+      },
+      "setup-key-2": {
+        "action": "ui.press",
+        "test_id": "keypad-key-2",
+        "intent": "Type the tens digit of the $20 addition",
+        "next": "setup-key-0"
+      },
+      "setup-key-0": {
+        "action": "ui.press",
+        "test_id": "keypad-key-0",
+        "intent": "Type the units digit of the $20 addition",
+        "next": "setup-close-keypad"
+      },
+      "setup-close-keypad": {
+        "action": "ui.press",
+        "test_id": "perps-adjust-margin-done-button",
+        "intent": "Close the keypad to reach the confirm button",
+        "next": "setup-confirm-add"
+      },
+      "setup-confirm-add": {
+        "action": "ui.press",
+        "test_id": "perps-adjust-margin-confirm-button",
+        "intent": "Submit the $20 margin addition",
+        "next": "setup-assert-added"
+      },
+      "setup-assert-added": {
+        "action": "ui.wait_for",
+        "text": "Added $20 margin",
+        "text_match": "contains",
+        "expected": "visible",
+        "timeout_ms": 20000,
+        "intent": "Confirm the exchange accepted the addition so removable headroom exists",
+        "next": "ac1-home"
+      },
+      "ac1-home": {
+        "action": "ui.navigate",
+        "page": "home",
+        "intent": "Reset navigation so the market screen is the only margin entry point",
+        "next": "ac1-nav"
+      },
+      "ac1-nav": {
+        "action": "ui.navigate",
+        "page": "perps-market",
+        "market": "BTC",
+        "intent": "Open the BTC market holding the isolated position",
+        "next": "ac1-wait-margin-card"
+      },
+      "ac1-wait-margin-card": {
+        "action": "ui.wait_for",
+        "test_id": "position-card-margin",
+        "expected": "present",
+        "timeout_ms": 15000,
+        "intent": "Make sure the position margin card is mounted before opening margin actions",
+        "next": "ac1-press-margin-card"
+      },
+      "ac1-press-margin-card": {
+        "action": "ui.press",
+        "test_id": "position-card-margin",
+        "intent": "Open the margin action choice for the position to remove the maximum",
+        "next": "ac1-press-remove"
+      },
+      "ac1-press-remove": {
+        "action": "ui.press",
+        "test_id": "perps-adjust-margin-reduce-btn",
+        "intent": "Choose Remove Margin as the user in the ticket does",
+        "next": "ac1-open-keypad"
+      },
+      "ac1-open-keypad": {
+        "action": "ui.press",
+        "test_id": "perps-amount-display-touchable",
+        "intent": "Reveal the quick-amount buttons including Max",
+        "next": "ac1-press-max"
+      },
+      "ac1-press-max": {
+        "action": "ui.press",
+        "text": "Max",
+        "intent": "Select the maximum removable amount the app offers",
+        "next": "ac1-close-keypad"
+      },
+      "ac1-close-keypad": {
+        "action": "ui.press",
+        "test_id": "perps-adjust-margin-done-button",
+        "intent": "Close the keypad to show the summary and confirm button",
+        "next": "ac1-wait-available"
+      },
+      "ac1-wait-available": {
+        "action": "ui.wait_for",
+        "test_id": "perps-adjust-margin-available-value",
+        "expected": "visible",
+        "timeout_ms": 10000,
+        "intent": "Show the offered removable amount before submitting it",
+        "next": "ac1-screenshot-max-form"
+      },
+      "ac1-screenshot-max-form": {
+        "action": "ui.screenshot",
+        "path": "screenshots/evidence-ac1-max-form.png",
+        "label": "AC1: Max amount offered for removal",
+        "intent": "Record the max removable amount the user is about to submit",
+        "next": "ac1-press-confirm"
+      },
+      "ac1-press-confirm": {
+        "action": "ui.press",
+        "test_id": "perps-adjust-margin-confirm-button",
+        "intent": "Submit the max margin removal to the exchange",
+        "next": "ac1-assert-removed"
+      },
+      "ac1-assert-removed": {
+        "action": "ui.wait_for",
+        "text": "Removed $",
+        "text_match": "contains",
+        "expected": "visible",
+        "timeout_ms": 20000,
+        "intent": "Confirm the exchange accepted the max removal the app offered",
+        "next": "ac1-screenshot-removed"
+      },
+      "ac1-screenshot-removed": {
+        "action": "ui.screenshot",
+        "path": "screenshots/evidence-ac1-removed-toast.png",
+        "label": "AC1: max removal accepted",
+        "intent": "Show reviewers the exchange accepted the offered max amount",
+        "next": "ac1-assert-no-rejection"
+      },
+      "ac1-assert-no-rejection": {
+        "action": "ui.wait_for",
+        "text": "Margin adjustment failed",
+        "text_match": "contains",
+        "expected": "absent",
+        "timeout_ms": 3000,
+        "intent": "Confirm no exchange rejection toast followed the max removal",
+        "next": "setup-sol-flat"
+      },
+      "ac2-home": {
+        "action": "ui.navigate",
+        "page": "home",
+        "intent": "Reset navigation so the market screen is the only margin entry point",
+        "next": "ac2-nav"
+      },
+      "ac2-nav": {
+        "action": "ui.navigate",
+        "page": "perps-market",
+        "market": "SOL",
+        "intent": "Open the SOL market holding the freshly opened isolated position",
+        "next": "ac2-wait-margin-card"
+      },
+      "ac2-wait-margin-card": {
+        "action": "ui.wait_for",
+        "test_id": "position-card-margin",
+        "expected": "present",
+        "timeout_ms": 15000,
+        "intent": "Make sure the position margin card is mounted before opening margin actions",
+        "next": "ac2-press-margin-card"
+      },
+      "ac2-press-margin-card": {
+        "action": "ui.press",
+        "test_id": "position-card-margin",
+        "intent": "Open the margin action choice for the position to check the zero state",
+        "next": "ac2-press-remove"
+      },
+      "ac2-press-remove": {
+        "action": "ui.press",
+        "test_id": "perps-adjust-margin-reduce-btn",
+        "intent": "Open Remove Margin on a position that has nothing left to remove",
+        "next": "ac2-assert-explanation"
+      },
+      "ac2-assert-explanation": {
+        "action": "ui.wait_for",
+        "test_id": "perps-adjust-margin-no-removable-margin",
+        "expected": "visible",
+        "timeout_ms": 10000,
+        "intent": "Confirm the user is told why no margin can be removed",
+        "next": "ac2-screenshot-zero-state"
+      },
+      "ac2-screenshot-zero-state": {
+        "action": "ui.screenshot",
+        "path": "screenshots/evidence-ac2-zero-state.png",
+        "label": "AC2: zero removable explained, control disabled",
+        "intent": "Show reviewers the remove control is disabled and explains why nothing can be removed",
+        "next": "teardown-sol"
+      },
+      "ac3-run-unit-tests": {
+        "action": "command",
+        "cmd": "yarn jest app/components/UI/Perps/utils/marginUtils.test.ts app/components/UI/Perps/hooks/usePerpsMarginAdjustment.test.ts app/components/UI/Perps/hooks/usePerpsAdjustMarginData.test.ts app/components/UI/Perps/hooks/usePerpsToasts.test.tsx app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.test.tsx app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.test.tsx --no-coverage > /tmp/tat3985-jest.log 2>&1\nstatus=$?\ntail -40 /tmp/tat3985-jest.log\nexit $status",
+        "timeout_ms": 300000,
+        "allow_failure": true,
+        "intent": "Prove the pre-submit re-validation, headroom and zero-removable state through focused tests",
+        "next": "ac3-assert-tests-pass"
+      },
+      "ac3-assert-tests-pass": {
+        "action": "assert_exit_code",
+        "source": "ac3-run-unit-tests",
+        "expected": 0,
+        "intent": "Require the re-validation and headroom tests to pass",
+        "next": "done"
+      },
+      "done": {
+        "action": "end",
+        "status": "pass"
+      },
+      "setup-sol-flat": {
+        "action": "metamask.perps.ensure_positions",
+        "market": "SOL",
+        "state": "none",
+        "intent": "Start AC2 from no SOL position so the new one is freshly opened",
+        "next": "setup-sol-open"
+      },
+      "setup-sol-open": {
+        "action": "metamask.perps.place_order",
+        "market": "SOL",
+        "side": "long",
+        "notional": "15",
+        "leverage": 3,
+        "intent": "Open a fresh isolated SOL position whose margin sits at the transfer floor, leaving nothing removable",
+        "next": "setup-sol-assert"
+      },
+      "setup-sol-assert": {
+        "action": "metamask.perps.assert_positions",
+        "market": "SOL",
+        "state": "open",
+        "intent": "Require the fresh SOL position before opening its remove-margin screen",
+        "next": "ac2-home"
+      },
+      "teardown-sol": {
+        "action": "metamask.perps.ensure_positions",
+        "market": "SOL",
+        "state": "none",
+        "intent": "Close the SOL position this run opened so the account returns to its prior state",
+        "next": "teardown-clear-flags"
+      },
+      "setup-lite-mode": {
+        "action": "metamask.perps.ensure_mode",
+        "mode": "lite",
+        "intent": "Return to Lite so the market screen shows the position margin card, even after a previous run ended in Pro",
+        "next": "setup-add-wait-margin-card"
+      },
+      "setup-pin-screen-variant": {
+        "action": "metamask.feature_flags.set",
+        "flags": {
+          "perpsTAT3938AbtestScreenVsBottomSheet": "control"
+        },
+        "intent": "Pin the full-screen margin flow this recipe drives; the screen-vs-bottom-sheet A/B test otherwise picks per slot",
+        "next": "setup-assert-position"
+      },
+      "teardown-clear-flags": {
+        "action": "metamask.feature_flags.clear",
+        "intent": "Drop the A/B pin so later runs start from remote flags",
+        "next": "ac3-run-unit-tests"
+      }
+    }
+  }
+}

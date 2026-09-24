@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "scope": "recipe-run-application",
+  "status": "review",
+  "nonBlocking": true,
+  "note": "Observed 22 distinct application warning/error event(s) during the recipe run; showing 20 preview(s) and omitting 2. Relation to the task is not determined.",
+  "source": {
+    "label": "app",
+    "path": "/Users/deeeed/dev/metamask/metamask-mobile-6/temp/recipe/runtime/app-console.log",
+    "startOffset": 386039,
+    "endOffset": 528947,
+    "bytesRead": 142908,
+    "truncated": false,
+    "inAppBuffer": "collected",
+    "rawArtifact": "diagnostics-app-log.txt",
+    "redacted": true
+  },
+  "counts": {
+    "total": 22,
+    "warning": 20,
+    "error": 2,
+    "exception": 0
+  },
+  "displayedFindingCount": 20,
+  "omittedFindingCount": 2,
+  "findings": [
+    {
+      "level": "warning",
+      "fingerprint": "5ca048045073",
+      "preview": "WARN  08:09:45.243 [console:mm-6] The result function returned its own inputs without modification. e.g",
+      "count": 4
+    },
+    {
+      "level": "warning",
+      "fingerprint": "1bf3598d12ae",
+      "preview": "WARN  08:09:47.526 [console:mm-6] [MetaMask DEBUG]: { message: \"Terminal global snapshot returned 400: bad request\", stack: \"Error: Terminal global snapshot returned 400: bad request\\n    at ?anon_0_ (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.byteco",
+      "count": 6
+    },
+    {
+      "level": "warning",
+      "fingerprint": "3f0de86ceaa4",
+      "preview": "WARN  08:09:52.454 [console:mm-6] Unable to create some accounts (batch) with provider \"Stellar\" { message: \"Timed out after: 3000ms\", stack: \"TimeoutError: Timed out after: 3000ms\\n    at construct (native)\\n    at apply (native)\\n    at _construct (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&",
+      "count": 1
+    },
+    {
+      "level": "warning",
+      "fingerprint": "287b15bf93f7",
+      "preview": "WARN  08:09:52.454 [console:mm-6] Unable to align some accounts. Providers threw the following errors:",
+      "count": 1
+    },
+    {
+      "level": "warning",
+      "fingerprint": "c9044c7a1435",
+      "preview": "WARN  08:09:55.525 [console:mm-6] Unable to discover accounts with provider \"Bitcoin\" { message: \"Timed out after: 3000ms\", stack: \"TimeoutError: Timed out after: 3000ms\\n    at construct (native)\\n    at apply (native)\\n    at _construct (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&t",
+      "count": 2
+    },
+    {
+      "level": "warning",
+      "fingerprint": "b0c5479e017a",
+      "preview": "WARN  08:09:55.525 [console:mm-6] Unable to discover accounts with provider \"Tron\" { message: \"Timed out after: 3000ms\", stack: \"TimeoutError: Timed out after: 3000ms\\n    at construct (native)\\n    at apply (native)\\n    at _construct (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&tran",
+      "count": 2
+    },
+    {
+      "level": "warning",
+      "fingerprint": "ed8d5de804d5",
+      "preview": "WARN  08:09:55.526 [console:mm-6] Unable to discover accounts with provider \"Stellar\" { message: \"Timed out after: 3000ms\", stack: \"TimeoutError: Timed out after: 3000ms\\n    at construct (native)\\n    at apply (native)\\n    at _construct (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&t",
+      "count": 2
+    },
+    {
+      "level": "warning",
+      "fingerprint": "12e350de6f96",
+      "preview": "WARN  08:09:58.672 [console:mm-6] Unable to discover accounts with provider \"Solana\" { message: \"Timed out after: 3000ms\", stack: \"TimeoutError: Timed out after: 3000ms\\n    at construct (native)\\n    at apply (native)\\n    at _construct (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&tr",
+      "count": 1
+    },
+    {
+      "level": "warning",
+      "fingerprint": "8118a8a7a3e0",
+      "preview": "WARN  08:10:03.866 [console:mm-6] An internal error occurred:  { message: \"Queue restoration timeout\", stack: \"Error: Queue restoration timeout\\n    at construct (native)\\n    at apply (native)\\n    at _construct (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&tra",
+      "count": 1
+    },
+    {
+      "level": "warning",
+      "fingerprint": "9c5000c7ed32",
+      "preview": "WARN  08:10:03.866 [console:mm-6] Flush triggered but queue restoration and settings loading not complete. Flush will be retried. { message: \"Promise timed out\", stack: \"Error: Promise timed out\\n    at anonymous (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&tra",
+      "count": 1
+    },
+    {
+      "level": "error",
+      "fingerprint": "95caa142cf07",
+      "preview": "ERROR  08:10:12.968 [console:mm-6] A query that was dehydrated as pending ended up rejecting. [[\"MoneyAccountBalanceService:getMoneyAccountBalance\",\"0xf62b4ed01965f4dabc34a1297845124f2421ef95\"]]: Error: missing revert data in call exception; Transaction reverted without a reason string [ See: https://links.ethers.org/v",
+      "count": 3
+    },
+    {
+      "level": "warning",
+      "fingerprint": "3c23a3f9a90b",
+      "preview": "The result function returned its own inputs without modification. e.g\n`createSelector([state => state.todos], todos => todos)`\nThis could lead to inefficient memoization and unnecessary re-renders.\nEnsure transformation logic is in the result function, and extraction logic is in the input selectors. Error\n    at runIde",
+      "count": 4
+    },
+    {
+      "level": "warning",
+      "fingerprint": "5c229cb4ae08",
+      "preview": "[MetaMask DEBUG]: Error: Terminal global snapshot returned 400: bad request\n    at ?anon_0_ (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:1512099:26)\n    at next (native)\n    a",
+      "count": 6
+    },
+    {
+      "level": "warning",
+      "fingerprint": "ba3c8163ead1",
+      "preview": "Unable to create some accounts (batch) with provider \"Stellar\" TimeoutError: Timed out after: 3000ms\n    at construct (native)\n    at apply (native)\n    at _construct (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&uns",
+      "count": 1
+    },
+    {
+      "level": "warning",
+      "fingerprint": "3a68a8730991",
+      "preview": "Unable to align some accounts. Providers threw the following errors:\n- [Stellar] Timed out after: 3000ms",
+      "count": 1
+    },
+    {
+      "level": "warning",
+      "fingerprint": "3bdf4fdc27ac",
+      "preview": "Unable to discover accounts with provider \"Bitcoin\" TimeoutError: Timed out after: 3000ms\n    at construct (native)\n    at apply (native)\n    at _construct (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_trans",
+      "count": 2
+    },
+    {
+      "level": "warning",
+      "fingerprint": "498cee224572",
+      "preview": "Unable to discover accounts with provider \"Tron\" TimeoutError: Timed out after: 3000ms\n    at construct (native)\n    at apply (native)\n    at _construct (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transfor",
+      "count": 2
+    },
+    {
+      "level": "warning",
+      "fingerprint": "cee26ea4f156",
+      "preview": "Unable to discover accounts with provider \"Stellar\" TimeoutError: Timed out after: 3000ms\n    at construct (native)\n    at apply (native)\n    at _construct (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_trans",
+      "count": 2
+    },
+    {
+      "level": "warning",
+      "fingerprint": "ad7b18ef21a7",
+      "preview": "Unable to discover accounts with provider \"Solana\" TimeoutError: Timed out after: 3000ms\n    at construct (native)\n    at apply (native)\n    at _construct (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transf",
+      "count": 1
+    },
+    {
+      "level": "warning",
+      "fingerprint": "481d6ced77f2",
+      "preview": "An internal error occurred:  Error: Queue restoration timeout\n    at construct (native)\n    at apply (native)\n    at _construct (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:18",
+      "count": 1
+    }
+  ]
+}

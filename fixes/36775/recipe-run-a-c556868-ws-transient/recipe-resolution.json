@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "root": {
+    "ref": "$root:sha256:a71f85d19b48f631e3a98d19832f85b2b694959fc738c78a141f7d8afd20ddb9",
+    "digest": "sha256:a71f85d19b48f631e3a98d19832f85b2b694959fc738c78a141f7d8afd20ddb9"
+  },
+  "dependencies": [
+    {
+      "ref": "perps.venue-start-state",
+      "source": "perps",
+      "file": "recipes/mobile/perps/venue-start-state.recipe.json",
+      "digest": "sha256:68b7c046a5009998795e1b4191d75d52b542fd7dc65c55ace020115cc316ab55",
+      "artifact": "resolved-recipes/68b7c046a5009998795e1b4191d75d52b542fd7dc65c55ace020115cc316ab55.recipe.json",
+      "adapter": "mobile"
+    }
+  ],
+  "edges": [
+    {
+      "from": "$root:sha256:a71f85d19b48f631e3a98d19832f85b2b694959fc738c78a141f7d8afd20ddb9",
+      "to": "perps.venue-start-state"
+    }
+  ]
+}

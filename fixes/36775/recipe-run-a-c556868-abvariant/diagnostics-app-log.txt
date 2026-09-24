@@ -1,0 +1,519 @@
+ LOG  09:27:45.518 [console:mm-6] [MetaMask DEBUG]: RewardsController: handleAuthenticationTrigger KeyringController unlocked
+ LOG  09:27:45.630 [console:mm-6] [MetaMask DEBUG]: RewardsController: handleAuthenticationTrigger Account Group changed
+ DEBUG  09:27:45.649 [console:mm-6] SDKConnect::init() - starting deeplinking service
+ DEBUG  09:27:45.650 [console:mm-6] SDKConnect::init()[Nav/App] - starting
+ DEBUG  09:27:45.652 [console:mm-6] DeeplinkProtocolService:: initialized
+ INFO  09:27:45.656 [console:mm-6] IDENTIFY event saved { type: "identify", userId: "923d86a8-97f2-4321-bb62-e385594c4d4d", traits: Object }
+ INFO  09:27:45.663 [console:mm-6] TRACK event saved { type: "track", event: "App Unlocked", properties: Object }
+ LOG  09:27:45.718 [console:mm-6] [MetaMask DEBUG]: Engine Vault back up skipped (identical_keychain)
+ INFO  09:27:46.672 [console:mm-6] TRACK event saved { type: "track", event: "Experiment Viewed", properties: Object }
+ WARN  09:27:46.796 [console:mm-6] The result function returned its own inputs without modification. e.g
+`createSelector([state => state.todos], todos => todos)`
+This could lead to inefficient memoization and unnecessary re-renders.
+Ensure transformation logic is in the result function, and extraction logic is in the input selectors. { stack: "Error\n    at runIdentityFunctionCheck (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:315601:26)\n    at dependenciesChecker (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:316279:38)\n    at apply (native)\n    at memoized (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:316198:28)\n    at anonymous (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:543199:34)\n    at memoizedSelector (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:544860:36)\n    at anonymous (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:544879:34)\n    at mountSyncExternalStore (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:29749:37)\n    at useSyncExternalStore (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:35115:38)\n    at anonymous (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:24415:54)\n    at anonymous (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:544884:39)\n    at useSelector (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:543241:59)\n    at AccountGroupBalance (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:2708707:83)\n    at react_stack_bottom_frame (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:34816:29)\n    at renderWithHooks (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:29452:40)\n    at updateFunctionComponent (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:30738:34)\n    at beginWork (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:31196:41)\n    at run (http://127.0.0.1:8066/index.bundle//&platform=i…
+ WARN  09:27:46.809 [console:mm-6] The result function returned its own inputs without modification. e.g
+`createSelector([state => state.todos], todos => todos)`
+This could lead to inefficient memoization and unnecessary re-renders.
+Ensure transformation logic is in the result function, and extraction logic is in the input selectors. { stack: "Error\n    at runIdentityFunctionCheck (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:315601:26)\n    at dependenciesChecker (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:316279:38)\n    at apply (native)\n    at memoized (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:316198:28)\n    at anonymous (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:543199:34)\n    at memoizedSelector (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:544860:36)\n    at anonymous (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:544879:34)\n    at mountSyncExternalStore (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:29749:37)\n    at useSyncExternalStore (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:35115:38)\n    at anonymous (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:24415:54)\n    at anonymous (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:544884:39)\n    at useSelector (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:543241:59)\n    at AccountGroupBalance (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:2708708:90)\n    at react_stack_bottom_frame (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:34816:29)\n    at renderWithHooks (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:29452:40)\n    at updateFunctionComponent (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:30738:34)\n    at beginWork (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:31196:41)\n    at run (http://127.0.0.1:8066/index.bundle//&platform=i…
+ WARN  09:27:46.811 [console:mm-6] The result function returned its own inputs without modification. e.g
+`createSelector([state => state.todos], todos => todos)`
+This could lead to inefficient memoization and unnecessary re-renders.
+Ensure transformation logic is in the result function, and extraction logic is in the input selectors. { stack: "Error\n    at runIdentityFunctionCheck (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:315601:26)\n    at dependenciesChecker (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:316279:38)\n    at apply (native)\n    at memoized (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:316198:28)\n    at anonymous (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:543199:34)\n    at memoizedSelector (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:544860:36)\n    at anonymous (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:544879:34)\n    at mountSyncExternalStore (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:29749:37)\n    at useSyncExternalStore (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:35115:38)\n    at anonymous (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:24415:54)\n    at anonymous (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:544884:39)\n    at useSelector (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:543241:59)\n    at AccountGroupBalance (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:2708709:86)\n    at react_stack_bottom_frame (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:34816:29)\n    at renderWithHooks (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:29452:40)\n    at updateFunctionComponent (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:30738:34)\n    at beginWork (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:31196:41)\n    at run (http://127.0.0.1:8066/index.bundle//&platform=i…
+ WARN  09:27:46.830 [console:mm-6] The result function returned its own inputs without modification. e.g
+`createSelector([state => state.todos], todos => todos)`
+This could lead to inefficient memoization and unnecessary re-renders.
+Ensure transformation logic is in the result function, and extraction logic is in the input selectors. { stack: "Error\n    at runIdentityFunctionCheck (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:315601:26)\n    at dependenciesChecker (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:316279:38)\n    at apply (native)\n    at memoized (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:316198:28)\n    at anonymous (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:543199:34)\n    at memoizedSelector (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:544860:36)\n    at anonymous (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:544879:34)\n    at mountSyncExternalStore (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:29749:37)\n    at useSyncExternalStore (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:35115:38)\n    at anonymous (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:24415:54)\n    at anonymous (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:544884:39)\n    at useSelector (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:543241:59)\n    at useMoneyAccountBalance (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:2217658:85)\n    at MoneyBalanceCard (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:2677799:69)\n    at react_stack_bottom_frame (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:34816:29)\n    at renderWithHooks (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:29452:40)\n    at updateFunctionComponent (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:30738:34)\n    at beginWork (http://127.0.0.1:8066/index.b…
+ DEBUG  09:27:46.868 [console:mm-6] PerpsStreamProvider: Using stream manager: { isTestManager: false, isE2EMockManager: false, isRealManager: true }
+ DEBUG  09:27:47.424 [console:mm-6] [PerpsLoadProof] {"stage":"perps_bootstrap_start","perps_session_id":"fc54a9c9-2c35-4dcc-b1bf-3e96d9ac65d6","lifecycle":"cold_no_cache","account_generation":1,"context_generation":1,"monotonic_ms":1758600410.65}
+ DEBUG  09:27:47.437 [console:mm-6] [HyperLiquidProvider] Constructor complete { hasBatchCancel: true, hasBatchClose: true, protocolId: "hyperliquid", hip3Enabled: true, allowlistMarkets: Array(1), blocklistMarkets: Array(1), isTestnet: true }
+ DEBUG  09:27:47.458 [console:mm-6] PerpsStreamManager: Cache miss or stale { hasCached: false, cacheAgeMs: null, cacheExpired: true, cacheDurationMs: 300000, providerId: "hyperliquid" }
+ DEBUG  09:27:47.461 [console:mm-6] PerpsStreamManager: Fetching fresh market data from API
+ DEBUG  09:27:47.764 [console:mm-6] PerpsController: Starting market data preload
+ DEBUG  09:27:47.769 [console:mm-6] PerpsController: Fetching market data in background
+ DEBUG  09:27:47.772 [console:mm-6] PerpsController: rest_preload_start
+ DEBUG  09:27:47.801 [console:mm-6] PerpsController: user cache preload decision { requestedKey: "hyperliquid:testnet", selectedEntryKey: "hyperliquid:testnet", availableKeys: Array(2), hasMatchingCache: false, cacheAgeMs: 4508904, websocketState: "disconnected" }
+ DEBUG  09:27:47.821 [console:mm-6] PerpsController: Fetching user data in background
+ DEBUG  09:27:47.826 [console:mm-6] PerpsConnectionManager: State monitoring set up
+ DEBUG  09:27:47.829 [console:mm-6] PerpsConnectionManager: Connection requested (refCount: 1, isConnected: false, isInitialized: false)
+ DEBUG  09:27:47.832 [console:mm-6] PerpsConnectionManager: Starting 30000ms connection timeout
+ DEBUG  09:27:47.856 [console:mm-6] PerpsConnectionManager: Initializing connection
+ DEBUG  09:27:47.861 [console:mm-6] PerpsController: Initializing providers { currentNetwork: "testnet", existingProviders: Array(0), timestamp: "2026-09-24T09:27:47.861Z" }
+ LOG  09:27:48.010 [console:mm-6] [MetaMask DEBUG]: [BrazePlugin] Identified Braze user with canonicalProfileId
+ LOG  09:27:48.011 [console:mm-6] [MetaMask DEBUG]: [BrazePlugin] Sent language to Braze: en-US
+ LOG  09:27:48.011 [console:mm-6] [MetaMask DEBUG]: [Braze] Requested banner refresh
+ LOG  09:27:48.011 [console:mm-6] [MetaMask DEBUG]: Failed to resolve IPFS URL for https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/linea-mainnet/93ada766c71b466e274c63237c5bb9b5
+ LOG  09:27:48.011 [console:mm-6] [MetaMask DEBUG]: Failed to resolve IPFS URL for https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/linea-mainnet/7e5864d88f6b1262a600b5ca31a6b549_28ee5296
+ LOG  09:27:48.012 [console:mm-6] [MetaMask DEBUG]: Failed to resolve IPFS URL for https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/linea-mainnet/5fdb03d9932951f395a18b1f74fc69ba_28ee5296
+ LOG  09:27:48.012 [console:mm-6] [MetaMask DEBUG]: Failed to resolve IPFS URL for https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/linea-mainnet/3f5d073c7598d0761e33a02bec5a4135_af7cd285
+ LOG  09:27:48.012 [console:mm-6] [MetaMask DEBUG]: Failed to resolve IPFS URL for https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/linea-mainnet/d0a73dab2d826430e07d75acd8b0479f_28ee5296
+ LOG  09:27:48.012 [console:mm-6] [MetaMask DEBUG]: Failed to resolve IPFS URL for https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/linea-mainnet/d0e384b1aa6a0418ceff1aebe84d0b61_28ee5296
+ INFO  09:27:48.031 [console:mm-6] TRACK event saved { type: "track", event: "Money Surface Viewed", properties: Object }
+ INFO  09:27:48.031 [console:mm-6] TRACK event saved { type: "track", event: "Experiment Viewed", properties: Object }
+ INFO  09:27:48.032 [console:mm-6] TRACK event saved { type: "track", event: "Experiment Viewed", properties: Object }
+ INFO  09:27:48.032 [console:mm-6] IDENTIFY event saved { type: "identify", userId: "923d86a8-97f2-4321-bb62-e385594c4d4d", traits: Object }
+ INFO  09:27:48.254 [console:mm-6] TRACK event saved { type: "track", event: "Home Viewed", properties: Object }
+ LOG  09:27:48.345 [console:mm-6] [MetaMask DEBUG]: KeyringController state persisted successfully
+ LOG  09:27:48.346 [console:mm-6] [MetaMask DEBUG]: NotificationServicesController state persisted successfully
+ LOG  09:27:48.346 [console:mm-6] [MetaMask DEBUG]: ProfileMetricsController state persisted successfully
+ LOG  09:27:48.362 [console:mm-6] [MetaMask DEBUG]: [BrazeBanner] Warm-cache probe resolved { placementId: "mobile-wallet-home", campaignName: "no-target", variantName: null, bannerPlacementId: "mobile-wallet-home", isControl: false, isTestSend: false, hasBody: true }
+ LOG  09:27:48.362 [console:mm-6] [MetaMask DEBUG]: [BrazeBanner] Accepting banner for display { placementId: "mobile-wallet-home", campaignName: "no-target", variantName: null, bannerPlacementId: "mobile-wallet-home", isControl: false, isTestSend: false, hasBody: true }
+ LOG  09:27:48.421 [console:mm-6] [MetaMask DEBUG]: AccountsController state persisted successfully
+ LOG  09:27:48.422 [console:mm-6] [MetaMask DEBUG]: AccountTreeController state persisted successfully
+ DEBUG  09:27:48.502 [console:mm-6] [PerpsUserSnapshot] { stage: "clearinghouse_state", durationMs: 1051, success: true, dex: "main" }
+ DEBUG  09:27:48.521 [console:mm-6] [PerpsUserSnapshot] { stage: "frontend_open_orders", durationMs: 1066, success: true, dex: "xyz" }
+ DEBUG  09:27:48.521 [console:mm-6] [PerpsUserSnapshot] { stage: "clearinghouse_state", durationMs: 1067, success: true, dex: "xyz" }
+ DEBUG  09:27:48.521 [console:mm-6] [PerpsUserSnapshot] { stage: "user_abstraction", durationMs: 1066, success: true }
+ DEBUG  09:27:48.522 [console:mm-6] [PerpsUserSnapshot] { stage: "spot_clearinghouse_state", durationMs: 1067, success: true }
+ LOG  09:27:48.630 [console:mm-6] [MetaMask DEBUG]: [BrazeBanner] bannerCardsUpdated received { placementId: "mobile-wallet-home", campaignName: "no-target", variantName: null, bannerPlacementId: "mobile-wallet-home", isControl: false, isTestSend: false, hasBody: true, bannerCount: 1, matched: true }
+ LOG  09:27:48.631 [console:mm-6] [MetaMask DEBUG]: [BrazeBanner] Ignoring duplicate banner tracking ID { placementId: "mobile-wallet-home", campaignName: "no-target", variantName: null, bannerPlacementId: "mobile-wallet-home", isControl: false, isTestSend: false, hasBody: true }
+ DEBUG  09:27:48.676 [console:mm-6] [PerpsUserSnapshot] { stage: "frontend_open_orders", durationMs: 1221, success: true, dex: "main" }
+ DEBUG  09:27:48.677 [console:mm-6] [PerpsUserSnapshot] { stage: "complete", durationMs: 1235, success: true, dexCount: 2 }
+ DEBUG  09:27:48.678 [console:mm-6] PerpsController: user cache snapshot written { writtenKey: "hyperliquid:testnet", availableKeys: Array(2), positionCount: 1, orderCount: 0 }
+ DEBUG  09:27:48.678 [console:mm-6] PerpsController: User data preloaded { positionCount: 1, orderCount: 0, totalBalance: "315.145996" }
+ DEBUG  09:27:48.680 [console:mm-6] [PerpsLoadProof] {"stage":"values_ready","perps_session_id":"fc54a9c9-2c35-4dcc-b1bf-3e96d9ac65d6","lifecycle":"cold_no_cache","account_generation":1,"context_generation":1,"stream":"account","source":"provider_snapshot","item_count":1,"elapsed_ms":1255.757,"monotonic_ms":1758601666.408}
+ DEBUG  09:27:48.681 [console:mm-6] usePerpsLivePositions: Received first WebSocket update { positionsCount: 1 }
+ DEBUG  09:27:48.780 [console:mm-6] PriceStreamChannel: ensureReady: awaiting active connection
+ DEBUG  09:27:48.784 [console:mm-6] PriceStreamChannel: ensureReady: awaiting active connection
+ WARN  09:27:48.936 [console:mm-6] [MetaMask DEBUG]: { message: "Terminal global snapshot returned 400: bad request", stack: "Error: Terminal global snapshot returned 400: bad request\n    at ?anon_0_ (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:1512099:26)\n    at next (native)\n    at asyncGeneratorStep (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:18683:19)\n    at _next (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:18697:29)\n    at tryCallOne (address at InternalBytecode.js:1:1180)\n    at anonymous (address at InternalBytecode.js:1:1874)" }
+ DEBUG  09:27:48.937 [console:mm-6] Getting market data with prices via HyperLiquid SDK
+ DEBUG  09:27:48.937 [console:mm-6] [ensureReady] Starting new initialization
+ DEBUG  09:27:48.939 [console:mm-6] HyperLiquid: Creating transports { isTestnet: true, timestamp: "2026-09-24T09:27:48.939Z", note: "SDK will auto-select endpoints based on isTestnet flag" }
+ WARN  09:27:48.942 [console:mm-6] [MetaMask DEBUG]: { message: "Terminal global snapshot returned 400: bad request", stack: "Error: Terminal global snapshot returned 400: bad request\n    at ?anon_0_ (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:1512099:26)\n    at next (native)\n    at asyncGeneratorStep (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:18683:19)\n    at _next (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:18697:29)\n    at tryCallOne (address at InternalBytecode.js:1:1180)\n    at anonymous (address at InternalBytecode.js:1:1874)" }
+ DEBUG  09:27:48.942 [console:mm-6] Getting market data with prices via HyperLiquid SDK
+ DEBUG  09:27:48.942 [console:mm-6] [ensureReady] Reusing existing initialization promise
+ DEBUG  09:27:48.979 [console:mm-6] wait:: waitForKeyChainUnlocked[WalletConnectV2::init] unlocked: true
+ DEBUG  09:27:48.979 [console:mm-6] WalletConnectV2::init() chainId=1 currentRouteName=WalletView
+ DEBUG  09:27:49.074 [console:mm-6] SDKConnect::init() - waited 1000ms - keep initializing
+ DEBUG  09:27:49.074 [console:mm-6] SDKConnect::init() - connections length=0 approvedHosts length=0
+ DEBUG  09:27:49.074 [console:mm-6] SDKConnect::init() - valid connections length=0 {}
+ DEBUG  09:27:49.101 [console:mm-6] SDKConnect::init() - done
+ DEBUG  09:27:49.116 [console:mm-6] SDKConnect::postInit() - check keychain unlocked=true
+ DEBUG  09:27:49.116 [console:mm-6] wait:: waitForKeyChainUnlocked[init] unlocked: true
+ DEBUG  09:27:49.116 [console:mm-6] SDKConnect::postInit() - currentRouteName=WalletView
+ DEBUG  09:27:49.116 [console:mm-6] SDKConnect::postInit() - currentRouteName=WalletView - start reconnectAll
+ DEBUG  09:27:49.116 [console:mm-6] SDKConnect::postInit() - keychain unlocked -- wait for reconnectAll
+ DEBUG  09:27:49.117 [console:mm-6] SDKConnect::reconnectAll paused=false reconnected=false
+ DEBUG  09:27:49.117 [console:mm-6] SDKConnect::reconnectAll - channelIds=0 - done
+ DEBUG  09:27:49.117 [console:mm-6] SDKConnect::postInit() - done
+ DEBUG  09:27:49.144 [console:mm-6] PositionStreamChannel: ensureReady: awaiting active connection
+ DEBUG  09:27:49.144 [console:mm-6] AccountStreamChannel: ensureReady: awaiting active connection
+ DEBUG  09:27:49.144 [console:mm-6] OrderStreamChannel: ensureReady: awaiting active connection
+ LOG  09:27:49.348 [console:mm-6] [MetaMask DEBUG]: RewardsController state persisted successfully
+ LOG  09:27:49.348 [console:mm-6] [MetaMask DEBUG]: AssetsController state persisted successfully
+ LOG  09:27:49.490 [console:mm-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ DEBUG  09:27:49.501 [console:mm-6] HyperLiquid SDK clients initialized { testnet: true, timestamp: "2026-09-24T09:27:49.501Z", connectionState: "connected", note: "Using WebSocket for InfoClient (default), HTTP fallback available" }
+ DEBUG  09:27:49.502 [console:mm-6] [HyperLiquidProvider] Clients initialized lazily
+ DEBUG  09:27:49.502 [console:mm-6] HyperLiquidProvider: Building asset mapping { hip3Enabled: true, allowlistMarkets: Array(1), blocklistMarkets: Array(1) }
+ LOG  09:27:50.275 [console:mm-6] [MetaMask DEBUG]: AuthenticationController state persisted successfully
+ LOG  09:27:50.276 [console:mm-6] [MetaMask DEBUG]: ConfigRegistryController state persisted successfully
+ LOG  09:27:50.276 [console:mm-6] [MetaMask DEBUG]: CardController state persisted successfully
+ LOG  09:27:50.277 [console:mm-6] [MetaMask DEBUG]: MultichainNetworkController state persisted successfully
+ LOG  09:27:50.277 [console:mm-6] [MetaMask DEBUG]: NotificationServicesController state persisted successfully
+ LOG  09:27:50.277 [console:mm-6] [MetaMask DEBUG]: AccountTreeController state persisted successfully
+ DEBUG  09:27:50.302 [console:mm-6] HyperLiquidProvider: Testnet - filtered to allowed DEXs { allowedDexs: Array(1), filteredDexs: Array(1), availableHip3Dexs: 265 }
+ DEBUG  09:27:50.302 [console:mm-6] HyperLiquidProvider: Available DEXs (market filtering applied at data layer) { count: 1, dexNames: Array(1) }
+ DEBUG  09:27:50.302 [console:mm-6] HyperLiquidProvider: Starting asset mapping rebuild { dexs: Array(2), previousMapSize: 0, hip3Enabled: true, allowlistMarkets: Array(1), blocklistMarkets: Array(1), timestamp: "2026-09-24T09:27:50.302Z" }
+ DEBUG  09:27:50.303 [console:mm-6] Feature flags updated: { previousHip3Enabled: true, hip3Enabled: true, previousEnabledDexs: Array(0), enabledDexs: Array(1), previousAllowlistMarkets: Array(1), allowlistMarkets: Array(1), previousBlocklistMarkets: Array(1), blocklistMarkets: Array(1) }
+ DEBUG  09:27:50.303 [console:mm-6] Establishing subscriptions for new DEXs: ["xyz"]
+ DEBUG  09:27:50.721 [console:mm-6] [SubscriptionService] DEX meta cache populated { dex: "xyz", universeSize: 70 }
+ DEBUG  09:27:50.721 [console:mm-6] [SubscriptionService] DEX assetCtxs cache populated { dex: "xyz", ctxsCount: 70 }
+ DEBUG  09:27:50.738 [console:mm-6] [SubscriptionService] DEX meta cache populated { dex: "main", universeSize: 212 }
+ DEBUG  09:27:50.738 [console:mm-6] [SubscriptionService] DEX assetCtxs cache populated { dex: "main", ctxsCount: 212 }
+ DEBUG  09:27:50.739 [console:mm-6] HyperLiquidProvider: Asset mapping built { totalAssets: 282, dexCount: 2, mainDexSample: Array(5), hip3Sample: Array(10) }
+ DEBUG  09:27:51.128 [console:mm-6] Fetching market data for category: hot hasAfterCursor: false limit: 2
+ DEBUG  09:27:51.150 [console:mm-6] Getting markets via Polymarket API for category: hot limit: 2 hasAfterCursor: false
+ LOG  09:27:51.267 [console:mm-6] [MetaMask DEBUG]: UserStorageController state persisted successfully
+ DEBUG  09:27:51.379 [console:mm-6] Market data received: { marketCount: 2, hasNextCursor: true }
+ DEBUG  09:27:51.427 [console:mm-6] HyperLiquidProvider: Account already in a compatible mode, skipping migration { user: "0x316bde155acd07609872a56bc32ccfb0b13201fa", network: "testnet", mode: "unifiedAccount" }
+ DEBUG  09:27:51.428 [console:mm-6] PerpsAnalyticsEvent "Perp Account Setup" not found in MetaMetricsEvents
+ DEBUG  09:27:51.429 [console:mm-6] [ensureReady] Initialization complete
+ DEBUG  09:27:51.430 [console:mm-6] [getMarketDataWithPrices] Using cached meta for main { universeSize: 212 }
+ DEBUG  09:27:51.430 [console:mm-6] [getMarketDataWithPrices] No WS allMids snapshot, falling back to REST { dexParam: "main" }
+ DEBUG  09:27:51.431 [console:mm-6] [getMarketDataWithPrices] Using cached meta for xyz { universeSize: 70 }
+ DEBUG  09:27:51.431 [console:mm-6] [getMarketDataWithPrices] No WS allMids snapshot, falling back to REST { dexParam: "xyz" }
+ DEBUG  09:27:51.432 [console:mm-6] [getMarketDataWithPrices] Using cached meta for main { universeSize: 212 }
+ DEBUG  09:27:51.432 [console:mm-6] [getMarketDataWithPrices] No WS allMids snapshot, falling back to REST { dexParam: "main" }
+ DEBUG  09:27:51.433 [console:mm-6] [getMarketDataWithPrices] Using cached meta for xyz { universeSize: 70 }
+ DEBUG  09:27:51.433 [console:mm-6] [getMarketDataWithPrices] No WS allMids snapshot, falling back to REST { dexParam: "xyz" }
+ INFO  09:27:51.434 [console:mm-6] TRACK event saved { type: "track", event: "Perp Account Setup", properties: Object }
+ INFO  09:27:51.475 [console:mm-6] TRACK event saved { type: "track", event: "Empty State Viewed", properties: Object }
+ DEBUG  09:27:51.561 [console:mm-6] PerpsStreamProvider: Using stream manager: { isTestManager: false, isE2EMockManager: false, isRealManager: true }
+ DEBUG  09:27:51.945 [console:mm-6] [PerpsDetailLoadProof] {"stage":"detail_session_start","session_id":"2446ca0d-f589-44a0-aa12-8201fcd7a675","mode":"pro","symbol":"BTC","monotonic_ms":1758604904.093,"generation_trigger":"initial"}
+ DEBUG  09:27:51.971 [console:mm-6] AccountStreamChannel: ensureReady: awaiting active connection
+ DEBUG  09:27:51.980 [console:mm-6] PriceStreamChannel: ensureReady: awaiting active connection
+ DEBUG  09:27:51.982 [console:mm-6] PriceStreamChannel: ensureReady: awaiting active connection
+ DEBUG  09:27:51.984 [console:mm-6] PriceStreamChannel: ensureReady: awaiting active connection
+ DEBUG  09:27:51.986 [console:mm-6] PriceStreamChannel: ensureReady: awaiting active connection
+ DEBUG  09:27:51.998 [console:mm-6] PriceStreamChannel: ensureReady: awaiting active connection
+ DEBUG  09:27:52.001 [console:mm-6] PriceStreamChannel: ensureReady: awaiting active connection
+ DEBUG  09:27:52.003 [console:mm-6] PriceStreamChannel: ensureReady: awaiting active connection
+ DEBUG  09:27:52.006 [console:mm-6] PriceStreamChannel: ensureReady: awaiting active connection
+ DEBUG  09:27:52.009 [console:mm-6] usePerpsLivePositions: Received first WebSocket update { positionsCount: 1 }
+ DEBUG  09:27:52.011 [console:mm-6] PositionStreamChannel: ensureReady: awaiting active connection
+ DEBUG  09:27:52.014 [console:mm-6] usePerpsLiveFills: Subscribing with no throttle (instant updates)
+ DEBUG  09:27:52.016 [console:mm-6] FillStreamChannel: ensureReady: awaiting active connection
+ DEBUG  09:27:52.018 [console:mm-6] OrderStreamChannel: ensureReady: awaiting active connection
+ DEBUG  09:27:52.022 [console:mm-6] PriceStreamChannel: ensureReady: awaiting active connection
+ DEBUG  09:27:52.024 [console:mm-6] PriceStreamChannel: ensureReady: awaiting active connection
+ DEBUG  09:27:52.059 [console:mm-6] OICapStreamChannel: ensureReady: awaiting active connection
+ DEBUG  09:27:52.063 [console:mm-6] usePerpsLivePositions: Received first WebSocket update { positionsCount: 1 }
+ DEBUG  09:27:52.066 [console:mm-6] PositionStreamChannel: ensureReady: awaiting active connection
+ DEBUG  09:27:52.068 [console:mm-6] usePerpsLiveFills: Subscribing with no throttle (instant updates)
+ DEBUG  09:27:52.070 [console:mm-6] FillStreamChannel: ensureReady: awaiting active connection
+ DEBUG  09:27:52.072 [console:mm-6] PriceStreamChannel: ensureReady: awaiting active connection
+ DEBUG  09:27:52.074 [console:mm-6] PriceStreamChannel: ensureReady: awaiting active connection
+ DEBUG  09:27:52.077 [console:mm-6] TopOfBookStreamChannel: ensureReady: awaiting active connection
+ DEBUG  09:27:52.087 [console:mm-6] AccountStreamChannel: ensureReady: awaiting active connection
+ DEBUG  09:27:52.089 [console:mm-6] usePerpsLivePositions: Received first WebSocket update { positionsCount: 1 }
+ DEBUG  09:27:52.092 [console:mm-6] PositionStreamChannel: ensureReady: awaiting active connection
+ DEBUG  09:27:52.094 [console:mm-6] PriceStreamChannel: ensureReady: awaiting active connection
+ DEBUG  09:27:52.096 [console:mm-6] PriceStreamChannel: ensureReady: awaiting active connection
+ DEBUG  09:27:52.110 [console:mm-6] usePerpsLivePositions: Received first WebSocket update { positionsCount: 1 }
+ DEBUG  09:27:52.112 [console:mm-6] PositionStreamChannel: ensureReady: awaiting active connection
+ DEBUG  09:27:52.114 [console:mm-6] PriceStreamChannel: ensureReady: awaiting active connection
+ DEBUG  09:27:52.116 [console:mm-6] PriceStreamChannel: ensureReady: awaiting active connection
+ DEBUG  09:27:52.119 [console:mm-6] OrderStreamChannel: ensureReady: awaiting active connection
+ DEBUG  09:27:52.121 [console:mm-6] usePerpsLivePositions: Received first WebSocket update { positionsCount: 1 }
+ DEBUG  09:27:52.123 [console:mm-6] PositionStreamChannel: ensureReady: awaiting active connection
+ DEBUG  09:27:52.126 [console:mm-6] PerpsStreamManager: Cache miss or stale { hasCached: false, cacheAgeMs: null, cacheExpired: true, cacheDurationMs: 300000, providerId: "hyperliquid" }
+ DEBUG  09:27:52.130 [console:mm-6] AccountStreamChannel: ensureReady: awaiting active connection
+ DEBUG  09:27:52.132 [console:mm-6] PerpsStreamManager: Cache miss or stale { hasCached: false, cacheAgeMs: null, cacheExpired: true, cacheDurationMs: 300000, providerId: "hyperliquid" }
+ DEBUG  09:27:52.135 [console:mm-6] AccountStreamChannel: ensureReady: awaiting active connection
+ DEBUG  09:27:52.138 [console:mm-6] PerpsStreamManager: Cache miss or stale { hasCached: false, cacheAgeMs: null, cacheExpired: true, cacheDurationMs: 300000, providerId: "hyperliquid" }
+ INFO  09:27:52.260 [console:mm-6] TRACK event saved { type: "track", event: "Experiment Viewed", properties: Object }
+ INFO  09:27:52.260 [console:mm-6] TRACK event saved { type: "track", event: "Perp Screen Viewed", properties: Object }
+ INFO  09:27:52.260 [console:mm-6] TRACK event saved { type: "track", event: "Asset Viewed", properties: Object }
+ INFO  09:27:52.261 [console:mm-6] TRACK event saved { type: "track", event: "Home Viewed", properties: Object }
+ LOG  09:27:52.261 [console:mm-6] [MetaMask DEBUG]: AccountTreeController state persisted successfully
+ DEBUG  09:27:52.292 [console:mm-6] [getCachedMeta] Using cached meta response { dex: "xyz", universeSize: 70 }
+ DEBUG  09:27:52.329 [console:mm-6] [getCachedMeta] Using cached meta response { dex: "xyz", universeSize: 70 }
+ DEBUG  09:27:52.558 [console:mm-6] PerpsStreamProvider: Using stream manager: { isTestManager: false, isE2EMockManager: false, isRealManager: true }
+ DEBUG  09:27:52.590 [console:mm-6] WC2Manager::constructor() { goBack: function, navigate: function, navigateDeprecated: function, preload: function, replaceParams: function, reset: function, setParams: function, addListener: function, removeListener: function, dispatch: function, … }
+ LOG  09:27:52.746 [console:mm-6] [MetaMask DEBUG]: PredictController state persisted successfully
+ LOG  09:27:52.767 [console:mm-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ LOG  09:27:52.774 [console:mm-6] [MetaMask DEBUG]: NotificationServicesController state persisted successfully
+ DEBUG  09:27:52.850 [console:mm-6] [getCachedSpotMeta] Fetched and cached spotMeta { tokensCount: 1661, universeCount: 1323 }
+ DEBUG  09:27:52.851 [console:mm-6] HyperLiquidProvider: Checked DEX collateral type { dexName: "xyz", collateralTokenIndex: 0, collateralTokenName: "USDC", isUsdc: true }
+ DEBUG  09:27:52.852 [console:mm-6] HyperLiquidProvider: Aggregated market data from all DEXs { dexCount: 2, totalMarkets: 282, mainDexMarkets: 212, hip3Markets: 70 }
+ DEBUG  09:27:52.854 [console:mm-6] Combined allMids price data: { totalKeys: 3319, hip3Keys: 70, keySample: Array(5), hip3KeySample: Array(5), samplePrices: Object }
+ DEBUG  09:27:52.867 [console:mm-6] PerpsController: rest_preload_end { duration_ms: 5099, markets: 282 }
+ DEBUG  09:27:52.871 [console:mm-6] PerpsController: Market data preloaded { marketCount: 282 }
+ LOG  09:27:52.887 [console:mm-6] [MetaMask DEBUG]: AccountTreeController state persisted successfully
+ DEBUG  09:27:52.940 [console:mm-6] [getCachedSpotMeta] Fetched and cached spotMeta { tokensCount: 1661, universeCount: 1323 }
+ DEBUG  09:27:52.941 [console:mm-6] HyperLiquidProvider: Checked DEX collateral type { dexName: "xyz", collateralTokenIndex: 0, collateralTokenName: "USDC", isUsdc: true }
+ DEBUG  09:27:52.941 [console:mm-6] HyperLiquidProvider: Aggregated market data from all DEXs { dexCount: 2, totalMarkets: 282, mainDexMarkets: 212, hip3Markets: 70 }
+ DEBUG  09:27:52.948 [console:mm-6] Combined allMids price data: { totalKeys: 3319, hip3Keys: 70, keySample: Array(5), hip3KeySample: Array(5), samplePrices: Object }
+ DEBUG  09:27:52.960 [console:mm-6] Perps: Market data received (first load) { marketCount: 282, timeToDataMs: 5497, source: "fresh_fetch", cacheHit: false }
+ DEBUG  09:27:52.961 [console:mm-6] Perps: Market data received (first load) { marketCount: 282, timeToDataMs: 834, source: "fresh_fetch", cacheHit: false }
+ DEBUG  09:27:52.962 [console:mm-6] Perps: Market data received (first load) { marketCount: 282, timeToDataMs: 830, source: "fresh_fetch", cacheHit: false }
+ DEBUG  09:27:52.963 [console:mm-6] Perps: Market data received (first load) { marketCount: 282, timeToDataMs: 824, source: "fresh_fetch", cacheHit: false }
+ DEBUG  09:27:52.965 [console:mm-6] PerpsStreamManager: Market data fetched and cached { marketCount: 282, fetchTimeMs: 5493, providerId: "hyperliquid:testnet:76:global-snapshot", cacheValidUntil: "2026-09-24T09:32:52.964Z" }
+ DEBUG  09:27:52.966 [console:mm-6] HyperLiquid: Disconnecting provider { isTestnet: true, timestamp: "2026-09-24T09:27:52.966Z" }
+ DEBUG  09:27:52.968 [console:mm-6] HyperLiquidSubscriptionService: Clearing per-DEX caches { dexPositionsCacheSize: 0, dexOrdersCacheSize: 0, dexAccountCacheSize: 0, dexAssetCtxsCacheSize: 2, dexPositionsCacheKeys: Array(0), dexAssetCtxsCacheKeys: Array(2) }
+ DEBUG  09:27:52.968 [console:mm-6] HyperLiquid: Subscription service cleared (multi-DEX with individual subscriptions) { timestamp: "2026-09-24T09:27:52.968Z" }
+ DEBUG  09:27:52.969 [console:mm-6] Cleared all fee cache
+ DEBUG  09:27:52.969 [console:mm-6] HyperLiquid: Disconnecting SDK clients { isTestnet: true, timestamp: "2026-09-24T09:27:52.969Z", connectionState: "disconnecting" }
+ DEBUG  09:27:52.972 [console:mm-6] HyperLiquid: Closed WebSocket transport { timestamp: "2026-09-24T09:27:52.972Z" }
+ DEBUG  09:27:52.972 [console:mm-6] HyperLiquid: connection epoch retired { connectionEpoch: 2 }
+ DEBUG  09:27:52.973 [console:mm-6] HyperLiquid: SDK clients fully disconnected { timestamp: "2026-09-24T09:27:52.973Z", connectionState: "disconnected" }
+ DEBUG  09:27:52.973 [console:mm-6] HyperLiquid: Provider fully disconnected { timestamp: "2026-09-24T09:27:52.973Z" }
+ DEBUG  09:27:52.974 [console:mm-6] PerpsController: Creating provider with HIP-3 configuration { hip3Enabled: true, hip3AllowlistMarkets: Array(1), hip3BlocklistMarkets: Array(1), hip3ConfigSource: "remote", isTestnet: true, activeProvider: "hyperliquid" }
+ DEBUG  09:27:52.979 [console:mm-6] [HyperLiquidProvider] Constructor complete { hasBatchCancel: true, hasBatchClose: true, protocolId: "hyperliquid", hip3Enabled: true, allowlistMarkets: Array(1), blocklistMarkets: Array(1), isTestnet: true }
+ DEBUG  09:27:52.982 [console:mm-6] HyperLiquid: ignoring close from a retired WebSocket transport { connectionEpoch: 2 }
+ LOG  09:27:53.242 [console:mm-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ LOG  09:27:53.399 [console:mm-6] [MetaMask DEBUG]: ComplianceController state persisted successfully
+ LOG  09:27:53.429 [console:mm-6] [MetaMask DEBUG]: AssetsController state persisted successfully
+ DEBUG  09:27:53.705 [console:mm-6] PerpsController: Using direct provider (hyperliquid)
+ DEBUG  09:27:53.706 [console:mm-6] PerpsController: Providers initialized successfully { providerCount: 1, activeProvider: "hyperliquid", timestamp: "2026-09-24T09:27:53.705Z", attempts: 1 }
+ DEBUG  09:27:53.750 [console:mm-6] PerpsController: Watchlist hydrated from AUS { exchangeKey: "hyperliquid", testnetCount: 4, mainnetCount: 5 }
+ DEBUG  09:27:53.751 [console:mm-6] PerpsConnectionManager: Validating connection with WebSocket health check ping
+ DEBUG  09:27:53.751 [console:mm-6] HyperLiquid: Creating transports { isTestnet: true, timestamp: "2026-09-24T09:27:53.751Z", note: "SDK will auto-select endpoints based on isTestnet flag" }
+ DEBUG  09:27:53.754 [console:mm-6] HyperLiquid Fee Calculation Started { orderType: "market", isMaker: false, amount: "0", symbol: "BTC", isHip3Asset: false, hip3Multiplier: 1, baseFeeRate: 0.00045, baseTakerRate: 0.00045, baseMakerRate: 0.00015 }
+ DEBUG  09:27:53.754 [console:mm-6] User Address Retrieved { userAddress: "0x316bde155acd07609872a56bc32ccfb0b13201fa", network: "testnet" }
+ DEBUG  09:27:53.755 [console:mm-6] Fetching Fresh Fee Rates from HyperLiquid API { cacheHit: false, userAddress: "0x316bde155acd07609872a56bc32ccfb0b13201fa" }
+ LOG  09:27:53.756 [console:mm-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ DEBUG  09:27:53.841 [console:mm-6] Meta cache miss for , fetching from API
+ LOG  09:27:53.894 [console:mm-6] [MetaMask DEBUG]: AssetsController state persisted successfully
+ DEBUG  09:27:54.096 [console:mm-6] HyperLiquid SDK clients initialized { testnet: true, timestamp: "2026-09-24T09:27:54.095Z", connectionState: "connected", note: "Using WebSocket for InfoClient (default), HTTP fallback available" }
+ DEBUG  09:27:54.096 [console:mm-6] [HyperLiquidProvider] Clients initialized lazily
+ DEBUG  09:27:54.096 [console:mm-6] HyperLiquid: WebSocket health check ping starting (timeout: 5000ms)
+ DEBUG  09:27:54.097 [console:mm-6] HyperLiquid: WebSocket health check ping succeeded
+ DEBUG  09:27:54.097 [console:mm-6] PerpsConnectionManager: Connection timeout cleared
+ DEBUG  09:27:54.098 [console:mm-6] PERPSMARK_SENTRY_WS PerpsConn: Connection established { metric: "perps.websocket.connection_establishment", duration: "6261ms" }
+ DEBUG  09:27:54.098 [console:mm-6] PerpsConnectionManager: Successfully connected
+ DEBUG  09:27:54.098 [console:mm-6] PerpsConnectionManager: Pre-loading WebSocket subscriptions via StreamManager
+ DEBUG  09:27:54.128 [console:mm-6] PerpsStreamManager: Fetching fresh market data from API
+ DEBUG  09:27:54.196 [console:mm-6] usePerpsLiveOrderBook: Subscribing to BTC (orderBook) { levels: 20, nSigFigs: 5, mantissa: undefined, throttleMs: 100, fast: false, channel: "orderBook" }
+ DEBUG  09:27:54.200 [console:mm-6] usePerpsLiveOrderBook: Subscribed to BTC (orderBook)
+ DEBUG  09:27:54.202 [console:mm-6] usePerpsLiveOrderBook: Subscribing to BTC (orderBookAggregated) { levels: 20, nSigFigs: 5, mantissa: undefined, throttleMs: 100, fast: false, channel: "orderBookAggregated" }
+ DEBUG  09:27:54.206 [console:mm-6] usePerpsLiveOrderBook: Subscribed to BTC (orderBookAggregated)
+ DEBUG  09:27:54.210 [console:mm-6] [PerpsDetailLoadProof] {"stage":"detail_section_resolved","session_id":"2446ca0d-f589-44a0-aa12-8201fcd7a675","mode":"pro","symbol":"BTC","section":"market","state":"content","elapsed_ms":2292.706}
+ DEBUG  09:27:54.215 [console:mm-6] Waiting for DEX discovery before creating subscriptions...
+ DEBUG  09:27:54.229 [console:mm-6] HyperLiquid: Global allMids subscription established
+ DEBUG  09:27:54.229 [console:mm-6] HyperLiquid: Global fastAssetCtxs subscription established
+ LOG  09:27:54.256 [console:mm-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ INFO  09:27:54.340 [console:mm-6] TRACK event saved { type: "track", event: "Perp UI Interaction", properties: Object }
+ DEBUG  09:27:54.341 [console:mm-6] [getValidatedDexs] Reusing pending promise for perpDexs fetch
+ DEBUG  09:27:54.357 [console:mm-6] PerpsConnectionManager: Pre-loading complete with persistent subscriptions
+ DEBUG  09:27:54.358 [console:mm-6] PERPSMARK_SENTRY_WS PerpsConn: Connection with preload completed { metric: "perps.websocket.connection_with_preload", duration: "6521ms" }
+ DEBUG  09:27:54.386 [console:mm-6] [PerpsDetailLoadProof] {"stage":"detail_section_resolved","session_id":"2446ca0d-f589-44a0-aa12-8201fcd7a675","mode":"pro","symbol":"BTC","section":"account","state":"content","elapsed_ms":2468.723}
+ DEBUG  09:27:54.389 [console:mm-6] [PerpsDetailLoadProof] {"stage":"detail_section_resolved","session_id":"2446ca0d-f589-44a0-aa12-8201fcd7a675","mode":"pro","symbol":"BTC","section":"positions_orders","state":"content","elapsed_ms":2471.298}
+ DEBUG  09:27:54.392 [console:mm-6] PriceStreamChannel: allSymbols len= 2 ["ETH", "BTC"]
+ DEBUG  09:27:54.461 [console:mm-6] PerpsStreamManager: Using cached market data { cacheAgeMs: 1507, cacheAgeSeconds: 2, marketCount: 282, cacheValidForMs: 298493, providerId: "hyperliquid" }
+ DEBUG  09:27:54.461 [console:mm-6] TopOfBookStreamChannel: Subscribing to top of book { symbol: "BTC" }
+ DEBUG  09:27:54.657 [console:mm-6] PERPSMARK_SENTRY_WS PerpsWS: First price data received { duration: "248ms" }
+ DEBUG  09:27:54.658 [console:mm-6] PERPSMARK_SENTRY_WS PerpsWS: First order book data received { duration: "185ms" }
+ DEBUG  09:27:54.686 [console:mm-6] Using cached meta for  { dex: "", universeCount: 212, firstAssetSample: "SOL" }
+ DEBUG  09:27:54.687 [console:mm-6] HyperLiquid userFees API Response { userCrossRate: "0.00045", userAddRate: "0.00015", activeReferralDiscount: "0.04", activeStakingDiscount: Object }
+ DEBUG  09:27:54.687 [console:mm-6] Fee Discount Calculation { discounts: Object, rates: Object }
+ DEBUG  09:27:54.687 [console:mm-6] Fee Rates Validated and Cached { selectedRate: 0.000432, selectedRatePercentage: "0.0432%", discountApplied: true, isHip3Asset: false, hip3Multiplier: 1, cacheExpiry: "2026-09-24T09:32:54.687Z" }
+ DEBUG  09:27:54.688 [console:mm-6] Final Fee Calculation Result { orderType: "market", amount: "0", fees: Object, usingFallbackRates: false }
+ DEBUG  09:27:54.689 [console:mm-6] Rewards: Fetching fee discount via controller { address: "0x316bde155acd07609872a56bc32ccfb0b13201fa", caipAccountId: "eip155:1:0x316BDE155acd07609872a56Bc32CcfB0B13201fA" }
+ DEBUG  09:27:54.690 [console:mm-6] HyperLiquid: Order book subscription established for BTC
+ DEBUG  09:27:54.690 [console:mm-6] HyperLiquid: Market data subscription established for BTC
+ DEBUG  09:27:54.691 [console:mm-6] usePerpsLiveFills: Received first WebSocket update { count: 30 }
+ DEBUG  09:27:54.691 [console:mm-6] usePerpsLiveFills: Received fill update { count: 30 }
+ DEBUG  09:27:54.691 [console:mm-6] usePerpsLiveFills: Received first WebSocket update { count: 30 }
+ DEBUG  09:27:54.692 [console:mm-6] usePerpsLiveFills: Received fill update { count: 30 }
+ DEBUG  09:27:54.692 [console:mm-6] usePerpsLiveFills: Received fill update { count: 30 }
+ DEBUG  09:27:54.692 [console:mm-6] usePerpsLiveFills: Received fill update { count: 30 }
+ DEBUG  09:27:54.720 [console:mm-6] HyperLiquidProvider: Testnet - filtered to allowed DEXs { allowedDexs: Array(1), filteredDexs: Array(1), availableHip3Dexs: 265 }
+ DEBUG  09:27:54.721 [console:mm-6] HyperLiquidProvider: Available DEXs (market filtering applied at data layer) { count: 1, dexNames: Array(1) }
+ DEBUG  09:27:54.721 [console:mm-6] [backfillAssetMapForDex] Rebuilt asset mapping for DEX { dex: "main", dexAssetCount: 212, totalAssetCount: 212 }
+ DEBUG  09:27:54.721 [console:mm-6] [getCachedMeta] Fetched and cached meta response { dex: "main", universeSize: 212, skipCache: true }
+ DEBUG  09:27:54.722 [console:mm-6] HyperLiquidProvider: Fetched markets for DEX { dex: "main", marketCount: 212, skipFilters: false, skipCache: true }
+ DEBUG  09:27:54.722 [console:mm-6] DEX discovery complete, proceeding with subscriptions { enabledDexs: Array(1) }
+ WARN  09:27:54.725 [console:mm-6] [MetaMask DEBUG]: { message: "Terminal global snapshot returned 400: bad request", stack: "Error: Terminal global snapshot returned 400: bad request\n    at ?anon_0_ (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:1512099:26)\n    at next (native)\n    at asyncGeneratorStep (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:18683:19)\n    at _next (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:18697:29)\n    at tryCallOne (address at InternalBytecode.js:1:1180)\n    at anonymous (address at InternalBytecode.js:1:1874)" }
+ DEBUG  09:27:54.725 [console:mm-6] Getting market data with prices via HyperLiquid SDK
+ DEBUG  09:27:54.725 [console:mm-6] [ensureReady] Starting new initialization
+ DEBUG  09:27:54.725 [console:mm-6] HyperLiquidProvider: Building asset mapping { hip3Enabled: true, allowlistMarkets: Array(1), blocklistMarkets: Array(1) }
+ DEBUG  09:27:54.725 [console:mm-6] HyperLiquidProvider: Starting asset mapping rebuild { dexs: Array(2), previousMapSize: 212, hip3Enabled: true, allowlistMarkets: Array(1), blocklistMarkets: Array(1), timestamp: "2026-09-24T09:27:54.725Z" }
+ DEBUG  09:27:54.726 [console:mm-6] Feature flags updated: { previousHip3Enabled: true, hip3Enabled: true, previousEnabledDexs: Array(1), enabledDexs: Array(1), previousAllowlistMarkets: Array(1), allowlistMarkets: Array(1), previousBlocklistMarkets: Array(1), blocklistMarkets: Array(1) }
+ DEBUG  09:27:54.726 [console:mm-6] [buildAssetMapping] Using cached meta for main { universeSize: 212 }
+ DEBUG  09:27:54.726 [console:mm-6] HyperLiquid: BBO subscription established for BTC
+ DEBUG  09:27:54.877 [console:mm-6] assetCtxs subscription established for main DEX
+ DEBUG  09:27:54.888 [console:mm-6] webData3 subscription established for OI caps (main + HIP-3)
+ DEBUG  09:27:54.889 [console:mm-6] clearinghouseState subscription established for DEX: main
+ DEBUG  09:27:54.890 [console:mm-6] Waiting for all DEXs to send initial data { expected: Array(2), initialized: Array(1) }
+ DEBUG  09:27:54.891 [console:mm-6] openOrders subscription established for DEX: main
+ DEBUG  09:27:54.892 [console:mm-6] Waiting for all DEXs to send initial data { expected: Array(2), initialized: Array(1) }
+ DEBUG  09:27:54.911 [console:mm-6] clearinghouseState subscription established for DEX: xyz
+ DEBUG  09:27:54.912 [console:mm-6] PERPSMARK_SENTRY_WS PerpsWS: First position data received { metric: "perps.websocket.first_position_data", duration: "464ms" }
+ DEBUG  09:27:54.914 [console:mm-6] PERPSMARK_SENTRY_WS PerpsWS: First order data received { duration: "479ms" }
+ DEBUG  09:27:54.915 [console:mm-6] PERPSMARK_SENTRY_WS PerpsWS: First account data received { duration: "455ms" }
+ DEBUG  09:27:54.953 [console:mm-6] openOrders subscription established for DEX: xyz
+ DEBUG  09:27:54.954 [console:mm-6] User data subscriptions established for 2 DEX(s)
+ DEBUG  09:27:54.963 [console:mm-6] [SubscriptionService] DEX meta cache populated { dex: "xyz", universeSize: 70 }
+ DEBUG  09:27:54.964 [console:mm-6] [SubscriptionService] DEX assetCtxs cache populated { dex: "xyz", ctxsCount: 70 }
+ DEBUG  09:27:54.964 [console:mm-6] HyperLiquidProvider: Asset mapping built { totalAssets: 282, dexCount: 2, mainDexSample: Array(5), hip3Sample: Array(10) }
+ DEBUG  09:27:54.964 [console:mm-6] HyperLiquidProvider: Unified Account setup already attempted (from global cache) { user: "0x316bde155acd07609872a56bc32ccfb0b13201fa", network: "testnet", enabled: true, note: "Skipping to prevent repeated signing requests" }
+ DEBUG  09:27:54.965 [console:mm-6] [ensureReady] Initialization complete
+ DEBUG  09:27:54.965 [console:mm-6] [getMarketDataWithPrices] Using cached meta for main { universeSize: 212 }
+ DEBUG  09:27:54.965 [console:mm-6] [getMarketDataWithPrices] No WS allMids snapshot, falling back to REST { dexParam: "main" }
+ DEBUG  09:27:54.966 [console:mm-6] [getMarketDataWithPrices] Using cached meta for xyz { universeSize: 70 }
+ DEBUG  09:27:54.966 [console:mm-6] [getMarketDataWithPrices] No WS allMids snapshot, falling back to REST { dexParam: "xyz" }
+ DEBUG  09:27:55.217 [console:mm-6] [getCachedMeta] Using cached meta response { dex: "xyz", universeSize: 70 }
+ DEBUG  09:27:55.262 [console:mm-6] [PerpsDetailLoadProof] {"stage":"detail_section_resolved","session_id":"2446ca0d-f589-44a0-aa12-8201fcd7a675","mode":"pro","symbol":"BTC","section":"order_book","state":"content","elapsed_ms":3344.315}
+ DEBUG  09:27:55.387 [console:mm-6] PerpsStreamProvider: Using stream manager: { isTestManager: false, isE2EMockManager: false, isRealManager: true }
+ DEBUG  09:27:55.621 [console:mm-6] [PerpsDetailLoadProof] {"stage":"detail_session_start","session_id":"2afbaaae-0384-4f39-a28f-a04f4db79128","mode":"lite","symbol":"BTC","monotonic_ms":1758608579.412,"generation_trigger":"mode_switch"}
+ DEBUG  09:27:55.639 [console:mm-6] [PerpsDetailLoadProof] {"stage":"detail_session_cancelled","session_id":"2446ca0d-f589-44a0-aa12-8201fcd7a675","mode":"pro","symbol":"BTC","success":false,"reason":"surface_unmounted","section_offsets_ms":{"market":2292.706,"account":2468.723,"positions_orders":2471.298,"order_book":3344.315},"section_states":{"market":"content","account":"content","positions_orders":"content","order_book":"content"}}
+ DEBUG  09:27:55.652 [console:mm-6] usePerpsLiveFills: Unsubscribing
+ DEBUG  09:27:55.656 [console:mm-6] Cleaned up assetCtxs subscription for main DEX
+ DEBUG  09:27:55.658 [console:mm-6] PerpsController: Saving pending trade configuration { symbol: "BTC", network: "testnet", config: Object, timestamp: "2026-09-24T09:27:55.658Z" }
+ DEBUG  09:27:55.660 [console:mm-6] PerpsController: Saving pending trade configuration { symbol: "BTC", network: "testnet", config: Object, timestamp: "2026-09-24T09:27:55.660Z" }
+ DEBUG  09:27:55.661 [console:mm-6] usePerpsLiveFills: Unsubscribing
+ DEBUG  09:27:55.698 [console:mm-6] usePerpsLiveOrderBook: Unsubscribing from BTC (orderBook)
+ DEBUG  09:27:55.700 [console:mm-6] usePerpsLiveOrderBook: Unsubscribing from BTC (orderBookAggregated)
+ DEBUG  09:27:55.930 [console:mm-6] CandleStreamChannel: Cancelled pending teardown (resubscribe within window) { cacheKey: "BTC-15m" }
+ DEBUG  09:27:55.955 [console:mm-6] Perps: Market data received (first load) { marketCount: 282, timeToDataMs: 0, source: "cache", cacheHit: true }
+ DEBUG  09:27:55.958 [console:mm-6] PerpsStreamManager: Using cached market data { cacheAgeMs: 3004, cacheAgeSeconds: 3, marketCount: 282, cacheValidForMs: 296996, providerId: "hyperliquid" }
+ DEBUG  09:27:55.962 [console:mm-6] usePerpsLiveFills: Subscribing with no throttle (instant updates)
+ DEBUG  09:27:55.964 [console:mm-6] usePerpsLiveFills: Received first WebSocket update { count: 30 }
+ DEBUG  09:27:55.967 [console:mm-6] usePerpsLiveFills: Received fill update { count: 30 }
+ DEBUG  09:27:55.998 [console:mm-6] Perps: Market data received (first load) { marketCount: 282, timeToDataMs: 0, source: "cache", cacheHit: true }
+ DEBUG  09:27:56.000 [console:mm-6] PerpsStreamManager: Using cached market data { cacheAgeMs: 3046, cacheAgeSeconds: 3, marketCount: 282, cacheValidForMs: 296954, providerId: "hyperliquid" }
+ DEBUG  09:27:56.030 [console:mm-6] Perps: Market data received (first load) { marketCount: 282, timeToDataMs: 0, source: "cache", cacheHit: true }
+ DEBUG  09:27:56.033 [console:mm-6] PerpsStreamManager: Using cached market data { cacheAgeMs: 3079, cacheAgeSeconds: 3, marketCount: 282, cacheValidForMs: 296921, providerId: "hyperliquid" }
+ DEBUG  09:27:56.036 [console:mm-6] FocusedPriceStreamChannel: Subscribing with market data { symbol: "BTC" }
+ DEBUG  09:27:56.039 [console:mm-6] usePerpsLivePositions: Received first WebSocket update { positionsCount: 1 }
+ DEBUG  09:27:56.041 [console:mm-6] CandleStreamChannel: Cancelled pending teardown (resubscribe within window) { cacheKey: "BTC-1h" }
+ DEBUG  09:27:56.043 [console:mm-6] usePerpsLivePositions: Received first WebSocket update { positionsCount: 1 }
+ DEBUG  09:27:56.046 [console:mm-6] usePerpsLiveFills: Subscribing with no throttle (instant updates)
+ DEBUG  09:27:56.048 [console:mm-6] usePerpsLiveFills: Received first WebSocket update { count: 30 }
+ DEBUG  09:27:56.051 [console:mm-6] usePerpsLiveFills: Received fill update { count: 30 }
+ DEBUG  09:27:56.117 [console:mm-6] [PerpsDetailLoadProof] {"stage":"detail_section_resolved","session_id":"2afbaaae-0384-4f39-a28f-a04f4db79128","mode":"lite","symbol":"BTC","section":"account","state":"content","elapsed_ms":524.362}
+ DEBUG  09:27:56.120 [console:mm-6] [PerpsDetailLoadProof] {"stage":"detail_section_resolved","session_id":"2afbaaae-0384-4f39-a28f-a04f4db79128","mode":"lite","symbol":"BTC","section":"market","state":"content","elapsed_ms":526.917}
+ DEBUG  09:27:56.122 [console:mm-6] [PerpsDetailLoadProof] {"stage":"detail_section_resolved","session_id":"2afbaaae-0384-4f39-a28f-a04f4db79128","mode":"lite","symbol":"BTC","section":"positions_orders","state":"empty","elapsed_ms":529.328}
+ DEBUG  09:27:56.262 [console:mm-6] Getting user fills via HyperLiquid SDK: { aggregateByTime: false, startTime: 1782466075969, accountId: "eip155:421614:0x316bde155acd07609872a56bc32ccfb0b13201fa" }
+ DEBUG  09:27:56.263 [console:mm-6] Using cached meta for  { dex: "", universeCount: 212, firstAssetSample: "SOL" }
+ INFO  09:27:56.267 [console:mm-6] TRACK event saved { type: "track", event: "Experiment Viewed", properties: Object }
+ LOG  09:27:56.282 [console:mm-6] [MetaMask DEBUG]: AssetsController state persisted successfully
+ DEBUG  09:27:56.290 [console:mm-6] [getCachedSpotMeta] Fetched and cached spotMeta { tokensCount: 1661, universeCount: 1323 }
+ DEBUG  09:27:56.290 [console:mm-6] HyperLiquidProvider: Checked DEX collateral type { dexName: "xyz", collateralTokenIndex: 0, collateralTokenName: "USDC", isUsdc: true }
+ DEBUG  09:27:56.291 [console:mm-6] HyperLiquidProvider: Aggregated market data from all DEXs { dexCount: 2, totalMarkets: 282, mainDexMarkets: 212, hip3Markets: 70 }
+ DEBUG  09:27:56.292 [console:mm-6] Combined allMids price data: { totalKeys: 3319, hip3Keys: 70, keySample: Array(5), hip3KeySample: Array(5), samplePrices: Object }
+ DEBUG  09:27:56.303 [console:mm-6] Perps: Market data updated { marketCount: 282 }
+ DEBUG  09:27:56.304 [console:mm-6] Perps: Market data updated { marketCount: 282 }
+ DEBUG  09:27:56.310 [console:mm-6] Perps: Market data updated { marketCount: 282 }
+ DEBUG  09:27:56.311 [console:mm-6] Perps: Market data updated { marketCount: 282 }
+ DEBUG  09:27:56.311 [console:mm-6] PerpsStreamManager: Market data fetched and cached { marketCount: 282, fetchTimeMs: 2174, providerId: "hyperliquid:testnet:76:global-snapshot", cacheValidUntil: "2026-09-24T09:32:56.311Z" }
+ DEBUG  09:27:56.397 [console:mm-6] Rewards: Fee discount bips fetched via controller { address: "0x316bde155acd07609872a56bc32ccfb0b13201fa", discountBips: 0, duration: "1708ms" }
+ DEBUG  09:27:56.513 [console:mm-6] HyperLiquid: Market data subscription established for BTC
+ DEBUG  09:27:56.520 [console:mm-6] assetCtxs subscription established for main DEX
+ DEBUG  09:27:56.581 [console:mm-6] [PerpsDetailLoadProof] {"stage":"detail_section_resolved","session_id":"2afbaaae-0384-4f39-a28f-a04f4db79128","mode":"lite","symbol":"BTC","section":"stats","state":"content","elapsed_ms":988.27}
+ DEBUG  09:27:56.585 [console:mm-6] User fills received: { count: 252 }
+ DEBUG  09:27:56.746 [console:mm-6] PERPSMARK_SENTRY PerpsScreen: Perps Position Details View completed { metric: "Perps Position Details View", endConditions: 4, context: Object }
+ DEBUG  09:27:56.750 [console:mm-6] [PerpsDetailLoadProof] {"stage":"detail_section_resolved","session_id":"2afbaaae-0384-4f39-a28f-a04f4db79128","mode":"lite","symbol":"BTC","section":"price","state":"content","elapsed_ms":1156.745}
+ DEBUG  09:27:56.752 [console:mm-6] PERPSMARK_SENTRY PerpsScreen: Perps Market Detail Live completed { metric: "Perps Market Detail Live", endConditions: 5, context: Object }
+ DEBUG  09:27:56.997 [console:mm-6] PriceStreamChannel: Pre-warming with all market symbols { symbolCount: 343, symbols: Array(10) }
+ DEBUG  09:27:57.006 [console:mm-6] PERPSMARK_SENTRY_WS PerpsWS: First price data received { duration: "1ms" }
+ DEBUG  09:27:57.025 [console:mm-6] Using cached meta for xyz { dex: "xyz", universeCount: 70, firstAssetSample: "xyz:XYZ100" }
+ DEBUG  09:27:57.147 [console:mm-6] PriceStreamChannel: Skipping stale prewarm cycle { currentCycleId: 1, activeCycleId: 2 }
+ DEBUG  09:27:57.442 [console:mm-6] assetCtxs subscription established for DEX: xyz
+ DEBUG  09:27:57.690 [console:mm-6] [PerpsDetailLoadProof] {"stage":"detail_section_resolved","session_id":"2afbaaae-0384-4f39-a28f-a04f4db79128","mode":"lite","symbol":"BTC","section":"insights","state":"content","elapsed_ms":2097.041}
+ INFO  09:27:57.694 [console:mm-6] TRACK event saved { type: "track", event: "Perp Screen Viewed", properties: Object }
+ INFO  09:27:57.694 [console:mm-6] TRACK event saved { type: "track", event: "Asset Viewed", properties: Object }
+ INFO  09:27:57.695 [console:mm-6] Sent 19 events
+ DEBUG  09:27:58.342 [console:mm-6] Getting account state via HyperLiquid SDK
+ DEBUG  09:27:58.342 [console:mm-6] User address for account state: 0x316bde155acd07609872a56bc32ccfb0b13201fa
+ DEBUG  09:27:58.343 [console:mm-6] Network mode: TESTNET
+ WARN  09:27:58.468 [console:mm-6] Unable to discover accounts with provider "Bitcoin" { message: "Timed out after: 3000ms", stack: "TimeoutError: Timed out after: 3000ms\n    at construct (native)\n    at apply (native)\n    at _construct (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:18876:102)\n    at Wrapper (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:18850:60)\n    at construct (native)\n    at _callSuper (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:18786:215)\n    at TimeoutError (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:1967923:25)\n    at anonymous (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:1968015:59)", name: "TimeoutError" }
+ WARN  09:27:58.468 [console:mm-6] Unable to discover accounts with provider "Tron" { message: "Timed out after: 3000ms", stack: "TimeoutError: Timed out after: 3000ms\n    at construct (native)\n    at apply (native)\n    at _construct (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:18876:102)\n    at Wrapper (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:18850:60)\n    at construct (native)\n    at _callSuper (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:18786:215)\n    at TimeoutError (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:1967923:25)\n    at anonymous (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:1968015:59)", name: "TimeoutError" }
+ WARN  09:27:58.468 [console:mm-6] Unable to discover accounts with provider "Stellar" { message: "Timed out after: 3000ms", stack: "TimeoutError: Timed out after: 3000ms\n    at construct (native)\n    at apply (native)\n    at _construct (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:18876:102)\n    at Wrapper (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:18850:60)\n    at construct (native)\n    at _callSuper (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:18786:215)\n    at TimeoutError (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:1967923:25)\n    at anonymous (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:1968015:59)", name: "TimeoutError" }
+ DEBUG  09:27:58.666 [console:mm-6] CandleStreamChannel: WebSocket subscription established { symbol: "BTC", interval: "1h", cacheKey: "BTC-1h" }
+ DEBUG  09:27:58.666 [console:mm-6] CandleStreamChannel: WebSocket subscription established { symbol: "BTC", interval: "15m", cacheKey: "BTC-15m" }
+ DEBUG  09:27:58.678 [console:mm-6] Spot state: { balances: Array(14), tokenToAvailableAfterMaintenance: Array(1) }
+ DEBUG  09:27:58.678 [console:mm-6] Perps states (all DEXs): { dexCount: 2 }
+ DEBUG  09:27:58.679 [console:mm-6] DEX main account state: { totalBalance: "51.94896", spendableBalance: "0.0", withdrawableBalance: "0.0", marginUsed: "51.94896", unrealizedPnl: "-5.58547" }
+ DEBUG  09:27:58.679 [console:mm-6] DEX xyz account state: { totalBalance: "0", spendableBalance: "0.0", withdrawableBalance: "0.0", marginUsed: "0.0", unrealizedPnl: "0" }
+ DEBUG  09:27:58.679 [console:mm-6] Aggregated account state: { spendableBalance: "263.321182", withdrawableBalance: "263.321182", totalBalance: "315.270142", marginUsed: "51.94896", unrealizedPnl: "-5.58547", returnOnEquity: "-10.7518418078052", subAccountBreakdown: Object }
+ LOG  09:27:58.683 [console:mm-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ LOG  09:27:58.683 [console:mm-6] [MetaMask DEBUG]: AssetsController state persisted successfully
+ LOG  09:27:59.131 [console:mm-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ LOG  09:27:59.135 [console:mm-6] [MetaMask DEBUG]: CandleStreamChannel: Live candle data confirmed testnet BTC-15m
+ LOG  09:27:59.136 [console:mm-6] [MetaMask DEBUG]: CandleStreamChannel: Live candle data confirmed testnet BTC-1h
+ DEBUG  09:27:59.266 [console:mm-6] Using cached positions from WebSocket { count: 1 }
+ WARN  09:27:59.303 [console:mm-6] Unable to discover accounts with provider "Solana" { message: "Timed out after: 3000ms", stack: "TimeoutError: Timed out after: 3000ms\n    at construct (native)\n    at apply (native)\n    at _construct (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:18876:102)\n    at Wrapper (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:18850:60)\n    at construct (native)\n    at _callSuper (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:18786:215)\n    at TimeoutError (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:1967923:25)\n    at anonymous (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:1968015:59)", name: "TimeoutError" }
+ LOG  09:27:59.487 [console:mm-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ WARN  09:27:59.856 [console:mm-6] [MetaMask DEBUG]: { message: "Terminal global snapshot returned 400: bad request", stack: "Error: Terminal global snapshot returned 400: bad request\n    at ?anon_0_ (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:1512099:26)\n    at next (native)\n    at asyncGeneratorStep (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:18683:19)\n    at _next (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:18697:29)\n    at tryCallOne (address at InternalBytecode.js:1:1180)\n    at anonymous (address at InternalBytecode.js:1:1874)" }
+ DEBUG  09:27:59.856 [console:mm-6] Getting market data with prices via HyperLiquid SDK
+ DEBUG  09:27:59.856 [console:mm-6] [ensureReady] Reusing existing initialization promise
+ DEBUG  09:27:59.856 [console:mm-6] [getMarketDataWithPrices] Using cached meta for main { universeSize: 212 }
+ DEBUG  09:27:59.857 [console:mm-6] [getMarketDataWithPrices] Using cached meta for xyz { universeSize: 70 }
+ DEBUG  09:27:59.857 [console:mm-6] [getMarketDataWithPrices] No WS allMids snapshot, falling back to REST { dexParam: "xyz" }
+ DEBUG  09:28:00.024 [console:mm-6] [getCachedMeta] Using cached meta response { dex: "xyz", universeSize: 70 }
+ DEBUG  09:28:00.024 [console:mm-6] [getCachedSpotMeta] Using cached spotMeta { tokensCount: 1661, universeCount: 1323 }
+ DEBUG  09:28:00.025 [console:mm-6] HyperLiquidProvider: Checked DEX collateral type { dexName: "xyz", collateralTokenIndex: 0, collateralTokenName: "USDC", isUsdc: true }
+ DEBUG  09:28:00.025 [console:mm-6] HyperLiquidProvider: Aggregated market data from all DEXs { dexCount: 2, totalMarkets: 282, mainDexMarkets: 212, hip3Markets: 70 }
+ DEBUG  09:28:00.027 [console:mm-6] Combined allMids price data: { totalKeys: 3319, hip3Keys: 70, keySample: Array(5), hip3KeySample: Array(5), samplePrices: Object }
+ DEBUG  09:28:00.222 [console:mm-6] [PerpsDetailLoadProof] {"stage":"detail_section_resolved","session_id":"2afbaaae-0384-4f39-a28f-a04f4db79128","mode":"lite","symbol":"BTC","section":"chart","state":"content","elapsed_ms":4628.974}
+ DEBUG  09:28:00.226 [console:mm-6] [PerpsDetailLoadProof] {"stage":"detail_session_completed","session_id":"2afbaaae-0384-4f39-a28f-a04f4db79128","mode":"lite","symbol":"BTC","success":true,"section_offsets_ms":{"account":524.362,"market":526.917,"positions_orders":529.328,"stats":988.27,"price":1156.745,"insights":2097.041,"chart":4628.974},"section_states":{"account":"content","market":"content","positions_orders":"empty","stats":"content","price":"content","insights":"content","chart":"content"}}
+ DEBUG  09:28:00.671 [console:mm-6] RewardsIntegrationService: Fee discount calculated { address: "0x316bde155acd07609872a56bc32ccfb0b13201fa", caipAccountId: "eip155:1:0x316BDE155acd07609872a56Bc32CcfB0B13201fA", discountBips: 0, discountPercentage: 0 }
+ DEBUG  09:28:00.671 [console:mm-6] RewardsIntegrationService: Fee resolved { source: "rewards", feeBips: 10, discountBips: 0, defaultFeeBips: 10, rewardsDiscountBips: 0, subscriptionEligible: false, subscriptionReason: "no-source" }
+ DEBUG  09:28:00.671 [console:mm-6] TradingService: Fee discount API call completed { discountBips: 0, source: "rewards", duration: "346ms" }
+ DEBUG  09:28:00.672 [console:mm-6] TradingService: Fee resolution calculated { feeDiscountBips: 0, feeSource: "rewards", hasDiscount: true }
+ DEBUG  09:28:00.672 [console:mm-6] TradingService: Submitting order to provider { symbol: "BTC", orderType: "market", isBuy: true, size: "0.008872589613155093", leverage: 3, hasTP: false, hasSL: false }
+ DEBUG  09:28:00.672 [console:mm-6] PerpsAnalyticsEvent "Perp Trade Transaction" not found in MetaMetricsEvents
+ DEBUG  09:28:00.673 [console:mm-6] HyperLiquid: Fee resolution context updated { source: "rewards", discountBips: 0, isActive: true }
+ DEBUG  09:28:00.673 [console:mm-6] TradingService: Fee resolution set in provider { feeDiscountBips: 0, feeSource: "rewards" }
+ DEBUG  09:28:00.675 [console:mm-6] Placing order via HyperLiquid SDK: { symbol: "BTC", isBuy: true, orderType: "market", size: "0.008872589613155093", usdAmount: "250", leverage: 3, currentPrice: 84530, priceAtCalculation: 84530, maxSlippageBps: 300 }
+ DEBUG  09:28:00.676 [console:mm-6] [getCachedMeta] Using cached meta response { dex: "main", universeSize: 212 }
+ DEBUG  09:28:00.676 [console:mm-6] Using WebSocket cached price { symbol: "BTC", price: 84534 }
+ DEBUG  09:28:00.676 [console:mm-6] Using provided current price: { coin: "BTC", providedPrice: 84530, source: "UI price feed" }
+ DEBUG  09:28:00.677 [console:mm-6] Provider: Validating order before placement: { symbol: "BTC", isBuy: true, orderType: "market", size: "0.008872589613155093", usdAmount: "250", leverage: 3, currentPrice: 84530, priceAtCalculation: 84530, maxSlippageBps: 300 }
+ DEBUG  09:28:00.678 [console:mm-6] Validating USD amount (source of truth): { usdAmount: 250, minimumRequired: 10 }
+ DEBUG  09:28:00.678 [console:mm-6] [getCachedMeta] Using cached meta response { dex: "main", universeSize: 212 }
+ DEBUG  09:28:00.679 [console:mm-6] [ensureReady] Reusing existing initialization promise
+ DEBUG  09:28:00.679 [console:mm-6] HyperLiquidProvider: Unified Account setup already attempted (from global cache) { user: "0x316bde155acd07609872a56bc32ccfb0b13201fa", network: "testnet", enabled: true, note: "Skipping to prevent repeated signing requests" }
+ DEBUG  09:28:00.679 [console:mm-6] [ensureReadyForTrading] Starting shared trading setup
+ DEBUG  09:28:00.680 [console:mm-6] [getCachedSpotMeta] Using cached spotMeta { tokensCount: 1661, universeCount: 1323 }
+ INFO  09:28:00.682 [console:mm-6] TRACK event saved { type: "track", event: "Perp Trade Transaction", properties: Object }
+ DEBUG  09:28:01.333 [console:mm-6] Referral check result: { userAddress: "0x316bde155acd07609872a56bc32ccfb0b13201fa", referralData: Object }
+ DEBUG  09:28:01.335 [console:mm-6] [ensureReferralSet] Already has referral on-chain { network: "testnet" }
+ WARN  09:28:01.475 [console:mm-6] Unable to discover accounts with provider "Bitcoin" { message: "Timed out after: 3000ms", stack: "TimeoutError: Timed out after: 3000ms\n    at construct (native)\n    at apply (native)\n    at _construct (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:18876:102)\n    at Wrapper (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:18850:60)\n    at construct (native)\n    at _callSuper (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:18786:215)\n    at TimeoutError (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:1967923:25)\n    at anonymous (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:1968015:59)", name: "TimeoutError" }
+ WARN  09:28:01.477 [console:mm-6] Unable to discover accounts with provider "Tron" { message: "Timed out after: 3000ms", stack: "TimeoutError: Timed out after: 3000ms\n    at construct (native)\n    at apply (native)\n    at _construct (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:18876:102)\n    at Wrapper (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:18850:60)\n    at construct (native)\n    at _callSuper (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:18786:215)\n    at TimeoutError (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:1967923:25)\n    at anonymous (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:1968015:59)", name: "TimeoutError" }
+ WARN  09:28:01.478 [console:mm-6] Unable to discover accounts with provider "Stellar" { message: "Timed out after: 3000ms", stack: "TimeoutError: Timed out after: 3000ms\n    at construct (native)\n    at apply (native)\n    at _construct (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:18876:102)\n    at Wrapper (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:18850:60)\n    at construct (native)\n    at _callSuper (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:18786:215)\n    at TimeoutError (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:1967923:25)\n    at anonymous (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:1968015:59)", name: "TimeoutError" }
+ DEBUG  09:28:01.582 [console:mm-6] [ensureBuilderFeeApproval] Already approved on-chain { network: "testnet" }
+ DEBUG  09:28:01.583 [console:mm-6] [ensureReadyForTrading] Trading setup complete
+ DEBUG  09:28:01.584 [console:mm-6] Asset map state at order time { requestedCoin: "BTC", assetExistsInMap: true, totalAssetsInMap: 282, hip3AssetsCount: 70, hip3AssetsSample: Array(10), hip3Enabled: true, allowlistMarkets: Array(1), blocklistMarkets: Array(1) }
+ DEBUG  09:28:01.587 [console:mm-6] Resolved DEX-specific asset ID { coin: "BTC", dex: "main", assetId: 3 }
+ DEBUG  09:28:01.588 [console:mm-6] Updating leverage before order: { symbol: "BTC", assetId: 3, requestedLeverage: 3, leverageType: "isolated" }
+ DEBUG  09:28:01.597 [console:mm-6] HyperLiquidWalletService: Signing typed data { address: "0x316bde155acd07609872a56bc32ccfb0b13201fa", primaryType: "Agent", domain: Object }
+ LOG  09:28:01.695 [console:mm-6] [MetaMask DEBUG]: AccountTreeController state persisted successfully
+ DEBUG  09:28:02.575 [console:mm-6] Leverage updated successfully: { symbol: "BTC", leverage: 3 }
+ DEBUG  09:28:02.579 [console:mm-6] Submitting order via asset ID routing { symbol: "BTC", assetId: 3, orderCount: 1, mainOrder: Object, dexName: "main", isHip3: false }
+ DEBUG  09:28:02.583 [console:mm-6] HyperLiquidWalletService: Signing typed data { address: "0x316bde155acd07609872a56bc32ccfb0b13201fa", primaryType: "Agent", domain: Object }
+ LOG  09:28:02.826 [console:mm-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ DEBUG  09:28:03.444 [console:mm-6] HyperLiquid: Fee resolution context updated { source: undefined, discountBips: undefined, isActive: false }
+ DEBUG  09:28:03.444 [console:mm-6] TradingService: Fee resolution cleared from provider
+ DEBUG  09:28:03.445 [console:mm-6] TradingService: Provider response received { success: true, orderId: "60918946553", error: undefined, didExceedOrderSubmissionThreshold: false }
+ DEBUG  09:28:03.451 [console:mm-6] PerpsController: Saving trade configuration { symbol: "BTC", network: "testnet", leverage: 3, timestamp: "2026-09-24T09:28:03.445Z" }
+ DEBUG  09:28:03.453 [console:mm-6] DataLake API: Skipping for testnet { action: "open", symbol: "BTC", network: "testnet" }
+ DEBUG  09:28:03.455 [console:mm-6] PerpsAnalyticsEvent "Perp Trade Transaction" not found in MetaMetricsEvents
+ DEBUG  09:28:03.457 [console:mm-6] PerpsController: Clearing pending trade configuration { symbol: "BTC", network: "testnet", timestamp: "2026-09-24T09:28:03.457Z" }
+ INFO  09:28:03.458 [console:mm-6] TRACK event saved { type: "track", event: "Perp Trade Transaction", properties: Object }
+ DEBUG  09:28:03.516 [console:mm-6] usePerpsLiveFills: Received fill update { count: 31 }
+ DEBUG  09:28:03.516 [console:mm-6] usePerpsLiveFills: Received fill update { count: 31 }
+ DEBUG  09:28:03.517 [console:mm-6] usePerpsLiveFills: Received fill update { count: 32 }
+ DEBUG  09:28:03.517 [console:mm-6] usePerpsLiveFills: Received fill update { count: 32 }
+ DEBUG  09:28:03.730 [console:mm-6] Using cached positions from WebSocket { count: 1 }
+ LOG  09:28:04.127 [console:mm-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ DEBUG  09:28:04.536 [console:mm-6] Using cached positions from WebSocket { count: 2 }
+ LOG  09:28:04.743 [console:mm-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ DEBUG  09:28:04.859 [console:mm-6] Using cached positions from WebSocket { count: 2 }
+ LOG  09:28:05.101 [console:mm-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ DEBUG  09:28:05.436 [console:mm-6] Cleaned up assetCtxs subscription for main DEX
+ DEBUG  09:28:05.437 [console:mm-6] usePerpsLiveFills: Unsubscribing
+ DEBUG  09:28:05.501 [console:mm-6] usePerpsLiveFills: Unsubscribing
+ DEBUG  09:28:05.514 [console:mm-6] [PerpsLoadProof] {"stage":"perps_bootstrap_start","perps_session_id":"8a922b59-9343-4705-9830-ad5733b406ff","lifecycle":"navigate_return","account_generation":1,"context_generation":2,"monotonic_ms":1758618500.162}
+ ERROR  09:28:05.711 [console:mm-6] A query that was dehydrated as pending ended up rejecting. [["MoneyAccountBalanceService:getMoneyAccountBalance","0xf62b4ed01965f4dabc34a1297845124f2421ef95"]]: Error: missing revert data in call exception; Transaction reverted without a reason string [ See: https://links.ethers.org/v5-errors-CALL_EXCEPTION ] (data="0x", transaction={"to":"0xcA11bde05977b3631167028862bE2a173976CA11","data":"[REDACTED_HEX]","accessList":null}, error={"data":{"httpStatus":401,"cause":null},"code":-32006}, code=CALL_EXCEPTION, version=providers/5.8.0); The error will be redacted in production builds
+ INFO  09:28:05.714 [console:mm-6] TRACK event saved { type: "track", event: "Home Viewed", properties: Object }
+ DEBUG  09:28:05.843 [console:mm-6] CandleStreamChannel: Disconnecting WebSocket (deferred teardown elapsed, no subscribers) { cacheKey: "BTC-1h" }
+ DEBUG  09:28:05.844 [console:mm-6] CandleStreamChannel: Disconnecting WebSocket (deferred teardown elapsed, no subscribers) { cacheKey: "BTC-15m" }
+ DEBUG  09:28:06.638 [console:mm-6] PerpsStreamProvider: Using stream manager: { isTestManager: false, isE2EMockManager: false, isRealManager: true }
+ DEBUG  09:28:06.878 [console:mm-6] [PerpsDetailLoadProof] {"stage":"detail_session_start","session_id":"9a0b8dd3-aea4-46f8-852e-f8ee5e9cb76c","mode":"lite","symbol":"BTC","monotonic_ms":1758619832.612,"generation_trigger":"initial"}
+ DEBUG  09:28:06.990 [console:mm-6] Perps: Market data received (first load) { marketCount: 282, timeToDataMs: 0, source: "cache", cacheHit: true }
+ DEBUG  09:28:06.993 [console:mm-6] PerpsStreamManager: Using cached market data { cacheAgeMs: 10691, cacheAgeSeconds: 11, marketCount: 282, cacheValidForMs: 289309, providerId: "hyperliquid" }
+ DEBUG  09:28:07.005 [console:mm-6] usePerpsLiveFills: Subscribing with no throttle (instant updates)
+ DEBUG  09:28:07.008 [console:mm-6] usePerpsLiveFills: Received first WebSocket update { count: 32 }
+ DEBUG  09:28:07.010 [console:mm-6] usePerpsLiveFills: Received fill update { count: 32 }
+ DEBUG  09:28:07.046 [console:mm-6] Perps: Market data received (first load) { marketCount: 282, timeToDataMs: 0, source: "cache", cacheHit: true }
+ DEBUG  09:28:07.048 [console:mm-6] PerpsStreamManager: Using cached market data { cacheAgeMs: 10746, cacheAgeSeconds: 11, marketCount: 282, cacheValidForMs: 289254, providerId: "hyperliquid" }
+ DEBUG  09:28:07.052 [console:mm-6] Perps: Market data received (first load) { marketCount: 282, timeToDataMs: 0, source: "cache", cacheHit: true }
+ DEBUG  09:28:07.054 [console:mm-6] PerpsStreamManager: Using cached market data { cacheAgeMs: 10752, cacheAgeSeconds: 11, marketCount: 282, cacheValidForMs: 289248, providerId: "hyperliquid" }
+ DEBUG  09:28:07.057 [console:mm-6] FocusedPriceStreamChannel: Subscribing with market data { symbol: "BTC" }
+ DEBUG  09:28:07.059 [console:mm-6] usePerpsLivePositions: Received first WebSocket update { positionsCount: 2 }
+ DEBUG  09:28:07.062 [console:mm-6] usePerpsLivePositions: Received first WebSocket update { positionsCount: 2 }
+ DEBUG  09:28:07.064 [console:mm-6] usePerpsLiveFills: Subscribing with no throttle (instant updates)
+ DEBUG  09:28:07.066 [console:mm-6] usePerpsLiveFills: Received first WebSocket update { count: 32 }
+ DEBUG  09:28:07.068 [console:mm-6] usePerpsLiveFills: Received fill update { count: 32 }
+ DEBUG  09:28:07.138 [console:mm-6] [PerpsDetailLoadProof] {"stage":"detail_section_resolved","session_id":"9a0b8dd3-aea4-46f8-852e-f8ee5e9cb76c","mode":"lite","symbol":"BTC","section":"account","state":"content","elapsed_ms":291.937}
+ DEBUG  09:28:07.140 [console:mm-6] [PerpsDetailLoadProof] {"stage":"detail_section_resolved","session_id":"9a0b8dd3-aea4-46f8-852e-f8ee5e9cb76c","mode":"lite","symbol":"BTC","section":"insights","state":"content","elapsed_ms":294.336}
+ DEBUG  09:28:07.143 [console:mm-6] [PerpsDetailLoadProof] {"stage":"detail_section_resolved","session_id":"9a0b8dd3-aea4-46f8-852e-f8ee5e9cb76c","mode":"lite","symbol":"BTC","section":"market","state":"content","elapsed_ms":296.539}
+ DEBUG  09:28:07.145 [console:mm-6] [PerpsDetailLoadProof] {"stage":"detail_section_resolved","session_id":"9a0b8dd3-aea4-46f8-852e-f8ee5e9cb76c","mode":"lite","symbol":"BTC","section":"positions_orders","state":"content","elapsed_ms":298.708}
+ DEBUG  09:28:07.271 [console:mm-6] PERPSMARK_SENTRY PerpsScreen: Perps Position Details View completed { metric: "Perps Position Details View", endConditions: 4, context: Object }
+ DEBUG  09:28:07.275 [console:mm-6] [PerpsDetailLoadProof] {"stage":"detail_section_resolved","session_id":"9a0b8dd3-aea4-46f8-852e-f8ee5e9cb76c","mode":"lite","symbol":"BTC","section":"price","state":"content","elapsed_ms":429.108}
+ DEBUG  09:28:07.313 [console:mm-6] Using cached meta for  { dex: "", universeCount: 212, firstAssetSample: "SOL" }
+ INFO  09:28:07.315 [console:mm-6] TRACK event saved { type: "track", event: "Home Viewed", properties: Object }
+ INFO  09:28:07.320 [console:mm-6] TRACK event saved { type: "track", event: "Perp Screen Viewed", properties: Object }
+ INFO  09:28:07.320 [console:mm-6] TRACK event saved { type: "track", event: "Asset Viewed", properties: Object }
+ DEBUG  09:28:07.549 [console:mm-6] HyperLiquid: Market data subscription established for BTC
+ DEBUG  09:28:07.551 [console:mm-6] assetCtxs subscription established for main DEX
+ DEBUG  09:28:07.628 [console:mm-6] [PerpsDetailLoadProof] {"stage":"detail_section_resolved","session_id":"9a0b8dd3-aea4-46f8-852e-f8ee5e9cb76c","mode":"lite","symbol":"BTC","section":"stats","state":"content","elapsed_ms":781.419}
+ DEBUG  09:28:07.630 [console:mm-6] PERPSMARK_SENTRY PerpsScreen: Perps Market Detail Live completed { metric: "Perps Market Detail Live", endConditions: 5, context: Object }
+ DEBUG  09:28:08.053 [console:mm-6] CandleStreamChannel: WebSocket subscription established { symbol: "BTC", interval: "1h", cacheKey: "BTC-1h" }
+ DEBUG  09:28:08.054 [console:mm-6] CandleStreamChannel: WebSocket subscription established { symbol: "BTC", interval: "15m", cacheKey: "BTC-15m" }
+ LOG  09:28:08.055 [console:mm-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ LOG  09:28:08.839 [console:mm-6] [MetaMask DEBUG]: CandleStreamChannel: Live candle data confirmed testnet BTC-15m
+ LOG  09:28:08.840 [console:mm-6] [MetaMask DEBUG]: CandleStreamChannel: Live candle data confirmed testnet BTC-1h
+ LOG  09:28:09.048 [console:mm-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ DEBUG  09:28:09.395 [console:mm-6] [PerpsDetailLoadProof] {"stage":"detail_section_resolved","session_id":"9a0b8dd3-aea4-46f8-852e-f8ee5e9cb76c","mode":"lite","symbol":"BTC","section":"chart","state":"content","elapsed_ms":2548.56}
+ DEBUG  09:28:09.399 [console:mm-6] [PerpsDetailLoadProof] {"stage":"detail_session_completed","session_id":"9a0b8dd3-aea4-46f8-852e-f8ee5e9cb76c","mode":"lite","symbol":"BTC","success":true,"section_offsets_ms":{"account":291.937,"insights":294.336,"market":296.539,"positions_orders":298.708,"price":429.108,"stats":781.419,"chart":2548.56},"section_states":{"account":"content","insights":"content","market":"content","positions_orders":"content","price":"content","stats":"content","chart":"content"}}
+ LOG  09:28:09.926 [console:mm-6] [MetaMask DEBUG]: AccountTreeController state persisted successfully
+ DEBUG  09:28:10.136 [console:mm-6] [useComplianceGate] Wallet not blocked, proceeding
+ DEBUG  09:28:10.289 [console:mm-6] usePerpsLivePositions: Received first WebSocket update { positionsCount: 2 }
+ DEBUG  09:28:10.293 [console:mm-6] Perps: Market data received (first load) { marketCount: 282, timeToDataMs: 0, source: "cache", cacheHit: true }
+ DEBUG  09:28:10.295 [console:mm-6] PerpsStreamManager: Using cached market data { cacheAgeMs: 13993, cacheAgeSeconds: 14, marketCount: 282, cacheValidForMs: 286007, providerId: "hyperliquid" }
+ DEBUG  09:28:10.330 [console:mm-6] PERPSMARK_SENTRY PerpsScreen: Perps Adjust Margin View completed { metric: "Perps Adjust Margin View", endConditions: 2, context: Object }
+ INFO  09:28:10.389 [console:mm-6] TRACK event saved { type: "track", event: "Perp Screen Viewed", properties: Object }
+ INFO  09:28:10.390 [console:mm-6] TRACK event saved { type: "track", event: "Asset Viewed", properties: Object }

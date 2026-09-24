@@ -1,0 +1,635 @@
+{
+  "metadata": {
+    "runner": {
+      "source": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness",
+      "git_ref": "unknown",
+      "name": "@metamask/recipe-runner"
+    }
+  },
+  "entries": [
+    {
+      "nodeId": "setup-session/start",
+      "action": "metamask.perps.start_state",
+      "intent": "Select and verify the explicit account, venue and network while preserving positions and orders.",
+      "startedAt": "2026-09-24T09:27:44.163Z",
+      "endedAt": "2026-09-24T09:27:58.712Z",
+      "durationMs": 14549,
+      "ok": true,
+      "next": "provider",
+      "output": {
+        "action": "metamask.perps.start_state",
+        "profile": null,
+        "phase": "start_state",
+        "wallet": {
+          "action": "metamask.wallet.ensure_unlocked",
+          "unlocked": true,
+          "keyringUnlocked": true,
+          "account": {
+            "address": "0x316bde155acd07609872a56bc32ccfb0b13201fa",
+            "id": "234870c9-4599-440f-986f-779ced252938",
+            "name": "Trading"
+          },
+          "route": {
+            "key": "WalletView-VYQwhS3VrCa6LIiF89kfY",
+            "name": "WalletView"
+          },
+          "deviceName": "mm-6",
+          "platform": "ios",
+          "redacted": true,
+          "proofPath": "agentic-wallet-unlock"
+        },
+        "account": {
+          "action": "metamask.wallet.select_account",
+          "selected": {
+            "address": "0x316bde155acd07609872a56bc32ccfb0b13201fa",
+            "id": "234870c9-4599-440f-986f-779ced252938",
+            "name": "Trading"
+          },
+          "alreadySelected": true,
+          "proofPath": "agentic-account-selection"
+        },
+        "provider": {
+          "requested": "hyperliquid",
+          "activeProvider": "hyperliquid",
+          "changed": false
+        },
+        "network": {
+          "requested": "testnet",
+          "isTestnet": true,
+          "changed": false
+        },
+        "marketMode": {
+          "action": "metamask.perps.ensure_mode",
+          "mode": "lite",
+          "alreadySelected": false,
+          "proofPath": "visible-market-detail-root-and-active-mode-control"
+        },
+        "tutorial": {
+          "skipped": true
+        },
+        "readyToTrade": {
+          "skipped": true
+        },
+        "balance": {
+          "withdrawableBalance": 263.321182,
+          "spendableBalance": 263.321182,
+          "minWithdrawableUsd": 0,
+          "minSpendableUsd": 0
+        },
+        "market": "BTC",
+        "tradingState": "preserve",
+        "strategies": {
+          "skipped": true
+        },
+        "orders": {
+          "skipped": true
+        },
+        "positions": {
+          "skipped": true
+        },
+        "navigation": {
+          "action": "metamask.perps.start_state",
+          "target": "market",
+          "market": "BTC",
+          "navigation": {
+            "navigated": "PerpsMarketDetails",
+            "params": {
+              "market": {
+                "symbol": "BTC"
+              }
+            },
+            "previousRoute": {
+              "key": "PerpsMarketDetails-GZ6izWA6PRybAME9i8B8E",
+              "name": "PerpsMarketDetails",
+              "params": {
+                "market": {
+                  "symbol": "BTC"
+                }
+              }
+            },
+            "currentRoute": {
+              "key": "PerpsMarketDetails-GZ6izWA6PRybAME9i8B8E",
+              "name": "PerpsMarketDetails",
+              "params": {
+                "market": {
+                  "symbol": "BTC"
+                }
+              }
+            },
+            "verifiedRoute": "PerpsMarketDetails",
+            "alreadyAtRoute": true
+          },
+          "proofPath": "agentic-navigation"
+        },
+        "proofPath": "metamask-perps-start-state",
+        "liveAdapter": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness/library/actions/mobile/perps/perps.mjs"
+      }
+    },
+    {
+      "nodeId": "setup-session/provider",
+      "action": "assert_output",
+      "intent": "Refuse an implicit or fallback venue.",
+      "startedAt": "2026-09-24T09:27:58.748Z",
+      "endedAt": "2026-09-24T09:27:58.779Z",
+      "durationMs": 31,
+      "ok": true,
+      "next": "network",
+      "output": {
+        "source": "start",
+        "stream": "stdout",
+        "assertion": {
+          "path": "$.provider.activeProvider",
+          "operator": "eq",
+          "value": "hyperliquid",
+          "actual": "hyperliquid"
+        }
+      }
+    },
+    {
+      "nodeId": "setup-session/network",
+      "action": "assert_output",
+      "intent": "Require the requested network setup to complete.",
+      "startedAt": "2026-09-24T09:27:58.811Z",
+      "endedAt": "2026-09-24T09:27:58.843Z",
+      "durationMs": 32,
+      "ok": true,
+      "next": "account",
+      "output": {
+        "source": "start",
+        "stream": "stdout",
+        "assertion": {
+          "path": "$.network.requested",
+          "operator": "eq",
+          "value": "testnet",
+          "actual": "testnet"
+        }
+      }
+    },
+    {
+      "nodeId": "setup-session/account",
+      "action": "switch",
+      "intent": "Accept an exact selected account address, otherwise verify its name.",
+      "startedAt": "2026-09-24T09:27:58.878Z",
+      "endedAt": "2026-09-24T09:27:58.913Z",
+      "durationMs": 35,
+      "ok": true,
+      "next": "account-name",
+      "output": {
+        "matched": false,
+        "value": "0x316bde155acd07609872a56bc32ccfb0b13201fa",
+        "expected": "Trading"
+      }
+    },
+    {
+      "nodeId": "setup-session/account-name",
+      "action": "assert_output",
+      "intent": "Require the explicit account name when the caller supplied a name.",
+      "startedAt": "2026-09-24T09:27:58.946Z",
+      "endedAt": "2026-09-24T09:27:58.986Z",
+      "durationMs": 40,
+      "ok": true,
+      "next": "done",
+      "output": {
+        "source": "start",
+        "stream": "stdout",
+        "assertion": {
+          "path": "$.account.selected.name",
+          "operator": "eq",
+          "value": "Trading",
+          "actual": "Trading"
+        }
+      }
+    },
+    {
+      "nodeId": "setup-session/done",
+      "action": "end",
+      "startedAt": "2026-09-24T09:27:59.026Z",
+      "endedAt": "2026-09-24T09:27:59.026Z",
+      "durationMs": 0,
+      "ok": true,
+      "status": "pass"
+    },
+    {
+      "nodeId": "setup-session",
+      "action": "call",
+      "recipe": {
+        "ref": "perps.venue-start-state",
+        "digest": "sha256:68b7c046a5009998795e1b4191d75d52b542fd7dc65c55ace020115cc316ab55",
+        "source": "perps",
+        "file": "recipes/mobile/perps/venue-start-state.recipe.json",
+        "adapter": "mobile"
+      },
+      "intent": "Select the funded Trading account on Hyperliquid testnet where the isolated BTC position lives",
+      "startedAt": "2026-09-24T09:27:44.125Z",
+      "endedAt": "2026-09-24T09:27:59.026Z",
+      "durationMs": 14901,
+      "ok": true,
+      "next": "setup-assert-position",
+      "output": {
+        "ref": "perps.venue-start-state",
+        "status": "pass",
+        "outputs": {
+          "start": {
+            "action": "metamask.perps.start_state",
+            "profile": null,
+            "phase": "start_state",
+            "wallet": {
+              "action": "metamask.wallet.ensure_unlocked",
+              "unlocked": true,
+              "keyringUnlocked": true,
+              "account": {
+                "address": "0x316bde155acd07609872a56bc32ccfb0b13201fa",
+                "id": "234870c9-4599-440f-986f-779ced252938",
+                "name": "Trading"
+              },
+              "route": {
+                "key": "WalletView-VYQwhS3VrCa6LIiF89kfY",
+                "name": "WalletView"
+              },
+              "deviceName": "mm-6",
+              "platform": "ios",
+              "redacted": true,
+              "proofPath": "agentic-wallet-unlock"
+            },
+            "account": {
+              "action": "metamask.wallet.select_account",
+              "selected": {
+                "address": "0x316bde155acd07609872a56bc32ccfb0b13201fa",
+                "id": "234870c9-4599-440f-986f-779ced252938",
+                "name": "Trading"
+              },
+              "alreadySelected": true,
+              "proofPath": "agentic-account-selection"
+            },
+            "provider": {
+              "requested": "hyperliquid",
+              "activeProvider": "hyperliquid",
+              "changed": false
+            },
+            "network": {
+              "requested": "testnet",
+              "isTestnet": true,
+              "changed": false
+            },
+            "marketMode": {
+              "action": "metamask.perps.ensure_mode",
+              "mode": "lite",
+              "alreadySelected": false,
+              "proofPath": "visible-market-detail-root-and-active-mode-control"
+            },
+            "tutorial": {
+              "skipped": true
+            },
+            "readyToTrade": {
+              "skipped": true
+            },
+            "balance": {
+              "withdrawableBalance": 263.321182,
+              "spendableBalance": 263.321182,
+              "minWithdrawableUsd": 0,
+              "minSpendableUsd": 0
+            },
+            "market": "BTC",
+            "tradingState": "preserve",
+            "strategies": {
+              "skipped": true
+            },
+            "orders": {
+              "skipped": true
+            },
+            "positions": {
+              "skipped": true
+            },
+            "navigation": {
+              "action": "metamask.perps.start_state",
+              "target": "market",
+              "market": "BTC",
+              "navigation": {
+                "navigated": "PerpsMarketDetails",
+                "params": {
+                  "market": {
+                    "symbol": "BTC"
+                  }
+                },
+                "previousRoute": {
+                  "key": "PerpsMarketDetails-GZ6izWA6PRybAME9i8B8E",
+                  "name": "PerpsMarketDetails",
+                  "params": {
+                    "market": {
+                      "symbol": "BTC"
+                    }
+                  }
+                },
+                "currentRoute": {
+                  "key": "PerpsMarketDetails-GZ6izWA6PRybAME9i8B8E",
+                  "name": "PerpsMarketDetails",
+                  "params": {
+                    "market": {
+                      "symbol": "BTC"
+                    }
+                  }
+                },
+                "verifiedRoute": "PerpsMarketDetails",
+                "alreadyAtRoute": true
+              },
+              "proofPath": "agentic-navigation"
+            },
+            "proofPath": "metamask-perps-start-state",
+            "liveAdapter": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness/library/actions/mobile/perps/perps.mjs"
+          },
+          "provider": {
+            "source": "start",
+            "stream": "stdout",
+            "assertion": {
+              "path": "$.provider.activeProvider",
+              "operator": "eq",
+              "value": "hyperliquid",
+              "actual": "hyperliquid"
+            }
+          },
+          "network": {
+            "source": "start",
+            "stream": "stdout",
+            "assertion": {
+              "path": "$.network.requested",
+              "operator": "eq",
+              "value": "testnet",
+              "actual": "testnet"
+            }
+          },
+          "account": {
+            "matched": false,
+            "value": "0x316bde155acd07609872a56bc32ccfb0b13201fa",
+            "expected": "Trading"
+          },
+          "account-name": {
+            "source": "start",
+            "stream": "stdout",
+            "assertion": {
+              "path": "$.account.selected.name",
+              "operator": "eq",
+              "value": "Trading",
+              "actual": "Trading"
+            }
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "setup-assert-position",
+      "action": "metamask.perps.ensure_positions",
+      "intent": "Converge the isolated BTC long the margin flow acts on, opening one if the testnet account has none",
+      "startedAt": "2026-09-24T09:27:59.061Z",
+      "endedAt": "2026-09-24T09:28:05.116Z",
+      "durationMs": 6055,
+      "ok": true,
+      "next": "setup-add-home",
+      "output": {
+        "action": "metamask.perps.ensure_positions",
+        "expectedOpen": true,
+        "matchingCount": 1,
+        "positions": [
+          {
+            "symbol": "BTC",
+            "size": "0.00296",
+            "side": null,
+            "entryPrice": "84534.0"
+          }
+        ],
+        "source": "mobile-perps-controller",
+        "liveAdapter": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness/library/actions/mobile/perps/ensure_positions.mjs"
+      }
+    },
+    {
+      "nodeId": "setup-add-home",
+      "action": "ui.navigate",
+      "intent": "Reset navigation so the market screen is the only margin entry point",
+      "startedAt": "2026-09-24T09:28:05.153Z",
+      "endedAt": "2026-09-24T09:28:06.368Z",
+      "durationMs": 1215,
+      "ok": true,
+      "next": "setup-add-nav",
+      "output": {
+        "action": "ui.navigate",
+        "page": "home",
+        "route": "WalletView",
+        "params": {},
+        "navigation": {
+          "navigated": "WalletView",
+          "params": {},
+          "previousRoute": {
+            "key": "PerpsMarketDetails-GZ6izWA6PRybAME9i8B8E",
+            "name": "PerpsMarketDetails",
+            "params": {
+              "market": {
+                "symbol": "BTC"
+              }
+            }
+          },
+          "currentRoute": {
+            "key": "WalletView-VYQwhS3VrCa6LIiF89kfY",
+            "name": "WalletView",
+            "params": {}
+          },
+          "deviceName": "mm-6",
+          "platform": "ios",
+          "verifiedRoute": "WalletView"
+        },
+        "proofPath": "agentic-navigation",
+        "liveAdapter": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness/library/actions/mobile/ui/navigate.mjs"
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "DF371E7D-42A0-43BD-BAD3-9AFA4794E960",
+          "name": "MetaMask",
+          "nodeCount": 1,
+          "truncated": false,
+          "route": "WalletView"
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [],
+          "hidden_or_offscreen": [],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "setup-add-nav",
+      "action": "ui.navigate",
+      "intent": "Open the BTC market holding the isolated position",
+      "startedAt": "2026-09-24T09:28:06.397Z",
+      "endedAt": "2026-09-24T09:28:08.433Z",
+      "durationMs": 2036,
+      "ok": true,
+      "next": "setup-lite-mode",
+      "output": {
+        "action": "ui.navigate",
+        "page": "perps-market",
+        "route": "PerpsMarketDetails",
+        "params": {
+          "market": {
+            "symbol": "BTC"
+          }
+        },
+        "navigation": {
+          "navigated": "PerpsMarketDetails",
+          "params": {
+            "market": {
+              "symbol": "BTC"
+            }
+          },
+          "previousRoute": {
+            "key": "WalletView-VYQwhS3VrCa6LIiF89kfY",
+            "name": "WalletView",
+            "params": {}
+          },
+          "currentRoute": {
+            "key": "PerpsMarketDetails-11RPsaJni-VdR3yA9uoq7",
+            "name": "PerpsMarketDetails",
+            "params": {
+              "market": {
+                "symbol": "BTC"
+              }
+            }
+          },
+          "deviceName": "mm-6",
+          "platform": "ios",
+          "verifiedRoute": "PerpsMarketDetails"
+        },
+        "proofPath": "agentic-navigation",
+        "liveAdapter": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness/library/actions/mobile/ui/navigate.mjs"
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "DF371E7D-42A0-43BD-BAD3-9AFA4794E960",
+          "name": "MetaMask",
+          "nodeCount": 1,
+          "truncated": false,
+          "route": "PerpsMarketDetails"
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [],
+          "hidden_or_offscreen": [],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "setup-lite-mode",
+      "action": "metamask.perps.ensure_mode",
+      "intent": "Return to Lite so the market screen shows the position margin card, even after a previous run ended in Pro",
+      "startedAt": "2026-09-24T09:28:08.466Z",
+      "endedAt": "2026-09-24T09:28:08.840Z",
+      "durationMs": 374,
+      "ok": true,
+      "next": "setup-add-wait-margin-card",
+      "output": {
+        "action": "metamask.perps.ensure_mode",
+        "mode": "lite",
+        "alreadySelected": true,
+        "proofPath": "visible-market-detail-root-and-active-mode-control",
+        "liveAdapter": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness/library/actions/mobile/perps/perps.mjs"
+      }
+    },
+    {
+      "nodeId": "setup-add-wait-margin-card",
+      "action": "ui.wait_for",
+      "intent": "Make sure the position margin card is mounted before opening margin actions",
+      "startedAt": "2026-09-24T09:28:08.879Z",
+      "endedAt": "2026-09-24T09:28:09.917Z",
+      "durationMs": 1038,
+      "ok": true,
+      "next": "setup-add-press-margin-card",
+      "output": {
+        "matched": true,
+        "testId": "position-card-margin",
+        "expected": "present",
+        "present": true,
+        "visible": true,
+        "visibility": "tree"
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "DF371E7D-42A0-43BD-BAD3-9AFA4794E960",
+          "name": "MetaMask",
+          "nodeCount": 1,
+          "truncated": false,
+          "route": "PerpsMarketDetails"
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [],
+          "hidden_or_offscreen": [],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "setup-add-press-margin-card",
+      "action": "ui.press",
+      "intent": "Open the margin action choice for the position to add headroom",
+      "startedAt": "2026-09-24T09:28:09.946Z",
+      "endedAt": "2026-09-24T09:28:11.004Z",
+      "durationMs": 1058,
+      "ok": true,
+      "next": "setup-press-add",
+      "output": {
+        "ok": true,
+        "testId": "position-card-margin",
+        "deviceName": "mm-6"
+      },
+      "observations": {
+        "ui.screen": {
+          "provider": "idb-accessibility",
+          "platform": "ios",
+          "deviceId": "DF371E7D-42A0-43BD-BAD3-9AFA4794E960",
+          "name": "MetaMask",
+          "nodeCount": 1,
+          "truncated": false,
+          "route": "PerpsAdjustMargin"
+        },
+        "ui.visible": {
+          "provider": "idb-accessibility",
+          "items": [],
+          "hidden_or_offscreen": [],
+          "truncated": false,
+          "limits": {
+            "items": 200,
+            "hidden_or_offscreen": 100
+          }
+        }
+      }
+    },
+    {
+      "nodeId": "setup-press-add",
+      "action": "ui.press",
+      "intent": "Choose Add Margin so the position has margin that can later be removed",
+      "startedAt": "2026-09-24T09:28:11.036Z",
+      "endedAt": "2026-09-24T09:28:11.779Z",
+      "durationMs": 743,
+      "ok": false,
+      "cause_class": "unknown",
+      "error": "Mobile CDP bridge command reported failure for press-test-id perps-adjust-margin-add-btn: {\"error\":\"No component with testID=\\\"perps-adjust-margin-add-btn\\\" found or no onPress prop\",\"ok\":false,\"testId\":\"perps-adjust-margin-add-btn\",\"deviceName\":\"mm-6\"}"
+    }
+  ]
+}
