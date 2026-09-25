@@ -1,6 +1,47 @@
 [
-  {"comment_id": 5808892360, "review_id": null, "author_login": "github-actions[bot]", "author_type": "Bot", "reviewer_login": "github-actions[bot]", "review_state": null, "source_kind": "ci", "path": null, "line": null, "body": "CLA Signature Action: All authors have signed the CLA.", "triage": "OUT_OF_SCOPE", "action": "Status-only automation; no reply.", "fixed_in_commit": null},
-  {"comment_id": 5808932190, "review_id": null, "author_login": "github-actions[bot]", "author_type": "Bot", "reviewer_login": "github-actions[bot]", "review_state": null, "source_kind": "ci", "path": null, "line": null, "body": "Smart E2E Test Selection: Selected E2E tags: ALL (en-locale-change).", "triage": "OUT_OF_SCOPE", "action": "Status-only automation; no reply.", "fixed_in_commit": null},
-  {"comment_id": 5809040183, "review_id": null, "author_login": "sonarqubecloud[bot]", "author_type": "Bot", "reviewer_login": "sonarqubecloud[bot]", "review_state": null, "source_kind": "ci", "path": null, "line": null, "body": "Quality Gate passed. 9 New issues.", "triage": "OUT_OF_SCOPE", "action": "Gate passed; status-only, no reply.", "fixed_in_commit": null},
-  {"comment_id": 5809295371, "review_id": null, "author_login": "github-actions[bot]", "author_type": "Bot", "reviewer_login": "github-actions[bot]", "review_state": null, "source_kind": "ci", "path": null, "line": null, "body": "Performance Test Results (non-blocking): 2 tests failed, Perps add funds no_performance_metrics on BrowserStack.", "triage": "OUT_OF_SCOPE", "action": "Non-blocking infra failure on a flow this PR does not touch.", "fixed_in_commit": null}
+  {
+    "comment_id": 4091373443,
+    "review_id": null,
+    "author_login": "cursor[bot]",
+    "author_type": "Bot",
+    "reviewer_login": "cursor[bot]",
+    "review_state": null,
+    "source_kind": "bugbot",
+    "path": "app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.tsx",
+    "line": null,
+    "body": "Fresh max cap resets on PnL ticks: the freshMaxAmount cap is cleared whenever position changes identity; the positions stream re-delivers new objects on PnL ticks, so Max/slider snap back to the stale live maximum.",
+    "triage": "REAL",
+    "action": "Already fixed in earlier rounds (c556868d643, 6421cb99d5b), replied and resolved; no new reply.",
+    "fixed_in_commit": "6421cb99d5b"
+  },
+  {
+    "comment_id": null,
+    "review_id": null,
+    "author_login": "operator-relayed-codex-gpt-6-sol",
+    "author_type": "unknown",
+    "reviewer_login": "operator-relayed-codex-gpt-6-sol",
+    "review_state": "CHANGES_REQUESTED",
+    "source_kind": "bot",
+    "path": "app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.tsx",
+    "line": 559,
+    "body": "With a positive retained remove amount, if the live exchange max drops to zero, validationError becomes non-null and !displayedError hides the zero-removable explanation; a prior submissionError hides it too. Amount/slider/Confirm are disabled, leaving stale/generic errors. Give the zero state priority over both errors and test both transitions.",
+    "triage": "REAL",
+    "action": "Round 1: zero-removable state suppresses stale errors (650798f5e59).",
+    "fixed_in_commit": "650798f5e59"
+  },
+  {
+    "comment_id": null,
+    "review_id": null,
+    "author_login": "operator-relayed-codex-gpt-6-sol",
+    "author_type": "unknown",
+    "reviewer_login": "operator-relayed-codex-gpt-6-sol",
+    "review_state": "CHANGES_REQUESTED",
+    "source_kind": "bot",
+    "path": "app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.tsx",
+    "line": 467,
+    "body": "P2 \u2014 Input remains active after the removable limit reaches zero. Removing onPress prevents new focus but does not close an editor that is already open. If the live limit falls to zero while a user is typing, both screens keep an enabled keypad and percentage buttons on screen. Clear focus or disable those controls on the zero-limit transition, and cover that transition in both screen tests.",
+    "triage": "REAL",
+    "action": "Both screens clear input focus when nothing is removable; transition test per screen; live recipe assert with a failing negative control.",
+    "fixed_in_commit": "b729f32d3c3"
+  }
 ]

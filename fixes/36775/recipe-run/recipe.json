@@ -1,7 +1,7 @@
 {
   "$schema": "https://farmslot.io/schemas/recipe-v1.schema.json",
-  "title": "Remove margin max is accepted and the zero state is explained",
-  "description": "TAT-3985: on an isolated BTC testnet position (Trading account), add $20 margin, remove the offered Max and require exchange acceptance, then require the zero-removable explanation on a fresh SOL position; pre-submit re-validation is proven by focused tests. Cross margin order placement moved to its own PR.",
+  "title": "Remove margin max is accepted and a zero limit is explained",
+  "description": "TAT-3985: on an isolated BTC testnet position (Trading account), add $20 margin, remove the offered Max and require exchange acceptance; require the zero-removable explanation on a fresh SOL position; then, in both the full-screen and bottom-sheet flows, keep a Max amount in the form, drain the position's spare margin from outside the form with the keypad reopened over the retained Max amount, and require the keypad to close and the zero-removable explanation with no stale error. Pre-submit re-validation is proven by focused tests.",
   "workflow": {
     "entry": "setup-session",
     "nodes": {
@@ -160,7 +160,6 @@
       },
       "ac1-screenshot-max-form": {
         "action": "ui.screenshot",
-        "path": "screenshots/evidence-ac1-max-form.png",
         "label": "AC1: Max amount offered for removal",
         "intent": "Record the max removable amount the user is about to submit",
         "next": "ac1-press-confirm"
@@ -182,7 +181,6 @@
       },
       "ac1-screenshot-removed": {
         "action": "ui.screenshot",
-        "path": "screenshots/evidence-ac1-removed-toast.png",
         "label": "AC1: max removal accepted",
         "intent": "Show reviewers the exchange accepted the offered max amount",
         "next": "ac1-assert-no-rejection"
@@ -239,14 +237,13 @@
       },
       "ac2-screenshot-zero-state": {
         "action": "ui.screenshot",
-        "path": "screenshots/evidence-ac2-zero-state.png",
         "label": "AC2: zero removable explained, control disabled",
         "intent": "Show reviewers the remove control is disabled and explains why nothing can be removed",
         "next": "teardown-sol"
       },
       "ac3-run-unit-tests": {
         "action": "command",
-        "cmd": "yarn jest app/components/UI/Perps/utils/marginUtils.test.ts app/components/UI/Perps/hooks/usePerpsMarginAdjustment.test.ts app/components/UI/Perps/hooks/usePerpsAdjustMarginData.test.ts app/components/UI/Perps/hooks/usePerpsToasts.test.tsx app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.test.tsx app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.test.tsx --no-coverage > /tmp/tat3985-jest.log 2>&1\nstatus=$?\ntail -40 /tmp/tat3985-jest.log\nexit $status",
+        "cmd": "yarn jest app/components/UI/Perps/utils/marginUtils.test.ts app/components/UI/Perps/hooks/usePerpsMarginAdjustment.test.ts app/components/UI/Perps/hooks/usePerpsFreshRemovalLimit.test.ts app/components/UI/Perps/hooks/usePerpsAdjustMarginData.test.ts app/components/UI/Perps/hooks/usePerpsToasts.test.tsx app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.test.tsx app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.test.tsx --no-coverage > /tmp/tat3985-jest.log 2>&1\nstatus=$?\ntail -40 /tmp/tat3985-jest.log\nexit $status",
         "timeout_ms": 300000,
         "allow_failure": true,
         "intent": "Prove the pre-submit re-validation, headroom and zero-removable state through focused tests",
@@ -291,7 +288,7 @@
         "market": "SOL",
         "state": "none",
         "intent": "Close the SOL position this run opened so the account returns to its prior state",
-        "next": "teardown-clear-flags"
+        "next": "ac4-add-home"
       },
       "setup-lite-mode": {
         "action": "metamask.perps.ensure_mode",
@@ -311,6 +308,373 @@
         "action": "metamask.feature_flags.clear",
         "intent": "Drop the A/B pin so later runs start from remote flags",
         "next": "ac3-run-unit-tests"
+      },
+      "ac4-add-home": {
+        "action": "ui.navigate",
+        "page": "home",
+        "intent": "Reset navigation so the market screen is the only margin entry point",
+        "next": "ac4-add-nav"
+      },
+      "ac4-add-nav": {
+        "action": "ui.navigate",
+        "page": "perps-market",
+        "market": "BTC",
+        "intent": "Open the BTC market holding the isolated position",
+        "next": "ac4-add-wait-margin-card"
+      },
+      "ac4-add-wait-margin-card": {
+        "action": "ui.wait_for",
+        "test_id": "position-card-margin",
+        "expected": "present",
+        "timeout_ms": 15000,
+        "intent": "Make sure the position margin card is mounted before opening margin actions",
+        "next": "ac4-add-press-margin-card"
+      },
+      "ac4-add-press-margin-card": {
+        "action": "ui.press",
+        "test_id": "position-card-margin",
+        "intent": "Open margin actions to give the position removable headroom",
+        "next": "ac4-add-press-add"
+      },
+      "ac4-add-press-add": {
+        "action": "ui.press",
+        "test_id": "perps-adjust-margin-add-btn",
+        "intent": "Choose Add Margin so the position has margin the form can offer",
+        "next": "ac4-add-open-keypad"
+      },
+      "ac4-add-open-keypad": {
+        "action": "ui.press",
+        "test_id": "perps-amount-display-touchable",
+        "intent": "Open the keypad to type the margin to add",
+        "next": "ac4-add-key-2"
+      },
+      "ac4-add-key-2": {
+        "action": "ui.press",
+        "test_id": "keypad-key-2",
+        "intent": "Type the tens digit of the $20 addition",
+        "next": "ac4-add-key-0"
+      },
+      "ac4-add-key-0": {
+        "action": "ui.press",
+        "test_id": "keypad-key-0",
+        "intent": "Type the units digit of the $20 addition",
+        "next": "ac4-add-close-keypad"
+      },
+      "ac4-add-close-keypad": {
+        "action": "ui.press",
+        "test_id": "perps-adjust-margin-done-button",
+        "intent": "Close the keypad to reach the confirm button",
+        "next": "ac4-add-confirm"
+      },
+      "ac4-add-confirm": {
+        "action": "ui.press",
+        "test_id": "perps-adjust-margin-confirm-button",
+        "intent": "Submit the $20 margin addition",
+        "next": "ac4-add-assert-added"
+      },
+      "ac4-add-assert-added": {
+        "action": "ui.wait_for",
+        "text": "Added $20 margin",
+        "text_match": "contains",
+        "expected": "visible",
+        "timeout_ms": 20000,
+        "intent": "Confirm the exchange accepted the addition so removable headroom exists",
+        "next": "ac4-home"
+      },
+      "ac4-home": {
+        "action": "ui.navigate",
+        "page": "home",
+        "intent": "Reset navigation so the market screen is the only margin entry point",
+        "next": "ac4-nav"
+      },
+      "ac4-nav": {
+        "action": "ui.navigate",
+        "page": "perps-market",
+        "market": "BTC",
+        "intent": "Open the BTC market holding the isolated position",
+        "next": "ac4-wait-margin-card"
+      },
+      "ac4-wait-margin-card": {
+        "action": "ui.wait_for",
+        "test_id": "position-card-margin",
+        "expected": "present",
+        "timeout_ms": 15000,
+        "intent": "Make sure the position margin card is mounted before opening margin actions",
+        "next": "ac4-press-margin-card"
+      },
+      "ac4-press-margin-card": {
+        "action": "ui.press",
+        "test_id": "position-card-margin",
+        "intent": "Open the margin action choice on the full-screen variant",
+        "next": "ac4-press-remove"
+      },
+      "ac4-press-remove": {
+        "action": "ui.press",
+        "test_id": "perps-adjust-margin-reduce-btn",
+        "intent": "Open the full-screen Remove Margin form",
+        "next": "ac4-open-keypad"
+      },
+      "ac4-open-keypad": {
+        "action": "ui.press",
+        "test_id": "perps-amount-display-touchable",
+        "intent": "Reveal the quick-amount buttons including Max",
+        "next": "ac4-press-max"
+      },
+      "ac4-press-max": {
+        "action": "ui.press",
+        "text": "Max",
+        "intent": "Keep a positive Max amount in the form before the limit drops",
+        "next": "ac4-close-keypad"
+      },
+      "ac4-close-keypad": {
+        "action": "ui.press",
+        "test_id": "perps-adjust-margin-done-button",
+        "intent": "Close the keypad so the retained amount is validated",
+        "next": "ac4-assert-no-explanation"
+      },
+      "ac4-assert-no-explanation": {
+        "action": "ui.wait_for",
+        "test_id": "perps-adjust-margin-no-removable-margin",
+        "expected": "absent",
+        "timeout_ms": 3000,
+        "intent": "Confirm margin is still removable before the live limit drops",
+        "next": "ac4-reopen-keypad"
+      },
+      "ac4-drain-live-limit": {
+        "action": "command",
+        "cmd": "bash temp/tasks/fix/36775-0924-221931/artifacts/scripts/drain-btc-margin.sh",
+        "timeout_ms": 60000,
+        "intent": "Remove the position's spare margin outside the open form so its live limit falls to zero under the retained amount",
+        "next": "ac4-assert-keypad-closed"
+      },
+      "ac4-assert-explanation": {
+        "action": "ui.wait_for",
+        "test_id": "perps-adjust-margin-no-removable-margin",
+        "expected": "visible",
+        "timeout_ms": 15000,
+        "intent": "Require the zero-removable explanation once the live limit reaches zero",
+        "next": "ac4-assert-no-stale-error"
+      },
+      "ac4-assert-no-stale-error": {
+        "action": "ui.wait_for",
+        "text": "Amount exceeds maximum removable margin",
+        "text_match": "contains",
+        "expected": "absent",
+        "timeout_ms": 3000,
+        "intent": "Require no stale over-limit error on the retained amount next to the explanation",
+        "next": "ac4-screenshot"
+      },
+      "ac4-screenshot": {
+        "action": "ui.screenshot",
+        "label": "AC4: full screen explains zero limit under retained amount",
+        "intent": "Show reviewers the full-screen form explains the zero limit instead of a stale error",
+        "next": "ac5-pin-bottom-sheet"
+      },
+      "ac5-pin-bottom-sheet": {
+        "action": "metamask.feature_flags.set",
+        "flags": {
+          "perpsTAT3938AbtestScreenVsBottomSheet": "treatment"
+        },
+        "intent": "Switch to the bottom-sheet margin flow the review finding is about",
+        "next": "ac5-add-home"
+      },
+      "ac5-add-home": {
+        "action": "ui.navigate",
+        "page": "home",
+        "intent": "Reset navigation so the market screen is the only margin entry point",
+        "next": "ac5-add-nav"
+      },
+      "ac5-add-nav": {
+        "action": "ui.navigate",
+        "page": "perps-market",
+        "market": "BTC",
+        "intent": "Open the BTC market holding the isolated position",
+        "next": "ac5-add-wait-margin-card"
+      },
+      "ac5-add-wait-margin-card": {
+        "action": "ui.wait_for",
+        "test_id": "position-card-margin",
+        "expected": "present",
+        "timeout_ms": 15000,
+        "intent": "Make sure the position margin card is mounted before opening margin actions",
+        "next": "ac5-add-press-margin-card"
+      },
+      "ac5-add-press-margin-card": {
+        "action": "ui.press",
+        "test_id": "position-card-margin",
+        "intent": "Open the margin bottom sheet to give the position removable headroom",
+        "next": "ac5-add-open-keypad"
+      },
+      "ac5-add-open-keypad": {
+        "action": "ui.press",
+        "test_id": "perps-amount-display-touchable",
+        "intent": "Open the keypad to type the margin to add",
+        "next": "ac5-add-key-2"
+      },
+      "ac5-add-key-2": {
+        "action": "ui.press",
+        "test_id": "keypad-key-2",
+        "intent": "Type the tens digit of the $20 addition",
+        "next": "ac5-add-key-0"
+      },
+      "ac5-add-key-0": {
+        "action": "ui.press",
+        "test_id": "keypad-key-0",
+        "intent": "Type the units digit of the $20 addition",
+        "next": "ac5-add-close-keypad"
+      },
+      "ac5-add-close-keypad": {
+        "action": "ui.press",
+        "test_id": "perps-adjust-margin-bottom-sheet-done-button",
+        "intent": "Close the keypad to reach the confirm button",
+        "next": "ac5-add-confirm"
+      },
+      "ac5-add-confirm": {
+        "action": "ui.press",
+        "test_id": "perps-adjust-margin-bottom-sheet-confirm-button",
+        "intent": "Submit the $20 margin addition from the bottom sheet",
+        "next": "ac5-add-assert-added"
+      },
+      "ac5-add-assert-added": {
+        "action": "ui.wait_for",
+        "text": "Added $20 margin",
+        "text_match": "contains",
+        "expected": "visible",
+        "timeout_ms": 20000,
+        "intent": "Confirm the exchange accepted the addition so removable headroom exists",
+        "next": "ac5-home"
+      },
+      "ac5-home": {
+        "action": "ui.navigate",
+        "page": "home",
+        "intent": "Reset navigation so the market screen is the only margin entry point",
+        "next": "ac5-nav"
+      },
+      "ac5-nav": {
+        "action": "ui.navigate",
+        "page": "perps-market",
+        "market": "BTC",
+        "intent": "Open the BTC market holding the isolated position",
+        "next": "ac5-wait-margin-card"
+      },
+      "ac5-wait-margin-card": {
+        "action": "ui.wait_for",
+        "test_id": "position-card-margin",
+        "expected": "present",
+        "timeout_ms": 15000,
+        "intent": "Make sure the position margin card is mounted before opening margin actions",
+        "next": "ac5-press-margin-card"
+      },
+      "ac5-press-margin-card": {
+        "action": "ui.press",
+        "test_id": "position-card-margin",
+        "intent": "Open the margin bottom sheet on the position",
+        "next": "ac5-press-remove-mode"
+      },
+      "ac5-press-remove-mode": {
+        "action": "ui.press",
+        "test_id": "perps-adjust-margin-bottom-sheet-remove-mode",
+        "intent": "Switch the bottom sheet to Remove",
+        "next": "ac5-open-keypad"
+      },
+      "ac5-open-keypad": {
+        "action": "ui.press",
+        "test_id": "perps-amount-display-touchable",
+        "intent": "Reveal the quick-amount buttons including Max",
+        "next": "ac5-press-max"
+      },
+      "ac5-press-max": {
+        "action": "ui.press",
+        "text": "Max",
+        "intent": "Keep a positive Max amount in the sheet before the limit drops",
+        "next": "ac5-close-keypad"
+      },
+      "ac5-close-keypad": {
+        "action": "ui.press",
+        "test_id": "perps-adjust-margin-bottom-sheet-done-button",
+        "intent": "Close the keypad so the retained amount is validated",
+        "next": "ac5-assert-no-explanation"
+      },
+      "ac5-assert-no-explanation": {
+        "action": "ui.wait_for",
+        "test_id": "perps-adjust-margin-bottom-sheet-no-removable-margin",
+        "expected": "absent",
+        "timeout_ms": 3000,
+        "intent": "Confirm margin is still removable before the live limit drops",
+        "next": "ac5-reopen-keypad"
+      },
+      "ac5-drain-live-limit": {
+        "action": "command",
+        "cmd": "bash temp/tasks/fix/36775-0924-221931/artifacts/scripts/drain-btc-margin.sh",
+        "timeout_ms": 60000,
+        "intent": "Remove the position's spare margin outside the open sheet so its live limit falls to zero under the retained amount",
+        "next": "ac5-assert-keypad-closed"
+      },
+      "ac5-assert-explanation": {
+        "action": "ui.wait_for",
+        "test_id": "perps-adjust-margin-bottom-sheet-no-removable-margin",
+        "expected": "visible",
+        "timeout_ms": 15000,
+        "intent": "Require the zero-removable explanation in the sheet once the live limit reaches zero",
+        "next": "ac5-assert-no-stale-error"
+      },
+      "ac5-assert-no-stale-error": {
+        "action": "ui.wait_for",
+        "test_id": "perps-adjust-margin-bottom-sheet-error",
+        "expected": "absent",
+        "timeout_ms": 3000,
+        "intent": "Require no stale error in the sheet in place of the explanation",
+        "next": "ac5-screenshot"
+      },
+      "ac5-screenshot": {
+        "action": "ui.screenshot",
+        "label": "AC5: bottom sheet explains zero limit under retained amount",
+        "intent": "Show reviewers the bottom sheet explains the zero limit instead of a stale error",
+        "next": "teardown-clear-flags"
+      },
+      "ac4-reopen-keypad": {
+        "action": "ui.press",
+        "test_id": "perps-amount-display-touchable",
+        "intent": "Reopen the keypad over the retained amount so it is open when the limit drops",
+        "next": "ac4-wait-keypad-open"
+      },
+      "ac4-wait-keypad-open": {
+        "action": "ui.wait_for",
+        "test_id": "perps-adjust-margin-done-button",
+        "expected": "visible",
+        "timeout_ms": 5000,
+        "intent": "Confirm the keypad is open before the live limit drops",
+        "next": "ac4-drain-live-limit"
+      },
+      "ac4-assert-keypad-closed": {
+        "action": "ui.wait_for",
+        "test_id": "perps-adjust-margin-done-button",
+        "expected": "absent",
+        "timeout_ms": 15000,
+        "intent": "Require the open keypad to close once nothing is left to remove",
+        "next": "ac4-assert-explanation"
+      },
+      "ac5-reopen-keypad": {
+        "action": "ui.press",
+        "test_id": "perps-amount-display-touchable",
+        "intent": "Reopen the keypad over the retained amount so it is open when the limit drops",
+        "next": "ac5-wait-keypad-open"
+      },
+      "ac5-wait-keypad-open": {
+        "action": "ui.wait_for",
+        "test_id": "perps-adjust-margin-bottom-sheet-done-button",
+        "expected": "visible",
+        "timeout_ms": 5000,
+        "intent": "Confirm the keypad is open before the live limit drops",
+        "next": "ac5-drain-live-limit"
+      },
+      "ac5-assert-keypad-closed": {
+        "action": "ui.wait_for",
+        "test_id": "perps-adjust-margin-bottom-sheet-done-button",
+        "expected": "absent",
+        "timeout_ms": 15000,
+        "intent": "Require the open keypad to close once nothing is left to remove",
+        "next": "ac5-assert-explanation"
       }
     }
   }

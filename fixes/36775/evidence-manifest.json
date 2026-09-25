@@ -1,21 +1,17 @@
 {
   "version": 1,
   "preferred_mode": "screenshots",
-  "summary": "Hyperliquid testnet, Trading account. Remove margin: Max keeps 1% headroom and is accepted; $0 removable is explained and disabled. Cross margin evidence moved to #36782.",
+  "summary": "Hyperliquid testnet, Trading account. Remove margin: Max keeps 1% headroom and is accepted; $0 removable is explained and disabled; when the live limit drops to zero under an open form, the keypad closes and the explanation replaces any stale error, in both the full screen and the bottom sheet.",
   "before_after_pairs": [
     {
-      "label": "Max removal: exchange rejection before, accepted after the offered max ticked down",
-      "covers": [
-        "ac1"
-      ],
+      "label": "Max removal: exchange rejection before, accepted after",
+      "covers": ["ac1"],
       "before": "before-evidence-ac1-rejected-toast.png",
       "after": "after-ac1-max-form.png"
     },
     {
       "label": "Nothing removable: no explanation before, disabled with explanation after",
-      "covers": [
-        "ac2"
-      ],
+      "covers": ["ac2"],
       "before": "before-evidence-ac2-zero-state.png",
       "after": "after-ac2-zero-state.png"
     }
@@ -23,18 +19,23 @@
   "standalone": [
     {
       "label": "Max removal accepted by the exchange",
-      "covers": [
-        "ac1"
-      ],
+      "covers": ["ac1"],
       "file": "after-ac1-removed-toast.png"
+    },
+    {
+      "label": "Full screen: limit drained under an open keypad, keypad closed and zero explained",
+      "covers": ["ac4"],
+      "file": "after-ac4-keypad-closed-zero-limit.png"
+    },
+    {
+      "label": "Bottom sheet: limit drained under an open keypad, keypad closed and zero explained",
+      "covers": ["ac5"],
+      "file": "after-ac5-sheet-keypad-closed-zero-limit.png"
     }
   ],
-  "omit": [
-    "before-evidence-ac1-max-form.png"
-  ],
+  "omit": [],
   "videos": {
     "before": "before.mp4",
-    "after": "after.mp4",
     "preferred": false
   }
 }

@@ -1,0 +1,13 @@
+Recipe libraries: perps=/Users/deeeed/dev/metamask/experimental-metamask-recipe-perps (24 recipes), metamask=/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness/library (22 recipes)
+{
+  "schemaVersion": 1,
+  "status": "fail",
+  "recoverable": true,
+  "mutations": [],
+  "error": {
+    "code": "MOBILE_SOURCE_NOT_LOADED",
+    "message": "Mobile loaded source is not current (changed).",
+    "userAction": "mm-harness call app.lifecycle --arg command=restart --adapter mobile --target \"/Users/deeeed/dev/metamask/metamask-mobile-6\""
+  }
+}
+mm-harness 0.62.0 → 0.63.0 available · run: mm-harness update

@@ -1,0 +1,196 @@
+{
+  "schemaVersion": 1,
+  "valid": true,
+  "snapshots": [
+    {
+      "phase": "start",
+      "capturedAt": "2026-09-24T15:26:32.608Z",
+      "recipeDigest": "sha256:4fdfe9f8a946b0b6a2b4fd80543be9c37f60ebed54d4b5e02d6974b7e7e89a1f",
+      "product": {
+        "head": "b146b0351f592a46ea6c191714987fff7c0d150c",
+        "status": "",
+        "sourceFingerprint": "cf8f1768a7f5d410fa06f50bc4fefc5c419254600f71085feac0d0b74749a055"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "01e1f5db44df51780ef926dbc61c475dbaea111b8dfe0e8dea276bfd7ad1d1ca"
+      },
+      "libraries": [
+        {
+          "name": "perps",
+          "head": "248fef4b49732f4f7c617831b32583c0ba6b3775",
+          "status": "",
+          "sourceFingerprint": "f5d8ac2f32f894f985494ce0b2d81fa9e4a6454f2ffcdfc8b6bfea3ee196cb17"
+        },
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "1497a918e1699cfd1e4425342797ed8c0df1111d45dcd69abf2b70745432e21e"
+        }
+      ],
+      "helpers": [
+        {
+          "path": "app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.test.tsx",
+          "sourceFingerprint": "43449c7007c6f8384402cfa317f8e8a6d7ba33f4b5d229402c4ec3cfcaf67965"
+        },
+        {
+          "path": "app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.test.tsx",
+          "sourceFingerprint": "e6c3c6fcbeb961c82c3ede9973fc958efde7e67fed7d11ee922b894c77540050"
+        },
+        {
+          "path": "app/components/UI/Perps/hooks/usePerpsAdjustMarginData.test.ts",
+          "sourceFingerprint": "cbc0b499a499ca088798af776f768bb626095b952367d724ac9936bcea7c1dc3"
+        },
+        {
+          "path": "app/components/UI/Perps/hooks/usePerpsFreshRemovalLimit.test.ts",
+          "sourceFingerprint": "2e52886ab33068c95dc468b93c0b1505cf6bc5046688b3029581ae51d37c1fec"
+        },
+        {
+          "path": "app/components/UI/Perps/hooks/usePerpsMarginAdjustment.test.ts",
+          "sourceFingerprint": "f48628d99d78b6ed670b6a0589d81190c3c6ac6b02173347a9b3a70da210addc"
+        },
+        {
+          "path": "app/components/UI/Perps/hooks/usePerpsToasts.test.tsx",
+          "sourceFingerprint": "8cbb3a318984d21f13a33dae48f641401258b819a2282c5a18202edc3a43a0eb"
+        },
+        {
+          "path": "app/components/UI/Perps/utils/marginUtils.test.ts",
+          "sourceFingerprint": "aef0c828611033bee7fa85291e02e54ced1f9e869e85e861aa03a86751db0049"
+        },
+        {
+          "path": "temp/tasks/fix/36775-0924-221931/artifacts/scripts/drain-btc-margin.sh",
+          "sourceFingerprint": "fba448b530c31763031902eaff1a3b58fb1f5481b00da4cd695b5a826acd7208"
+        }
+      ]
+    },
+    {
+      "phase": "pre-execute",
+      "capturedAt": "2026-09-24T15:26:33.887Z",
+      "recipeDigest": "sha256:4fdfe9f8a946b0b6a2b4fd80543be9c37f60ebed54d4b5e02d6974b7e7e89a1f",
+      "product": {
+        "head": "b146b0351f592a46ea6c191714987fff7c0d150c",
+        "status": "",
+        "sourceFingerprint": "cf8f1768a7f5d410fa06f50bc4fefc5c419254600f71085feac0d0b74749a055"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "01e1f5db44df51780ef926dbc61c475dbaea111b8dfe0e8dea276bfd7ad1d1ca"
+      },
+      "libraries": [
+        {
+          "name": "perps",
+          "head": "248fef4b49732f4f7c617831b32583c0ba6b3775",
+          "status": "",
+          "sourceFingerprint": "f5d8ac2f32f894f985494ce0b2d81fa9e4a6454f2ffcdfc8b6bfea3ee196cb17"
+        },
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "1497a918e1699cfd1e4425342797ed8c0df1111d45dcd69abf2b70745432e21e"
+        }
+      ],
+      "helpers": [
+        {
+          "path": "app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.test.tsx",
+          "sourceFingerprint": "43449c7007c6f8384402cfa317f8e8a6d7ba33f4b5d229402c4ec3cfcaf67965"
+        },
+        {
+          "path": "app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.test.tsx",
+          "sourceFingerprint": "e6c3c6fcbeb961c82c3ede9973fc958efde7e67fed7d11ee922b894c77540050"
+        },
+        {
+          "path": "app/components/UI/Perps/hooks/usePerpsAdjustMarginData.test.ts",
+          "sourceFingerprint": "cbc0b499a499ca088798af776f768bb626095b952367d724ac9936bcea7c1dc3"
+        },
+        {
+          "path": "app/components/UI/Perps/hooks/usePerpsFreshRemovalLimit.test.ts",
+          "sourceFingerprint": "2e52886ab33068c95dc468b93c0b1505cf6bc5046688b3029581ae51d37c1fec"
+        },
+        {
+          "path": "app/components/UI/Perps/hooks/usePerpsMarginAdjustment.test.ts",
+          "sourceFingerprint": "f48628d99d78b6ed670b6a0589d81190c3c6ac6b02173347a9b3a70da210addc"
+        },
+        {
+          "path": "app/components/UI/Perps/hooks/usePerpsToasts.test.tsx",
+          "sourceFingerprint": "8cbb3a318984d21f13a33dae48f641401258b819a2282c5a18202edc3a43a0eb"
+        },
+        {
+          "path": "app/components/UI/Perps/utils/marginUtils.test.ts",
+          "sourceFingerprint": "aef0c828611033bee7fa85291e02e54ced1f9e869e85e861aa03a86751db0049"
+        },
+        {
+          "path": "temp/tasks/fix/36775-0924-221931/artifacts/scripts/drain-btc-margin.sh",
+          "sourceFingerprint": "fba448b530c31763031902eaff1a3b58fb1f5481b00da4cd695b5a826acd7208"
+        }
+      ]
+    },
+    {
+      "phase": "end",
+      "capturedAt": "2026-09-24T15:32:03.479Z",
+      "recipeDigest": "sha256:4fdfe9f8a946b0b6a2b4fd80543be9c37f60ebed54d4b5e02d6974b7e7e89a1f",
+      "product": {
+        "head": "b146b0351f592a46ea6c191714987fff7c0d150c",
+        "status": "",
+        "sourceFingerprint": "cf8f1768a7f5d410fa06f50bc4fefc5c419254600f71085feac0d0b74749a055"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "01e1f5db44df51780ef926dbc61c475dbaea111b8dfe0e8dea276bfd7ad1d1ca"
+      },
+      "libraries": [
+        {
+          "name": "perps",
+          "head": "248fef4b49732f4f7c617831b32583c0ba6b3775",
+          "status": "",
+          "sourceFingerprint": "f5d8ac2f32f894f985494ce0b2d81fa9e4a6454f2ffcdfc8b6bfea3ee196cb17"
+        },
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "1497a918e1699cfd1e4425342797ed8c0df1111d45dcd69abf2b70745432e21e"
+        }
+      ],
+      "helpers": [
+        {
+          "path": "app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.test.tsx",
+          "sourceFingerprint": "43449c7007c6f8384402cfa317f8e8a6d7ba33f4b5d229402c4ec3cfcaf67965"
+        },
+        {
+          "path": "app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.test.tsx",
+          "sourceFingerprint": "e6c3c6fcbeb961c82c3ede9973fc958efde7e67fed7d11ee922b894c77540050"
+        },
+        {
+          "path": "app/components/UI/Perps/hooks/usePerpsAdjustMarginData.test.ts",
+          "sourceFingerprint": "cbc0b499a499ca088798af776f768bb626095b952367d724ac9936bcea7c1dc3"
+        },
+        {
+          "path": "app/components/UI/Perps/hooks/usePerpsFreshRemovalLimit.test.ts",
+          "sourceFingerprint": "2e52886ab33068c95dc468b93c0b1505cf6bc5046688b3029581ae51d37c1fec"
+        },
+        {
+          "path": "app/components/UI/Perps/hooks/usePerpsMarginAdjustment.test.ts",
+          "sourceFingerprint": "f48628d99d78b6ed670b6a0589d81190c3c6ac6b02173347a9b3a70da210addc"
+        },
+        {
+          "path": "app/components/UI/Perps/hooks/usePerpsToasts.test.tsx",
+          "sourceFingerprint": "8cbb3a318984d21f13a33dae48f641401258b819a2282c5a18202edc3a43a0eb"
+        },
+        {
+          "path": "app/components/UI/Perps/utils/marginUtils.test.ts",
+          "sourceFingerprint": "aef0c828611033bee7fa85291e02e54ced1f9e869e85e861aa03a86751db0049"
+        },
+        {
+          "path": "temp/tasks/fix/36775-0924-221931/artifacts/scripts/drain-btc-margin.sh",
+          "sourceFingerprint": "fba448b530c31763031902eaff1a3b58fb1f5481b00da4cd695b5a826acd7208"
+        }
+      ]
+    }
+  ],
+  "drift": []
+}

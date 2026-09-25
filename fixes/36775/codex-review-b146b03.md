@@ -1,0 +1,5 @@
+**P2 — Input remains active after the removable limit reaches zero.** In [PerpsAdjustMarginView.tsx](/Users/deeeed/dev/metamask/metamask-mobile-6/app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.tsx:467) and [PerpsAdjustMarginBottomSheet.tsx](/Users/deeeed/dev/metamask/metamask-mobile-6/app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.tsx:523), removing `onPress` prevents *new* focus, but does not close an editor that is already open. If the live limit falls to zero while a user is typing, both screens keep an enabled keypad and percentage buttons on screen. Clear focus or disable those controls on the zero-limit transition, and cover that transition in both screen tests.
+
+The latest test-only commit retains the amount-to-zero tests in both screens and the submission-error-to-zero test in the bottom sheet. All 102 tests in the four focused suites passed.
+
+VERDICT: REQUEST_CHANGES

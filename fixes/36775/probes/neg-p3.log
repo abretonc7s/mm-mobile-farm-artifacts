@@ -1,0 +1,70 @@
+Recipe libraries: perps=/Users/deeeed/dev/metamask/experimental-metamask-recipe-perps (24 recipes), metamask=/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness/library (22 recipes)
+Recipe libraries: perps=/Users/deeeed/dev/metamask/experimental-metamask-recipe-perps (24 recipes), metamask=/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness/library (22 recipes)
+FAIL recipe run [mobile]
+summary:
+  REVIEW 24 distinct application warning/error event(s) (non-blocking; expanded below and stored in diagnostics.json)
+  PASS setup-session/start (metamask.perps.start_state, 23s): proof=metamask-perps-start-state
+  PASS setup-session/provider (assert_output, 122ms): source=start, stream=stdout
+  PASS setup-session/network (assert_output, 177ms): source=start, stream=stdout
+  PASS setup-session/account (switch, 75ms): matched=false, value=0x316b...01fa, expected=Trading
+  PASS setup-session/account-name (assert_output, 150ms): source=start, stream=stdout
+artifacts (13):
+  Run-scoped application diagnostics: /Users/deeeed/dev/metamask/metamask-mobile-6/temp/tasks/fix/36775-0924-221931/artifacts/probes/neg-p3-run/diagnostics.json
+  Human run report: /Users/deeeed/dev/metamask/metamask-mobile-6/temp/tasks/fix/36775-0924-221931/artifacts/probes/neg-p3-run/report.md
+  Run summary: /Users/deeeed/dev/metamask/metamask-mobile-6/temp/tasks/fix/36775-0924-221931/artifacts/probes/neg-p3-run/summary.json
+  Execution trace: /Users/deeeed/dev/metamask/metamask-mobile-6/temp/tasks/fix/36775-0924-221931/artifacts/probes/neg-p3-run/trace.json
+  Executed recipe: /Users/deeeed/dev/metamask/metamask-mobile-6/temp/tasks/fix/36775-0924-221931/artifacts/probes/neg-p3-run/recipe.json
+  Executed recipe parameters: /Users/deeeed/dev/metamask/metamask-mobile-6/temp/tasks/fix/36775-0924-221931/artifacts/probes/neg-p3-run/recipe-invocation.json
+  Resolved recipe dependency: /Users/deeeed/dev/metamask/metamask-mobile-6/temp/tasks/fix/36775-0924-221931/artifacts/probes/neg-p3-run/resolved-recipes/68b7c046a5009998795e1b4191d75d52b542fd7dc65c55ace020115cc316ab55.recipe.json
+  Resolved recipe dependency graph: /Users/deeeed/dev/metamask/metamask-mobile-6/temp/tasks/fix/36775-0924-221931/artifacts/probes/neg-p3-run/recipe-resolution.json
+  Execution provenance: /Users/deeeed/dev/metamask/metamask-mobile-6/temp/tasks/fix/36775-0924-221931/artifacts/probes/neg-p3-run/execution-provenance.json
+  Redacted run-scoped application log slice: /Users/deeeed/dev/metamask/metamask-mobile-6/temp/tasks/fix/36775-0924-221931/artifacts/probes/neg-p3-run/diagnostics-app-log.txt
+  Automatic network observation: /Users/deeeed/dev/metamask/metamask-mobile-6/temp/tasks/fix/36775-0924-221931/artifacts/probes/neg-p3-run/network/run-summary.json
+  Product checkout provenance: /Users/deeeed/dev/metamask/metamask-mobile-6/temp/tasks/fix/36775-0924-221931/artifacts/probes/neg-p3-run/product-provenance.json
+  Artifact manifest: /Users/deeeed/dev/metamask/metamask-mobile-6/temp/tasks/fix/36775-0924-221931/artifacts/probes/neg-p3-run/artifact-manifest.json
+  Next: mm-harness last --target '/Users/deeeed/dev/metamask/metamask-mobile-6' --json
+diagnostics:
+  REVIEW — Observed 24 distinct application warning/error event(s) during the recipe run; showing 20 preview(s) and omitting 4. Relation to the task is not determined.
+  WARNING ×4 — WARN  14:51:21.881 [console:mm-6] The result function returned its own inputs without modification. e.g
+  WARNING ×3 — WARN  14:51:27.917 [console:mm-6] [MetaMask DEBUG]: { message: "Terminal global snapshot returned 400: bad request", stack: "Error: Terminal global snapshot returned 400: bad request\n    at ?anon_0_ (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.byteco
+  WARNING — WARN  14:51:33.666 [console:mm-6] Unable to create some accounts (batch) with provider "Tron" { message: "Timed out after: 3000ms", stack: "TimeoutError: Timed out after: 3000ms\n    at construct (native)\n    at apply (native)\n    at _construct (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&laz
+  WARNING — WARN  14:51:33.667 [console:mm-6] Unable to create some accounts (batch) with provider "Stellar" { message: "Timed out after: 3000ms", stack: "TimeoutError: Timed out after: 3000ms\n    at construct (native)\n    at apply (native)\n    at _construct (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&
+  WARNING — WARN  14:51:33.667 [console:mm-6] Unable to align some accounts. Providers threw the following errors:
+  WARNING ×2 — WARN  14:51:39.052 [console:mm-6] [MetaMask DEBUG]: { message: "Failed to load TradingView library. URL: https://charting-assets.static.metamask.io/tradingview/advanced-charts/v30.1.0/charting_library.js", stack: "Error: Failed to load TradingView library. URL: https://charting-assets.static.metamask.io/tradingview/adv
+  WARNING ×2 — WARN  14:51:45.029 [console:mm-6] Unable to discover accounts with provider "Solana" { message: "Timed out after: 3000ms", stack: "TimeoutError: Timed out after: 3000ms\n    at construct (native)\n    at apply (native)\n    at _construct (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&tr
+  WARNING ×2 — WARN  14:51:45.029 [console:mm-6] Unable to discover accounts with provider "Bitcoin" { message: "Timed out after: 3000ms", stack: "TimeoutError: Timed out after: 3000ms\n    at construct (native)\n    at apply (native)\n    at _construct (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&t
+  WARNING ×2 — WARN  14:51:45.030 [console:mm-6] Unable to discover accounts with provider "Tron" { message: "Timed out after: 3000ms", stack: "TimeoutError: Timed out after: 3000ms\n    at construct (native)\n    at apply (native)\n    at _construct (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&tran
+  WARNING ×2 — WARN  14:51:45.031 [console:mm-6] Unable to discover accounts with provider "Stellar" { message: "Timed out after: 3000ms", stack: "TimeoutError: Timed out after: 3000ms\n    at construct (native)\n    at apply (native)\n    at _construct (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&t
+  ERROR ×2 — ERROR  14:52:18.233 [console:mm-6] A query that was dehydrated as pending ended up rejecting. [["MoneyAccountBalanceService:getMoneyAccountBalance","0xf62b4ed01965f4dabc34a1297845124f2421ef95"]]: Error: missing revert data in call exception; Transaction reverted without a reason string [ See: https://links.ethers.org/v
+  ERROR — ERROR  14:52:28.892 [console:mm-6] A query that was dehydrated as pending ended up rejecting. [["MoneyAccountApiDataService:fetchPositions","0xf62b4ed01965f4dabc34a1297845124f2421ef95"]]: MoneyAccountApiResponseValidationError: Malformed response from positions endpoint: At path: balance.musd_balance_updated_at -- Expe
+  WARNING ×4 — The result function returned its own inputs without modification. e.g
+`createSelector([state => state.todos], todos => todos)`
+This could lead to inefficient memoization and unnecessary re-renders.
+Ensure transformation logic is in the result function, and extraction logic is in the input selectors. Error
+    at runIde
+  WARNING ×3 — [MetaMask DEBUG]: Error: Terminal global snapshot returned 400: bad request
+    at ?anon_0_ (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:1512265:26)
+    at next (native)
+    a
+  WARNING — Unable to create some accounts (batch) with provider "Tron" TimeoutError: Timed out after: 3000ms
+    at construct (native)
+    at apply (native)
+    at _construct (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstab
+  WARNING — Unable to create some accounts (batch) with provider "Stellar" TimeoutError: Timed out after: 3000ms
+    at construct (native)
+    at apply (native)
+    at _construct (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&uns
+  WARNING — Unable to align some accounts. Providers threw the following errors:
+- [Tron] Timed out after: 3000ms
+- [Stellar] Timed out after: 3000ms
+  WARNING ×2 — [MetaMask DEBUG]: Error: Failed to load TradingView library. URL: https://charting-assets.static.metamask.io/tradingview/advanced-charts/v30.1.0/charting_library.js
+    at t2 (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot
+  WARNING ×2 — Unable to discover accounts with provider "Solana" TimeoutError: Timed out after: 3000ms
+    at construct (native)
+    at apply (native)
+    at _construct (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transf
+  WARNING ×2 — Unable to discover accounts with provider "Bitcoin" TimeoutError: Timed out after: 3000ms
+    at construct (native)
+    at apply (native)
+    at _construct (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_trans
+mm-harness 0.62.0 → 0.63.0 available · run: mm-harness update

@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "valid": true,
+  "snapshots": [
+    {
+      "phase": "start",
+      "capturedAt": "2026-09-24T14:44:10.150Z",
+      "recipeDigest": "sha256:bf357f516aa13b9ada49531a3e18d574279001fb977aa43a493b46c58f697390",
+      "product": {
+        "head": "4d7dc2b78aed8d90c9a5341627da506f67358b1f",
+        "status": " M app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.test.tsx\n M app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.tsx\n M app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.test.tsx\n M app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.tsx\n",
+        "sourceFingerprint": "687d006f33c1b9665ba49039f6897d7a9a48c3eb82609185dfd828a5756e1f84"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "01e1f5db44df51780ef926dbc61c475dbaea111b8dfe0e8dea276bfd7ad1d1ca"
+      },
+      "libraries": [
+        {
+          "name": "perps",
+          "head": "248fef4b49732f4f7c617831b32583c0ba6b3775",
+          "status": "",
+          "sourceFingerprint": "f5d8ac2f32f894f985494ce0b2d81fa9e4a6454f2ffcdfc8b6bfea3ee196cb17"
+        },
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "1497a918e1699cfd1e4425342797ed8c0df1111d45dcd69abf2b70745432e21e"
+        }
+      ],
+      "helpers": []
+    },
+    {
+      "phase": "pre-execute",
+      "capturedAt": "2026-09-24T14:44:10.853Z",
+      "recipeDigest": "sha256:bf357f516aa13b9ada49531a3e18d574279001fb977aa43a493b46c58f697390",
+      "product": {
+        "head": "4d7dc2b78aed8d90c9a5341627da506f67358b1f",
+        "status": " M app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.test.tsx\n M app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.tsx\n M app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.test.tsx\n M app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.tsx\n",
+        "sourceFingerprint": "687d006f33c1b9665ba49039f6897d7a9a48c3eb82609185dfd828a5756e1f84"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "01e1f5db44df51780ef926dbc61c475dbaea111b8dfe0e8dea276bfd7ad1d1ca"
+      },
+      "libraries": [
+        {
+          "name": "perps",
+          "head": "248fef4b49732f4f7c617831b32583c0ba6b3775",
+          "status": "",
+          "sourceFingerprint": "f5d8ac2f32f894f985494ce0b2d81fa9e4a6454f2ffcdfc8b6bfea3ee196cb17"
+        },
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "1497a918e1699cfd1e4425342797ed8c0df1111d45dcd69abf2b70745432e21e"
+        }
+      ],
+      "helpers": []
+    },
+    {
+      "phase": "end",
+      "capturedAt": "2026-09-24T14:44:35.001Z",
+      "recipeDigest": "sha256:bf357f516aa13b9ada49531a3e18d574279001fb977aa43a493b46c58f697390",
+      "product": {
+        "head": "4d7dc2b78aed8d90c9a5341627da506f67358b1f",
+        "status": " M app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.test.tsx\n M app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.tsx\n M app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.test.tsx\n M app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.tsx\n",
+        "sourceFingerprint": "687d006f33c1b9665ba49039f6897d7a9a48c3eb82609185dfd828a5756e1f84"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "01e1f5db44df51780ef926dbc61c475dbaea111b8dfe0e8dea276bfd7ad1d1ca"
+      },
+      "libraries": [
+        {
+          "name": "perps",
+          "head": "248fef4b49732f4f7c617831b32583c0ba6b3775",
+          "status": "",
+          "sourceFingerprint": "f5d8ac2f32f894f985494ce0b2d81fa9e4a6454f2ffcdfc8b6bfea3ee196cb17"
+        },
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "1497a918e1699cfd1e4425342797ed8c0df1111d45dcd69abf2b70745432e21e"
+        }
+      ],
+      "helpers": []
+    }
+  ],
+  "drift": []
+}

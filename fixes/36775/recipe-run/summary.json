@@ -1,8 +1,8 @@
 {
-  "invocationDigest": "sha256:9e00839b95ca03253065b56c146f50580a4e7bf55097c9f5386fb02069bd1931",
+  "invocationDigest": "sha256:b8136b664a6b0d018180833287fb7c59ef3771b99de2ccb8b4add86f3b7f9924",
   "status": "pass",
-  "total": 50,
-  "passed": 50,
+  "total": 104,
+  "passed": 104,
   "failed": 0,
   "cause_counts": {
     "subject": 0,
@@ -10,9 +10,9 @@
     "environment": 0,
     "unknown": 0
   },
-  "startedAt": "2026-09-24T10:22:52.803Z",
-  "endedAt": "2026-09-24T10:24:11.454Z",
-  "durationMs": 78651,
+  "startedAt": "2026-09-25T09:18:22.284Z",
+  "endedAt": "2026-09-25T09:23:02.228Z",
+  "durationMs": 279944,
   "harness": {
     "name": "@farmslot/recipe-harness",
     "version": "0.18.1",
@@ -54,9 +54,9 @@
     "status": "review",
     "nonBlocking": true,
     "counts": {
-      "total": 18,
-      "warning": 16,
-      "error": 2,
+      "total": 9,
+      "warning": 4,
+      "error": 5,
       "exception": 0
     },
     "diagnosticsPath": "diagnostics.json",

@@ -1,0 +1,40 @@
+{
+  "metadata": {
+    "runner": {
+      "source": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness",
+      "git_ref": "unknown",
+      "name": "@metamask/recipe-runner"
+    }
+  },
+  "entries": [
+    {
+      "nodeId": "setup-session/start",
+      "action": "metamask.perps.start_state",
+      "intent": "Select and verify the explicit account, venue and network while preserving positions and orders.",
+      "startedAt": "2026-09-25T09:12:48.897Z",
+      "endedAt": "2026-09-25T09:14:04.318Z",
+      "durationMs": 75421,
+      "ok": false,
+      "cause_class": "unknown",
+      "error": "Live adapter /Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness/library/actions/mobile/perps/perps.mjs exited 1: file:///Users/deeeed/dev/metamask/metamask-mobile-6/[eval1]:13812\n      new Error(\n      ^\n\nError: Mobile CDP bridge command did not start before its action deadline: get-route\n    at bridgeCommand (file:///Users/deeeed/dev/metamask/metamask-mobile-6/[eval1]:13812:7)\n    at async navigate (file:///Users/deeeed/dev/metamask/metamask-mobile-6/[eval1]:14016:26)\n    at async navigatePerps (file:///Users/deeeed/dev/metamask/metamask-mobile-6/[eval1]:18723:130)\n    at async startState (file:///Users/deeeed/dev/metamask/metamask-mobile-6/[eval1]:19283:22)\n    at async runAdapter (file:///Users/deeeed/dev/metamask/metamask-mobile-6/[eval1]:13605:20) {\n  code: 'CDP_TIMEOUT'\n}\n\nNode.js v24.16.0\n"
+    },
+    {
+      "nodeId": "setup-session",
+      "action": "call",
+      "recipe": {
+        "ref": "perps.venue-start-state",
+        "digest": "sha256:68b7c046a5009998795e1b4191d75d52b542fd7dc65c55ace020115cc316ab55",
+        "source": "perps",
+        "file": "recipes/mobile/perps/venue-start-state.recipe.json",
+        "adapter": "mobile"
+      },
+      "intent": "Select the funded Trading account on Hyperliquid testnet where the isolated BTC position lives",
+      "startedAt": "2026-09-25T09:12:48.824Z",
+      "endedAt": "2026-09-25T09:14:04.446Z",
+      "durationMs": 75622,
+      "ok": false,
+      "cause_class": "unknown",
+      "error": "Recipe perps.venue-start-state finished with status fail."
+    }
+  ]
+}

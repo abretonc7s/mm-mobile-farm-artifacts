@@ -1,0 +1,7 @@
+You are an independent code reviewer. Review MetaMask Mobile PR #36775 (branch TAT-3985-fix-fix-margin-removal-validation) at HEAD 650798f5e59 in this checkout, read-only. Do not modify files, commit, push, or post anything anywhere.
+
+Scope: `git diff origin/main...HEAD` (ignore temp/). The PR fixes remove-isolated-margin failures ("Position does not have sufficient margin for reduction"): Max keeps 1% notional headroom, validation uses the exchange boundary, a fresh position read runs before removal, a fresh limit is held (usePerpsFreshRemovalLimit), and a zero-removable state disables input with an explanation, in both PerpsAdjustMarginView (full screen) and PerpsAdjustMarginBottomSheet.
+
+A prior review at 6421cb99 requested changes: with a positive retained remove amount, if the live exchange max drops to zero, validationError (and a prior submissionError) hid the zero-removable explanation in the bottom sheet, leaving stale errors with controls disabled. The latest commit claims to fix it in both screens with tests. Verify that fix, then review the whole PR diff for correctness bugs, regressions, and missing tests. You may run focused jest: `yarn jest <file> --no-coverage` (never the full suite, never tsc).
+
+End your answer with exactly one line: `VERDICT: APPROVE` or `VERDICT: REQUEST_CHANGES`, preceded by findings listed by severity with file:line and a concrete failure scenario. Only request changes for real defects.

@@ -1,0 +1,88 @@
+{
+  "$schema": "https://farmslot.io/schemas/recipe-v1.schema.json",
+  "title": "probe bottom sheet",
+  "description": "TAT-3985: on an isolated BTC testnet position (Trading account), add $20 margin, remove the offered Max and require exchange acceptance, then require the zero-removable explanation on a fresh SOL position; pre-submit re-validation is proven by focused tests. Cross margin order placement moved to its own PR.",
+  "workflow": {
+    "entry": "setup-session",
+    "nodes": {
+      "setup-session": {
+        "action": "call",
+        "ref": "perps.venue-start-state",
+        "params": {
+          "account": "Trading",
+          "provider": "hyperliquid",
+          "network": "testnet",
+          "market": "BTC",
+          "market_mode": "lite"
+        },
+        "intent": "Select the funded Trading account on Hyperliquid testnet where the isolated BTC position lives",
+        "next": "setup-pin-screen-variant"
+      },
+      "setup-pin-screen-variant": {
+        "action": "metamask.feature_flags.set",
+        "flags": {
+          "perpsTAT3938AbtestScreenVsBottomSheet": "treatment"
+        },
+        "intent": "Pin the full-screen margin flow this recipe drives; the screen-vs-bottom-sheet A/B test otherwise picks per slot",
+        "next": "setup-assert-position"
+      },
+      "setup-assert-position": {
+        "action": "metamask.perps.ensure_positions",
+        "market": "BTC",
+        "side": "long",
+        "state": "open",
+        "notional": "250",
+        "intent": "Converge the isolated BTC long the margin flow acts on, opening one if the testnet account has none",
+        "next": "setup-add-home"
+      },
+      "setup-add-home": {
+        "action": "ui.navigate",
+        "page": "home",
+        "intent": "Reset navigation so the market screen is the only margin entry point",
+        "next": "setup-add-nav"
+      },
+      "setup-add-nav": {
+        "action": "ui.navigate",
+        "page": "perps-market",
+        "market": "BTC",
+        "intent": "Open the BTC market holding the isolated position",
+        "next": "setup-lite-mode"
+      },
+      "setup-lite-mode": {
+        "action": "metamask.perps.ensure_mode",
+        "mode": "lite",
+        "intent": "Return to Lite so the market screen shows the position margin card, even after a previous run ended in Pro",
+        "next": "setup-add-wait-margin-card"
+      },
+      "setup-add-wait-margin-card": {
+        "action": "ui.wait_for",
+        "test_id": "position-card-margin",
+        "expected": "present",
+        "timeout_ms": 15000,
+        "intent": "Make sure the position margin card is mounted before opening margin actions",
+        "next": "setup-add-press-margin-card"
+      },
+      "setup-add-press-margin-card": {
+        "action": "ui.press",
+        "test_id": "position-card-margin",
+        "intent": "Open the margin action choice for the position to add headroom",
+        "next": "locators"
+      },
+      "locators": {
+        "action": "ui.locators",
+        "next": "shot",
+        "intent": "List pressable targets after opening margin actions"
+      },
+      "shot": {
+        "action": "ui.screenshot",
+        "label": "probe after margin card",
+        "next": "done",
+        "intent": "Show which margin choices the bottom-sheet variant offers"
+      },
+      "done": {
+        "action": "end",
+        "status": "pass"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+Recipe libraries: perps=/Users/deeeed/dev/metamask/experimental-metamask-recipe-perps (24 recipes), metamask=/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness/library (22 recipes)
+Recipe libraries: perps=/Users/deeeed/dev/metamask/experimental-metamask-recipe-perps (24 recipes), metamask=/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness/library (22 recipes)
+{
+  "schemaVersion": 1,
+  "command": "run",
+  "adapter": "mobile",
+  "status": "fail",
+  "exitCode": 1,
+  "recovered": [],
+  "mutations": [],
+  "reportPath": "/Users/deeeed/dev/metamask/metamask-mobile-6/temp/tasks/fix/36775-0924-221931/artifacts/recipe-run/report.md",
+  "result": {
+    "status": "fail",
+    "summaryPath": "/Users/deeeed/dev/metamask/metamask-mobile-6/temp/tasks/fix/36775-0924-221931/artifacts/recipe-run/summary.json",
+    "tracePath": "/Users/deeeed/dev/metamask/metamask-mobile-6/temp/tasks/fix/36775-0924-221931/artifacts/recipe-run/trace.json",
+    "artifactManifestPath": "/Users/deeeed/dev/metamask/metamask-mobile-6/temp/tasks/fix/36775-0924-221931/artifacts/recipe-run/artifact-manifest.json",
+    "recipePath": "/Users/deeeed/dev/metamask/metamask-mobile-6/temp/tasks/fix/36775-0924-221931/artifacts/recipe-run/recipe.json",
+    "diagnosticsPath": "/Users/deeeed/dev/metamask/metamask-mobile-6/temp/tasks/fix/36775-0924-221931/artifacts/recipe-run/diagnostics.json",
+    "sideFindings": {
+      "status": "review",
+      "note": "Observed 22 distinct application warning/error event(s) during the recipe run; showing 20 preview(s) and omitting 2. Relation to the task is not determined.",
+      "counts": {
+        "total": 22,
+        "warning": 18,
+        "error": 4,
+        "exception": 0
+      }
+    }
+  },
+  "error": {
+    "code": "RECIPE_EXECUTION_FAILED",
+    "message": "recipe execution failed; inspect the persisted result and evidence paths",
+    "userAction": "mm-harness last --target '/Users/deeeed/dev/metamask/metamask-mobile-6' --json"
+  }
+}
+mm-harness 0.62.0 → 0.63.0 available · run: mm-harness update

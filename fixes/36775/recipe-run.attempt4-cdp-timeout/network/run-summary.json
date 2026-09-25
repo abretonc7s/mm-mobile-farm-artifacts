@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "id": "run-network",
+  "status": "complete",
+  "startedAtEpochMs": 1790327735222,
+  "endedAtEpochMs": 1790327759928,
+  "maxDurationMs": 3600000,
+  "reconnects": 0,
+  "droppedRequests": 0,
+  "unavailableReasons": [],
+  "coverageGapReasons": [],
+  "uninspectableBodyRequests": 0,
+  "projectedBodyFields": [
+    "type"
+  ],
+  "totalRequests": 0,
+  "requestsByMethod": {},
+  "requestsByHost": {},
+  "requestsByType": {},
+  "requests": [],
+  "nodeEvents": [
+    {
+      "action": "metamask.perps.start_state",
+      "elapsedMs": 2265,
+      "nodeId": "setup-session/start",
+      "status": "running"
+    },
+    {
+      "action": "metamask.perps.start_state",
+      "elapsedMs": 5718,
+      "nodeId": "setup-session/start",
+      "status": "passed"
+    },
+    {
+      "action": "assert_output",
+      "elapsedMs": 5902,
+      "nodeId": "setup-session/provider",
+      "status": "running"
+    },
+    {
+      "action": "assert_output",
+      "elapsedMs": 5903,
+      "nodeId": "setup-session/provider",
+      "status": "passed"
+    },
+    {
+      "action": "assert_output",
+      "elapsedMs": 6107,
+      "nodeId": "setup-session/network",
+      "status": "running"
+    },
+    {
+      "action": "assert_output",
+      "elapsedMs": 6107,
+      "nodeId": "setup-session/network",
+      "status": "passed"
+    },
+    {
+      "action": "switch",
+      "elapsedMs": 6426,
+      "nodeId": "setup-session/account",
+      "status": "running"
+    },
+    {
+      "action": "switch",
+      "elapsedMs": 6426,
+      "nodeId": "setup-session/account",
+      "status": "passed"
+    },
+    {
+      "action": "assert_output",
+      "elapsedMs": 6691,
+      "nodeId": "setup-session/account-name",
+      "status": "running"
+    },
+    {
+      "action": "assert_output",
+      "elapsedMs": 6691,
+      "nodeId": "setup-session/account-name",
+      "status": "passed"
+    },
+    {
+      "action": "metamask.feature_flags.set",
+      "elapsedMs": 6977,
+      "nodeId": "setup-pin-screen-variant",
+      "status": "running"
+    },
+    {
+      "action": "metamask.feature_flags.set",
+      "elapsedMs": 7438,
+      "nodeId": "setup-pin-screen-variant",
+      "status": "passed"
+    },
+    {
+      "action": "metamask.perps.ensure_positions",
+      "elapsedMs": 8215,
+      "nodeId": "setup-assert-position",
+      "status": "running"
+    },
+    {
+      "action": "metamask.perps.ensure_positions",
+      "elapsedMs": 18408,
+      "nodeId": "setup-assert-position",
+      "status": "failed"
+    }
+  ]
+}

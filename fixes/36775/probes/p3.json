@@ -1,0 +1,206 @@
+{
+  "$schema": "https://farmslot.io/schemas/recipe-v1.schema.json",
+  "title": "probe ac5",
+  "description": "TAT-3985: on an isolated BTC testnet position (Trading account), add $20 margin, remove the offered Max and require exchange acceptance, then require the zero-removable explanation on a fresh SOL position; pre-submit re-validation is proven by focused tests. Cross margin order placement moved to its own PR.",
+  "workflow": {
+    "entry": "setup-session",
+    "nodes": {
+      "setup-session": {
+        "action": "call",
+        "ref": "perps.venue-start-state",
+        "params": {
+          "account": "Trading",
+          "provider": "hyperliquid",
+          "network": "testnet",
+          "market": "BTC",
+          "market_mode": "lite"
+        },
+        "intent": "Select the funded Trading account on Hyperliquid testnet where the isolated BTC position lives",
+        "next": "setup-pin-screen-variant"
+      },
+      "setup-pin-screen-variant": {
+        "action": "metamask.feature_flags.set",
+        "flags": {
+          "perpsTAT3938AbtestScreenVsBottomSheet": "control"
+        },
+        "intent": "Pin the full-screen margin flow this recipe drives; the screen-vs-bottom-sheet A/B test otherwise picks per slot",
+        "next": "setup-assert-position"
+      },
+      "setup-assert-position": {
+        "action": "metamask.perps.ensure_positions",
+        "market": "BTC",
+        "side": "long",
+        "state": "open",
+        "notional": "250",
+        "intent": "Converge the isolated BTC long the margin flow acts on, opening one if the testnet account has none",
+        "next": "ac5-pin-bottom-sheet"
+      },
+      "ac5-pin-bottom-sheet": {
+        "action": "metamask.feature_flags.set",
+        "flags": {
+          "perpsTAT3938AbtestScreenVsBottomSheet": "treatment"
+        },
+        "intent": "Switch to the bottom-sheet margin flow the review finding is about",
+        "next": "ac5-add-home"
+      },
+      "ac5-add-home": {
+        "action": "ui.navigate",
+        "page": "home",
+        "intent": "Reset navigation so the market screen is the only margin entry point",
+        "next": "ac5-add-nav"
+      },
+      "ac5-add-nav": {
+        "action": "ui.navigate",
+        "page": "perps-market",
+        "market": "BTC",
+        "intent": "Open the BTC market holding the isolated position",
+        "next": "ac5-add-wait-margin-card"
+      },
+      "ac5-add-wait-margin-card": {
+        "action": "ui.wait_for",
+        "test_id": "position-card-margin",
+        "expected": "present",
+        "timeout_ms": 15000,
+        "intent": "Make sure the position margin card is mounted before opening margin actions",
+        "next": "ac5-add-press-margin-card"
+      },
+      "ac5-add-press-margin-card": {
+        "action": "ui.press",
+        "test_id": "position-card-margin",
+        "intent": "Open the margin bottom sheet to give the position removable headroom",
+        "next": "ac5-add-open-keypad"
+      },
+      "ac5-add-open-keypad": {
+        "action": "ui.press",
+        "test_id": "perps-amount-display-touchable",
+        "intent": "Open the keypad to type the margin to add",
+        "next": "ac5-add-key-2"
+      },
+      "ac5-add-key-2": {
+        "action": "ui.press",
+        "test_id": "keypad-key-2",
+        "intent": "Type the tens digit of the $20 addition",
+        "next": "ac5-add-key-0"
+      },
+      "ac5-add-key-0": {
+        "action": "ui.press",
+        "test_id": "keypad-key-0",
+        "intent": "Type the units digit of the $20 addition",
+        "next": "ac5-add-close-keypad"
+      },
+      "ac5-add-close-keypad": {
+        "action": "ui.press",
+        "test_id": "perps-adjust-margin-bottom-sheet-done-button",
+        "intent": "Close the keypad to reach the confirm button",
+        "next": "ac5-add-confirm"
+      },
+      "ac5-add-confirm": {
+        "action": "ui.press",
+        "test_id": "perps-adjust-margin-bottom-sheet-confirm-button",
+        "intent": "Submit the $20 margin addition from the bottom sheet",
+        "next": "ac5-add-assert-added"
+      },
+      "ac5-add-assert-added": {
+        "action": "ui.wait_for",
+        "text": "Added $20 margin",
+        "text_match": "contains",
+        "expected": "visible",
+        "timeout_ms": 20000,
+        "intent": "Confirm the exchange accepted the addition so removable headroom exists",
+        "next": "ac5-home"
+      },
+      "ac5-home": {
+        "action": "ui.navigate",
+        "page": "home",
+        "intent": "Reset navigation so the market screen is the only margin entry point",
+        "next": "ac5-nav"
+      },
+      "ac5-nav": {
+        "action": "ui.navigate",
+        "page": "perps-market",
+        "market": "BTC",
+        "intent": "Open the BTC market holding the isolated position",
+        "next": "ac5-wait-margin-card"
+      },
+      "ac5-wait-margin-card": {
+        "action": "ui.wait_for",
+        "test_id": "position-card-margin",
+        "expected": "present",
+        "timeout_ms": 15000,
+        "intent": "Make sure the position margin card is mounted before opening margin actions",
+        "next": "ac5-press-margin-card"
+      },
+      "ac5-press-margin-card": {
+        "action": "ui.press",
+        "test_id": "position-card-margin",
+        "intent": "Open the margin bottom sheet on the position",
+        "next": "ac5-press-remove-mode"
+      },
+      "ac5-press-remove-mode": {
+        "action": "ui.press",
+        "test_id": "perps-adjust-margin-bottom-sheet-remove-mode",
+        "intent": "Switch the bottom sheet to Remove",
+        "next": "ac5-open-keypad"
+      },
+      "ac5-open-keypad": {
+        "action": "ui.press",
+        "test_id": "perps-amount-display-touchable",
+        "intent": "Reveal the quick-amount buttons including Max",
+        "next": "ac5-press-max"
+      },
+      "ac5-press-max": {
+        "action": "ui.press",
+        "text": "Max",
+        "intent": "Keep a positive Max amount in the sheet before the limit drops",
+        "next": "ac5-close-keypad"
+      },
+      "ac5-close-keypad": {
+        "action": "ui.press",
+        "test_id": "perps-adjust-margin-bottom-sheet-done-button",
+        "intent": "Close the keypad so the retained amount is validated",
+        "next": "ac5-assert-no-explanation"
+      },
+      "ac5-assert-no-explanation": {
+        "action": "ui.wait_for",
+        "test_id": "perps-adjust-margin-bottom-sheet-no-removable-margin",
+        "expected": "absent",
+        "timeout_ms": 3000,
+        "intent": "Confirm margin is still removable before the live limit drops",
+        "next": "ac5-drain-live-limit"
+      },
+      "ac5-drain-live-limit": {
+        "action": "command",
+        "cmd": "bash temp/tasks/fix/36775-0924-221931/artifacts/scripts/drain-btc-margin.sh",
+        "timeout_ms": 60000,
+        "intent": "Remove the position's spare margin outside the open sheet so its live limit falls to zero under the retained amount",
+        "next": "ac5-assert-explanation"
+      },
+      "ac5-assert-explanation": {
+        "action": "ui.wait_for",
+        "test_id": "perps-adjust-margin-bottom-sheet-no-removable-margin",
+        "expected": "visible",
+        "timeout_ms": 15000,
+        "intent": "Require the zero-removable explanation in the sheet once the live limit reaches zero",
+        "next": "ac5-assert-no-stale-error"
+      },
+      "ac5-assert-no-stale-error": {
+        "action": "ui.wait_for",
+        "test_id": "perps-adjust-margin-bottom-sheet-error",
+        "expected": "absent",
+        "timeout_ms": 3000,
+        "intent": "Require no stale error in the sheet in place of the explanation",
+        "next": "ac5-screenshot"
+      },
+      "ac5-screenshot": {
+        "action": "ui.screenshot",
+        "label": "AC5: bottom sheet explains zero limit under retained amount",
+        "intent": "Show reviewers the bottom sheet explains the zero limit instead of a stale error",
+        "next": "done"
+      },
+      "done": {
+        "action": "end",
+        "status": "pass"
+      }
+    }
+  }
+}

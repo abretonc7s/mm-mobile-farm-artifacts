@@ -1,0 +1,68 @@
+{
+  "invocationDigest": "sha256:a342885b30cdeb64b968626839807bea7f1dcdd5ad8e7f713f118145af77ad1e",
+  "status": "fail",
+  "total": 9,
+  "passed": 8,
+  "failed": 1,
+  "cause_counts": {
+    "subject": 0,
+    "harness": 0,
+    "environment": 0,
+    "unknown": 1
+  },
+  "startedAt": "2026-09-25T09:15:37.272Z",
+  "endedAt": "2026-09-25T09:15:53.702Z",
+  "durationMs": 16430,
+  "harness": {
+    "name": "@farmslot/recipe-harness",
+    "version": "0.18.1",
+    "action_manifest_schema": "https://farmslot.io/schemas/action-manifest-v1.schema.json"
+  },
+  "runner": {
+    "source": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness",
+    "git_ref": "unknown",
+    "name": "@metamask/recipe-runner"
+  },
+  "recipeLibraries": {
+    "sources": [
+      {
+        "name": "perps",
+        "root": "/Users/deeeed/dev/metamask/experimental-metamask-recipe-perps",
+        "recipeCount": 24,
+        "provenance": {
+          "kind": "library",
+          "trust": "trusted",
+          "name": "perps",
+          "revision": "248fef4b49732f4f7c617831b32583c0ba6b3775",
+          "dirty": false
+        }
+      },
+      {
+        "name": "metamask",
+        "root": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness/library",
+        "recipeCount": 22,
+        "provenance": {
+          "kind": "bundled",
+          "trust": "trusted",
+          "name": "metamask"
+        }
+      }
+    ],
+    "shadowed": []
+  },
+  "sideFindings": {
+    "status": "clean",
+    "nonBlocking": true,
+    "counts": {
+      "total": 0,
+      "warning": 0,
+      "error": 0,
+      "exception": 0
+    },
+    "diagnosticsPath": "diagnostics.json",
+    "appLogPath": "diagnostics-app-log.txt",
+    "appLogRedacted": true
+  },
+  "recovered": [],
+  "mutations": []
+}

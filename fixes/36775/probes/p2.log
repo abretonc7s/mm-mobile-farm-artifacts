@@ -1,0 +1,31 @@
+Recipe libraries: perps=/Users/deeeed/dev/metamask/experimental-metamask-recipe-perps (24 recipes), metamask=/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness/library (22 recipes)
+Recipe libraries: perps=/Users/deeeed/dev/metamask/experimental-metamask-recipe-perps (24 recipes), metamask=/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness/library (22 recipes)
+PASS recipe run [mobile]
+summary:
+  REVIEW 3 distinct application warning/error event(s) (non-blocking; expanded below and stored in diagnostics.json)
+  PASS setup-session/start (metamask.perps.start_state, 7.7s): proof=metamask-perps-start-state
+  PASS setup-session/provider (assert_output, 68ms): source=start, stream=stdout
+  PASS setup-session/network (assert_output, 73ms): source=start, stream=stdout
+  PASS setup-session/account (switch, 56ms): matched=false, value=0x316b...01fa, expected=Trading
+  PASS setup-session/account-name (assert_output, 62ms): source=start, stream=stdout
+artifacts (14):
+  Run-scoped application diagnostics: /Users/deeeed/dev/metamask/metamask-mobile-6/temp/tasks/fix/36775-0924-221931/artifacts/probes/p2-run/diagnostics.json
+  Human run report: /Users/deeeed/dev/metamask/metamask-mobile-6/temp/tasks/fix/36775-0924-221931/artifacts/probes/p2-run/report.md
+  Run summary: /Users/deeeed/dev/metamask/metamask-mobile-6/temp/tasks/fix/36775-0924-221931/artifacts/probes/p2-run/summary.json
+  Execution trace: /Users/deeeed/dev/metamask/metamask-mobile-6/temp/tasks/fix/36775-0924-221931/artifacts/probes/p2-run/trace.json
+  Executed recipe: /Users/deeeed/dev/metamask/metamask-mobile-6/temp/tasks/fix/36775-0924-221931/artifacts/probes/p2-run/recipe.json
+  Executed recipe parameters: /Users/deeeed/dev/metamask/metamask-mobile-6/temp/tasks/fix/36775-0924-221931/artifacts/probes/p2-run/recipe-invocation.json
+  Resolved recipe dependency: /Users/deeeed/dev/metamask/metamask-mobile-6/temp/tasks/fix/36775-0924-221931/artifacts/probes/p2-run/resolved-recipes/68b7c046a5009998795e1b4191d75d52b542fd7dc65c55ace020115cc316ab55.recipe.json
+  Resolved recipe dependency graph: /Users/deeeed/dev/metamask/metamask-mobile-6/temp/tasks/fix/36775-0924-221931/artifacts/probes/p2-run/recipe-resolution.json
+  AC4: full screen explains zero limit under retained amount: /Users/deeeed/dev/metamask/metamask-mobile-6/temp/tasks/fix/36775-0924-221931/artifacts/probes/p2-run/screenshots/ac4-screenshot.png
+  Execution provenance: /Users/deeeed/dev/metamask/metamask-mobile-6/temp/tasks/fix/36775-0924-221931/artifacts/probes/p2-run/execution-provenance.json
+  Redacted run-scoped application log slice: /Users/deeeed/dev/metamask/metamask-mobile-6/temp/tasks/fix/36775-0924-221931/artifacts/probes/p2-run/diagnostics-app-log.txt
+  Automatic network observation: /Users/deeeed/dev/metamask/metamask-mobile-6/temp/tasks/fix/36775-0924-221931/artifacts/probes/p2-run/network/run-summary.json
+  Product checkout provenance: /Users/deeeed/dev/metamask/metamask-mobile-6/temp/tasks/fix/36775-0924-221931/artifacts/probes/p2-run/product-provenance.json
+  Artifact manifest: /Users/deeeed/dev/metamask/metamask-mobile-6/temp/tasks/fix/36775-0924-221931/artifacts/probes/p2-run/artifact-manifest.json
+diagnostics:
+  REVIEW — Observed 3 distinct application warning/error event(s) during the recipe run; showing 3 preview(s) and omitting 0. Relation to the task is not determined.
+  ERROR ×4 — ERROR  14:46:17.758 [console:mm-6] A query that was dehydrated as pending ended up rejecting. [["MoneyAccountBalanceService:getVaultApy"]]: Error: Execution prevented because the circuit breaker is open; The error will be redacted in production builds
+  ERROR ×4 — ERROR  14:46:17.758 [console:mm-6] A query that was dehydrated as pending ended up rejecting. [["MoneyAccountBalanceService:getMoneyAccountBalance","0xf62b4ed01965f4dabc34a1297845124f2421ef95"]]: Error: Execution prevented because the circuit breaker is open; The error will be redacted in production builds
+  ERROR ×4 — ERROR  14:46:18.489 [console:mm-6] A query that was dehydrated as pending ended up rejecting. [["MoneyAccountApiDataService:fetchPositions","0xf62b4ed01965f4dabc34a1297845124f2421ef95"]]: Error: Execution prevented because the circuit breaker is open; The error will be redacted in production builds
+mm-harness 0.62.0 → 0.63.0 available · run: mm-harness update

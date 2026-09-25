@@ -1,0 +1,19 @@
+ DEBUG  09:15:40.584 [console:mm-6] Getting account state via HyperLiquid SDK
+ DEBUG  09:15:40.585 [console:mm-6] User address for account state: 0x316bde155acd07609872a56bc32ccfb0b13201fa
+ DEBUG  09:15:40.585 [console:mm-6] Network mode: TESTNET
+ DEBUG  09:15:40.732 [console:mm-6] Spot state: { balances: Array(14), tokenToAvailableAfterMaintenance: Array(1) }
+ DEBUG  09:15:40.734 [console:mm-6] Perps states (all DEXs): { dexCount: 2 }
+ DEBUG  09:15:40.735 [console:mm-6] DEX main account state: { totalBalance: "56.057431", spendableBalance: "0.0", withdrawableBalance: "0.0", marginUsed: "56.057431", unrealizedPnl: "-3.31045" }
+ DEBUG  09:15:40.735 [console:mm-6] DEX xyz account state: { totalBalance: "0", spendableBalance: "0.0", withdrawableBalance: "0.0", marginUsed: "0.0", unrealizedPnl: "0" }
+ DEBUG  09:15:40.736 [console:mm-6] Aggregated account state: { spendableBalance: "257.123062", withdrawableBalance: "257.123062", totalBalance: "313.180493", marginUsed: "56.057431", unrealizedPnl: "-3.31045", returnOnEquity: "-5.905461490020833", subAccountBreakdown: Object }
+ LOG  09:15:40.951 [console:mm-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ DEBUG  09:15:42.376 [console:mm-6] PerpsController: HIP-3 equity flag validation { equityFlag: Object, validatedEquity: true, willUse: "remote" }
+ DEBUG  09:15:42.377 [console:mm-6] PerpsController: HIP-3 allowlistMarkets validation { remoteValue: "xyz:*", type: "string", isArray: false }
+ DEBUG  09:15:42.387 [console:mm-6] PerpsController: HIP-3 allowlistMarkets validated from string { validatedMarkets: Array(1) }
+ DEBUG  09:15:42.388 [console:mm-6] PerpsController: HIP-3 blocklistMarkets validation { remoteValue: "demo", type: "string", isArray: false }
+ DEBUG  09:15:42.389 [console:mm-6] PerpsController: HIP-3 blocklistMarkets validated from string { validatedMarkets: Array(1) }
+ DEBUG  09:15:42.391 [console:mm-6] EligibilityService: Checking eligibility { blockedRegionsCount: 8, geoLocation: "SG" }
+ DEBUG  09:15:42.392 [console:mm-6] EligibilityService: Eligibility check completed { geoLocation: "SG", isEligible: true, blockedRegions: Array(8) }
+ LOG  09:15:42.605 [console:mm-6] [MetaMask DEBUG]: RemoteFeatureFlagController state persisted successfully
+ DEBUG  09:15:42.850 [console:mm-6] PerpsStreamProvider: Using stream manager: { isTestManager: false, isE2EMockManager: false, isRealManager: true }
+ INFO  09:15:43.002 [console:mm-6] TRACK event saved { type: "track", event: "Experiment Viewed", properties: Object }

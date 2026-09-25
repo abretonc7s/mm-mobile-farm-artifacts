@@ -1,6 +1,6 @@
 {
   "originalFamilyScopeSummary": "Fix remove-margin validation to derive max removable amount from live position state and prevent over-submission",
-  "currentTriggerSummary": "pr-complete for #36775 plus operator follow-up: check-pr-max-lines failed at 1326 lines; split without dropping behavior, tests or proof, and get Codex gpt-6-sol review on every final head",
+  "currentTriggerSummary": "pr-complete: fix(perps): remove-margin failure rate regressed 14% \u2192 27% \u2014 \"Position does not have sufficient margin for reduction\"",
   "scopeVerdict": "full-scope-addressed",
-  "notes": "#36775 keeps the full remove-margin fix (headroom max, exchange-boundary validation, pre-submit re-check, zero-removable state) and passes its recipe 48/48 at bb56c34 with a clean Codex review; max-lines now passes (915 lines). The Cross-margin feature moved unchanged to draft #36782 (recipe 30/30) with two Codex findings listed as blockers there. The Mixpanel failure-rate target (<=14%) can only be confirmed post-release."
+  "notes": "Rebased linearly on main (tree identical to the prior merge). Only GitHub thread already fixed. Operator-relayed Codex P2 (open keypad stays active when the live limit drops to zero) fixed in b729f32d3c3 for both screens, with unit tests and live recipe asserts; the negative control fails on pre-fix code. Full recipe 104/104; fresh Codex gpt-6-sol review on final HEAD approved. The ticket's Mixpanel failure-rate AC can only be confirmed post-release."
 }

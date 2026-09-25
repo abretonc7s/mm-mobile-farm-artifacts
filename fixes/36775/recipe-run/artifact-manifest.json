@@ -34,7 +34,7 @@
       "category": "system"
     },
     {
-      "path": "screenshots/evidence-ac1-max-form.png",
+      "path": "screenshots/ac1-screenshot-max-form.png",
       "type": "screenshot",
       "nodeId": "ac1-screenshot-max-form",
       "label": "AC1: Max amount offered for removal",
@@ -47,7 +47,7 @@
       }
     },
     {
-      "path": "screenshots/evidence-ac1-removed-toast.png",
+      "path": "screenshots/ac1-screenshot-removed.png",
       "type": "screenshot",
       "nodeId": "ac1-screenshot-removed",
       "label": "AC1: max removal accepted",
@@ -60,10 +60,36 @@
       }
     },
     {
-      "path": "screenshots/evidence-ac2-zero-state.png",
+      "path": "screenshots/ac2-screenshot-zero-state.png",
       "type": "screenshot",
       "nodeId": "ac2-screenshot-zero-state",
       "label": "AC2: zero removable explained, control disabled",
+      "category": "evidence",
+      "mimeType": "image/png",
+      "metadata": {
+        "provider": "simctl",
+        "mode": "xcrun simctl io screenshot",
+        "selectedDevice": "mm-6"
+      }
+    },
+    {
+      "path": "screenshots/ac4-screenshot.png",
+      "type": "screenshot",
+      "nodeId": "ac4-screenshot",
+      "label": "AC4: full screen explains zero limit under retained amount",
+      "category": "evidence",
+      "mimeType": "image/png",
+      "metadata": {
+        "provider": "simctl",
+        "mode": "xcrun simctl io screenshot",
+        "selectedDevice": "mm-6"
+      }
+    },
+    {
+      "path": "screenshots/ac5-screenshot.png",
+      "type": "screenshot",
+      "nodeId": "ac5-screenshot",
+      "label": "AC5: bottom sheet explains zero limit under retained amount",
       "category": "evidence",
       "mimeType": "image/png",
       "metadata": {
@@ -119,7 +145,7 @@
       "category": "system",
       "metadata": {
         "adapter": "mobile",
-        "git_ref": "6421cb99d5b88f3a77298703a3a2ac89ff46f93d",
+        "git_ref": "b729f32d3c3c3bca3b1c37130efe144aea2ada8c",
         "branch": "TAT-3985-fix-fix-margin-removal-validation",
         "dirty": false
       }

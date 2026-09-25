@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# TAT-3985 proof helper: removes all but ~$1 of the BTC position's exchange-removable
+# margin from outside the open form, then fails unless the offered max is now zero.
+set -uo pipefail
+BRIDGE="$(dirname "$(readlink -f "$(command -v mm-harness)")")/../adapters/mobile/bridge-runtime/cdp-bridge.cjs"
+out=$(WATCHER_PORT="${WATCHER_PORT:-8066}" node "$BRIDGE" eval-async "Engine.context.PerpsController.getPositions({skipCache:true}).then(function(ps){var p=ps.find(function(x){return x.symbol==='BTC'});if(!p)throw new Error('no BTC position');var pv=Number(p.positionValue),lev=Number(p.leverage.value);var ex=Number(p.marginUsed)-Math.max(pv/lev,0.1*pv);var amt=Math.floor((ex-1)*100)/100;if(!(amt>0))throw new Error('nothing to drain: exchange max '+ex);return Engine.context.PerpsController.updateMargin({symbol:'BTC',amount:String(-amt)}).then(function(r){if(!r.success)throw new Error('drain rejected: '+r.error);return Engine.context.PerpsController.getPositions({skipCache:true})}).then(function(ps2){var q=ps2.find(function(x){return x.symbol==='BTC'});var pv2=Number(q.positionValue);var left=Number(q.marginUsed)-Math.max(pv2/Number(q.leverage.value),0.1*pv2);if(left-0.01*pv2>0)throw new Error('still removable after drain: '+left);return 'DRAINED removed='+amt+' exchangeMaxLeft='+left.toFixed(2)})})" 2>&1)
+echo "$out"
+echo "$out" | grep -q DRAINED

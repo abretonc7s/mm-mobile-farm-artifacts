@@ -1,8 +1,0 @@
-{
-  "schemaVersion": 1,
-  "adapter": "mobile",
-  "repository": "metamask-mobile-6",
-  "git_ref": "9d5f587975301b942376f9932177a197c832c8a4",
-  "branch": "TAT-3985-perps-cross-margin-orders",
-  "dirty": true
-}
