@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "scope": "recipe-run-application",
+  "status": "review",
+  "nonBlocking": true,
+  "note": "Observed 9 distinct application warning/error event(s) during the recipe run; showing 9 preview(s) and omitting 0. Relation to the task is not determined.",
+  "source": {
+    "label": "app",
+    "path": "/Volumes/FD/dev/metamask/metamask-mobile-2/temp/recipe/runtime/app-console.log",
+    "startOffset": 108451,
+    "endOffset": 146729,
+    "bytesRead": 38278,
+    "truncated": false,
+    "inAppBuffer": "collected",
+    "rawArtifact": "diagnostics-app-log.txt",
+    "redacted": true
+  },
+  "counts": {
+    "total": 9,
+    "warning": 4,
+    "error": 5,
+    "exception": 0
+  },
+  "displayedFindingCount": 9,
+  "omittedFindingCount": 0,
+  "findings": [
+    {
+      "level": "error",
+      "fingerprint": "95caa142cf07",
+      "preview": "ERROR  02:56:08.739 [console:mm-2] A query that was dehydrated as pending ended up rejecting. [[\"MoneyAccountBalanceService:getMoneyAccountBalance\",\"0xf62b4ed01965f4dabc34a1297845124f2421ef95\"]]: Error: missing revert data in call exception; Transaction reverted without a reason string [ See: https://links.ethers.org/v",
+      "count": 1
+    },
+    {
+      "level": "error",
+      "fingerprint": "5d6e9d87275a",
+      "preview": "ERROR  02:56:09.285 [console:mm-2] A query that was dehydrated as pending ended up rejecting. [[\"MoneyAccountApiDataService:fetchPositions\",\"0xf62b4ed01965f4dabc34a1297845124f2421ef95\"]]: MoneyAccountApiResponseValidationError: Malformed response from positions endpoint: At path: balance.musd_balance_updated_at -- Expe",
+      "count": 3
+    },
+    {
+      "level": "warning",
+      "fingerprint": "a76f71872467",
+      "preview": "WARN  02:56:21.409 [console:mm-2] [MetaMask DEBUG]: { message: \"A handler for SubscriptionController:getBenefits has not been delegated to PerpsController\", stack: \"Error: A handler for SubscriptionController:getBenefits has not been delegated to PerpsController\\n    at call (http://127.0.0.1:8062/index.bundle//&platfo",
+      "count": 1
+    },
+    {
+      "level": "error",
+      "fingerprint": "a2a3da24242a",
+      "preview": "ERROR  02:56:39.634 [console:mm-2] A query that was dehydrated as pending ended up rejecting. [[\"MoneyAccountBalanceService:getMoneyAccountBalance\",\"0xf62b4ed01965f4dabc34a1297845124f2421ef95\"]]: Error: Execution prevented because the circuit breaker is open; The error will be redacted in production builds",
+      "count": 4
+    },
+    {
+      "level": "warning",
+      "fingerprint": "c048e618a91b",
+      "preview": "WARN  02:56:43.982 [console:mm-2] [MetaMask DEBUG]: { message: \"Terminal global snapshot returned 400: bad request\", stack: \"Error: Terminal global snapshot returned 400: bad request\\n    at ?anon_2_#fetchAndValidateGlobalSnapshot (http://127.0.0.1:8062/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform",
+      "count": 1
+    },
+    {
+      "level": "error",
+      "fingerprint": "50dd455888fa",
+      "preview": "A query that was dehydrated as pending ended up rejecting. [[\"MoneyAccountBalanceService:getMoneyAccountBalance\",\"0xf62b4ed01965f4dabc34a1297845124f2421ef95\"]]: Error: missing revert data in call exception; Transaction reverted without a reason string [ See: https://links.ethers.org/v5-errors-CALL_EXCEPTION ] (data=\"0x",
+      "count": 1
+    },
+    {
+      "level": "error",
+      "fingerprint": "a50206ca5047",
+      "preview": "A query that was dehydrated as pending ended up rejecting. [[\"MoneyAccountApiDataService:fetchPositions\",\"0xf62b4ed01965f4dabc34a1297845124f2421ef95\"]]: MoneyAccountApiResponseValidationError: Malformed response from positions endpoint: At path: balance.musd_balance_updated_at -- Expected a value of type `never`, but r",
+      "count": 3
+    },
+    {
+      "level": "warning",
+      "fingerprint": "ceb5580b58b5",
+      "preview": "[MetaMask DEBUG]: Error: A handler for SubscriptionController:getBenefits has not been delegated to PerpsController\n    at call (http://127.0.0.1:8062/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:30",
+      "count": 1
+    },
+    {
+      "level": "warning",
+      "fingerprint": "1a226469674d",
+      "preview": "[MetaMask DEBUG]: Error: Terminal global snapshot returned 400: bad request\n    at ?anon_2_#fetchAndValidateGlobalSnapshot (http://127.0.0.1:8062/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:1476311",
+      "count": 1
+    }
+  ]
+}

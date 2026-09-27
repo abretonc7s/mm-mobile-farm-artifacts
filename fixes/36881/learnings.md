@@ -1,0 +1,4 @@
+- No reviewer-driven learnings: no new actionable comments this round, and the REAL items were already fixed on HEAD.
+- Recipe drift: a gate added in a later commit (Cross off while `perpsTerminalBackendEnabled` is on, TAT-4022) broke the inherited recipe, because the remote config turns Terminal on for 8.3.0+. When a PR adds a flag-dependent gate, pin every gating flag in the recipe's `setup-flag`, not just the feature flag.
+- "no onPress prop" from `ui.press` on a visible option means the option rendered disabled. Read the effective flags (`metamask.feature_flags.read`) before suspecting the code.
+- Inherited Jest `command` nodes write logs to the parent task's `temp/tasks/...` path. On a new slot, create that directory first or the redirect fails.

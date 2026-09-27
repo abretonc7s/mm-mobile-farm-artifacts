@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "valid": true,
+  "snapshots": [
+    {
+      "phase": "start",
+      "capturedAt": "2026-09-27T02:55:50.156Z",
+      "recipeDigest": "sha256:40e2b29131b5d3577c498bb7ed54dc25fada9ceb3d0be78b33bfb9ab16cede06",
+      "product": {
+        "head": "4991fa272bac7cb8c041c1880e4fd34a91f485e2",
+        "status": "",
+        "sourceFingerprint": "041d68c78e104d55081dbf15d5ef016349146dbe26860d31cbbc2149e1b168f7"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "80d31edc464870638dc4bb20f3ebe80fa73bf2198a464ecc994e6ef981b62ff9"
+      },
+      "libraries": [
+        {
+          "name": "perps",
+          "head": "a6a53226294ab58fbe06d49e688997543ec8ec9a",
+          "status": "",
+          "sourceFingerprint": "aba3889d180e485b861d19ac5bb8da8f498360f438aae958ba69d6912c462c55"
+        },
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "8483a2c21be6d3ecb801b17661214e0146c68034db39fb97874a7c47fd864ce5"
+        }
+      ],
+      "helpers": [
+        {
+          "path": "app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts",
+          "sourceFingerprint": "f3810a17a25fc922ef3657465388e402de8bdc874f373634a30ba857acbf19b5"
+        },
+        {
+          "path": "app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.test.tsx",
+          "sourceFingerprint": "560f9195612e561ea754e8f2b862b9c2c77f875457f5ece879d6e24f311a90e5"
+        },
+        {
+          "path": "app/components/UI/Perps/components/PerpsMarginModeBottomSheet/PerpsMarginModeBottomSheet.test.tsx",
+          "sourceFingerprint": "4eb70979f971725b5a1502f31dca3e3959dd32a8bacbf632e86dec7b4e4ffb5c"
+        },
+        {
+          "path": "app/components/UI/Perps/utils/orderParams.test.ts",
+          "sourceFingerprint": "f5a13ae7ce4d8ef03ec683f65de7186e11cdf758eb31eaa090cff166eb9bfc4d"
+        }
+      ]
+    },
+    {
+      "phase": "pre-execute",
+      "capturedAt": "2026-09-27T02:55:50.522Z",
+      "recipeDigest": "sha256:40e2b29131b5d3577c498bb7ed54dc25fada9ceb3d0be78b33bfb9ab16cede06",
+      "product": {
+        "head": "4991fa272bac7cb8c041c1880e4fd34a91f485e2",
+        "status": "",
+        "sourceFingerprint": "041d68c78e104d55081dbf15d5ef016349146dbe26860d31cbbc2149e1b168f7"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "80d31edc464870638dc4bb20f3ebe80fa73bf2198a464ecc994e6ef981b62ff9"
+      },
+      "libraries": [
+        {
+          "name": "perps",
+          "head": "a6a53226294ab58fbe06d49e688997543ec8ec9a",
+          "status": "",
+          "sourceFingerprint": "aba3889d180e485b861d19ac5bb8da8f498360f438aae958ba69d6912c462c55"
+        },
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "8483a2c21be6d3ecb801b17661214e0146c68034db39fb97874a7c47fd864ce5"
+        }
+      ],
+      "helpers": [
+        {
+          "path": "app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts",
+          "sourceFingerprint": "f3810a17a25fc922ef3657465388e402de8bdc874f373634a30ba857acbf19b5"
+        },
+        {
+          "path": "app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.test.tsx",
+          "sourceFingerprint": "560f9195612e561ea754e8f2b862b9c2c77f875457f5ece879d6e24f311a90e5"
+        },
+        {
+          "path": "app/components/UI/Perps/components/PerpsMarginModeBottomSheet/PerpsMarginModeBottomSheet.test.tsx",
+          "sourceFingerprint": "4eb70979f971725b5a1502f31dca3e3959dd32a8bacbf632e86dec7b4e4ffb5c"
+        },
+        {
+          "path": "app/components/UI/Perps/utils/orderParams.test.ts",
+          "sourceFingerprint": "f5a13ae7ce4d8ef03ec683f65de7186e11cdf758eb31eaa090cff166eb9bfc4d"
+        }
+      ]
+    },
+    {
+      "phase": "end",
+      "capturedAt": "2026-09-27T02:57:37.319Z",
+      "recipeDigest": "sha256:40e2b29131b5d3577c498bb7ed54dc25fada9ceb3d0be78b33bfb9ab16cede06",
+      "product": {
+        "head": "4991fa272bac7cb8c041c1880e4fd34a91f485e2",
+        "status": "",
+        "sourceFingerprint": "041d68c78e104d55081dbf15d5ef016349146dbe26860d31cbbc2149e1b168f7"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "80d31edc464870638dc4bb20f3ebe80fa73bf2198a464ecc994e6ef981b62ff9"
+      },
+      "libraries": [
+        {
+          "name": "perps",
+          "head": "a6a53226294ab58fbe06d49e688997543ec8ec9a",
+          "status": "",
+          "sourceFingerprint": "aba3889d180e485b861d19ac5bb8da8f498360f438aae958ba69d6912c462c55"
+        },
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "8483a2c21be6d3ecb801b17661214e0146c68034db39fb97874a7c47fd864ce5"
+        }
+      ],
+      "helpers": [
+        {
+          "path": "app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts",
+          "sourceFingerprint": "f3810a17a25fc922ef3657465388e402de8bdc874f373634a30ba857acbf19b5"
+        },
+        {
+          "path": "app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.test.tsx",
+          "sourceFingerprint": "560f9195612e561ea754e8f2b862b9c2c77f875457f5ece879d6e24f311a90e5"
+        },
+        {
+          "path": "app/components/UI/Perps/components/PerpsMarginModeBottomSheet/PerpsMarginModeBottomSheet.test.tsx",
+          "sourceFingerprint": "4eb70979f971725b5a1502f31dca3e3959dd32a8bacbf632e86dec7b4e4ffb5c"
+        },
+        {
+          "path": "app/components/UI/Perps/utils/orderParams.test.ts",
+          "sourceFingerprint": "f5a13ae7ce4d8ef03ec683f65de7186e11cdf758eb31eaa090cff166eb9bfc4d"
+        }
+      ]
+    }
+  ],
+  "drift": []
+}

@@ -1,0 +1,350 @@
+{
+  "$schema": "https://farmslot.io/schemas/recipe-v1.schema.json",
+  "title": "Cross margin selectable in Pro margin mode chooser when flag is on",
+  "description": "TAT-3524. Data prerequisites: fixture Trading account (currently selected), HyperLiquid testnet, BTC market in Pro with no BTC position or resting order (converged by setup nodes, since an open position locks the margin mode); perpsCrossMarginEnabled pinned on and perpsTerminalBackendEnabled pinned off via metamask.feature_flags.set and cleared at teardown.",
+  "workflow": {
+    "entry": "setup-flag",
+    "nodes": {
+      "setup-flag": {
+        "action": "metamask.feature_flags.set",
+        "intent": "Turn the cross margin rollout flag on like the reporter did, with the Terminal market backend off since it drops the no-Cross asset restriction and keeps Cross disabled (TAT-4022)",
+        "flags": {
+          "perpsCrossMarginEnabled": {
+            "enabled": true,
+            "minimumVersion": "0.0.0"
+          },
+          "perpsTerminalBackendEnabled": {
+            "enabled": false,
+            "minimumVersion": "0.0.0"
+          }
+        },
+        "next": "setup-pro"
+      },
+      "setup-pro": {
+        "action": "metamask.perps.start_state",
+        "intent": "Open the BTC market in Pro mode on HyperLiquid testnet with the fixture trading account",
+        "account_name": "Trading",
+        "provider": "hyperliquid",
+        "network": "testnet",
+        "market": "BTC",
+        "market_mode": "pro",
+        "page": "market_details",
+        "next": "setup-no-btc-position"
+      },
+      "setup-no-btc-position": {
+        "action": "metamask.perps.ensure_positions",
+        "intent": "Start from no BTC position so the margin mode is free to change",
+        "market": "BTC",
+        "state": "none",
+        "next": "setup-no-btc-orders"
+      },
+      "setup-no-btc-orders": {
+        "action": "metamask.perps.ensure_orders",
+        "intent": "Start from no resting BTC orders so the margin mode is free to change",
+        "market": "BTC",
+        "state": "none",
+        "next": "setup-show-margin-control"
+      },
+      "setup-show-margin-control": {
+        "action": "ui.scroll",
+        "intent": "Let the trader see the margin and leverage controls of the order form",
+        "test_id": "perps-pro-order-form-margin-mode",
+        "scroll_into_view": true,
+        "next": "setup-open-order-type"
+      },
+      "setup-open-order-type": {
+        "action": "ui.press",
+        "intent": "Open the order type chooser so the trade starts as a market order",
+        "test_id": "perps-pro-order-form-order-type",
+        "next": "setup-basic-tab"
+      },
+      "setup-basic-tab": {
+        "action": "ui.press",
+        "intent": "Show the basic order types, since a saved advanced order type opens the chooser on another tab",
+        "test_id": "perps-order-type-tab-basic",
+        "next": "setup-wait-market-type"
+      },
+      "setup-wait-market-type": {
+        "action": "ui.wait_for",
+        "intent": "Confirm the Market order type is offered",
+        "test_id": "perps-order-type-market",
+        "expected": "visible",
+        "timeout_ms": 10000,
+        "next": "setup-pick-market-type"
+      },
+      "setup-pick-market-type": {
+        "action": "ui.press",
+        "intent": "Start from a market order regardless of the saved order type",
+        "test_id": "perps-order-type-market",
+        "next": "gate-margin-button"
+      },
+      "gate-margin-button": {
+        "action": "ui.wait_for",
+        "intent": "Confirm the Pro order form margin mode control is on screen",
+        "test_id": "perps-pro-order-form-margin-mode",
+        "expected": "visible",
+        "timeout_ms": 15000,
+        "next": "ac1-open-sheet"
+      },
+      "ac1-open-sheet": {
+        "action": "ui.press",
+        "intent": "Open the margin mode chooser the way a trader would",
+        "test_id": "perps-pro-order-form-margin-mode",
+        "next": "ac1-wait-cross-option"
+      },
+      "ac1-wait-cross-option": {
+        "action": "ui.wait_for",
+        "intent": "Confirm the Cross choice is shown in the margin mode chooser",
+        "test_id": "perps-margin-mode-cross",
+        "expected": "visible",
+        "timeout_ms": 10000,
+        "next": "ac1-press-cross"
+      },
+      "ac1-press-cross": {
+        "action": "ui.press",
+        "intent": "Pick Cross margin for the next trade",
+        "test_id": "perps-margin-mode-cross",
+        "next": "ac1-wait-sheet-closed"
+      },
+      "ac1-wait-sheet-closed": {
+        "action": "ui.wait_for",
+        "intent": "Confirm picking Cross closes the chooser and returns to the order form",
+        "test_id": "perps-margin-mode-bottom-sheet",
+        "expected": "absent",
+        "timeout_ms": 10000,
+        "next": "ac1-show-margin-control"
+      },
+      "ac1-show-margin-control": {
+        "action": "ui.swipe",
+        "intent": "Let reviewers see the margin control right after Cross was picked, clear of the sticky header",
+        "target": {
+          "x": 150,
+          "y": 500
+        },
+        "direction": "down",
+        "distance": 1200,
+        "duration_ms": 400,
+        "next": "ac1-wait-cross-label"
+      },
+      "ac1-wait-cross-label": {
+        "action": "ui.wait_for",
+        "intent": "Confirm the order form margin control now reads Cross",
+        "text": "Cross",
+        "text_match": "exact",
+        "expected": "visible",
+        "timeout_ms": 10000,
+        "next": "ac1-screenshot-cross-label",
+        "test_id": "perps-pro-order-form-margin-mode"
+      },
+      "ac1-screenshot-cross-label": {
+        "action": "ui.screenshot",
+        "intent": "Show the order form margin control reading Cross after the trader picked it",
+        "path": "screenshots/evidence-ac1-cross-label.png",
+        "label": "AC1: order form shows Cross margin",
+        "next": "ac1-reopen-sheet"
+      },
+      "ac1-reopen-sheet": {
+        "action": "ui.press",
+        "intent": "Reopen the chooser to show Cross is the active choice",
+        "test_id": "perps-pro-order-form-margin-mode",
+        "next": "ac1-wait-cross-selected"
+      },
+      "ac1-wait-cross-selected": {
+        "action": "ui.wait_for",
+        "intent": "Confirm the chooser reopens with the Cross choice on screen",
+        "test_id": "perps-margin-mode-cross",
+        "expected": "visible",
+        "timeout_ms": 10000,
+        "next": "ac1-screenshot-cross-sheet"
+      },
+      "ac1-screenshot-cross-sheet": {
+        "action": "ui.screenshot",
+        "intent": "Show Cross is selectable and selected, without the coming soon note",
+        "path": "screenshots/evidence-ac1-cross-sheet.png",
+        "label": "AC1: Cross selectable in margin mode chooser",
+        "next": "ac2-keep-cross"
+      },
+      "ac2-keep-cross": {
+        "action": "ui.press",
+        "intent": "Confirm Cross as the margin mode for the trade",
+        "test_id": "perps-margin-mode-cross",
+        "next": "ac2-wait-sheet-closed"
+      },
+      "ac2-wait-sheet-closed": {
+        "action": "ui.wait_for",
+        "intent": "Confirm the trader is back on the order form with Cross kept",
+        "test_id": "perps-margin-mode-bottom-sheet",
+        "expected": "absent",
+        "timeout_ms": 10000,
+        "next": "ac2-scroll-size"
+      },
+      "ac2-scroll-size": {
+        "action": "ui.scroll",
+        "intent": "Let the trader see where the trade size is entered",
+        "test_id": "perps-pro-order-form-size-card",
+        "scroll_into_view": true,
+        "next": "ac2-wait-size"
+      },
+      "ac2-wait-size": {
+        "action": "ui.wait_for",
+        "intent": "Confirm the order size field is ready for input",
+        "test_id": "perps-pro-order-form-size-card",
+        "expected": "visible",
+        "timeout_ms": 10000,
+        "next": "ac2-set-size"
+      },
+      "ac2-set-size": {
+        "action": "ui.set_input",
+        "intent": "Enter a small 15 USD trade size like a trader would",
+        "test_id": "perps-pro-order-form-size-input",
+        "value": "15",
+        "next": "ac2-scroll-submit"
+      },
+      "ac2-scroll-submit": {
+        "action": "ui.scroll",
+        "intent": "Let the trader reach the button that sends the Cross trade",
+        "test_id": "perps-pro-order-form-summary-fees",
+        "scroll_into_view": true,
+        "next": "ac2-wait-submit"
+      },
+      "ac2-wait-submit": {
+        "action": "ui.wait_for",
+        "intent": "Confirm the place order button is reachable",
+        "test_id": "perps-pro-order-form-place-order",
+        "expected": "visible",
+        "timeout_ms": 10000,
+        "next": "ac2-press-submit"
+      },
+      "ac2-press-submit": {
+        "action": "ui.press",
+        "intent": "Place the Cross margin long on BTC testnet",
+        "test_id": "perps-pro-order-form-place-order",
+        "next": "ac2-assert-position-open"
+      },
+      "ac2-assert-position-open": {
+        "action": "metamask.perps.assert_positions",
+        "intent": "Confirm the Cross order actually opened a BTC position",
+        "market": "BTC",
+        "state": "open",
+        "timeout_ms": 30000,
+        "next": "ac2-filter-btc"
+      },
+      "ac2-filter-btc": {
+        "action": "ui.press",
+        "intent": "Narrow the positions list to BTC so the new position card is shown on its own",
+        "test_id": "perps-pro-market-positions-ticker-only",
+        "next": "ac2-swipe-to-positions"
+      },
+      "ac2-swipe-to-positions": {
+        "action": "ui.swipe",
+        "intent": "Let reviewers see the positions panel below the order form",
+        "target": {
+          "x": 150,
+          "y": 700
+        },
+        "direction": "up",
+        "distance": 600,
+        "duration_ms": 400,
+        "next": "ac2-swipe-to-card"
+      },
+      "ac2-swipe-to-card": {
+        "action": "ui.swipe",
+        "intent": "Let reviewers see the margin details of the new BTC position card",
+        "target": {
+          "x": 150,
+          "y": 700
+        },
+        "direction": "up",
+        "distance": 600,
+        "duration_ms": 400,
+        "next": "ac2-wait-cross-tag"
+      },
+      "ac2-wait-cross-tag": {
+        "action": "ui.wait_for",
+        "intent": "Confirm the venue reports the new BTC position as Cross margin",
+        "test_id": "cross-margin-tag-pro-BTC",
+        "expected": "visible",
+        "timeout_ms": 20000,
+        "next": "ac2-screenshot-cross-position"
+      },
+      "ac2-screenshot-cross-position": {
+        "action": "ui.screenshot",
+        "intent": "Show reviewers the placed BTC position is tagged Cross",
+        "path": "screenshots/evidence-ac2-cross-position.png",
+        "label": "AC2: placed BTC position is Cross margin",
+        "next": "teardown-close-btc"
+      },
+      "teardown-close-btc": {
+        "action": "metamask.perps.close_positions",
+        "intent": "Close the test BTC position so the testnet account returns to flat",
+        "market": "BTC",
+        "next": "teardown-assert-flat"
+      },
+      "teardown-assert-flat": {
+        "action": "metamask.perps.assert_positions",
+        "intent": "Confirm the testnet account holds no BTC position after cleanup",
+        "market": "BTC",
+        "state": "none",
+        "timeout_ms": 30000,
+        "next": "teardown-unfilter-btc"
+      },
+      "teardown-unfilter-btc": {
+        "action": "ui.press",
+        "intent": "Restore the positions list to all markets for later runs",
+        "test_id": "perps-pro-market-positions-ticker-only",
+        "next": "teardown-clear-flag"
+      },
+      "teardown-clear-flag": {
+        "action": "metamask.feature_flags.clear",
+        "intent": "Drop the flag override so the slot does not leak the variant",
+        "next": "ac2-run-order-params-tests"
+      },
+      "ac2-run-order-params-tests": {
+        "action": "command",
+        "intent": "Prove the picked margin mode reaches the placed order parameters",
+        "cmd": "yarn jest app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts app/components/UI/Perps/utils/orderParams.test.ts -t 'margin mode' --modulePathIgnorePatterns '<rootDir>/temp/' --no-coverage > temp/tasks/feat/tat-3524-0925-174920/artifacts/test-logs/ac2-jest.log 2>&1\nstatus=$?\ntail -50 temp/tasks/feat/tat-3524-0925-174920/artifacts/test-logs/ac2-jest.log\nexit $status",
+        "timeout_ms": 900000,
+        "next": "ac2-assert-tests-pass"
+      },
+      "ac2-assert-tests-pass": {
+        "action": "assert_exit_code",
+        "source": "ac2-run-order-params-tests",
+        "expected": 0,
+        "intent": "Confirm the order parameter margin mode tests passed",
+        "next": "ac3-run-gating-tests"
+      },
+      "ac3-run-gating-tests": {
+        "action": "command",
+        "intent": "Prove Cross stays unavailable when the flag is off or the market cannot trade cross",
+        "cmd": "yarn jest app/components/UI/Perps/components/PerpsMarginModeBottomSheet/PerpsMarginModeBottomSheet.test.tsx app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.test.tsx -t 'cross margin' --modulePathIgnorePatterns '<rootDir>/temp/' --no-coverage > temp/tasks/feat/tat-3524-0925-174920/artifacts/test-logs/ac3-jest.log 2>&1\nstatus=$?\ntail -50 temp/tasks/feat/tat-3524-0925-174920/artifacts/test-logs/ac3-jest.log\nexit $status",
+        "timeout_ms": 900000,
+        "next": "ac3-assert-tests-pass"
+      },
+      "ac3-assert-tests-pass": {
+        "action": "assert_exit_code",
+        "source": "ac3-run-gating-tests",
+        "expected": 0,
+        "intent": "Confirm the cross margin gating tests passed",
+        "next": "ac4-run-cross-position-tests"
+      },
+      "ac4-run-cross-position-tests": {
+        "action": "command",
+        "intent": "Prove an existing cross position no longer blocks trading when Cross is available",
+        "cmd": "yarn jest app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts -t 'existing cross position' --modulePathIgnorePatterns '<rootDir>/temp/' --no-coverage > temp/tasks/feat/tat-3524-0925-174920/artifacts/test-logs/ac4-jest.log 2>&1\nstatus=$?\ntail -50 temp/tasks/feat/tat-3524-0925-174920/artifacts/test-logs/ac4-jest.log\nexit $status",
+        "timeout_ms": 900000,
+        "next": "ac4-assert-tests-pass"
+      },
+      "ac4-assert-tests-pass": {
+        "action": "assert_exit_code",
+        "source": "ac4-run-cross-position-tests",
+        "expected": 0,
+        "intent": "Confirm the existing cross position tests passed",
+        "next": "done"
+      },
+      "done": {
+        "action": "end",
+        "status": "pass"
+      }
+    }
+  }
+}

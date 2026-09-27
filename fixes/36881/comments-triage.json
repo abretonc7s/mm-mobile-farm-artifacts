@@ -1,0 +1,62 @@
+[
+  {
+    "comment_id": 4110687938,
+    "review_id": null,
+    "author_login": "cursor[bot]",
+    "author_type": "Bot",
+    "reviewer_login": "cursor[bot]",
+    "review_state": "COMMENTED",
+    "source_kind": "bugbot",
+    "path": "app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.ts",
+    "line": 936,
+    "body": "Position lock ignores provider: useHasExistingPosition matches on asset only, so an isolated BTC position on Lighter locks Hyperliquid BTC to Isolated and sends isolated even when Cross is valid on the selected venue.",
+    "triage": "REAL",
+    "action": "Already fixed in 15ab6825f3 (provider-scoped position lookup); replied and resolved in an earlier round.",
+    "fixed_in_commit": "15ab6825f3"
+  },
+  {
+    "comment_id": 5844369405,
+    "review_id": null,
+    "author_login": "deeeed",
+    "author_type": "User",
+    "reviewer_login": "deeeed",
+    "review_state": null,
+    "source_kind": "human",
+    "path": "app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.ts",
+    "line": 885,
+    "body": "Cross eligibility reads onlyIsolated/marginMode through a symbol-only usePerpsMarketData({ asset: symbol }) lookup while the order panel routes through the selected market's providerId; scope metadata to the selected provider and add a regression test. Re-review the final HEAD.",
+    "triage": "REAL",
+    "action": "Already fixed in 9398d2f0e53; this round re-validated the final HEAD on device (recipe 45/45) and posted the result.",
+    "fixed_in_commit": "9398d2f0e53"
+  },
+  {
+    "comment_id": 5845770720,
+    "review_id": null,
+    "author_login": "github-actions[bot]",
+    "author_type": "Bot",
+    "reviewer_login": "github-actions[bot]",
+    "review_state": null,
+    "source_kind": "ci",
+    "path": null,
+    "line": null,
+    "body": "Performance Test Results: 2 Perps scenarios failed with no_performance_metrics (non-blocking); baseline on main also failing.",
+    "triage": "OUT_OF_SCOPE",
+    "action": "Non-blocking perf infra failure also present on main; no reply.",
+    "fixed_in_commit": null
+  },
+  {
+    "comment_id": 5845172803,
+    "review_id": null,
+    "author_login": "github-actions[bot]",
+    "author_type": "Bot",
+    "reviewer_login": "github-actions[bot]",
+    "review_state": null,
+    "source_kind": "ci",
+    "path": null,
+    "line": null,
+    "body": "E2E fixture update failed.",
+    "triage": "OUT_OF_SCOPE",
+    "action": "Superseded by a later successful fixture update (71df866dd0); covered in the author's earlier follow-up.",
+    "fixed_in_commit": null
+  }
+]

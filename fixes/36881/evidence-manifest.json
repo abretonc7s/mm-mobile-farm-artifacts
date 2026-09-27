@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "preferred_mode": "screenshots",
+  "summary": "Device re-check of HEAD 4991fa272b: Pro BTC market on HyperLiquid testnet, perpsCrossMarginEnabled on, perpsTerminalBackendEnabled off.",
+  "before_after_pairs": [],
+  "standalone": [
+    {
+      "label": "Margin mode chooser: Cross selectable and selected",
+      "covers": ["ac1"],
+      "file": "evidence-ac1-cross-sheet.png"
+    },
+    {
+      "label": "Order form margin control reads Cross after the pick",
+      "covers": ["ac1"],
+      "file": "evidence-ac1-cross-label.png"
+    },
+    {
+      "label": "Placed BTC position shows \"Position margin used\" tagged Cross",
+      "covers": ["ac2"],
+      "file": "evidence-ac2-cross-position.png"
+    }
+  ],
+  "omit": []
+}

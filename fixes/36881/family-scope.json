@@ -1,0 +1,6 @@
+{
+  "originalFamilyScopeSummary": "Fix cross margin mobile UI layout and responsiveness issues",
+  "currentTriggerSummary": "pr-complete: feat: cross margin | mobile UI",
+  "scopeVerdict": "full-scope-addressed",
+  "notes": "All review comments were already fixed on HEAD 4991fa272b. This round closed the one open gap, a device re-check of the final HEAD: recipe 45/45 (Cross selectable, label reads Cross, placed BTC position tagged Cross). CI green; only approval pending."
+}
