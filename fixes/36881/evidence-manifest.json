@@ -1,11 +1,11 @@
 {
   "version": 1,
   "preferred_mode": "screenshots",
-  "summary": "Device re-check of HEAD 4991fa272b: Pro BTC market on HyperLiquid testnet, perpsCrossMarginEnabled on, perpsTerminalBackendEnabled off.",
+  "summary": "Rebased head 40cdf2f5bce on iOS sim mm-6: Pro BTC market on HyperLiquid testnet, perpsCrossMarginEnabled pinned on, perpsTerminalBackendEnabled pinned off. Recipe 45/45.",
   "before_after_pairs": [],
   "standalone": [
     {
-      "label": "Margin mode chooser: Cross selectable and selected",
+      "label": "Margin mode chooser: Cross selectable and selected, no \"Coming soon\" note",
       "covers": ["ac1"],
       "file": "evidence-ac1-cross-sheet.png"
     },

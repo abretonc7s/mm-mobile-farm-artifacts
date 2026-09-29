@@ -1,0 +1,8 @@
+PASS app/components/UI/Perps/components/PerpsMarginModeBottomSheet/PerpsMarginModeBottomSheet.test.tsx
+PASS app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.test.tsx (5.296 s)
+
+Test Suites: 2 passed, 2 total
+Tests:       40 skipped, 15 passed, 55 total
+Snapshots:   0 total
+Time:        5.524 s
+Ran all test suites matching /app\/components\/UI\/Perps\/components\/PerpsMarginModeBottomSheet\/PerpsMarginModeBottomSheet.test.tsx|app\/components\/UI\/Perps\/Views\/PerpsProMarketView\/components\/PerpsProOrderFormPanel.test.tsx/i with tests matching "cross margin".

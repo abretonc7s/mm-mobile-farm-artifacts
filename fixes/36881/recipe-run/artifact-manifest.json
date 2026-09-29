@@ -37,7 +37,7 @@
       "metadata": {
         "provider": "simctl",
         "mode": "xcrun simctl io screenshot",
-        "selectedDevice": "mm-2"
+        "selectedDevice": "mm-6"
       }
     },
     {
@@ -50,7 +50,7 @@
       "metadata": {
         "provider": "simctl",
         "mode": "xcrun simctl io screenshot",
-        "selectedDevice": "mm-2"
+        "selectedDevice": "mm-6"
       }
     },
     {
@@ -63,7 +63,7 @@
       "metadata": {
         "provider": "simctl",
         "mode": "xcrun simctl io screenshot",
-        "selectedDevice": "mm-2"
+        "selectedDevice": "mm-6"
       }
     },
     {
@@ -113,7 +113,7 @@
       "category": "system",
       "metadata": {
         "adapter": "mobile",
-        "git_ref": "4991fa272bac7cb8c041c1880e4fd34a91f485e2",
+        "git_ref": "40cdf2f5bce5f24ede2f0eb506d62a8a8298e5ba",
         "branch": "TAT-3524-feat-cross-margin-mobile-ui",
         "dirty": false
       }

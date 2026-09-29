@@ -4,40 +4,40 @@
   "snapshots": [
     {
       "phase": "start",
-      "capturedAt": "2026-09-27T02:55:50.156Z",
-      "recipeDigest": "sha256:40e2b29131b5d3577c498bb7ed54dc25fada9ceb3d0be78b33bfb9ab16cede06",
+      "capturedAt": "2026-09-29T10:06:24.239Z",
+      "recipeDigest": "sha256:90eef6d69308c18d71f393dbcafe2d26da57b216fd9dafe16022a37a5f3012a9",
       "product": {
-        "head": "4991fa272bac7cb8c041c1880e4fd34a91f485e2",
+        "head": "40cdf2f5bce5f24ede2f0eb506d62a8a8298e5ba",
         "status": "",
-        "sourceFingerprint": "041d68c78e104d55081dbf15d5ef016349146dbe26860d31cbbc2149e1b168f7"
+        "sourceFingerprint": "9afe5dc12c493272011dc67c4eafe34f718eb0d6e25644e17ba1f150a5f28de8"
       },
       "runner": {
         "head": null,
         "status": "not-a-git-checkout",
-        "sourceFingerprint": "80d31edc464870638dc4bb20f3ebe80fa73bf2198a464ecc994e6ef981b62ff9"
+        "sourceFingerprint": "68467e6b8503e6292bd2afcfbd5d28fd8f35bf9c7151d5b9451d9247166b3940"
       },
       "libraries": [
         {
           "name": "perps",
-          "head": "a6a53226294ab58fbe06d49e688997543ec8ec9a",
+          "head": "4229069c5ab79c5bf512855665c08dbb4cc5345c",
           "status": "",
-          "sourceFingerprint": "aba3889d180e485b861d19ac5bb8da8f498360f438aae958ba69d6912c462c55"
+          "sourceFingerprint": "5a129519553a712580c75ec264d93413f00d4e72410265fab29a610c5c032806"
         },
         {
           "name": "metamask",
           "head": null,
           "status": "not-a-git-checkout",
-          "sourceFingerprint": "8483a2c21be6d3ecb801b17661214e0146c68034db39fb97874a7c47fd864ce5"
+          "sourceFingerprint": "12d4ccc02d143d70756c7a6886cb6eaa8d04ef80990f2425c4a5ca704883fa63"
         }
       ],
       "helpers": [
         {
           "path": "app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts",
-          "sourceFingerprint": "f3810a17a25fc922ef3657465388e402de8bdc874f373634a30ba857acbf19b5"
+          "sourceFingerprint": "e31cee11ae30a47ad0cbf03d6bbc08adeee66abb1f4ac2b113f67d588d344292"
         },
         {
           "path": "app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.test.tsx",
-          "sourceFingerprint": "560f9195612e561ea754e8f2b862b9c2c77f875457f5ece879d6e24f311a90e5"
+          "sourceFingerprint": "f70d50098d48db24dd67b5a34521bf8706a0febef93d2baab571692fa1ff65ce"
         },
         {
           "path": "app/components/UI/Perps/components/PerpsMarginModeBottomSheet/PerpsMarginModeBottomSheet.test.tsx",
@@ -51,40 +51,40 @@
     },
     {
       "phase": "pre-execute",
-      "capturedAt": "2026-09-27T02:55:50.522Z",
-      "recipeDigest": "sha256:40e2b29131b5d3577c498bb7ed54dc25fada9ceb3d0be78b33bfb9ab16cede06",
+      "capturedAt": "2026-09-29T10:06:26.328Z",
+      "recipeDigest": "sha256:90eef6d69308c18d71f393dbcafe2d26da57b216fd9dafe16022a37a5f3012a9",
       "product": {
-        "head": "4991fa272bac7cb8c041c1880e4fd34a91f485e2",
+        "head": "40cdf2f5bce5f24ede2f0eb506d62a8a8298e5ba",
         "status": "",
-        "sourceFingerprint": "041d68c78e104d55081dbf15d5ef016349146dbe26860d31cbbc2149e1b168f7"
+        "sourceFingerprint": "9afe5dc12c493272011dc67c4eafe34f718eb0d6e25644e17ba1f150a5f28de8"
       },
       "runner": {
         "head": null,
         "status": "not-a-git-checkout",
-        "sourceFingerprint": "80d31edc464870638dc4bb20f3ebe80fa73bf2198a464ecc994e6ef981b62ff9"
+        "sourceFingerprint": "68467e6b8503e6292bd2afcfbd5d28fd8f35bf9c7151d5b9451d9247166b3940"
       },
       "libraries": [
         {
           "name": "perps",
-          "head": "a6a53226294ab58fbe06d49e688997543ec8ec9a",
+          "head": "4229069c5ab79c5bf512855665c08dbb4cc5345c",
           "status": "",
-          "sourceFingerprint": "aba3889d180e485b861d19ac5bb8da8f498360f438aae958ba69d6912c462c55"
+          "sourceFingerprint": "5a129519553a712580c75ec264d93413f00d4e72410265fab29a610c5c032806"
         },
         {
           "name": "metamask",
           "head": null,
           "status": "not-a-git-checkout",
-          "sourceFingerprint": "8483a2c21be6d3ecb801b17661214e0146c68034db39fb97874a7c47fd864ce5"
+          "sourceFingerprint": "12d4ccc02d143d70756c7a6886cb6eaa8d04ef80990f2425c4a5ca704883fa63"
         }
       ],
       "helpers": [
         {
           "path": "app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts",
-          "sourceFingerprint": "f3810a17a25fc922ef3657465388e402de8bdc874f373634a30ba857acbf19b5"
+          "sourceFingerprint": "e31cee11ae30a47ad0cbf03d6bbc08adeee66abb1f4ac2b113f67d588d344292"
         },
         {
           "path": "app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.test.tsx",
-          "sourceFingerprint": "560f9195612e561ea754e8f2b862b9c2c77f875457f5ece879d6e24f311a90e5"
+          "sourceFingerprint": "f70d50098d48db24dd67b5a34521bf8706a0febef93d2baab571692fa1ff65ce"
         },
         {
           "path": "app/components/UI/Perps/components/PerpsMarginModeBottomSheet/PerpsMarginModeBottomSheet.test.tsx",
@@ -98,40 +98,40 @@
     },
     {
       "phase": "end",
-      "capturedAt": "2026-09-27T02:57:37.319Z",
-      "recipeDigest": "sha256:40e2b29131b5d3577c498bb7ed54dc25fada9ceb3d0be78b33bfb9ab16cede06",
+      "capturedAt": "2026-09-29T10:08:56.563Z",
+      "recipeDigest": "sha256:90eef6d69308c18d71f393dbcafe2d26da57b216fd9dafe16022a37a5f3012a9",
       "product": {
-        "head": "4991fa272bac7cb8c041c1880e4fd34a91f485e2",
+        "head": "40cdf2f5bce5f24ede2f0eb506d62a8a8298e5ba",
         "status": "",
-        "sourceFingerprint": "041d68c78e104d55081dbf15d5ef016349146dbe26860d31cbbc2149e1b168f7"
+        "sourceFingerprint": "9afe5dc12c493272011dc67c4eafe34f718eb0d6e25644e17ba1f150a5f28de8"
       },
       "runner": {
         "head": null,
         "status": "not-a-git-checkout",
-        "sourceFingerprint": "80d31edc464870638dc4bb20f3ebe80fa73bf2198a464ecc994e6ef981b62ff9"
+        "sourceFingerprint": "68467e6b8503e6292bd2afcfbd5d28fd8f35bf9c7151d5b9451d9247166b3940"
       },
       "libraries": [
         {
           "name": "perps",
-          "head": "a6a53226294ab58fbe06d49e688997543ec8ec9a",
+          "head": "4229069c5ab79c5bf512855665c08dbb4cc5345c",
           "status": "",
-          "sourceFingerprint": "aba3889d180e485b861d19ac5bb8da8f498360f438aae958ba69d6912c462c55"
+          "sourceFingerprint": "5a129519553a712580c75ec264d93413f00d4e72410265fab29a610c5c032806"
         },
         {
           "name": "metamask",
           "head": null,
           "status": "not-a-git-checkout",
-          "sourceFingerprint": "8483a2c21be6d3ecb801b17661214e0146c68034db39fb97874a7c47fd864ce5"
+          "sourceFingerprint": "12d4ccc02d143d70756c7a6886cb6eaa8d04ef80990f2425c4a5ca704883fa63"
         }
       ],
       "helpers": [
         {
           "path": "app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts",
-          "sourceFingerprint": "f3810a17a25fc922ef3657465388e402de8bdc874f373634a30ba857acbf19b5"
+          "sourceFingerprint": "e31cee11ae30a47ad0cbf03d6bbc08adeee66abb1f4ac2b113f67d588d344292"
         },
         {
           "path": "app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.test.tsx",
-          "sourceFingerprint": "560f9195612e561ea754e8f2b862b9c2c77f875457f5ece879d6e24f311a90e5"
+          "sourceFingerprint": "f70d50098d48db24dd67b5a34521bf8706a0febef93d2baab571692fa1ff65ce"
         },
         {
           "path": "app/components/UI/Perps/components/PerpsMarginModeBottomSheet/PerpsMarginModeBottomSheet.test.tsx",

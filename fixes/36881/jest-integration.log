@@ -1,0 +1,34 @@
+$ /Users/deeeed/dev/metamask/metamask-mobile-6/node_modules/.bin/jest --no-coverage -c jest.config.integration.js app/components/UI/Perps/integration/marginModeLock.integration.test.ts
+exit: 0
+duration_ms: 6719
+
+--- stdout ---
+
+
+--- stderr ---
+PASS app/components/UI/Perps/integration/marginModeLock.integration.test.ts
+  Perps margin-mode lock — integration
+    reading the lock
+      ✓ reports the mode of an open position (5 ms)
+      ✓ reports the asset mode bound by a resting order (2 ms)
+      ✓ reports the asset mode bound by an active TWAP without resting orders (2 ms)
+      ✓ reports unlocked when nothing binds the market (1 ms)
+      ✓ reports unavailable when positions cannot be read (2 ms)
+      ✓ reports unavailable when the selected account changes mid-read (2 ms)
+    routing through the aggregated provider
+      ✓ reads the lock from the default provider (1 ms)
+      ✓ reports unavailable for a provider that is not registered (1 ms)
+      ✓ reports unavailable when the provider read throws (2 ms)
+    placing an order with an explicit margin mode
+      ✓ rejects a mode that conflicts with the open position (3 ms)
+      ✓ rejects a mode that conflicts with a resting order (2 ms)
+      ✓ sets cross leverage and places the order when the market is unlocked (4 ms)
+      ✓ places an order whose mode matches the resting-order lock (3 ms)
+      ✓ keeps the isolated default and skips the lock read when no mode is sent (2 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       14 passed, 14 total
+Snapshots:   0 total
+Time:        3.246 s, estimated 42 s
+Ran all test suites matching /app\/components\/UI\/Perps\/integration\/marginModeLock.integration.test.ts/i.
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

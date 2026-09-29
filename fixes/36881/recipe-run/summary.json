@@ -1,5 +1,5 @@
 {
-  "invocationDigest": "sha256:01c5aa2dda9466a0454fa301cd2ec12a8a3c4df33b0aa43b0e6b16df818e520c",
+  "invocationDigest": "sha256:a57416543e6a9cd993886956e7cd2d482ac5e9f7d82b25381bfc17fd247bbaf3",
   "status": "pass",
   "total": 45,
   "passed": 45,
@@ -10,12 +10,12 @@
     "environment": 0,
     "unknown": 0
   },
-  "startedAt": "2026-09-27T02:55:50.829Z",
-  "endedAt": "2026-09-27T02:57:37.192Z",
-  "durationMs": 106363,
+  "startedAt": "2026-09-29T10:06:27.446Z",
+  "endedAt": "2026-09-29T10:08:56.301Z",
+  "durationMs": 148855,
   "harness": {
     "name": "@farmslot/recipe-harness",
-    "version": "0.18.1",
+    "version": "0.21.1",
     "action_manifest_schema": "https://farmslot.io/schemas/action-manifest-v1.schema.json"
   },
   "runner": {
@@ -27,13 +27,13 @@
     "sources": [
       {
         "name": "perps",
-        "root": "/Volumes/FD/dev/metamask/metamask-mobile-2/.skills-cache/perps",
-        "recipeCount": 20,
+        "root": "/Users/deeeed/dev/metamask/experimental-metamask-recipe-perps",
+        "recipeCount": 26,
         "provenance": {
           "kind": "library",
           "trust": "trusted",
           "name": "perps",
-          "revision": "a6a53226294ab58fbe06d49e688997543ec8ec9a",
+          "revision": "4229069c5ab79c5bf512855665c08dbb4cc5345c",
           "dirty": false
         }
       },
@@ -54,9 +54,9 @@
     "status": "review",
     "nonBlocking": true,
     "counts": {
-      "total": 9,
+      "total": 7,
       "warning": 4,
-      "error": 5,
+      "error": 3,
       "exception": 0
     },
     "diagnosticsPath": "diagnostics.json",

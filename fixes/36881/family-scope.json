@@ -1,6 +1,6 @@
 {
   "originalFamilyScopeSummary": "Fix cross margin mobile UI layout and responsiveness issues",
-  "currentTriggerSummary": "pr-complete: feat: cross margin | mobile UI",
+  "currentTriggerSummary": "pr-complete: feat(perps): enable Pro Cross-margin orders with venue locking",
   "scopeVerdict": "full-scope-addressed",
-  "notes": "All review comments were already fixed on HEAD 4991fa272b. This round closed the one open gap, a device re-check of the final HEAD: recipe 45/45 (Cross selectable, label reads Cross, placed BTC position tagged Cross). CI green; only approval pending."
+  "notes": "Rebased onto main 3b1fd8f99e8 with all 16 PR commits unchanged and pushed as 40cdf2f5bce. Both REAL review findings (provider-scoped market data and position lock) stay fixed. Inherited Cross recipe passes 45/45 on device with the Terminal backend flag pinned off. With that flag on (current live config), Cross stays unavailable by design until TAT-4022; that matches the Jira report and is tracked, not a regression."
 }

@@ -1,13 +1,13 @@
 {
   "$schema": "https://farmslot.io/schemas/recipe-v1.schema.json",
   "title": "Cross margin selectable in Pro margin mode chooser when flag is on",
-  "description": "TAT-3524. Data prerequisites: fixture Trading account (currently selected), HyperLiquid testnet, BTC market in Pro with no BTC position or resting order (converged by setup nodes, since an open position locks the margin mode); perpsCrossMarginEnabled pinned on and perpsTerminalBackendEnabled pinned off via metamask.feature_flags.set and cleared at teardown.",
+  "description": "TAT-3524. Data prerequisites: fixture Trading account (currently selected), HyperLiquid testnet, BTC market in Pro with no BTC position or resting order (converged by setup nodes, since an open position locks the margin mode); perpsCrossMarginEnabled pinned on and perpsTerminalBackendEnabled pinned off (Cross is gated off on the Terminal path, TAT-4022) via metamask.feature_flags.set and cleared at teardown.",
   "workflow": {
     "entry": "setup-flag",
     "nodes": {
       "setup-flag": {
         "action": "metamask.feature_flags.set",
-        "intent": "Turn the cross margin rollout flag on like the reporter did, with the Terminal market backend off since it drops the no-Cross asset restriction and keeps Cross disabled (TAT-4022)",
+        "intent": "Turn the cross margin rollout flag on like the reporter did, and keep the Terminal market backend off since Cross stays unavailable on it until TAT-4022",
         "flags": {
           "perpsCrossMarginEnabled": {
             "enabled": true,

@@ -1,4 +1,7 @@
-- No reviewer-driven learnings: no new actionable comments this round, and the REAL items were already fixed on HEAD.
-- Recipe drift: a gate added in a later commit (Cross off while `perpsTerminalBackendEnabled` is on, TAT-4022) broke the inherited recipe, because the remote config turns Terminal on for 8.3.0+. When a PR adds a flag-dependent gate, pin every gating flag in the recipe's `setup-flag`, not just the feature flag.
-- "no onPress prop" from `ui.press` on a visible option means the option rendered disabled. Read the effective flags (`metamask.feature_flags.read`) before suspecting the code.
-- Inherited Jest `command` nodes write logs to the parent task's `temp/tasks/...` path. On a new slot, create that directory first or the redirect fails.
+# Learnings — PR #36881 pr-complete (round 2)
+
+- Reviewers caught provider scoping twice. Symbol-only lookups (`usePerpsMarketData`, `useHasExistingPosition`) broke once the same symbol could exist on several providers. For multi-provider perps UI, key every market/position read on symbol plus `providerId` from the start.
+- A Cross recipe that passed before failed on live config: remote `perpsTerminalBackendEnabled` turned on (min 8.3.0), and the PR keeps Cross off on the Terminal path. Recipes whose outcome depends on a gate should pin every flag the gate reads, not just the feature flag.
+- The same gate probably explains the Jira report "flag on but still can't choose Cross". When a reporter says a flagged feature is missing, read the live flag set before suspecting the code.
+- mm-6 `.js.env` ships `OVERRIDE_REMOTE_FEATURE_FLAGS="true"`, which silently disables every version-gated perps flag, Pro mode included, even with harness overrides. The failure only shows up as "Perps did not reach pro mode".
+- Inherited recipe command nodes hardcode another task's log folder. It failed only because the folder was missing; recipe command outputs should use a task-relative path.

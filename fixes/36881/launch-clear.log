@@ -1,0 +1,42 @@
+Restarting Metro on port 8066 with cleared cache
+Stopping Metro listener on port 8066: 88810 
+Starting Metro on port 8066 (workers=4, clear)
+(Full log: /Users/deeeed/dev/metamask/metamask-mobile-6/temp/recipe/runtime/metro.log — mm-harness logs | mm-harness logs --full)
+mm-harness | Metro bundler
+mm-harness | full log: /Users/deeeed/dev/metamask/metamask-mobile-6/temp/recipe/runtime/metro.log
+mm-harness | full stream: mm-harness logs --full
+
+  * (waiting for first build event...)
+mm-harness | Metro bundler
+mm-harness | full log: /Users/deeeed/dev/metamask/metamask-mobile-6/temp/recipe/runtime/metro.log
+mm-harness | full stream: mm-harness logs --full
+
+  * » ios: paths-project-pbxproj: Found multiple project.pbxproj file paths, using "ios/MetaMask.xcodeproj/project.pbxproj". Ignored paths: ["ios/branch-ios-sdk/carthage-files/BranchSDK.xcodeproj/project.pbxproj"]
+Metro ready on port 8066
+  Next: mm-harness logs  (tail Metro)
+Prewarming ios bundle before launching dev client (set MOBILE_BUNDLE_PREWARM=0 to skip)
+  url: http://localhost:8066/index.bundle?platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable
+Waiting for ios bundle (30s/900s)
+Waiting for ios bundle (60s/900s)
+Waiting for ios bundle (90s/900s)
+Waiting for ios bundle (120s/900s)
+Waiting for ios bundle (150s/900s)
+ios bundle ready
+Opening DeviceHub for DF371E7D-42A0-43BD-BAD3-9AFA4794E960 in the background
+Restarting iOS dev client io.metamask.MetaMask on DF371E7D-42A0-43BD-BAD3-9AFA4794E960
+Launching iOS dev client io.metamask.MetaMask on DF371E7D-42A0-43BD-BAD3-9AFA4794E960
+open-device: iOS dev client opened (io.metamask.MetaMask on DF371E7D-42A0-43BD-BAD3-9AFA4794E960)
+  Next: mm-harness logs   # tail Metro
+Device console → app-console.log (CDP forwarder pid 37466)
+Waiting for Mobile bridge (0.0s elapsed, 180.0s remaining): Metro running; no React Native debug target yet (iOS Bundled 164008ms index.js (21217 modules))
+Waiting for Mobile bridge (10.9s elapsed, 169.1s remaining): React Native target answered; in-app bridge not installed yet (iOS Bundled 1378ms index.js (1 module))
+Waiting for Mobile bridge (21.4s elapsed, 158.6s remaining): React Native target answered; in-app bridge not installed yet (iOS Bundled 1378ms index.js (1 module))
+Waiting for Mobile bridge (32.0s elapsed, 148.0s remaining): React Native target answered; in-app bridge not installed yet (iOS Bundled 1378ms index.js (1 module))
+Waiting for Mobile bridge (43.8s elapsed, 136.2s remaining): React Native target answered; in-app bridge not installed yet (iOS Bundled 1378ms index.js (1 module))
+Mobile bridge ready (51.9s)
+Remote feature flag overrides cleared.
+→ verify (mobile) — target: /Users/deeeed/dev/metamask/metamask-mobile-6
+Fixture status: READY (temp/recipe/runtime/wallet-fixture.json, accounts=4).
+Mobile harness verify pass: /Users/deeeed/dev/metamask/metamask-mobile-6/temp/recipe/harness/mobile/verify/20260929T100241Z/summary.json
+✓ verify mobile passed (18.3s)
+  Next: mm-harness status --target /Users/deeeed/dev/metamask/metamask-mobile-6 --json
