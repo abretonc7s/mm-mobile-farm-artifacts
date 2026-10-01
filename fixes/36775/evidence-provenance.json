@@ -1,0 +1,184 @@
+{
+  "version": 1,
+  "preferred_mode": "screenshots",
+  "proof_run": "recipe-run-2",
+  "run_status": "pass",
+  "product_revision": "80944eaf257d3e154a4fdc4729631ef983b30853",
+  "tested_tree": "064e9e782a4eeb4f2847f1788629a00bec6dd732",
+  "recipe_sha256": "cc263164d25ba2ac95dee929bd39f3d5bcf28c415aff918f445a45c1e2ea00b8",
+  "resolution_root_digest": "sha256:44d5bb9d8deb88245ce59f670d177d540c6a8bc81c9a96d9da72f1505ae0230e",
+  "summary": "Current Mobile proof uses one final 104/104 passing run. Max succeeds; actual zero exchange margin is explained; positive exchange margin with zero buffered Max keeps the keypad open on both forms.",
+  "before_after_pairs": [],
+  "standalone": [
+    {
+      "file": "recipe-run-2/screenshots/ac1-screenshot-max-form.png",
+      "sha256": "400d57a92d0a1a5f4ee73107e856bca2342dbeb9fe9a0db57973c34925225a7d",
+      "bytes": 241387,
+      "label": "Max $37.07 before submitting",
+      "covers": [
+        "ac1"
+      ],
+      "visually_reviewed": true,
+      "provider": "simctl",
+      "device": "mmdev-6",
+      "notes": "Harness HUD visible. Unmodified final-run capture."
+    },
+    {
+      "file": "recipe-run-2/screenshots/ac1-screenshot-removed.png",
+      "sha256": "627200eeebcd8930d9e9f08b308d8578de5963fdf1844d48a0180dd05b7951b7",
+      "bytes": 324188,
+      "label": "Returned to market after exchange success",
+      "covers": [
+        "ac1"
+      ],
+      "visually_reviewed": true,
+      "provider": "simctl",
+      "device": "mmdev-6",
+      "notes": "Harness HUD visible. Unmodified final-run capture."
+    },
+    {
+      "file": "recipe-run-2/screenshots/ac2-screenshot-zero-state.png",
+      "sha256": "c3273f305bbca5ce68d070b0306874c68e120a745ef74eb365b201d2b68a744b",
+      "bytes": 250204,
+      "label": "Actual zero exchange margin is explained and disabled",
+      "covers": [
+        "ac2"
+      ],
+      "visually_reviewed": true,
+      "provider": "simctl",
+      "device": "mmdev-6",
+      "notes": "Harness HUD visible. Unmodified final-run capture."
+    },
+    {
+      "file": "recipe-run-2/screenshots/ac4-screenshot.png",
+      "sha256": "0266a8640d308e480f64952e24fba35645b6e081fc04ca9217e6f101009da5de",
+      "bytes": 262607,
+      "label": "Full screen retains keypad without zero explanation at $1 exchange margin",
+      "covers": [
+        "ac4"
+      ],
+      "visually_reviewed": true,
+      "provider": "simctl",
+      "device": "mmdev-6",
+      "notes": "Harness HUD visible. Unmodified final-run capture."
+    },
+    {
+      "file": "recipe-run-2/screenshots/ac5-screenshot.png",
+      "sha256": "b78bf705953853e9a079f268d420a13d972a3b157549412f476cc6d531f48c06",
+      "bytes": 329867,
+      "label": "Bottom sheet retains keypad without zero explanation at $1 exchange margin",
+      "covers": [
+        "ac5"
+      ],
+      "visually_reviewed": true,
+      "provider": "simctl",
+      "device": "mmdev-6",
+      "notes": "Harness HUD visible. Unmodified final-run capture."
+    }
+  ],
+  "videos": {
+    "preferred": false
+  },
+  "artifacts": [
+    {
+      "file": "recipe-run-2/artifact-manifest.json",
+      "sha256": "80bb3cb931af4bfa7674a72f34547ce302f4710682de2e5f3e3074ebb1d9dd50",
+      "bytes": 4453
+    },
+    {
+      "file": "recipe-run-2/diagnostics-app-log.txt",
+      "sha256": "bd0574e7be0d7a72bd52c637fce660781986677e2497e7d9b16b65e4566422f2",
+      "bytes": 121209
+    },
+    {
+      "file": "recipe-run-2/diagnostics.json",
+      "sha256": "63e458f151aaf40e09c950c6706125e0ac62518befc506f7a3640300208daa1a",
+      "bytes": 2869
+    },
+    {
+      "file": "recipe-run-2/execution-provenance.json",
+      "sha256": "cf7558934bdbf7a264dad2504c4bc5a9943389d39791b2e3ed1b5a7ecc2c01f0",
+      "bytes": 9967
+    },
+    {
+      "file": "recipe-run-2/network/run-summary.json",
+      "sha256": "b2a6802a507044bcb0018d067574963656a02327a227c857f0039bd793acdcd8",
+      "bytes": 206980
+    },
+    {
+      "file": "recipe-run-2/product-provenance.json",
+      "sha256": "3d071face9a29f905306806115efcae323a715efca3a056ce57994efb18c40cd",
+      "bytes": 217
+    },
+    {
+      "file": "recipe-run-2/recipe-invocation.json",
+      "sha256": "5c06089b16d88b9e64c1d65671c9575ccc95a407c652405941d04e20da27bfb5",
+      "bytes": 194
+    },
+    {
+      "file": "recipe-run-2/recipe-resolution.json",
+      "sha256": "2f860fb85409c1954cc77af6896a60181e479744be5f975e5d27b359a46c83fd",
+      "bytes": 788
+    },
+    {
+      "file": "recipe-run-2/recipe.json",
+      "sha256": "cc263164d25ba2ac95dee929bd39f3d5bcf28c415aff918f445a45c1e2ea00b8",
+      "bytes": 27612
+    },
+    {
+      "file": "recipe-run-2/report.md",
+      "sha256": "159e62610c10564fcfcd72ae2a866b323f2af1fa5f7ce8066fc55833ad0f78f4",
+      "bytes": 12905
+    },
+    {
+      "file": "recipe-run-2/resolved-recipes/68b7c046a5009998795e1b4191d75d52b542fd7dc65c55ace020115cc316ab55.recipe.json",
+      "sha256": "86776fe0a1676db042e80d15138e5105acf27506276a7cce09de104e1533301a",
+      "bytes": 3363
+    },
+    {
+      "file": "recipe-run-2/screenshots/ac1-screenshot-max-form.png",
+      "sha256": "400d57a92d0a1a5f4ee73107e856bca2342dbeb9fe9a0db57973c34925225a7d",
+      "bytes": 241387
+    },
+    {
+      "file": "recipe-run-2/screenshots/ac1-screenshot-removed.png",
+      "sha256": "627200eeebcd8930d9e9f08b308d8578de5963fdf1844d48a0180dd05b7951b7",
+      "bytes": 324188
+    },
+    {
+      "file": "recipe-run-2/screenshots/ac2-screenshot-zero-state.png",
+      "sha256": "c3273f305bbca5ce68d070b0306874c68e120a745ef74eb365b201d2b68a744b",
+      "bytes": 250204
+    },
+    {
+      "file": "recipe-run-2/screenshots/ac4-screenshot.png",
+      "sha256": "0266a8640d308e480f64952e24fba35645b6e081fc04ca9217e6f101009da5de",
+      "bytes": 262607
+    },
+    {
+      "file": "recipe-run-2/screenshots/ac5-screenshot.png",
+      "sha256": "b78bf705953853e9a079f268d420a13d972a3b157549412f476cc6d531f48c06",
+      "bytes": 329867
+    },
+    {
+      "file": "recipe-run-2/summary.json",
+      "sha256": "2fb48e0334eb9b14699024e336e43b23dc2bf7cb1ca120a0db2820368ae6da21",
+      "bytes": 2121
+    },
+    {
+      "file": "recipe-run-2/trace.json",
+      "sha256": "f43daadda609325b7e163898006b653c9f06d5b564920c8041e2e6f780675cba",
+      "bytes": 1445009
+    }
+  ],
+  "limits": [
+    "No current before image or video promoted.",
+    "Success navigation is observed; transient success toast visibility is not proven live.",
+    "Retained valid $2 submission is proven by component view tests, not the drain screenshots.",
+    "Extension parity and post-release production failure rate are unverified."
+  ],
+  "committed_product_revision": "8178666ec8b64f9ec090db0e6ced7331d088b105",
+  "committed_tree_verified": true,
+  "promoted_package": "recipe-run",
+  "promoted_package_matches_proof_run": true
+}

@@ -1,0 +1,1564 @@
+diff --git a/app/components/UI/Perps/Perps.testIds.ts b/app/components/UI/Perps/Perps.testIds.ts
+index 4f976ff68d..0fac46ac35 100644
+--- a/app/components/UI/Perps/Perps.testIds.ts
++++ b/app/components/UI/Perps/Perps.testIds.ts
+@@ -1209,6 +1209,7 @@ export const PerpsAdjustMarginViewSelectorsIDs = {
+   AVAILABLE_VALUE: 'perps-adjust-margin-available-value',
+   LIQUIDATION_PRICE_VALUE: 'perps-adjust-margin-liquidation-price-value',
+   LIQUIDATION_DISTANCE_VALUE: 'perps-adjust-margin-liquidation-distance-value',
++  NO_REMOVABLE_MARGIN: 'perps-adjust-margin-no-removable-margin',
+ } as const;
+ 
+ export const PerpsAdjustMarginBottomSheetSelectorsIDs = {
+@@ -1230,6 +1231,7 @@ export const PerpsAdjustMarginBottomSheetSelectorsIDs = {
+     'perps-adjust-margin-bottom-sheet-liquidation-distance-value',
+   LIQUIDATION_DISTANCE_INFO:
+     'perps-adjust-margin-bottom-sheet-liquidation-distance-info',
++  NO_REMOVABLE_MARGIN: 'perps-adjust-margin-bottom-sheet-no-removable-margin',
+ } as const;
+ 
+ // ========================================
+diff --git a/app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.test.tsx b/app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.test.tsx
+index 9edc4c20c0..bad57643e1 100644
+--- a/app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.test.tsx
++++ b/app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.test.tsx
+@@ -323,6 +323,22 @@ describe('PerpsAdjustMarginView', () => {
+   });
+ 
+   describe('remove mode', () => {
++    const removeModeData = {
++      position: mockPosition,
++      isLoading: false,
++      currentMargin: 500,
++      positionValue: 5000,
++      maxAmount: 200, // Max removable margin
++      currentLiquidationPrice: 1900,
++      newLiquidationPrice: 1900,
++      currentLiquidationDistance: 5,
++      newLiquidationDistance: 5,
++      spendableBalance: 1000,
++      currentPrice: 2000,
++      isAddMode: false,
++      positionLeverage: 10,
++    };
++
+     beforeEach(() => {
+       mockRouteParams = {
+         position: mockPosition,
+@@ -330,21 +346,7 @@ describe('PerpsAdjustMarginView', () => {
+       };
+ 
+       // Override mock for remove mode
+-      mockUsePerpsAdjustMarginData.mockReturnValue({
+-        position: mockPosition,
+-        isLoading: false,
+-        currentMargin: 500,
+-        positionValue: 5000,
+-        maxAmount: 200, // Max removable margin
+-        currentLiquidationPrice: 1900,
+-        newLiquidationPrice: 1900,
+-        currentLiquidationDistance: 5,
+-        newLiquidationDistance: 5,
+-        spendableBalance: 1000,
+-        currentPrice: 2000,
+-        isAddMode: false,
+-        positionLeverage: 10,
+-      });
++      mockUsePerpsAdjustMarginData.mockReturnValue(removeModeData);
+     });
+ 
+     it('renders remove margin title', () => {
+@@ -377,6 +379,159 @@ describe('PerpsAdjustMarginView', () => {
+         screen.getByTestId(PerpsAdjustMarginViewSelectorsIDs.CONFIRM_BUTTON),
+       ).toHaveTextContent('perps.adjust_margin.reduce_margin');
+     });
++
++    it('explains and disables removal when no margin can be removed', () => {
++      mockUsePerpsAdjustMarginData.mockReturnValue({
++        ...removeModeData,
++        hasValidPositionData: true,
++        maxAmount: 0.004,
++      });
++
++      render(<PerpsAdjustMarginView />);
++      fireEvent.press(
++        screen.getByTestId(PerpsAmountDisplaySelectorsIDs.TOUCHABLE),
++      );
++
++      expect(
++        screen.getByTestId(
++          PerpsAdjustMarginViewSelectorsIDs.NO_REMOVABLE_MARGIN,
++        ),
++      ).toHaveTextContent('perps.adjust_margin.no_removable_margin');
++      expect(screen.queryByTestId('mock-keypad')).not.toBeOnTheScreen();
++      expect(
++        (
++          screen.getByTestId(PerpsAdjustMarginViewSelectorsIDs.SLIDER)
++            .props as { isDisabled?: boolean }
++        ).isDisabled,
++      ).toBe(true);
++      expect(
++        screen.getByTestId(PerpsAdjustMarginViewSelectorsIDs.CONFIRM_BUTTON)
++          .props.accessibilityState?.disabled,
++      ).toBe(true);
++    });
++
++    it('keeps a Max amount submittable after the offered max ticks down within the exchange limit', async () => {
++      mockUsePerpsAdjustMarginData.mockReturnValue({
++        ...removeModeData,
++        exchangeMaxAmount: 250,
++      });
++      const { rerender } = render(<PerpsAdjustMarginView />);
++      act(() => {
++        (
++          screen.getByTestId(PerpsAdjustMarginViewSelectorsIDs.SLIDER)
++            .props as { onValueChange: (v: number) => void }
++        ).onValueChange(100);
++      });
++      mockUsePerpsAdjustMarginData.mockReturnValue({
++        ...removeModeData,
++        maxAmount: 199.99,
++        exchangeMaxAmount: 249.99,
++      });
++
++      rerender(<PerpsAdjustMarginView />);
++      fireEvent.press(
++        screen.getByTestId(PerpsAdjustMarginViewSelectorsIDs.CONFIRM_BUTTON),
++      );
++      await act(async () => {
++        await Promise.resolve();
++      });
++
++      expect(
++        screen.queryByText('perps.errors.marginValidation.exceedsMaxRemovable'),
++      ).not.toBeOnTheScreen();
++      expect(mockHandleRemoveMargin).toHaveBeenCalledWith('ETH', 200);
++    });
++
++    const renderRemoveWithNoLimitLeft = (before: () => void) => {
++      mockUsePerpsAdjustMarginData.mockReturnValue({
++        ...removeModeData,
++        hasValidPositionData: true,
++      });
++      const { rerender } = render(<PerpsAdjustMarginView />);
++      act(before);
++      expect(
++        screen.queryByTestId(
++          PerpsAdjustMarginViewSelectorsIDs.NO_REMOVABLE_MARGIN,
++        ),
++      ).not.toBeOnTheScreen();
++      mockUsePerpsAdjustMarginData.mockReturnValue({
++        ...removeModeData,
++        hasValidPositionData: true,
++        maxAmount: 0,
++        exchangeMaxAmount: 0,
++      });
++      rerender(<PerpsAdjustMarginView />);
++    };
++
++    it('explains a zero limit instead of an error on a retained amount', () => {
++      renderRemoveWithNoLimitLeft(() => {
++        (
++          screen.getByTestId(PerpsAdjustMarginViewSelectorsIDs.SLIDER)
++            .props as { onValueChange: (v: number) => void }
++        ).onValueChange(50);
++      });
++      const confirmButton = screen.getByTestId(
++        PerpsAdjustMarginViewSelectorsIDs.CONFIRM_BUTTON,
++      );
++      fireEvent.press(confirmButton);
++
++      expect(
++        screen.getByTestId(
++          PerpsAdjustMarginViewSelectorsIDs.NO_REMOVABLE_MARGIN,
++        ),
++      ).toHaveTextContent('perps.adjust_margin.no_removable_margin');
++      expect(
++        screen.queryByText('perps.errors.marginValidation.exceedsMaxRemovable'),
++      ).not.toBeOnTheScreen();
++      expect(confirmButton.props.accessibilityState?.disabled).toBe(true);
++      expect(mockHandleRemoveMargin).not.toHaveBeenCalled();
++    });
++
++    it('closes an open keypad once no margin can be removed', () => {
++      renderRemoveWithNoLimitLeft(() => {
++        fireEvent.press(
++          screen.getByTestId(PerpsAmountDisplaySelectorsIDs.TOUCHABLE),
++        );
++      });
++
++      expect(screen.queryByTestId('mock-keypad')).not.toBeOnTheScreen();
++    });
++
++    it('sets the amount to the new safe max when removable margin shrank before submit', () => {
++      render(<PerpsAdjustMarginView />);
++      const options = mockUsePerpsMarginAdjustment.mock.calls[0][0] as {
++        onAmountChanged?: (maxAmount: number) => void;
++      };
++
++      act(() => {
++        options.onAmountChanged?.(150);
++      });
++
++      expect(
++        screen.getByTestId(PerpsAmountDisplaySelectorsIDs.TOUCHABLE),
++      ).toHaveTextContent('150.00');
++    });
++
++    it('keeps the slider within the fresh limit while the live snapshot still shows more', () => {
++      render(<PerpsAdjustMarginView />);
++      const options = mockUsePerpsMarginAdjustment.mock.calls[0][0] as {
++        onAmountChanged?: (maxAmount: number) => void;
++      };
++      act(() => {
++        options.onAmountChanged?.(150);
++      });
++
++      act(() => {
++        (
++          screen.getByTestId(PerpsAdjustMarginViewSelectorsIDs.SLIDER)
++            .props as { onValueChange: (v: number) => void }
++        ).onValueChange(100);
++      });
++
++      expect(
++        screen.getByTestId(PerpsAmountDisplaySelectorsIDs.TOUCHABLE),
++      ).toHaveTextContent('150.00');
++    });
+   });
+ 
+   describe('error handling', () => {
+diff --git a/app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.tsx b/app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.tsx
+index 7d408c7cde..ea108176a9 100644
+--- a/app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.tsx
++++ b/app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.tsx
+@@ -1,4 +1,10 @@
+-import React, { useState, useCallback, useMemo, useRef } from 'react';
++import React, {
++  useState,
++  useCallback,
++  useEffect,
++  useMemo,
++  useRef,
++} from 'react';
+ import { ScrollView } from 'react-native';
+ import { SafeAreaView } from 'react-native-safe-area-context';
+ import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
+@@ -19,6 +25,7 @@ import {
+   IconSize,
+   IconColor,
+   HeaderStandard,
++  HelpText,
+ } from '@metamask/design-system-react-native';
+ import { useTailwind } from '@metamask/design-system-twrnc-preset';
+ import { strings } from '../../../../../../locales/i18n';
+@@ -34,6 +41,7 @@ import { usePerpsMarginAdjustment } from '../../hooks/usePerpsMarginAdjustment';
+ import { usePerpsEventTracking } from '../../hooks/usePerpsEventTracking';
+ import { usePerpsMeasurement } from '../../hooks/usePerpsMeasurement';
+ import { usePerpsAdjustMarginData } from '../../hooks/usePerpsAdjustMarginData';
++import { usePerpsFreshRemovalLimit } from '../../hooks/usePerpsFreshRemovalLimit';
+ import { TraceName } from '../../../../../util/trace';
+ import Logger from '../../../../../util/Logger';
+ import PerpsAmountDisplay from '../../components/PerpsAmountDisplay';
+@@ -71,6 +79,7 @@ const PerpsAdjustMarginView: React.FC = () => {
+   const { playImpact: playHapticImpact } = useHaptics();
+ 
+   const [marginAmountString, setMarginAmountString] = useState('0');
++  const [freshMaxAmount, setFreshMaxAmount] = useState<number | null>(null);
+   const [isInputFocused, setIsInputFocused] = useState(false);
+   const [selectedTooltip, setSelectedTooltip] =
+     useState<PerpsTooltipContentKey | null>(null);
+@@ -93,6 +102,11 @@ const PerpsAdjustMarginView: React.FC = () => {
+   const { handleAddMargin, handleRemoveMargin, isAdjusting } =
+     usePerpsMarginAdjustment({
+       onSuccess: () => navigation.goBack(),
++      onAmountChanged: (safeMaxAmount) => {
++        submittedEstimateRef.current = null;
++        setFreshMaxAmount(safeMaxAmount);
++        setMarginAmountString(safeMaxAmount.toFixed(2));
++      },
+       onError: (errorMessage) => {
+         submittedEstimateRef.current = null;
+         Logger.error(new Error(errorMessage), {
+@@ -115,8 +129,10 @@ const PerpsAdjustMarginView: React.FC = () => {
+   const {
+     position,
+     isLoading,
++    hasValidPositionData,
+     currentMargin,
+     maxAmount,
++    exchangeMaxAmount,
+     currentLiquidationPrice,
+     newLiquidationPrice,
+     currentLiquidationDistance,
+@@ -128,7 +144,22 @@ const PerpsAdjustMarginView: React.FC = () => {
+     inputAmount: marginAmount,
+   });
+ 
+-  const flooredMaxAmount = floorUsd(maxAmount);
++  const { flooredMaxAmount, submitLimitAmount } = usePerpsFreshRemovalLimit({
++    freshMaxAmount,
++    setFreshMaxAmount,
++    position,
++    snapshotMaxAmount: floorUsd(maxAmount),
++    exchangeMaxAmount,
++    isAddMode,
++  });
++  const hasNoRemovableMargin =
++    !isAddMode && !isLoading && hasValidPositionData && flooredMaxAmount <= 0;
++  // Close an open keypad once nothing is left to remove.
++  useEffect(() => {
++    if (hasNoRemovableMargin) {
++      setIsInputFocused(false);
++    }
++  }, [hasNoRemovableMargin]);
+ 
+   const sliderPercentage = useMemo(() => {
+     if (flooredMaxAmount <= 0) {
+@@ -142,7 +173,12 @@ const PerpsAdjustMarginView: React.FC = () => {
+     if (isInputFocused) {
+       return [];
+     }
+-    if (marginAmount > flooredMaxAmount && marginAmount > 0) {
++    // The zero-removable explanation replaces an error on a retained amount.
++    if (
++      !hasNoRemovableMargin &&
++      marginAmount > submitLimitAmount &&
++      marginAmount > 0
++    ) {
+       return [
+         isAddMode
+           ? strings('perps.adjust_margin.exceeds_available')
+@@ -150,7 +186,13 @@ const PerpsAdjustMarginView: React.FC = () => {
+       ];
+     }
+     return [];
+-  }, [isInputFocused, marginAmount, flooredMaxAmount, isAddMode]);
++  }, [
++    isInputFocused,
++    hasNoRemovableMargin,
++    marginAmount,
++    submitLimitAmount,
++    isAddMode,
++  ]);
+ 
+   const amountHasError = validationErrors.length > 0;
+ 
+@@ -245,7 +287,10 @@ const PerpsAdjustMarginView: React.FC = () => {
+     }
+ 
+     // Prevent submission if amount exceeds max removable (extra safety for remove mode)
+-    if (!isAddMode && marginAmount > flooredMaxAmount) {
++    if (
++      !isAddMode &&
++      (hasNoRemovableMargin || marginAmount > submitLimitAmount)
++    ) {
+       return;
+     }
+ 
+@@ -271,7 +316,8 @@ const PerpsAdjustMarginView: React.FC = () => {
+     isAddMode,
+     isAdjusting,
+     validationErrors.length,
+-    flooredMaxAmount,
++    submitLimitAmount,
++    hasNoRemovableMargin,
+     newLiquidationPrice,
+     newLiquidationDistance,
+     handleAddMargin,
+@@ -288,10 +334,11 @@ const PerpsAdjustMarginView: React.FC = () => {
+   const isPositionGone = !isLoading && !position;
+ 
+   const isConfirmDisabled =
++    hasNoRemovableMargin ||
+     marginAmount <= 0 ||
+     isAdjusting ||
+     isPositionGone ||
+-    marginAmount > flooredMaxAmount ||
++    marginAmount > submitLimitAmount ||
+     Boolean(validationErrors.length);
+ 
+   // Show error if no position found (either from route or live data)
+@@ -423,7 +470,7 @@ const PerpsAdjustMarginView: React.FC = () => {
+       >
+         <PerpsAmountDisplay
+           amount={marginAmountString}
+-          onPress={handleAmountPress}
++          onPress={hasNoRemovableMargin ? undefined : handleAmountPress}
+           isActive={isInputFocused}
+           hasError={amountHasError}
+           isLoading={isLoading}
+@@ -435,13 +482,22 @@ const PerpsAdjustMarginView: React.FC = () => {
+             <PerpsSlider
+               value={sliderPercentage}
+               onValueChange={handleSliderChange}
+-              disabled={isAdjusting}
++              disabled={isAdjusting || hasNoRemovableMargin}
+               testID={PerpsAdjustMarginViewSelectorsIDs.SLIDER}
+             />
+           </Box>
+         )}
+ 
+         <PerpsValidationErrors errors={validationErrors} />
++
++        {hasNoRemovableMargin && (
++          <HelpText
++            twClassName="px-4 justify-center text-center"
++            testID={PerpsAdjustMarginViewSelectorsIDs.NO_REMOVABLE_MARGIN}
++          >
++            {strings('perps.adjust_margin.no_removable_margin')}
++          </HelpText>
++        )}
+       </ScrollView>
+ 
+       {isInputFocused && (
+diff --git a/app/components/UI/Perps/Views/PerpsOrderLifecycleFlow.view.test.tsx b/app/components/UI/Perps/Views/PerpsOrderLifecycleFlow.view.test.tsx
+index 0d44caad3c..dac06674e0 100644
+--- a/app/components/UI/Perps/Views/PerpsOrderLifecycleFlow.view.test.tsx
++++ b/app/components/UI/Perps/Views/PerpsOrderLifecycleFlow.view.test.tsx
+@@ -317,15 +317,20 @@ describe('Order Lifecycle & Funds Flow', () => {
+     await act(async () => {
+       cleanup();
+     });
++    // Extra margin over the $500 requirement so there is something to remove
++    const positionWithRemovableMargin = {
++      ...defaultPositionForViews,
++      marginUsed: '700',
++    };
+     renderPerpsView(
+       PerpsAdjustMarginView as unknown as React.ComponentType,
+       Routes.PERPS.ADJUST_MARGIN,
+       {
+         initialParams: {
+-          position: defaultPositionForViews,
++          position: positionWithRemovableMargin,
+           mode: 'remove',
+         },
+-        streamOverrides: { positions: [defaultPositionForViews] },
++        streamOverrides: { positions: [positionWithRemovableMargin] },
+       },
+     );
+     const removeMarginElements = await screen.findAllByText(
+diff --git a/app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.test.tsx b/app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.test.tsx
+index fe3f9f354e..e1092ba146 100644
+--- a/app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.test.tsx
++++ b/app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.test.tsx
+@@ -23,6 +23,7 @@ let mockMarginAdjustmentOptions:
+   | {
+       onSuccess?: () => void;
+       onError?: (error: string) => void;
++      onAmountChanged?: (maxAmount: number) => void;
+     }
+   | undefined;
+ 
+@@ -699,4 +700,156 @@ describe('PerpsAdjustMarginBottomSheet', () => {
+     fireEvent.press(confirmButton);
+     expect(mockHandleAddMargin).not.toHaveBeenCalled();
+   });
++  it('explains and blocks removal when no margin can be removed', () => {
++    mockUsePerpsAdjustMarginData.mockReturnValue({
++      ...createMarginData('remove'),
++      maxAmount: 0.004,
++    });
++
++    render(
++      <PerpsAdjustMarginBottomSheet position={position} initialMode="remove" />,
++    );
++
++    expect(
++      screen.getByTestId(
++        PerpsAdjustMarginBottomSheetSelectorsIDs.NO_REMOVABLE_MARGIN,
++      ),
++    ).toHaveTextContent('perps.adjust_margin.no_removable_margin');
++    expect(
++      screen.getByTestId(
++        PerpsAdjustMarginBottomSheetSelectorsIDs.CONFIRM_BUTTON,
++      ),
++    ).toBeDisabled();
++  });
++
++  const renderRemoveWithNoLimitLeft = (before: () => void) => {
++    const { rerender } = render(
++      <PerpsAdjustMarginBottomSheet position={position} initialMode="remove" />,
++    );
++    act(before);
++    expect(
++      screen.queryByTestId(
++        PerpsAdjustMarginBottomSheetSelectorsIDs.NO_REMOVABLE_MARGIN,
++      ),
++    ).not.toBeOnTheScreen();
++    mockUsePerpsAdjustMarginData.mockReturnValue({
++      ...createMarginData('remove'),
++      maxAmount: 0,
++      exchangeMaxAmount: 0,
++    });
++    rerender(
++      <PerpsAdjustMarginBottomSheet position={position} initialMode="remove" />,
++    );
++  };
++
++  it('explains a zero limit instead of an error on a retained amount', () => {
++    renderRemoveWithNoLimitLeft(() => {
++      (
++        screen.getByTestId(PerpsAdjustMarginBottomSheetSelectorsIDs.SLIDER)
++          .props as { onValueChange: (percentage: number) => void }
++      ).onValueChange(50);
++    });
++
++    expect(
++      screen.getByTestId(
++        PerpsAdjustMarginBottomSheetSelectorsIDs.NO_REMOVABLE_MARGIN,
++      ),
++    ).toHaveTextContent('perps.adjust_margin.no_removable_margin');
++    expect(screen.queryAllByRole('alert')).toHaveLength(0);
++    const confirmButton = screen.getByTestId(
++      PerpsAdjustMarginBottomSheetSelectorsIDs.CONFIRM_BUTTON,
++    );
++    fireEvent.press(confirmButton);
++    expect(confirmButton).toBeDisabled();
++    expect(mockHandleRemoveMargin).not.toHaveBeenCalled();
++  });
++
++  it('closes an open keypad once no margin can be removed', () => {
++    renderRemoveWithNoLimitLeft(() => {
++      fireEvent.press(screen.getByTestId('amount-display'));
++    });
++
++    expect(screen.queryByTestId('keypad')).not.toBeOnTheScreen();
++    expect(screen.queryByText('25%')).not.toBeOnTheScreen();
++  });
++
++  it('explains a zero limit instead of an earlier submission error', () => {
++    renderRemoveWithNoLimitLeft(() => {
++      mockMarginAdjustmentOptions?.onError?.('Margin update failed');
++    });
++
++    expect(
++      screen.getByTestId(
++        PerpsAdjustMarginBottomSheetSelectorsIDs.NO_REMOVABLE_MARGIN,
++      ),
++    ).toHaveTextContent('perps.adjust_margin.no_removable_margin');
++    expect(screen.queryByText('Margin update failed')).not.toBeOnTheScreen();
++  });
++
++  it('sets the amount to the new safe max when removable margin shrank before submit', () => {
++    render(
++      <PerpsAdjustMarginBottomSheet position={position} initialMode="remove" />,
++    );
++
++    act(() => {
++      mockMarginAdjustmentOptions?.onAmountChanged?.(150);
++    });
++
++    expect(screen.getByTestId('amount-display')).toHaveProp(
++      'accessibilityLabel',
++      'perps.adjust_margin.amount_accessibility_label, 150.00',
++    );
++  });
++
++  it('keeps the slider within the fresh limit while the live snapshot still shows more', () => {
++    render(
++      <PerpsAdjustMarginBottomSheet position={position} initialMode="remove" />,
++    );
++    act(() => {
++      mockMarginAdjustmentOptions?.onAmountChanged?.(150);
++    });
++
++    act(() => {
++      (
++        screen.getByTestId(PerpsAdjustMarginBottomSheetSelectorsIDs.SLIDER)
++          .props as { onValueChange: (percentage: number) => void }
++      ).onValueChange(100);
++    });
++
++    expect(screen.getByTestId('amount-display')).toHaveProp(
++      'accessibilityLabel',
++      'perps.adjust_margin.amount_accessibility_label, 150.00',
++    );
++  });
++
++  it('drops the fresh limit when switching modes', () => {
++    render(
++      <PerpsAdjustMarginBottomSheet position={position} initialMode="remove" />,
++    );
++    act(() => {
++      mockMarginAdjustmentOptions?.onAmountChanged?.(150);
++    });
++
++    fireEvent.press(
++      screen.getByTestId(
++        PerpsAdjustMarginBottomSheetSelectorsIDs.ADD_MODE_BUTTON,
++      ),
++    );
++    fireEvent.press(
++      screen.getByTestId(
++        PerpsAdjustMarginBottomSheetSelectorsIDs.REMOVE_MODE_BUTTON,
++      ),
++    );
++    act(() => {
++      (
++        screen.getByTestId(PerpsAdjustMarginBottomSheetSelectorsIDs.SLIDER)
++          .props as { onValueChange: (percentage: number) => void }
++      ).onValueChange(100);
++    });
++
++    expect(screen.getByTestId('amount-display')).toHaveProp(
++      'accessibilityLabel',
++      'perps.adjust_margin.amount_accessibility_label, 200.00',
++    );
++  });
+ });
+diff --git a/app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.tsx b/app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.tsx
+index c4a57a6270..9ce149d4b4 100644
+--- a/app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.tsx
++++ b/app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.tsx
+@@ -54,6 +54,7 @@ import Keypad from '../../../../Base/Keypad';
+ import { LIQUIDATION_DISTANCE_DECIMALS } from '../../constants/perpsConfig';
+ import { PerpsAdjustMarginBottomSheetSelectorsIDs } from '../../Perps.testIds';
+ import { usePerpsAdjustMarginData } from '../../hooks/usePerpsAdjustMarginData';
++import { usePerpsFreshRemovalLimit } from '../../hooks/usePerpsFreshRemovalLimit';
+ import { usePerpsEventTracking } from '../../hooks/usePerpsEventTracking';
+ import { usePerpsMarginAdjustment } from '../../hooks/usePerpsMarginAdjustment';
+ import { usePerpsMeasurement } from '../../hooks/usePerpsMeasurement';
+@@ -115,6 +116,7 @@ const PerpsAdjustMarginBottomSheet: React.FC<
+   const { playImpact: playHapticImpact } = useHaptics();
+   const [mode, setMode] = useState<PerpsAdjustMarginMode>(initialMode);
+   const [marginAmountString, setMarginAmountString] = useState('0');
++  const [freshMaxAmount, setFreshMaxAmount] = useState<number | null>(null);
+   const [isInputFocused, setIsInputFocused] = useState(false);
+   const [submissionError, setSubmissionError] = useState<string | null>(null);
+   const [selectedTooltip, setSelectedTooltip] =
+@@ -156,6 +158,11 @@ const PerpsAdjustMarginBottomSheet: React.FC<
+       onSuccess: () => {
+         handleClose();
+       },
++      onAmountChanged: (safeMaxAmount) => {
++        submittedEstimateRef.current = null;
++        setFreshMaxAmount(safeMaxAmount);
++        setMarginAmountString(safeMaxAmount.toFixed(2));
++      },
+       onError: (errorMessage) => {
+         submittedEstimateRef.current = null;
+         setSubmissionError(errorMessage);
+@@ -191,6 +198,7 @@ const PerpsAdjustMarginBottomSheet: React.FC<
+     currentMargin,
+     newMargin,
+     maxAmount,
++    exchangeMaxAmount,
+     currentLiquidationPrice,
+     newLiquidationPrice,
+     currentLiquidationDistance,
+@@ -202,8 +210,15 @@ const PerpsAdjustMarginBottomSheet: React.FC<
+     inputAmount: marginAmount,
+   });
+ 
+-  const flooredMaxAmount =
+-    Number.isFinite(maxAmount) && maxAmount > 0 ? floorUsd(maxAmount) : 0;
++  const { flooredMaxAmount, submitLimitAmount } = usePerpsFreshRemovalLimit({
++    freshMaxAmount,
++    setFreshMaxAmount,
++    position,
++    snapshotMaxAmount:
++      Number.isFinite(maxAmount) && maxAmount > 0 ? floorUsd(maxAmount) : 0,
++    exchangeMaxAmount,
++    isAddMode,
++  });
+   const sliderPercentage = useMemo(
+     () =>
+       flooredMaxAmount <= 0
+@@ -212,14 +227,34 @@ const PerpsAdjustMarginBottomSheet: React.FC<
+     [flooredMaxAmount, marginAmount],
+   );
+ 
++  const hasNoRemovableMargin =
++    !isAddMode && !isLoading && hasValidPositionData && flooredMaxAmount <= 0;
++  // Close an open keypad once nothing is left to remove.
++  useEffect(() => {
++    if (hasNoRemovableMargin) {
++      setIsInputFocused(false);
++    }
++  }, [hasNoRemovableMargin]);
++
+   const validationError = useMemo(() => {
+-    if (isInputFocused || marginAmount <= flooredMaxAmount) {
++    // The zero-removable explanation replaces an error on a retained amount.
++    if (
++      isInputFocused ||
++      hasNoRemovableMargin ||
++      marginAmount <= submitLimitAmount
++    ) {
+       return null;
+     }
+     return isAddMode
+       ? strings('perps.adjust_margin.exceeds_available')
+       : strings('perps.errors.marginValidation.exceedsMaxRemovable');
+-  }, [flooredMaxAmount, isAddMode, isInputFocused, marginAmount]);
++  }, [
++    submitLimitAmount,
++    isAddMode,
++    isInputFocused,
++    hasNoRemovableMargin,
++    marginAmount,
++  ]);
+ 
+   const isPositionGone = !isLoading && !position;
+   const positionError = isPositionGone
+@@ -231,12 +266,16 @@ const PerpsAdjustMarginBottomSheet: React.FC<
+     ? strings('perps.adjust_margin.position_data_unavailable')
+     : null;
+   const displayedError =
+-    positionError ?? positionDataError ?? submissionError ?? validationError;
++    positionError ??
++    positionDataError ??
++    (hasNoRemovableMargin ? null : submissionError) ??
++    validationError;
+   const isValidationErrorDisplayed =
+     Boolean(validationError) && displayedError === validationError;
+   const hasInvalidAmount =
++    hasNoRemovableMargin ||
+     marginAmount <= 0 ||
+-    marginAmount > flooredMaxAmount ||
++    marginAmount > submitLimitAmount ||
+     Boolean(validationError);
+ 
+   usePerpsMeasurement({
+@@ -295,6 +334,7 @@ const PerpsAdjustMarginBottomSheet: React.FC<
+       }
+       setMode(nextMode);
+       setMarginAmountString('0');
++      setFreshMaxAmount(null);
+       setIsInputFocused(false);
+       setSubmissionError(null);
+       submittedEstimateRef.current = null;
+@@ -492,7 +532,9 @@ const PerpsAdjustMarginBottomSheet: React.FC<
+           <PerpsAmountDisplay
+             variant="tradeSheet"
+             amount={marginAmountString}
+-            onPress={() => setIsInputFocused(true)}
++            onPress={
++              hasNoRemovableMargin ? undefined : () => setIsInputFocused(true)
++            }
+             isActive={isInputFocused}
+             hasError={Boolean(validationError)}
+             isLoading={isLoading}
+@@ -519,7 +561,7 @@ const PerpsAdjustMarginBottomSheet: React.FC<
+               trackInset={8}
+               showRangeLabels
+               showRangeDots
+-              isDisabled={isAdjusting}
++              isDisabled={isAdjusting || hasNoRemovableMargin}
+               onGrip={() => playImpact(ImpactMoment.SliderGrip)}
+               onMark={() => playImpact(ImpactMoment.SliderTick)}
+               accessibilityLabel={strings(
+@@ -539,6 +581,17 @@ const PerpsAdjustMarginBottomSheet: React.FC<
+               {displayedError}
+             </HelpText>
+           )}
++
++          {hasNoRemovableMargin && !displayedError && (
++            <HelpText
++              twClassName="justify-center text-center"
++              testID={
++                PerpsAdjustMarginBottomSheetSelectorsIDs.NO_REMOVABLE_MARGIN
++              }
++            >
++              {strings('perps.adjust_margin.no_removable_margin')}
++            </HelpText>
++          )}
+         </Box>
+ 
+         <Box accessible={false}>
+diff --git a/app/components/UI/Perps/constants/perpsConfig.ts b/app/components/UI/Perps/constants/perpsConfig.ts
+index 823f4b258a..e65e4fedc9 100644
+--- a/app/components/UI/Perps/constants/perpsConfig.ts
++++ b/app/components/UI/Perps/constants/perpsConfig.ts
+@@ -194,6 +194,20 @@ export const CHASE_RETAINED_STATUSES: ReadonlySet<ChaseOrder['status']> =
+  */
+ export const LIQUIDATION_DISTANCE_DECIMALS = 2;
+ 
++/**
++ * Share of position notional kept back from the removable-margin maximum.
++ * The exchange re-checks the transfer requirement at the mark price it sees on
++ * submit, and isolated margin moves 1:1 with that price, so a max computed from
++ * the last position snapshot with no headroom is rejected on any adverse tick.
++ */
++export const MARGIN_REMOVAL_PRICE_MOVE_BUFFER = 0.01;
++
++/**
++ * How long a remove-margin form trusts a fresh read that stopped a removal
++ * over the live stream. Later submissions are still re-checked before sending.
++ */
++export const MARGIN_REMOVAL_FRESH_LIMIT_HOLD_MS = 10_000;
++
+ /**
+  * TP/SL View UI configuration
+  * Controls the Take Profit / Stop Loss screen behavior and display options
+diff --git a/app/components/UI/Perps/hooks/usePerpsAdjustMarginData.test.ts b/app/components/UI/Perps/hooks/usePerpsAdjustMarginData.test.ts
+index 8b3b5743e0..856ca78ff9 100644
+--- a/app/components/UI/Perps/hooks/usePerpsAdjustMarginData.test.ts
++++ b/app/components/UI/Perps/hooks/usePerpsAdjustMarginData.test.ts
+@@ -333,8 +333,11 @@ describe('usePerpsAdjustMarginData', () => {
+ 
+       // marginUsed = 8000
+       // transferMarginRequired = 5000 (same as before)
+-      // maxRemovable = 8000 - 5000 = 3000
+-      expect(result.current.maxAmount).toBe(3000);
++      // priceMoveBuffer = 50000 * 0.01 = 500
++      // maxRemovable = 8000 - 5000 - 500 = 2500
++      expect(result.current.maxAmount).toBe(2500);
++      // The exchange itself accepts up to 8000 - 5000 = 3000
++      expect(result.current.exchangeMaxAmount).toBe(3000);
+     });
+   });
+ 
+diff --git a/app/components/UI/Perps/hooks/usePerpsAdjustMarginData.ts b/app/components/UI/Perps/hooks/usePerpsAdjustMarginData.ts
+index ddeeb387c1..7851dd4d48 100644
+--- a/app/components/UI/Perps/hooks/usePerpsAdjustMarginData.ts
++++ b/app/components/UI/Perps/hooks/usePerpsAdjustMarginData.ts
+@@ -39,6 +39,11 @@ export interface UsePerpsAdjustMarginDataReturn {
+   positionValue: number;
+   /** Max amount that can be added/removed */
+   maxAmount: number;
++  /**
++   * Largest amount the exchange accepts right now. For remove mode this has no
++   * price-move headroom, so a tick after choosing Max does not invalidate it.
++   */
++  exchangeMaxAmount: number;
+   /** Current liquidation price */
+   currentLiquidationPrice: number;
+   /** New liquidation price after adjustment */
+@@ -174,19 +179,24 @@ export function usePerpsAdjustMarginData(
+   const positionLeverage =
+     parsedPositionLeverage > 0 ? parsedPositionLeverage : maxLeverage;
+ 
+-  // Calculate max removable/addable amount
+-  const maxAmount = useMemo(() => {
++  // Calculate max removable/addable amount. The exchange max has no price-move
++  // headroom so it can validate an amount chosen before a tick.
++  const { maxAmount, exchangeMaxAmount } = useMemo(() => {
+     if (isAddMode) {
+-      return Math.max(0, spendableBalance);
++      const addable = Math.max(0, spendableBalance);
++      return { maxAmount: addable, exchangeMaxAmount: addable };
+     }
+-    return calculateMaxRemovableMargin({
+-      currentMargin,
+-      positionSize,
+-      entryPrice,
+-      currentPrice,
+-      positionLeverage,
+-      notionalValue: positionValue,
+-    });
++    const removable = (priceMoveBufferRatio?: number) =>
++      calculateMaxRemovableMargin({
++        currentMargin,
++        positionSize,
++        entryPrice,
++        currentPrice,
++        positionLeverage,
++        notionalValue: positionValue,
++        priceMoveBufferRatio,
++      });
++    return { maxAmount: removable(), exchangeMaxAmount: removable(0) };
+   }, [
+     isAddMode,
+     spendableBalance,
+@@ -255,6 +265,7 @@ export function usePerpsAdjustMarginData(
+     newMargin,
+     positionValue,
+     maxAmount,
++    exchangeMaxAmount,
+     currentLiquidationPrice,
+     newLiquidationPrice,
+     currentLiquidationDistance,
+diff --git a/app/components/UI/Perps/hooks/usePerpsFreshRemovalLimit.test.ts b/app/components/UI/Perps/hooks/usePerpsFreshRemovalLimit.test.ts
+new file mode 100644
+index 0000000000..20440b224f
+--- /dev/null
++++ b/app/components/UI/Perps/hooks/usePerpsFreshRemovalLimit.test.ts
+@@ -0,0 +1,86 @@
++import { act, renderHook } from '@testing-library/react-hooks';
++import { useState } from 'react';
++import type { Position } from '@metamask/perps-controller';
++import { usePerpsFreshRemovalLimit } from './usePerpsFreshRemovalLimit';
++import { MARGIN_REMOVAL_FRESH_LIMIT_HOLD_MS } from '../constants/perpsConfig';
++
++const position = {
++  symbol: 'ETH',
++  size: '2.5',
++  entryPrice: '2000',
++  marginUsed: '500',
++  unrealizedPnl: '100',
++  leverage: { value: 10, type: 'isolated' },
++} as Position;
++const pnlTick = { ...position, unrealizedPnl: '90', marginUsed: '490' };
++
++const renderFreshLimit = (isAddMode = false) => {
++  const hook = renderHook(
++    ({ livePosition }: { livePosition: Position }) => {
++      const [freshMaxAmount, setFreshMaxAmount] = useState<number | null>(null);
++      return {
++        setFreshMaxAmount,
++        ...usePerpsFreshRemovalLimit({
++          freshMaxAmount,
++          setFreshMaxAmount,
++          position: livePosition,
++          snapshotMaxAmount: 200,
++          exchangeMaxAmount: 250,
++          isAddMode,
++        }),
++      };
++    },
++    { initialProps: { livePosition: position } },
++  );
++  act(() => hook.result.current.setFreshMaxAmount(150));
++  return hook;
++};
++
++describe('usePerpsFreshRemovalLimit', () => {
++  it('caps the offered and submit limits at the fresh max', () => {
++    const { result } = renderFreshLimit();
++
++    expect(result.current.flooredMaxAmount).toBe(150);
++    expect(result.current.submitLimitAmount).toBe(150);
++  });
++
++  it('ignores the fresh max in add mode', () => {
++    const { result } = renderFreshLimit(true);
++
++    expect(result.current.flooredMaxAmount).toBe(200);
++    expect(result.current.submitLimitAmount).toBe(250);
++  });
++
++  it('keeps the fresh max through PnL re-deliveries', () => {
++    const { result, rerender } = renderFreshLimit();
++
++    rerender({ livePosition: pnlTick });
++
++    expect(result.current.flooredMaxAmount).toBe(150);
++  });
++
++  it.each([
++    ['size', { size: '2' }],
++    ['entry', { entryPrice: '2100' }],
++    ['leverage', { leverage: { value: 5, type: 'isolated' } }],
++    ['collateral', { marginUsed: '520' }],
++  ])('drops the fresh max when the %s changes', (_, change) => {
++    const { result, rerender } = renderFreshLimit();
++
++    rerender({ livePosition: { ...pnlTick, ...change } as Position });
++
++    expect(result.current.flooredMaxAmount).toBe(200);
++  });
++
++  it('drops the fresh max after the hold window', () => {
++    jest.useFakeTimers();
++    const { result } = renderFreshLimit();
++
++    act(() => {
++      jest.advanceTimersByTime(MARGIN_REMOVAL_FRESH_LIMIT_HOLD_MS);
++    });
++
++    expect(result.current.flooredMaxAmount).toBe(200);
++    jest.useRealTimers();
++  });
++});
+diff --git a/app/components/UI/Perps/hooks/usePerpsFreshRemovalLimit.ts b/app/components/UI/Perps/hooks/usePerpsFreshRemovalLimit.ts
+new file mode 100644
+index 0000000000..6c3f986f44
+--- /dev/null
++++ b/app/components/UI/Perps/hooks/usePerpsFreshRemovalLimit.ts
+@@ -0,0 +1,72 @@
++import { useEffect } from 'react';
++import type { Position } from '@metamask/perps-controller';
++import { MARGIN_REMOVAL_FRESH_LIMIT_HOLD_MS } from '../constants/perpsConfig';
++
++interface UsePerpsFreshRemovalLimitParams {
++  /** Safe max from a fresh read that stopped a removal, or null. */
++  freshMaxAmount: number | null;
++  setFreshMaxAmount: (amount: number | null) => void;
++  position: Position | null;
++  /** Floored max from the live snapshot. */
++  snapshotMaxAmount: number;
++  exchangeMaxAmount: number;
++  isAddMode: boolean;
++}
++
++const floorUsd = (value: number) => Math.floor(value * 100) / 100;
++
++/**
++ * Keeps a remove-margin form within the limit a fresh read returned after it
++ * stopped a removal, for a bounded window or until the position itself
++ * changes. The stream re-sends positions on every PnL tick, so a change means
++ * size, entry, leverage or collateral (margin net of unrealized PnL).
++ *
++ * @param params - Fresh limit state, live position and snapshot limits.
++ * @returns The max offered by Max/slider and the limit submissions are checked against.
++ */
++export const usePerpsFreshRemovalLimit = ({
++  freshMaxAmount,
++  setFreshMaxAmount,
++  position,
++  snapshotMaxAmount,
++  exchangeMaxAmount,
++  isAddMode,
++}: UsePerpsFreshRemovalLimitParams) => {
++  const collateral = position
++    ? (
++        Number.parseFloat(position.marginUsed) -
++        Number.parseFloat(position.unrealizedPnl)
++      ).toFixed(2)
++    : '';
++  const positionShape = position
++    ? `${position.size}|${position.entryPrice}|${position.leverage?.value}|${collateral}`
++    : '';
++  useEffect(() => {
++    setFreshMaxAmount(null);
++  }, [positionShape, setFreshMaxAmount]);
++  useEffect(() => {
++    if (freshMaxAmount === null) {
++      return undefined;
++    }
++    const timer = setTimeout(
++      () => setFreshMaxAmount(null),
++      MARGIN_REMOVAL_FRESH_LIMIT_HOLD_MS,
++    );
++    return () => clearTimeout(timer);
++  }, [freshMaxAmount, setFreshMaxAmount]);
++
++  const capToFreshMax = (amount: number) =>
++    freshMaxAmount === null || isAddMode
++      ? amount
++      : Math.min(amount, freshMaxAmount);
++  const flooredMaxAmount = capToFreshMax(snapshotMaxAmount);
++  // Validate against what the exchange accepts, not the headroom-reduced max
++  // offered by Max/slider, so a price tick after choosing Max does not block it.
++  const submitLimitAmount = capToFreshMax(
++    Number.isFinite(exchangeMaxAmount) && exchangeMaxAmount > flooredMaxAmount
++      ? floorUsd(exchangeMaxAmount)
++      : flooredMaxAmount,
++  );
++
++  return { flooredMaxAmount, submitLimitAmount };
++};
+diff --git a/app/components/UI/Perps/hooks/usePerpsMarginAdjustment.test.ts b/app/components/UI/Perps/hooks/usePerpsMarginAdjustment.test.ts
+index 0ceeee1f9c..f7eb7e52b4 100644
+--- a/app/components/UI/Perps/hooks/usePerpsMarginAdjustment.test.ts
++++ b/app/components/UI/Perps/hooks/usePerpsMarginAdjustment.test.ts
+@@ -3,12 +3,14 @@ import Logger from '../../../../util/Logger';
+ import { usePerpsMarginAdjustment } from './usePerpsMarginAdjustment';
+ 
+ const mockUpdateMargin = jest.fn();
++const mockGetPositions = jest.fn();
+ const mockShowToast = jest.fn();
+ const mockTrack = jest.fn();
+ 
+ jest.mock('./usePerpsTrading', () => ({
+   usePerpsTrading: () => ({
+     updateMargin: mockUpdateMargin,
++    getPositions: mockGetPositions,
+   }),
+ }));
+ 
+@@ -33,6 +35,10 @@ jest.mock('./usePerpsToasts', () => ({
+             symbol,
+             amount,
+           })),
++          removeAmountChanged: jest.fn((maxAmount) => ({
++            type: 'remove_amount_changed',
++            maxAmount,
++          })),
+           adjustmentFailed: jest.fn((error) => ({
+             type: 'error',
+             error,
+@@ -69,7 +75,12 @@ jest.mock('../../../../core/SDKConnect/utils/DevLogger', () => ({
+   },
+ }));
+ 
++jest.mock('../constants/perpsConfig', () => ({
++  MARGIN_REMOVAL_PRICE_MOVE_BUFFER: 0.01,
++}));
++
+ jest.mock('@metamask/perps-controller', () => ({
++  MARGIN_ADJUSTMENT_CONFIG: { MarginRemovalSafetyBuffer: 0.1 },
+   PERPS_CONSTANTS: { FeatureName: 'perps' },
+   PERPS_EVENT_PROPERTY: {
+     ACTION: 'action',
+@@ -86,6 +97,17 @@ jest.mock('@metamask/perps-controller', () => ({
+ describe('usePerpsMarginAdjustment', () => {
+   beforeEach(() => {
+     jest.clearAllMocks();
++    // Positions with ample margin so removals are not stopped by re-validation
++    mockGetPositions.mockResolvedValue(
++      ['ETH', 'BTC'].map((symbol) => ({
++        symbol,
++        size: '1',
++        entryPrice: '1000',
++        positionValue: '1000',
++        marginUsed: '100000',
++        leverage: { type: 'isolated', value: 10 },
++      })),
++    );
+   });
+ 
+   it('returns handleAddMargin, handleRemoveMargin functions and isAdjusting state', () => {
+@@ -290,6 +312,94 @@ describe('usePerpsMarginAdjustment', () => {
+     });
+   });
+ 
++  describe('handleRemoveMargin re-validation', () => {
++    // 10x on $300 notional: required = max($30, 10% = $30) = $30, so the
++    // exchange accepts up to $10 and the 1% headroom leaves $7 safe to offer.
++    const freshPosition = {
++      symbol: 'ETH',
++      size: '0.1',
++      entryPrice: '3000',
++      positionValue: '300',
++      marginUsed: '40',
++      leverage: { type: 'isolated', value: 10 },
++    };
++
++    it('stops a removal the fresh position no longer covers and reports the new safe max', async () => {
++      mockGetPositions.mockResolvedValue([freshPosition]);
++      const mockOnAmountChanged = jest.fn();
++      const mockOnError = jest.fn();
++      const { result } = renderHook(() =>
++        usePerpsMarginAdjustment({
++          onAmountChanged: mockOnAmountChanged,
++          onError: mockOnError,
++        }),
++      );
++
++      await act(async () => {
++        await result.current.handleRemoveMargin('ETH', 12);
++      });
++
++      expect(mockUpdateMargin).not.toHaveBeenCalled();
++      expect(mockShowToast).toHaveBeenCalledWith({
++        type: 'remove_amount_changed',
++        maxAmount: '7.00',
++      });
++      expect(mockOnAmountChanged).toHaveBeenCalledWith(7);
++      expect(mockOnError).not.toHaveBeenCalled();
++      expect(mockTrack).not.toHaveBeenCalled();
++      expect(result.current.isAdjusting).toBe(false);
++    });
++
++    it.each<[string, object[] | Error, number]>([
++      ['within the safe max', [freshPosition], 5],
++      ['above the safe max the exchange still accepts', [freshPosition], 9],
++      ['the fresh read fails', new Error('network down'), 12],
++      ['leverage is missing', [{ ...freshPosition, leverage: undefined }], 12],
++      [
++        'marginUsed is not a number',
++        [{ ...freshPosition, marginUsed: 'NaN' }],
++        12,
++      ],
++      ['positionValue is zero', [{ ...freshPosition, positionValue: '0' }], 12],
++      // The provider returns [] for a failed fetch too, so a missing position
++      // is not proof that it closed.
++      ['the fresh read no longer has the position', [], 5],
++    ])('submits the removal when %s', async (_label, freshRead, amount) => {
++      if (freshRead instanceof Error) {
++        mockGetPositions.mockRejectedValue(freshRead);
++      } else {
++        mockGetPositions.mockResolvedValue(freshRead);
++      }
++      mockUpdateMargin.mockResolvedValue({ success: true });
++      const mockOnAmountChanged = jest.fn();
++      const { result } = renderHook(() =>
++        usePerpsMarginAdjustment({ onAmountChanged: mockOnAmountChanged }),
++      );
++
++      await act(async () => {
++        await result.current.handleRemoveMargin('ETH', amount);
++      });
++
++      expect(mockGetPositions).toHaveBeenCalledWith({ skipCache: true });
++      expect(mockOnAmountChanged).not.toHaveBeenCalled();
++      expect(mockUpdateMargin).toHaveBeenCalledWith({
++        symbol: 'ETH',
++        amount: `-${amount}`,
++      });
++    });
++
++    it('does not read positions when adding margin', async () => {
++      mockUpdateMargin.mockResolvedValue({ success: true });
++      const { result } = renderHook(() => usePerpsMarginAdjustment());
++
++      await act(async () => {
++        await result.current.handleAddMargin('ETH', 12);
++      });
++
++      expect(mockGetPositions).not.toHaveBeenCalled();
++    });
++  });
++
+   describe('error handling', () => {
+     it('shows default error message when no error provided', async () => {
+       mockUpdateMargin.mockResolvedValue({ success: false });
+diff --git a/app/components/UI/Perps/hooks/usePerpsMarginAdjustment.ts b/app/components/UI/Perps/hooks/usePerpsMarginAdjustment.ts
+index 2baa573b7c..aec82248ef 100644
+--- a/app/components/UI/Perps/hooks/usePerpsMarginAdjustment.ts
++++ b/app/components/UI/Perps/hooks/usePerpsMarginAdjustment.ts
+@@ -11,14 +11,20 @@ import {
+   PERPS_EVENT_PROPERTY,
+   PERPS_EVENT_VALUE,
+ } from '@metamask/perps-controller';
++import { strings } from '../../../../../locales/i18n';
+ import { translatePerpsError } from '../utils/translatePerpsError';
++import { calculateMaxRemovableMargin } from '../utils/marginUtils';
+ import { usePerpsEventTracking } from './usePerpsEventTracking';
+ 
+ export interface UsePerpsMarginAdjustmentOptions {
+   onSuccess?: () => void;
+   onError?: (error: string) => void;
++  /** Called with the new safe max when a removal was stopped because it shrank */
++  onAmountChanged?: (maxAmount: number) => void;
+ }
+ 
++const floorUsd = (value: number) => Math.floor(value * 100) / 100;
++
+ /**
+  * Hook for handling margin adjustment operations (add/remove margin from positions)
+  * Provides consistent error handling, toast notifications, and Sentry tracking
+@@ -28,13 +34,63 @@ export interface UsePerpsMarginAdjustmentOptions {
+ export function usePerpsMarginAdjustment(
+   options?: UsePerpsMarginAdjustmentOptions,
+ ) {
+-  const { updateMargin } = usePerpsTrading();
++  const { updateMargin, getPositions } = usePerpsTrading();
+   const [isAdjusting, setIsAdjusting] = useState(false);
+   const isAdjustingRef = useRef(false);
+ 
+   const { showToast, PerpsToastOptions } = usePerpsToasts();
+   const { track } = usePerpsEventTracking();
+ 
++  // Re-reads the position so a removal is checked against what the exchange
++  // will see, not the snapshot the form was built from. Returns null when the
++  // read can't be trusted so the submission is not blocked. A missing position
++  // counts as that: the provider also returns [] when the fetch fails, so the
++  // exchange decides whether the position is really gone.
++  const getFreshRemovableMargin = useCallback(
++    async (
++      symbol: string,
++    ): Promise<{ exchangeMax: number; safeMax: number } | null> => {
++      try {
++        const positions = await getPositions({ skipCache: true });
++        const position = positions.find((p) => p.symbol === symbol);
++        if (!position) {
++          return null;
++        }
++        const params = {
++          currentMargin: parseFloat(position.marginUsed),
++          positionSize: Math.abs(parseFloat(position.size)),
++          entryPrice: parseFloat(position.entryPrice),
++          currentPrice: 0,
++          positionLeverage: position.leverage?.value ?? 0,
++          notionalValue: parseFloat(position.positionValue),
++        };
++        // Unusable fields would read as "nothing removable"; treat them like
++        // a failed read instead of blocking the removal.
++        if (
++          !(params.currentMargin > 0) ||
++          !(params.notionalValue > 0) ||
++          !(params.positionLeverage > 0)
++        ) {
++          return null;
++        }
++        return {
++          exchangeMax: calculateMaxRemovableMargin({
++            ...params,
++            priceMoveBufferRatio: 0,
++          }),
++          safeMax: floorUsd(calculateMaxRemovableMargin(params)),
++        };
++      } catch (error) {
++        DevLogger.log(
++          'Fresh position read before margin removal failed:',
++          error,
++        );
++        return null;
++      }
++    },
++    [getPositions],
++  );
++
+   const handleMarginUpdate = useCallback(
+     async (symbol: string, amount: number, action: 'add' | 'remove') => {
+       if (isAdjustingRef.current) {
+@@ -66,6 +122,21 @@ export function usePerpsMarginAdjustment(
+       };
+ 
+       try {
++        if (action === 'remove') {
++          // The position can move between opening the form and submitting,
++          // so re-check the amount against a fresh read before sending it.
++          const fresh = await getFreshRemovableMargin(symbol);
++          if (fresh && amount > fresh.exchangeMax) {
++            showToast(
++              PerpsToastOptions.positionManagement.margin.removeAmountChanged(
++                fresh.safeMax.toFixed(2),
++              ),
++            );
++            options?.onAmountChanged?.(fresh.safeMax);
++            return;
++          }
++        }
++
+         const result = await updateMargin({
+           symbol,
+           amount: adjustmentAmount.toString(),
+@@ -153,6 +224,7 @@ export function usePerpsMarginAdjustment(
+     },
+     [
+       updateMargin,
++      getFreshRemovableMargin,
+       showToast,
+       PerpsToastOptions.positionManagement.margin,
+       options,
+diff --git a/app/components/UI/Perps/hooks/usePerpsToasts.test.tsx b/app/components/UI/Perps/hooks/usePerpsToasts.test.tsx
+index baa673934b..9a7dd87d2c 100644
+--- a/app/components/UI/Perps/hooks/usePerpsToasts.test.tsx
++++ b/app/components/UI/Perps/hooks/usePerpsToasts.test.tsx
+@@ -1305,6 +1305,29 @@ describe('usePerpsToasts', () => {
+         });
+       });
+ 
++      it('returns remove amount changed configuration with the new max', () => {
++        const { result } = renderHook(() => usePerpsToasts());
++        const config =
++          result.current.PerpsToastOptions.positionManagement.margin.removeAmountChanged(
++            '7.00',
++          );
++
++        expect(config.labelOptions).toHaveLength(3);
++        expect(config.labelOptions?.[0]).toMatchObject({ isBold: true });
++        expect(config.labelOptions?.[2]).toMatchObject({ isBold: false });
++        expect(String(config.labelOptions?.[2]?.label)).toContain('7.00');
++      });
++
++      it('explains nothing is removable when the new max is zero', () => {
++        const { result } = renderHook(() => usePerpsToasts());
++        const config =
++          result.current.PerpsToastOptions.positionManagement.margin.removeAmountChanged(
++            '0.00',
++          );
++
++        expect(String(config.labelOptions?.[2]?.label)).not.toContain('0.00');
++      });
++
+       it('returns adjustment failed configuration with custom error', () => {
+         const { result } = renderHook(() => usePerpsToasts());
+         const customError = 'Insufficient funds';
+diff --git a/app/components/UI/Perps/hooks/usePerpsToasts.tsx b/app/components/UI/Perps/hooks/usePerpsToasts.tsx
+index ddd1404cb8..022ecc4c54 100644
+--- a/app/components/UI/Perps/hooks/usePerpsToasts.tsx
++++ b/app/components/UI/Perps/hooks/usePerpsToasts.tsx
+@@ -228,6 +228,7 @@ export interface PerpsToastOptionsConfig {
+     margin: {
+       addSuccess: (assetSymbol: string, amount: string) => PerpsToastOptions;
+       removeSuccess: (assetSymbol: string, amount: string) => PerpsToastOptions;
++      removeAmountChanged: (maxAmount: string) => PerpsToastOptions;
+       adjustmentFailed: (error?: string) => PerpsToastOptions;
+     };
+   };
+@@ -1197,6 +1198,17 @@ const usePerpsToasts = (): {
+               }),
+             ),
+           }),
++          removeAmountChanged: (maxAmount: string) => ({
++            ...perpsBaseToastOptions.warning,
++            labelOptions: getPerpsToastLabels(
++              strings('perps.position.margin.remove_amount_changed_title'),
++              Number(maxAmount) > 0
++                ? strings('perps.position.margin.remove_amount_changed', {
++                    amount: maxAmount,
++                  })
++                : strings('perps.adjust_margin.no_removable_margin'),
++            ),
++          }),
+           adjustmentFailed: (error?: string) => ({
+             ...perpsBaseToastOptions.error,
+             labelOptions: getPerpsToastLabels(
+diff --git a/app/components/UI/Perps/utils/marginUtils.test.ts b/app/components/UI/Perps/utils/marginUtils.test.ts
+index 2dbb216240..8d32fb7c7b 100644
+--- a/app/components/UI/Perps/utils/marginUtils.test.ts
++++ b/app/components/UI/Perps/utils/marginUtils.test.ts
+@@ -28,8 +28,9 @@ describe('marginUtils', () => {
+       // initialMarginRequired = 20000 / 50 = 400 (2%)
+       // tenPercentMargin = 20000 * 0.1 = 2000 (10%)
+       // transferMarginRequired = max(400, 2000) = 2000
+-      // maxRemovable = 3000 - 2000 = 1000
+-      expect(result).toBe(1000);
++      // priceMoveBuffer = 20000 * 0.01 = 200
++      // maxRemovable = 3000 - 2000 - 200 = 800
++      expect(result).toBe(800);
+     });
+ 
+     it('uses leverage-based minimum when it exceeds 10% (low leverage)', () => {
+@@ -46,8 +47,9 @@ describe('marginUtils', () => {
+       // initialMarginRequired = 20000 / 5 = 4000 (20%)
+       // tenPercentMargin = 20000 * 0.1 = 2000 (10%)
+       // transferMarginRequired = max(4000, 2000) = 4000
+-      // maxRemovable = 5000 - 4000 = 1000
+-      expect(result).toBe(1000);
++      // priceMoveBuffer = 20000 * 0.01 = 200
++      // maxRemovable = 5000 - 4000 - 200 = 800
++      expect(result).toBe(800);
+     });
+ 
+     it('uses current price (mark price) per Hyperliquid docs', () => {
+@@ -64,8 +66,9 @@ describe('marginUtils', () => {
+       // initialMarginRequired = 25000 / 5 = 5000 (20%)
+       // tenPercentMargin = 25000 * 0.1 = 2500 (10%)
+       // transferMarginRequired = max(5000, 2500) = 5000
+-      // maxRemovable = 6000 - 5000 = 1000
+-      expect(result).toBe(1000);
++      // priceMoveBuffer = 25000 * 0.01 = 250
++      // maxRemovable = 6000 - 5000 - 250 = 750
++      expect(result).toBe(750);
+     });
+ 
+     it('allows margin removal when current margin exceeds transfer margin required', () => {
+@@ -82,10 +85,39 @@ describe('marginUtils', () => {
+       // initialMarginRequired = 20000 / 50 = 400 (2%)
+       // tenPercentMargin = 20000 * 0.1 = 2000 (10%)
+       // transferMarginRequired = max(400, 2000) = 2000
+-      // maxRemovable = 8000 - 2000 = 6000
++      // priceMoveBuffer = 20000 * 0.01 = 200
++      // maxRemovable = 8000 - 2000 - 200 = 5800
++      expect(result).toBe(5800);
++    });
++
++    it('returns the exact exchange boundary when the price-move buffer is 0', () => {
++      const result = calculateMaxRemovableMargin({
++        currentMargin: 8000,
++        positionSize: 10,
++        entryPrice: 2000,
++        currentPrice: 2000,
++        positionLeverage: 50,
++        priceMoveBufferRatio: 0,
++      });
++
++      // transferMarginRequired = 2000, no headroom
+       expect(result).toBe(6000);
+     });
+ 
++    it('returns 0 when the surplus over the requirement is inside the price-move headroom', () => {
++      // $1000 notional at 10x needs $100; $105 leaves $5 of surplus, below
++      // the $10 (1%) kept back for price movement before the exchange checks.
++      const result = calculateMaxRemovableMargin({
++        currentMargin: 105,
++        positionSize: 0.01,
++        entryPrice: 100000,
++        currentPrice: 100000,
++        positionLeverage: 10,
++      });
++
++      expect(result).toBe(0);
++    });
++
+     it('correctly calculates for position at exact initial margin (no removable)', () => {
+       // Position at 10x leverage with exactly the required margin
+       // $1000 notional, $100 margin (10% = initial margin at 10x)
+@@ -189,8 +221,8 @@ describe('marginUtils', () => {
+       // initialMarginRequired = 20000 / 50 = 400 (2%)
+       // tenPercentMargin = 20000 * 0.1 = 2000 (10%)
+       // transferMarginRequired = max(400, 2000) = 2000
+-      // maxRemovable = 3000 - 2000 = 1000
+-      expect(result).toBe(1000);
++      // maxRemovable = 3000 - 2000 - 200 (1% headroom) = 800
++      expect(result).toBe(800);
+     });
+ 
+     it('uses calculated notionalValue when provided value is 0', () => {
+@@ -205,7 +237,7 @@ describe('marginUtils', () => {
+ 
+       // Falls back to: notionalValue = 10 * 2000 = 20000
+       // Same calculation as above
+-      expect(result).toBe(1000);
++      expect(result).toBe(800);
+     });
+ 
+     it('prefers provided notionalValue over calculated when both available', () => {
+@@ -222,8 +254,8 @@ describe('marginUtils', () => {
+       // initialMarginRequired = 20000 / 5 = 4000 (20%)
+       // tenPercentMargin = 20000 * 0.1 = 2000 (10%)
+       // transferMarginRequired = max(4000, 2000) = 4000
+-      // maxRemovable = 5000 - 4000 = 1000
+-      expect(result).toBe(1000);
++      // maxRemovable = 5000 - 4000 - 200 (1% headroom) = 800
++      expect(result).toBe(800);
+     });
+   });
+ 
+diff --git a/app/components/UI/Perps/utils/marginUtils.ts b/app/components/UI/Perps/utils/marginUtils.ts
+index 6063f01d6a..77ad9ce856 100644
+--- a/app/components/UI/Perps/utils/marginUtils.ts
++++ b/app/components/UI/Perps/utils/marginUtils.ts
+@@ -3,6 +3,7 @@
+  * Provides risk assessment and margin calculation functions for position management
+  */
+ import { MARGIN_ADJUSTMENT_CONFIG } from '@metamask/perps-controller';
++import { MARGIN_REMOVAL_PRICE_MOVE_BUFFER } from '../constants/perpsConfig';
+ 
+ export type RiskLevel = 'safe' | 'warning' | 'danger';
+ 
+@@ -27,6 +28,8 @@ export interface CalculateMaxRemovableMarginParams {
+   positionLeverage: number;
+   /** Optional pre-calculated notional value (e.g., from position.positionValue) for immediate display before live prices load */
+   notionalValue?: number;
++  /** Share of notional kept back for price movement; 0 returns the exact exchange boundary */
++  priceMoveBufferRatio?: number;
+ }
+ 
+ export interface EstimateLiquidationPriceParams {
+@@ -111,6 +114,7 @@ export function calculateMaxRemovableMargin(
+     currentPrice,
+     positionLeverage,
+     notionalValue: providedNotionalValue,
++    priceMoveBufferRatio = MARGIN_REMOVAL_PRICE_MOVE_BUFFER,
+   } = params;
+ 
+   // Validate inputs
+@@ -162,8 +166,12 @@ export function calculateMaxRemovableMargin(
+   // Note: Unrealized PnL is NOT counted as part of "remaining margin" for withdrawals
+   // Per Hyperliquid docs, unrealized PnL helps prevent liquidation but doesn't
+   // increase your available withdrawal limit for margin transfers
+-  // Maximum removable = current margin - required (must be non-negative)
+-  return Math.max(0, currentMargin - transferMarginRequired);
++  // Keep headroom for the mark price moving before the exchange processes the
++  // request; offering the exact boundary gets rejected on any adverse tick.
++  const priceMoveBuffer = notionalValue * priceMoveBufferRatio;
++
++  // Maximum removable = current margin - required - headroom (non-negative)
++  return Math.max(0, currentMargin - transferMarginRequired - priceMoveBuffer);
+ }
+ 
+ /**
+diff --git a/locales/languages/en.json b/locales/languages/en.json
+index d3db9edc0f..54bd1534c7 100644
+--- a/locales/languages/en.json
++++ b/locales/languages/en.json
+@@ -2509,7 +2509,8 @@
+       "perps_balance": "Perps balance",
+       "liquidation_price": "Liquidation price",
+       "liquidation_distance": "Liquidation distance",
+-      "exceeds_available": "Amount exceeds available margin"
++      "exceeds_available": "Amount exceeds available margin",
++      "no_removable_margin": "No margin can be removed right now. This position needs its current margin to stay open."
+     },
+     "tpsl": {
+       "title": "Auto close",
+@@ -2746,7 +2747,9 @@
+       "margin": {
+         "add_success": "Added ${{amount}} margin to {{asset}} position",
+         "remove_success": "Removed ${{amount}} margin from {{asset}} position",
+-        "adjustment_failed": "Margin adjustment failed"
++        "adjustment_failed": "Margin adjustment failed",
++        "remove_amount_changed_title": "Removable margin changed",
++        "remove_amount_changed": "Your position moved. You can now remove up to ${{amount}}. Check the amount and try again."
+       }
+     },
+     "markets": {

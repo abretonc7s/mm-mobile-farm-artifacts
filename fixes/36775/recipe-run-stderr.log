@@ -1,0 +1,4 @@
+mm-harness: dist/ is older than src/ — running the current source checkout.
+  Next: npm run build to refresh dist/
+Recipe libraries: perps=/Users/deeeed/dev/metamask/experimental-metamask-recipe-perps (24 recipes), terminal=/Users/deeeed/dev/metamask/experimental-metamask-recipe-terminal (8 recipes), metamask=/Users/deeeed/dev/metamask/metamask-harness/library (22 recipes)
+Recipe libraries: perps=/Users/deeeed/dev/metamask/experimental-metamask-recipe-perps (24 recipes), terminal=/Users/deeeed/dev/metamask/experimental-metamask-recipe-terminal (8 recipes), metamask=/Users/deeeed/dev/metamask/metamask-harness/library (22 recipes)

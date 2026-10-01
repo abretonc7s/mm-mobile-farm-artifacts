@@ -1,0 +1,1 @@
+{"body": "Fixed in 8178666ec8b64f9ec090db0e6ced7331d088b105. Both forms now derive the zero-removable block from submitLimitAmount, and real-stream component view tests verify that the retained $2 remains enabled and submits after buffered Max falls to zero while the exchange limit is $9.30."}

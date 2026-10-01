@@ -1,21 +1,43 @@
 {
+  "committed_product_revision": "8178666ec8b64f9ec090db0e6ced7331d088b105",
+  "committed_tree_verified": true,
   "version": 1,
   "verdict": "pass",
   "compact": {
     "verdict": "PASS",
     "reasons": [
-      "Full recipe PASS 104/104 at pushed HEAD b729f32d3c3 (recipe-run/report.md), with state asserts after every mutation (Added/Removed toasts, drain helper re-reads the position and fails unless removable margin is gone).",
-      "New keypad asserts discriminate: live negative control with the effect removed fails at ac4-assert-keypad-closed (probes/neg-p4-keypad-run); unit negative control fails both new tests.",
-      "Screenshots on every visual/mixed AC (ac1, ac2, ac4, ac5); amounts entered through keypad/Max only; failed environmental attempts preserved with logs."
+      "Final recipe-run-2 PASS 104/104 on rebased product HEAD 80944eaf257d3e154a4fdc4729631ef983b30853 with tested staged tree 064e9e782a4eeb4f2847f1788629a00bec6dd732.",
+      "Max exchange success is observed through the persistent navigation postcondition; no live toast visibility claim. Actual zero-exchange state has explanation and disabled controls.",
+      "Both live drains leave $1 exchange-removable with buffered Max zero; keypad remains visible and zero explanation absent. Real-stream component view tests separately prove retained valid $2 submission on both forms.",
+      "All five final screenshots visually reviewed. Root recipe bytes match the identified run; evidence-provenance hashes preserve all recipe dependencies, trace, diagnostics and evidence."
     ],
-    "better_version_guidance": []
+    "better_version_guidance": [
+      "Post-release Mixpanel <=14% requires production traffic. Extension parity requires a separate client validation."
+    ]
   },
   "dimensions": {},
   "structural_findings": [],
-  "contextual_findings": [],
+  "contextual_findings": [
+    {
+      "code": "inherited-buffered-zero-expectation",
+      "message": "Inherited drain left positive exchange margin and incorrectly expected a zero explanation. Corrected expectations preserve the graph.",
+      "evidence": [
+        "recipe.inherited.json",
+        "recipe-run-2/trace.json"
+      ]
+    },
+    {
+      "code": "transient-toast-observation",
+      "message": "Four transient toast waits use persistent exchange-success navigation. Live toast visibility is not claimed.",
+      "evidence": [
+        "recipe-run-first-failed/trace.json",
+        "recipe-run-2/trace.json"
+      ]
+    }
+  ],
   "suggested_recipe_delta": [],
   "training_fields": {
-    "proof_mode": "unknown"
+    "proof_mode": "mixed"
   },
   "meta": {
     "producer": "worker",
@@ -23,7 +45,9 @@
     "legacy_task": false,
     "artifact_required": true,
     "source_signals": [
-      "recipe-quality.json"
+      "recipe-run-2/summary.json",
+      "validation-summary.json",
+      "evidence-manifest.json"
     ]
   }
 }

@@ -1,0 +1,1 @@
+/Users/deeeed/dev/metamask/metamask-harness/bin/mm-harness

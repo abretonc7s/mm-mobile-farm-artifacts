@@ -1,0 +1,9 @@
+$ /Users/deeeed/dev/metamask/metamask-mobile-6/node_modules/.bin/eslint --cache --cache-location /Users/deeeed/dev/metamask/metamask-mobile-6/temp/tasks/fix/36775-1001-125327/artifacts/eslintcache app/components/UI/Perps/Perps.testIds.ts app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.test.tsx app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.tsx app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.view.test.tsx app/components/UI/Perps/Views/PerpsOrderLifecycleFlow.view.test.tsx app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.test.tsx app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.tsx app/components/UI/Perps/constants/perpsConfig.ts app/components/UI/Perps/hooks/usePerpsAdjustMarginData.test.ts app/components/UI/Perps/hooks/usePerpsAdjustMarginData.ts app/components/UI/Perps/hooks/usePerpsFreshRemovalLimit.test.ts app/components/UI/Perps/hooks/usePerpsFreshRemovalLimit.ts app/components/UI/Perps/hooks/usePerpsMarginAdjustment.test.ts app/components/UI/Perps/hooks/usePerpsMarginAdjustment.ts app/components/UI/Perps/hooks/usePerpsToasts.test.tsx app/components/UI/Perps/hooks/usePerpsToasts.tsx app/components/UI/Perps/utils/marginUtils.test.ts app/components/UI/Perps/utils/marginUtils.ts
+exit: 0
+duration_ms: 244267
+
+--- stdout ---
+
+
+--- stderr ---
+

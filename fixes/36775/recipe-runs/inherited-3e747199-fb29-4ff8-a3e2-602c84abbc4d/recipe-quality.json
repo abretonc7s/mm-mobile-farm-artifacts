@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "verdict": "pass",
+  "compact": {
+    "verdict": "PASS",
+    "reasons": [
+      "Full recipe PASS 104/104 at pushed HEAD b729f32d3c3 (recipe-run/report.md), with state asserts after every mutation (Added/Removed toasts, drain helper re-reads the position and fails unless removable margin is gone).",
+      "New keypad asserts discriminate: live negative control with the effect removed fails at ac4-assert-keypad-closed (probes/neg-p4-keypad-run); unit negative control fails both new tests.",
+      "Screenshots on every visual/mixed AC (ac1, ac2, ac4, ac5); amounts entered through keypad/Max only; failed environmental attempts preserved with logs."
+    ],
+    "better_version_guidance": []
+  },
+  "dimensions": {},
+  "structural_findings": [],
+  "contextual_findings": [],
+  "suggested_recipe_delta": [],
+  "training_fields": {
+    "proof_mode": "unknown"
+  },
+  "meta": {
+    "producer": "worker",
+    "fallback_used": false,
+    "legacy_task": false,
+    "artifact_required": true,
+    "source_signals": [
+      "recipe-quality.json"
+    ]
+  }
+}

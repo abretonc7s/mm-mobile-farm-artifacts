@@ -1,7 +1,7 @@
 {
   "$schema": "https://farmslot.io/schemas/recipe-v1.schema.json",
   "title": "Remove margin max is accepted and a zero limit is explained",
-  "description": "TAT-3985: on an isolated BTC testnet position (Trading account), add $20 margin, remove the offered Max and require exchange acceptance; require the zero-removable explanation on a fresh SOL position; then, in both the full-screen and bottom-sheet flows, keep a Max amount in the form, drain the position's spare margin from outside the form with the keypad reopened over the retained Max amount, and require the keypad to close and the zero-removable explanation with no stale error. Pre-submit re-validation is proven by focused tests.",
+  "description": "TAT-3985: on an isolated BTC testnet position (Trading account), add $20 margin, remove the offered Max and require exchange acceptance; require the zero-removable explanation on a fresh SOL position; then, in both the full-screen and bottom-sheet flows, keep a Max amount in the form, drain the position's spare margin from outside the form with the keypad reopened over the retained Max amount, and require the keypad to remain available and the zero-removable explanation to stay absent while the exchange limit is still positive; retained amounts within that exchange limit are proven submittable in component view tests. Pre-submit re-validation is proven by focused tests.",
   "workflow": {
     "entry": "setup-session",
     "nodes": {
@@ -92,12 +92,11 @@
       },
       "setup-assert-added": {
         "action": "ui.wait_for",
-        "text": "Added $20 margin",
-        "text_match": "contains",
         "expected": "visible",
         "timeout_ms": 20000,
-        "intent": "Confirm the exchange accepted the addition so removable headroom exists",
-        "next": "ac1-home"
+        "intent": "Require return to the position market after the exchange success callback; this persistent signal avoids missing the brief toast between slow native observations",
+        "next": "ac1-home",
+        "test_id": "perps-market-details-close-button"
       },
       "ac1-home": {
         "action": "ui.navigate",
@@ -172,17 +171,16 @@
       },
       "ac1-assert-removed": {
         "action": "ui.wait_for",
-        "text": "Removed $",
-        "text_match": "contains",
         "expected": "visible",
         "timeout_ms": 20000,
-        "intent": "Confirm the exchange accepted the max removal the app offered",
-        "next": "ac1-screenshot-removed"
+        "intent": "Require return to the position market after the exchange success callback; this persistent signal avoids missing the brief toast between slow native observations",
+        "next": "ac1-screenshot-removed",
+        "test_id": "perps-market-details-close-button"
       },
       "ac1-screenshot-removed": {
         "action": "ui.screenshot",
-        "label": "AC1: max removal accepted",
-        "intent": "Show reviewers the exchange accepted the offered max amount",
+        "label": "AC1: exchange accepted Max; returned to the position market",
+        "intent": "Record the persistent market view reached only after updateMargin reports success",
         "next": "ac1-assert-no-rejection"
       },
       "ac1-assert-no-rejection": {
@@ -374,12 +372,11 @@
       },
       "ac4-add-assert-added": {
         "action": "ui.wait_for",
-        "text": "Added $20 margin",
-        "text_match": "contains",
         "expected": "visible",
         "timeout_ms": 20000,
-        "intent": "Confirm the exchange accepted the addition so removable headroom exists",
-        "next": "ac4-home"
+        "intent": "Require return to the position market after the exchange success callback; this persistent signal avoids missing the brief toast between slow native observations",
+        "next": "ac4-home",
+        "test_id": "perps-market-details-close-button"
       },
       "ac4-home": {
         "action": "ui.navigate",
@@ -450,9 +447,9 @@
       "ac4-assert-explanation": {
         "action": "ui.wait_for",
         "test_id": "perps-adjust-margin-no-removable-margin",
-        "expected": "visible",
+        "expected": "absent",
         "timeout_ms": 15000,
-        "intent": "Require the zero-removable explanation once the live limit reaches zero",
+        "intent": "Do not claim no margin is removable while the exchange limit remains positive",
         "next": "ac4-assert-no-stale-error"
       },
       "ac4-assert-no-stale-error": {
@@ -466,8 +463,8 @@
       },
       "ac4-screenshot": {
         "action": "ui.screenshot",
-        "label": "AC4: full screen explains zero limit under retained amount",
-        "intent": "Show reviewers the full-screen form explains the zero limit instead of a stale error",
+        "label": "AC4: full screen has no zero-margin explanation at a positive exchange limit",
+        "intent": "Record the retained amount and open keypad when only the client buffer is exhausted",
         "next": "ac5-pin-bottom-sheet"
       },
       "ac5-pin-bottom-sheet": {
@@ -537,12 +534,11 @@
       },
       "ac5-add-assert-added": {
         "action": "ui.wait_for",
-        "text": "Added $20 margin",
-        "text_match": "contains",
         "expected": "visible",
         "timeout_ms": 20000,
-        "intent": "Confirm the exchange accepted the addition so removable headroom exists",
-        "next": "ac5-home"
+        "intent": "Require return to the position market after the exchange success callback; this persistent signal avoids missing the brief toast between slow native observations",
+        "next": "ac5-home",
+        "test_id": "perps-market-details-close-button"
       },
       "ac5-home": {
         "action": "ui.navigate",
@@ -613,9 +609,9 @@
       "ac5-assert-explanation": {
         "action": "ui.wait_for",
         "test_id": "perps-adjust-margin-bottom-sheet-no-removable-margin",
-        "expected": "visible",
+        "expected": "absent",
         "timeout_ms": 15000,
-        "intent": "Require the zero-removable explanation in the sheet once the live limit reaches zero",
+        "intent": "Do not claim no margin is removable while the exchange limit remains positive",
         "next": "ac5-assert-no-stale-error"
       },
       "ac5-assert-no-stale-error": {
@@ -628,8 +624,8 @@
       },
       "ac5-screenshot": {
         "action": "ui.screenshot",
-        "label": "AC5: bottom sheet explains zero limit under retained amount",
-        "intent": "Show reviewers the bottom sheet explains the zero limit instead of a stale error",
+        "label": "AC5: bottom sheet has no zero-margin explanation at a positive exchange limit",
+        "intent": "Record the retained amount and open keypad when only the client buffer is exhausted",
         "next": "teardown-clear-flags"
       },
       "ac4-reopen-keypad": {
@@ -649,9 +645,9 @@
       "ac4-assert-keypad-closed": {
         "action": "ui.wait_for",
         "test_id": "perps-adjust-margin-done-button",
-        "expected": "absent",
+        "expected": "visible",
         "timeout_ms": 15000,
-        "intent": "Require the open keypad to close once nothing is left to remove",
+        "intent": "Require the keypad to remain available when the buffered Max is zero but the exchange still has removable margin",
         "next": "ac4-assert-explanation"
       },
       "ac5-reopen-keypad": {
@@ -671,9 +667,9 @@
       "ac5-assert-keypad-closed": {
         "action": "ui.wait_for",
         "test_id": "perps-adjust-margin-bottom-sheet-done-button",
-        "expected": "absent",
+        "expected": "visible",
         "timeout_ms": 15000,
-        "intent": "Require the open keypad to close once nothing is left to remove",
+        "intent": "Require the keypad to remain available when the buffered Max is zero but the exchange still has removable margin",
         "next": "ac5-assert-explanation"
       }
     }

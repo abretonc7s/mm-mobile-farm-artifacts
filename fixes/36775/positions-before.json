@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "command": "call",
+  "adapter": "mobile",
+  "action": "metamask.perps.read_positions",
+  "resolvedAction": "metamask.perps.read_positions",
+  "args": {},
+  "status": "pass",
+  "summaryPath": "/Users/deeeed/dev/metamask/metamask-mobile-6/temp/recipe/calls/metamask.perps.read_positions-a4783b85-a3ea-4a76-9ac6-d9fd3acc77b7/summary.json",
+  "tracePath": "/Users/deeeed/dev/metamask/metamask-mobile-6/temp/recipe/calls/metamask.perps.read_positions-a4783b85-a3ea-4a76-9ac6-d9fd3acc77b7/trace.json",
+  "artifactManifestPath": "/Users/deeeed/dev/metamask/metamask-mobile-6/temp/recipe/calls/metamask.perps.read_positions-a4783b85-a3ea-4a76-9ac6-d9fd3acc77b7/artifact-manifest.json",
+  "diagnosticsPath": "/Users/deeeed/dev/metamask/metamask-mobile-6/temp/recipe/calls/metamask.perps.read_positions-a4783b85-a3ea-4a76-9ac6-d9fd3acc77b7/diagnostics.json",
+  "sideFindings": {
+    "status": "review",
+    "note": "Observed 2 distinct application warning/error event(s) during the recipe run; showing 2 preview(s) and omitting 0. Relation to the task is not determined.",
+    "counts": {
+      "total": 2,
+      "warning": 0,
+      "error": 2,
+      "exception": 0
+    }
+  },
+  "output": {
+    "action": "metamask.perps.read_positions",
+    "source": "mobile-perps-controller",
+    "count": 0,
+    "matchingCount": 0,
+    "positions": [],
+    "liveAdapter": "/Users/deeeed/dev/metamask/metamask-harness/library/actions/mobile/perps/read_positions.mjs"
+  },
+  "recovered": [],
+  "mutations": [],
+  "exitCode": 0
+}

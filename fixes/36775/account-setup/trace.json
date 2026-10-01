@@ -1,0 +1,216 @@
+{
+  "metadata": {
+    "runner": {
+      "source": "/Users/deeeed/dev/metamask/metamask-harness",
+      "git_ref": "70518d2bdcce4b6ef422630c97fe5c914d40bf5b",
+      "name": "@metamask/recipe-runner"
+    }
+  },
+  "entries": [
+    {
+      "nodeId": "start",
+      "action": "metamask.perps.start_state",
+      "intent": "Select and verify the explicit account, venue and network while preserving positions and orders.",
+      "startedAt": "2026-10-01T06:11:30.835Z",
+      "endedAt": "2026-10-01T06:12:02.310Z",
+      "durationMs": 31475,
+      "ok": true,
+      "next": "provider",
+      "output": {
+        "action": "metamask.perps.start_state",
+        "profile": null,
+        "phase": "start_state",
+        "wallet": {
+          "action": "metamask.wallet.ensure_unlocked",
+          "unlocked": true,
+          "keyringUnlocked": true,
+          "account": {
+            "address": "0x8dc623e964475d4d669da601fd15ea9125469003",
+            "id": "0285a92b-905c-4814-8a16-52fe1db60357",
+            "name": "dev1"
+          },
+          "route": {
+            "key": "WalletView-s7PVsVQnLcjqpr02oySPp",
+            "name": "WalletView"
+          },
+          "deviceName": "mmdev-6",
+          "platform": "ios",
+          "redacted": true,
+          "proofPath": "agentic-wallet-unlock"
+        },
+        "account": {
+          "action": "metamask.wallet.select_account",
+          "selected": {
+            "address": "0x316bde155acd07609872a56bc32ccfb0b13201fa",
+            "id": "234870c9-4599-440f-986f-779ced252938",
+            "name": "Trading"
+          },
+          "proofPath": "agentic-account-selection"
+        },
+        "provider": {
+          "requested": "hyperliquid",
+          "activeProvider": "hyperliquid",
+          "changed": false
+        },
+        "network": {
+          "requested": "testnet",
+          "isTestnet": true,
+          "changed": true,
+          "result": {
+            "success": true,
+            "isTestnet": true
+          }
+        },
+        "marketMode": {
+          "action": "metamask.perps.ensure_mode",
+          "mode": "lite",
+          "alreadySelected": true,
+          "proofPath": "visible-market-detail-root-and-active-mode-control"
+        },
+        "tutorial": {
+          "skipped": true
+        },
+        "readyToTrade": {
+          "skipped": true
+        },
+        "balance": {
+          "withdrawableBalance": 318.898471,
+          "spendableBalance": 318.898471,
+          "minWithdrawableUsd": 0,
+          "minSpendableUsd": 0
+        },
+        "market": "BTC",
+        "tradingState": "preserve",
+        "strategies": {
+          "skipped": true
+        },
+        "orders": {
+          "skipped": true
+        },
+        "positions": {
+          "skipped": true
+        },
+        "navigation": {
+          "action": "metamask.perps.start_state",
+          "target": "market",
+          "market": "BTC",
+          "navigation": {
+            "navigated": "PerpsMarketDetails",
+            "params": {
+              "market": {
+                "symbol": "BTC"
+              }
+            },
+            "previousRoute": {
+              "key": "PerpsMarketDetails-UVF2HyLEkib3SyJ91vzVK",
+              "name": "PerpsMarketDetails",
+              "params": {
+                "market": {
+                  "symbol": "BTC"
+                }
+              }
+            },
+            "currentRoute": {
+              "key": "PerpsMarketDetails-UVF2HyLEkib3SyJ91vzVK",
+              "name": "PerpsMarketDetails",
+              "params": {
+                "market": {
+                  "symbol": "BTC"
+                }
+              }
+            },
+            "verifiedRoute": "PerpsMarketDetails",
+            "alreadyAtRoute": true
+          },
+          "proofPath": "agentic-navigation"
+        },
+        "proofPath": "metamask-perps-start-state",
+        "liveAdapter": "/Users/deeeed/dev/metamask/metamask-harness/library/actions/mobile/perps/perps.mjs"
+      }
+    },
+    {
+      "nodeId": "provider",
+      "action": "assert_output",
+      "intent": "Refuse an implicit or fallback venue.",
+      "startedAt": "2026-10-01T06:12:02.698Z",
+      "endedAt": "2026-10-01T06:12:03.231Z",
+      "durationMs": 533,
+      "ok": true,
+      "next": "network",
+      "output": {
+        "source": "start",
+        "stream": "stdout",
+        "assertion": {
+          "path": "$.provider.activeProvider",
+          "operator": "eq",
+          "value": "hyperliquid",
+          "actual": "hyperliquid"
+        }
+      }
+    },
+    {
+      "nodeId": "network",
+      "action": "assert_output",
+      "intent": "Require the requested network setup to complete.",
+      "startedAt": "2026-10-01T06:12:03.843Z",
+      "endedAt": "2026-10-01T06:12:04.453Z",
+      "durationMs": 610,
+      "ok": true,
+      "next": "account",
+      "output": {
+        "source": "start",
+        "stream": "stdout",
+        "assertion": {
+          "path": "$.network.requested",
+          "operator": "eq",
+          "value": "testnet",
+          "actual": "testnet"
+        }
+      }
+    },
+    {
+      "nodeId": "account",
+      "action": "switch",
+      "intent": "Accept an exact selected account address, otherwise verify its name.",
+      "startedAt": "2026-10-01T06:12:05.066Z",
+      "endedAt": "2026-10-01T06:12:05.738Z",
+      "durationMs": 672,
+      "ok": true,
+      "next": "account-name",
+      "output": {
+        "matched": false,
+        "value": "0x316bde155acd07609872a56bc32ccfb0b13201fa",
+        "expected": "Trading"
+      }
+    },
+    {
+      "nodeId": "account-name",
+      "action": "assert_output",
+      "intent": "Require the explicit account name when the caller supplied a name.",
+      "startedAt": "2026-10-01T06:12:06.731Z",
+      "endedAt": "2026-10-01T06:12:07.717Z",
+      "durationMs": 986,
+      "ok": true,
+      "next": "done",
+      "output": {
+        "source": "start",
+        "stream": "stdout",
+        "assertion": {
+          "path": "$.account.selected.name",
+          "operator": "eq",
+          "value": "Trading",
+          "actual": "Trading"
+        }
+      }
+    },
+    {
+      "nodeId": "done",
+      "action": "end",
+      "startedAt": "2026-10-01T06:12:08.294Z",
+      "endedAt": "2026-10-01T06:12:08.294Z",
+      "durationMs": 0,
+      "ok": true,
+      "status": "pass"
+    }
+  ]
+}

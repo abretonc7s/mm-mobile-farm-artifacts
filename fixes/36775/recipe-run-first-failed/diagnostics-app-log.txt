@@ -1,0 +1,221 @@
+ ERROR  06:17:30.119 [console:mmdev-6] A query that was dehydrated as pending ended up rejecting. [["MoneyAccountBalanceService:getMoneyAccountBalance","0xf62b4ed01965f4dabc34a1297845124f2421ef95"]]: Error: Execution prevented because the circuit breaker is open; The error will be redacted in production builds
+ ERROR  06:17:30.736 [console:mmdev-6] A query that was dehydrated as pending ended up rejecting. [["MoneyAccountApiDataService:fetchPositions","0xf62b4ed01965f4dabc34a1297845124f2421ef95"]]: Error: Money Account API positions request failed with status '403'; The error will be redacted in production builds
+ DEBUG  06:17:33.151 [console:mmdev-6] Getting account state via HyperLiquid SDK
+ DEBUG  06:17:33.151 [console:mmdev-6] User address for account state: 0x316bde155acd07609872a56bc32ccfb0b13201fa
+ DEBUG  06:17:33.152 [console:mmdev-6] Network mode: TESTNET
+ DEBUG  06:17:33.281 [console:mmdev-6] Spot state: { balances: Array(15), tokenToAvailableAfterMaintenance: Array(1) }
+ DEBUG  06:17:33.283 [console:mmdev-6] Perps states (all DEXs): { dexCount: 2 }
+ DEBUG  06:17:33.283 [console:mmdev-6] DEX main account state: { totalBalance: "0", spendableBalance: "0.0", withdrawableBalance: "0.0", marginUsed: "0.0", unrealizedPnl: "0" }
+ DEBUG  06:17:33.283 [console:mmdev-6] DEX xyz account state: { totalBalance: "0", spendableBalance: "0.0", withdrawableBalance: "0.0", marginUsed: "0.0", unrealizedPnl: "0" }
+ DEBUG  06:17:33.283 [console:mmdev-6] Aggregated account state: { spendableBalance: "318.898471", withdrawableBalance: "318.898471", totalBalance: "318.898471", marginUsed: "0", unrealizedPnl: "0", returnOnEquity: "0", subAccountBreakdown: Object }
+ LOG  06:17:33.486 [console:mmdev-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ LOG  06:17:37.036 [console:mmdev-6] [MetaMask DEBUG]: AssetsController state persisted successfully
+ LOG  06:17:38.336 [console:mmdev-6] [MetaMask DEBUG]: AssetsController state persisted successfully
+ LOG  06:17:38.856 [console:mmdev-6] [MetaMask DEBUG]: SnapController state persisted successfully
+ DEBUG  06:17:47.044 [console:mmdev-6] PerpsController: HIP-3 equity flag validation { equityFlag: Object, validatedEquity: true, willUse: "remote" }
+ DEBUG  06:17:47.044 [console:mmdev-6] PerpsController: HIP-3 allowlistMarkets validation { remoteValue: "xyz:*", type: "string", isArray: false }
+ DEBUG  06:17:47.044 [console:mmdev-6] PerpsController: HIP-3 allowlistMarkets validated from string { validatedMarkets: Array(1) }
+ DEBUG  06:17:47.044 [console:mmdev-6] PerpsController: HIP-3 blocklistMarkets validation { remoteValue: "demo", type: "string", isArray: false }
+ DEBUG  06:17:47.045 [console:mmdev-6] PerpsController: HIP-3 blocklistMarkets validated from string { validatedMarkets: Array(1) }
+ LOG  06:17:47.266 [console:mmdev-6] [MetaMask DEBUG]: RemoteFeatureFlagController state persisted successfully
+ DEBUG  06:17:47.392 [console:mmdev-6] PerpsStreamProvider: Using stream manager: { isTestManager: false, isE2EMockManager: false, isRealManager: true }
+ DEBUG  06:17:47.918 [console:mmdev-6] EligibilityService: Checking eligibility { blockedRegionsCount: 8, geoLocation: "SG" }
+ DEBUG  06:17:47.918 [console:mmdev-6] EligibilityService: Eligibility check completed { geoLocation: "SG", isEligible: true, blockedRegions: Array(8) }
+ DEBUG  06:17:52.634 [console:mmdev-6] Using cached positions from WebSocket { count: 0 }
+ LOG  06:17:52.836 [console:mmdev-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ WARN  06:17:54.951 [console:mmdev-6] [MetaMask DEBUG]: { message: "Terminal global snapshot returned 400: bad request", stack: "Error: Terminal global snapshot returned 400: bad request\n    at ?anon_2_#fetchAndValidateGlobalSnapshot (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:1475676:26)\n    at next (native)\n    at anonymous (address at InternalBytecode.js:1:8987)\n    at step (address at InternalBytecode.js:1:6731)\n    at anonymous (address at InternalBytecode.js:1:7890)\n    at tryCallOne (address at InternalBytecode.js:1:1296)\n    at anonymous (address at InternalBytecode.js:1:4984)" }
+ DEBUG  06:17:54.952 [console:mmdev-6] Getting market data with prices via HyperLiquid SDK
+ DEBUG  06:17:54.953 [console:mmdev-6] [ensureReady] Reusing existing initialization promise
+ DEBUG  06:17:54.953 [console:mmdev-6] [getMarketDataWithPrices] Using cached meta for main { universeSize: 212 }
+ DEBUG  06:17:54.955 [console:mmdev-6] [getMarketDataWithPrices] Using cached meta for xyz { universeSize: 70 }
+ DEBUG  06:17:54.955 [console:mmdev-6] [getMarketDataWithPrices] No WS allMids snapshot, falling back to REST { dexParam: "xyz" }
+ DEBUG  06:17:55.175 [console:mmdev-6] [getCachedMeta] Using cached meta response { dex: "xyz", universeSize: 70 }
+ DEBUG  06:17:55.176 [console:mmdev-6] [getCachedSpotMeta] Using cached spotMeta { tokensCount: 1666, universeCount: 1330 }
+ DEBUG  06:17:55.176 [console:mmdev-6] HyperLiquidProvider: Checked DEX collateral type { dexName: "xyz", collateralTokenIndex: 0, collateralTokenName: "USDC", isUsdc: true }
+ DEBUG  06:17:55.178 [console:mmdev-6] HyperLiquidProvider: Aggregated market data from all DEXs { dexCount: 2, totalMarkets: 282, mainDexMarkets: 212, hip3Markets: 70 }
+ DEBUG  06:17:55.184 [console:mmdev-6] Combined allMids price data: { totalKeys: 3338, hip3Keys: 70, keySample: Array(5), hip3KeySample: Array(5), samplePrices: Object }
+ DEBUG  06:17:57.998 [console:mmdev-6] RewardsIntegrationService: Fee discount calculated { address: "0x316bde155acd07609872a56bc32ccfb0b13201fa", caipAccountId: "eip155:1:0x316BDE155acd07609872a56Bc32CcfB0B13201fA", discountBips: 0, discountPercentage: 0 }
+ DEBUG  06:17:57.999 [console:mmdev-6] RewardsIntegrationService: Fee resolved { source: "rewards", feeBips: 10, discountBips: 0, defaultFeeBips: 10, rewardsDiscountBips: 0, orderNotionalUsd: 250, subscriptionEligible: false, subscriptionReason: "no-source", subscriptionWaiverKind: undefined, subscriptionCoveredNotionalUsd: undefined }
+ DEBUG  06:17:58.000 [console:mmdev-6] TradingService: Fee discount API call completed { discountBips: 0, source: "rewards", orderNotionalUsd: 250, subscriptionWaiverKind: undefined, duration: "945ms" }
+ DEBUG  06:17:58.000 [console:mmdev-6] TradingService: Fee resolution calculated { feeDiscountBips: 0, feeSource: "rewards", hasDiscount: true }
+ DEBUG  06:17:58.000 [console:mmdev-6] TradingService: Submitting order to provider { symbol: "BTC", orderType: "market", isBuy: true, size: "0.008894475937477764", leverage: 3, hasTP: false, hasSL: false }
+ DEBUG  06:17:58.001 [console:mmdev-6] PerpsAnalyticsEvent "Perp Trade Transaction" not found in MetaMetricsEvents
+ DEBUG  06:17:58.002 [console:mmdev-6] HyperLiquid: Fee resolution context updated { source: "rewards", discountBips: 0, isActive: true }
+ DEBUG  06:17:58.002 [console:mmdev-6] TradingService: Fee resolution set in provider { feeDiscountBips: 0, feeSource: "rewards" }
+ DEBUG  06:17:58.005 [console:mmdev-6] Placing order via HyperLiquid SDK: { symbol: "BTC", isBuy: true, orderType: "market", size: "0.008894475937477764", usdAmount: "250", leverage: 3, currentPrice: 84322, priceAtCalculation: 84322, maxSlippageBps: 300 }
+ DEBUG  06:17:58.010 [console:mmdev-6] [getCachedMeta] Using cached meta response { dex: "main", universeSize: 212 }
+ DEBUG  06:17:58.011 [console:mmdev-6] Using WebSocket cached price { symbol: "BTC", price: 84315 }
+ DEBUG  06:17:58.012 [console:mmdev-6] Using provided current price: { coin: "BTC", providedPrice: 84322, source: "UI price feed" }
+ DEBUG  06:17:58.012 [console:mmdev-6] Provider: Validating order before placement: { symbol: "BTC", isBuy: true, orderType: "market", size: "0.008894475937477764", usdAmount: "250", leverage: 3, currentPrice: 84322, priceAtCalculation: 84322, maxSlippageBps: 300 }
+ DEBUG  06:17:58.014 [console:mmdev-6] Validating USD amount (source of truth): { usdAmount: 250, minimumRequired: 10 }
+ DEBUG  06:17:58.015 [console:mmdev-6] [getCachedMeta] Using cached meta response { dex: "main", universeSize: 212 }
+ DEBUG  06:17:58.017 [console:mmdev-6] [ensureReady] Reusing existing initialization promise
+ DEBUG  06:17:58.017 [console:mmdev-6] HyperLiquidProvider: Unified Account setup already attempted (from global cache) { user: "0x316bde155acd07609872a56bc32ccfb0b13201fa", network: "testnet", enabled: true, note: "Skipping to prevent repeated signing requests" }
+ DEBUG  06:17:58.017 [console:mmdev-6] [ensureReadyForTrading] Starting shared trading setup
+ DEBUG  06:17:58.018 [console:mmdev-6] [getCachedSpotMeta] Using cached spotMeta { tokensCount: 1666, universeCount: 1330 }
+ DEBUG  06:17:58.246 [console:mmdev-6] Referral check result: { userAddress: "0x316bde155acd07609872a56bc32ccfb0b13201fa", referralData: Object }
+ DEBUG  06:17:58.247 [console:mmdev-6] [ensureReferralSet] Already has referral on-chain { network: "testnet" }
+ DEBUG  06:17:58.383 [console:mmdev-6] [ensureBuilderFeeApproval] Already approved on-chain { network: "testnet" }
+ DEBUG  06:17:58.383 [console:mmdev-6] [ensureReadyForTrading] Trading setup complete
+ DEBUG  06:17:58.384 [console:mmdev-6] Asset map state at order time { requestedCoin: "BTC", assetExistsInMap: true, totalAssetsInMap: 282, hip3AssetsCount: 70, hip3AssetsSample: Array(10), hip3Enabled: true, allowlistMarkets: Array(1), blocklistMarkets: Array(1) }
+ DEBUG  06:17:58.387 [console:mmdev-6] Resolved DEX-specific asset ID { coin: "BTC", dex: "main", assetId: 3 }
+ DEBUG  06:17:58.389 [console:mmdev-6] Updating leverage before order: { symbol: "BTC", assetId: 3, requestedLeverage: 3, leverageType: "isolated" }
+ DEBUG  06:17:58.407 [console:mmdev-6] HyperLiquidWalletService: Signing typed data { address: "0x316bde155acd07609872a56bc32ccfb0b13201fa", primaryType: "Agent", domain: Object }
+ DEBUG  06:17:59.271 [console:mmdev-6] Leverage updated successfully: { symbol: "BTC", leverage: 3 }
+ DEBUG  06:17:59.273 [console:mmdev-6] Submitting order via asset ID routing { symbol: "BTC", assetId: 3, orderCount: 1, mainOrder: Object, dexName: "main", isHip3: false }
+ DEBUG  06:17:59.280 [console:mmdev-6] HyperLiquidWalletService: Signing typed data { address: "0x316bde155acd07609872a56bc32ccfb0b13201fa", primaryType: "Agent", domain: Object }
+ DEBUG  06:18:00.099 [console:mmdev-6] usePerpsLiveFills: Received fill update { count: 31 }
+ DEBUG  06:18:00.099 [console:mmdev-6] usePerpsLiveFills: Received fill update { count: 31 }
+ DEBUG  06:18:00.100 [console:mmdev-6] HyperLiquid: Fee resolution context updated { source: undefined, discountBips: undefined, isActive: false }
+ DEBUG  06:18:00.100 [console:mmdev-6] TradingService: Fee resolution cleared from provider
+ DEBUG  06:18:00.100 [console:mmdev-6] TradingService: Provider response received { success: true, orderId: "61537884398", error: undefined, didExceedOrderSubmissionThreshold: false }
+ DEBUG  06:18:00.105 [console:mmdev-6] PerpsController: Saving trade configuration { symbol: "BTC", network: "testnet", leverage: 3, timestamp: "2026-10-01T06:18:00.105Z" }
+ DEBUG  06:18:00.118 [console:mmdev-6] DataLake API: Skipping for testnet { action: "open", symbol: "BTC", network: "testnet" }
+ DEBUG  06:18:00.134 [console:mmdev-6] PerpsAnalyticsEvent "Perp Trade Transaction" not found in MetaMetricsEvents
+ DEBUG  06:18:00.137 [console:mmdev-6] PerpsController: Clearing pending trade configuration { symbol: "BTC", network: "testnet", timestamp: "2026-10-01T06:18:00.137Z" }
+ LOG  06:18:00.326 [console:mmdev-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ DEBUG  06:18:00.904 [console:mmdev-6] Using cached positions from WebSocket { count: 0 }
+ ERROR  06:18:01.019 [console:mmdev-6] A query that was dehydrated as pending ended up rejecting. [["MoneyAccountBalanceService:getMoneyAccountBalance","0xf62b4ed01965f4dabc34a1297845124f2421ef95"]]: Error: Execution prevented because the circuit breaker is open; The error will be redacted in production builds
+ LOG  06:18:01.120 [console:mmdev-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ ERROR  06:18:01.435 [console:mmdev-6] A query that was dehydrated as pending ended up rejecting. [["MoneyAccountApiDataService:fetchPositions","0xf62b4ed01965f4dabc34a1297845124f2421ef95"]]: Error: Money Account API positions request failed with status '403'; The error will be redacted in production builds
+ LOG  06:18:02.253 [console:mmdev-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ DEBUG  06:18:02.366 [console:mmdev-6] Using cached positions from WebSocket { count: 1 }
+ LOG  06:18:02.587 [console:mmdev-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ DEBUG  06:18:03.187 [console:mmdev-6] Using cached positions from WebSocket { count: 1 }
+ DEBUG  06:18:03.270 [console:mmdev-6] CandleStreamChannel: Disconnecting WebSocket (deferred teardown elapsed, no subscribers) { cacheKey: "ETH-15m" }
+ DEBUG  06:18:03.271 [console:mmdev-6] CandleStreamChannel: Disconnecting WebSocket (deferred teardown elapsed, no subscribers) { cacheKey: "xyz:SKHX-15m" }
+ DEBUG  06:18:03.271 [console:mmdev-6] CandleStreamChannel: Disconnecting WebSocket (deferred teardown elapsed, no subscribers) { cacheKey: "SOL-15m" }
+ DEBUG  06:18:03.271 [console:mmdev-6] CandleStreamChannel: Disconnecting WebSocket (deferred teardown elapsed, no subscribers) { cacheKey: "PENGU-15m" }
+ LOG  06:18:03.404 [console:mmdev-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ LOG  06:18:07.303 [console:mmdev-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ DEBUG  06:18:08.003 [console:mmdev-6] Cleaned up assetCtxs subscription for main DEX
+ DEBUG  06:18:08.005 [console:mmdev-6] usePerpsLiveFills: Unsubscribing
+ DEBUG  06:18:08.031 [console:mmdev-6] usePerpsLiveFills: Unsubscribing
+ DEBUG  06:18:08.043 [console:mmdev-6] [PerpsLoadProof] {"stage":"perps_bootstrap_start","perps_session_id":"4d6c76e7-d51e-4e16-b066-e53439854801","lifecycle":"navigate_return","account_generation":2,"context_generation":4,"monotonic_ms":149428758.783}
+ ERROR  06:18:08.135 [console:mmdev-6] A query that was dehydrated as pending ended up rejecting. [["MoneyAccountBalanceService:getVaultApy"]]: Error: Execution prevented because the circuit breaker is open; The error will be redacted in production builds
+ ERROR  06:18:08.136 [console:mmdev-6] A query that was dehydrated as pending ended up rejecting. [["MoneyAccountBalanceService:getMoneyAccountBalance","0xf62b4ed01965f4dabc34a1297845124f2421ef95"]]: Error: Execution prevented because the circuit breaker is open; The error will be redacted in production builds
+ DEBUG  06:18:08.162 [console:mmdev-6] CandleStreamChannel: Disconnecting WebSocket (deferred teardown elapsed, no subscribers) { cacheKey: "BTC-1h" }
+ DEBUG  06:18:08.185 [console:mmdev-6] CandleStreamChannel: Disconnecting WebSocket (deferred teardown elapsed, no subscribers) { cacheKey: "BTC-15m" }
+ LOG  06:18:08.403 [console:mmdev-6] [MetaMask DEBUG]: NotificationServicesPushController state persisted successfully
+ LOG  06:18:08.420 [console:mmdev-6] [MetaMask DEBUG]: AssetsController state persisted successfully
+ ERROR  06:18:08.835 [console:mmdev-6] A query that was dehydrated as pending ended up rejecting. [["MoneyAccountApiDataService:fetchPositions","0xf62b4ed01965f4dabc34a1297845124f2421ef95"]]: Error: Money Account API positions request failed with status '403'; The error will be redacted in production builds
+ LOG  06:18:09.038 [console:mmdev-6] [MetaMask DEBUG]: SnapController state persisted successfully
+ DEBUG  06:18:12.092 [console:mmdev-6] [PerpsLoadProof] {"stage":"values_ready","perps_session_id":"4d6c76e7-d51e-4e16-b066-e53439854801","lifecycle":"navigate_return","account_generation":2,"context_generation":4,"connection_generation":3,"stream":"account","source":"fresh_socket","item_count":1,"elapsed_ms":4048.935,"monotonic_ms":149432807.718}
+ DEBUG  06:18:12.093 [console:mmdev-6] [PerpsLoadProof] {"stage":"values_ready","perps_session_id":"4d6c76e7-d51e-4e16-b066-e53439854801","lifecycle":"navigate_return","account_generation":2,"context_generation":4,"connection_generation":3,"stream":"positions","source":"fresh_socket","item_count":1,"elapsed_ms":4050.178,"monotonic_ms":149432808.961}
+ LOG  06:18:12.304 [console:mmdev-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ DEBUG  06:18:12.817 [console:mmdev-6] [PerpsLoadProof] {"stage":"values_ready","perps_session_id":"4d6c76e7-d51e-4e16-b066-e53439854801","lifecycle":"navigate_return","account_generation":2,"context_generation":4,"connection_generation":3,"stream":"prices","source":"fresh_socket","item_count":78,"elapsed_ms":4774.182,"monotonic_ms":149433532.966}
+ LOG  06:18:17.420 [console:mmdev-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ DEBUG  06:18:28.679 [console:mmdev-6] PerpsStreamProvider: Using stream manager: { isTestManager: false, isE2EMockManager: false, isRealManager: true }
+ DEBUG  06:18:28.879 [console:mmdev-6] [PerpsDetailLoadProof] {"stage":"detail_session_start","session_id":"4c696a00-d298-4a36-a917-ebd94ebe1dc4","mode":"lite","symbol":"BTC","monotonic_ms":149449593.879,"generation_trigger":"initial"}
+ DEBUG  06:18:28.935 [console:mmdev-6] Perps: Market data received (first load) { marketCount: 282, timeToDataMs: 0, source: "cache", cacheHit: true }
+ DEBUG  06:18:28.937 [console:mmdev-6] PerpsStreamManager: Cache miss or stale { hasCached: true, cacheAgeMs: 391109, cacheExpired: true, cacheDurationMs: 300000, providerId: "hyperliquid" }
+ DEBUG  06:18:28.940 [console:mmdev-6] PerpsStreamManager: Fetching fresh market data from API
+ DEBUG  06:18:28.942 [console:mmdev-6] usePerpsLiveFills: Subscribing with no throttle (instant updates)
+ DEBUG  06:18:28.945 [console:mmdev-6] usePerpsLiveFills: Received first WebSocket update { count: 31 }
+ DEBUG  06:18:28.947 [console:mmdev-6] usePerpsLiveFills: Received fill update { count: 31 }
+ DEBUG  06:18:28.952 [console:mmdev-6] Perps: Market data received (first load) { marketCount: 282, timeToDataMs: 0, source: "cache", cacheHit: true }
+ DEBUG  06:18:28.955 [console:mmdev-6] PerpsStreamManager: Cache miss or stale { hasCached: true, cacheAgeMs: 391127, cacheExpired: true, cacheDurationMs: 300000, providerId: "hyperliquid" }
+ DEBUG  06:18:28.961 [console:mmdev-6] Perps: Market data received (first load) { marketCount: 282, timeToDataMs: 0, source: "cache", cacheHit: true }
+ DEBUG  06:18:28.963 [console:mmdev-6] PerpsStreamManager: Cache miss or stale { hasCached: true, cacheAgeMs: 391135, cacheExpired: true, cacheDurationMs: 300000, providerId: "hyperliquid" }
+ DEBUG  06:18:28.966 [console:mmdev-6] FocusedPriceStreamChannel: Subscribing with market data { symbol: "BTC" }
+ DEBUG  06:18:28.968 [console:mmdev-6] usePerpsLivePositions: Received first WebSocket update { positionsCount: 1 }
+ DEBUG  06:18:28.971 [console:mmdev-6] usePerpsLivePositions: Received first WebSocket update { positionsCount: 1 }
+ DEBUG  06:18:28.973 [console:mmdev-6] usePerpsLiveFills: Subscribing with no throttle (instant updates)
+ DEBUG  06:18:28.975 [console:mmdev-6] usePerpsLiveFills: Received first WebSocket update { count: 31 }
+ DEBUG  06:18:28.977 [console:mmdev-6] usePerpsLiveFills: Received fill update { count: 31 }
+ DEBUG  06:18:28.981 [console:mmdev-6] [PerpsDetailLoadProof] {"stage":"detail_section_resolved","session_id":"4c696a00-d298-4a36-a917-ebd94ebe1dc4","mode":"lite","symbol":"BTC","section":"account","state":"content","elapsed_ms":102.61}
+ DEBUG  06:18:28.983 [console:mmdev-6] [PerpsDetailLoadProof] {"stage":"detail_section_resolved","session_id":"4c696a00-d298-4a36-a917-ebd94ebe1dc4","mode":"lite","symbol":"BTC","section":"insights","state":"content","elapsed_ms":104.767}
+ DEBUG  06:18:28.985 [console:mmdev-6] [PerpsDetailLoadProof] {"stage":"detail_section_resolved","session_id":"4c696a00-d298-4a36-a917-ebd94ebe1dc4","mode":"lite","symbol":"BTC","section":"market","state":"content","elapsed_ms":106.745}
+ DEBUG  06:18:28.987 [console:mmdev-6] [PerpsDetailLoadProof] {"stage":"detail_section_resolved","session_id":"4c696a00-d298-4a36-a917-ebd94ebe1dc4","mode":"lite","symbol":"BTC","section":"positions_orders","state":"content","elapsed_ms":108.831}
+ DEBUG  06:18:29.116 [console:mmdev-6] PERPSMARK_SENTRY PerpsScreen: Perps Position Details View completed { metric: "Perps Position Details View", endConditions: 4, context: Object }
+ DEBUG  06:18:29.119 [console:mmdev-6] [PerpsDetailLoadProof] {"stage":"detail_section_resolved","session_id":"4c696a00-d298-4a36-a917-ebd94ebe1dc4","mode":"lite","symbol":"BTC","section":"price","state":"content","elapsed_ms":240.966}
+ DEBUG  06:18:29.127 [console:mmdev-6] Getting user fills via HyperLiquid SDK: { aggregateByTime: false, startTime: 1783059508950, accountId: "eip155:421614:0x316bde155acd07609872a56bc32ccfb0b13201fa" }
+ DEBUG  06:18:29.128 [console:mmdev-6] Using cached meta for  { dex: "", universeCount: 212, firstAssetSample: "SOL" }
+ DEBUG  06:18:29.292 [console:mmdev-6] HyperLiquid: Market data subscription established for BTC
+ DEBUG  06:18:29.292 [console:mmdev-6] assetCtxs subscription established for main DEX
+ DEBUG  06:18:29.350 [console:mmdev-6] [PerpsDetailLoadProof] {"stage":"detail_section_resolved","session_id":"4c696a00-d298-4a36-a917-ebd94ebe1dc4","mode":"lite","symbol":"BTC","section":"stats","state":"content","elapsed_ms":471.662}
+ DEBUG  06:18:29.352 [console:mmdev-6] PERPSMARK_SENTRY PerpsScreen: Perps Market Detail Live completed { metric: "Perps Market Detail Live", endConditions: 5, context: Object }
+ LOG  06:18:29.356 [console:mmdev-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ WARN  06:18:29.499 [console:mmdev-6] [MetaMask DEBUG]: { message: "Terminal global snapshot returned 400: bad request", stack: "Error: Terminal global snapshot returned 400: bad request\n    at ?anon_2_#fetchAndValidateGlobalSnapshot (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:1475676:26)\n    at next (native)\n    at anonymous (address at InternalBytecode.js:1:8987)\n    at step (address at InternalBytecode.js:1:6731)\n    at anonymous (address at InternalBytecode.js:1:7890)\n    at tryCallOne (address at InternalBytecode.js:1:1296)\n    at anonymous (address at InternalBytecode.js:1:4984)" }
+ DEBUG  06:18:29.500 [console:mmdev-6] Getting market data with prices via HyperLiquid SDK
+ DEBUG  06:18:29.500 [console:mmdev-6] [ensureReady] Reusing existing initialization promise
+ DEBUG  06:18:29.500 [console:mmdev-6] [getMarketDataWithPrices] Using cached meta for main { universeSize: 212 }
+ DEBUG  06:18:29.501 [console:mmdev-6] [getMarketDataWithPrices] Using cached meta for xyz { universeSize: 70 }
+ DEBUG  06:18:29.501 [console:mmdev-6] [getMarketDataWithPrices] No WS allMids snapshot, falling back to REST { dexParam: "xyz" }
+ DEBUG  06:18:29.523 [console:mmdev-6] User fills received: { count: 314 }
+ DEBUG  06:18:29.581 [console:mmdev-6] CandleStreamChannel: WebSocket subscription established { symbol: "BTC", interval: "1h", cacheKey: "BTC-1h" }
+ DEBUG  06:18:29.581 [console:mmdev-6] CandleStreamChannel: WebSocket subscription established { symbol: "BTC", interval: "15m", cacheKey: "BTC-15m" }
+ DEBUG  06:18:29.637 [console:mmdev-6] [getCachedMeta] Using cached meta response { dex: "xyz", universeSize: 70 }
+ DEBUG  06:18:29.637 [console:mmdev-6] [getCachedSpotMeta] Using cached spotMeta { tokensCount: 1666, universeCount: 1330 }
+ DEBUG  06:18:29.637 [console:mmdev-6] HyperLiquidProvider: Checked DEX collateral type { dexName: "xyz", collateralTokenIndex: 0, collateralTokenName: "USDC", isUsdc: true }
+ DEBUG  06:18:29.638 [console:mmdev-6] HyperLiquidProvider: Aggregated market data from all DEXs { dexCount: 2, totalMarkets: 282, mainDexMarkets: 212, hip3Markets: 70 }
+ DEBUG  06:18:29.639 [console:mmdev-6] Combined allMids price data: { totalKeys: 3338, hip3Keys: 70, keySample: Array(5), hip3KeySample: Array(5), samplePrices: Object }
+ DEBUG  06:18:29.647 [console:mmdev-6] Perps: Market data updated { marketCount: 282 }
+ DEBUG  06:18:29.648 [console:mmdev-6] Perps: Market data updated { marketCount: 282 }
+ DEBUG  06:18:29.649 [console:mmdev-6] Perps: Market data updated { marketCount: 282 }
+ DEBUG  06:18:29.650 [console:mmdev-6] Perps: Market data updated { marketCount: 282 }
+ DEBUG  06:18:29.651 [console:mmdev-6] PerpsStreamManager: Market data fetched and cached { marketCount: 282, fetchTimeMs: 706, providerId: "hyperliquid:testnet:114:global-snapshot", cacheValidUntil: "2026-10-01T06:23:29.651Z" }
+ LOG  06:18:29.946 [console:mmdev-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ LOG  06:18:31.403 [console:mmdev-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ LOG  06:18:32.553 [console:mmdev-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ LOG  06:18:33.102 [console:mmdev-6] [MetaMask DEBUG]: CandleStreamChannel: Live candle data confirmed testnet BTC-15m
+ LOG  06:18:33.103 [console:mmdev-6] [MetaMask DEBUG]: CandleStreamChannel: Live candle data confirmed testnet BTC-1h
+ DEBUG  06:18:34.229 [console:mmdev-6] [PerpsDetailLoadProof] {"stage":"detail_section_resolved","session_id":"4c696a00-d298-4a36-a917-ebd94ebe1dc4","mode":"lite","symbol":"BTC","section":"chart","state":"content","elapsed_ms":5350.328}
+ DEBUG  06:18:34.231 [console:mmdev-6] [PerpsDetailLoadProof] {"stage":"detail_session_completed","session_id":"4c696a00-d298-4a36-a917-ebd94ebe1dc4","mode":"lite","symbol":"BTC","success":true,"section_offsets_ms":{"account":102.61,"insights":104.767,"market":106.745,"positions_orders":108.831,"price":240.966,"stats":471.662,"chart":5350.328},"section_states":{"account":"content","insights":"content","market":"content","positions_orders":"content","price":"content","stats":"content","chart":"content"}}
+ LOG  06:18:37.753 [console:mmdev-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ LOG  06:18:38.304 [console:mmdev-6] [MetaMask DEBUG]: AssetsController state persisted successfully
+ LOG  06:18:38.855 [console:mmdev-6] [MetaMask DEBUG]: SnapController state persisted successfully
+ ERROR  06:18:39.119 [console:mmdev-6] A query that was dehydrated as pending ended up rejecting. [["MoneyAccountBalanceService:getMoneyAccountBalance","0xf62b4ed01965f4dabc34a1297845124f2421ef95"]]: Error: Execution prevented because the circuit breaker is open; The error will be redacted in production builds
+ ERROR  06:18:39.852 [console:mmdev-6] A query that was dehydrated as pending ended up rejecting. [["MoneyAccountApiDataService:fetchPositions","0xf62b4ed01965f4dabc34a1297845124f2421ef95"]]: Error: Money Account API positions request failed with status '403'; The error will be redacted in production builds
+ LOG  06:18:42.788 [console:mmdev-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ LOG  06:18:52.892 [console:mmdev-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ DEBUG  06:18:54.205 [console:mmdev-6] [useComplianceGate] Wallet not blocked, proceeding
+ LOG  06:18:57.869 [console:mmdev-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ DEBUG  06:19:02.964 [console:mmdev-6] usePerpsLivePositions: Received first WebSocket update { positionsCount: 1 }
+ DEBUG  06:19:02.969 [console:mmdev-6] Perps: Market data received (first load) { marketCount: 282, timeToDataMs: 0, source: "cache", cacheHit: true }
+ DEBUG  06:19:02.972 [console:mmdev-6] PerpsStreamManager: Using cached market data { cacheAgeMs: 33325, cacheAgeSeconds: 33, marketCount: 282, cacheValidForMs: 266675, providerId: "hyperliquid" }
+ DEBUG  06:19:02.974 [console:mmdev-6] PERPSMARK_SENTRY PerpsScreen: Perps Adjust Margin View completed { metric: "Perps Adjust Margin View", endConditions: 2, context: Object }
+ LOG  06:19:07.986 [console:mmdev-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ LOG  06:19:08.376 [console:mmdev-6] [MetaMask DEBUG]: AssetsController state persisted successfully
+ LOG  06:19:08.874 [console:mmdev-6] [MetaMask DEBUG]: SnapController state persisted successfully
+ ERROR  06:19:10.153 [console:mmdev-6] A query that was dehydrated as pending ended up rejecting. [["MoneyAccountBalanceService:getMoneyAccountBalance","0xf62b4ed01965f4dabc34a1297845124f2421ef95"]]: Error: Execution prevented because the circuit breaker is open; The error will be redacted in production builds
+ ERROR  06:19:10.648 [console:mmdev-6] A query that was dehydrated as pending ended up rejecting. [["MoneyAccountApiDataService:fetchPositions","0xf62b4ed01965f4dabc34a1297845124f2421ef95"]]: Error: Money Account API positions request failed with status '403'; The error will be redacted in production builds
+ LOG  06:19:13.236 [console:mmdev-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ LOG  06:19:18.086 [console:mmdev-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ LOG  06:19:23.201 [console:mmdev-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ LOG  06:19:38.322 [console:mmdev-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ LOG  06:19:38.468 [console:mmdev-6] [MetaMask DEBUG]: AssetsController state persisted successfully
+ LOG  06:19:38.988 [console:mmdev-6] [MetaMask DEBUG]: SnapController state persisted successfully
+ ERROR  06:19:40.936 [console:mmdev-6] A query that was dehydrated as pending ended up rejecting. [["MoneyAccountBalanceService:getMoneyAccountBalance","0xf62b4ed01965f4dabc34a1297845124f2421ef95"]]: Error: Execution prevented because the circuit breaker is open; The error will be redacted in production builds
+ ERROR  06:19:41.587 [console:mmdev-6] A query that was dehydrated as pending ended up rejecting. [["MoneyAccountApiDataService:fetchPositions","0xf62b4ed01965f4dabc34a1297845124f2421ef95"]]: Error: Money Account API positions request failed with status '403'; The error will be redacted in production builds
+ LOG  06:19:43.236 [console:mmdev-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ DEBUG  06:20:01.541 [console:mmdev-6] usePerpsMarginAdjustment: Setting isAdjusting to true (action: add)
+ DEBUG  06:20:01.544 [console:mmdev-6] Updating position margin: { symbol: "BTC", amount: "20" }
+ DEBUG  06:20:01.545 [console:mmdev-6] [ensureReady] Reusing existing initialization promise
+ DEBUG  06:20:01.545 [console:mmdev-6] Margin adjustment details { symbol: "BTC", assetId: 3, isBuy: true, amount: 20, ntli: 20000000 }
+ DEBUG  06:20:01.545 [console:mmdev-6] Getting account state via HyperLiquid SDK
+ DEBUG  06:20:01.545 [console:mmdev-6] User address for account state: 0x316bde155acd07609872a56bc32ccfb0b13201fa
+ DEBUG  06:20:01.545 [console:mmdev-6] Network mode: TESTNET
+ DEBUG  06:20:01.666 [console:mmdev-6] Spot state: { balances: Array(15), tokenToAvailableAfterMaintenance: Array(1) }
+ DEBUG  06:20:01.667 [console:mmdev-6] Perps states (all DEXs): { dexCount: 2 }
+ DEBUG  06:20:01.667 [console:mmdev-6] DEX main account state: { totalBalance: "82.999359", spendableBalance: "0.0", withdrawableBalance: "0.0", marginUsed: "82.999359", unrealizedPnl: "-0.12474" }
+ DEBUG  06:20:01.667 [console:mmdev-6] DEX xyz account state: { totalBalance: "0", spendableBalance: "0.0", withdrawableBalance: "0.0", marginUsed: "0.0", unrealizedPnl: "0" }
+ DEBUG  06:20:01.667 [console:mmdev-6] Aggregated account state: { spendableBalance: "235.41573100000002", withdrawableBalance: "235.41573100000002", totalBalance: "318.41508999999996", marginUsed: "82.999359", unrealizedPnl: "-0.12474", returnOnEquity: "-0.15029031730233003", subAccountBreakdown: Object }
+ DEBUG  06:20:01.669 [console:mmdev-6] HyperLiquidWalletService: Signing typed data { address: "0x316bde155acd07609872a56bc32ccfb0b13201fa", primaryType: "Agent", domain: Object }
+ DEBUG  06:20:02.569 [console:mmdev-6] Margin update result: { status: "ok", response: Object }
+ DEBUG  06:20:02.570 [console:mmdev-6] PerpsAnalyticsEvent "Perp Risk Management" not found in MetaMetricsEvents
+ DEBUG  06:20:02.570 [console:mmdev-6] Margin adjusted successfully: { success: true }
+ DEBUG  06:20:02.576 [console:mmdev-6] usePerpsMarginAdjustment: Setting isAdjusting to false
+ LOG  06:20:02.876 [console:mmdev-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ LOG  06:20:08.338 [console:mmdev-6] [MetaMask DEBUG]: AssetsController state persisted successfully
+ LOG  06:20:08.487 [console:mmdev-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ LOG  06:20:08.856 [console:mmdev-6] [MetaMask DEBUG]: SnapController state persisted successfully
+ ERROR  06:20:11.886 [console:mmdev-6] A query that was dehydrated as pending ended up rejecting. [["MoneyAccountBalanceService:getMoneyAccountBalance","0xf62b4ed01965f4dabc34a1297845124f2421ef95"]]: Error: Execution prevented because the circuit breaker is open; The error will be redacted in production builds
+ ERROR  06:20:12.322 [console:mmdev-6] A query that was dehydrated as pending ended up rejecting. [["MoneyAccountApiDataService:fetchPositions","0xf62b4ed01965f4dabc34a1297845124f2421ef95"]]: Error: Money Account API positions request failed with status '403'; The error will be redacted in production builds
+ LOG  06:20:13.287 [console:mmdev-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ LOG  06:20:23.471 [console:mmdev-6] [MetaMask DEBUG]: PerpsController state persisted successfully
+ LOG  06:20:37.006 [console:mmdev-6] [MetaMask DEBUG]: AssetsController state persisted successfully
+ LOG  06:20:38.404 [console:mmdev-6] [MetaMask DEBUG]: AssetsController state persisted successfully
+ LOG  06:20:38.928 [console:mmdev-6] [MetaMask DEBUG]: SnapController state persisted successfully
+ ERROR  06:20:42.604 [console:mmdev-6] A query that was dehydrated as pending ended up rejecting. [["MoneyAccountBalanceService:getMoneyAccountBalance","0xf62b4ed01965f4dabc34a1297845124f2421ef95"]]: Error: Execution prevented because the circuit breaker is open; The error will be redacted in production builds
+ ERROR  06:20:43.054 [console:mmdev-6] A query that was dehydrated as pending ended up rejecting. [["MoneyAccountApiDataService:fetchPositions","0xf62b4ed01965f4dabc34a1297845124f2421ef95"]]: Error: Money Account API positions request failed with status '403'; The error will be redacted in production builds

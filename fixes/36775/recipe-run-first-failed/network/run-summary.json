@@ -1,0 +1,2545 @@
+{
+  "schemaVersion": 1,
+  "id": "run-network",
+  "status": "partial",
+  "startedAtEpochMs": 1790835425690,
+  "endedAtEpochMs": 1790835652672,
+  "maxDurationMs": 3600000,
+  "reconnects": 0,
+  "droppedRequests": 0,
+  "unavailableReasons": [],
+  "coverageGapReasons": [],
+  "uninspectableBodyRequests": 161,
+  "projectedBodyFields": [
+    "type"
+  ],
+  "totalRequests": 361,
+  "requestsByMethod": {
+    "GET": 146,
+    "HEAD": 15,
+    "POST": 200
+  },
+  "requestsByHost": {
+    "accounts.api.cx.metamask.io": 40,
+    "api.hyperliquid-testnet.xyz": 50,
+    "clients3.google.com": 15,
+    "geolocation.dev-api.cx.metamask.io": 5,
+    "mainnet.infura.io": 150,
+    "money.api.cx.metamask.io": 40,
+    "price.api.cx.metamask.io": 10,
+    "raw.githubusercontent.com": 15,
+    "rewards.dev-api.cx.metamask.io": 5,
+    "staking.api.cx.metamask.io": 5,
+    "terminal.dev-api.cx.metamask.io": 21,
+    "tokens.api.cx.metamask.io": 5
+  },
+  "requestsByType": {
+    "allMids": 10,
+    "candleSnapshot": 20,
+    "maxBuilderFee": 5,
+    "unknown": 326
+  },
+  "requests": [
+    {
+      "elapsedMs": 318,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 319,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 319,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 319,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 319,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 641,
+      "host": "tokens.api.cx.metamask.io",
+      "path": "/v3/assets",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 641,
+      "host": "tokens.api.cx.metamask.io",
+      "path": "/v3/assets",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 641,
+      "host": "tokens.api.cx.metamask.io",
+      "path": "/v3/assets",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 641,
+      "host": "tokens.api.cx.metamask.io",
+      "path": "/v3/assets",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 641,
+      "host": "tokens.api.cx.metamask.io",
+      "path": "/v3/assets",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 8735,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 8735,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 8735,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 8735,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 8736,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 9002,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 9002,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 9002,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 9002,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 9002,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 21933,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 21933,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 21933,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 21933,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 21933,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 22224,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 22224,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 22224,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 22224,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 22224,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 25051,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 25051,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 25051,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 25051,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 25051,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 30584,
+      "host": "price.api.cx.metamask.io",
+      "path": "/v3/spot-prices",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 30584,
+      "host": "price.api.cx.metamask.io",
+      "path": "/v3/spot-prices",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 30584,
+      "host": "price.api.cx.metamask.io",
+      "path": "/v3/spot-prices",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 30584,
+      "host": "price.api.cx.metamask.io",
+      "path": "/v3/spot-prices",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 30585,
+      "host": "price.api.cx.metamask.io",
+      "path": "/v3/spot-prices",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 30585,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 30585,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 30585,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 30585,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 30585,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 39321,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 39321,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 39321,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 39321,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 39321,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 39589,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 39589,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 39589,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 39590,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 39590,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 41364,
+      "host": "geolocation.dev-api.cx.metamask.io",
+      "path": "/v2/geolocation",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 41364,
+      "host": "geolocation.dev-api.cx.metamask.io",
+      "path": "/v2/geolocation",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 41364,
+      "host": "geolocation.dev-api.cx.metamask.io",
+      "path": "/v2/geolocation",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 41364,
+      "host": "geolocation.dev-api.cx.metamask.io",
+      "path": "/v2/geolocation",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 41364,
+      "host": "geolocation.dev-api.cx.metamask.io",
+      "path": "/v2/geolocation",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 48322,
+      "host": "terminal.dev-api.cx.metamask.io",
+      "path": "/v3/perpetuals",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 48322,
+      "host": "terminal.dev-api.cx.metamask.io",
+      "path": "/v3/perpetuals",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 48322,
+      "host": "terminal.dev-api.cx.metamask.io",
+      "path": "/v3/perpetuals",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 48322,
+      "host": "terminal.dev-api.cx.metamask.io",
+      "path": "/v3/perpetuals",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 48322,
+      "host": "terminal.dev-api.cx.metamask.io",
+      "path": "/v3/perpetuals",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 49277,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "allMids"
+      }
+    },
+    {
+      "elapsedMs": 49277,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "allMids"
+      }
+    },
+    {
+      "elapsedMs": 49278,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "allMids"
+      }
+    },
+    {
+      "elapsedMs": 49278,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "allMids"
+      }
+    },
+    {
+      "elapsedMs": 49278,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "allMids"
+      }
+    },
+    {
+      "elapsedMs": 51417,
+      "host": "rewards.dev-api.cx.metamask.io",
+      "path": "/vip/fees",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 51417,
+      "host": "rewards.dev-api.cx.metamask.io",
+      "path": "/vip/fees",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 51417,
+      "host": "rewards.dev-api.cx.metamask.io",
+      "path": "/vip/fees",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 51417,
+      "host": "rewards.dev-api.cx.metamask.io",
+      "path": "/vip/fees",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 51417,
+      "host": "rewards.dev-api.cx.metamask.io",
+      "path": "/vip/fees",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 52508,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 52508,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 52508,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 52508,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 52508,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 52573,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "maxBuilderFee"
+      }
+    },
+    {
+      "elapsedMs": 52573,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "maxBuilderFee"
+      }
+    },
+    {
+      "elapsedMs": 52573,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "maxBuilderFee"
+      }
+    },
+    {
+      "elapsedMs": 52573,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "maxBuilderFee"
+      }
+    },
+    {
+      "elapsedMs": 52573,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "maxBuilderFee"
+      }
+    },
+    {
+      "elapsedMs": 52743,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/exchange",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 52743,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/exchange",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 52743,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/exchange",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 52743,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/exchange",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 52743,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/exchange",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 52766,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 52766,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 52766,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 52766,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 52766,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 53680,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/exchange",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 53680,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/exchange",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 53680,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/exchange",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 53680,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/exchange",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 53680,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/exchange",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 54514,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/BTC.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 55749,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 55749,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 55749,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 55749,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 55749,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 56353,
+      "host": "clients3.google.com",
+      "path": "/generate_204",
+      "method": "HEAD"
+    },
+    {
+      "elapsedMs": 56353,
+      "host": "clients3.google.com",
+      "path": "/generate_204",
+      "method": "HEAD"
+    },
+    {
+      "elapsedMs": 56353,
+      "host": "clients3.google.com",
+      "path": "/generate_204",
+      "method": "HEAD"
+    },
+    {
+      "elapsedMs": 56353,
+      "host": "clients3.google.com",
+      "path": "/generate_204",
+      "method": "HEAD"
+    },
+    {
+      "elapsedMs": 56353,
+      "host": "clients3.google.com",
+      "path": "/generate_204",
+      "method": "HEAD"
+    },
+    {
+      "elapsedMs": 57443,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/BTC.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 60333,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 60333,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 60333,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 60333,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 60333,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 62503,
+      "host": "staking.api.cx.metamask.io",
+      "path": "/v1/tron-staking/728126428/witnesses",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 62503,
+      "host": "staking.api.cx.metamask.io",
+      "path": "/v1/tron-staking/728126428/witnesses",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 62503,
+      "host": "staking.api.cx.metamask.io",
+      "path": "/v1/tron-staking/728126428/witnesses",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 62503,
+      "host": "staking.api.cx.metamask.io",
+      "path": "/v1/tron-staking/728126428/witnesses",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 62503,
+      "host": "staking.api.cx.metamask.io",
+      "path": "/v1/tron-staking/728126428/witnesses",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 63178,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 63178,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 63178,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 63178,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 63178,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 69887,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 69887,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 69887,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 69887,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 69887,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 70162,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 70162,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 70162,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 70162,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 70162,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 83247,
+      "host": "terminal.dev-api.cx.metamask.io",
+      "path": "/v1/outreach",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 83248,
+      "host": "terminal.dev-api.cx.metamask.io",
+      "path": "/v1/outreach",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 83251,
+      "host": "terminal.dev-api.cx.metamask.io",
+      "path": "/v1/outreach",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 83252,
+      "host": "terminal.dev-api.cx.metamask.io",
+      "path": "/v1/outreach",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 83256,
+      "host": "terminal.dev-api.cx.metamask.io",
+      "path": "/v1/outreach",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 83297,
+      "host": "terminal.dev-api.cx.metamask.io",
+      "path": "/v1/outreach",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 83465,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "candleSnapshot"
+      }
+    },
+    {
+      "elapsedMs": 83465,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "candleSnapshot"
+      }
+    },
+    {
+      "elapsedMs": 83465,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "candleSnapshot"
+      }
+    },
+    {
+      "elapsedMs": 83465,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "candleSnapshot"
+      }
+    },
+    {
+      "elapsedMs": 83465,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "candleSnapshot"
+      }
+    },
+    {
+      "elapsedMs": 83465,
+      "host": "terminal.dev-api.cx.metamask.io",
+      "path": "/v3/perpetuals",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 83465,
+      "host": "terminal.dev-api.cx.metamask.io",
+      "path": "/v3/perpetuals",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 83465,
+      "host": "terminal.dev-api.cx.metamask.io",
+      "path": "/v3/perpetuals",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 83465,
+      "host": "terminal.dev-api.cx.metamask.io",
+      "path": "/v3/perpetuals",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 83465,
+      "host": "terminal.dev-api.cx.metamask.io",
+      "path": "/v3/perpetuals",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 83465,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "candleSnapshot"
+      }
+    },
+    {
+      "elapsedMs": 83465,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "candleSnapshot"
+      }
+    },
+    {
+      "elapsedMs": 83465,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "candleSnapshot"
+      }
+    },
+    {
+      "elapsedMs": 83466,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "candleSnapshot"
+      }
+    },
+    {
+      "elapsedMs": 83466,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "candleSnapshot"
+      }
+    },
+    {
+      "elapsedMs": 83466,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/BTC.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 83466,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/SUI.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 83466,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/ETH.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 83466,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/ARB.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 83466,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/PENGU.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 83466,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/SOL.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 83466,
+      "host": "terminal.dev-api.cx.metamask.io",
+      "path": "/v1/perpetuals",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 83466,
+      "host": "terminal.dev-api.cx.metamask.io",
+      "path": "/v1/perpetuals",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 83466,
+      "host": "terminal.dev-api.cx.metamask.io",
+      "path": "/v1/perpetuals",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 83466,
+      "host": "terminal.dev-api.cx.metamask.io",
+      "path": "/v1/perpetuals",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 83466,
+      "host": "terminal.dev-api.cx.metamask.io",
+      "path": "/v1/perpetuals",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 83525,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/XLM.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 83525,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/AVAX.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 83525,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/ONDO.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 83544,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 83553,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 83553,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 83553,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 83553,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 83782,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/DOGE.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 83826,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/BNB.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 83826,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/APT.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 83827,
+      "host": "raw.githubusercontent.com",
+      "path": "/MetaMask/contract-metadata/master/icons/eip155:999/OP.svg",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 83828,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "allMids"
+      }
+    },
+    {
+      "elapsedMs": 83828,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "allMids"
+      }
+    },
+    {
+      "elapsedMs": 83828,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "allMids"
+      }
+    },
+    {
+      "elapsedMs": 83828,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "allMids"
+      }
+    },
+    {
+      "elapsedMs": 83828,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "allMids"
+      }
+    },
+    {
+      "elapsedMs": 83901,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "candleSnapshot"
+      }
+    },
+    {
+      "elapsedMs": 83901,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "candleSnapshot"
+      }
+    },
+    {
+      "elapsedMs": 83901,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "candleSnapshot"
+      }
+    },
+    {
+      "elapsedMs": 83901,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "candleSnapshot"
+      }
+    },
+    {
+      "elapsedMs": 83901,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "candleSnapshot"
+      }
+    },
+    {
+      "elapsedMs": 83901,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "candleSnapshot"
+      }
+    },
+    {
+      "elapsedMs": 83901,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "candleSnapshot"
+      }
+    },
+    {
+      "elapsedMs": 83902,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "candleSnapshot"
+      }
+    },
+    {
+      "elapsedMs": 83902,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "candleSnapshot"
+      }
+    },
+    {
+      "elapsedMs": 83902,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/info",
+      "method": "POST",
+      "body": {
+        "type": "candleSnapshot"
+      }
+    },
+    {
+      "elapsedMs": 83902,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 83902,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 83902,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 83902,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 83902,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 90331,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 90331,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 90331,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 90331,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 90331,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 94231,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 94231,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 94232,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 94232,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 94232,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 100468,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 100468,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 100468,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 100468,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 100468,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 100717,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 100717,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 100717,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 100717,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 100717,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 114258,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 114258,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 114258,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 114258,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 114258,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 114538,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 114538,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 114538,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 114538,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 114538,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 116466,
+      "host": "clients3.google.com",
+      "path": "/generate_204",
+      "method": "HEAD"
+    },
+    {
+      "elapsedMs": 116466,
+      "host": "clients3.google.com",
+      "path": "/generate_204",
+      "method": "HEAD"
+    },
+    {
+      "elapsedMs": 116466,
+      "host": "clients3.google.com",
+      "path": "/generate_204",
+      "method": "HEAD"
+    },
+    {
+      "elapsedMs": 116466,
+      "host": "clients3.google.com",
+      "path": "/generate_204",
+      "method": "HEAD"
+    },
+    {
+      "elapsedMs": 116466,
+      "host": "clients3.google.com",
+      "path": "/generate_204",
+      "method": "HEAD"
+    },
+    {
+      "elapsedMs": 120333,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 120333,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 120333,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 120333,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 120333,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 124973,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 124973,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 124973,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 124973,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 124973,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 131035,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 131035,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 131035,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 131035,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 131035,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 131284,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 131284,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 131284,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 131284,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 131284,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 144830,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 144830,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 144830,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 144830,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 144830,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 145117,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 145118,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 145118,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 145118,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 145118,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 150343,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 150343,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 150343,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 150343,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 150343,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 155905,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 155905,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 155905,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 155905,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 155905,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 161612,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 161612,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 161612,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 161612,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 161613,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 161922,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 161922,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 161922,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 161922,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 161922,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 175425,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 175425,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 175425,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 175425,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 175425,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 175746,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 175746,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 175746,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 175746,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 175746,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 175994,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/exchange",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 175994,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/exchange",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 175994,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/exchange",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 175994,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/exchange",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 175994,
+      "host": "api.hyperliquid-testnet.xyz",
+      "path": "/exchange",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 176516,
+      "host": "clients3.google.com",
+      "path": "/generate_204",
+      "method": "HEAD"
+    },
+    {
+      "elapsedMs": 176516,
+      "host": "clients3.google.com",
+      "path": "/generate_204",
+      "method": "HEAD"
+    },
+    {
+      "elapsedMs": 176516,
+      "host": "clients3.google.com",
+      "path": "/generate_204",
+      "method": "HEAD"
+    },
+    {
+      "elapsedMs": 176516,
+      "host": "clients3.google.com",
+      "path": "/generate_204",
+      "method": "HEAD"
+    },
+    {
+      "elapsedMs": 176516,
+      "host": "clients3.google.com",
+      "path": "/generate_204",
+      "method": "HEAD"
+    },
+    {
+      "elapsedMs": 180333,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 180333,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 180333,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 180333,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 180333,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 186640,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 186640,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 186640,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 186640,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 186640,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 192215,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 192215,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 192215,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 192215,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 192215,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 192500,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 192500,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 192505,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 192505,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 192505,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 206055,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 206055,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 206055,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 206055,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 206055,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 206321,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 206321,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 206321,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 206321,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 206321,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 210348,
+      "host": "price.api.cx.metamask.io",
+      "path": "/v3/spot-prices",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 210348,
+      "host": "price.api.cx.metamask.io",
+      "path": "/v3/spot-prices",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 210348,
+      "host": "price.api.cx.metamask.io",
+      "path": "/v3/spot-prices",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 210348,
+      "host": "price.api.cx.metamask.io",
+      "path": "/v3/spot-prices",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 210348,
+      "host": "price.api.cx.metamask.io",
+      "path": "/v3/spot-prices",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 210348,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 210348,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 210348,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 210348,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 210348,
+      "host": "accounts.api.cx.metamask.io",
+      "path": "/v6/multiaccount/balances",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 217387,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 217387,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 217387,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 217387,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 217387,
+      "host": "money.api.cx.metamask.io",
+      "path": "/v1/positions/<redacted>",
+      "method": "GET"
+    },
+    {
+      "elapsedMs": 222820,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 222820,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 222820,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 222820,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 222820,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 223051,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 223051,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 223051,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 223051,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    },
+    {
+      "elapsedMs": 223051,
+      "host": "mainnet.infura.io",
+      "path": "/v3/144385cceddc41f88d960aca519f794e",
+      "method": "POST"
+    }
+  ],
+  "nodeEvents": [
+    {
+      "action": "metamask.perps.start_state",
+      "elapsedMs": 16136,
+      "nodeId": "setup-session/start",
+      "status": "running"
+    },
+    {
+      "action": "metamask.perps.start_state",
+      "elapsedMs": 27732,
+      "nodeId": "setup-session/start",
+      "status": "passed"
+    },
+    {
+      "action": "assert_output",
+      "elapsedMs": 29714,
+      "nodeId": "setup-session/provider",
+      "status": "running"
+    },
+    {
+      "action": "assert_output",
+      "elapsedMs": 29714,
+      "nodeId": "setup-session/provider",
+      "status": "passed"
+    },
+    {
+      "action": "assert_output",
+      "elapsedMs": 31171,
+      "nodeId": "setup-session/network",
+      "status": "running"
+    },
+    {
+      "action": "assert_output",
+      "elapsedMs": 31171,
+      "nodeId": "setup-session/network",
+      "status": "passed"
+    },
+    {
+      "action": "switch",
+      "elapsedMs": 33080,
+      "nodeId": "setup-session/account",
+      "status": "running"
+    },
+    {
+      "action": "switch",
+      "elapsedMs": 33080,
+      "nodeId": "setup-session/account",
+      "status": "passed"
+    },
+    {
+      "action": "assert_output",
+      "elapsedMs": 34995,
+      "nodeId": "setup-session/account-name",
+      "status": "running"
+    },
+    {
+      "action": "assert_output",
+      "elapsedMs": 34995,
+      "nodeId": "setup-session/account-name",
+      "status": "passed"
+    },
+    {
+      "action": "metamask.feature_flags.set",
+      "elapsedMs": 38255,
+      "nodeId": "setup-pin-screen-variant",
+      "status": "running"
+    },
+    {
+      "action": "metamask.feature_flags.set",
+      "elapsedMs": 42010,
+      "nodeId": "setup-pin-screen-variant",
+      "status": "passed"
+    },
+    {
+      "action": "metamask.perps.ensure_positions",
+      "elapsedMs": 43719,
+      "nodeId": "setup-assert-position",
+      "status": "running"
+    },
+    {
+      "action": "metamask.perps.ensure_positions",
+      "elapsedMs": 57856,
+      "nodeId": "setup-assert-position",
+      "status": "passed"
+    },
+    {
+      "action": "ui.navigate",
+      "elapsedMs": 58982,
+      "nodeId": "setup-add-home",
+      "status": "running"
+    },
+    {
+      "action": "ui.navigate",
+      "elapsedMs": 63568,
+      "nodeId": "setup-add-home",
+      "status": "passed"
+    },
+    {
+      "action": "ui.navigate",
+      "elapsedMs": 81152,
+      "nodeId": "setup-add-nav",
+      "status": "running"
+    },
+    {
+      "action": "ui.navigate",
+      "elapsedMs": 84215,
+      "nodeId": "setup-add-nav",
+      "status": "passed"
+    },
+    {
+      "action": "metamask.perps.ensure_mode",
+      "elapsedMs": 94004,
+      "nodeId": "setup-lite-mode",
+      "status": "running"
+    },
+    {
+      "action": "metamask.perps.ensure_mode",
+      "elapsedMs": 96198,
+      "nodeId": "setup-lite-mode",
+      "status": "passed"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 97250,
+      "nodeId": "setup-add-wait-margin-card",
+      "status": "running"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 97893,
+      "nodeId": "setup-add-wait-margin-card",
+      "status": "passed"
+    },
+    {
+      "action": "ui.press",
+      "elapsedMs": 107676,
+      "nodeId": "setup-add-press-margin-card",
+      "status": "running"
+    },
+    {
+      "action": "ui.press",
+      "elapsedMs": 108799,
+      "nodeId": "setup-add-press-margin-card",
+      "status": "passed"
+    },
+    {
+      "action": "ui.press",
+      "elapsedMs": 116543,
+      "nodeId": "setup-press-add",
+      "status": "running"
+    },
+    {
+      "action": "ui.press",
+      "elapsedMs": 117387,
+      "nodeId": "setup-press-add",
+      "status": "passed"
+    },
+    {
+      "action": "ui.press",
+      "elapsedMs": 122015,
+      "nodeId": "setup-open-keypad",
+      "status": "running"
+    },
+    {
+      "action": "ui.press",
+      "elapsedMs": 122992,
+      "nodeId": "setup-open-keypad",
+      "status": "passed"
+    },
+    {
+      "action": "ui.press",
+      "elapsedMs": 133900,
+      "nodeId": "setup-key-2",
+      "status": "running"
+    },
+    {
+      "action": "ui.press",
+      "elapsedMs": 136060,
+      "nodeId": "setup-key-2",
+      "status": "passed"
+    },
+    {
+      "action": "ui.press",
+      "elapsedMs": 148704,
+      "nodeId": "setup-key-0",
+      "status": "running"
+    },
+    {
+      "action": "ui.press",
+      "elapsedMs": 151149,
+      "nodeId": "setup-key-0",
+      "status": "passed"
+    },
+    {
+      "action": "ui.press",
+      "elapsedMs": 165288,
+      "nodeId": "setup-close-keypad",
+      "status": "running"
+    },
+    {
+      "action": "ui.press",
+      "elapsedMs": 167462,
+      "nodeId": "setup-close-keypad",
+      "status": "passed"
+    },
+    {
+      "action": "ui.press",
+      "elapsedMs": 175431,
+      "nodeId": "setup-confirm-add",
+      "status": "running"
+    },
+    {
+      "action": "ui.press",
+      "elapsedMs": 176110,
+      "nodeId": "setup-confirm-add",
+      "status": "passed"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 183539,
+      "nodeId": "setup-assert-added",
+      "status": "running"
+    },
+    {
+      "action": "ui.wait_for",
+      "elapsedMs": 203797,
+      "nodeId": "setup-assert-added",
+      "status": "failed"
+    }
+  ]
+}

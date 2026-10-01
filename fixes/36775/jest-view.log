@@ -1,0 +1,461 @@
+$ /Users/deeeed/dev/metamask/metamask-mobile-6/node_modules/.bin/jest --no-coverage -c jest.config.view.js app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.view.test.tsx app/components/UI/Perps/Views/PerpsOrderLifecycleFlow.view.test.tsx
+exit: 0
+duration_ms: 71305
+
+--- stdout ---
+
+
+--- stderr ---
+PASS app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.view.test.tsx (53.377 s)
+  ● Console
+
+    console.warn
+      InteractionManager has been deprecated and will be removed in a future release. Please refactor long tasks into smaller ones, and  use 'requestIdleCallback' instead.
+
+      13 | import Share from 'react-native-share';
+      14 | import { useSelector } from 'react-redux';
+    > 15 | import ScrollableTabView from '@tommasini/react-native-scrollable-tab-view';
+         | ^
+      16 | import { strings } from '../../../../../../locales/i18n';
+      17 | import {
+      18 |   Button,
+
+      at warn (node_modules/react-native/Libraries/Utilities/warnOnce.js:27:11)
+      at Object.warnOnce [as InteractionManager] (node_modules/react-native/index.js:264:5)
+      at Object.InteractionManager (node_modules/@tommasini/react-native-scrollable-tab-view/index.js:13:3)
+      at Object.require (app/components/UI/Perps/Views/PerpsHeroCardView/PerpsHeroCardView.tsx:15:1)
+      at Object.require (tests/component-view/renderers/perpsViewRenderer.tsx:47:1)
+      at Object.require (app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.view.test.tsx:17:1)
+
+    console.log
+      Creating E2E mock stream manager
+
+      at log (tests/controller-mocking/mock-config/perps-controller-mixin.ts:806:11)
+
+    console.warn
+      [MetaMask DEBUG]: Error: Redux store does not exist!
+          at ReduxService._assertReduxStoreExists2 (/Users/deeeed/dev/metamask/metamask-mobile-6/app/core/redux/ReduxService.ts:24:21)
+          at ReduxService.get store [as store] (/Users/deeeed/dev/metamask/metamask-mobile-6/app/core/redux/ReduxService.ts:44:9)
+          at store (/Users/deeeed/dev/metamask/metamask-mobile-6/app/util/haptics/play.ts:32:32)
+          at getHapticGateOptions (/Users/deeeed/dev/metamask/metamask-mobile-6/app/util/haptics/play.ts:44:27)
+          at playSuccessNotification (/Users/deeeed/dev/metamask/metamask-mobile-6/app/util/haptics/play.ts:68:14)
+          at /Users/deeeed/dev/metamask/metamask-mobile-6/app/components/UI/Perps/hooks/usePerpsToasts.tsx:423:23
+          at showToast (/Users/deeeed/dev/metamask/metamask-mobile-6/app/components/UI/Perps/hooks/usePerpsMarginAdjustment.ts:150:11)
+          at /Users/deeeed/dev/metamask/metamask-mobile-6/app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.tsx:310:7
+
+      128 |   ): Promise<void> {
+      129 |     if (__DEV__) {
+    > 130 |       console.warn(DEBUG, error); // eslint-disable-line no-console
+          |               ^
+      131 |       return;
+      132 |     }
+      133 |
+
+      at AsyncLogger.warn [as error] (app/util/Logger/index.ts:130:15)
+      at Logger.error (app/util/Logger/index.ts:255:17)
+      at ReduxService.error (app/core/redux/ReduxService.ts:25:14)
+      at ReduxService.get store [as store] (app/core/redux/ReduxService.ts:44:9)
+      at store (app/util/haptics/play.ts:32:32)
+      at getHapticGateOptions (app/util/haptics/play.ts:44:27)
+      at playSuccessNotification (app/util/haptics/play.ts:68:14)
+      at app/components/UI/Perps/hooks/usePerpsToasts.tsx:423:23
+      at showToast (app/components/UI/Perps/hooks/usePerpsMarginAdjustment.ts:150:11)
+      at app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.tsx:310:7
+
+    console.error
+      The action 'GO_BACK' was not handled by any navigator.
+      
+      Is there any screen to go back to?
+      
+      This is a development-only warning and won't be shown in production.
+
+      102 |   const { handleAddMargin, handleRemoveMargin, isAdjusting } =
+      103 |     usePerpsMarginAdjustment({
+    > 104 |       onSuccess: () => navigation.goBack(),
+          |                                   ^
+      105 |       onAmountChanged: (safeMaxAmount) => {
+      106 |         submittedEstimateRef.current = null;
+      107 |         setFreshMaxAmount(safeMaxAmount);
+
+      at error (node_modules/@react-navigation/core/src/BaseNavigationContainer.tsx:467:17)
+      at latestCallback (node_modules/use-latest-callback/lib/src/index.js:21:28)
+      at node_modules/@react-navigation/core/src/useNavigationBuilder.tsx:992:28
+      at latestCallback (node_modules/use-latest-callback/lib/src/index.js:21:28)
+      at Object.dispatch (node_modules/@react-navigation/core/src/useNavigationHelpers.tsx:72:26)
+      at dispatch (node_modules/@react-navigation/core/src/useNavigationCache.tsx:154:22)
+      at dispatch (node_modules/@react-navigation/core/src/useNavigationCache.tsx:190:15)
+      at callback (node_modules/@react-navigation/core/src/useNavigationCache.tsx:172:11)
+      at Object.withStack [as goBack] (node_modules/@react-navigation/core/src/useNavigationCache.tsx:188:13)
+      at Object.goBack [as onSuccess] (app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.tsx:104:35)
+      at app/components/UI/Perps/hooks/usePerpsMarginAdjustment.ts:165:29
+      at app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.tsx:310:7
+
+    console.warn
+      [MetaMask DEBUG]: Error: Redux store does not exist!
+          at ReduxService._assertReduxStoreExists2 (/Users/deeeed/dev/metamask/metamask-mobile-6/app/core/redux/ReduxService.ts:24:21)
+          at ReduxService.get store [as store] (/Users/deeeed/dev/metamask/metamask-mobile-6/app/core/redux/ReduxService.ts:44:9)
+          at store (/Users/deeeed/dev/metamask/metamask-mobile-6/app/util/haptics/play.ts:32:32)
+          at getHapticGateOptions (/Users/deeeed/dev/metamask/metamask-mobile-6/app/util/haptics/play.ts:44:27)
+          at playSuccessNotification (/Users/deeeed/dev/metamask/metamask-mobile-6/app/util/haptics/play.ts:68:14)
+          at /Users/deeeed/dev/metamask/metamask-mobile-6/app/components/UI/Perps/hooks/usePerpsToasts.tsx:423:23
+          at showToast (/Users/deeeed/dev/metamask/metamask-mobile-6/app/components/UI/Perps/hooks/usePerpsMarginAdjustment.ts:150:11)
+          at /Users/deeeed/dev/metamask/metamask-mobile-6/app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.tsx:312:7
+
+      128 |   ): Promise<void> {
+      129 |     if (__DEV__) {
+    > 130 |       console.warn(DEBUG, error); // eslint-disable-line no-console
+          |               ^
+      131 |       return;
+      132 |     }
+      133 |
+
+      at AsyncLogger.warn [as error] (app/util/Logger/index.ts:130:15)
+      at Logger.error (app/util/Logger/index.ts:255:17)
+      at ReduxService.error (app/core/redux/ReduxService.ts:25:14)
+      at ReduxService.get store [as store] (app/core/redux/ReduxService.ts:44:9)
+      at store (app/util/haptics/play.ts:32:32)
+      at getHapticGateOptions (app/util/haptics/play.ts:44:27)
+      at playSuccessNotification (app/util/haptics/play.ts:68:14)
+      at app/components/UI/Perps/hooks/usePerpsToasts.tsx:423:23
+      at showToast (app/components/UI/Perps/hooks/usePerpsMarginAdjustment.ts:150:11)
+      at app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.tsx:312:7
+
+    console.error
+      The action 'GO_BACK' was not handled by any navigator.
+      
+      Is there any screen to go back to?
+      
+      This is a development-only warning and won't be shown in production.
+
+      102 |   const { handleAddMargin, handleRemoveMargin, isAdjusting } =
+      103 |     usePerpsMarginAdjustment({
+    > 104 |       onSuccess: () => navigation.goBack(),
+          |                                   ^
+      105 |       onAmountChanged: (safeMaxAmount) => {
+      106 |         submittedEstimateRef.current = null;
+      107 |         setFreshMaxAmount(safeMaxAmount);
+
+      at error (node_modules/@react-navigation/core/src/BaseNavigationContainer.tsx:467:17)
+      at latestCallback (node_modules/use-latest-callback/lib/src/index.js:21:28)
+      at node_modules/@react-navigation/core/src/useNavigationBuilder.tsx:992:28
+      at latestCallback (node_modules/use-latest-callback/lib/src/index.js:21:28)
+      at Object.dispatch (node_modules/@react-navigation/core/src/useNavigationHelpers.tsx:72:26)
+      at dispatch (node_modules/@react-navigation/core/src/useNavigationCache.tsx:154:22)
+      at dispatch (node_modules/@react-navigation/core/src/useNavigationCache.tsx:190:15)
+      at callback (node_modules/@react-navigation/core/src/useNavigationCache.tsx:172:11)
+      at Object.withStack [as goBack] (node_modules/@react-navigation/core/src/useNavigationCache.tsx:188:13)
+      at Object.goBack [as onSuccess] (app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.tsx:104:35)
+      at app/components/UI/Perps/hooks/usePerpsMarginAdjustment.ts:165:29
+      at app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.tsx:312:7
+
+    console.warn
+      [MetaMask DEBUG]: Error: Redux store does not exist!
+          at ReduxService._assertReduxStoreExists2 (/Users/deeeed/dev/metamask/metamask-mobile-6/app/core/redux/ReduxService.ts:24:21)
+          at ReduxService.get store [as store] (/Users/deeeed/dev/metamask/metamask-mobile-6/app/core/redux/ReduxService.ts:44:9)
+          at store (/Users/deeeed/dev/metamask/metamask-mobile-6/app/util/haptics/play.ts:32:32)
+          at getHapticGateOptions (/Users/deeeed/dev/metamask/metamask-mobile-6/app/util/haptics/play.ts:44:27)
+          at playSuccessNotification (/Users/deeeed/dev/metamask/metamask-mobile-6/app/util/haptics/play.ts:68:14)
+          at /Users/deeeed/dev/metamask/metamask-mobile-6/app/components/UI/Perps/hooks/usePerpsToasts.tsx:423:23
+          at showToast (/Users/deeeed/dev/metamask/metamask-mobile-6/app/components/UI/Perps/hooks/usePerpsMarginAdjustment.ts:150:11)
+          at /Users/deeeed/dev/metamask/metamask-mobile-6/app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.tsx:410:5
+
+      128 |   ): Promise<void> {
+      129 |     if (__DEV__) {
+    > 130 |       console.warn(DEBUG, error); // eslint-disable-line no-console
+          |               ^
+      131 |       return;
+      132 |     }
+      133 |
+
+      at AsyncLogger.warn [as error] (app/util/Logger/index.ts:130:15)
+      at Logger.error (app/util/Logger/index.ts:255:17)
+      at ReduxService.error (app/core/redux/ReduxService.ts:25:14)
+      at ReduxService.get store [as store] (app/core/redux/ReduxService.ts:44:9)
+      at store (app/util/haptics/play.ts:32:32)
+      at getHapticGateOptions (app/util/haptics/play.ts:44:27)
+      at playSuccessNotification (app/util/haptics/play.ts:68:14)
+      at app/components/UI/Perps/hooks/usePerpsToasts.tsx:423:23
+      at showToast (app/components/UI/Perps/hooks/usePerpsMarginAdjustment.ts:150:11)
+      at app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.tsx:410:5
+
+    console.error
+      The action 'GO_BACK' was not handled by any navigator.
+      
+      Is there any screen to go back to?
+      
+      This is a development-only warning and won't be shown in production.
+
+      140 |     }
+      141 |     hasNavigatedBackRef.current = true;
+    > 142 |     navigation.goBack();
+          |                ^
+      143 |   }, [navigation]);
+      144 |
+      145 |   const handleClose = useCallback(() => {
+
+      at error (node_modules/@react-navigation/core/src/BaseNavigationContainer.tsx:467:17)
+      at latestCallback (node_modules/use-latest-callback/lib/src/index.js:21:28)
+      at node_modules/@react-navigation/core/src/useNavigationBuilder.tsx:992:28
+      at latestCallback (node_modules/use-latest-callback/lib/src/index.js:21:28)
+      at Object.dispatch (node_modules/@react-navigation/core/src/useNavigationHelpers.tsx:72:26)
+      at dispatch (node_modules/@react-navigation/core/src/useNavigationCache.tsx:154:22)
+      at dispatch (node_modules/@react-navigation/core/src/useNavigationCache.tsx:190:15)
+      at callback (node_modules/@react-navigation/core/src/useNavigationCache.tsx:172:11)
+      at Object.withStack [as goBack] (node_modules/@react-navigation/core/src/useNavigationCache.tsx:188:13)
+      at goBack (app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.tsx:142:16)
+      at Object.onCloseBottomSheet (app/util/test/testSetupView.js:903:17)
+      at onCloseBottomSheet (app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.tsx:146:23)
+      at Object.handleClose [as onSuccess] (app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.tsx:159:9)
+      at app/components/UI/Perps/hooks/usePerpsMarginAdjustment.ts:165:29
+      at app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.tsx:410:5
+
+PASS app/components/UI/Perps/Views/PerpsOrderLifecycleFlow.view.test.tsx (9.131 s)
+  ● Console
+
+    console.warn
+      InteractionManager has been deprecated and will be removed in a future release. Please refactor long tasks into smaller ones, and  use 'requestIdleCallback' instead.
+
+      13 | import Share from 'react-native-share';
+      14 | import { useSelector } from 'react-redux';
+    > 15 | import ScrollableTabView from '@tommasini/react-native-scrollable-tab-view';
+         | ^
+      16 | import { strings } from '../../../../../../locales/i18n';
+      17 | import {
+      18 |   Button,
+
+      at warn (node_modules/react-native/Libraries/Utilities/warnOnce.js:27:11)
+      at Object.warnOnce [as InteractionManager] (node_modules/react-native/index.js:264:5)
+      at Object.InteractionManager (node_modules/@tommasini/react-native-scrollable-tab-view/index.js:13:3)
+      at Object.require (app/components/UI/Perps/Views/PerpsHeroCardView/PerpsHeroCardView.tsx:15:1)
+      at Object.require (tests/component-view/renderers/perpsViewRenderer.tsx:47:1)
+      at Object.require (app/components/UI/Perps/Views/PerpsOrderLifecycleFlow.view.test.tsx:21:1)
+
+    console.log
+      Creating E2E mock stream manager
+
+      at log (tests/controller-mocking/mock-config/perps-controller-mixin.ts:806:11)
+
+    console.error
+      The action 'NAVIGATE' with payload {"name":"PerpsClosePositionModals","params":{"screen":"PerpsTooltip","params":{"contentKey":"closing_fees","data":{}}}} was not handled by any navigator.
+      
+      Do you have a screen named 'PerpsClosePositionModals'?
+      
+      If you're trying to navigate to a screen in a nested navigator, see https://reactnavigation.org/docs/nesting-navigators#navigating-to-a-screen-in-a-nested-navigator.
+      
+      If you're using conditional rendering, navigation will happen automatically and you shouldn't navigate manually, see.
+      
+      This is a development-only warning and won't be shown in production.
+
+      125 |     (contentKey: PerpsTooltipContentKey, data?: Record<string, unknown>) => {
+      126 |       if (enableTooltips) {
+    > 127 |         navigation.navigate(Routes.PERPS.MODALS.CLOSE_POSITION_MODALS, {
+          |                    ^
+      128 |           screen: Routes.PERPS.MODALS.TOOLTIP,
+      129 |           params: {
+      130 |             contentKey,
+
+      at error (node_modules/@react-navigation/core/src/BaseNavigationContainer.tsx:467:17)
+      at latestCallback (node_modules/use-latest-callback/lib/src/index.js:21:28)
+      at node_modules/@react-navigation/core/src/useNavigationBuilder.tsx:992:28
+      at latestCallback (node_modules/use-latest-callback/lib/src/index.js:21:28)
+      at Object.dispatch (node_modules/@react-navigation/core/src/useNavigationHelpers.tsx:72:26)
+      at dispatch (node_modules/@react-navigation/core/src/useNavigationCache.tsx:154:22)
+      at dispatch (node_modules/@react-navigation/core/src/useNavigationCache.tsx:190:15)
+      at callback (node_modules/@react-navigation/core/src/useNavigationCache.tsx:172:11)
+      at Object.withStack [as navigate] (node_modules/@react-navigation/core/src/useNavigationCache.tsx:188:13)
+      at navigate (app/components/UI/Perps/components/PerpsCloseSummary/PerpsCloseSummary.tsx:127:20)
+      at handleTooltipPress (app/components/UI/Perps/components/PerpsCloseSummary/PerpsCloseSummary.tsx:229:15)
+      at handler (node_modules/@testing-library/react-native/src/fire-event.ts:122:19)
+      at callback (node_modules/@testing-library/react-native/src/act.ts:32:24)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:814:22)
+      at actImplementation (node_modules/@testing-library/react-native/src/act.ts:31:25)
+      at fireEvent (node_modules/@testing-library/react-native/src/fire-event.ts:121:11)
+      at fireEvent [as press] (node_modules/@testing-library/react-native/src/fire-event.ts:129:3)
+      at Object.press (app/components/UI/Perps/Views/PerpsOrderLifecycleFlow.view.test.tsx:106:17)
+
+    console.warn
+      Animated: `useNativeDriver` was not specified. This is a required option and must be explicitly set to `true` or `false`
+
+      100 |   };
+      101 |
+    > 102 |   return { ...render(component, { wrapper: AllProviders }), store };
+          |                     ^
+      103 | }
+      104 |
+      105 | export function renderScreen(
+
+      at Object.warn [as shouldUseNativeDriver] (node_modules/react-native/src/private/animated/NativeAnimatedHelper.js:412:13)
+      at new shouldUseNativeDriver (node_modules/react-native/Libraries/Animated/AnimatedEvent.js:167:44)
+      at Object.eventImpl [as event] (node_modules/react-native/Libraries/Animated/AnimatedImplementation.js:549:25)
+      at ReactClassComponent.event [as renderScrollableContent] (node_modules/@tommasini/react-native-scrollable-tab-view/index.js:233:28)
+      at ReactClassComponent.renderScrollableContent [as render] (node_modules/@tommasini/react-native-scrollable-tab-view/index.js:395:13)
+      at Object.react_stack_bottom_frame (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:15683:29)
+      at updateClassComponent (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:7566:25)
+      at beginWork (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:8513:13)
+      at runWithFiberInDEV (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:2315:13)
+      at performUnitOfWork (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:13224:22)
+      at workLoopSync (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:13068:41)
+      at renderRootSync (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:13049:11)
+      at performWorkOnRoot (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:12181:11)
+      at performWorkOnRootViaSchedulerTask (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:2908:7)
+      at flushActQueue (node_modules/react/cjs/react.development.js:590:34)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:884:10)
+      at actImplementation (node_modules/@testing-library/react-native/src/act.ts:31:25)
+      at renderWithAct (node_modules/@testing-library/react-native/src/render-act.ts:13:11)
+      at renderInternal (node_modules/@testing-library/react-native/src/render.tsx:69:33)
+      at renderInternal (node_modules/@testing-library/react-native/src/render.tsx:44:10)
+      at renderWithProvider (app/util/test/renderWithProvider.tsx:102:21)
+      at renderWithProvider (app/util/test/renderWithProvider.tsx:117:10)
+      at renderComponentViewScreen (tests/component-view/render.tsx:86:22)
+      at renderPerpsView (tests/component-view/renderers/perpsViewRenderer.tsx:562:30)
+      at renderPerpsView (tests/component-view/renderers/perpsViewRenderer.tsx:897:10)
+      at Object.<anonymous> (app/components/UI/Perps/Views/PerpsOrderLifecycleFlow.view.test.tsx:148:28)
+
+    console.error
+      The action 'GO_BACK' was not handled by any navigator.
+      
+      Is there any screen to go back to?
+      
+      This is a development-only warning and won't be shown in production.
+
+      334 |
+      335 |   const handleBack = useCallback(() => {
+    > 336 |     navigation.goBack();
+          |                ^
+      337 |   }, [navigation]);
+      338 |
+      339 |   const formatDisplayAmount = useMemo(() => {
+
+      at error (node_modules/@react-navigation/core/src/BaseNavigationContainer.tsx:467:17)
+      at latestCallback (node_modules/use-latest-callback/lib/src/index.js:21:28)
+      at node_modules/@react-navigation/core/src/useNavigationBuilder.tsx:992:28
+      at latestCallback (node_modules/use-latest-callback/lib/src/index.js:21:28)
+      at Object.dispatch (node_modules/@react-navigation/core/src/useNavigationHelpers.tsx:72:26)
+      at dispatch (node_modules/@react-navigation/core/src/useNavigationCache.tsx:154:22)
+      at dispatch (node_modules/@react-navigation/core/src/useNavigationCache.tsx:190:15)
+      at callback (node_modules/@react-navigation/core/src/useNavigationCache.tsx:172:11)
+      at Object.withStack [as goBack] (node_modules/@react-navigation/core/src/useNavigationCache.tsx:188:13)
+      at goBack (app/components/UI/Perps/Views/PerpsWithdrawView/PerpsWithdrawView.tsx:336:16)
+      at handler (node_modules/@testing-library/react-native/src/fire-event.ts:122:19)
+      at callback (node_modules/@testing-library/react-native/src/act.ts:32:24)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:814:22)
+      at actImplementation (node_modules/@testing-library/react-native/src/act.ts:31:25)
+      at fireEvent (node_modules/@testing-library/react-native/src/fire-event.ts:121:11)
+      at fireEvent [as press] (node_modules/@testing-library/react-native/src/fire-event.ts:129:3)
+      at Object.press (app/components/UI/Perps/Views/PerpsOrderLifecycleFlow.view.test.tsx:168:15)
+
+    console.error
+      The action 'GO_BACK' was not handled by any navigator.
+      
+      Is there any screen to go back to?
+      
+      This is a development-only warning and won't be shown in production.
+
+      25 |     // The quote will be automatically refreshed when we navigate back
+      26 |     // because the usePerpsDepositQuote hook will re-run
+    > 27 |     navigation.goBack();
+         |                ^
+      28 |   };
+      29 |
+      30 |   return (
+
+      at error (node_modules/@react-navigation/core/src/BaseNavigationContainer.tsx:467:17)
+      at latestCallback (node_modules/use-latest-callback/lib/src/index.js:21:28)
+      at node_modules/@react-navigation/core/src/useNavigationBuilder.tsx:992:28
+      at latestCallback (node_modules/use-latest-callback/lib/src/index.js:21:28)
+      at Object.dispatch (node_modules/@react-navigation/core/src/useNavigationHelpers.tsx:72:26)
+      at dispatch (node_modules/@react-navigation/core/src/useNavigationCache.tsx:154:22)
+      at dispatch (node_modules/@react-navigation/core/src/useNavigationCache.tsx:190:15)
+      at callback (node_modules/@react-navigation/core/src/useNavigationCache.tsx:172:11)
+      at Object.withStack [as goBack] (node_modules/@react-navigation/core/src/useNavigationCache.tsx:188:13)
+      at goBack (app/components/UI/Perps/components/PerpsQuoteExpiredModal/PerpsQuoteExpiredModal.tsx:27:16)
+      at handler (node_modules/@testing-library/react-native/src/fire-event.ts:122:19)
+      at callback (node_modules/@testing-library/react-native/src/act.ts:32:24)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:814:22)
+      at actImplementation (node_modules/@testing-library/react-native/src/act.ts:31:25)
+      at fireEvent (node_modules/@testing-library/react-native/src/fire-event.ts:121:11)
+      at fireEvent [as press] (node_modules/@testing-library/react-native/src/fire-event.ts:129:3)
+      at Object.press (app/components/UI/Perps/Views/PerpsOrderLifecycleFlow.view.test.tsx:269:15)
+
+    console.error
+      The action 'GO_BACK' was not handled by any navigator.
+      
+      Is there any screen to go back to?
+      
+      This is a development-only warning and won't be shown in production.
+
+      45 |       });
+      46 |     } else {
+    > 47 |       navigation.goBack();
+         |                  ^
+      48 |     }
+      49 |   }, [navigation, externalSheetRef, sheetRef, onExternalClose]);
+      50 |
+
+      at error (node_modules/@react-navigation/core/src/BaseNavigationContainer.tsx:467:17)
+      at latestCallback (node_modules/use-latest-callback/lib/src/index.js:21:28)
+      at node_modules/@react-navigation/core/src/useNavigationBuilder.tsx:992:28
+      at latestCallback (node_modules/use-latest-callback/lib/src/index.js:21:28)
+      at Object.dispatch (node_modules/@react-navigation/core/src/useNavigationHelpers.tsx:72:26)
+      at dispatch (node_modules/@react-navigation/core/src/useNavigationCache.tsx:154:22)
+      at dispatch (node_modules/@react-navigation/core/src/useNavigationCache.tsx:190:15)
+      at callback (node_modules/@react-navigation/core/src/useNavigationCache.tsx:172:11)
+      at Object.withStack [as goBack] (node_modules/@react-navigation/core/src/useNavigationCache.tsx:188:13)
+      at goBack (app/components/UI/Perps/Views/PerpsSelectOrderTypeView/PerpsSelectOrderTypeView.tsx:47:18)
+      at Object.onCloseBottomSheet (app/util/test/testSetupView.js:902:18)
+      at onCloseBottomSheet (app/components/UI/Perps/Views/PerpsSelectOrderTypeView/PerpsSelectOrderTypeView.tsx:33:25)
+      at onSelect (app/components/UI/Perps/components/PerpsOrderTypeBottomSheet/PerpsOrderTypeBottomSheet.tsx:67:7)
+      at onSelect (app/components/UI/Perps/components/PerpsOrderTypeBottomSheet/PerpsOrderTypeBottomSheetView.tsx:306:7)
+      at handleSelect (app/components/UI/Perps/components/PerpsOrderTypeBottomSheet/PerpsOrderTypeBottomSheetView.tsx:331:22)
+      at handler (node_modules/@testing-library/react-native/src/fire-event.ts:122:19)
+      at callback (node_modules/@testing-library/react-native/src/act.ts:32:24)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:814:22)
+      at actImplementation (node_modules/@testing-library/react-native/src/act.ts:31:25)
+      at fireEvent (node_modules/@testing-library/react-native/src/fire-event.ts:121:11)
+      at fireEvent [as press] (node_modules/@testing-library/react-native/src/fire-event.ts:129:3)
+      at Object.press (app/components/UI/Perps/Views/PerpsOrderLifecycleFlow.view.test.tsx:431:15)
+
+    console.error
+      The action 'GO_BACK' was not handled by any navigator.
+      
+      Is there any screen to go back to?
+      
+      This is a development-only warning and won't be shown in production.
+
+      45 |       });
+      46 |     } else {
+    > 47 |       navigation.goBack();
+         |                  ^
+      48 |     }
+      49 |   }, [navigation, externalSheetRef, sheetRef, onExternalClose]);
+      50 |
+
+      at error (node_modules/@react-navigation/core/src/BaseNavigationContainer.tsx:467:17)
+      at latestCallback (node_modules/use-latest-callback/lib/src/index.js:21:28)
+      at node_modules/@react-navigation/core/src/useNavigationBuilder.tsx:992:28
+      at latestCallback (node_modules/use-latest-callback/lib/src/index.js:21:28)
+      at Object.dispatch (node_modules/@react-navigation/core/src/useNavigationHelpers.tsx:72:26)
+      at dispatch (node_modules/@react-navigation/core/src/useNavigationCache.tsx:154:22)
+      at dispatch (node_modules/@react-navigation/core/src/useNavigationCache.tsx:190:15)
+      at callback (node_modules/@react-navigation/core/src/useNavigationCache.tsx:172:11)
+      at Object.withStack [as goBack] (node_modules/@react-navigation/core/src/useNavigationCache.tsx:188:13)
+      at goBack (app/components/UI/Perps/Views/PerpsSelectOrderTypeView/PerpsSelectOrderTypeView.tsx:47:18)
+      at Object.onCloseBottomSheet (app/util/test/testSetupView.js:902:18)
+      at onCloseBottomSheet (app/components/UI/Perps/components/PerpsOrderTypeBottomSheet/PerpsOrderTypeBottomSheetView.tsx:301:23)
+      at handleClose (app/components/UI/Perps/components/PerpsOrderTypeBottomSheet/PerpsOrderTypeBottomSheetView.tsx:307:7)
+      at handleSelect (app/components/UI/Perps/components/PerpsOrderTypeBottomSheet/PerpsOrderTypeBottomSheetView.tsx:331:22)
+      at handler (node_modules/@testing-library/react-native/src/fire-event.ts:122:19)
+      at callback (node_modules/@testing-library/react-native/src/act.ts:32:24)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:814:22)
+      at actImplementation (node_modules/@testing-library/react-native/src/act.ts:31:25)
+      at fireEvent (node_modules/@testing-library/react-native/src/fire-event.ts:121:11)
+      at fireEvent [as press] (node_modules/@testing-library/react-native/src/fire-event.ts:129:3)
+      at Object.press (app/components/UI/Perps/Views/PerpsOrderLifecycleFlow.view.test.tsx:431:15)
+
+
+Test Suites: 2 passed, 2 total
+Tests:       7 passed, 7 total
+Snapshots:   0 total
+Time:        63.092 s, estimated 282 s
+Ran all test suites matching /app\/components\/UI\/Perps\/Views\/PerpsAdjustMarginView\/PerpsAdjustMarginView.view.test.tsx|app\/components\/UI\/Perps\/Views\/PerpsOrderLifecycleFlow.view.test.tsx/i.
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

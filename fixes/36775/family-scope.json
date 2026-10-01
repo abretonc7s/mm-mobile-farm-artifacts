@@ -1,6 +1,6 @@
 {
   "originalFamilyScopeSummary": "Fix remove-margin validation to derive max removable amount from live position state and prevent over-submission",
   "currentTriggerSummary": "pr-complete: fix(perps): remove-margin failure rate regressed 14% \u2192 27% \u2014 \"Position does not have sufficient margin for reduction\"",
-  "scopeVerdict": "full-scope-addressed",
-  "notes": "Rebased linearly on main (tree identical to the prior merge). Only GitHub thread already fixed. Operator-relayed Codex P2 (open keypad stays active when the live limit drops to zero) fixed in b729f32d3c3 for both screens, with unit tests and live recipe asserts; the negative control fails on pre-fix code. Full recipe 104/104; fresh Codex gpt-6-sol review on final HEAD approved. The ticket's Mixpanel failure-rate AC can only be confirmed post-release."
+  "scopeVerdict": "partial-symptom-only",
+  "notes": "All actionable current Mobile review findings are addressed, including both forms, with 245 unit tests, 7 component view tests and live recipe PASS 104/104. The original ticket widened to Mobile plus Extension and requires post-release <=14% Mixpanel failure rate; Extension parity and production outcome are not proven by this Mobile PR-completion task. Cross-margin and remaining Lite/Reverse work stay deferred to #36881/#36919."
 }

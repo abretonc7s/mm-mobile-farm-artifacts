@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "scope": "recipe-run-application",
+  "status": "review",
+  "nonBlocking": true,
+  "note": "Observed 5 distinct application warning/error event(s) during the recipe run; showing 5 preview(s) and omitting 0. Relation to the task is not determined.",
+  "source": {
+    "label": "app",
+    "path": "/Users/deeeed/dev/metamask/metamask-mobile-6/temp/recipe/runtime/app-console.log",
+    "startOffset": 176590,
+    "endOffset": 211139,
+    "bytesRead": 34549,
+    "truncated": false,
+    "inAppBuffer": "collected",
+    "rawArtifact": "diagnostics-app-log.txt",
+    "redacted": true
+  },
+  "counts": {
+    "total": 5,
+    "warning": 2,
+    "error": 3,
+    "exception": 0
+  },
+  "displayedFindingCount": 5,
+  "omittedFindingCount": 0,
+  "findings": [
+    {
+      "level": "error",
+      "fingerprint": "a2a3da24242a",
+      "preview": "ERROR  06:17:30.119 [console:mmdev-6] A query that was dehydrated as pending ended up rejecting. [[\"MoneyAccountBalanceService:getMoneyAccountBalance\",\"0xf62b4ed01965f4dabc34a1297845124f2421ef95\"]]: Error: Execution prevented because the circuit breaker is open; The error will be redacted in production builds",
+      "count": 16
+    },
+    {
+      "level": "error",
+      "fingerprint": "d898586a35de",
+      "preview": "ERROR  06:17:30.736 [console:mmdev-6] A query that was dehydrated as pending ended up rejecting. [[\"MoneyAccountApiDataService:fetchPositions\",\"0xf62b4ed01965f4dabc34a1297845124f2421ef95\"]]: Error: Money Account API positions request failed with status '403'; The error will be redacted in production builds",
+      "count": 16
+    },
+    {
+      "level": "warning",
+      "fingerprint": "ee0fc15838c6",
+      "preview": "WARN  06:17:54.951 [console:mmdev-6] [MetaMask DEBUG]: { message: \"Terminal global snapshot returned 400: bad request\", stack: \"Error: Terminal global snapshot returned 400: bad request\\n    at ?anon_2_#fetchAndValidateGlobalSnapshot (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transf",
+      "count": 2
+    },
+    {
+      "level": "error",
+      "fingerprint": "9ea48a19aad4",
+      "preview": "ERROR  06:18:08.135 [console:mmdev-6] A query that was dehydrated as pending ended up rejecting. [[\"MoneyAccountBalanceService:getVaultApy\"]]: Error: Execution prevented because the circuit breaker is open; The error will be redacted in production builds",
+      "count": 2
+    },
+    {
+      "level": "warning",
+      "fingerprint": "6ee48f98225b",
+      "preview": "[MetaMask DEBUG]: Error: Terminal global snapshot returned 400: bad request\n    at ?anon_2_#fetchAndValidateGlobalSnapshot (http://127.0.0.1:8066/index.bundle//&platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable:1475676",
+      "count": 2
+    }
+  ]
+}

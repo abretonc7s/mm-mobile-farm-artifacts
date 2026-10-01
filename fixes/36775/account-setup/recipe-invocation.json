@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "recipeDigest": "sha256:68b7c046a5009998795e1b4191d75d52b542fd7dc65c55ace020115cc316ab55",
+  "startedAt": "2026-10-01T06:11:30.810Z",
+  "params": {
+    "account": "Trading",
+    "provider": "hyperliquid",
+    "network": "testnet",
+    "market": "BTC",
+    "market_mode": "lite",
+    "ready_to_trade": false,
+    "min_spendable_usd": 0
+  },
+  "redactedPaths": []
+}

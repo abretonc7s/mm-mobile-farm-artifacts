@@ -1,0 +1,447 @@
+Updating /Users/deeeed/dev/metamask/metamask-skills
+  Already up to date.
+Updating /Users/deeeed/dev/metamask/consensys-skills
+  Already up to date.
+
+Maturity: experimental  (source: saved (.skills.local))
+Domains: perps,agentic  (source: saved (.skills.local))
+Include skills: testing/mobile-testing  (source: --include flag)
+Prune stale: false
+Saved to /Users/deeeed/dev/metamask/metamask-mobile-6/.skills.local
+
+MetaMask skills install
+  repo:     metamask-mobile
+  target:   /Users/deeeed/dev/metamask/metamask-mobile-6
+  sources:  /Users/deeeed/dev/metamask/metamask-skills /Users/deeeed/dev/metamask/consensys-skills
+  domain:   perps,agentic
+  maturity: experimental
+  include:  testing/mobile-testing
+  exclude:  <none>
+  prune:    false
+  dry-run:  false
+
+Domain: assets
+  skill: acceptance-criteria-doc
+  skipped (domain=assets excluded by --domain)
+  skill: react-compiler-migration
+  skipped (domain=assets excluded by --domain)
+
+Domain: coding
+  skill: coding-guidelines
+  (base — included despite domain filter)
+  claude: .claude/skills/mms-coding-guidelines/SKILL.md
+  cursor: .cursor/rules/mms-coding-guidelines/RULE.md
+  agents: .agents/skills/mms-coding-guidelines/SKILL.md
+  agents: .agents/skills/mms-coding-guidelines/agents/openai.yaml
+  .claude/skills/mms-coding-guidelines/knowledge/
+  .cursor/rules/mms-coding-guidelines/knowledge/
+  .agents/skills/mms-coding-guidelines/knowledge/
+  skill: controller-guidelines
+  (base — included despite domain filter)
+  skipped (no overlay for metamask-mobile)
+  skill: controller-integration
+  (base — included despite domain filter)
+  claude: .claude/skills/mms-controller-integration/SKILL.md
+  cursor: .cursor/rules/mms-controller-integration/RULE.md
+  agents: .agents/skills/mms-controller-integration/SKILL.md
+  agents: .agents/skills/mms-controller-integration/agents/openai.yaml
+  .claude/skills/mms-controller-integration/knowledge/
+  .cursor/rules/mms-controller-integration/knowledge/
+  .agents/skills/mms-controller-integration/knowledge/
+  skill: deeplink-handler
+  skipped (domain=coding excluded by --domain)
+  skill: flaky-test-detection
+  skipped (domain=coding excluded by --domain)
+  skill: selector-patterns
+  skipped (domain=coding excluded by --domain)
+
+Domain: general
+  skill: codex
+  skipped (domain=general excluded by --domain)
+  skill: gemini
+  skipped (domain=general excluded by --domain)
+
+Domain: observability
+  skill: grafana-tempo-queries
+  skipped (domain=observability excluded by --domain)
+  skill: instrumentation
+  skipped (domain=observability excluded by --domain)
+  skill: performance-attribution
+  skipped (domain=observability excluded by --domain)
+  skill: sentry-grafana-correlation
+  skipped (domain=observability excluded by --domain)
+  skill: sentry-mcp-queries
+  skipped (domain=observability excluded by --domain)
+  skill: sentry-quota
+  skipped (domain=observability excluded by --domain)
+
+Domain: performance
+  skill: check-nesting
+  skipped (domain=performance excluded by --domain)
+  skill: data-analysis
+  skipped (domain=performance excluded by --domain)
+  skill: effect-antipattern-scan
+  skipped (domain=performance excluded by --domain)
+  skill: extension-profiling
+  skipped (domain=performance excluded by --domain)
+  skill: perf-hooks-effects
+  (base — included despite domain filter)
+  skipped (no overlay for metamask-mobile)
+  skill: perf-react-compiler
+  (base — included despite domain filter)
+  skipped (no overlay for metamask-mobile)
+  skill: perf-rendering
+  (base — included despite domain filter)
+  skipped (no overlay for metamask-mobile)
+  skill: perf-state-management
+  (base — included despite domain filter)
+  skipped (no overlay for metamask-mobile)
+  skill: performance
+  (base — included despite domain filter)
+  claude: .claude/skills/mms-performance/SKILL.md
+  cursor: .cursor/rules/mms-performance/RULE.md
+  agents: .agents/skills/mms-performance/SKILL.md
+  agents: .agents/skills/mms-performance/agents/openai.yaml
+  .claude/skills/mms-performance/references/
+  .claude/skills/mms-performance/knowledge/
+  .cursor/rules/mms-performance/references/
+  .cursor/rules/mms-performance/knowledge/
+  .agents/skills/mms-performance/references/
+  .agents/skills/mms-performance/knowledge/
+  skill: profiling-regression-proposal
+  skipped (domain=performance excluded by --domain)
+  skill: react-render-delta
+  skipped (domain=performance excluded by --domain)
+  skill: selector-antipattern-scan
+  skipped (domain=performance excluded by --domain)
+
+Domain: perps
+  skill: perps-breakdown-tickets
+  claude: .claude/skills/mms-perps-breakdown-tickets/SKILL.md
+  cursor: .cursor/rules/mms-perps-breakdown-tickets/RULE.md
+  agents: .agents/skills/mms-perps-breakdown-tickets/SKILL.md
+  agents: .agents/skills/mms-perps-breakdown-tickets/agents/openai.yaml
+  skill: perps-review-pr
+  claude: .claude/skills/mms-perps-review-pr/SKILL.md
+  cursor: .cursor/rules/mms-perps-review-pr/RULE.md
+  agents: .agents/skills/mms-perps-review-pr/SKILL.md
+  agents: .agents/skills/mms-perps-review-pr/agents/openai.yaml
+  .claude/skills/mms-perps-review-pr/references/
+  .claude/skills/mms-perps-review-pr/scripts/
+  .cursor/rules/mms-perps-review-pr/references/
+  .cursor/rules/mms-perps-review-pr/scripts/
+  .agents/skills/mms-perps-review-pr/references/
+  .agents/skills/mms-perps-review-pr/scripts/
+  skill: perps-validate-multiproject
+  claude: .claude/skills/mms-perps-validate-multiproject/SKILL.md
+  cursor: .cursor/rules/mms-perps-validate-multiproject/RULE.md
+  agents: .agents/skills/mms-perps-validate-multiproject/SKILL.md
+  agents: .agents/skills/mms-perps-validate-multiproject/agents/openai.yaml
+  .claude/skills/mms-perps-validate-multiproject/scripts/
+  .cursor/rules/mms-perps-validate-multiproject/scripts/
+  .agents/skills/mms-perps-validate-multiproject/scripts/
+  skill: perps-write-ticket
+  claude: .claude/skills/mms-perps-write-ticket/SKILL.md
+  cursor: .cursor/rules/mms-perps-write-ticket/RULE.md
+  agents: .agents/skills/mms-perps-write-ticket/SKILL.md
+  agents: .agents/skills/mms-perps-write-ticket/agents/openai.yaml
+
+Domain: platform
+  skill: analytics
+  (base — included despite domain filter)
+  claude: .claude/skills/mms-analytics/SKILL.md
+  cursor: .cursor/rules/mms-analytics/RULE.md
+  agents: .agents/skills/mms-analytics/SKILL.md
+  agents: .agents/skills/mms-analytics/agents/openai.yaml
+  .claude/skills/mms-analytics/knowledge/
+  .cursor/rules/mms-analytics/knowledge/
+  .agents/skills/mms-analytics/knowledge/
+  skill: extension-errors-debugging
+  skipped (domain=platform excluded by --domain)
+  skill: extension-lifecycle-decoupling
+  skipped (domain=platform excluded by --domain)
+  skill: feature-flags
+  (base — included despite domain filter)
+  claude: .claude/skills/mms-feature-flags/SKILL.md
+  cursor: .cursor/rules/mms-feature-flags/RULE.md
+  agents: .agents/skills/mms-feature-flags/SKILL.md
+  agents: .agents/skills/mms-feature-flags/agents/openai.yaml
+  .claude/skills/mms-feature-flags/knowledge/
+  .cursor/rules/mms-feature-flags/knowledge/
+  .agents/skills/mms-feature-flags/knowledge/
+  skill: navigation
+  (base — included despite domain filter)
+  claude: .claude/skills/mms-navigation/SKILL.md
+  cursor: .cursor/rules/mms-navigation/RULE.md
+  agents: .agents/skills/mms-navigation/SKILL.md
+  agents: .agents/skills/mms-navigation/agents/openai.yaml
+  .claude/skills/mms-navigation/knowledge/
+  .cursor/rules/mms-navigation/knowledge/
+  .agents/skills/mms-navigation/knowledge/
+
+Domain: pr-workflow
+  skill: create-pr
+  (base — included despite domain filter)
+  claude: .claude/skills/mms-create-pr/SKILL.md
+  cursor: .cursor/rules/mms-create-pr/RULE.md
+  agents: .agents/skills/mms-create-pr/SKILL.md
+  agents: .agents/skills/mms-create-pr/agents/openai.yaml
+  .claude/skills/mms-create-pr/knowledge/
+  .cursor/rules/mms-create-pr/knowledge/
+  .agents/skills/mms-create-pr/knowledge/
+  skill: pr-changelog
+  skipped (domain=pr-workflow excluded by --domain)
+  skill: pr-codeowners
+  (base — included despite domain filter)
+  claude: .claude/skills/mms-pr-codeowners/SKILL.md
+  cursor: .cursor/rules/mms-pr-codeowners/RULE.md
+  agents: .agents/skills/mms-pr-codeowners/SKILL.md
+  agents: .agents/skills/mms-pr-codeowners/agents/openai.yaml
+  .claude/skills/mms-pr-codeowners/knowledge/
+  .cursor/rules/mms-pr-codeowners/knowledge/
+  .agents/skills/mms-pr-codeowners/knowledge/
+  skill: pr-description
+  (base — included despite domain filter)
+  claude: .claude/skills/mms-pr-description/SKILL.md
+  cursor: .cursor/rules/mms-pr-description/RULE.md
+  agents: .agents/skills/mms-pr-description/SKILL.md
+  agents: .agents/skills/mms-pr-description/agents/openai.yaml
+  .claude/skills/mms-pr-description/knowledge/
+  .cursor/rules/mms-pr-description/knowledge/
+  .agents/skills/mms-pr-description/knowledge/
+  skill: pr-guidelines
+  (base — included despite domain filter)
+  claude: .claude/skills/mms-pr-guidelines/SKILL.md
+  cursor: .cursor/rules/mms-pr-guidelines/RULE.md
+  agents: .agents/skills/mms-pr-guidelines/SKILL.md
+  agents: .agents/skills/mms-pr-guidelines/agents/openai.yaml
+  .claude/skills/mms-pr-guidelines/knowledge/
+  .cursor/rules/mms-pr-guidelines/knowledge/
+  .agents/skills/mms-pr-guidelines/knowledge/
+  skill: pr-issue-search
+  skipped (domain=pr-workflow excluded by --domain)
+  skill: pr-manual-testing
+  skipped (domain=pr-workflow excluded by --domain)
+  skill: pr-readiness-check
+  skipped (domain=pr-workflow excluded by --domain)
+  skill: pr-review-queue
+  skipped (domain=pr-workflow excluded by --domain)
+  skill: pr-title
+  skipped (domain=pr-workflow excluded by --domain)
+
+Domain: swaps
+  skill: add-evm-network-bridge-controller
+  skipped (domain=swaps excluded by --domain)
+  skill: add-evm-network
+  skipped (domain=swaps excluded by --domain)
+  skill: add-non-evm-network
+  skipped (domain=swaps excluded by --domain)
+  skill: swaps-cpu-profile-audit
+  skipped (domain=swaps excluded by --domain)
+
+Domain: testing
+  skill: ab-testing
+  skipped (domain=testing excluded by --domain)
+  skill: component-view-test
+  skipped (domain=testing excluded by --domain)
+  skill: e2e-flakiness-patterns
+  skipped (domain=testing excluded by --domain)
+  skill: e2e-test
+  skipped (domain=testing excluded by --domain)
+  skill: e2e-testing
+  skipped (domain=testing excluded by --domain)
+  skill: extension-testing
+  (base — included despite domain filter)
+  skipped (no overlay for metamask-mobile)
+  skill: integration-test
+  skipped (domain=testing excluded by --domain)
+  skill: mobile-testing
+Warning: no skill.md in /Users/deeeed/dev/metamask/consensys-skills/domains/testing//skills/mobile-testing/, skipping
+  skill: mobile-visual-testing
+  skipped (domain=testing excluded by --domain)
+  skill: performance-testing
+  skipped (domain=testing excluded by --domain)
+  skill: test-i18n-usage
+  skipped (domain=testing excluded by --domain)
+  skill: test-layer-placement
+  skipped (domain=testing excluded by --domain)
+  skill: unit-testing
+  skipped (domain=testing excluded by --domain)
+  skill: visual-testing
+  skipped (domain=testing excluded by --domain)
+
+Domain: typescript
+  skill: avoid-any
+  skipped (domain=typescript excluded by --domain)
+  skill: avoid-widening
+  skipped (domain=typescript excluded by --domain)
+  skill: decompose-large-files
+  skipped (domain=typescript excluded by --domain)
+  skill: derive-types
+  skipped (domain=typescript excluded by --domain)
+  skill: migration-context-cost
+  skipped (domain=typescript excluded by --domain)
+  skill: tsc-blindspots
+  skipped (domain=typescript excluded by --domain)
+
+Domain: ui
+  skill: activity-mappers
+  skipped (domain=ui excluded by --domain)
+  skill: component-scaffold
+  (base — included despite domain filter)
+  claude: .claude/skills/mms-component-scaffold/SKILL.md
+  cursor: .cursor/rules/mms-component-scaffold/RULE.md
+  agents: .agents/skills/mms-component-scaffold/SKILL.md
+  agents: .agents/skills/mms-component-scaffold/agents/openai.yaml
+  .claude/skills/mms-component-scaffold/knowledge/
+  .cursor/rules/mms-component-scaffold/knowledge/
+  .agents/skills/mms-component-scaffold/knowledge/
+  skill: content-guidelines
+  skipped (domain=ui excluded by --domain)
+  skill: ui-development
+  (base — included despite domain filter)
+  claude: .claude/skills/mms-ui-development/SKILL.md
+  cursor: .cursor/rules/mms-ui-development/RULE.md
+  agents: .agents/skills/mms-ui-development/SKILL.md
+  agents: .agents/skills/mms-ui-development/agents/openai.yaml
+  .claude/skills/mms-ui-development/knowledge/
+  .cursor/rules/mms-ui-development/knowledge/
+  .agents/skills/mms-ui-development/knowledge/
+
+Domain: web3-tools
+  skill: gator-cli
+  skipped (domain=web3-tools excluded by --domain)
+  skill: oh-my-opencode
+  skipped (domain=web3-tools excluded by --domain)
+  skill: smart-accounts-kit
+  skipped (domain=web3-tools excluded by --domain)
+  skill: x402-payments
+  skipped (domain=web3-tools excluded by --domain)
+
+Domain: agentic
+  skill: recipe-cook
+  claude: .claude/skills/mms-recipe-cook/SKILL.md
+  cursor: .cursor/rules/mms-recipe-cook/RULE.md
+  agents: .agents/skills/mms-recipe-cook/SKILL.md
+  agents: .agents/skills/mms-recipe-cook/agents/openai.yaml
+  .claude/skills/mms-recipe-cook/references/
+  .claude/skills/mms-recipe-cook/scripts/
+  .cursor/rules/mms-recipe-cook/references/
+  .cursor/rules/mms-recipe-cook/scripts/
+  .agents/skills/mms-recipe-cook/references/
+  .agents/skills/mms-recipe-cook/scripts/
+  skill: recipe-dev
+  claude: .claude/skills/mms-recipe-dev/SKILL.md
+  cursor: .cursor/rules/mms-recipe-dev/RULE.md
+  agents: .agents/skills/mms-recipe-dev/SKILL.md
+  agents: .agents/skills/mms-recipe-dev/agents/openai.yaml
+  skill: recipe-fix-bug
+  claude: .claude/skills/mms-recipe-fix-bug/SKILL.md
+  cursor: .cursor/rules/mms-recipe-fix-bug/RULE.md
+  agents: .agents/skills/mms-recipe-fix-bug/SKILL.md
+  agents: .agents/skills/mms-recipe-fix-bug/agents/openai.yaml
+  skill: recipe-harness
+  claude: .claude/skills/mms-recipe-harness/SKILL.md
+  cursor: .cursor/rules/mms-recipe-harness/RULE.md
+  agents: .agents/skills/mms-recipe-harness/SKILL.md
+  agents: .agents/skills/mms-recipe-harness/agents/openai.yaml
+  .claude/skills/mms-recipe-harness/references/
+  .cursor/rules/mms-recipe-harness/references/
+  .agents/skills/mms-recipe-harness/references/
+  skill: recipe-pretty-pr
+  claude: .claude/skills/mms-recipe-pretty-pr/SKILL.md
+  cursor: .cursor/rules/mms-recipe-pretty-pr/RULE.md
+  agents: .agents/skills/mms-recipe-pretty-pr/SKILL.md
+  agents: .agents/skills/mms-recipe-pretty-pr/agents/openai.yaml
+  .claude/skills/mms-recipe-pretty-pr/references/
+  .claude/skills/mms-recipe-pretty-pr/scripts/
+  .cursor/rules/mms-recipe-pretty-pr/references/
+  .cursor/rules/mms-recipe-pretty-pr/scripts/
+  .agents/skills/mms-recipe-pretty-pr/references/
+  .agents/skills/mms-recipe-pretty-pr/scripts/
+  skill: recipe-qa
+  claude: .claude/skills/mms-recipe-qa/SKILL.md
+  cursor: .cursor/rules/mms-recipe-qa/RULE.md
+  agents: .agents/skills/mms-recipe-qa/SKILL.md
+  agents: .agents/skills/mms-recipe-qa/agents/openai.yaml
+  .claude/skills/mms-recipe-qa/references/
+  .claude/skills/mms-recipe-qa/scripts/
+  .claude/skills/mms-recipe-qa/assets/
+  .cursor/rules/mms-recipe-qa/references/
+  .cursor/rules/mms-recipe-qa/scripts/
+  .cursor/rules/mms-recipe-qa/assets/
+  .agents/skills/mms-recipe-qa/references/
+  .agents/skills/mms-recipe-qa/scripts/
+  .agents/skills/mms-recipe-qa/assets/
+  skill: recipe-setup
+  claude: .claude/skills/mms-recipe-setup/SKILL.md
+  cursor: .cursor/rules/mms-recipe-setup/RULE.md
+  agents: .agents/skills/mms-recipe-setup/SKILL.md
+  agents: .agents/skills/mms-recipe-setup/agents/openai.yaml
+  .claude/skills/mms-recipe-setup/scripts/
+  .cursor/rules/mms-recipe-setup/scripts/
+  .agents/skills/mms-recipe-setup/scripts/
+
+Domain: coding
+  skill: simulator-control
+  skipped (domain=coding excluded by --domain)
+
+Domain: engineering
+  skill: release-retro
+  skipped (domain=engineering excluded by --domain)
+  skill: state-of-quality
+  skipped (domain=engineering excluded by --domain)
+
+Domain: general
+  skill: deploy-internal-vercel-app
+  skipped (domain=general excluded by --domain)
+
+Domain: money-movement
+  skill: mobile-build
+  skipped (domain=money-movement excluded by --domain)
+  skill: recipe-verify
+  skipped (domain=money-movement excluded by --domain)
+  skill: test-onramp-api-v2
+  skipped (domain=money-movement excluded by --domain)
+  skill: whitelist-provider-ip
+  skipped (domain=money-movement excluded by --domain)
+
+Domain: observability
+  skill: audit-observability
+  skipped (domain=observability excluded by --domain)
+  skill: check-high-cardinality
+  skipped (domain=observability excluded by --domain)
+  skill: instrument-code
+  skipped (domain=observability excluded by --domain)
+
+Domain: perps
+  skill: recipe-performance
+  claude: .claude/skills/mms-recipe-performance/SKILL.md
+  cursor: .cursor/rules/mms-recipe-performance/RULE.md
+  agents: .agents/skills/mms-recipe-performance/SKILL.md
+  agents: .agents/skills/mms-recipe-performance/agents/openai.yaml
+  .claude/skills/mms-recipe-performance/references/
+  .claude/skills/mms-recipe-performance/scripts/
+  .claude/skills/mms-recipe-performance/knowledge/
+  .cursor/rules/mms-recipe-performance/references/
+  .cursor/rules/mms-recipe-performance/scripts/
+  .cursor/rules/mms-recipe-performance/knowledge/
+  .agents/skills/mms-recipe-performance/references/
+  .agents/skills/mms-recipe-performance/scripts/
+  .agents/skills/mms-recipe-performance/knowledge/
+
+Domain: swaps
+  skill: mmcx-swaps-route-drop-off-investigation
+  skipped (domain=swaps excluded by --domain)
+  skill: mmcx-swaps-ttfq-investigation
+  skipped (domain=swaps excluded by --domain)
+  skill: mmcx-swaps-weekly-no-quote-report
+  skipped (domain=swaps excluded by --domain)
+  skill: mmcx-swaps-weekly-ttfq-report
+  skipped (domain=swaps excluded by --domain)
+
+Domain: ui
+  skill: designer-mode
+  skipped (domain=ui excluded by --domain)
+
+Install complete.

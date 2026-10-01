@@ -1,12 +1,7 @@
-# Learnings
+# Review learnings
 
-- Round 2: the independent review caught another zero-transition gap. Removing `onPress` stops *new* focus but leaves an already-open keypad active. When a control is disabled by live data, test the transition from the "open/editing" state, not just the resting state.
-- The live proof for that needs the keypad open *at* the moment the limit drops: set and validate the retained amount first, reopen the keypad, then mutate from outside. A negative control (effect removed, app restarted) failed at exactly that assert, which shows the node discriminates.
-- Never commit or touch git while `mm-harness run` is active: the runner fingerprints product status and invalidates the evidence.
-- After `yarn install` changes the tree, Metro can keep a stale file map ("exports ... file does not exist" for a file that is on disk). `launch --verify` alone and app restarts don't fix it; the one-time `--clear-metro` retry does. Follow it with `app.lifecycle restart` + doctor before a run.
-- Under heavy machine load (other slots), setup nodes can hit CDP timeouts that clear within minutes; probe with a trivial bridge eval before retrying rather than rebuilding.
-- The PR sits at 998/1000 counted lines; any further change must be net-neutral or trim tests.
-
-Round 1:
-- Display-priority bugs between errors and explanations need tests that move between states. Mocks that hold one limit steady can hide the transition under test.
-- The inherited family `recipe.json` had drifted from the PR-body recipe; diff before re-validating (it drifted again for round 2, so promote the last passing recipe explicitly).
+- Buffered Max is a client suggestion. Only the exchange submission limit can establish that nothing is removable. Using buffered zero for the disabled state blocked a valid retained amount on both forms.
+- Earlier tests covered a declining positive buffered limit and both limits reaching zero. The reviewer supplied the missing case: buffered Max zero with enough exchange margin for the selected $2. Real stream updates and an assertion on actual updateMargin submission now cover it.
+- The inherited live drain left $1 exchange-removable but expected a zero-margin explanation and closed keypad. Recipe expectations can preserve a product bug. Recheck the drain result against the exchange boundary before treating inherited assertions as acceptance criteria.
+- Native post-press observations can miss a short success toast. The persistent return to market, reached only after a successful exchange callback, proves acceptance without claiming the toast was captured. Preserve failed runs and document changes to evidence expectations.
+- Runtime screenshots prove presentation and state transitions; they cannot establish that an oversized retained amount is valid. Use the component view test for valid retained submission, and keep Extension parity and production Mixpanel outcomes explicit as unverified.

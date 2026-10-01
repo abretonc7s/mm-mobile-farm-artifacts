@@ -1,0 +1,9 @@
+PASS app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.test.tsx (187.355 s)
+PASS app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.test.tsx (17.558 s)
+PASS app/components/UI/Perps/hooks/usePerpsFreshRemovalLimit.test.ts (5.471 s)
+
+Test Suites: 3 passed, 3 total
+Tests:       80 passed, 80 total
+Snapshots:   0 total
+Time:        210.515 s
+Ran all test suites matching /app\/components\/UI\/Perps\/Views\/PerpsAdjustMarginView\/PerpsAdjustMarginView.test.tsx|app\/components\/UI\/Perps\/components\/PerpsAdjustMarginBottomSheet\/PerpsAdjustMarginBottomSheet.test.tsx|app\/components\/UI\/Perps\/hooks\/usePerpsFreshRemovalLimit.test.ts/i.

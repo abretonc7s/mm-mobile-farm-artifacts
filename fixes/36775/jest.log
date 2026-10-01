@@ -1,0 +1,21 @@
+$ /Users/deeeed/dev/metamask/metamask-mobile-6/node_modules/.bin/jest --no-coverage app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.test.tsx app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.test.tsx app/components/UI/Perps/hooks/usePerpsAdjustMarginData.test.ts app/components/UI/Perps/hooks/usePerpsFreshRemovalLimit.test.ts app/components/UI/Perps/hooks/usePerpsMarginAdjustment.test.ts app/components/UI/Perps/hooks/usePerpsToasts.test.tsx app/components/UI/Perps/utils/marginUtils.test.ts
+exit: 0
+duration_ms: 50936
+
+--- stdout ---
+
+
+--- stderr ---
+PASS app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.test.tsx (23.416 s)
+PASS app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.test.tsx (26.602 s)
+PASS app/components/UI/Perps/utils/marginUtils.test.ts
+PASS app/components/UI/Perps/hooks/usePerpsFreshRemovalLimit.test.ts (5.746 s)
+PASS app/components/UI/Perps/hooks/usePerpsAdjustMarginData.test.ts (7.336 s)
+PASS app/components/UI/Perps/hooks/usePerpsMarginAdjustment.test.ts
+PASS app/components/UI/Perps/hooks/usePerpsToasts.test.tsx (42.765 s)
+
+Test Suites: 7 passed, 7 total
+Tests:       245 passed, 245 total
+Snapshots:   0 total
+Time:        43.427 s, estimated 154 s
+Ran all test suites matching /app\/components\/UI\/Perps\/Views\/PerpsAdjustMarginView\/PerpsAdjustMarginView.test.tsx|app\/components\/UI\/Perps\/components\/PerpsAdjustMarginBottomSheet\/PerpsAdjustMarginBottomSheet.test.tsx|app\/components\/UI\/Perps\/hooks\/usePerpsAdjustMarginData.test.ts|app\/components\/UI\/Perps\/hooks\/usePerpsFreshRemovalLimit.test.ts|app\/components\/UI\/Perps\/hooks\/usePerpsMarginAdjustment.test.ts|app\/components\/UI\/Perps\/hooks\/usePerpsToasts.test.tsx|app\/components\/UI\/Perps\/utils\/marginUtils.test.ts/i.

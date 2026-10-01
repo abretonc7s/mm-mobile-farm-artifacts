@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "valid": true,
+  "snapshots": [
+    {
+      "phase": "start",
+      "capturedAt": "2026-10-01T06:11:20.967Z",
+      "recipeDigest": "sha256:68b7c046a5009998795e1b4191d75d52b542fd7dc65c55ace020115cc316ab55",
+      "product": {
+        "head": "80944eaf257d3e154a4fdc4729631ef983b30853",
+        "status": "M  app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.tsx\nM  app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.view.test.tsx\nM  app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.tsx\n",
+        "sourceFingerprint": "74de6d54c45e64025b3af98a935903ae15024b959567ca7e71edb69d4a5d1b00"
+      },
+      "runner": {
+        "head": "70518d2bdcce4b6ef422630c97fe5c914d40bf5b",
+        "status": "",
+        "sourceFingerprint": "922bd8af9ce695b4e2afcd838cec72876e7dec5b70add0cd5e386c7537a3bbdb"
+      },
+      "libraries": [
+        {
+          "name": "perps",
+          "head": "4d69addb8eb7f2d767a075489f8f5a07ed94f2f2",
+          "status": "",
+          "sourceFingerprint": "5a9af618339cdfb30555b320bfb0432472571fb5c5b9bdf29a242de8b9765db8"
+        },
+        {
+          "name": "terminal",
+          "head": "f7e2580168aff4f85cd89baa49e902a53854c4be",
+          "status": "",
+          "sourceFingerprint": "10e6ddfd658792619180e054030a1b1a04e04a1cd7dc082e10b34fd17b93cfd2"
+        },
+        {
+          "name": "metamask",
+          "head": "70518d2bdcce4b6ef422630c97fe5c914d40bf5b",
+          "status": "",
+          "sourceFingerprint": "ef30fc48acb8c46768bc5f0e22185a43fd675c4b200765f88b5c52ab5346e1bf"
+        }
+      ],
+      "helpers": []
+    },
+    {
+      "phase": "pre-execute",
+      "capturedAt": "2026-10-01T06:11:27.039Z",
+      "recipeDigest": "sha256:68b7c046a5009998795e1b4191d75d52b542fd7dc65c55ace020115cc316ab55",
+      "product": {
+        "head": "80944eaf257d3e154a4fdc4729631ef983b30853",
+        "status": "M  app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.tsx\nM  app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.view.test.tsx\nM  app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.tsx\n",
+        "sourceFingerprint": "74de6d54c45e64025b3af98a935903ae15024b959567ca7e71edb69d4a5d1b00"
+      },
+      "runner": {
+        "head": "70518d2bdcce4b6ef422630c97fe5c914d40bf5b",
+        "status": "",
+        "sourceFingerprint": "922bd8af9ce695b4e2afcd838cec72876e7dec5b70add0cd5e386c7537a3bbdb"
+      },
+      "libraries": [
+        {
+          "name": "perps",
+          "head": "4d69addb8eb7f2d767a075489f8f5a07ed94f2f2",
+          "status": "",
+          "sourceFingerprint": "5a9af618339cdfb30555b320bfb0432472571fb5c5b9bdf29a242de8b9765db8"
+        },
+        {
+          "name": "terminal",
+          "head": "f7e2580168aff4f85cd89baa49e902a53854c4be",
+          "status": "",
+          "sourceFingerprint": "10e6ddfd658792619180e054030a1b1a04e04a1cd7dc082e10b34fd17b93cfd2"
+        },
+        {
+          "name": "metamask",
+          "head": "70518d2bdcce4b6ef422630c97fe5c914d40bf5b",
+          "status": "",
+          "sourceFingerprint": "ef30fc48acb8c46768bc5f0e22185a43fd675c4b200765f88b5c52ab5346e1bf"
+        }
+      ],
+      "helpers": []
+    },
+    {
+      "phase": "end",
+      "capturedAt": "2026-10-01T06:12:11.010Z",
+      "recipeDigest": "sha256:68b7c046a5009998795e1b4191d75d52b542fd7dc65c55ace020115cc316ab55",
+      "product": {
+        "head": "80944eaf257d3e154a4fdc4729631ef983b30853",
+        "status": "M  app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.tsx\nM  app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.view.test.tsx\nM  app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.tsx\n",
+        "sourceFingerprint": "74de6d54c45e64025b3af98a935903ae15024b959567ca7e71edb69d4a5d1b00"
+      },
+      "runner": {
+        "head": "70518d2bdcce4b6ef422630c97fe5c914d40bf5b",
+        "status": "",
+        "sourceFingerprint": "922bd8af9ce695b4e2afcd838cec72876e7dec5b70add0cd5e386c7537a3bbdb"
+      },
+      "libraries": [
+        {
+          "name": "perps",
+          "head": "4d69addb8eb7f2d767a075489f8f5a07ed94f2f2",
+          "status": "",
+          "sourceFingerprint": "5a9af618339cdfb30555b320bfb0432472571fb5c5b9bdf29a242de8b9765db8"
+        },
+        {
+          "name": "terminal",
+          "head": "f7e2580168aff4f85cd89baa49e902a53854c4be",
+          "status": "",
+          "sourceFingerprint": "10e6ddfd658792619180e054030a1b1a04e04a1cd7dc082e10b34fd17b93cfd2"
+        },
+        {
+          "name": "metamask",
+          "head": "70518d2bdcce4b6ef422630c97fe5c914d40bf5b",
+          "status": "",
+          "sourceFingerprint": "ef30fc48acb8c46768bc5f0e22185a43fd675c4b200765f88b5c52ab5346e1bf"
+        }
+      ],
+      "helpers": []
+    }
+  ],
+  "drift": []
+}

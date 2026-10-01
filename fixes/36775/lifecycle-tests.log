@@ -1,0 +1,9 @@
+PASS app/components/UI/Perps/Views/PerpsOrderLifecycleFlow.view.test.tsx (72.821 s)
+  Order Lifecycle & Funds Flow
+    ✓ trader closes position, reviews order book, checks order details, views PnL, withdraws, and opens provider selection (2697 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        73.558 s
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "acceptanceCriteria": [
+    {
+      "id": "AC1",
+      "proof": "mixed",
+      "reason": "UI Max and exchange acceptance"
+    },
+    {
+      "id": "AC2",
+      "proof": "mixed",
+      "reason": "Zero exchange-removable state and disabled UI"
+    },
+    {
+      "id": "AC3",
+      "proof": "state",
+      "reason": "Fresh-limit and pre-submit tests"
+    },
+    {
+      "id": "AC4",
+      "proof": "mixed",
+      "reason": "Full-screen keypad closes at zero exchange limit"
+    },
+    {
+      "id": "AC5",
+      "proof": "mixed",
+      "reason": "Bottom-sheet keypad closes at zero exchange limit"
+    },
+    {
+      "id": "review-regression",
+      "proof": "state",
+      "reason": "Component view suite proves retained $2 after buffered Max zero on both surfaces"
+    }
+  ],
+  "capabilities": [],
+  "reason": "Use only the assigned iOS simulator mmdev-6 on port 8066; no physical Android capability required."
+}

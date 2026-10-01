@@ -1,0 +1,10 @@
+$ /Users/deeeed/dev/metamask/metamask-mobile-6/node_modules/.bin/prettier --check app/components/UI/Perps/Perps.testIds.ts app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.test.tsx app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.tsx app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.view.test.tsx app/components/UI/Perps/Views/PerpsOrderLifecycleFlow.view.test.tsx app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.test.tsx app/components/UI/Perps/components/PerpsAdjustMarginBottomSheet/PerpsAdjustMarginBottomSheet.tsx app/components/UI/Perps/constants/perpsConfig.ts app/components/UI/Perps/hooks/usePerpsAdjustMarginData.test.ts app/components/UI/Perps/hooks/usePerpsAdjustMarginData.ts app/components/UI/Perps/hooks/usePerpsFreshRemovalLimit.test.ts app/components/UI/Perps/hooks/usePerpsFreshRemovalLimit.ts app/components/UI/Perps/hooks/usePerpsMarginAdjustment.test.ts app/components/UI/Perps/hooks/usePerpsMarginAdjustment.ts app/components/UI/Perps/hooks/usePerpsToasts.test.tsx app/components/UI/Perps/hooks/usePerpsToasts.tsx app/components/UI/Perps/utils/marginUtils.test.ts app/components/UI/Perps/utils/marginUtils.ts locales/languages/en.json
+exit: 0
+duration_ms: 3001
+
+--- stdout ---
+Checking formatting...
+All matched files use Prettier code style!
+
+--- stderr ---
+

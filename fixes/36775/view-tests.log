@@ -1,0 +1,54 @@
+FAIL app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.view.test.tsx (45.353 s)
+  PerpsAdjustMarginView
+    ✓ add mode: confirm is disabled at zero, enabled after choosing 25%, then calls updateMargin on submit (679 ms)
+    ✓ add mode: summary shows margin-in-position and liquidation price labels throughout (38 ms)
+    ✓ remove mode: confirm button shows "Reduce Margin" label and is disabled at zero (121 ms)
+    ✓ shows position_not_found error when no position and no mode are supplied (8 ms)
+  Remove margin in the full screen
+    ✕ submits the selected Max when a price tick consumes only the buffer (1277 ms)
+  Remove margin in the bottom sheet
+    ✕ submits the selected Max when a price tick consumes only the buffer (1295 ms)
+
+  ● Remove margin in the full screen › submits the selected Max when a price tick consumes only the buffer
+
+    expect(element).toHaveTextContent()
+
+    Expected element to have text content:
+      $0.00
+    Received:
+      $0
+
+      233 |       stream.emitPositions([movedPosition]);
+      234 |     });
+    > 235 |     await waitFor(() => {
+          |                  ^
+      236 |       expect(screen.getByTestId(selectors.AVAILABLE_VALUE)).toHaveTextContent(
+      237 |         '$0.00',
+      238 |       );
+
+      at Object.<anonymous> (app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.view.test.tsx:235:18)
+
+  ● Remove margin in the bottom sheet › submits the selected Max when a price tick consumes only the buffer
+
+    expect(element).toHaveTextContent()
+
+    Expected element to have text content:
+      $0.00
+    Received:
+      $0
+
+      233 |       stream.emitPositions([movedPosition]);
+      234 |     });
+    > 235 |     await waitFor(() => {
+          |                  ^
+      236 |       expect(screen.getByTestId(selectors.AVAILABLE_VALUE)).toHaveTextContent(
+      237 |         '$0.00',
+      238 |       );
+
+      at Object.<anonymous> (app/components/UI/Perps/Views/PerpsAdjustMarginView/PerpsAdjustMarginView.view.test.tsx:235:18)
+
+Test Suites: 1 failed, 1 total
+Tests:       2 failed, 4 passed, 6 total
+Snapshots:   0 total
+Time:        46.671 s
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

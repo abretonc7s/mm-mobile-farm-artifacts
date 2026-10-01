@@ -1,0 +1,6 @@
+mm-harness: dist/ is older than src/ — running the current source checkout.
+  Next: npm run build to refresh dist/
+Recipe libraries: perps=/Users/deeeed/dev/metamask/experimental-metamask-recipe-perps (24 recipes), terminal=/Users/deeeed/dev/metamask/experimental-metamask-recipe-terminal (8 recipes), metamask=/Users/deeeed/dev/metamask/metamask-harness/library (22 recipes)
+Recipe libraries: perps=/Users/deeeed/dev/metamask/experimental-metamask-recipe-perps (24 recipes), terminal=/Users/deeeed/dev/metamask/experimental-metamask-recipe-terminal (8 recipes), metamask=/Users/deeeed/dev/metamask/metamask-harness/library (22 recipes)
+app.hud skipped (bridge target down or transitioning): Mobile CDP bridge command timed out after 2000ms: node ../metamask-harness/adapters/mobile/bridge-runtime/cdp-bridge.cjs show-step-json-deferred {"id":"run 10/98","nodeId":"setup-open-keypad","status":"running","intent":"Open the keypad to type the margin to add","progress":{"current":10,"total":98}}
+app.hud skipped (bridge target down or transitioning): Mobile CDP bridge command timed out after 2000ms: node ../metamask-harness/adapters/mobile/bridge-runtime/cdp-bridge.cjs show-step-json-deferred {"id":"pass 10/98","nodeId":"setup-open-keypad","status":"pass","intent":"Open the keypad to type the margin to add","progress":{"current":10,"total":98}}
