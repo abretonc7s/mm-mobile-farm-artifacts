@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "command": "call",
+  "adapter": "mobile",
+  "action": "metamask.perps.start_state",
+  "resolvedAction": "metamask.perps.start_state",
+  "args": {
+    "account": "Trading",
+    "provider": "hyperliquid",
+    "network": "testnet",
+    "market": "BTC",
+    "market_mode": "pro",
+    "page": "market_details",
+    "trading_state": "preserve",
+    "timeout_ms": 60000
+  },
+  "status": "pass",
+  "summaryPath": "/Volumes/FD/dev/metamask/metamask-mobile-2/temp/recipe/calls/metamask.perps.start_state-9f235b81-ff3e-4b4b-a2da-ea66242d2c46/summary.json",
+  "tracePath": "/Volumes/FD/dev/metamask/metamask-mobile-2/temp/recipe/calls/metamask.perps.start_state-9f235b81-ff3e-4b4b-a2da-ea66242d2c46/trace.json",
+  "artifactManifestPath": "/Volumes/FD/dev/metamask/metamask-mobile-2/temp/recipe/calls/metamask.perps.start_state-9f235b81-ff3e-4b4b-a2da-ea66242d2c46/artifact-manifest.json",
+  "diagnosticsPath": "/Volumes/FD/dev/metamask/metamask-mobile-2/temp/recipe/calls/metamask.perps.start_state-9f235b81-ff3e-4b4b-a2da-ea66242d2c46/diagnostics.json",
+  "sideFindings": {
+    "status": "review",
+    "note": "Observed 4 distinct application warning/error event(s) during the recipe run; showing 4 preview(s) and omitting 0. Relation to the task is not determined.",
+    "counts": {
+      "total": 4,
+      "warning": 4,
+      "error": 0,
+      "exception": 0
+    }
+  },
+  "output": {
+    "action": "metamask.perps.start_state",
+    "profile": null,
+    "phase": "start_state",
+    "wallet": {
+      "action": "metamask.wallet.ensure_unlocked",
+      "unlocked": true,
+      "alreadyUnlocked": true,
+      "keyringUnlocked": true,
+      "account": {
+        "address": "0x8dc623e964475d4d669da601fd15ea9125469003",
+        "id": "0285a92b-905c-4814-8a16-52fe1db60357",
+        "name": "dev1"
+      },
+      "deviceName": "mm-2",
+      "platform": "ios",
+      "redacted": true,
+      "proofPath": "agentic-wallet-status"
+    },
+    "account": {
+      "action": "metamask.wallet.select_account",
+      "selected": {
+        "address": "0x316bde155acd07609872a56bc32ccfb0b13201fa",
+        "id": "234870c9-4599-440f-986f-779ced252938",
+        "name": "Trading"
+      },
+      "proofPath": "agentic-account-selection"
+    },
+    "provider": {
+      "requested": "hyperliquid",
+      "activeProvider": "hyperliquid",
+      "changed": false
+    },
+    "network": {
+      "requested": "testnet",
+      "isTestnet": true,
+      "changed": false
+    },
+    "marketMode": {
+      "action": "metamask.perps.ensure_mode",
+      "mode": "pro",
+      "alreadySelected": true,
+      "proofPath": "visible-market-detail-root-and-active-mode-control"
+    },
+    "tutorial": {
+      "skipped": true
+    },
+    "readyToTrade": {
+      "skipped": true
+    },
+    "balance": {
+      "skipped": true
+    },
+    "market": "BTC",
+    "tradingState": "preserve",
+    "strategies": {
+      "skipped": true
+    },
+    "orders": {
+      "skipped": true
+    },
+    "positions": {
+      "skipped": true
+    },
+    "navigation": {
+      "action": "metamask.perps.start_state",
+      "target": "market_details",
+      "market": "BTC",
+      "navigation": {
+        "navigated": "PerpsMarketDetails",
+        "params": {
+          "market": {
+            "symbol": "BTC"
+          }
+        },
+        "previousRoute": {
+          "key": "PerpsMarketDetails-uuMlzOJsJqktCbwr51TDb",
+          "name": "PerpsMarketDetails",
+          "params": {
+            "market": {
+              "symbol": "BTC"
+            }
+          }
+        },
+        "currentRoute": {
+          "key": "PerpsMarketDetails-uuMlzOJsJqktCbwr51TDb",
+          "name": "PerpsMarketDetails",
+          "params": {
+            "market": {
+              "symbol": "BTC"
+            }
+          }
+        },
+        "verifiedRoute": "PerpsMarketDetails",
+        "alreadyAtRoute": true
+      },
+      "proofPath": "agentic-navigation"
+    },
+    "proofPath": "metamask-perps-start-state",
+    "liveAdapter": "/Users/deeeed/.local/share/mm-harness/versions/0.69.0/lib/node_modules/@deeeed/metamask-harness/library/actions/mobile/perps/perps.mjs"
+  },
+  "recovered": [],
+  "mutations": [],
+  "exitCode": 0
+}

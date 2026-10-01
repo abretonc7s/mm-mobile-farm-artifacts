@@ -1,0 +1,11 @@
+{
+  "runDirectory": "temp/tasks/fix/36881-1001-124447/artifacts/recipe-run",
+  "startedAt": "2026-10-01T05:21:58.642Z",
+  "invocationDigest": "sha256:74781b395e3bcbf033fd44ccfdb83dd08fce632685a982f2cc260f7540adb8f8",
+  "productHead": "2bac9222184e31036d85bb2bc32300b289695606",
+  "stagedDiffSha256": "22a29b1cbcd8637dfdcfffb6a73bc10da257aa8cfb0e9f10bf9b719b824cc45b",
+  "recipeSha256": "93994b6e2fc8e0a380459f0cb66fe271216827d5990c3d4a067274cfdd38ac88",
+  "video": "not recorded",
+  "committedHead": "fbcbda2de2d2d87d83a57b11d140728af248e895",
+  "commitDiffMatchesValidatedStagedDiff": true
+}

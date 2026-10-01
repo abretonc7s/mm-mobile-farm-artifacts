@@ -1,7 +1,5 @@
-# Learnings — PR #36881 pr-complete (round 2)
-
-- Reviewers caught provider scoping twice. Symbol-only lookups (`usePerpsMarketData`, `useHasExistingPosition`) broke once the same symbol could exist on several providers. For multi-provider perps UI, key every market/position read on symbol plus `providerId` from the start.
-- A Cross recipe that passed before failed on live config: remote `perpsTerminalBackendEnabled` turned on (min 8.3.0), and the PR keeps Cross off on the Terminal path. Recipes whose outcome depends on a gate should pin every flag the gate reads, not just the feature flag.
-- The same gate probably explains the Jira report "flag on but still can't choose Cross". When a reporter says a flagged feature is missing, read the live flag set before suspecting the code.
-- mm-6 `.js.env` ships `OVERRIDE_REMOTE_FEATURE_FLAGS="true"`, which silently disables every version-gated perps flag, Pro mode included, even with harness overrides. The failure only shows up as "Perps did not reach pro mode".
-- Inherited recipe command nodes hardcode another task's log folder. It failed only because the folder was missing; recipe command outputs should use a task-relative path.
+- Enabling Cross makes every reachable risk editor part of the margin-mode contract. Carry the resolved typed mode through leverage props and TP/SL navigation, then guard isolated calculations and validation in those consumers.
+- Skipping a fresh liquidation calculation does not clear an existing cached estimate. Cross must also suppress the cached price, recalculation placeholder, and leverage-derived distance, including the special 1x path.
+- A real component-view journey caught missing handoffs that isolated editor mocks could miss. Both Cross journeys failed when the handoffs were temporarily removed, then passed with the source restored; isolated stop rejection remains covered.
+- Rebase dependencies can make a controller backport obsolete. Released perps-controller 19.0.0 provides equivalent venue-lock behavior, and 14 real-controller integration tests validated replacing the old patch with main's release.
+- Inspect runtime account selection and screenshot bytes. The inherited account_name field was accepted but ignored, and a notifications prompt obscured screenshots while React-tree actions still succeeded. Explicit fixture selection, prompt dismissal, and one complete replacement proof run restored valid evidence.

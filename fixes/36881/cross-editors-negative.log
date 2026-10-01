@@ -1,0 +1,2614 @@
+FAIL app/components/UI/Perps/Views/PerpsProMarketView/PerpsProCrossMargin.view.test.tsx (8.516 s)
+  Pro Cross margin risk editors
+    ✕ opens leverage after selecting Cross without an isolated liquidation price or distance (386 ms)
+    ✕ saves a Cross stop beyond the isolated liquidation threshold after opening TP/SL (1282 ms)
+
+  ● Pro Cross margin risk editors › opens leverage after selecting Cross without an isolated liquidation price or distance
+
+    Unable to find an element with testID: perps-leverage-liquidation-price-value
+
+    [36m<RNSScreenStack>[39m
+      [36m<RNSScreen[39m
+        [33maria-hidden[39m=[32m{false}[39m
+      [36m>[39m
+        [36m<RNSScreenContentWrapper>[39m
+          [36m<View[39m
+            [33mtestID[39m=[32m"perps-pro-market-view"[39m
+          [36m>[39m
+            [36m<View[39m
+              [33mtestID[39m=[32m"perps-pro-market-header"[39m
+            [36m>[39m
+              [36m<View[39m
+                [33maccessibilityLabel[39m=[32m"Back"[39m
+                [33maccessibilityState[39m=[32m{
+                  {
+                    "disabled": false,
+                  }
+                }[39m
+                [33maccessible[39m=[32m{true}[39m
+                [33mtestID[39m=[32m"perps-pro-market-header-back-button"[39m
+              [36m>[39m
+                [36m<SvgMock />[39m
+              [36m</View>[39m
+              [36m<View>[39m
+                [36m<View[39m
+                  [33maccessibilityLabel[39m=[32m"Browse markets"[39m
+                  [33maccessibilityRole[39m=[32m"button"[39m
+                  [33maccessible[39m=[32m{true}[39m
+                  [33mtestID[39m=[32m"perps-pro-market-header-market-list-button"[39m
+                [36m>[39m
+                  [36m<View>[39m
+                    [36m<View[39m
+                      [33mtestID[39m=[32m"perps-pro-market-header-asset-icon"[39m
+                    [36m>[39m
+                      [36m<View[39m
+                        [33mplaceholder[39m=[32m{null}[39m
+                      [36m/>[39m
+                    [36m</View>[39m
+                    [36m<View>[39m
+                      [36m<View>[39m
+                        [36m<Text[39m
+                          [33maccessibilityRole[39m=[32m"text"[39m
+                          [33mtestID[39m=[32m"perps-pro-market-header-symbol"[39m
+                        [36m>[39m
+                          [0mEthereum[0m
+                        [36m</Text>[39m
+                        [36m<View[39m
+                          [33mtestID[39m=[32m"perps-leverage"[39m
+                        [36m>[39m
+                          [36m<View>[39m
+                            [36m<Text[39m
+                              [33maccessibilityRole[39m=[32m"text"[39m
+                            [36m>[39m
+                              [0m50x[0m
+                            [36m</Text>[39m
+                          [36m</View>[39m
+                        [36m</View>[39m
+                        [36m<SvgMock />[39m
+                      [36m</View>[39m
+                      [36m<View>[39m
+                        [36m<View[39m
+                          [33mpointerEvents[39m=[32m"none"[39m
+                          [33mstyle[39m=[32m{
+                            {
+                              "opacity": 0,
+                            }
+                          }[39m
+                        [36m>[39m
+                          [36m<Text[39m
+                            [33maccessibilityRole[39m=[32m"text"[39m
+                            [33mtestID[39m=[32m""[39m
+                          [36m>[39m
+                            [0mETH-USD perp[0m
+                          [36m</Text>[39m
+                          [36m<View>[39m
+                            [36m<Text[39m
+                              [33maccessibilityRole[39m=[32m"text"[39m
+                              [33mtestID[39m=[32m""[39m
+                            [36m>[39m
+                              [0m$---[0m
+                            [36m</Text>[39m
+                            [36m<Text[39m
+                              [33maccessibilityRole[39m=[32m"text"[39m
+                              [33mtestID[39m=[32m""[39m
+                            [36m>[39m
+                              [0m--%[0m
+                            [36m</Text>[39m
+                          [36m</View>[39m
+                        [36m</View>[39m
+                        [36m<View>[39m
+                          [36m<Text[39m
+                            [33maccessibilityRole[39m=[32m"text"[39m
+                            [33mtestID[39m=[32m"perps-pro-market-header-subtitle"[39m
+                          [36m>[39m
+                            [0mETH-USD perp[0m
+                          [36m</Text>[39m
+                        [36m</View>[39m
+                        [36m<View[39m
+                          [33mstyle[39m=[32m{
+                            {
+                              "opacity": 0,
+                            }
+                          }[39m
+                        [36m>[39m
+                          [36m<View>[39m
+                            [36m<Text[39m
+                              [33maccessibilityRole[39m=[32m"text"[39m
+                              [33mtestID[39m=[32m"perps-pro-market-header-price"[39m
+                            [36m>[39m
+                              [0m$---[0m
+                            [36m</Text>[39m
+                            [36m<Text[39m
+                              [33maccessibilityRole[39m=[32m"text"[39m
+                              [33mtestID[39m=[32m"perps-pro-market-header-price-change"[39m
+                            [36m>[39m
+                              [0m--%[0m
+                            [36m</Text>[39m
+                          [36m</View>[39m
+                        [36m</View>[39m
+                      [36m</View>[39m
+                    [36m</View>[39m
+                  [36m</View>[39m
+                [36m</View>[39m
+              [36m</View>[39m
+              [36m<View>[39m
+                [36m<View[39m
+                  [33maccessibilityLabel[39m=[32m"Perps balance"[39m
+                  [33maccessibilityState[39m=[32m{
+                    {
+                      "disabled": false,
+                    }
+                  }[39m
+                  [33maccessible[39m=[32m{true}[39m
+                  [33mtestID[39m=[32m"perps-pro-market-header-wallet-button"[39m
+                [36m>[39m
+                  [36m<SvgMock />[39m
+                [36m</View>[39m
+                [36m<View[39m
+                  [33maccessibilityLabel[39m=[32m"Add to watchlist"[39m
+                  [33maccessibilityState[39m=[32m{
+                    {
+                      "disabled": false,
+                    }
+                  }[39m
+                  [33maccessible[39m=[32m{true}[39m
+                  [33mtestID[39m=[32m"perps-pro-market-header-favorite-button"[39m
+                [36m>[39m
+                  [36m<SvgMock />[39m
+                [36m</View>[39m
+                [36m<View[39m
+                  [33maccessible[39m=[32m{false}[39m
+                [36m>[39m
+                  [36m<View[39m
+                    [33maccessibilityHint[39m=[32m"Switches to Lite mode"[39m
+                    [33maccessibilityLabel[39m=[32m"Currently Pro mode"[39m
+                    [33maccessibilityRole[39m=[32m"button"[39m
+                    [33maccessibilityState[39m=[32m{
+                      {
+                        "disabled": false,
+                      }
+                    }[39m
+                    [33maccessible[39m=[32m{true}[39m
+                    [33mtestID[39m=[32m"perps-mode-toggle-pro"[39m
+                  [36m>[39m
+                    [36m<View>[39m
+                      [36m<RNCMaskedView>[39m
+                        [36m<View[39m
+                          [33mpointerEvents[39m=[32m"none"[39m
+                        [36m>[39m
+                          [36m<Text>[39m
+                            [0mPro[0m
+                          [36m</Text>[39m
+                        [36m</View>[39m
+                        [36m<BVLinearGradient>[39m
+                          [36m<Text[39m
+                            [33mstyle[39m=[32m{
+                              {
+                                "opacity": 0,
+                              }
+                            }[39m
+                          [36m>[39m
+                            [0mPro[0m
+                          [36m</Text>[39m
+                        [36m</BVLinearGradient>[39m
+                      [36m</RNCMaskedView>[39m
+                    [36m</View>[39m
+                  [36m</View>[39m
+                [36m</View>[39m
+              [36m</View>[39m
+            [36m</View>[39m
+            [36m<RCTScrollView[39m
+              [33mtestID[39m=[32m"perps-pro-market-scroll-view"[39m
+            [36m>[39m
+              [36m<View>[39m
+                [36m<View[39m
+                  [33mtestID[39m=[32m"perps-pro-market-summary"[39m
+                [36m>[39m
+                  [36m<View>[39m
+                    [36m<View>[39m
+                      [36m<Text[39m
+                        [33maccessibilityRole[39m=[32m"text"[39m
+                        [33mtestID[39m=[32m"perps-pro-market-price"[39m
+                      [36m>[39m
+                        [0m$---[0m
+                      [36m</Text>[39m
+                      [36m<Text[39m
+                        [33maccessibilityRole[39m=[32m"text"[39m
+                        [33mtestID[39m=[32m"perps-pro-market-price-change"[39m
+                      [36m>[39m
+                        [0m--%[0m
+                      [36m</Text>[39m
+                    [36m</View>[39m
+                  [36m</View>[39m
+                  [36m<View>[39m
+                    [36m<View[39m
+                      [33maccessibilityLabel[39m=[32m"Collapse chart"[39m
+                      [33maccessibilityState[39m=[32m{
+                        {
+                          "disabled": false,
+                          "expanded": true,
+                        }
+                      }[39m
+                      [33maccessible[39m=[32m{true}[39m
+                      [33mtestID[39m=[32m"perps-pro-market-chart-toggle-button"[39m
+                    [36m>[39m
+                      [36m<SvgMock />[39m
+                    [36m</View>[39m
+                  [36m</View>[39m
+                [36m</View>[39m
+                [36m<View>[39m
+                  [36m<View[39m
+                    [33mtestID[39m=[32m"perps-pro-market-chart-panel"[39m
+                  [36m>[39m
+                    [36m<View[39m
+                      [33mtestID[39m=[32m"perps-pro-market-chart-content"[39m
+                    [36m>[39m
+                      [36m<View[39m
+                        [33mtestID[39m=[32m"perps-pro-market-chart-nav"[39m
+                      [36m>[39m
+                        [36m<View[39m
+                          [33mtestID[39m=[32m"perps-pro-market-chart-period-selector"[39m
+                        [36m>[39m
+                          [36m<View[39m
+                            [33mtestID[39m=[32m"perps-pro-market-chart-period-selector-group"[39m
+                          [36m>[39m
+                            [36m<View>[39m
+                              [36m<View[39m
+                                [33maccessibilityLabel[39m=[32m"1m"[39m
+                                [33maccessibilityRole[39m=[32m"button"[39m
+                                [33maccessibilityState[39m=[32m{
+                                  {
+                                    "disabled": false,
+                                    "selected": false,
+                                  }
+                                }[39m
+                                [33maccessible[39m=[32m{true}[39m
+                                [33mtestID[39m=[32m"perps-pro-market-chart-period-selector-period-1m"[39m
+                              [36m>[39m
+                                [36m<View>[39m
+                                  [36m<Text[39m
+                                    [33maccessibilityRole[39m=[32m"text"[39m
+                                  [36m>[39m
+                                    [0m1m[0m
+                                  [36m</Text>[39m
+                                [36m</View>[39m
+                              [36m</View>[39m
+                              [36m<View[39m
+                                [33maccessibilityLabel[39m=[32m"5m"[39m
+                                [33maccessibilityRole[39m=[32m"button"[39m
+                                [33maccessibilityState[39m=[32m{
+                                  {
+                                    "disabled": false,
+                                    "selected": false,
+                                  }
+                                }[39m
+                                [33maccessible[39m=[32m{true}[39m
+                                [33mtestID[39m=[32m"perps-pro-market-chart-period-selector-period-5m"[39m
+                              [36m>[39m
+                                [36m<View>[39m
+                                  [36m<Text[39m
+                                    [33maccessibilityRole[39m=[32m"text"[39m
+                                  [36m>[39m
+                                    [0m5m[0m
+                                  [36m</Text>[39m
+                                [36m</View>[39m
+                              [36m</View>[39m
+                              [36m<View[39m
+                                [33maccessibilityLabel[39m=[32m"15m"[39m
+                                [33maccessibilityRole[39m=[32m"button"[39m
+                                [33maccessibilityState[39m=[32m{
+                                  {
+                                    "disabled": false,
+                                    "selected": true,
+                                  }
+                                }[39m
+                                [33maccessible[39m=[32m{true}[39m
+                                [33mtestID[39m=[32m"perps-pro-market-chart-period-selector-period-15m"[39m
+                              [36m>[39m
+                                [36m<View>[39m
+                                  [36m<Text[39m
+                                    [33maccessibilityRole[39m=[32m"text"[39m
+                                  [36m>[39m
+                                    [0m15m[0m
+                                  [36m</Text>[39m
+                                [36m</View>[39m
+                              [36m</View>[39m
+                              [36m<View[39m
+                                [33maccessibilityLabel[39m=[32m"1h"[39m
+                                [33maccessibilityRole[39m=[32m"button"[39m
+                                [33maccessibilityState[39m=[32m{
+                                  {
+                                    "disabled": false,
+                                    "selected": false,
+                                  }
+                                }[39m
+                                [33maccessible[39m=[32m{true}[39m
+                                [33mtestID[39m=[32m"perps-pro-market-chart-period-selector-period-1h"[39m
+                              [36m>[39m
+                                [36m<View>[39m
+                                  [36m<Text[39m
+                                    [33maccessibilityRole[39m=[32m"text"[39m
+                                  [36m>[39m
+                                    [0m1h[0m
+                                  [36m</Text>[39m
+                                [36m</View>[39m
+                              [36m</View>[39m
+                              [36m<View[39m
+                                [33maccessibilityLabel[39m=[32m"1d"[39m
+                                [33maccessibilityRole[39m=[32m"button"[39m
+                                [33maccessibilityState[39m=[32m{
+                                  {
+                                    "disabled": false,
+                                    "selected": false,
+                                  }
+                                }[39m
+                                [33maccessible[39m=[32m{true}[39m
+                                [33mtestID[39m=[32m"perps-pro-market-chart-period-selector-period-1d"[39m
+                              [36m>[39m
+                                [36m<View>[39m
+                                  [36m<Text[39m
+                                    [33maccessibilityRole[39m=[32m"text"[39m
+                                  [36m>[39m
+                                    [0m1d[0m
+                                  [36m</Text>[39m
+                                [36m</View>[39m
+                              [36m</View>[39m
+                            [36m</View>[39m
+                            [36m<View[39m
+                              [33maccessibilityLabel[39m=[32m"More"[39m
+                              [33maccessibilityRole[39m=[32m"button"[39m
+                              [33maccessibilityState[39m=[32m{
+                                {
+                                  "disabled": false,
+                                }
+                              }[39m
+                              [33maccessible[39m=[32m{true}[39m
+                              [33mtestID[39m=[32m"perps-pro-market-chart-period-selector-more-button"[39m
+                            [36m>[39m
+                              [36m<View>[39m
+                                [36m<Text[39m
+                                  [33maccessibilityRole[39m=[32m"text"[39m
+                                [36m>[39m
+                                  [0mMore[0m
+                                [36m</Text>[39m
+                                [36m<SvgMock />[39m
+                              [36m</View>[39m
+                            [36m</View>[39m
+                          [36m</View>[39m
+                        [36m</View>[39m
+                        [36m<View[39m
+                          [33maccessibilityLabel[39m=[32m"Fullscreen chart"[39m
+                          [33maccessibilityState[39m=[32m{
+                            {
+                              "disabled": false,
+                            }
+                          }[39m
+                          [33maccessible[39m=[32m{true}[39m
+                          [33mtestID[39m=[32m"perps-pro-market-chart-fullscreen-button"[39m
+                        [36m>[39m
+                          [36m<SvgMock />[39m
+                        [36m</View>[39m
+                      [36m</View>[39m
+                      [36m<View>[39m
+                        [36m<View[39m
+                          [33mtestID[39m=[32m"perps-pro-market-chart-skeleton"[39m
+                        [36m>[39m
+                          [36m<View[39m
+                            [33mpointerEvents[39m=[32m"none"[39m
+                          [36m/>[39m
+                        [36m</View>[39m
+                      [36m</View>[39m
+                    [36m</View>[39m
+                  [36m</View>[39m
+                [36m</View>[39m
+                [36m<View />[39m
+                [36m<View>[39m
+                  [36m<View[39m
+                    [33mtestID[39m=[32m"perps-pro-market-stats-bar"[39m
+                  [36m>[39m
+                    [36m<RCTScrollView[39m
+                      [33mtestID[39m=[32m"perps-pro-market-stats-bar-scroll"[39m
+                    [36m>[39m
+                      [36m<View>[39m
+                        [36m<View>[39m
+                          [36m<View[39m
+                            [33mtestID[39m=[32m"perps-pro-market-stats-funding-rate"[39m
+                          [36m>[39m
+                            [36m<Text[39m
+                              [33maccessibilityRole[39m=[32m"text"[39m
+                            [36m>[39m
+                              [0mFunding[0m
+                            [36m</Text>[39m
+                            [36m<Text[39m
+                              [33maccessibilityRole[39m=[32m"text"[39m
+                              [33mtestID[39m=[32m"perps-pro-market-stats-funding-countdown"[39m
+                            [36m>[39m
+                              [0m0.0000% / 00:52:28[0m
+                            [36m</Text>[39m
+                          [36m</View>[39m
+                          [36m<View[39m
+                            [33mtestID[39m=[32m"perps-pro-market-stats-volume"[39m
+                          [36m>[39m
+                            [36m<Text[39m
+                              [33maccessibilityRole[39m=[32m"text"[39m
+                            [36m>[39m
+                              [0m24h vol[0m
+                            [36m</Text>[39m
+                            [36m<Text[39m
+                              [33maccessibilityRole[39m=[32m"text"[39m
+                            [36m>[39m
+                              [0m$---[0m
+                            [36m</Text>[39m
+                          [36m</View>[39m
+                          [36m<View[39m
+                            [33mtestID[39m=[32m"perps-pro-market-stats-open-interest"[39m
+                          [36m>[39m
+                            [36m<Text[39m
+                              [33maccessibilityRole[39m=[32m"text"[39m
+                            [36m>[39m
+                              [0mOpen interest[0m
+                            [36m</Text>[39m
+                            [36m<Text[39m
+                              [33maccessibilityRole[39m=[32m"text"[39m
+                            [36m>[39m
+                              [0m$---[0m
+                            [36m</Text>[39m
+                          [36m</View>[39m
+                          [36m<View[39m
+                            [33mtestID[39m=[32m"perps-pro-market-stats-mark-price"[39m
+                          [36m>[39m
+                            [36m<Text[39m
+                              [33maccessibilityRole[39m=[32m"text"[39m
+                            [36m>[39m
+                              [0mMark price[0m
+                            [36m</Text>[39m
+                            [36m<Text[39m
+                              [33maccessibilityRole[39m=[32m"text"[39m
+                            [36m>[39m
+                              [0m$2,500[0m
+                            [36m</Text>[39m
+                          [36m</View>[39m
+                          [36m<View[39m
+                            [33mtestID[39m=[32m"perps-pro-market-stats-oracle-price"[39m
+                          [36m>[39m
+                            [36m<Text[39m
+                              [33maccessibilityRole[39m=[32m"text"[39m
+                            [36m>[39m
+                              [0mOracle price[0m
+                            [36m</Text>[39m
+                            [36m<Text[39m
+                              [33maccessibilityRole[39m=[32m"text"[39m
+                            [36m>[39m
+                              [0m$2,500[0m
+                            [36m</Text>[39m
+                          [36m</View>[39m
+                        [36m</View>[39m
+                      [36m</View>[39m
+                    [36m</RCTScrollView>[39m
+                  [36m</View>[39m
+                  [36m<View[39m
+                    [33mtestID[39m=[32m"perps-pro-market-layout"[39m
+                  [36m>[39m
+                    [36m<View[39m
+                      [33mtestID[39m=[32m"perps-pro-market-order-form-column"[39m
+                    [36m>[39m
+                      [36m<View[39m
+                        [33mtestID[39m=[32m"perps-pro-market-order-form-panel"[39m
+                      [36m>[39m
+                        [36m<View[39m
+                          [33mtestID[39m=[32m"perps-pro-order-form"[39m
+                        [36m>[39m
+                          [36m<View>[39m
+                            [36m<View>[39m
+                              [36m<View[39m
+                                [33maccessibilityRole[39m=[32m"tablist"[39m
+                                [33mtestID[39m=[32m"perps-pro-order-form-direction-control"[39m
+                              [36m>[39m
+                                [36m<View>[39m
+                                  [36m<View[39m
+                                    [33maccessibilityLabel[39m=[32m"Long"[39m
+                                    [33maccessibilityRole[39m=[32m"button"[39m
+                                    [33maccessibilityState[39m=[32m{
+                                      {
+                                        "disabled": false,
+                                      }
+                                    }[39m
+                                    [33maccessible[39m=[32m{true}[39m
+                                    [33mtestID[39m=[32m"perps-pro-order-form-direction-long"[39m
+                                  [36m>[39m
+                                    [36m<View>[39m
+                                      [36m<Text[39m
+                                        [33maccessibilityRole[39m=[32m"text"[39m
+                                      [36m>[39m
+                                        [0mLong[0m
+                                      [36m</Text>[39m
+                                    [36m</View>[39m
+                                  [36m</View>[39m
+                                [36m</View>[39m
+                                [36m<View>[39m
+                                  [36m<View[39m
+                                    [33maccessibilityLabel[39m=[32m"Short"[39m
+                                    [33maccessibilityRole[39m=[32m"button"[39m
+                                    [33maccessibilityState[39m=[32m{
+                                      {
+                                        "disabled": false,
+                                      }
+                                    }[39m
+                                    [33maccessible[39m=[32m{true}[39m
+                                    [33mtestID[39m=[32m"perps-pro-order-form-direction-short"[39m
+                                  [36m>[39m
+                                    [36m<View>[39m
+                                      [36m<Text[39m
+                                        [33maccessibilityRole[39m=[32m"text"[39m
+                                      [36m>[39m
+                                        [0mShort[0m
+                                      [36m</Text>[39m
+                                    [36m</View>[39m
+                                  [36m</View>[39m
+                                [36m</View>[39m
+                              [36m</View>[39m
+                              [36m<View[39m
+                                [33maccessibilityLabel[39m=[32m"Show order book"[39m
+                                [33maccessibilityState[39m=[32m{
+                                  {
+                                    "disabled": false,
+                                  }
+                                }[39m
+                                [33maccessible[39m=[32m{true}[39m
+                                [33mtestID[39m=[32m"perps-pro-market-order-book-expand"[39m
+                              [36m>[39m
+                                [36m<SvgMock />[39m
+                              [36m</View>[39m
+                            [36m</View>[39m
+                            [36m<View[39m
+                              [33mtestID[39m=[32m"perps-pro-order-form-margin-settings"[39m
+                            [36m>[39m
+                              [36m<View[39m
+                                [33maccessibilityLabel[39m=[32m"Cross"[39m
+                                [33maccessibilityRole[39m=[32m"button"[39m
+                                [33maccessible[39m=[32m{true}[39m
+                                [33mtestID[39m=[32m"perps-pro-order-form-margin-mode"[39m
+                              [36m>[39m
+                                [36m<View>[39m
+                                  [36m<Text[39m
+                                    [33maccessibilityRole[39m=[32m"text"[39m
+                                  [36m>[39m
+                                    [0mCross[0m
+                                  [36m</Text>[39m
+                                [36m</View>[39m
+                              [36m</View>[39m
+                              [36m<View[39m
+                                [33maccessibilityLabel[39m=[32m"3x"[39m
+                                [33maccessibilityRole[39m=[32m"button"[39m
+                                [33maccessible[39m=[32m{true}[39m
+                                [33mtestID[39m=[32m"perps-pro-order-form-leverage"[39m
+                              [36m>[39m
+                                [36m<View>[39m
+                                  [36m<Text[39m
+                                    [33maccessibilityRole[39m=[32m"text"[39m
+                                  [36m>[39m
+                                    [0m3x[0m
+                                  [36m</Text>[39m
+                                [36m</View>[39m
+                              [36m</View>[39m
+                            [36m</View>[39m
+                            [36m<View[39m
+                              [33mtestID[39m=[32m"perps-pro-order-form-order-type-card"[39m
+                            [36m>[39m
+                              [36m<View[39m
+                                [33maccessibilityLabel[39m=[32m"Market"[39m
+                                [33maccessibilityRole[39m=[32m"button"[39m
+                                [33maccessible[39m=[32m{true}[39m
+                                [33mtestID[39m=[32m"perps-pro-order-form-order-type"[39m
+                              [36m>[39m
+                                [36m<View>[39m
+                                  [36m<Text[39m
+                                    [33maccessibilityRole[39m=[32m"text"[39m
+                                  [36m>[39m
+                                    [0mMarket[0m
+                                  [36m</Text>[39m
+                                  [36m<SvgMock[39m
+                                    [33mtestID[39m=[32m"perps-pro-order-form-order-type-chevron"[39m
+                                  [36m/>[39m
+                                [36m</View>[39m
+                              [36m</View>[39m
+                              [36m<View[39m
+                                [33maccessibilityElementsHidden[39m=[32m{true}[39m
+                                [33mimportantForAccessibility[39m=[32m"no-hide-descendants"[39m
+                                [33mpointerEvents[39m=[32m"none"[39m
+                                [33mstyle[39m=[32m{
+                                  {
+                                    "opacity": 0,
+                                  }
+                                }[39m
+                                [33mtestID[39m=[32m"perps-pro-order-form-trigger-price-input-container"[39m
+                              [36m>[39m
+                                [36m<View[39m
+                                  [33maccessibilityLabel[39m=[32m"Trigger price"[39m
+                                  [33maccessibilityRole[39m=[32m"button"[39m
+                                  [33maccessibilityState[39m=[32m{
+                                    {
+                                      "disabled": false,
+                                    }
+                                  }[39m
+                                  [33maccessible[39m=[32m{true}[39m
+                                  [33mtestID[39m=[32m"perps-pro-order-form-trigger-price-input-field"[39m
+                                [36m>[39m
+                                  [36m<Text[39m
+                                    [33maccessibilityRole[39m=[32m"text"[39m
+                                    [33maccessible[39m=[32m{false}[39m
+                                    [33mimportantForAccessibility[39m=[32m"no"[39m
+                                    [33mtestID[39m=[32m"perps-pro-order-form-trigger-price-input-label"[39m
+                                  [36m>[39m
+                                    [0mTrigger price[0m
+                                  [36m</Text>[39m
+                                  [36m<View>[39m
+                                    [36m<View>[39m
+                                      [36m<Text[39m
+                                        [33maccessibilityRole[39m=[32m"text"[39m
+                                        [33mtestID[39m=[32m"perps-pro-order-form-trigger-price-prefix"[39m
+                                      [36m>[39m
+                                        [0m$[0m
+                                      [36m</Text>[39m
+                                    [36m</View>[39m
+                                    [36m<TextInput[39m
+                                      [33maccessibilityElementsHidden[39m=[32m{true}[39m
+                                      [33maccessibilityLabel[39m=[32m"Trigger price"[39m
+                                      [33meditable[39m=[32m{true}[39m
+                                      [33mimportantForAccessibility[39m=[32m"no"[39m
+                                      [33mplaceholder[39m=[32m""[39m
+                                      [33mstyle[39m=[32m{
+                                        {
+                                          "opacity": 0,
+                                        }
+                                      }[39m
+                                      [33mtestID[39m=[32m"perps-pro-order-form-trigger-price-input"[39m
+                                      [33mvalue[39m=[32m""[39m
+                                    [36m/>[39m
+                                  [36m</View>[39m
+                                [36m</View>[39m
+                              [36m</View>[39m
+                              [36m<View[39m
+                                [33maccessibilityElementsHidden[39m=[32m{true}[39m
+                                [33mimportantForAccessibility[39m=[32m"no-hide-descendants"[39m
+                                [33mpointerEvents[39m=[32m"none"[39m
+                                [33mstyle[39m=[32m{
+                                  {
+                                    "opacity": 0,
+                                  }
+                                }[39m
+                                [33mtestID[39m=[32m"perps-pro-order-form-limit-price-input-container"[39m
+                              [36m>[39m
+                                [36m<View[39m
+                                  [33maccessibilityLabel[39m=[32m"Limit price"[39m
+                                  [33maccessibilityRole[39m=[32m"button"[39m
+                                  [33maccessibilityState[39m=[32m{
+                                    {
+                                      "disabled": false,
+                                    }
+                                  }[39m
+                                  [33maccessible[39m=[32m{true}[39m
+                                  [33mtestID[39m=[32m"perps-pro-order-form-limit-price-input-field"[39m
+                                [36m>[39m
+                                  [36m<Text[39m
+                                    [33maccessibilityRole[39m=[32m"text"[39m
+                                    [33maccessible[39m=[32m{false}[39m
+                                    [33mimportantForAccessibility[39m=[32m"no"[39m
+                                    [33mtestID[39m=[32m"perps-pro-order-form-limit-price-input-label"[39m
+                                  [36m>[39m
+                                    [0mLimit price[0m
+                                  [36m</Text>[39m
+                                  [36m<View>[39m
+                                    [36m<View>[39m
+                                      [36m<Text[39m
+                                        [33maccessibilityRole[39m=[32m"text"[39m
+                                        [33mtestID[39m=[32m"perps-pro-order-form-limit-price-prefix"[39m
+                                      [36m>[39m
+                                        [0m$[0m
+                                      [36m</Text>[39m
+                                    [36m</View>[39m
+                                    [36m<TextInput[39m
+                                      [33maccessibilityElementsHidden[39m=[32m{true}[39m
+                                      [33maccessibilityLabel[39m=[32m"Limit price"[39m
+                                      [33meditable[39m=[32m{true}[39m
+                                      [33mimportantForAccessibility[39m=[32m"no"[39m
+                                      [33mplaceholder[39m=[32m""[39m
+                                      [33mstyle[39m=[32m{
+                                        {
+                                          "opacity": 0,
+                                        }
+                                      }[39m
+                                      [33mtestID[39m=[32m"perps-pro-order-form-limit-price-input"[39m
+                                      [33mvalue[39m=[32m""[39m
+                                    [36m/>[39m
+                                  [36m</View>[39m
+                                [36m</View>[39m
+                              [36m</View>[39m
+                              [36m<View[39m
+                                [33maccessibilityElementsHidden[39m=[32m{true}[39m
+                                [33mimportantForAccessibility[39m=[32m"no-hide-descendants"[39m
+                                [33mpointerEvents[39m=[32m"none"[39m
+                                [33mstyle[39m=[32m{
+                                  {
+                                    "opacity": 0,
+                                  }
+                                }[39m
+                                [33mtestID[39m=[32m"perps-pro-order-form-scale-fields"[39m
+                              [36m>[39m
+                                [36m<View[39m
+                                  [33maccessibilityElementsHidden[39m=[32m{true}[39m
+                                  [33mimportantForAccessibility[39m=[32m"no-hide-descendants"[39m
+                                  [33mpointerEvents[39m=[32m"none"[39m
+                                  [33mstyle[39m=[32m{
+                                    {
+                                      "opacity": 0,
+                                    }
+                                  }[39m
+                                  [33mtestID[39m=[32m"perps-pro-order-form-scale-start-price-container"[39m
+                                [36m>[39m
+                                  [36m<View[39m
+                                    [33maccessibilityLabel[39m=[32m"Start (USD)"[39m
+                                    [33maccessibilityRole[39m=[32m"button"[39m
+                                    [33maccessibilityState[39m=[32m{
+                                      {
+                                        "disabled": false,
+                                      }
+                                    }[39m
+                                    [33maccessible[39m=[32m{true}[39m
+                                    [33mtestID[39m=[32m"perps-pro-order-form-scale-start-price-field"[39m
+                                  [36m>[39m
+                                    [36m<Text[39m
+                                      [33maccessibilityRole[39m=[32m"text"[39m
+                                      [33maccessible[39m=[32m{false}[39m
+                                      [33mimportantForAccessibility[39m=[32m"no"[39m
+                                      [33mtestID[39m=[32m"perps-pro-order-form-scale-start-price-label"[39m
+                                    [36m>[39m
+                                      [0mStart (USD)[0m
+                                    [36m</Text>[39m
+                                    [36m<View>[39m
+                                      [36m<View />[39m
+                                      [36m<TextInput[39m
+                                        [33maccessibilityElementsHidden[39m=[32m{true}[39m
+                                        [33maccessibilityLabel[39m=[32m"Start (USD)"[39m
+                                        [33meditable[39m=[32m{true}[39m
+                                        [33mimportantForAccessibility[39m=[32m"no"[39m
+                                        [33mplaceholder[39m=[32m""[39m
+                                        [33mstyle[39m=[32m{
+                                          {
+                                            "opacity": 0,
+                                          }
+                                        }[39m
+                                        [33mtestID[39m=[32m"perps-pro-order-form-scale-start-price"[39m
+                                        [33mvalue[39m=[32m""[39m
+                                      [36m/>[39m
+                                    [36m</View>[39m
+                                  [36m</View>[39m
+                                [36m</View>[39m
+                                [36m<View[39m
+                                  [33maccessibilityElementsHidden[39m=[32m{true}[39m
+                                  [33mimportantForAccessibility[39m=[32m"no-hide-descendants"[39m
+                                  [33mpointerEvents[39m=[32m"none"[39m
+                                  [33mstyle[39m=[32m{
+                                    {
+                                      "opacity": 0,
+                                    }
+                                  }[39m
+                                  [33mtestID[39m=[32m"perps-pro-order-form-scale-end-price-container"[39m
+                                [36m>[39m
+                                  [36m<View[39m
+                                    [33maccessibilityLabel[39m=[32m"End (USD)"[39m
+                                    [33maccessibilityRole[39m=[32m"button"[39m
+                                    [33maccessibilityState[39m=[32m{
+                                      {
+                                        "disabled": false,
+                                      }
+                                    }[39m
+                                    [33maccessible[39m=[32m{true}[39m
+                                    [33mtestID[39m=[32m"perps-pro-order-form-scale-end-price-field"[39m
+                                  [36m>[39m
+                                    [36m<Text[39m
+                                      [33maccessibilityRole[39m=[32m"text"[39m
+                                      [33maccessible[39m=[32m{false}[39m
+                                      [33mimportantForAccessibility[39m=[32m"no"[39m
+                                      [33mtestID[39m=[32m"perps-pro-order-form-scale-end-price-label"[39m
+                                    [36m>[39m
+                                      [0mEnd (USD)[0m
+                                    [36m</Text>[39m
+                                    [36m<View>[39m
+                                      [36m<View />[39m
+                                      [36m<TextInput[39m
+                                        [33maccessibilityElementsHidden[39m=[32m{true}[39m
+                                        [33maccessibilityLabel[39m=[32m"End (USD)"[39m
+                                        [33meditable[39m=[32m{true}[39m
+                                        [33mimportantForAccessibility[39m=[32m"no"[39m
+                                        [33mplaceholder[39m=[32m""[39m
+                                        [33mstyle[39m=[32m{
+                                          {
+                                            "opacity": 0,
+                                          }
+                                        }[39m
+                                        [33mtestID[39m=[32m"perps-pro-order-form-scale-end-price"[39m
+                                        [33mvalue[39m=[32m""[39m
+                                      [36m/>[39m
+                                    [36m</View>[39m
+                                  [36m</View>[39m
+                                [36m</View>[39m
+                                [36m<View[39m
+                                  [33maccessibilityElementsHidden[39m=[32m{true}[39m
+                                  [33mimportantForAccessibility[39m=[32m"no-hide-descendants"[39m
+                                  [33mpointerEvents[39m=[32m"none"[39m
+                                  [33mstyle[39m=[32m{
+                                    {
+                                      "opacity": 0,
+                                    }
+                                  }[39m
+                                  [33mtestID[39m=[32m"perps-pro-order-form-scale-total-orders-container"[39m
+                                [36m>[39m
+                                  [36m<View[39m
+                                    [33maccessibilityLabel[39m=[32m"Order count"[39m
+                                    [33maccessibilityRole[39m=[32m"button"[39m
+                                    [33maccessibilityState[39m=[32m{
+                                      {
+                                        "disabled": false,
+                                      }
+                                    }[39m
+                                    [33maccessible[39m=[32m{true}[39m
+                                    [33mtestID[39m=[32m"perps-pro-order-form-scale-total-orders-field"[39m
+                                  [36m>[39m
+                                    [36m<Text[39m
+                                      [33maccessibilityRole[39m=[32m"text"[39m
+                                      [33maccessible[39m=[32m{false}[39m
+                                      [33mimportantForAccessibility[39m=[32m"no"[39m
+                                      [33mtestID[39m=[32m"perps-pro-order-form-scale-total-orders-label"[39m
+                                    [36m>[39m
+                                      [0mOrder count[0m
+                                    [36m</Text>[39m
+                                    [36m<View>[39m
+                                      [36m<View />[39m
+                                      [36m<TextInput[39m
+                                        [33maccessibilityElementsHidden[39m=[32m{true}[39m
+                                        [33maccessibilityLabel[39m=[32m"Order count"[39m
+                                        [33meditable[39m=[32m{true}[39m
+                                        [33mimportantForAccessibility[39m=[32m"no"[39m
+                                        [33mplaceholder[39m=[32m""[39m
+                                        [33mstyle[39m=[32m{
+                                          {
+                                            "opacity": 0,
+                                          }
+                                        }[39m
+                                        [33mtestID[39m=[32m"perps-pro-order-form-scale-total-orders"[39m
+                                        [33mvalue[39m=[32m""[39m
+                                      [36m/>[39m
+                                    [36m</View>[39m
+                                  [36m</View>[39m
+                                [36m</View>[39m
+                                [36m<View[39m
+                                  [33maccessibilityElementsHidden[39m=[32m{true}[39m
+                                  [33mimportantForAccessibility[39m=[32m"no-hide-descendants"[39m
+                                  [33mpointerEvents[39m=[32m"none"[39m
+                                  [33mstyle[39m=[32m{
+                                    {
+                                      "opacity": 0,
+                                    }
+                                  }[39m
+                                  [33mtestID[39m=[32m"perps-pro-order-form-scale-size-skew-container"[39m
+                                [36m>[39m
+                                  [36m<View[39m
+                                    [33maccessibilityState[39m=[32m{
+                                      {
+                                        "disabled": false,
+                                      }
+                                    }[39m
+                                    [33maccessible[39m=[32m{false}[39m
+                                    [33mtestID[39m=[32m"perps-pro-order-form-scale-size-skew-field"[39m
+                                  [36m>[39m
+                                    [36m<Text[39m
+                                      [33maccessibilityRole[39m=[32m"text"[39m
+                                      [33maccessible[39m=[32m{false}[39m
+                                      [33mimportantForAccessibility[39m=[32m"no"[39m
+                                      [33mtestID[39m=[32m"perps-pro-order-form-scale-size-skew-label"[39m
+                                    [36m>[39m
+                                      [0mSize skew[0m
+                                    [36m</Text>[39m
+                                    [36m<View>[39m
+                                      [36m<View />[39m
+                                      [36m<TextInput[39m
+                                        [33maccessibilityElementsHidden[39m=[32m{false}[39m
+                                        [33maccessibilityLabel[39m=[32m"Size skew"[39m
+                                        [33meditable[39m=[32m{true}[39m
+                                        [33mimportantForAccessibility[39m=[32m"yes"[39m
+                                        [33mplaceholder[39m=[32m"0"[39m
+                                        [33mtestID[39m=[32m"perps-pro-order-form-scale-size-skew"[39m
+                                        [33mvalue[39m=[32m"1.00"[39m
+                                      [36m/>[39m
+                                    [36m</View>[39m
+                                  [36m</View>[39m
+                                  [36m<View[39m
+                                    [33maccessibilityHint[39m=[32m"Weights ramp linearly from 1 to this ratio across the range."[39m
+                                    [33maccessibilityLabel[39m=[32m"Size skew"[39m
+                                    [33maccessibilityState[39m=[32m{
+                                      {
+                                        "disabled": false,
+                                      }
+                                    }[39m
+                                    [33maccessible[39m=[32m{true}[39m
+                                    [33mtestID[39m=[32m"perps-pro-order-form-scale-skew-info"[39m
+                                  [36m>[39m
+                                    [36m<SvgMock />[39m
+                                  [36m</View>[39m
+                                [36m</View>[39m
+                              [36m</View>[39m
+                            [36m</View>[39m
+                            [36m<View[39m
+                              [33mtestID[39m=[32m"perps-pro-order-form-size-card"[39m
+                            [36m>[39m
+                              [36m<View>[39m
+                                [36m<View[39m
+                                  [33maccessibilityHint[39m=[32m"Enter order size in USD"[39m
+                                  [33maccessibilityLabel[39m=[32m"Size (USD)"[39m
+                                  [33maccessibilityRole[39m=[32m"button"[39m
+                                  [33maccessible[39m=[32m{true}[39m
+                                  [33mtestID[39m=[32m"perps-pro-order-form-size-field"[39m
+                                [36m>[39m
+                                  [36m<View>[39m
+                                    [36m<View>[39m
+                                      [36m<Text[39m
+                                        [33maccessibilityRole[39m=[32m"text"[39m
+                                        [33mtestID[39m=[32m"perps-pro-order-form-size-unit-label"[39m
+                                      [36m>[39m
+                                        [0mSize (USD)[0m
+                                      [36m</Text>[39m
+                                    [36m</View>[39m
+                                    [36m<View>[39m
+                                      [36m<Text[39m
+                                        [33maccessibilityRole[39m=[32m"text"[39m
+                                        [33mtestID[39m=[32m"perps-pro-order-form-size-prefix"[39m
+                                      [36m>[39m
+                                        [0m$[0m
+                                      [36m</Text>[39m
+                                      [36m<TextInput[39m
+                                        [33maccessibilityHint[39m=[32m"Enter order size in USD"[39m
+                                        [33maccessibilityLabel[39m=[32m"Size (USD)"[39m
+                                        [33meditable[39m=[32m{true}[39m
+                                        [33mplaceholder[39m=[32m"0.00"[39m
+                                        [33mtestID[39m=[32m"perps-pro-order-form-size-input"[39m
+                                        [33mvalue[39m=[32m""[39m
+                                      [36m/>[39m
+                                    [36m</View>[39m
+                                  [36m</View>[39m
+                                [36m</View>[39m
+                                [36m<View>[39m
+                                  [36m<View[39m
+                                    [33maccessibilityHint[39m=[32m"Switch from USD to the other size unit"[39m
+                                    [33maccessibilityLabel[39m=[32m"Switch size denomination: USD"[39m
+                                    [33maccessibilityState[39m=[32m{
+                                      {
+                                        "disabled": false,
+                                      }
+                                    }[39m
+                                    [33maccessible[39m=[32m{true}[39m
+                                    [33mtestID[39m=[32m"perps-pro-order-form-size-unit"[39m
+                                  [36m>[39m
+                                    [36m<SvgMock />[39m
+                                  [36m</View>[39m
+                                [36m</View>[39m
+                              [36m</View>[39m
+                              [36m<View[39m
+                                [33mtestID[39m=[32m"perps-pro-order-form-size-slider-section"[39m
+                              [36m>[39m
+                                [36m<View>[39m
+                                  [36m<View[39m
+                                    [33maccessibilityLabel[39m=[32m"Order size percentage (USD)"[39m
+                                    [33maccessibilityRole[39m=[32m"adjustable"[39m
+                                    [33maccessibilityState[39m=[32m{
+                                      {
+                                        "disabled": false,
+                                      }
+                                    }[39m
+                                    [33maccessibilityValue[39m=[32m{
+                                      {
+                                        "max": 100,
+                                        "min": 0,
+                                        "now": 0,
+                                        "text": "0%",
+                                      }
+                                    }[39m
+                                    [33mtestID[39m=[32m"perps-pro-order-form-size-slider"[39m
+                                  [36m>[39m
+                                    [36m<View>[39m
+                                      [36m<View />[39m
+                                      [36m<View />[39m
+                                      [36m<View[39m
+                                        [33mpointerEvents[39m=[32m"none"[39m
+                                      [36m/>[39m
+                                      [36m<View[39m
+                                        [33mpointerEvents[39m=[32m"none"[39m
+                                      [36m/>[39m
+                                      [36m<View[39m
+                                        [33mpointerEvents[39m=[32m"none"[39m
+                                      [36m/>[39m
+                                      [36m<View[39m
+                                        [33mpointerEvents[39m=[32m"none"[39m
+                                      [36m/>[39m
+                                      [36m<View[39m
+                                        [33mpointerEvents[39m=[32m"none"[39m
+                                      [36m/>[39m
+                                      [36m<View />[39m
+                                    [36m</View>[39m
+                                  [36m</View>[39m
+                                [36m</View>[39m
+                              [36m</View>[39m
+                              [36m<View />[39m
+                              [36m<View[39m
+                                [33maccessibilityHint[39m=[32m"Add funds"[39m
+                                [33maccessibilityLabel[39m=[32m"$10,000 available"[39m
+                                [33maccessibilityRole[39m=[32m"button"[39m
+                                [33maccessible[39m=[32m{true}[39m
+                                [33mtestID[39m=[32m"perps-pro-order-form-add-funds"[39m
+                              [36m>[39m
+                                [36m<View>[39m
+                                  [36m<Text[39m
+                                    [33maccessibilityRole[39m=[32m"text"[39m
+                                    [33mtestID[39m=[32m"perps-pro-order-form-available-balance"[39m
+                                  [36m>[39m
+                                    [0m$10,000 available[0m
+                                  [36m</Text>[39m
+                                  [36m<SvgMock />[39m
+                                [36m</View>[39m
+                              [36m</View>[39m
+                            [36m</View>[39m
+                            [36m<View[39m
+                              [33mtestID[39m=[32m"perps-pro-order-form-reduce-only-container"[39m
+                            [36m>[39m
+                              [36m<View[39m
+                                [33maccessibilityLabel[39m=[32m"Reduce only"[39m
+                                [33maccessibilityRole[39m=[32m"checkbox"[39m
+                                [33maccessibilityState[39m=[32m{
+                                  {
+                                    "checked": false,
+                                    "disabled": false,
+                                  }
+                                }[39m
+                                [33maccessible[39m=[32m{true}[39m
+                                [33mtestID[39m=[32m"perps-pro-order-form-reduce-only"[39m
+                              [36m>[39m
+                                [36m<View>[39m
+                                  [36m<View[39m
+                                    [33mstyle[39m=[32m{
+                                      {
+                                        "opacity": 0,
+                                      }
+                                    }[39m
+                                  [36m>[39m
+                                    [36m<SvgMock />[39m
+                                  [36m</View>[39m
+                                [36m</View>[39m
+                                [36m<Text[39m
+                                  [33maccessibilityRole[39m=[32m"text"[39m
+                                [36m>[39m
+                                  [0mReduce only[0m
+                                [36m</Text>[39m
+                              [36m</View>[39m
+                            [36m</View>[39m
+                            [36m<View[39m
+                              [33maccessibilityLabel[39m=[32m"TP / SL"[39m
+                              [33maccessibilityRole[39m=[32m"button"[39m
+                              [33maccessibilityState[39m=[32m{
+                                {
+                                  "disabled": false,
+                                }
+                              }[39m
+                              [33maccessible[39m=[32m{true}[39m
+                              [33mtestID[39m=[32m"perps-pro-order-form-tpsl"[39m
+                            [36m>[39m
+                              [36m<View>[39m
+                                [36m<Text[39m
+                                  [33maccessibilityRole[39m=[32m"text"[39m
+                                [36m>[39m
+                                  [0mTP / SL[0m
+                                [36m</Text>[39m
+                                [36m<SvgMock[39m
+                                  [33mtestID[39m=[32m"perps-pro-order-form-tpsl-arrow"[39m
+                                [36m/>[39m
+                              [36m</View>[39m
+                            [36m</View>[39m
+                            [36m<View[39m
+                              [33maccessibilityLabel[39m=[32m"Place order"[39m
+                              [33maccessibilityRole[39m=[32m"button"[39m
+                              [33maccessibilityState[39m=[32m{
+                                {
+                                  "disabled": true,
+                                }
+                              }[39m
+                              [33maccessible[39m=[32m{true}[39m
+                              [33mtestID[39m=[32m"perps-pro-order-form-place-order"[39m
+                            [36m>[39m
+                              [36m<View>[39m
+                                [36m<Text[39m
+                                  [33maccessibilityRole[39m=[32m"text"[39m
+                                [36m>[39m
+                                  [0mPlace order[0m
+                                [36m</Text>[39m
+                              [36m</View>[39m
+                            [36m</View>[39m
+                          [36m</View>[39m
+                          [36m<View[39m
+                            [33mtestID[39m=[32m"perps-pro-order-form-summary"[39m
+                          [36m>[39m
+                            [36m<View[39m
+                              [33mtestID[39m=[32m"perps-pro-order-form-summary-margin"[39m
+                            [36m>[39m
+                              [36m<View>[39m
+                                [36m<View>[39m
+                                  [36m<Text[39m
+                                    [33maccessibilityRole[39m=[32m"text"[39m
+                                  [36m>[39m
+                                    [0mMargin[0m
+                                  [36m</Text>[39m
+                                [36m</View>[39m
+                              [36m</View>[39m
+                              [36m<View>[39m
+                                [36m<Text[39m
+                                  [33maccessibilityRole[39m=[32m"text"[39m
+                                [36m>[39m
+                                  [0m$0[0m
+                                [36m</Text>[39m
+                              [36m</View>[39m
+                            [36m</View>[39m
+                            [36m<View[39m
+                              [33mtestID[39m=[32m"perps-pro-order-form-summary-liquidation"[39m
+                            [36m>[39m
+                              [36m<View>[39m
+                                [36m<View>[39m
+                                  [36m<Text[39m
+                                    [33maccessibilityRole[39m=[32m"text"[39m
+                                  [36m>[39m
+                                    [0mEst Liquidation[0m
+                                  [36m</Text>[39m
+                                [36m</View>[39m
+                              [36m</View>[39m
+                              [36m<View>[39m
+                                [36m<Text[39m
+                                  [33maccessibilityRole[39m=[32m"text"[39m
+                                [36m>[39m
+                                  [0m--[0m
+                                [36m</Text>[39m
+                              [36m</View>[39m
+                            [36m</View>[39m
+                            [36m<View[39m
+                              [33mtestID[39m=[32m"perps-pro-order-form-summary-slippage"[39m
+                            [36m>[39m
+                              [36m<View>[39m
+                                [36m<View>[39m
+                                  [36m<Text[39m
+                                    [33maccessibilityRole[39m=[32m"text"[39m
+                                  [36m>[39m
+                                    [0mSlippage[0m
+                                  [36m</Text>[39m
+                                [36m</View>[39m
+                              [36m</View>[39m
+                              [36m<View>[39m
+                                [36m<Text[39m
+                                  [33maccessibilityRole[39m=[32m"text"[39m
+                                [36m>[39m
+                                  [0mEst: -- / Max: 3%[0m
+                                [36m</Text>[39m
+                                [36m<View[39m
+                                  [33maccessibilityLabel[39m=[32m"Set slippage"[39m
+                                  [33maccessibilityRole[39m=[32m"button"[39m
+                                  [33maccessibilityState[39m=[32m{
+                                    {
+                                      "disabled": false,
+                                    }
+                                  }[39m
+                                  [33maccessible[39m=[32m{true}[39m
+                                  [33mtestID[39m=[32m"perps-pro-order-form-summary-slippage-button"[39m
+                                [36m>[39m
+                                  [36m<SvgMock />[39m
+                                [36m</View>[39m
+                              [36m</View>[39m
+                            [36m</View>[39m
+                            [36m<View[39m
+                              [33mtestID[39m=[32m"perps-pro-order-form-summary-fees"[39m
+                            [36m>[39m
+                              [36m<View>[39m
+                                [36m<View>[39m
+                                  [36m<Text[39m
+                                    [33maccessibilityRole[39m=[32m"text"[39m
+                                  [36m>[39m
+                                    [0mFees[0m
+                                  [36m</Text>[39m
+                                  [36m<View[39m
+                                    [33maccessibilityState[39m=[32m{
+                                      {
+                                        "disabled": false,
+                                      }
+                                    }[39m
+                                    [33maccessible[39m=[32m{true}[39m
+                                    [33mtestID[39m=[32m"perps-pro-order-form-summary-fees-button"[39m
+                                  [36m>[39m
+                                    [36m<SvgMock />[39m
+                                  [36m</View>[39m
+                                [36m</View>[39m
+                              [36m</View>[39m
+                              [36m<View>[39m
+                                [36m<View>[39m
+                                  [36m<Text[39m
+                                    [33maccessibilityRole[39m=[32m"text"[39m
+                                    [33mtestID[39m=[32m"perps-pro-order-form-summary-fees-value"[39m
+                                  [36m>[39m
+                                    [0m--[0m
+                                  [36m</Text>[39m
+                                [36m</View>[39m
+                              [36m</View>[39m
+                            [36m</View>[39m
+                          [36m</View>[39m
+                        [36m</View>[39m
+                        [36m<RCTInputAccessoryView[39m
+                          [33mnativeID[39m=[32m"perps-pro-order-form-size-input-input-accessory"[39m
+                        [36m>[39m
+                          [36m<RCTSafeAreaView>[39m
+                            [36m<View>[39m
+                              [36m<View />[39m
+                              [36m<View[39m
+                                [33maccessibilityLabel[39m=[32m"Done"[39m
+                                [33maccessibilityRole[39m=[32m"button"[39m
+                                [33maccessible[39m=[32m{true}[39m
+                                [33mtestID[39m=[32m"perps-pro-order-form-keyboard-done-perps-pro-order-form-size-input"[39m
+                              [36m>[39m
+                                [36m<View>[39m
+                                  [36m<Text[39m
+                                    [33maccessibilityRole[39m=[32m"text"[39m
+                                  [36m>[39m
+                                    [0mDone[0m
+                                  [36m</Text>[39m
+                                [36m</View>[39m
+                              [36m</View>[39m
+                            [36m</View>[39m
+                          [36m</RCTSafeAreaView>[39m
+                        [36m</RCTInputAccessoryView>[39m
+                        [36m<RCTInputAccessoryView[39m
+                          [33mnativeID[39m=[32m"perps-pro-order-form-trigger-price-input-input-accessory"[39m
+                        [36m>[39m
+                          [36m<RCTSafeAreaView>[39m
+                            [36m<View>[39m
+                              [36m<View />[39m
+                              [36m<View[39m
+                                [33maccessibilityLabel[39m=[32m"Done"[39m
+                                [33maccessibilityRole[39m=[32m"button"[39m
+                                [33maccessible[39m=[32m{true}[39m
+                                [33mtestID[39m=[32m"perps-pro-order-form-keyboard-done-perps-pro-order-form-trigger-price-input"[39m
+                              [36m>[39m
+                                [36m<View>[39m
+                                  [36m<Text[39m
+                                    [33maccessibilityRole[39m=[32m"text"[39m
+                                  [36m>[39m
+                                    [0mDone[0m
+                                  [36m</Text>[39m
+                                [36m</View>[39m
+                              [36m</View>[39m
+                            [36m</View>[39m
+                          [36m</RCTSafeAreaView>[39m
+                        [36m</RCTInputAccessoryView>[39m
+                        [36m<RCTInputAccessoryView[39m
+                          [33mnativeID[39m=[32m"perps-pro-order-form-limit-price-input-input-accessory"[39m
+                        [36m>[39m
+                          [36m<RCTSafeAreaView>[39m
+                            [36m<View>[39m
+                              [36m<View />[39m
+                              [36m<View[39m
+                                [33maccessibilityLabel[39m=[32m"Done"[39m
+                                [33maccessibilityRole[39m=[32m"button"[39m
+                                [33maccessible[39m=[32m{true}[39m
+                                [33mtestID[39m=[32m"perps-pro-order-form-keyboard-done-perps-pro-order-form-limit-price-input"[39m
+                              [36m>[39m
+                                [36m<View>[39m
+                                  [36m<Text[39m
+                                    [33maccessibilityRole[39m=[32m"text"[39m
+                                  [36m>[39m
+                                    [0mDone[0m
+                                  [36m</Text>[39m
+                                [36m</View>[39m
+                              [36m</View>[39m
+                            [36m</View>[39m
+                          [36m</RCTSafeAreaView>[39m
+                        [36m</RCTInputAccessoryView>[39m
+                        [36m<RCTInputAccessoryView[39m
+                          [33mnativeID[39m=[32m"perps-pro-order-form-scale-start-price-input-accessory"[39m
+                        [36m>[39m
+                          [36m<RCTSafeAreaView>[39m
+                            [36m<View>[39m
+                              [36m<View>[39m
+                                [36m<View[39m
+                                  [33maccessibilityLabel[39m=[32m"Previous field"[39m
+                                  [33maccessibilityState[39m=[32m{
+                                    {
+                                      "disabled": true,
+                                    }
+                                  }[39m
+                                  [33maccessible[39m=[32m{true}[39m
+                                  [33mtestID[39m=[32m"perps-pro-order-form-keyboard-previous-perps-pro-order-form-scale-start-price"[39m
+                                [36m>[39m
+                                  [36m<SvgMock />[39m
+                                [36m</View>[39m
+                                [36m<View[39m
+                                  [33maccessibilityLabel[39m=[32m"Next field"[39m
+                                  [33maccessibilityState[39m=[32m{
+                                    {
+                                      "disabled": false,
+                                    }
+                                  }[39m
+                                  [33maccessible[39m=[32m{true}[39m
+                                  [33mtestID[39m=[32m"perps-pro-order-form-keyboard-next-perps-pro-order-form-scale-start-price"[39m
+                                [36m>[39m
+                                  [36m<SvgMock />[39m
+                                [36m</View>[39m
+                              [36m</View>[39m
+                              [36m<View[39m
+                                [33maccessibilityLabel[39m=[32m"Done"[39m
+                                [33maccessibilityRole[39m=[32m"button"[39m
+                                [33maccessible[39m=[32m{true}[39m
+                                [33mtestID[39m=[32m"perps-pro-order-form-keyboard-done-perps-pro-order-form-scale-start-price"[39m
+                              [36m>[39m
+                                [36m<View>[39m
+                                  [36m<Text[39m
+                                    [33maccessibilityRole[39m=[32m"text"[39m
+                                  [36m>[39m
+                                    [0mDone[0m
+                                  [36m</Text>[39m
+                                [36m</View>[39m
+                              [36m</View>[39m
+                            [36m</View>[39m
+                          [36m</RCTSafeAreaView>[39m
+                        [36m</RCTInputAccessoryView>[39m
+                        [36m<RCTInputAccessoryView[39m
+                          [33mnativeID[39m=[32m"perps-pro-order-form-scale-end-price-input-accessory"[39m
+                        [36m>[39m
+                          [36m<RCTSafeAreaView>[39m
+                            [36m<View>[39m
+                              [36m<View>[39m
+                                [36m<View[39m
+                                  [33maccessibilityLabel[39m=[32m"Previous field"[39m
+                                  [33maccessibilityState[39m=[32m{
+                                    {
+                                      "disabled": false,
+                                    }
+                                  }[39m
+                                  [33maccessible[39m=[32m{true}[39m
+                                  [33mtestID[39m=[32m"perps-pro-order-form-keyboard-previous-perps-pro-order-form-scale-end-price"[39m
+                                [36m>[39m
+                                  [36m<SvgMock />[39m
+                                [36m</View>[39m
+                                [36m<View[39m
+                                  [33maccessibilityLabel[39m=[32m"Next field"[39m
+                                  [33maccessibilityState[39m=[32m{
+                                    {
+                                      "disabled": false,
+                                    }
+                                  }[39m
+                                  [33maccessible[39m=[32m{true}[39m
+                                  [33mtestID[39m=[32m"perps-pro-order-form-keyboard-next-perps-pro-order-form-scale-end-price"[39m
+                                [36m>[39m
+                                  [36m<SvgMock />[39m
+                                [36m</View>[39m
+                              [36m</View>[39m
+                              [36m<View[39m
+                                [33maccessibilityLabel[39m=[32m"Done"[39m
+                                [33maccessibilityRole[39m=[32m"button"[39m
+                                [33maccessible[39m=[32m{true}[39m
+                                [33mtestID[39m=[32m"perps-pro-order-form-keyboard-done-perps-pro-order-form-scale-end-price"[39m
+                              [36m>[39m
+                                [36m<View>[39m
+                                  [36m<Text[39m
+                                    [33maccessibilityRole[39m=[32m"text"[39m
+                                  [36m>[39m
+                                    [0mDone[0m
+                                  [36m</Text>[39m
+                                [36m</View>[39m
+                              [36m</View>[39m
+                            [36m</View>[39m
+                          [36m</RCTSafeAreaView>[39m
+                        [36m</RCTInputAccessoryView>[39m
+                        [36m<RCTInputAccessoryView[39m
+                          [33mnativeID[39m=[32m"perps-pro-order-form-scale-total-orders-input-accessory"[39m
+                        [36m>[39m
+                          [36m<RCTSafeAreaView>[39m
+                            [36m<View>[39m
+                              [36m<View>[39m
+                                [36m<View[39m
+                                  [33maccessibilityLabel[39m=[32m"Previous field"[39m
+                                  [33maccessibilityState[39m=[32m{
+                                    {
+                                      "disabled": false,
+                                    }
+                                  }[39m
+                                  [33maccessible[39m=[32m{true}[39m
+                                  [33mtestID[39m=[32m"perps-pro-order-form-keyboard-previous-perps-pro-order-form-scale-total-orders"[39m
+                                [36m>[39m
+                                  [36m<SvgMock />[39m
+                                [36m</View>[39m
+                                [36m<View[39m
+                                  [33maccessibilityLabel[39m=[32m"Next field"[39m
+                                  [33maccessibilityState[39m=[32m{
+                                    {
+                                      "disabled": false,
+                                    }
+                                  }[39m
+                                  [33maccessible[39m=[32m{true}[39m
+                                  [33mtestID[39m=[32m"perps-pro-order-form-keyboard-next-perps-pro-order-form-scale-total-orders"[39m
+                                [36m>[39m
+                                  [36m<SvgMock />[39m
+                                [36m</View>[39m
+                              [36m</View>[39m
+                              [36m<View[39m
+                                [33maccessibilityLabel[39m=[32m"Done"[39m
+                                [33maccessibilityRole[39m=[32m"button"[39m
+                                [33maccessible[39m=[32m{true}[39m
+                                [33mtestID[39m=[32m"perps-pro-order-form-keyboard-done-perps-pro-order-form-scale-total-orders"[39m
+                              [36m>[39m
+                                [36m<View>[39m
+                                  [36m<Text[39m
+                                    [33maccessibilityRole[39m=[32m"text"[39m
+                                  [36m>[39m
+                                    [0mDone[0m
+                                  [36m</Text>[39m
+                                [36m</View>[39m
+                              [36m</View>[39m
+                            [36m</View>[39m
+                          [36m</RCTSafeAreaView>[39m
+                        [36m</RCTInputAccessoryView>[39m
+                        [36m<RCTInputAccessoryView[39m
+                          [33mnativeID[39m=[32m"perps-pro-order-form-scale-size-skew-input-accessory"[39m
+                        [36m>[39m
+                          [36m<RCTSafeAreaView>[39m
+                            [36m<View>[39m
+                              [36m<View>[39m
+                                [36m<View[39m
+                                  [33maccessibilityLabel[39m=[32m"Previous field"[39m
+                                  [33maccessibilityState[39m=[32m{
+                                    {
+                                      "disabled": false,
+                                    }
+                                  }[39m
+                                  [33maccessible[39m=[32m{true}[39m
+                                  [33mtestID[39m=[32m"perps-pro-order-form-keyboard-previous-perps-pro-order-form-scale-size-skew"[39m
+                                [36m>[39m
+                                  [36m<SvgMock />[39m
+                                [36m</View>[39m
+                                [36m<View[39m
+                                  [33maccessibilityLabel[39m=[32m"Next field"[39m
+                                  [33maccessibilityState[39m=[32m{
+                                    {
+                                      "disabled": true,
+                                    }
+                                  }[39m
+                                  [33maccessible[39m=[32m{true}[39m
+                                  [33mtestID[39m=[32m"perps-pro-order-form-keyboard-next-perps-pro-order-form-scale-size-skew"[39m
+                                [36m>[39m
+                                  [36m<SvgMock />[39m
+                                [36m</View>[39m
+                              [36m</View>[39m
+                              [36m<View[39m
+                                [33maccessibilityLabel[39m=[32m"Done"[39m
+                                [33maccessibilityRole[39m=[32m"button"[39m
+                                [33maccessible[39m=[32m{true}[39m
+                                [33mtestID[39m=[32m"perps-pro-order-form-keyboard-done-perps-pro-order-form-scale-size-skew"[39m
+                              [36m>[39m
+                                [36m<View>[39m
+                                  [36m<Text[39m
+                                    [33maccessibilityRole[39m=[32m"text"[39m
+                                  [36m>[39m
+                                    [0mDone[0m
+                                  [36m</Text>[39m
+                                [36m</View>[39m
+                              [36m</View>[39m
+                            [36m</View>[39m
+                          [36m</RCTSafeAreaView>[39m
+                        [36m</RCTInputAccessoryView>[39m
+                        [36m<View>[39m
+                          [36m<Modal>[39m
+                            [36m<View[39m
+                              [33mtestID[39m=[32m"perps-pro-modal-gesture-root"[39m
+                            [36m>[39m
+                              [36m<View[39m
+                                [33mtestID[39m=[32m"design-system-bottom-sheet-mock"[39m
+                              [36m>[39m
+                                [36m<View>[39m
+                                  [36m<View>[39m
+                                    [36m<View />[39m
+                                  [36m</View>[39m
+                                  [36m<View>[39m
+                                    [36m<Text[39m
+                                      [33maccessibilityRole[39m=[32m"text"[39m
+                                    [36m>[39m
+                                      [0mLeverage[0m
+                                    [36m</Text>[39m
+                                  [36m</View>[39m
+                                  [36m<View>[39m
+                                    [36m<View>[39m
+                                      [36m<View[39m
+                                        [33maccessibilityState[39m=[32m{
+                                          {
+                                            "disabled": false,
+                                          }
+                                        }[39m
+                                        [33maccessible[39m=[32m{true}[39m
+                                        [33mtestID[39m=[32m"button-icon"[39m
+                                      [36m>[39m
+                                        [36m<SvgMock />[39m
+                                      [36m</View>[39m
+                                    [36m</View>[39m
+                                  [36m</View>[39m
+                                [36m</View>[39m
+                                [36m<View[39m
+                                  [33maccessible[39m=[32m{false}[39m
+                                [36m>[39m
+                                  [36m<View>[39m
+                                    [36m<View>[39m
+                                      [36m<View>[39m
+                                        [36m<Text[39m
+                                          [33maccessibilityRole[39m=[32m"text"[39m
+                                        [36m>[39m
+                                          [0mCurrent price[0m
+                                        [36m</Text>[39m
+                                      [36m</View>[39m
+                                    [36m</View>[39m
+                                    [36m<View>[39m
+                                      [36m<Text[39m
+                                        [33maccessibilityRole[39m=[32m"text"[39m
+                                        [33mtestID[39m=[32m"perps-leverage-current-price-value"[39m
+                                      [36m>[39m
+                                        [0m$2,500[0m
+                                      [36m</Text>[39m
+                                    [36m</View>[39m
+                                  [36m</View>[39m
+                                  [36m<View>[39m
+                                    [36m<View>[39m
+                                      [36m<View>[39m
+                                        [36m<Text[39m
+                                          [33maccessibilityRole[39m=[32m"text"[39m
+                                        [36m>[39m
+                                          [0mLiquidation price[0m
+                                        [36m</Text>[39m
+                                      [36m</View>[39m
+                                    [36m</View>[39m
+                                    [36m<View>[39m
+                                      [36m<View[39m
+                                        [33mtestID[39m=[32m"perps-leverage-liquidation-price-skeleton"[39m
+                                      [36m>[39m
+                                        [36m<View[39m
+                                          [33mpointerEvents[39m=[32m"none"[39m
+                                        [36m/>[39m
+                                      [36m</View>[39m
+                                    [36m</View>[39m
+                                  [36m</View>[39m
+                                  [36m<View />[39m
+                                  [36m<View[39m
+                                    [33maccessible[39m=[32m{false}[39m
+                                  [36m>[39m
+                                    [36m<RNCMaskedView>[39m
+                                      [36m<View[39m
+                                        [33mpointerEvents[39m=[32m"none"[39m
+                                      [36m>[39m
+                                        [36m<View[39m
+                                          [33maccessible[39m=[32m{false}[39m
+                                        [36m>[39m
+                                          [36m<BVLinearGradient />[39m
+                                          [36m<View />[39m
+                                          [36m<BVLinearGradient />[39m
+                                        [36m</View>[39m
+                                      [36m</View>[39m
+                                      [36m<RCTScrollView[39m
+                                        [33mtestID[39m=[32m"perps-leverage-picker"[39m
+                                      [36m>[39m
+                                        [36m<View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"1x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": true,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-1"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m1[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"2x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-2"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m2[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"3x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-3"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m3[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"4x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-4"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m4[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"5x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-5"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m5[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"6x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-6"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m6[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"7x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-7"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m7[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"8x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-8"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m8[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"9x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-9"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m9[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"10x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-10"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m10[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"11x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-11"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m11[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"12x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-12"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m12[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"13x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-13"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m13[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"14x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-14"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m14[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"15x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-15"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m15[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"16x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-16"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m16[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"17x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-17"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m17[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"18x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-18"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m18[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"19x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-19"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m19[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"20x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-20"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m20[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"21x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-21"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m21[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"22x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-22"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m22[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"23x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-23"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m23[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"24x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-24"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m24[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"25x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-25"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m25[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"26x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-26"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m26[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"27x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-27"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m27[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"28x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-28"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m28[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"29x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-29"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m29[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"30x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-30"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m30[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"31x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-31"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m31[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"32x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-32"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m32[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"33x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-33"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m33[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"34x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-34"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m34[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"35x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-35"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m35[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"36x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-36"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m36[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"37x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-37"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m37[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"38x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-38"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m38[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"39x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-39"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m39[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                          [36m<View[39m
+                                            [33maccessibilityLabel[39m=[32m"40x"[39m
+                                            [33maccessibilityRole[39m=[32m"button"[39m
+                                            [33maccessibilityState[39m=[32m{
+                                              {
+                                                "selected": false,
+                                              }
+                                            }[39m
+                                            [33maccessible[39m=[32m{true}[39m
+                                            [33mtestID[39m=[32m"perps-leverage-picker-item-40"[39m
+                                          [36m>[39m
+                                            [36m<Text[39m
+                                              [33maccessibilityRole[39m=[32m"text"[39m
+                                            [36m>[39m
+                                              [0m40[0m
+                                              [0mx[0m
+                                            [36m</Text>[39m
+                                          [36m</View>[39m
+                                        [36m</View>[39m
+                                      [36m</RCTScrollView>[39m
+                                    [36m</RNCMaskedView>[39m
+                                  [36m</View>[39m
+                                [36m</View>[39m
+                                [36m<View>[39m
+                                  [36m<View[39m
+                                    [33maccessibilityLabel[39m=[32m"Set"[39m
+                                    [33maccessibilityRole[39m=[32m"button"[39m
+                                    [33maccessibilityState[39m=[32m{
+                                      {
+                                        "disabled": false,
+                                      }
+                                    }[39m
+                                    [33maccessible[39m=[32m{true}[39m
+                                    [33mtestID[39m=[32m"perps-leverage-set-button"[39m
+                                  [36m>[39m
+                                    [36m<View>[39m
+                                      [36m<Text[39m
+                                        [33maccessibilityRole[39m=[32m"text"[39m
+                                      [36m>[39m
+                                        [0mSet[0m
+                                      [36m</Text>[39m
+                                    [36m</View>[39m
+                                  [36m</View>[39m
+                                [36m</View>[39m
+                              [36m</View>[39m
+                            [36m</View>[39m
+                          [36m</Modal>[39m
+                        [36m</View>[39m
+                      [36m</View>[39m
+                    [36m</View>[39m
+                  [36m</View>[39m
+                  [36m<View />[39m
+                  [36m<View[39m
+                    [33mtestID[39m=[32m"perps-pro-market-positions-panel"[39m
+                  [36m>[39m
+                    [36m<View>[39m
+                      [36m<View>[39m
+                        [36m<View[39m
+                          [33mtestID[39m=[32m"perps-pro-market-positions-panel-tabs"[39m
+                        [36m>[39m
+                          [36m<View>[39m
+                            [36m<View>[39m
+                              [36m<View>[39m
+                                [36m<View[39m
+                                  [33maccessibilityState[39m=[32m{
+                                    {
+                                      "disabled": false,
+                                    }
+                                  }[39m
+                                  [33maccessible[39m=[32m{true}[39m
+                                  [33mtestID[39m=[32m"perps-pro-market-positions-panel-tab-positions"[39m
+                                [36m>[39m
+                                  [36m<View>[39m
+                                    [36m<Text[39m
+                                      [33maccessibilityRole[39m=[32m"text"[39m
+                                      [33mstyle[39m=[32m{
+                                        {
+                                          "opacity": 0,
+                                        }
+                                      }[39m
+                                    [36m>[39m
+                                      [0mPositions[0m
+                                    [36m</Text>[39m
+                                    [36m<Text[39m
+                                      [33maccessibilityRole[39m=[32m"text"[39m
+                                      [33mtestID[39m=[32m"perps-pro-market-positions-panel-tab-positions-label"[39m
+                                    [36m>[39m
+                                      [0mPositions[0m
+                                    [36m</Text>[39m
+                                  [36m</View>[39m
+                                [36m</View>[39m
+                              [36m</View>[39m
+                              [36m<View>[39m
+                                [36m<View[39m
+                                  [33maccessibilityState[39m=[32m{
+                                    {
+                                      "disabled": false,
+                                    }
+                                  }[39m
+                                  [33maccessible[39m=[32m{true}[39m
+                                  [33mtestID[39m=[32m"perps-pro-market-positions-panel-tab-orders"[39m
+                                [36m>[39m
+                                  [36m<View>[39m
+                                    [36m<Text[39m
+                                      [33maccessibilityRole[39m=[32m"text"[39m
+                                      [33mstyle[39m=[32m{
+                                        {
+                                          "opacity": 0,
+                                        }
+                                      }[39m
+                                    [36m>[39m
+                                      [0mOrders[0m
+                                    [36m</Text>[39m
+                                    [36m<Text[39m
+                                      [33maccessibilityRole[39m=[32m"text"[39m
+                                      [33mtestID[39m=[32m"perps-pro-market-positions-panel-tab-orders-label"[39m
+                                    [36m>[39m
+                                      [0mOrders[0m
+                                    [36m</Text>[39m
+                                  [36m</View>[39m
+                                [36m</View>[39m
+                              [36m</View>[39m
+                              [36m<View>[39m
+                                [36m<View[39m
+                                  [33maccessibilityState[39m=[32m{
+                                    {
+                                      "disabled": false,
+                                    }
+                                  }[39m
+                                  [33maccessible[39m=[32m{true}[39m
+                                  [33mtestID[39m=[32m"perps-pro-market-positions-panel-tab-chase"[39m
+                                [36m>[39m
+                                  [36m<View>[39m
+                                    [36m<Text[39m
+                                      [33maccessibilityRole[39m=[32m"text"[39m
+                                      [33mstyle[39m=[32m{
+                                        {
+                                          "opacity": 0,
+                                        }
+                                      }[39m
+                                    [36m>[39m
+                                      [0mChase[0m
+                                    [36m</Text>[39m
+                                    [36m<Text[39m
+                                      [33maccessibilityRole[39m=[32m"text"[39m
+                                      [33mtestID[39m=[32m"perps-pro-market-positions-panel-tab-chase-label"[39m
+                                    [36m>[39m
+                                      [0mChase[0m
+                                    [36m</Text>[39m
+                                  [36m</View>[39m
+                                [36m</View>[39m
+                              [36m</View>[39m
+                            [36m</View>[39m
+                          [36m</View>[39m
+                        [36m</View>[39m
+                      [36m</View>[39m
+                      [36m<View[39m
+                        [33maccessibilityLabel[39m=[32m"Order history"[39m
+                        [33maccessibilityState[39m=[32m{
+                          {
+                            "disabled": false,
+                          }
+                        }[39m
+                        [33maccessible[39m=[32m{true}[39m
+                        [33mtestID[39m=[32m"perps-pro-market-positions-history"[39m
+                      [36m>[39m
+                        [36m<SvgMock />[39m
+                      [36m</View>[39m
+                    [36m</View>[39m
+                    [36m<RCTScrollView[39m
+                      [33maccessible[39m=[32m{false}[39m
+                      [33mtestID[39m=[32m"perps-pro-market-positions-filter-row"[39m
+                    [36m>[39m
+                      [36m<View>[39m
+                        [36m<View>[39m
+                          [36m<View[39m
+                            [33maccessibilityLabel[39m=[32m"Sort positions"[39m
+                            [33maccessibilityState[39m=[32m{
+                              {
+                                "disabled": false,
+                              }
+                            }[39m
+                            [33maccessible[39m=[32m{true}[39m
+                            [33mtestID[39m=[32m"perps-pro-market-positions-sort-button"[39m
+                          [36m>[39m
+                            [36m<SvgMock />[39m
+                          [36m</View>[39m
+                        [36m</View>[39m
+                        [36m<View[39m
+                          [33maccessibilityLabel[39m=[32m"All sides"[39m
+                          [33maccessibilityRole[39m=[32m"button"[39m
+                          [33maccessibilityState[39m=[32m{
+                            {
+                              "disabled": false,
+                            }
+                          }[39m
+                          [33maccessible[39m=[32m{true}[39m
+                          [33mtestID[39m=[32m"perps-pro-market-positions-side-filter-button"[39m
+                        [36m>[39m
+                          [36m<View>[39m
+                            [36m<Text[39m
+                              [33maccessibilityRole[39m=[32m"text"[39m
+                            [36m>[39m
+                              [0mAll sides[0m
+                            [36m</Text>[39m
+                            [36m<SvgMock />[39m
+                          [36m</View>[39m
+                        [36m</View>[39m
+                        [36m<View>[39m
+                          [36m<View[39m
+                            [33maccessibilityLabel[39m=[32m"ETH only"[39m
+                            [33maccessibilityRole[39m=[32m"checkbox"[39m
+                            [33maccessibilityState[39m=[32m{
+                              {
+                                "checked": false,
+                                "disabled": false,
+                              }
+                            }[39m
+                            [33maccessible[39m=[32m{true}[39m
+                            [33mtestID[39m=[32m"perps-pro-market-positions-ticker-only"[39m
+                          [36m>[39m
+                            [36m<View>[39m
+                              [36m<View[39m
+                                [33mstyle[39m=[32m{
+                                  {
+                                    "opacity": 0,
+                                  }
+                                }[39m
+                              [36m>[39m
+                                [36m<SvgMock />[39m
+                              [36m</View>[39m
+                            [36m</View>[39m
+                            [36m<Text[39m
+                              [33maccessibilityRole[39m=[32m"text"[39m
+                            [36m>[39m
+                              [0mETH only[0m
+                            [36m</Text>[39m
+                          [36m</View>[39m
+                        [36m</View>[39m
+                      [36m</View>[39m
+                    [36m</RCTScrollView>[39m
+                    [36m<View>[39m
+                      [36m<View>[39m
+                        [36m<Image[39m
+                          [33maccessible[39m=[32m{false}[39m
+                        [36m/>[39m
+                        [36m<Text[39m
+                          [33maccessibilityRole[39m=[32m"text"[39m
+                        [36m>[39m
+                          [0mYour open positions will appear here.[0m
+                        [36m</Text>[39m
+                      [36m</View>[39m
+                    [36m</View>[39m
+                  [36m</View>[39m
+                [36m</View>[39m
+              [36m</View>[39m
+            [36m</RCTScrollView>[39m
+          [36m</View>[39m
+        [36m</RNSScreenContentWrapper>[39m
+        [36m<RNSScreenStackHeaderConfig[39m
+          [33mpointerEvents[39m=[32m"box-none"[39m
+          [33mtitle[39m=[32m"PerpsMarketDetails"[39m
+        [36m/>[39m
+      [36m</RNSScreen>[39m
+    [36m</RNSScreenStack>[39m
+
+      109 |     fireEvent.press(screen.getByTestId(`${leverageIds.PICKER_ITEM}-1`));
+      110 |     expect(
+    > 111 |       screen.getByTestId(leverageIds.LIQUIDATION_PRICE_VALUE),
+          |              ^
+      112 |     ).toHaveTextContent('--');
+      113 |     expect(
+      114 |       screen.queryByTestId(leverageIds.LIQUIDATION_DISTANCE_VALUE),
+
+      at Object.getByTestId (app/components/UI/Perps/Views/PerpsProMarketView/PerpsProCrossMargin.view.test.tsx:111:14)
+
+  ● Pro Cross margin risk editors › saves a Cross stop beyond the isolated liquidation threshold after opening TP/SL
+
+    expect(element).toBeEnabled()
+
+    Received element is not enabled:
+      [36m<View[39m
+        [33maccessibilityLabel[39m=[32m"Set"[39m
+        [33maccessibilityRole[39m=[32m"button"[39m
+        [33maccessibilityState[39m=[32m{
+          {
+            "disabled": true,
+          }
+        }[39m
+        [33maccessible[39m=[32m{true}[39m
+        [33mtestID[39m=[32m"perps-tpsl-set-button"[39m
+      [36m/>[39m
+
+      124 |       '1900',
+      125 |     );
+    > 126 |     await waitFor(() =>
+          |                  ^
+      127 |       expect(screen.getByTestId(tpslIds.SET_BUTTON)).toBeEnabled(),
+      128 |     );
+      129 |     fireEvent.press(screen.getByTestId(tpslIds.SET_BUTTON));
+
+      at Object.<anonymous> (app/components/UI/Perps/Views/PerpsProMarketView/PerpsProCrossMargin.view.test.tsx:126:18)
+
+Test Suites: 1 failed, 1 total
+Tests:       2 failed, 2 total
+Snapshots:   0 total
+Time:        8.631 s
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

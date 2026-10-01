@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "valid": true,
+  "snapshots": [
+    {
+      "phase": "start",
+      "capturedAt": "2026-10-01T05:20:04.477Z",
+      "recipeDigest": "sha256:90eef6d69308c18d71f393dbcafe2d26da57b216fd9dafe16022a37a5f3012a9",
+      "product": {
+        "head": "2bac9222184e31036d85bb2bc32300b289695606",
+        "status": "A  app/components/UI/Perps/Views/PerpsProMarketView/PerpsProCrossMargin.view.test.tsx\nM  app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.ts\nM  app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.tsx\nM  app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.tsx\nM  app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.view.test.tsx\nM  app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.test.tsx\nM  app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx\nM  app/components/UI/Perps/integration/marginModeLock.integration.test.ts\nM  app/components/UI/Perps/types/navigation.ts\nM  tests/component-view/mocks.ts\n",
+        "sourceFingerprint": "3e3bf4b0d9d4adacf454300ffb640454062f551bf8e5080a5adc86fae9081366"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "40089e1370d948cdf2f042e5f289c2e6b45b982fa9c5432a8119617a66418fea"
+      },
+      "libraries": [
+        {
+          "name": "perps",
+          "head": "271d423c1c9fb6c0bf9b381eb6f47e4ec8a5725b",
+          "status": "",
+          "sourceFingerprint": "82889e1f0e031444d59540c61095658eea8802f816a8792659ca44ac405795f8"
+        },
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "12d4ccc02d143d70756c7a6886cb6eaa8d04ef80990f2425c4a5ca704883fa63"
+        }
+      ],
+      "helpers": [
+        {
+          "path": "app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts",
+          "sourceFingerprint": "654a140996e208c528b6e124b2e03fe5e17c754ba0bafe7858ad7ee97bc9b495"
+        },
+        {
+          "path": "app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.test.tsx",
+          "sourceFingerprint": "f70d50098d48db24dd67b5a34521bf8706a0febef93d2baab571692fa1ff65ce"
+        },
+        {
+          "path": "app/components/UI/Perps/components/PerpsMarginModeBottomSheet/PerpsMarginModeBottomSheet.test.tsx",
+          "sourceFingerprint": "4eb70979f971725b5a1502f31dca3e3959dd32a8bacbf632e86dec7b4e4ffb5c"
+        },
+        {
+          "path": "app/components/UI/Perps/utils/orderParams.test.ts",
+          "sourceFingerprint": "f5a13ae7ce4d8ef03ec683f65de7186e11cdf758eb31eaa090cff166eb9bfc4d"
+        }
+      ]
+    },
+    {
+      "phase": "pre-execute",
+      "capturedAt": "2026-10-01T05:20:04.807Z",
+      "recipeDigest": "sha256:90eef6d69308c18d71f393dbcafe2d26da57b216fd9dafe16022a37a5f3012a9",
+      "product": {
+        "head": "2bac9222184e31036d85bb2bc32300b289695606",
+        "status": "A  app/components/UI/Perps/Views/PerpsProMarketView/PerpsProCrossMargin.view.test.tsx\nM  app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.ts\nM  app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.tsx\nM  app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.tsx\nM  app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.view.test.tsx\nM  app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.test.tsx\nM  app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx\nM  app/components/UI/Perps/integration/marginModeLock.integration.test.ts\nM  app/components/UI/Perps/types/navigation.ts\nM  tests/component-view/mocks.ts\n",
+        "sourceFingerprint": "3e3bf4b0d9d4adacf454300ffb640454062f551bf8e5080a5adc86fae9081366"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "40089e1370d948cdf2f042e5f289c2e6b45b982fa9c5432a8119617a66418fea"
+      },
+      "libraries": [
+        {
+          "name": "perps",
+          "head": "271d423c1c9fb6c0bf9b381eb6f47e4ec8a5725b",
+          "status": "",
+          "sourceFingerprint": "82889e1f0e031444d59540c61095658eea8802f816a8792659ca44ac405795f8"
+        },
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "12d4ccc02d143d70756c7a6886cb6eaa8d04ef80990f2425c4a5ca704883fa63"
+        }
+      ],
+      "helpers": [
+        {
+          "path": "app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts",
+          "sourceFingerprint": "654a140996e208c528b6e124b2e03fe5e17c754ba0bafe7858ad7ee97bc9b495"
+        },
+        {
+          "path": "app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.test.tsx",
+          "sourceFingerprint": "f70d50098d48db24dd67b5a34521bf8706a0febef93d2baab571692fa1ff65ce"
+        },
+        {
+          "path": "app/components/UI/Perps/components/PerpsMarginModeBottomSheet/PerpsMarginModeBottomSheet.test.tsx",
+          "sourceFingerprint": "4eb70979f971725b5a1502f31dca3e3959dd32a8bacbf632e86dec7b4e4ffb5c"
+        },
+        {
+          "path": "app/components/UI/Perps/utils/orderParams.test.ts",
+          "sourceFingerprint": "f5a13ae7ce4d8ef03ec683f65de7186e11cdf758eb31eaa090cff166eb9bfc4d"
+        }
+      ]
+    },
+    {
+      "phase": "end",
+      "capturedAt": "2026-10-01T05:21:21.546Z",
+      "recipeDigest": "sha256:90eef6d69308c18d71f393dbcafe2d26da57b216fd9dafe16022a37a5f3012a9",
+      "product": {
+        "head": "2bac9222184e31036d85bb2bc32300b289695606",
+        "status": "A  app/components/UI/Perps/Views/PerpsProMarketView/PerpsProCrossMargin.view.test.tsx\nM  app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.ts\nM  app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.tsx\nM  app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.tsx\nM  app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.view.test.tsx\nM  app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.test.tsx\nM  app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx\nM  app/components/UI/Perps/integration/marginModeLock.integration.test.ts\nM  app/components/UI/Perps/types/navigation.ts\nM  tests/component-view/mocks.ts\n",
+        "sourceFingerprint": "3e3bf4b0d9d4adacf454300ffb640454062f551bf8e5080a5adc86fae9081366"
+      },
+      "runner": {
+        "head": null,
+        "status": "not-a-git-checkout",
+        "sourceFingerprint": "40089e1370d948cdf2f042e5f289c2e6b45b982fa9c5432a8119617a66418fea"
+      },
+      "libraries": [
+        {
+          "name": "perps",
+          "head": "271d423c1c9fb6c0bf9b381eb6f47e4ec8a5725b",
+          "status": "",
+          "sourceFingerprint": "82889e1f0e031444d59540c61095658eea8802f816a8792659ca44ac405795f8"
+        },
+        {
+          "name": "metamask",
+          "head": null,
+          "status": "not-a-git-checkout",
+          "sourceFingerprint": "12d4ccc02d143d70756c7a6886cb6eaa8d04ef80990f2425c4a5ca704883fa63"
+        }
+      ],
+      "helpers": [
+        {
+          "path": "app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts",
+          "sourceFingerprint": "654a140996e208c528b6e124b2e03fe5e17c754ba0bafe7858ad7ee97bc9b495"
+        },
+        {
+          "path": "app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.test.tsx",
+          "sourceFingerprint": "f70d50098d48db24dd67b5a34521bf8706a0febef93d2baab571692fa1ff65ce"
+        },
+        {
+          "path": "app/components/UI/Perps/components/PerpsMarginModeBottomSheet/PerpsMarginModeBottomSheet.test.tsx",
+          "sourceFingerprint": "4eb70979f971725b5a1502f31dca3e3959dd32a8bacbf632e86dec7b4e4ffb5c"
+        },
+        {
+          "path": "app/components/UI/Perps/utils/orderParams.test.ts",
+          "sourceFingerprint": "f5a13ae7ce4d8ef03ec683f65de7186e11cdf758eb31eaa090cff166eb9bfc4d"
+        }
+      ]
+    }
+  ],
+  "drift": []
+}

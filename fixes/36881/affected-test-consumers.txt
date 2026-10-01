@@ -1,0 +1,13 @@
+app/components/UI/Perps/Views/PerpsActiveTraderFlow.view.test.tsx
+app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.test.tsx
+app/components/UI/Perps/components/PerpsPositionCard/PerpsPositionCard.test.tsx
+app/components/UI/Perps/Views/PerpsTPSLRouter/PerpsTPSLRouter.test.tsx
+app/components/UI/Perps/components/PerpsTradeBottomSheet/PerpsTradeNestedScreens.test.tsx
+app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.view.test.tsx
+app/components/UI/Perps/Views/PerpsProMarketView/PerpsProCrossMargin.view.test.tsx
+app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.test.tsx
+app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.test.tsx
+app/components/UI/Perps/Views/PerpsOrderView/PerpsOrderView.test.tsx
+app/components/UI/Perps/Views/PerpsOrderView/PerpsOrderView.view.test.tsx
+app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProPositionsPanelActions.test.tsx
+app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts

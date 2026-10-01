@@ -1,6 +1,6 @@
 {
   "originalFamilyScopeSummary": "Fix cross margin mobile UI layout and responsiveness issues",
   "currentTriggerSummary": "pr-complete: feat(perps): enable Pro Cross-margin orders with venue locking",
-  "scopeVerdict": "full-scope-addressed",
-  "notes": "Rebased onto main 3b1fd8f99e8 with all 16 PR commits unchanged and pushed as 40cdf2f5bce. Both REAL review findings (provider-scoped market data and position lock) stay fixed. Inherited Cross recipe passes 45/45 on device with the Terminal backend flag pinned off. With that flag on (current live config), Cross stays unavailable by design until TAT-4022; that matches the Jira report and is tracked, not a regression."
+  "scopeVerdict": "partial-symptom-only",
+  "notes": "Current trigger review defect is fixed, rebase published, reviewer thread resolved, local gate and 45/45 iOS recipe passed. Original broad layout/responsiveness summary has no measurable criteria or performance proof. Lite/Reverse #36919 and Terminal TAT-4022 remain deferred and production flag stays off; fresh remote CI remains pending."
 }

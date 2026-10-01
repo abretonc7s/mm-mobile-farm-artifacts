@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "command": "call",
+  "adapter": "mobile",
+  "action": "metamask.perps.read_positions",
+  "resolvedAction": "metamask.perps.read_positions",
+  "args": {},
+  "status": "fail",
+  "summaryPath": "/Volumes/FD/dev/metamask/metamask-mobile-2/temp/recipe/calls/metamask.perps.read_positions-68866da0-392e-4e8d-9627-b9182edfc4d6/summary.json",
+  "tracePath": "/Volumes/FD/dev/metamask/metamask-mobile-2/temp/recipe/calls/metamask.perps.read_positions-68866da0-392e-4e8d-9627-b9182edfc4d6/trace.json",
+  "artifactManifestPath": "/Volumes/FD/dev/metamask/metamask-mobile-2/temp/recipe/calls/metamask.perps.read_positions-68866da0-392e-4e8d-9627-b9182edfc4d6/artifact-manifest.json",
+  "diagnosticsPath": "/Volumes/FD/dev/metamask/metamask-mobile-2/temp/recipe/calls/metamask.perps.read_positions-68866da0-392e-4e8d-9627-b9182edfc4d6/diagnostics.json",
+  "sideFindings": {
+    "status": "clean",
+    "note": "No application warnings or errors were emitted during the recipe run.",
+    "counts": {
+      "total": 0,
+      "warning": 0,
+      "error": 0,
+      "exception": 0
+    }
+  },
+  "recovered": [],
+  "mutations": [],
+  "exitCode": 1,
+  "error": {
+    "code": "ACTION_EXECUTION_FAILED",
+    "message": "metamask.perps.read_positions failed; inspect the persisted result and evidence paths",
+    "userAction": "mm-harness last --target '/Volumes/FD/dev/metamask/metamask-mobile-2' --json"
+  }
+}

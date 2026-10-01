@@ -1,13 +1,14 @@
-$ /Users/deeeed/dev/metamask/metamask-mobile-6/node_modules/.bin/jest --no-coverage app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.test.tsx app/components/UI/Perps/components/PerpsMarginModeBottomSheet/PerpsMarginModeBottomSheet.test.tsx app/components/UI/Perps/hooks/useHasExistingPosition.test.ts app/components/UI/Perps/hooks/usePerpsMarginModeLock.test.ts app/components/UI/Perps/hooks/usePerpsMarketData.test.ts app/components/UI/Perps/utils/orderParams.test.ts
+$ /Volumes/FD/dev/metamask/metamask-mobile-2/node_modules/.bin/jest --no-coverage app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.test.tsx app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.test.tsx app/components/UI/Perps/components/PerpsMarginModeBottomSheet/PerpsMarginModeBottomSheet.test.tsx app/components/UI/Perps/hooks/useHasExistingPosition.test.ts app/components/UI/Perps/hooks/usePerpsMarginModeLock.test.ts app/components/UI/Perps/hooks/usePerpsMarketData.test.ts app/components/UI/Perps/utils/orderParams.test.ts
 exit: 0
-duration_ms: 17114
+duration_ms: 15514
 
 --- stdout ---
 
 
 --- stderr ---
-PASS app/components/UI/Perps/hooks/useHasExistingPosition.test.ts (5.883 s)
-PASS app/components/UI/Perps/utils/orderParams.test.ts (7.556 s)
+PASS app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.test.tsx
+PASS app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts
+PASS app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.test.tsx
 PASS app/components/UI/Perps/hooks/usePerpsMarketData.test.ts
   ● Console
 
@@ -69,13 +70,13 @@ PASS app/components/UI/Perps/hooks/usePerpsMarketData.test.ts
       at Object.setError [as refetch] (app/components/UI/Perps/hooks/usePerpsMarketData.ts:80:5)
       at Object.refetch (app/components/UI/Perps/hooks/usePerpsMarketData.test.ts:123:20)
 
-PASS app/components/UI/Perps/hooks/usePerpsMarginModeLock.test.ts (9.606 s)
+PASS app/components/UI/Perps/utils/orderParams.test.ts
+PASS app/components/UI/Perps/hooks/usePerpsMarginModeLock.test.ts
 PASS app/components/UI/Perps/components/PerpsMarginModeBottomSheet/PerpsMarginModeBottomSheet.test.tsx
-PASS app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.test.tsx
-PASS app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts
+PASS app/components/UI/Perps/hooks/useHasExistingPosition.test.ts
 
-Test Suites: 7 passed, 7 total
-Tests:       467 passed, 467 total
+Test Suites: 8 passed, 8 total
+Tests:       498 passed, 498 total
 Snapshots:   0 total
-Time:        13.148 s, estimated 50 s
-Ran all test suites matching /app\/components\/UI\/Perps\/Views\/PerpsProMarketView\/components\/PerpsProOrderForm\/usePerpsProOrderForm.test.ts|app\/components\/UI\/Perps\/Views\/PerpsProMarketView\/components\/PerpsProOrderFormPanel.test.tsx|app\/components\/UI\/Perps\/components\/PerpsMarginModeBottomSheet\/PerpsMarginModeBottomSheet.test.tsx|app\/components\/UI\/Perps\/hooks\/useHasExistingPosition.test.ts|app\/components\/UI\/Perps\/hooks\/usePerpsMarginModeLock.test.ts|app\/components\/UI\/Perps\/hooks\/usePerpsMarketData.test.ts|app\/components\/UI\/Perps\/utils\/orderParams.test.ts/i.
+Time:        6.114 s, estimated 21 s
+Ran all test suites matching /app\/components\/UI\/Perps\/Views\/PerpsProMarketView\/components\/PerpsProOrderForm\/usePerpsProOrderForm.test.ts|app\/components\/UI\/Perps\/Views\/PerpsProMarketView\/components\/PerpsProOrderFormPanel.test.tsx|app\/components\/UI\/Perps\/components\/PerpsLeverageBottomSheet\/PerpsLeverageBottomSheet.test.tsx|app\/components\/UI\/Perps\/components\/PerpsMarginModeBottomSheet\/PerpsMarginModeBottomSheet.test.tsx|app\/components\/UI\/Perps\/hooks\/useHasExistingPosition.test.ts|app\/components\/UI\/Perps\/hooks\/usePerpsMarginModeLock.test.ts|app\/components\/UI\/Perps\/hooks\/usePerpsMarketData.test.ts|app\/components\/UI\/Perps\/utils\/orderParams.test.ts/i.

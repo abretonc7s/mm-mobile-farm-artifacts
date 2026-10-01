@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "command": "fixtures",
+  "action": "set",
+  "adapter": "mobile",
+  "fixture": "/Volumes/FD/dev/metamask/metamask-mobile-2/temp/recipe/runtime/wallet-fixture.json",
+  "canonicalFixture": "/Volumes/FD/dev/metamask/metamask-mobile-2/temp/recipe/runtime/wallet-fixture.json",
+  "status": "pass",
+  "exitCode": 0,
+  "walletReset": false,
+  "message": "Wallet fixture applied.  Want different accounts? Edit: /Volumes/FD/dev/metamask/metamask-mobile-2/temp/recipe/runtime/wallet-fixture.json",
+  "error": null
+}

@@ -1,8 +1,0 @@
-{
-  "schemaVersion": 1,
-  "adapter": "mobile",
-  "repository": "metamask-mobile-6",
-  "git_ref": "40cdf2f5bce5f24ede2f0eb506d62a8a8298e5ba",
-  "branch": "TAT-3524-feat-cross-margin-mobile-ui",
-  "dirty": false
-}

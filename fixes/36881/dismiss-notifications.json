@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "command": "call",
+  "adapter": "mobile",
+  "action": "ui.press",
+  "resolvedAction": "ui.press",
+  "args": {
+    "text": "Not now",
+    "timeout_ms": 10000
+  },
+  "status": "pass",
+  "summaryPath": "/Volumes/FD/dev/metamask/metamask-mobile-2/temp/recipe/calls/ui.press-14ac0fa9-9c41-47e0-a87c-6821d990159a/summary.json",
+  "tracePath": "/Volumes/FD/dev/metamask/metamask-mobile-2/temp/recipe/calls/ui.press-14ac0fa9-9c41-47e0-a87c-6821d990159a/trace.json",
+  "artifactManifestPath": "/Volumes/FD/dev/metamask/metamask-mobile-2/temp/recipe/calls/ui.press-14ac0fa9-9c41-47e0-a87c-6821d990159a/artifact-manifest.json",
+  "diagnosticsPath": "/Volumes/FD/dev/metamask/metamask-mobile-2/temp/recipe/calls/ui.press-14ac0fa9-9c41-47e0-a87c-6821d990159a/diagnostics.json",
+  "sideFindings": {
+    "status": "clean",
+    "note": "No application warnings or errors were emitted during the recipe run.",
+    "counts": {
+      "total": 0,
+      "warning": 0,
+      "error": 0,
+      "exception": 0
+    }
+  },
+  "output": {
+    "ok": true,
+    "text": "Not now",
+    "deviceName": "mm-2"
+  },
+  "recovered": [],
+  "mutations": [],
+  "exitCode": 0
+}

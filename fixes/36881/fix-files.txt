@@ -1,0 +1,10 @@
+app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.ts
+app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.tsx
+app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.tsx
+app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.view.test.tsx
+app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.test.tsx
+app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx
+app/components/UI/Perps/integration/marginModeLock.integration.test.ts
+app/components/UI/Perps/types/navigation.ts
+tests/component-view/mocks.ts
+app/components/UI/Perps/Views/PerpsProMarketView/PerpsProCrossMargin.view.test.tsx

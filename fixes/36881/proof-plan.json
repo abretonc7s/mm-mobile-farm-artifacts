@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "target": {
+    "platform": "ios",
+    "slotId": "mini-mm-2",
+    "watcherPort": 8062
+  },
+  "acceptanceCriteria": [
+    {
+      "id": "ac1",
+      "proof": "visual",
+      "claim": "Cross selectable and shown in the Pro margin control"
+    },
+    {
+      "id": "ac2",
+      "proof": "mixed",
+      "claim": "Cross selection reaches placement and produces a Cross position"
+    },
+    {
+      "id": "ac3",
+      "proof": "state",
+      "claim": "Flag/provider/market restrictions gate Cross"
+    },
+    {
+      "id": "ac4",
+      "proof": "state",
+      "claim": "Existing Cross positions trade with Cross enabled"
+    },
+    {
+      "id": "review-risk-editors",
+      "proof": "state",
+      "claim": "Cross editors suppress isolated risk estimates and accept stops beyond the isolated threshold"
+    }
+  ],
+  "requiredCapabilities": [],
+  "reason": "Use the task-owned iOS slot; configured android-device capability is unrelated and will not be acquired. Review editor journeys use real component-view state."
+}

@@ -1,10 +1,14 @@
-✓ check diff: pass · 20 changed file(s) · profile=fast · base=origin/main [github-pr]
+✓ check diff: pass · 24 changed file(s) · profile=fast · base=origin/main [github-pr]
 Changed files:
-  - .yarn/patches/@metamask-perps-controller-npm-18.0.1-1106ae680a.patch
+  - app/components/UI/Perps/Views/PerpsProMarketView/PerpsProCrossMargin.view.test.tsx
   - app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts
   - app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.ts
   - app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.test.tsx
   - app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.tsx
+  - app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.tsx
+  - app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.view.test.tsx
+  - app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.test.tsx
+  - app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx
   - app/components/UI/Perps/components/PerpsMarginModeBottomSheet/PerpsMarginModeBottomSheet.test.tsx
   - app/components/UI/Perps/components/PerpsMarginModeBottomSheet/PerpsMarginModeBottomSheet.tsx
   - app/components/UI/Perps/hooks/useHasExistingPosition.test.ts
@@ -14,16 +18,17 @@ Changed files:
   - app/components/UI/Perps/hooks/usePerpsMarketData.test.ts
   - app/components/UI/Perps/hooks/usePerpsMarketData.ts
   - app/components/UI/Perps/integration/marginModeLock.integration.test.ts
+  - app/components/UI/Perps/types/navigation.ts
   - app/components/UI/Perps/utils/orderParams.test.ts
   - app/components/UI/Perps/utils/orderParams.ts
   - locales/languages/en.json
-  - package.json
+  - tests/component-view/mocks.ts
   - tests/integration/harnesses/perps/perps.ts
-  - yarn.lock
   ✓ policy-suppressions: pass
   ✓ eslint: pass
   ✓ prettier: pass
   ✓ jest: pass
   ✓ jest-integration: pass
+  ✓ jest-view: pass
   - typecheck: skip (profile=fast; run with --profile full for repo-wide typecheck)
-Artifacts: /Users/deeeed/dev/metamask/metamask-mobile-6/temp/tasks/fix/36881-0928-221345/artifacts/validation-summary.json
+Artifacts: /Volumes/FD/dev/metamask/metamask-mobile-2/temp/tasks/fix/36881-1001-124447/artifacts/validation-summary.json

@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "command": "call",
+  "adapter": "mobile",
+  "action": "metamask.perps.read_positions",
+  "resolvedAction": "metamask.perps.read_positions",
+  "args": {},
+  "status": "pass",
+  "summaryPath": "/Volumes/FD/dev/metamask/metamask-mobile-2/temp/recipe/calls/metamask.perps.read_positions-c957647c-188f-4b7b-9efd-a0a527e4c90d/summary.json",
+  "tracePath": "/Volumes/FD/dev/metamask/metamask-mobile-2/temp/recipe/calls/metamask.perps.read_positions-c957647c-188f-4b7b-9efd-a0a527e4c90d/trace.json",
+  "artifactManifestPath": "/Volumes/FD/dev/metamask/metamask-mobile-2/temp/recipe/calls/metamask.perps.read_positions-c957647c-188f-4b7b-9efd-a0a527e4c90d/artifact-manifest.json",
+  "diagnosticsPath": "/Volumes/FD/dev/metamask/metamask-mobile-2/temp/recipe/calls/metamask.perps.read_positions-c957647c-188f-4b7b-9efd-a0a527e4c90d/diagnostics.json",
+  "sideFindings": {
+    "status": "clean",
+    "note": "No application warnings or errors were emitted during the recipe run.",
+    "counts": {
+      "total": 0,
+      "warning": 0,
+      "error": 0,
+      "exception": 0
+    }
+  },
+  "output": {
+    "action": "metamask.perps.read_positions",
+    "source": "mobile-perps-controller",
+    "count": 1,
+    "matchingCount": 1,
+    "positions": [
+      {
+        "symbol": "ETH",
+        "size": "0.0594",
+        "side": null,
+        "entryPrice": "2740.03"
+      }
+    ],
+    "liveAdapter": "/Users/deeeed/.local/share/mm-harness/versions/0.69.0/lib/node_modules/@deeeed/metamask-harness/library/actions/mobile/perps/read_positions.mjs"
+  },
+  "recovered": [],
+  "mutations": [],
+  "exitCode": 0
+}

@@ -1,0 +1,117 @@
+{
+  "version": 1,
+  "runStatus": "fail",
+  "provenance": {
+    "runner": {
+      "source": "/Users/deeeed/.local/share/mm-harness/versions/0.69.0/lib/node_modules/@deeeed/metamask-harness",
+      "git_ref": "unknown",
+      "name": "@metamask/recipe-runner"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "recipe.json",
+      "type": "recipe",
+      "label": "Executed recipe",
+      "category": "system"
+    },
+    {
+      "path": "recipe-invocation.json",
+      "type": "json",
+      "label": "Executed recipe parameters",
+      "category": "system"
+    },
+    {
+      "path": "recipe-resolution.json",
+      "type": "json",
+      "label": "Resolved recipe dependency graph",
+      "category": "system"
+    },
+    {
+      "path": "screenshots/evidence-ac1-cross-label.png",
+      "type": "screenshot",
+      "nodeId": "ac1-screenshot-cross-label",
+      "label": "AC1: order form shows Cross margin",
+      "category": "evidence",
+      "mimeType": "image/png",
+      "metadata": {
+        "provider": "simctl",
+        "mode": "xcrun simctl io screenshot",
+        "selectedDevice": "mm-2"
+      }
+    },
+    {
+      "path": "screenshots/evidence-ac1-cross-sheet.png",
+      "type": "screenshot",
+      "nodeId": "ac1-screenshot-cross-sheet",
+      "label": "AC1: Cross selectable in margin mode chooser",
+      "category": "evidence",
+      "mimeType": "image/png",
+      "metadata": {
+        "provider": "simctl",
+        "mode": "xcrun simctl io screenshot",
+        "selectedDevice": "mm-2"
+      }
+    },
+    {
+      "path": "summary.json",
+      "type": "summary",
+      "label": "Run summary",
+      "category": "system"
+    },
+    {
+      "path": "trace.json",
+      "type": "trace",
+      "label": "Execution trace",
+      "category": "system"
+    },
+    {
+      "path": "execution-provenance.json",
+      "type": "json",
+      "label": "Execution provenance",
+      "category": "system",
+      "metadata": {
+        "valid": true,
+        "errorCode": null
+      }
+    },
+    {
+      "path": "diagnostics.json",
+      "type": "json",
+      "label": "Run-scoped application diagnostics",
+      "category": "diagnostic"
+    },
+    {
+      "path": "diagnostics-app-log.txt",
+      "type": "log",
+      "label": "Redacted run-scoped application log slice",
+      "category": "diagnostic"
+    },
+    {
+      "path": "network/run-summary.json",
+      "type": "report",
+      "label": "Automatic network observation",
+      "category": "diagnostic"
+    },
+    {
+      "path": "product-provenance.json",
+      "type": "json",
+      "label": "Product checkout provenance",
+      "category": "system",
+      "metadata": {
+        "adapter": "mobile",
+        "git_ref": "2bac9222184e31036d85bb2bc32300b289695606",
+        "branch": "TAT-3524-feat-cross-margin-mobile-ui",
+        "dirty": true
+      }
+    },
+    {
+      "path": "report.md",
+      "type": "report",
+      "label": "Human run report",
+      "category": "system"
+    }
+  ],
+  "recovered": [],
+  "mutations": []
+}

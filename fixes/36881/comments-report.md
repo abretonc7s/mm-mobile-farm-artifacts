@@ -1,63 +1,61 @@
-# PR #36881 — pr-complete comments report (round 2)
+# PR #36881 review completion
 
-Branch `TAT-3524-feat-cross-margin-mobile-ui`. Pre-rebase remote head `80a72b69883` (pushed by round 1 on 2026-09-28; round 1 ended `blocked` because mm-6's native build could not parse the branch bundle).
-
-## Triage
-
-Live fetch on 2026-09-29: 2 inline review comments (1 root + own reply), 16 issue comments, 3 reviews. No CHANGES_REQUESTED reviews, no `metamask-flaky-test-detection` comments.
+Status: authorized review-completion work finished; fresh remote CI pending.
 
 | # | Source | Author | File | Triage | Action |
-|---|--------|--------|------|--------|--------|
-| 1 | review_comment 4110687938 | cursor[bot] | usePerpsProOrderForm.ts (outdated) | REAL | Fixed in 15ab6825f3 in an earlier round. Still present on the rebased head: `useHasExistingPosition.ts:72-74` matches symbol plus `providerId`, and `usePerpsProOrderForm.ts:887` passes `market.providerId`. Already replied (4111117778), thread resolved. No new reply. |
-| 2 | issue_comment 5844369405 | deeeed | usePerpsProOrderForm.ts:885 | REAL | Fixed in 9398d2f0e53 in an earlier round. Still present: `usePerpsMarketData.ts:47,100-102` filters by `providerId`. Already answered (5844538507). No new reply. |
-| 3 | review 5325190767 | abretonc7s (farmslot incremental review) | — | OUT OF SCOPE | Verdict COMMENT, no findings. Cross-client asks (Core tagging, Extension parity) sit outside this Mobile PR. Own account, no reply. |
-| 4 | CI check-pr-max-lines (run 36438237639) | github-actions | — | OUT OF SCOPE | 2332 changed lines against a 1000 limit. The PR merges #36881, #36897 and #36918 into one on purpose (see description), and `size-XL` is already applied. Fixing it means splitting the PR, which is an author/reviewer call, not a review fix. |
-| 5 | CI Appium Smoke Android accounts 2/2 + `Check all jobs pass` (run 36438168605) | github-actions | — | OUT OF SCOPE | Infra: `Failed to install Android system image: system-images;android-36;default;x86_64` (`Error on ZipFile unknown archive`) before any spec ran. The aggregate job fails only because of that job. The rebase push re-runs CI. |
+|---|---|---|---|---|---|
+| 4151206075 | review_comment | geositta | usePerpsProOrderForm.ts:1688 | REAL | Pass typed margin mode to leverage and TP/SL editors; hide isolated estimates and allow Cross stops beyond the isolated threshold. |
+| 5844369405 | issue_comment | deeeed | usePerpsProOrderForm.ts:885 | REAL, already fixed | Provider-scoped market lookup and conflicting same-symbol tests remain present after rebase. Author already replied in 5844538507. |
 
-Skipped without reply (status-only automation or own comments): 15
-- Automation (9): CLA 5831441818, Smart E2E 5831485638, Codecov 5844594095, fixture bot 5845165006 / 5845172803 / 5845776518 / 5845837226, SonarCloud 5872570622 (Quality Gate passed, 97.5% new-code coverage).
-- Performance results 5873023683: non-blocking. Both scenarios fail with `no_performance_metrics` and the `main` baseline fails the same scenarios. The one metric over threshold (slow frames, "Perps add funds") is on a flow this PR does not touch.
-- Own comments (4): 5845162110, 5845774685 (`@metamaskbot` commands), 5846397436, 5852127495. Own review wrapper 5325638987; cursor[bot] review wrapper 5325164888 holds row 1.
+The CHANGES_REQUESTED review 5374215622 repeats inline finding 4151206075 and is covered by the same fix. Two other root review threads were already resolved; both inline replies retained in snapshot. Skipped eight status-only bot issue comments, including performance no_performance_metrics with no green main baseline, plus six author commands/progress updates. No metamask-flaky-test-detection comment present. No status replies planned.
 
-## Integration (step 3)
+Total comments: 20, with 3 REAL, 1 FALSE POSITIVE, 16 OUT OF SCOPE. One REAL finding fixed this run; two historical REAL findings retained. Status-only and author replies are included as OUT_OF_SCOPE bookkeeping, not treated as reviewer defects. Review body 5374215622 duplicates inline 4151206075. All original snapshot bodies retained in comments-triage.json.
 
-Rebased 16 commits onto `origin/main` `3b1fd8f99e8` (38 new main commits). No conflicts. `git range-diff 9fea4fe3422..80a72b69883 origin/main..HEAD` shows every PR commit unchanged (`=`). New head `40cdf2f5bce`, linear history.
-- Main bumped `@metamask/assets-controller` 17.0.0, `design-system-react-native` 0.51.0, `ramps-controller` 26.0.1, `social-controllers` 3.4.0. `yarn install --immutable` passed. Installed `@metamask/perps-controller` 18.0.1 still carries the `getMarginModeLock` patch.
-- PR diff stays at the same 20 files (2309+/45-), all covered by the description.
+Fix commit: `fbcbda2de2d2d87d83a57b11d140728af248e895`. Integration status: `rebased`. Single explicit-lease push succeeded; commit hooks passed and committed diff SHA256 matches validated staged diff. Working tree clean. No PR merge performed. No new comments fetched after push. Reviewer reply https://github.com/MetaMask/metamask-mobile/pull/36881#discussion_r4152133881 posted and thread resolved.
 
-## Local gate (step 9)
+Recipe re-validation: PASS, 45/45, one complete current evidence package from recipe-run. Bounded gate: policy, ESLint, Prettier, 498 unit, 14 integration, 11 component-view tests PASS; 105 editor consumer tests PASS. Two Cross journeys pass and fail without handoffs. Full-project TypeScript is deferred to remote CI. Fresh post-push CI was not monitored in this single-pass workflow; this report does not claim CI green or merge approval.
 
-No working-tree changes. `mm-harness check diff` pass on the 20 PR files: ESLint, Prettier, policy suppressions, Jest 7 suites / 467 tests, integration 1 suite / 14 tests. Full TypeScript deferred to CI.
+Files changed in fix commit:
 
-## Recipe re-validation (step 10): PASS 45/45 on `40cdf2f5bce`
+- app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.ts
+- app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.tsx
+- app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.tsx
+- app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.view.test.tsx
+- app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.test.tsx
+- app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx
+- app/components/UI/Perps/integration/marginModeLock.integration.test.ts
+- app/components/UI/Perps/types/navigation.ts
+- tests/component-view/mocks.ts
+- app/components/UI/Perps/Views/PerpsProMarketView/PerpsProCrossMargin.view.test.tsx
 
-Inherited recipe coverage: ac1 (device) Cross selectable, form reads Cross; ac2 (device + Jest) Cross order opens a Cross BTC position, `marginMode` reaches order params; ac3 (Jest) Cross gated off for flag off / HIP-3 / non-HyperLiquid / isolated-only; ac4 (Jest) existing cross position no longer blocks trading.
+## Integration
 
-Runtime: mm-6 dev client was reinstalled 2026-09-29 15:57, so round 1's Hermes/native mismatch is gone. `launch ios --verify` and `doctor --expect-live` both passed.
+Rebased onto origin/main. Preserved screen/bottom-sheet A/B hook alongside venue-lock imports/mocks. Retained main's perps-controller 19.0.0: released getMarginModeLock, account consistency checks, resting-order/TWAP checks and placement validation match the backport, so the obsolete 18.0.1 patch and manifest changes are removed. yarn install --immutable passed. The 14 integration tests passed against the released API.
 
-Attempts:
-1. `setup-pro` failed: "Perps did not reach pro mode". The slot `.js.env` had `OVERRIDE_REMOTE_FEATURE_FLAGS="true"`, so `validatedVersionGatedFeatureFlag` returns undefined and Pro mode and Cross can't turn on. Following the repo's documented fix, I commented it out and relaunched through the harness with `--clear-metro` (transform cache only, no native rebuild). Metro then logged "Feature flags updated". I restored `.js.env` to the original afterwards.
-2. `ac1-press-cross` failed: Cross rendered with no `onPress`. Live remote config serves `perpsTerminalBackendEnabled` on (`minimumVersion 8.3.0`), and the PR keeps Cross off on the Terminal path until TAT-4022. That is intended behavior and probably what the Jira reporter hit ("even after turning ON the FF for cross margin, I still can't choose cross margin").
-3. Recipe delta: `setup-flag` now also pins `perpsTerminalBackendEnabled` off, matching the PR body's evidence conditions. Inherited copy kept as `recipe.inherited.json`. Result: PASS 45/45.
+## Scope
 
-Account state: setup nodes converged BTC to no position and no resting order (matching=0 both). The run opened a 15 USD Cross BTC long (0.00018 BTC), and teardown closed it and asserted flat. Overrides cleared at teardown. Testnet fixture account only, no mainnet mutation.
+The ticket and PR require Cross selection/order propagation and no isolated-only estimate for Cross. Both editors are executable from the newly enabled Cross workflow, so the reviewer request is in scope. Terminal restrictions and Lite/Reverse reconciliation remain explicitly deferred in the PR.
 
-Evidence (all PNGs read): `evidence-ac1-cross-sheet.png` (Cross selected, no "Coming soon"), `evidence-ac1-cross-label.png` (control reads Cross), `evidence-ac2-cross-position.png` ("Position margin used" tagged Cross, no liquidation price). Jest nodes: ac2 40 passed, ac3 15 passed, ac4 3 passed (`test-logs/`). The recipe's command nodes write logs to `temp/tasks/feat/tat-3524-0925-174920/artifacts/test-logs/`, so I created that missing folder and copied the logs here.
+## Local validation
 
-## Replies (step 12)
+Final mm-harness check diff PASS across 24 PR files: ESLint, formatting, policy suppressions, 498 unit tests, 14 released-controller integration tests, 11 component-view tests. Separate editor consumer unit suites: 105 passed. New Cross editor journeys: 2 passed, and both fail when the corresponding margin-mode handoffs are removed; source restored and final gate rerun PASS. codex review --uncommitted exited 0 with no actionable findings. Full-project TypeScript is deferred to remote CI as required by the bounded gate.
 
-No new replies. Row 1: already replied (4111117778), thread `PRRT_kwDOCG4DHc6mO8hM` resolved. Row 2: already answered (5844538507). Row 3: own-account review with no findings. Rows 4-5 are CI checks, not comment threads. The rebase push re-runs CI. No duplicate replies posted.
+## Recipe inheritance
 
-## Summary (step 13)
+Inherited recipe retains four ACs: Cross picker/label visual proof; actual Cross testnet order plus state/tag mixed proof; provider/flag/market gating and existing Cross position unit state proof. Prior evidence is head 40cdf2f5bce on mm-6, 45/45; it does not cover the new risk-editor fix. Current component-view tests cover that fix. Recipe and node IDs are unchanged.
 
-- Total comments triaged: 5 (2 REAL, 0 FALSE POSITIVE, 3 OUT OF SCOPE). 15 status-only or own comments skipped without reply.
-- Fix commit: none this round. Both REAL findings were fixed in earlier rounds and are still present on the rebased head. No-change reason: no open finding needs code.
-- Pushed: rebased history `80a72b69883` → `40cdf2f5bce` (`--force-with-lease` against the recorded pre-rebase SHA; remote had not moved).
-- Files changed by this run: none beyond the rebase. The PR diff is the same 20 files.
-- Recipe re-validation: PASS 45/45 on `40cdf2f5bce` (iOS mm-6, HyperLiquid testnet). Recipe delta: `setup-flag` also pins `perpsTerminalBackendEnabled` off.
-- Integration status: `rebased` (see `integration-status.txt`).
-- Open items for the author:
-  - `check-pr-max-lines` fails by design (2332 > 1000 lines). Either accept it for this consolidated PR or split it.
-  - With live remote config, `perpsTerminalBackendEnabled` is on for app >= 8.3.0, so Cross stays unavailable in Pro even with `perpsCrossMarginEnabled` on until TAT-4022 lands or the Mobile `!usesTerminal` gate changes. This matches the Jira comment.
-  - The slot's `.js.env` sets `OVERRIDE_REMOTE_FEATURE_FLAGS="true"`, which blocks Pro mode for any Perps Pro recipe on mm-6. I restored it after the run; the running Metro bundle still has the override off until the next cache-cleared launch.
-  - Needs an approving review (policy-bot).
+Capability discovery through the current harness returned ACTION_UNKNOWN for runtime.capability.list. No capability lease is acquired: only the existing authorized iOS slot is needed, not configured android-device. See proof-plan.json.
+
+## Runtime setup and attempts
+
+Launch and doctor passed on mm-2, mini-mm-2, iOS, Metro 8062. The app was at onboarding, so the existing canonical wallet fixture was applied with `fixtures set`. The harness accepts inherited `account_name` but skips account selection, so setup explicitly selected `account=Trading` and confirmed 0x316bde155acd07609872a56bc32ccfb0b13201fa on Hyperliquid testnet before execution. Closed a stray ETH position of 0.0594 with ensure_positions state=none mode=all; the controller asserted flat. No mainnet mutation.
+
+First current-head run is retained in `recipe-run-notifications-blocked`: 32/33 nodes passed, actual BTC position opened, but a first-run notification prompt obscured the screenshots and intercepted native scrolling, leaving the Cross tag offscreen. This is fixture/UI-overlay interference, unrelated to the risk-editor changes. Dismissed the prompt using declared ui.press text=Not now, then reran the unchanged inherited recipe. Its setup converges the leftover BTC before another submission. Diagnostics retain Money Account 403/circuit-breaker errors and SubscriptionController:getBenefits delegation warnings; no risk-editor error.
+
+Recipe re-validation PASS, 45/45 at 2026-10-01T05:21:58.642Z, 113 seconds. Promoted complete current screenshot set and trace from recipe-run, inspected all three images, verified byte equality and staged/source/recipe digests. Teardown closed BTC, asserted flat, cleared both flag overrides. Focused recipe tests passed 40 + 15 + 3. Six diagnostic events are retained as unrelated side findings in recipe-run/diagnostics.json. The device recipe does not enter the new editors; their component-view proof remains separate.
+
+Reviewer comment 4151206075 replied inline in 4152133881 and thread PRRT_kwDOCG4DHc6nx80j resolved successfully. Existing provider-scoping issue 5844369405 was already replied in 5844538507; no duplicate posted. No fresh comments fetched after the single push.
+
+## Remaining scope and proof limits
+
+Production Cross flag remains off. Lite/Reverse reconciliation stays deferred to #36919; Terminal market restrictions stay deferred to TAT-4022. Functional Cross selection, venue locking, parameter routing and new-order risk editors are covered. The original family summary includes layout/responsiveness without measurable criteria; this run provides no general responsiveness measurement, Android proof, or completion claim for those deferrals. family-scope.json therefore records partial-symptom-only.

@@ -1,8 +1,0 @@
-PASS app/components/UI/Perps/utils/orderParams.test.ts (6.939 s)
-PASS app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts (8.302 s)
-
-Test Suites: 2 passed, 2 total
-Tests:       325 skipped, 40 passed, 365 total
-Snapshots:   0 total
-Time:        8.645 s
-Ran all test suites matching /app\/components\/UI\/Perps\/Views\/PerpsProMarketView\/components\/PerpsProOrderForm\/usePerpsProOrderForm.test.ts|app\/components\/UI\/Perps\/utils\/orderParams.test.ts/i with tests matching "margin mode".
