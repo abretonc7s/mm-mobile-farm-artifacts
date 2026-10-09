@@ -4,16 +4,13 @@
   "compact": {
     "verdict": "PASS",
     "reasons": [
-      "The unchanged inherited recipe passed 45/45 against the rebased branch plus staged fixes, with exact run and source/recipe digests recorded.",
-      "All three promoted screenshots were inspected and match Cross selection, label, and position claims; no obscured first-attempt evidence was promoted.",
-      "Position state is asserted after actual testnet submission; teardown closes BTC, asserts flat, and clears flag overrides.",
-      "Gating and existing-Cross behavior use focused nonzero Jest suites with exit-code assertions.",
-      "The new editor defect is independently covered by real component-view journeys and negative handoff proof; device recipe coverage is not overstated."
+      "All 45 nodes passed in recipe-run on the rebased product plus staged test-only changes.",
+      "All three promoted PNGs were inspected and SHA-256 matched to that run. Cross selected, form label and venue Cross position are visible without a redbox.",
+      "Order placement and flat BTC teardown have venue-state assertions. Eligibility gates now run the real Redux component view suite; existing Cross position logic remains covered by hook tests.",
+      "UI node IDs, order, testIDs and screenshot claims were preserved; Terminal is pinned off because its data currently drops asset margin restrictions."
     ],
     "better_version_guidance": [
-      "Use supported account rather than account_name and declare notification dismissal in inherited fixture setup.",
-      "Assert initial filter state instead of toggling it, and include teardown on failure.",
-      "Move Jest output paths to task-local artifacts and add live flag-off and editor journeys."
+      "Drive the flag-off case live by clearing the override and asserting the Cross option stays disabled, instead of relying only on unit tests."
     ]
   },
   "dimensions": {},
@@ -31,5 +28,11 @@
     "source_signals": [
       "recipe-quality.json"
     ]
+  },
+  "proofRun": {
+    "directory": "recipe-run",
+    "productRevision": "62db857c82c6d9ca58bd79ad94ee95ebfe018772",
+    "productDirtyReason": "Staged test/support-only migration; no production edits.",
+    "recipeRevision": "sha256:0fd6776d698519bbdc0d9490a1e2ddb3215aa69cb036f9fd73cf9665a6ad3ab5"
   }
 }

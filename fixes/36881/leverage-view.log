@@ -1,0 +1,13 @@
+PASS app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.view.test.tsx (17.809 s)
+  PerpsLeverageBottomSheet Cross margin [ios]
+    ✓ discards the isolated estimate after selecting Cross and reopening leverage (1434 ms)
+    ✓ keeps an open Cross position margin mode locked while changing leverage (551 ms)
+  PerpsLeverageBottomSheet Cross margin [android]
+    ✓ discards the isolated estimate after selecting Cross and reopening leverage (1035 ms)
+    ✓ keeps an open Cross position margin mode locked while changing leverage (631 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       4 passed, 4 total
+Snapshots:   0 total
+Time:        18.049 s
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

@@ -1,0 +1,6 @@
+{
+  "source": "inputs/lead-feedback.md",
+  "triage": "REAL",
+  "action": "Migrated Cross sheet, position-lock, leverage and order-panel journeys to component view tests; removed replaced shallow cases; updated PR test section.",
+  "fixed_in_commit": "4a5de37951724a4c57822ef76704ba54a57d6b1f"
+}

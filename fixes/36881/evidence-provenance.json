@@ -1,11 +1,25 @@
 {
-  "runDirectory": "temp/tasks/fix/36881-1001-124447/artifacts/recipe-run",
-  "startedAt": "2026-10-01T05:21:58.642Z",
-  "invocationDigest": "sha256:74781b395e3bcbf033fd44ccfdb83dd08fce632685a982f2cc260f7540adb8f8",
-  "productHead": "2bac9222184e31036d85bb2bc32300b289695606",
-  "stagedDiffSha256": "22a29b1cbcd8637dfdcfffb6a73bc10da257aa8cfb0e9f10bf9b719b824cc45b",
-  "recipeSha256": "93994b6e2fc8e0a380459f0cb66fe271216827d5990c3d4a067274cfdd38ac88",
-  "video": "not recorded",
-  "committedHead": "fbcbda2de2d2d87d83a57b11d140728af248e895",
-  "commitDiffMatchesValidatedStagedDiff": true
+  "proofRun": {
+    "directory": "recipe-run",
+    "productRevision": "62db857c82c6d9ca58bd79ad94ee95ebfe018772",
+    "productDirtyReason": "Staged test/support-only migration; no production edits.",
+    "recipeRevision": "sha256:0fd6776d698519bbdc0d9490a1e2ddb3215aa69cb036f9fd73cf9665a6ad3ab5"
+  },
+  "promotedFiles": [
+    {
+      "file": "evidence-ac1-cross-label.png",
+      "source": "temp/tasks/fix/36881-1009-165029/artifacts/recipe-run/screenshots/evidence-ac1-cross-label.png",
+      "sha256": "a3d3ee3595d84b0b937149a955066efb02e193b8611f2d520ba48880c8accdcb"
+    },
+    {
+      "file": "evidence-ac1-cross-sheet.png",
+      "source": "temp/tasks/fix/36881-1009-165029/artifacts/recipe-run/screenshots/evidence-ac1-cross-sheet.png",
+      "sha256": "13941efb6ac184ab8cb52db92799680088e089aba38570d8ac8d56dc058e06e8"
+    },
+    {
+      "file": "evidence-ac2-cross-position.png",
+      "source": "temp/tasks/fix/36881-1009-165029/artifacts/recipe-run/screenshots/evidence-ac2-cross-position.png",
+      "sha256": "9473d3717e026019d95d105790c5d529d4ece0f1d767ca4e85a426cb0abfb951"
+    }
+  ]
 }

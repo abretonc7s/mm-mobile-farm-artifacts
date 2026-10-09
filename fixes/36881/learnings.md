@@ -1,5 +1,5 @@
-- Enabling Cross makes every reachable risk editor part of the margin-mode contract. Carry the resolved typed mode through leverage props and TP/SL navigation, then guard isolated calculations and validation in those consumers.
-- Skipping a fresh liquidation calculation does not clear an existing cached estimate. Cross must also suppress the cached price, recalculation placeholder, and leverage-derived distance, including the special 1x path.
-- A real component-view journey caught missing handoffs that isolated editor mocks could miss. Both Cross journeys failed when the handoffs were temporarily removed, then passed with the source restored; isolated stop rejection remains covered.
-- Rebase dependencies can make a controller backport obsolete. Released perps-controller 19.0.0 provides equivalent venue-lock behavior, and 14 real-controller integration tests validated replacing the old patch with main's release.
-- Inspect runtime account selection and screenshot bytes. The inherited account_name field was accepted but ignored, and a notifications prompt obscured screenshots while React-tree actions still succeeded. Explicit fixture selection, prompt dismissal, and one complete replacement proof run restored valid evidence.
+- Mocking the form hook can prove prop forwarding while missing provider restrictions and position streams. Cross UI journeys now run through the real Redux preset, panel and sheets.
+- A pending venue refresh deliberately fails closed. Read the current-request lock contract before treating a disabled Cross option as a regression.
+- Multiple views can request the same market concurrently. A deferred Engine fixture must resolve every consumer; one shared promise avoids leaving the form's restriction fetch pending.
+- Migrating tests also requires updating inherited recipe commands. Preserve the UI flow and ACs while replacing removed shallow test paths with the configured view runner.
+- Test-only work still needs precise runtime evidence after rebasing. One identified 45-node run supplies all promoted screenshots and trace, with hashes checked against their source files.

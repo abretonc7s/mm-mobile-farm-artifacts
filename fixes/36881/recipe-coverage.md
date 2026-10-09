@@ -1,19 +1,12 @@
-# Recipe coverage for PR #36881
+# Recipe coverage
 
-Current proof run `temp/tasks/fix/36881-1001-124447/artifacts/recipe-run` began 2026-10-01T05:21:58.642Z and passed 45/45 nodes. Product HEAD `2bac9222184e31036d85bb2bc32300b289695606` plus staged diff SHA256 `22a29b1cbcd8637dfdcfffb6a73bc10da257aa8cfb0e9f10bf9b719b824cc45b`; recipe SHA256 `93994b6e2fc8e0a380459f0cb66fe271216827d5990c3d4a067274cfdd38ac88`. iOS simulator mm-2, mini-mm-2, Hyperliquid testnet, canonical Trading fixture. No source or dependency changes during execution. The committed tree will contain these exact staged bytes. Recipe is unchanged from inheritance. No video recorded.
+Proof run: `recipe-run/`, product `62db857c82c6d9ca58bd79ad94ee95ebfe018772` plus staged test/support-only migration. Recipe SHA-256: `0fd6776d698519bbdc0d9490a1e2ddb3215aa69cb036f9fd73cf9665a6ad3ab5`. Every promoted after-image, recipe and trace matches this one run by SHA-256. The inherited before-image retains its original run scope. No video was produced.
 
-Promoted screenshots and proof trace/summary/manifests are byte-identical to this one run. Every promoted image was read. Failed prior attempt is retained separately and contributes no promoted evidence. Historical mm-6/head 40cdf2f5bce evidence is retained only in the inherited package.
+| AC | Proof mode | Evidence | Nodes | Verdict |
+|---|---|---|---|---|
+| ac1: Cross selectable and selected, form reads Cross | visual | evidence-ac1-cross-sheet.png, evidence-ac1-cross-label.png | ac1-press-cross, ac1-wait-sheet-closed, ac1-wait-cross-label and screenshots | PROVEN |
+| ac2: submitted order opens a Cross position | mixed | venue position assertion, evidence-ac2-cross-position.png, command output in recipe-run/trace.json | ac2-press-submit through ac2-wait-cross-tag; ac2-run-order-params-tests | PROVEN |
+| ac3: unsupported contexts keep Cross disabled | state | PerpsProOrderFormPanel.view.test.tsx, 24/24 across iOS and Android | ac3-run-gating-tests, ac3-assert-tests-pass | PROVEN |
+| ac4: existing Cross position follows its mode and can trade | state | usePerpsProOrderForm existing-cross-position cases, 3/3; new sheet view tests | ac4-run-cross-position-tests, ac4-assert-tests-pass | PROVEN |
 
-| Criterion | Mode | Evidence | Result |
-|---|---|---|---|
-| ac1: flag-on Cross selection and form label | visual | evidence-ac1-cross-sheet.png, evidence-ac1-cross-label.png; wait_for Cross targets before capture | PROVEN |
-| ac2: submit chosen margin mode and open Cross position | mixed | assert_positions open, Cross-tag wait, evidence-ac2-cross-position.png; recipe-test-logs/ac2-jest.log, 40 passed | PROVEN |
-| ac3: flag/provider/market restrictions | state | recipe-test-logs/ac3-jest.log, 15 passed, exit-code assertion | PROVEN by unit tests; live negative cases not rerun |
-| ac4: existing Cross position permits trading | state | recipe-test-logs/ac4-jest.log, 3 passed, exit-code assertion | PROVEN by unit tests |
-| Reviewer 4151206075: no isolated risk estimate or stop threshold in new Cross editors | state | cross-editors-view.log, 2 passed; cross-editors-negative.log, both fail without handoffs; leverage-cache and isolated-stop regressions in full gate | PROVEN by real component-view journeys; inherited device recipe does not enter editors |
-
-Setup explicitly applied fixture and selected Trading with supported account parameter because inherited account_name is ignored by this harness. Closed stray ETH 0.0594 on testnet. First attempt opened BTC but first-run notification prompt obscured visual proof. Dismissed prompt; repeat setup closed that BTC, then placed a fresh one. Successful teardown closed BTC and asserted flat, cleared both remote flag overrides. Position filter is a toggle and its inherited initial state was not reset; this does not affect the single-BTC assertion or images.
-
-Diagnostics recorded six distinct events: Money Account 403/circuit-breaker errors, Terminal snapshot 400, and missing SubscriptionController:getBenefits delegation warnings. They did not fail the flow and are not evidence of the editor change. Full-project TypeScript and fresh remote CI remain unverified locally. No layout-responsiveness or Android proof is claimed.
-
-Committed as `fbcbda2de2d2d87d83a57b11d140728af248e895`. Post-commit diff SHA256 exactly matched the recorded staged diff, so commit hooks did not change the tested product bytes.
+The three screenshots were read individually: the label reads Cross; the chooser highlights Cross without Coming soon; the BTC card tags Position margin used as Cross. BTC setup found no position/orders, and teardown asserted BTC flat and cleared feature flag overrides. No pre-existing BTC state was closed. New view coverage also checks position lock release and leverage behavior, separately proven by the bounded gate. Total inherited AC coverage: 4/4 PROVEN.

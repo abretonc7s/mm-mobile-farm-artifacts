@@ -1,61 +1,57 @@
-# PR #36881 review completion
+# PR #36881 review follow-up
 
-Status: authorized review-completion work finished; fresh remote CI pending.
+The lead feedback is the main work: migrate Cross UI behavior to component view tests through the Perps preset/renderer, remove the replaced shallow unit cases, and update the PR test section. No production change. The user prohibits GitHub comments, replies and thread mutations; checklist step 12 will be recorded as suppressed.
 
-| # | Source | Author | File | Triage | Action |
-|---|---|---|---|---|---|
-| 4151206075 | review_comment | geositta | usePerpsProOrderForm.ts:1688 | REAL | Pass typed margin mode to leverage and TP/SL editors; hide isolated estimates and allow Cross stops beyond the isolated threshold. |
-| 5844369405 | issue_comment | deeeed | usePerpsProOrderForm.ts:885 | REAL, already fixed | Provider-scoped market lookup and conflicting same-symbol tests remain present after rebase. Author already replied in 5844538507. |
+| Source | Author | Comment | Triage | Action |
+|---|---|---|---|---|
+| review_comment | cursor[bot] | 4110687938, provider position lock | REAL | Already fixed: useHasExistingPosition matches symbol and provider; retain its unit regression tests. |
+| review_comment | cursor[bot] | 4132234559, refresh locks picker | FALSE POSITIVE | Pending refresh intentionally fails closed. A previous unlocked answer does not authorize changing mode after orders changed elsewhere; current-request tests specify this behavior. |
+| review_comment | geositta | 4151206075, risk editors | REAL | Already fixed in rebased 62db857c82c: typed marginMode suppresses isolated estimates in both editors; retain and extend view coverage. |
+| review_comment | cursor[bot] | 4228372196, metadata reload resets pick | OUT OF SCOPE | Valid UX concern about an availability-keyed reset; defer production behavior changes under the lead's explicit test-only scope. Provider changes require fresh restrictions; existing reset remains fail-closed. |
+| issue_comment | deeeed | 5844369405, provider metadata | REAL | Already fixed: selected provider scopes getMarkets lookup; retain unit regressions. |
+| review | geositta | 5374215622, risk editors | REAL | Same risk-editor request as 4151206075, already fixed; tests remain. |
+| lead-feedback | Arthur + Javier Vera | component view test placement | REAL | Add margin/position lock, leverage and form-panel view tests; delete replaced shallow cases. |
 
-The CHANGES_REQUESTED review 5374215622 repeats inline finding 4151206075 and is covered by the same fix. Two other root review threads were already resolved; both inline replies retained in snapshot. Skipped eight status-only bot issue comments, including performance no_performance_metrics with no green main baseline, plus six author commands/progress updates. No metamask-flaky-test-detection comment present. No status replies planned.
+Skipped 9 status-only bot issue comments and 5 author updates/fixture commands. No flaky-test-detection finding in the fetched comments. Earlier replies are retained in live-review-comments.json, not duplicated.
 
-Total comments: 20, with 3 REAL, 1 FALSE POSITIVE, 16 OUT OF SCOPE. One REAL finding fixed this run; two historical REAL findings retained. Status-only and author replies are included as OUT_OF_SCOPE bookkeeping, not treated as reviewer defects. Review body 5374215622 duplicates inline 4151206075. All original snapshot bodies retained in comments-triage.json.
+Layer placement: new UI journeys belong in component view tests. Engine methods are the allowed boundary; Redux flags and mutable position streams drive behavior. Keep pure orderParams and hook tests and the real provider integration suite. Existing unrelated panel capability contracts and leverage native picker tests are outside this Cross migration.
 
-Fix commit: `fbcbda2de2d2d87d83a57b11d140728af248e895`. Integration status: `rebased`. Single explicit-lease push succeeded; commit hooks passed and committed diff SHA256 matches validated staged diff. Working tree clean. No PR merge performed. No new comments fetched after push. Reviewer reply https://github.com/MetaMask/metamask-mobile/pull/36881#discussion_r4152133881 posted and thread resolved.
-
-Recipe re-validation: PASS, 45/45, one complete current evidence package from recipe-run. Bounded gate: policy, ESLint, Prettier, 498 unit, 14 integration, 11 component-view tests PASS; 105 editor consumer tests PASS. Two Cross journeys pass and fail without handoffs. Full-project TypeScript is deferred to remote CI. Fresh post-push CI was not monitored in this single-pass workflow; this report does not claim CI green or merge approval.
-
-Files changed in fix commit:
-
-- app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.ts
-- app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.tsx
-- app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.tsx
-- app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.view.test.tsx
-- app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.test.tsx
-- app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx
-- app/components/UI/Perps/integration/marginModeLock.integration.test.ts
-- app/components/UI/Perps/types/navigation.ts
-- tests/component-view/mocks.ts
-- app/components/UI/Perps/Views/PerpsProMarketView/PerpsProCrossMargin.view.test.tsx
-
-## Integration
-
-Rebased onto origin/main. Preserved screen/bottom-sheet A/B hook alongside venue-lock imports/mocks. Retained main's perps-controller 19.0.0: released getMarginModeLock, account consistency checks, resting-order/TWAP checks and placement validation match the backport, so the obsolete 18.0.1 patch and manifest changes are removed. yarn install --immutable passed. The 14 integration tests passed against the released API.
-
-## Scope
-
-The ticket and PR require Cross selection/order propagation and no isolated-only estimate for Cross. Both editors are executable from the newly enabled Cross workflow, so the reviewer request is in scope. Terminal restrictions and Lite/Reverse reconciliation remain explicitly deferred in the PR.
+Planned journeys: choose Cross and return to Isolated; reject the opposite margin mode for Cross and isolated positions; release the picker after a position closes; refresh the venue lock on opening; fail closed during pending reads; gate Cross by flag, Pro mode, provider, HIP-3, Terminal and asset restrictions; submit a Cross order; hide the isolated leverage estimate and keep a position's margin mode while leverage changes.
 
 ## Local validation
 
-Final mm-harness check diff PASS across 24 PR files: ESLint, formatting, policy suppressions, 498 unit tests, 14 released-controller integration tests, 11 component-view tests. Separate editor consumer unit suites: 105 passed. New Cross editor journeys: 2 passed, and both fail when the corresponding margin-mode handoffs are removed; source restored and final gate rerun PASS. codex review --uncommitted exited 0 with no actionable findings. Full-project TypeScript is deferred to remote CI as required by the bounded gate.
+Bounded check diff PASS: ESLint, formatting, 475 unit tests, 14 integration tests and 47 component view tests across five suites. The three new view suites separately passed 36 tests across iOS and Android via yarn test:view:one. Perps preset unit suite: 4/4. Full-project TypeScript is deferred to CI per checklist. All intentional files are staged.
 
-## Recipe inheritance
+Inherited recipe ACs: ac1 selectable Cross and selected form label, ac2 actual Cross position plus order parameters, ac3 eligibility gates, ac4 existing Cross position trading. The inherited report records earlier risk-policy and provider-scoping fixes. The recipe command for ac3 references deleted shallow cases and will be updated to the equivalent new view suite without changing node IDs or the UI flow.
 
-Inherited recipe retains four ACs: Cross picker/label visual proof; actual Cross testnet order plus state/tag mixed proof; provider/flag/market gating and existing Cross position unit state proof. Prior evidence is head 40cdf2f5bce on mm-6, 45/45; it does not cover the new risk-editor fix. Current component-view tests cover that fix. Recipe and node IDs are unchanged.
+## Recipe result
 
-Capability discovery through the current harness returned ACTION_UNKNOWN for runtime.capability.list. No capability lease is acquired: only the existing authorized iOS slot is needed, not configured android-device. See proof-plan.json.
+PASS 45/45, 153 seconds, proof run recipe-run. Initial position probe returned CLIENT_NOT_INITIALIZED after restart; recipe setup initialized Perps and found no BTC positions or resting orders. No pre-existing BTC state needed closing. The recipe submitted its $15 testnet BTC trade, tagged Cross, closed it and asserted BTC flat; flag overrides were cleared. All three promoted screenshots were read and their SHA-256 digests match this run. No video produced. Node IDs/UI flow unchanged; the migrated gating command uses the view runner and stale output paths were removed.
 
-## Runtime setup and attempts
+Eight non-blocking warning signatures concern selector memoization, Veda protocol schema, Terminal global snapshot 400 and the SubscriptionController:getBenefits messenger. They are not caused by these test-only edits; no production changes made for these diagnostics. One native swipe did not settle within the heuristic window; subsequent exact-label wait and screenshot proved the target.
 
-Launch and doctor passed on mm-2, mini-mm-2, iOS, Metro 8062. The app was at onboarding, so the existing canonical wallet fixture was applied with `fixtures set`. The harness accepts inherited `account_name` but skips account selection, so setup explicitly selected `account=Trading` and confirmed 0x316bde155acd07609872a56bc32ccfb0b13201fa on Hyperliquid testnet before execution. Closed a stray ETH position of 0.0594 with ensure_positions state=none mode=all; the controller asserted flat. No mainnet mutation.
+## GitHub actions
 
-First current-head run is retained in `recipe-run-notifications-blocked`: 32/33 nodes passed, actual BTC position opened, but a first-run notification prompt obscured the screenshots and intercepted native scrolling, leaving the Cross tag offscreen. This is fixture/UI-overlay interference, unrelated to the risk-editor changes. Dismissed the prompt using declared ui.press text=Not now, then reran the unchanged inherited recipe. Its setup converges the leftover BTC before another submission. Diagnostics retain Money Account 403/circuit-breaker errors and SubscriptionController:getBenefits delegation warnings; no risk-editor error.
+Pushed once with the original-head force-with-lease after verifying the remote had not moved. Commit 4a5de379517. PR description updated with the new view-test section. Step 12 replies and review-thread resolution are suppressed by the latest explicit user instruction. No comment or thread mutation was performed.
 
-Recipe re-validation PASS, 45/45 at 2026-10-01T05:21:58.642Z, 113 seconds. Promoted complete current screenshot set and trace from recipe-run, inspected all three images, verified byte equality and staged/source/recipe digests. Teardown closed BTC, asserted flat, cleared both flag overrides. Focused recipe tests passed 40 + 15 + 3. Six diagnostic events are retained as unrelated side findings in recipe-run/diagnostics.json. The device recipe does not enter the new editors; their component-view proof remains separate.
+## Final result
 
-Reviewer comment 4151206075 replied inline in 4152133881 and thread PRRT_kwDOCG4DHc6nx80j resolved successfully. Existing provider-scoping issue 5844369405 was already replied in 5844538507; no duplicate posted. No fresh comments fetched after the single push.
+Total root comments triaged: 19 (3 REAL, 1 FALSE POSITIVE, 15 OUT OF SCOPE). Five are actionable review/conversation comments; fourteen are skipped status/author updates. The CHANGES_REQUESTED review duplicates the risk-editor inline request and was assessed separately. The local lead feedback is REAL and addressed by this commit. No new production fix was required; existing provider and risk-editor fixes were verified.
 
-## Remaining scope and proof limits
+Fix commit: `4a5de37951724a4c57822ef76704ba54a57d6b1f`. Integration status: rebased onto origin/main `fc73ef0ef2b681e79e53a9b9ea7bef96738ddd0e`. One force-with-lease push completed. Working tree clean.
 
-Production Cross flag remains off. Lite/Reverse reconciliation stays deferred to #36919; Terminal market restrictions stay deferred to TAT-4022. Functional Cross selection, venue locking, parameter routing and new-order risk editors are covered. The original family summary includes layout/responsiveness without measurable criteria; this run provides no general responsiveness measurement, Android proof, or completion claim for those deferrals. family-scope.json therefore records partial-symptom-only.
+Files changed:
+
+- `app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.test.tsx`
+- `app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.view.test.tsx`
+- `app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.test.tsx`
+- `app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.view.test.tsx`
+- `app/components/UI/Perps/components/PerpsMarginModeBottomSheet/PerpsMarginModeBottomSheet.test.tsx`
+- `app/components/UI/Perps/components/PerpsMarginModeBottomSheet/PerpsMarginModeBottomSheet.view.test.tsx`
+- `tests/component-view/helpers/perpsMarginModeTestHelpers.ts`
+- `tests/component-view/presets/perpsStatePreset.ts`
+- `tests/component-view/renderers/perpsViewRenderer.tsx`
+
+Validation: bounded gate PASS; 47 view, 475 unit and 14 integration tests, plus 4 preset tests. New view suites individually passed 36/36 across both platforms. Recipe PASS 45/45. No production changes. Full TypeScript is deferred to CI under the checklist. New remote CI runs after the push; this run does not claim that matrix has completed or that the PR has an approving review.
+
+Deferred: the metadata-reload pick reset is a UX concern outside the explicitly authorized test-only migration. Production flag stays off under the existing Lite/Reverse and Terminal safety follow-ups.

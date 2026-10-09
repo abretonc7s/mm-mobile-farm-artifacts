@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "verdict": "pass",
+  "compact": {
+    "verdict": "PASS",
+    "reasons": [
+      "Every visual claim (ac1, ac2) has a ui.wait_for on the claimed target before its screenshot, and each PNG was read and shows the claim.",
+      "ac2 asserts venue state (assert_positions open) after the mutating submit and a Cross tag on the new position; teardown closes it and asserts flat.",
+      "Hidden gating (ac3) and position-follow (ac4) are proven by focused Jest runs inside the recipe with exit-code assertions.",
+      "Revert check: with the change removed Cross stays disabled, the sheet does not close on press and ac1-wait-sheet-closed fails."
+    ],
+    "better_version_guidance": [
+      "Drive the flag-off case live by clearing the override and asserting the Cross option stays disabled, instead of relying only on unit tests."
+    ]
+  },
+  "dimensions": {},
+  "structural_findings": [],
+  "contextual_findings": [],
+  "suggested_recipe_delta": [],
+  "training_fields": {
+    "proof_mode": "unknown"
+  },
+  "meta": {
+    "producer": "worker",
+    "fallback_used": false,
+    "legacy_task": false,
+    "artifact_required": true,
+    "source_signals": [
+      "recipe-quality.json"
+    ]
+  }
+}

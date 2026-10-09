@@ -1,9 +1,0 @@
-PASS app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.test.tsx (15.012 s)
-PASS app/components/UI/Perps/components/PerpsTradeBottomSheet/PerpsTradeNestedScreens.test.tsx
-PASS app/components/UI/Perps/Views/PerpsTPSLRouter/PerpsTPSLRouter.test.tsx
-
-Test Suites: 3 passed, 3 total
-Tests:       105 passed, 105 total
-Snapshots:   0 total
-Time:        16.855 s
-Ran all test suites matching /app\/components\/UI\/Perps\/Views\/PerpsTPSLView\/PerpsTPSLView.test.tsx|app\/components\/UI\/Perps\/Views\/PerpsTPSLRouter\/PerpsTPSLRouter.test.tsx|app\/components\/UI\/Perps\/components\/PerpsTradeBottomSheet\/PerpsTradeNestedScreens.test.tsx/i.

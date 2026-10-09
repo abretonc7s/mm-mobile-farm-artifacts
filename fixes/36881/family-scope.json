@@ -2,5 +2,5 @@
   "originalFamilyScopeSummary": "Fix cross margin mobile UI layout and responsiveness issues",
   "currentTriggerSummary": "pr-complete: feat(perps): enable Pro Cross-margin orders with venue locking",
   "scopeVerdict": "partial-symptom-only",
-  "notes": "Current trigger review defect is fixed, rebase published, reviewer thread resolved, local gate and 45/45 iOS recipe passed. Original broad layout/responsiveness summary has no measurable criteria or performance proof. Lite/Reverse #36919 and Terminal TAT-4022 remain deferred and production flag stays off; fresh remote CI remains pending."
+  "notes": "This run fully addresses the lead-requested Cross UI test migration, retains hook/integration proof, rebases the branch, and passes the inherited 45-node Pro recipe. It makes no production change or performance claim about the broader original layout/responsiveness scope. Metadata-reset UX and existing Lite/Reverse/Terminal safety work remain deferred; the production flag remains off."
 }

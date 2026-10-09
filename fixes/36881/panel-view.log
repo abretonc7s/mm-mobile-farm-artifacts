@@ -1,0 +1,33 @@
+PASS app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.view.test.tsx (13.341 s)
+  PerpsProOrderFormPanel Cross orders [ios]
+    ✓ selects Cross, updates the form and submits the chosen mode (721 ms)
+    ✓ switches back to Isolated without an open position (182 ms)
+    ✓ keeps Cross unavailable for rollout flag off (103 ms)
+    ✓ keeps Cross unavailable for Pro inactive (172 ms)
+    ✓ keeps Cross unavailable for Terminal backend (143 ms)
+    ✓ keeps Cross unavailable for HIP-3 market (105 ms)
+    ✓ keeps Cross unavailable for Lighter market (102 ms)
+    ✓ keeps Cross unavailable for isolated-only asset (174 ms)
+    ✓ keeps Cross unavailable for noCross asset (188 ms)
+    ✓ keeps Cross unavailable for strictIsolated asset (233 ms)
+    ✓ holds Cross selection and submission until the venue lock resolves (876 ms)
+    ✓ keeps Cross unavailable until market restrictions arrive (376 ms)
+  PerpsProOrderFormPanel Cross orders [android]
+    ✓ selects Cross, updates the form and submits the chosen mode (658 ms)
+    ✓ switches back to Isolated without an open position (327 ms)
+    ✓ keeps Cross unavailable for rollout flag off (173 ms)
+    ✓ keeps Cross unavailable for Pro inactive (110 ms)
+    ✓ keeps Cross unavailable for Terminal backend (136 ms)
+    ✓ keeps Cross unavailable for HIP-3 market (134 ms)
+    ✓ keeps Cross unavailable for Lighter market (123 ms)
+    ✓ keeps Cross unavailable for isolated-only asset (210 ms)
+    ✓ keeps Cross unavailable for noCross asset (520 ms)
+    ✓ keeps Cross unavailable for strictIsolated asset (317 ms)
+    ✓ holds Cross selection and submission until the venue lock resolves (642 ms)
+    ✓ keeps Cross unavailable until market restrictions arrive (119 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       24 passed, 24 total
+Snapshots:   0 total
+Time:        13.52 s
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

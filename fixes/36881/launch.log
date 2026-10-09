@@ -1,0 +1,38 @@
+[1/1] launch: started, 0s
+→ refreshed mobile harness overlay (runner changed)
+Starting Metro on port 8062 (workers=4)
+(Full log: /Users/deeeed/dev/metamask/metamask-mobile-2/temp/recipe/runtime/metro.log — mm-harness logs | mm-harness logs --full)
+mm-harness | Metro bundler
+mm-harness | full log: /Users/deeeed/dev/metamask/metamask-mobile-2/temp/recipe/runtime/metro.log
+mm-harness | full stream: mm-harness logs --full
+
+  * (waiting for first build event...)
+mm-harness | Metro bundler
+mm-harness | full log: /Users/deeeed/dev/metamask/metamask-mobile-2/temp/recipe/runtime/metro.log
+mm-harness | full stream: mm-harness logs --full
+
+  * » ios: paths-project-pbxproj: Found multiple project.pbxproj file paths, using "ios/MetaMask.xcodeproj/project.pbxproj". Ignored paths: ["ios/branch-ios-sdk/carthage-files/BranchSDK.xcodeproj/project.pbxproj"]
+Metro ready on port 8062
+  Next: mm-harness logs  (tail Metro)
+Prewarming ios bundle before launching dev client (set MOBILE_BUNDLE_PREWARM=0 to skip)
+  url: http://localhost:8062/index.bundle?platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable
+[1/1] launch: running, 15s
+ios bundle ready
+Opening DeviceHub for 2A68C927-6FAF-48E1-84D0-F03EE34F00A9 in the background
+Restarting iOS dev client io.metamask.MetaMask on 2A68C927-6FAF-48E1-84D0-F03EE34F00A9
+Launching iOS dev client io.metamask.MetaMask on 2A68C927-6FAF-48E1-84D0-F03EE34F00A9
+open-device: iOS dev client opened (io.metamask.MetaMask on 2A68C927-6FAF-48E1-84D0-F03EE34F00A9)
+  Next: mm-harness logs   # tail Metro
+Device console → app-console.log (CDP forwarder pid 49515)
+Waiting for Mobile bridge (0.0s elapsed, 180.0s remaining): Metro running; no React Native debug target yet (iOS Bundled 13299ms index.js (20834 modules))
+[1/1] launch: running, 30s
+Waiting for Mobile bridge (10.6s elapsed, 169.4s remaining): React Native target answered; in-app bridge not installed yet (iOS Bundled 486ms index.js (1 module))
+Mobile bridge ready (14.8s)
+Remote feature flag overrides cleared.
+→ verify (mobile) — target: /Users/deeeed/dev/metamask/metamask-mobile-2
+Fixture status: READY (temp/recipe/runtime/wallet-fixture.json, accounts=4).
+[1/1] launch: running, 45s
+Mobile harness verify pass: /Users/deeeed/dev/metamask/metamask-mobile-2/temp/recipe/harness/mobile/verify/20261009T091401Z/summary.json
+✓ verify mobile passed (9.6s)
+  Next: mm-harness status --target /Users/deeeed/dev/metamask/metamask-mobile-2 --json
+[1/1] launch: done, 49s

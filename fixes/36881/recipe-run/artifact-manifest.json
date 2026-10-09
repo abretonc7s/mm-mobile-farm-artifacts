@@ -3,7 +3,7 @@
   "runStatus": "pass",
   "provenance": {
     "runner": {
-      "source": "/Users/deeeed/.local/share/mm-harness/versions/0.69.0/lib/node_modules/@deeeed/metamask-harness",
+      "source": "/Users/deeeed/.npm-global/lib/node_modules/@deeeed/metamask-harness",
       "git_ref": "unknown",
       "name": "@metamask/recipe-runner"
     }
@@ -113,7 +113,7 @@
       "category": "system",
       "metadata": {
         "adapter": "mobile",
-        "git_ref": "2bac9222184e31036d85bb2bc32300b289695606",
+        "git_ref": "62db857c82c6d9ca58bd79ad94ee95ebfe018772",
         "branch": "TAT-3524-feat-cross-margin-mobile-ui",
         "dirty": true
       }

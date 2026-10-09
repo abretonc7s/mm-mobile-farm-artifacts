@@ -1,8 +1,7 @@
 {
   "version": 1,
-  "runId": "inherited-ac97624c-b78b-421f-a4e6-02bdd1792c14",
-  "relativeArtifactRoot": "recipe-runs/inherited-ac97624c-b78b-421f-a4e6-02bdd1792c14",
-  "updatedAt": "2026-10-01T04:44:48.592Z",
-  "source": "inherited-family-package",
-  "sourceRunId": "ac97624c-b78b-421f-a4e6-02bdd1792c14"
+  "runId": "followup-80375b09-3a51-4164-ab79-d7cabd5c2f7b",
+  "relativeArtifactRoot": "recipe-run",
+  "source": "worker-validated",
+  "productRevision": "62db857c82c6d9ca58bd79ad94ee95ebfe018772"
 }

@@ -1,124 +1,12 @@
-$ /Volumes/FD/dev/metamask/metamask-mobile-2/node_modules/.bin/jest --no-coverage -c jest.config.view.js app/components/UI/Perps/Views/PerpsProMarketView/PerpsProCrossMargin.view.test.tsx app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.view.test.tsx
+$ /Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/.bin/jest --no-coverage -c jest.config.view.js app/components/UI/Perps/Views/PerpsProMarketView/PerpsProCrossMargin.view.test.tsx app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.view.test.tsx app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.view.test.tsx app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.view.test.tsx app/components/UI/Perps/components/PerpsMarginModeBottomSheet/PerpsMarginModeBottomSheet.view.test.tsx
 exit: 0
-duration_ms: 20471
+duration_ms: 43270
 
 --- stdout ---
 
 
 --- stderr ---
-(node:60003) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
-(Use `node --trace-warnings ...` to show where the warning was created)
-PASS app/components/UI/Perps/Views/PerpsProMarketView/PerpsProCrossMargin.view.test.tsx (9.92 s)
-  ● Console
-
-    console.warn
-      InteractionManager has been deprecated and will be removed in a future release. Please refactor long tasks into smaller ones, and  use 'requestIdleCallback' instead.
-
-      13 | import Share from 'react-native-share';
-      14 | import { useSelector } from 'react-redux';
-    > 15 | import ScrollableTabView from '@tommasini/react-native-scrollable-tab-view';
-         | ^
-      16 | import { strings } from '../../../../../../locales/i18n';
-      17 | import {
-      18 |   Button,
-
-      at warn (node_modules/react-native/Libraries/Utilities/warnOnce.js:27:11)
-      at Object.warnOnce [as InteractionManager] (node_modules/react-native/index.js:264:5)
-      at Object.InteractionManager (node_modules/@tommasini/react-native-scrollable-tab-view/index.js:13:3)
-      at Object.require (app/components/UI/Perps/Views/PerpsHeroCardView/PerpsHeroCardView.tsx:15:1)
-      at Object.require (tests/component-view/renderers/perpsViewRenderer.tsx:47:1)
-      at Object.require (app/components/UI/Perps/Views/PerpsProMarketView/PerpsProCrossMargin.view.test.tsx:10:1)
-
-    console.log
-      Creating E2E mock stream manager
-
-      at log (tests/controller-mocking/mock-config/perps-controller-mixin.ts:806:11)
-
-    console.warn
-      [MetaMask DEBUG]: Error: Redux store does not exist!
-          at ReduxService._assertReduxStoreExists2 (/Volumes/FD/dev/metamask/metamask-mobile-2/app/core/redux/ReduxService.ts:24:21)
-          at ReduxService.get store [as store] (/Volumes/FD/dev/metamask/metamask-mobile-2/app/core/redux/ReduxService.ts:44:9)
-          at store (/Volumes/FD/dev/metamask/metamask-mobile-2/tests/component-view/helpers/perpsViewTestHelpers.ts:104:34)
-          at selectCross (/Volumes/FD/dev/metamask/metamask-mobile-2/app/components/UI/Perps/Views/PerpsProMarketView/PerpsProCrossMargin.view.test.tsx:70:39)
-          at Object.selectCross (/Volumes/FD/dev/metamask/metamask-mobile-2/app/components/UI/Perps/Views/PerpsProMarketView/PerpsProCrossMargin.view.test.tsx:99:11)
-          at Promise.then.completed (/Volumes/FD/dev/metamask/metamask-mobile-2/node_modules/jest-circus/build/utils.js:298:28)
-          at new Promise (<anonymous>)
-          at callAsyncCircusFn (/Volumes/FD/dev/metamask/metamask-mobile-2/node_modules/jest-circus/build/utils.js:231:10)
-          at _callCircusTest (/Volumes/FD/dev/metamask/metamask-mobile-2/node_modules/jest-circus/build/run.js:316:40)
-          at processTicksAndRejections (node:internal/process/task_queues:104:5)
-          at _runTest (/Volumes/FD/dev/metamask/metamask-mobile-2/node_modules/jest-circus/build/run.js:252:3)
-          at _runTestsForDescribeBlock (/Volumes/FD/dev/metamask/metamask-mobile-2/node_modules/jest-circus/build/run.js:126:9)
-          at _runTestsForDescribeBlock (/Volumes/FD/dev/metamask/metamask-mobile-2/node_modules/jest-circus/build/run.js:121:9)
-          at run (/Volumes/FD/dev/metamask/metamask-mobile-2/node_modules/jest-circus/build/run.js:71:3)
-          at runAndTransformResultsToJestFormat (/Volumes/FD/dev/metamask/metamask-mobile-2/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
-          at jestAdapter (/Volumes/FD/dev/metamask/metamask-mobile-2/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
-          at runTestInternal (/Volumes/FD/dev/metamask/metamask-mobile-2/node_modules/jest-runner/build/runTest.js:367:16)
-          at runTest (/Volumes/FD/dev/metamask/metamask-mobile-2/node_modules/jest-runner/build/runTest.js:444:34)
-          at Object.worker (/Volumes/FD/dev/metamask/metamask-mobile-2/node_modules/jest-runner/build/testWorker.js:106:12)
-
-      128 |   ): Promise<void> {
-      129 |     if (__DEV__) {
-    > 130 |       console.warn(DEBUG, error); // eslint-disable-line no-console
-          |               ^
-      131 |       return;
-      132 |     }
-      133 |
-
-      at AsyncLogger.warn [as error] (app/util/Logger/index.ts:130:15)
-      at Logger.error (app/util/Logger/index.ts:255:17)
-      at ReduxService.error (app/core/redux/ReduxService.ts:25:14)
-      at ReduxService.get store [as store] (app/core/redux/ReduxService.ts:44:9)
-      at store (tests/component-view/helpers/perpsViewTestHelpers.ts:104:34)
-      at selectCross (app/components/UI/Perps/Views/PerpsProMarketView/PerpsProCrossMargin.view.test.tsx:70:39)
-      at Object.selectCross (app/components/UI/Perps/Views/PerpsProMarketView/PerpsProCrossMargin.view.test.tsx:99:11)
-
-    console.warn
-      Non-serializable values were found in the navigation state. Check:
-      
-      PerpsTPSL > params.onConfirm (Function)
-      
-      This can break usage such as persisting and restoring state. This might happen if you passed non-serializable values such as function, class instances etc. in params. If you need to use components with callbacks in your options, you can use 'navigation.setOptions' instead. See https://reactnavigation.org/docs/troubleshooting#i-get-the-warning-non-serializable-values-were-found-in-the-navigation-state for more details.
-
-      118 |   it('saves a Cross stop beyond the isolated liquidation threshold after opening TP/SL', async () => {
-      119 |     await selectCross();
-    > 120 |     fireEvent.press(screen.getByTestId(formIds.TPSL));
-          |               ^
-      121 |
-      122 |     fireEvent.changeText(
-      123 |       await screen.findByTestId(tpslIds.STOP_LOSS_PRICE_INPUT),
-
-      at warn (node_modules/@react-navigation/core/src/BaseNavigationContainer.tsx:396:23)
-      at Object.react_stack_bottom_frame (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:15755:20)
-      at runWithFiberInDEV (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:2315:13)
-      at commitHookEffectListMount (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:9530:29)
-      at commitHookPassiveMountEffects (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:9617:11)
-      at commitPassiveMountOnFiber (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:11205:13)
-      at recursivelyTraversePassiveMountEffects (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:11160:11)
-      at commitPassiveMountOnFiber (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:11439:11)
-      at recursivelyTraversePassiveMountEffects (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:11160:11)
-      at commitPassiveMountOnFiber (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:11439:11)
-      at recursivelyTraversePassiveMountEffects (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:11160:11)
-      at commitPassiveMountOnFiber (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:11197:11)
-      at recursivelyTraversePassiveMountEffects (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:11160:11)
-      at commitPassiveMountOnFiber (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:11197:11)
-      at recursivelyTraversePassiveMountEffects (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:11160:11)
-      at commitPassiveMountOnFiber (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:11240:11)
-      at flushPendingEffects (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:14086:11)
-      at flushSpawnedWork (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:13955:44)
-      at commitRoot (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:13698:9)
-      at performWorkOnRoot (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:12336:15)
-      at performSyncWorkOnRoot (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:2923:7)
-      at flushSyncWorkAcrossRoots_impl (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:2764:21)
-      at processRootScheduleInMicrotask (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:2796:9)
-      at node_modules/react-test-renderer/cjs/react-test-renderer.development.js:2933:11
-      at flushActQueue (node_modules/react/cjs/react.development.js:590:34)
-      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:884:10)
-      at actImplementation (node_modules/@testing-library/react-native/src/act.ts:31:25)
-      at fireEvent (node_modules/@testing-library/react-native/src/fire-event.ts:121:11)
-      at fireEvent [as press] (node_modules/@testing-library/react-native/src/fire-event.ts:129:3)
-      at Object.press (app/components/UI/Perps/Views/PerpsProMarketView/PerpsProCrossMargin.view.test.tsx:120:15)
-
-PASS app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.view.test.tsx
+PASS app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.view.test.tsx (17.223 s)
   ● Console
 
     console.warn
@@ -142,7 +30,7 @@ PASS app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.view.test.tsx
     console.log
       Creating E2E mock stream manager
 
-      at log (tests/controller-mocking/mock-config/perps-controller-mixin.ts:806:11)
+      at log (tests/controller-mocking/mock-config/perps-controller-mixin.ts:812:11)
 
     console.warn
       Non-serializable values were found in the navigation state. Check:
@@ -186,8 +74,8 @@ PASS app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.view.test.tsx
       at renderWithProvider (app/util/test/renderWithProvider.tsx:102:21)
       at renderWithProvider (app/util/test/renderWithProvider.tsx:117:10)
       at renderComponentViewScreen (tests/component-view/render.tsx:86:22)
-      at renderPerpsView (tests/component-view/renderers/perpsViewRenderer.tsx:562:30)
-      at renderPerpsView (tests/component-view/renderers/perpsViewRenderer.tsx:946:10)
+      at renderPerpsView (tests/component-view/renderers/perpsViewRenderer.tsx:648:30)
+      at renderPerpsView (tests/component-view/renderers/perpsViewRenderer.tsx:1039:10)
       at Object.<anonymous> (app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.view.test.tsx:26:24)
 
     console.error
@@ -269,13 +157,13 @@ PASS app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.view.test.tsx
       
       This is a development-only warning and won't be shown in production.
 
-      901 |           const hasCallback = Boolean(callback);
-      902 |           onClose?.(hasCallback);
-    > 903 |           goBack?.();
+      907 |           const hasCallback = Boolean(callback);
+      908 |           onClose?.(hasCallback);
+    > 909 |           goBack?.();
           |                 ^
-      904 |           callback?.();
-      905 |         },
-      906 |       }));
+      910 |           callback?.();
+      911 |         },
+      912 |       }));
 
       at error (node_modules/@react-navigation/core/src/BaseNavigationContainer.tsx:467:17)
       at latestCallback (node_modules/use-latest-callback/lib/src/index.js:21:28)
@@ -286,7 +174,7 @@ PASS app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.view.test.tsx
       at dispatch (node_modules/@react-navigation/core/src/useNavigationCache.tsx:190:15)
       at callback (node_modules/@react-navigation/core/src/useNavigationCache.tsx:172:11)
       at withStack (node_modules/@react-navigation/core/src/useNavigationCache.tsx:188:13)
-      at Object.onCloseBottomSheet (app/util/test/testSetupView.js:903:17)
+      at Object.onCloseBottomSheet (app/util/test/testSetupView.js:909:17)
       at onCloseBottomSheet (app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.tsx:278:26)
       at dismiss (app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.tsx:104:5)
       at waitForDismissal (app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.tsx:103:21)
@@ -299,10 +187,622 @@ PASS app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.view.test.tsx
       at fireEvent [as press] (node_modules/@testing-library/react-native/src/fire-event.ts:129:3)
       at Object.press (app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.view.test.tsx:280:17)
 
+PASS app/components/UI/Perps/Views/PerpsProMarketView/PerpsProCrossMargin.view.test.tsx
+  ● Console
 
-Test Suites: 2 passed, 2 total
-Tests:       11 passed, 11 total
+    console.warn
+      InteractionManager has been deprecated and will be removed in a future release. Please refactor long tasks into smaller ones, and  use 'requestIdleCallback' instead.
+
+      13 | import Share from 'react-native-share';
+      14 | import { useSelector } from 'react-redux';
+    > 15 | import ScrollableTabView from '@tommasini/react-native-scrollable-tab-view';
+         | ^
+      16 | import { strings } from '../../../../../../locales/i18n';
+      17 | import {
+      18 |   Button,
+
+      at warn (node_modules/react-native/Libraries/Utilities/warnOnce.js:27:11)
+      at Object.warnOnce [as InteractionManager] (node_modules/react-native/index.js:264:5)
+      at Object.InteractionManager (node_modules/@tommasini/react-native-scrollable-tab-view/index.js:13:3)
+      at Object.require (app/components/UI/Perps/Views/PerpsHeroCardView/PerpsHeroCardView.tsx:15:1)
+      at Object.require (tests/component-view/renderers/perpsViewRenderer.tsx:47:1)
+      at Object.require (app/components/UI/Perps/Views/PerpsProMarketView/PerpsProCrossMargin.view.test.tsx:10:1)
+
+    console.log
+      Creating E2E mock stream manager
+
+      at log (tests/controller-mocking/mock-config/perps-controller-mixin.ts:812:11)
+
+    console.warn
+      [MetaMask DEBUG]: Error: Redux store does not exist!
+          at ReduxService._assertReduxStoreExists2 (/Users/deeeed/dev/metamask/metamask-mobile-2/app/core/redux/ReduxService.ts:24:21)
+          at ReduxService.get store [as store] (/Users/deeeed/dev/metamask/metamask-mobile-2/app/core/redux/ReduxService.ts:44:9)
+          at store (/Users/deeeed/dev/metamask/metamask-mobile-2/tests/component-view/helpers/perpsViewTestHelpers.ts:104:34)
+          at selectCross (/Users/deeeed/dev/metamask/metamask-mobile-2/app/components/UI/Perps/Views/PerpsProMarketView/PerpsProCrossMargin.view.test.tsx:70:39)
+          at Object.selectCross (/Users/deeeed/dev/metamask/metamask-mobile-2/app/components/UI/Perps/Views/PerpsProMarketView/PerpsProCrossMargin.view.test.tsx:99:11)
+          at Promise.then.completed (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/jest-circus/build/utils.js:298:28)
+          at new Promise (<anonymous>)
+          at callAsyncCircusFn (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/jest-circus/build/utils.js:231:10)
+          at _callCircusTest (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/jest-circus/build/run.js:316:40)
+          at processTicksAndRejections (node:internal/process/task_queues:104:5)
+          at _runTest (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/jest-circus/build/run.js:252:3)
+          at _runTestsForDescribeBlock (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/jest-circus/build/run.js:126:9)
+          at _runTestsForDescribeBlock (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/jest-circus/build/run.js:121:9)
+          at run (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/jest-circus/build/run.js:71:3)
+          at runAndTransformResultsToJestFormat (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
+          at jestAdapter (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
+          at runTestInternal (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/jest-runner/build/runTest.js:367:16)
+          at runTest (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/jest-runner/build/runTest.js:444:34)
+          at Object.worker (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/jest-runner/build/testWorker.js:106:12)
+
+      128 |   ): Promise<void> {
+      129 |     if (__DEV__) {
+    > 130 |       console.warn(DEBUG, error); // eslint-disable-line no-console
+          |               ^
+      131 |       return;
+      132 |     }
+      133 |
+
+      at AsyncLogger.warn [as error] (app/util/Logger/index.ts:130:15)
+      at Logger.error (app/util/Logger/index.ts:255:17)
+      at ReduxService.error (app/core/redux/ReduxService.ts:25:14)
+      at ReduxService.get store [as store] (app/core/redux/ReduxService.ts:44:9)
+      at store (tests/component-view/helpers/perpsViewTestHelpers.ts:104:34)
+      at selectCross (app/components/UI/Perps/Views/PerpsProMarketView/PerpsProCrossMargin.view.test.tsx:70:39)
+      at Object.selectCross (app/components/UI/Perps/Views/PerpsProMarketView/PerpsProCrossMargin.view.test.tsx:99:11)
+
+    console.warn
+      Non-serializable values were found in the navigation state. Check:
+      
+      PerpsTPSL > params.onConfirm (Function)
+      
+      This can break usage such as persisting and restoring state. This might happen if you passed non-serializable values such as function, class instances etc. in params. If you need to use components with callbacks in your options, you can use 'navigation.setOptions' instead. See https://reactnavigation.org/docs/troubleshooting#i-get-the-warning-non-serializable-values-were-found-in-the-navigation-state for more details.
+
+      118 |   it('saves a Cross stop beyond the isolated liquidation threshold after opening TP/SL', async () => {
+      119 |     await selectCross();
+    > 120 |     fireEvent.press(screen.getByTestId(formIds.TPSL));
+          |               ^
+      121 |
+      122 |     fireEvent.changeText(
+      123 |       await screen.findByTestId(tpslIds.STOP_LOSS_PRICE_INPUT),
+
+      at warn (node_modules/@react-navigation/core/src/BaseNavigationContainer.tsx:396:23)
+      at Object.react_stack_bottom_frame (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:15755:20)
+      at runWithFiberInDEV (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:2315:13)
+      at commitHookEffectListMount (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:9530:29)
+      at commitHookPassiveMountEffects (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:9617:11)
+      at commitPassiveMountOnFiber (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:11205:13)
+      at recursivelyTraversePassiveMountEffects (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:11160:11)
+      at commitPassiveMountOnFiber (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:11439:11)
+      at recursivelyTraversePassiveMountEffects (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:11160:11)
+      at commitPassiveMountOnFiber (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:11439:11)
+      at recursivelyTraversePassiveMountEffects (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:11160:11)
+      at commitPassiveMountOnFiber (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:11197:11)
+      at recursivelyTraversePassiveMountEffects (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:11160:11)
+      at commitPassiveMountOnFiber (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:11197:11)
+      at recursivelyTraversePassiveMountEffects (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:11160:11)
+      at commitPassiveMountOnFiber (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:11240:11)
+      at flushPendingEffects (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:14086:11)
+      at flushSpawnedWork (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:13955:44)
+      at commitRoot (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:13698:9)
+      at performWorkOnRoot (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:12336:15)
+      at performSyncWorkOnRoot (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:2923:7)
+      at flushSyncWorkAcrossRoots_impl (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:2764:21)
+      at processRootScheduleInMicrotask (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:2796:9)
+      at node_modules/react-test-renderer/cjs/react-test-renderer.development.js:2933:11
+      at flushActQueue (node_modules/react/cjs/react.development.js:590:34)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:884:10)
+      at actImplementation (node_modules/@testing-library/react-native/src/act.ts:31:25)
+      at fireEvent (node_modules/@testing-library/react-native/src/fire-event.ts:121:11)
+      at fireEvent [as press] (node_modules/@testing-library/react-native/src/fire-event.ts:129:3)
+      at Object.press (app/components/UI/Perps/Views/PerpsProMarketView/PerpsProCrossMargin.view.test.tsx:120:15)
+
+PASS app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.view.test.tsx
+  ● Console
+
+    console.warn
+      InteractionManager has been deprecated and will be removed in a future release. Please refactor long tasks into smaller ones, and  use 'requestIdleCallback' instead.
+
+      13 | import Share from 'react-native-share';
+      14 | import { useSelector } from 'react-redux';
+    > 15 | import ScrollableTabView from '@tommasini/react-native-scrollable-tab-view';
+         | ^
+      16 | import { strings } from '../../../../../../locales/i18n';
+      17 | import {
+      18 |   Button,
+
+      at warn (node_modules/react-native/Libraries/Utilities/warnOnce.js:27:11)
+      at Object.warnOnce [as InteractionManager] (node_modules/react-native/index.js:264:5)
+      at Object.InteractionManager (node_modules/@tommasini/react-native-scrollable-tab-view/index.js:13:3)
+      at Object.require (app/components/UI/Perps/Views/PerpsHeroCardView/PerpsHeroCardView.tsx:15:1)
+      at Object.require (tests/component-view/renderers/perpsViewRenderer.tsx:47:1)
+      at Object.require (app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.view.test.tsx:9:1)
+
+    console.log
+      Creating E2E mock stream manager
+
+      at log (tests/controller-mocking/mock-config/perps-controller-mixin.ts:812:11)
+
+    console.warn
+      [MetaMask DEBUG]: Error: Redux store does not exist!
+          at ReduxService._assertReduxStoreExists2 (/Users/deeeed/dev/metamask/metamask-mobile-2/app/core/redux/ReduxService.ts:24:21)
+          at ReduxService.get store [as store] (/Users/deeeed/dev/metamask/metamask-mobile-2/app/core/redux/ReduxService.ts:44:9)
+          at store (/Users/deeeed/dev/metamask/metamask-mobile-2/app/util/haptics/play.ts:32:32)
+          at getHapticGateOptions (/Users/deeeed/dev/metamask/metamask-mobile-2/app/util/haptics/play.ts:84:27)
+          at /Users/deeeed/dev/metamask/metamask-mobile-2/app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx:435:20
+          at handler (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/fire-event.ts:122:19)
+          at callback (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/act.ts:32:24)
+          at Object.<anonymous>.process.env.NODE_ENV.exports.act (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/react/cjs/react.development.js:814:22)
+          at actImplementation (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/act.ts:31:25)
+          at fireEvent (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/fire-event.ts:121:11)
+          at fireEvent [as press] (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/fire-event.ts:129:3)
+          at Object.press (/Users/deeeed/dev/metamask/metamask-mobile-2/app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.view.test.tsx:42:15)
+
+      128 |   ): Promise<void> {
+      129 |     if (__DEV__) {
+    > 130 |       console.warn(DEBUG, error); // eslint-disable-line no-console
+          |               ^
+      131 |       return;
+      132 |     }
+      133 |
+
+      at AsyncLogger.warn [as error] (app/util/Logger/index.ts:130:15)
+      at Logger.error (app/util/Logger/index.ts:255:17)
+      at ReduxService.error (app/core/redux/ReduxService.ts:25:14)
+      at ReduxService.get store [as store] (app/core/redux/ReduxService.ts:44:9)
+      at store (app/util/haptics/play.ts:32:32)
+      at getHapticGateOptions (app/util/haptics/play.ts:84:27)
+      at app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx:435:20
+      at handler (node_modules/@testing-library/react-native/src/fire-event.ts:122:19)
+      at callback (node_modules/@testing-library/react-native/src/act.ts:32:24)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:814:22)
+      at actImplementation (node_modules/@testing-library/react-native/src/act.ts:31:25)
+      at fireEvent (node_modules/@testing-library/react-native/src/fire-event.ts:121:11)
+      at fireEvent [as press] (node_modules/@testing-library/react-native/src/fire-event.ts:129:3)
+      at Object.press (app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.view.test.tsx:42:15)
+
+    console.warn
+      [MetaMask DEBUG]: Error: Redux store does not exist!
+          at ReduxService._assertReduxStoreExists2 (/Users/deeeed/dev/metamask/metamask-mobile-2/app/core/redux/ReduxService.ts:24:21)
+          at ReduxService.get store [as store] (/Users/deeeed/dev/metamask/metamask-mobile-2/app/core/redux/ReduxService.ts:44:9)
+          at store (/Users/deeeed/dev/metamask/metamask-mobile-2/app/util/haptics/play.ts:32:32)
+          at getHapticGateOptions (/Users/deeeed/dev/metamask/metamask-mobile-2/app/util/haptics/play.ts:84:27)
+          at /Users/deeeed/dev/metamask/metamask-mobile-2/app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx:421:20
+          at handleLeveragePress (/Users/deeeed/dev/metamask/metamask-mobile-2/app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx:634:36)
+          at handler (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/fire-event.ts:122:19)
+          at callback (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/act.ts:32:24)
+          at Object.<anonymous>.process.env.NODE_ENV.exports.act (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/react/cjs/react.development.js:814:22)
+          at actImplementation (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/act.ts:31:25)
+          at fireEvent (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/fire-event.ts:121:11)
+          at fireEvent [as press] (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/fire-event.ts:129:3)
+          at Object.press (/Users/deeeed/dev/metamask/metamask-mobile-2/app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.view.test.tsx:56:15)
+
+      128 |   ): Promise<void> {
+      129 |     if (__DEV__) {
+    > 130 |       console.warn(DEBUG, error); // eslint-disable-line no-console
+          |               ^
+      131 |       return;
+      132 |     }
+      133 |
+
+      at AsyncLogger.warn [as error] (app/util/Logger/index.ts:130:15)
+      at Logger.error (app/util/Logger/index.ts:255:17)
+      at ReduxService.error (app/core/redux/ReduxService.ts:25:14)
+      at ReduxService.get store [as store] (app/core/redux/ReduxService.ts:44:9)
+      at store (app/util/haptics/play.ts:32:32)
+      at getHapticGateOptions (app/util/haptics/play.ts:84:27)
+      at app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx:421:20
+      at handleLeveragePress (app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx:634:36)
+      at handler (node_modules/@testing-library/react-native/src/fire-event.ts:122:19)
+      at callback (node_modules/@testing-library/react-native/src/act.ts:32:24)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:814:22)
+      at actImplementation (node_modules/@testing-library/react-native/src/act.ts:31:25)
+      at fireEvent (node_modules/@testing-library/react-native/src/fire-event.ts:121:11)
+      at fireEvent [as press] (node_modules/@testing-library/react-native/src/fire-event.ts:129:3)
+      at Object.press (app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.view.test.tsx:56:15)
+
+    console.warn
+      [MetaMask DEBUG]: Error: Redux store does not exist!
+          at ReduxService._assertReduxStoreExists2 (/Users/deeeed/dev/metamask/metamask-mobile-2/app/core/redux/ReduxService.ts:24:21)
+          at ReduxService.get store [as store] (/Users/deeeed/dev/metamask/metamask-mobile-2/app/core/redux/ReduxService.ts:44:9)
+          at store (/Users/deeeed/dev/metamask/metamask-mobile-2/app/util/haptics/play.ts:32:32)
+          at getHapticGateOptions (/Users/deeeed/dev/metamask/metamask-mobile-2/app/util/haptics/play.ts:84:27)
+          at /Users/deeeed/dev/metamask/metamask-mobile-2/app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx:435:20
+          at handler (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/fire-event.ts:122:19)
+          at callback (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/act.ts:32:24)
+          at Object.<anonymous>.process.env.NODE_ENV.exports.act (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/react/cjs/react.development.js:814:22)
+          at actImplementation (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/act.ts:31:25)
+          at fireEvent (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/fire-event.ts:121:11)
+          at fireEvent [as press] (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/fire-event.ts:129:3)
+          at Object.press (/Users/deeeed/dev/metamask/metamask-mobile-2/app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.view.test.tsx:69:15)
+
+      128 |   ): Promise<void> {
+      129 |     if (__DEV__) {
+    > 130 |       console.warn(DEBUG, error); // eslint-disable-line no-console
+          |               ^
+      131 |       return;
+      132 |     }
+      133 |
+
+      at AsyncLogger.warn [as error] (app/util/Logger/index.ts:130:15)
+      at Logger.error (app/util/Logger/index.ts:255:17)
+      at ReduxService.error (app/core/redux/ReduxService.ts:25:14)
+      at ReduxService.get store [as store] (app/core/redux/ReduxService.ts:44:9)
+      at store (app/util/haptics/play.ts:32:32)
+      at getHapticGateOptions (app/util/haptics/play.ts:84:27)
+      at app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx:435:20
+      at handler (node_modules/@testing-library/react-native/src/fire-event.ts:122:19)
+      at callback (node_modules/@testing-library/react-native/src/act.ts:32:24)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:814:22)
+      at actImplementation (node_modules/@testing-library/react-native/src/act.ts:31:25)
+      at fireEvent (node_modules/@testing-library/react-native/src/fire-event.ts:121:11)
+      at fireEvent [as press] (node_modules/@testing-library/react-native/src/fire-event.ts:129:3)
+      at Object.press (app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.view.test.tsx:69:15)
+
+    console.warn
+      [MetaMask DEBUG]: Error: Redux store does not exist!
+          at ReduxService._assertReduxStoreExists2 (/Users/deeeed/dev/metamask/metamask-mobile-2/app/core/redux/ReduxService.ts:24:21)
+          at ReduxService.get store [as store] (/Users/deeeed/dev/metamask/metamask-mobile-2/app/core/redux/ReduxService.ts:44:9)
+          at store (/Users/deeeed/dev/metamask/metamask-mobile-2/app/util/haptics/play.ts:32:32)
+          at getHapticGateOptions (/Users/deeeed/dev/metamask/metamask-mobile-2/app/util/haptics/play.ts:84:27)
+          at /Users/deeeed/dev/metamask/metamask-mobile-2/app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx:421:20
+          at handleLeveragePress (/Users/deeeed/dev/metamask/metamask-mobile-2/app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx:634:36)
+          at handler (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/fire-event.ts:122:19)
+          at callback (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/act.ts:32:24)
+          at Object.<anonymous>.process.env.NODE_ENV.exports.act (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/react/cjs/react.development.js:814:22)
+          at actImplementation (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/act.ts:31:25)
+          at fireEvent (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/fire-event.ts:121:11)
+          at fireEvent [as press] (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/fire-event.ts:129:3)
+          at Object.press (/Users/deeeed/dev/metamask/metamask-mobile-2/app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.view.test.tsx:95:15)
+
+      128 |   ): Promise<void> {
+      129 |     if (__DEV__) {
+    > 130 |       console.warn(DEBUG, error); // eslint-disable-line no-console
+          |               ^
+      131 |       return;
+      132 |     }
+      133 |
+
+      at AsyncLogger.warn [as error] (app/util/Logger/index.ts:130:15)
+      at Logger.error (app/util/Logger/index.ts:255:17)
+      at ReduxService.error (app/core/redux/ReduxService.ts:25:14)
+      at ReduxService.get store [as store] (app/core/redux/ReduxService.ts:44:9)
+      at store (app/util/haptics/play.ts:32:32)
+      at getHapticGateOptions (app/util/haptics/play.ts:84:27)
+      at app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx:421:20
+      at handleLeveragePress (app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx:634:36)
+      at handler (node_modules/@testing-library/react-native/src/fire-event.ts:122:19)
+      at callback (node_modules/@testing-library/react-native/src/act.ts:32:24)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:814:22)
+      at actImplementation (node_modules/@testing-library/react-native/src/act.ts:31:25)
+      at fireEvent (node_modules/@testing-library/react-native/src/fire-event.ts:121:11)
+      at fireEvent [as press] (node_modules/@testing-library/react-native/src/fire-event.ts:129:3)
+      at Object.press (app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.view.test.tsx:95:15)
+
+    console.warn
+      [MetaMask DEBUG]: Error: Redux store does not exist!
+          at ReduxService._assertReduxStoreExists2 (/Users/deeeed/dev/metamask/metamask-mobile-2/app/core/redux/ReduxService.ts:24:21)
+          at ReduxService.get store [as store] (/Users/deeeed/dev/metamask/metamask-mobile-2/app/core/redux/ReduxService.ts:44:9)
+          at store (/Users/deeeed/dev/metamask/metamask-mobile-2/app/util/haptics/play.ts:32:32)
+          at getHapticGateOptions (/Users/deeeed/dev/metamask/metamask-mobile-2/app/util/haptics/play.ts:84:27)
+          at /Users/deeeed/dev/metamask/metamask-mobile-2/app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx:435:20
+          at handler (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/fire-event.ts:122:19)
+          at callback (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/act.ts:32:24)
+          at Object.<anonymous>.process.env.NODE_ENV.exports.act (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/react/cjs/react.development.js:814:22)
+          at actImplementation (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/act.ts:31:25)
+          at fireEvent (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/fire-event.ts:121:11)
+          at fireEvent [as press] (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/fire-event.ts:129:3)
+          at Object.press (/Users/deeeed/dev/metamask/metamask-mobile-2/app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.view.test.tsx:101:15)
+
+      128 |   ): Promise<void> {
+      129 |     if (__DEV__) {
+    > 130 |       console.warn(DEBUG, error); // eslint-disable-line no-console
+          |               ^
+      131 |       return;
+      132 |     }
+      133 |
+
+      at AsyncLogger.warn [as error] (app/util/Logger/index.ts:130:15)
+      at Logger.error (app/util/Logger/index.ts:255:17)
+      at ReduxService.error (app/core/redux/ReduxService.ts:25:14)
+      at ReduxService.get store [as store] (app/core/redux/ReduxService.ts:44:9)
+      at store (app/util/haptics/play.ts:32:32)
+      at getHapticGateOptions (app/util/haptics/play.ts:84:27)
+      at app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx:435:20
+      at handler (node_modules/@testing-library/react-native/src/fire-event.ts:122:19)
+      at callback (node_modules/@testing-library/react-native/src/act.ts:32:24)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:814:22)
+      at actImplementation (node_modules/@testing-library/react-native/src/act.ts:31:25)
+      at fireEvent (node_modules/@testing-library/react-native/src/fire-event.ts:121:11)
+      at fireEvent [as press] (node_modules/@testing-library/react-native/src/fire-event.ts:129:3)
+      at Object.press (app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.view.test.tsx:101:15)
+
+    console.warn
+      [MetaMask DEBUG]: Error: Redux store does not exist!
+          at ReduxService._assertReduxStoreExists2 (/Users/deeeed/dev/metamask/metamask-mobile-2/app/core/redux/ReduxService.ts:24:21)
+          at ReduxService.get store [as store] (/Users/deeeed/dev/metamask/metamask-mobile-2/app/core/redux/ReduxService.ts:44:9)
+          at store (/Users/deeeed/dev/metamask/metamask-mobile-2/app/util/haptics/play.ts:32:32)
+          at getHapticGateOptions (/Users/deeeed/dev/metamask/metamask-mobile-2/app/util/haptics/play.ts:84:27)
+          at /Users/deeeed/dev/metamask/metamask-mobile-2/app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx:435:20
+          at handler (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/fire-event.ts:122:19)
+          at callback (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/act.ts:32:24)
+          at Object.<anonymous>.process.env.NODE_ENV.exports.act (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/react/cjs/react.development.js:814:22)
+          at actImplementation (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/act.ts:31:25)
+          at fireEvent (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/fire-event.ts:121:11)
+          at fireEvent [as press] (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/fire-event.ts:129:3)
+          at Object.press (/Users/deeeed/dev/metamask/metamask-mobile-2/app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.view.test.tsx:42:15)
+
+      128 |   ): Promise<void> {
+      129 |     if (__DEV__) {
+    > 130 |       console.warn(DEBUG, error); // eslint-disable-line no-console
+          |               ^
+      131 |       return;
+      132 |     }
+      133 |
+
+      at AsyncLogger.warn [as error] (app/util/Logger/index.ts:130:15)
+      at Logger.error (app/util/Logger/index.ts:255:17)
+      at ReduxService.error (app/core/redux/ReduxService.ts:25:14)
+      at ReduxService.get store [as store] (app/core/redux/ReduxService.ts:44:9)
+      at store (app/util/haptics/play.ts:32:32)
+      at getHapticGateOptions (app/util/haptics/play.ts:84:27)
+      at app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx:435:20
+      at handler (node_modules/@testing-library/react-native/src/fire-event.ts:122:19)
+      at callback (node_modules/@testing-library/react-native/src/act.ts:32:24)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:814:22)
+      at actImplementation (node_modules/@testing-library/react-native/src/act.ts:31:25)
+      at fireEvent (node_modules/@testing-library/react-native/src/fire-event.ts:121:11)
+      at fireEvent [as press] (node_modules/@testing-library/react-native/src/fire-event.ts:129:3)
+      at Object.press (app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.view.test.tsx:42:15)
+
+    console.warn
+      [MetaMask DEBUG]: Error: Redux store does not exist!
+          at ReduxService._assertReduxStoreExists2 (/Users/deeeed/dev/metamask/metamask-mobile-2/app/core/redux/ReduxService.ts:24:21)
+          at ReduxService.get store [as store] (/Users/deeeed/dev/metamask/metamask-mobile-2/app/core/redux/ReduxService.ts:44:9)
+          at store (/Users/deeeed/dev/metamask/metamask-mobile-2/app/util/haptics/play.ts:32:32)
+          at getHapticGateOptions (/Users/deeeed/dev/metamask/metamask-mobile-2/app/util/haptics/play.ts:84:27)
+          at /Users/deeeed/dev/metamask/metamask-mobile-2/app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx:421:20
+          at handleLeveragePress (/Users/deeeed/dev/metamask/metamask-mobile-2/app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx:634:36)
+          at handler (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/fire-event.ts:122:19)
+          at callback (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/act.ts:32:24)
+          at Object.<anonymous>.process.env.NODE_ENV.exports.act (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/react/cjs/react.development.js:814:22)
+          at actImplementation (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/act.ts:31:25)
+          at fireEvent (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/fire-event.ts:121:11)
+          at fireEvent [as press] (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/fire-event.ts:129:3)
+          at Object.press (/Users/deeeed/dev/metamask/metamask-mobile-2/app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.view.test.tsx:56:15)
+
+      128 |   ): Promise<void> {
+      129 |     if (__DEV__) {
+    > 130 |       console.warn(DEBUG, error); // eslint-disable-line no-console
+          |               ^
+      131 |       return;
+      132 |     }
+      133 |
+
+      at AsyncLogger.warn [as error] (app/util/Logger/index.ts:130:15)
+      at Logger.error (app/util/Logger/index.ts:255:17)
+      at ReduxService.error (app/core/redux/ReduxService.ts:25:14)
+      at ReduxService.get store [as store] (app/core/redux/ReduxService.ts:44:9)
+      at store (app/util/haptics/play.ts:32:32)
+      at getHapticGateOptions (app/util/haptics/play.ts:84:27)
+      at app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx:421:20
+      at handleLeveragePress (app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx:634:36)
+      at handler (node_modules/@testing-library/react-native/src/fire-event.ts:122:19)
+      at callback (node_modules/@testing-library/react-native/src/act.ts:32:24)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:814:22)
+      at actImplementation (node_modules/@testing-library/react-native/src/act.ts:31:25)
+      at fireEvent (node_modules/@testing-library/react-native/src/fire-event.ts:121:11)
+      at fireEvent [as press] (node_modules/@testing-library/react-native/src/fire-event.ts:129:3)
+      at Object.press (app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.view.test.tsx:56:15)
+
+    console.warn
+      [MetaMask DEBUG]: Error: Redux store does not exist!
+          at ReduxService._assertReduxStoreExists2 (/Users/deeeed/dev/metamask/metamask-mobile-2/app/core/redux/ReduxService.ts:24:21)
+          at ReduxService.get store [as store] (/Users/deeeed/dev/metamask/metamask-mobile-2/app/core/redux/ReduxService.ts:44:9)
+          at store (/Users/deeeed/dev/metamask/metamask-mobile-2/app/util/haptics/play.ts:32:32)
+          at getHapticGateOptions (/Users/deeeed/dev/metamask/metamask-mobile-2/app/util/haptics/play.ts:84:27)
+          at /Users/deeeed/dev/metamask/metamask-mobile-2/app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx:435:20
+          at handler (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/fire-event.ts:122:19)
+          at callback (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/act.ts:32:24)
+          at Object.<anonymous>.process.env.NODE_ENV.exports.act (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/react/cjs/react.development.js:814:22)
+          at actImplementation (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/act.ts:31:25)
+          at fireEvent (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/fire-event.ts:121:11)
+          at fireEvent [as press] (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/fire-event.ts:129:3)
+          at Object.press (/Users/deeeed/dev/metamask/metamask-mobile-2/app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.view.test.tsx:69:15)
+
+      128 |   ): Promise<void> {
+      129 |     if (__DEV__) {
+    > 130 |       console.warn(DEBUG, error); // eslint-disable-line no-console
+          |               ^
+      131 |       return;
+      132 |     }
+      133 |
+
+      at AsyncLogger.warn [as error] (app/util/Logger/index.ts:130:15)
+      at Logger.error (app/util/Logger/index.ts:255:17)
+      at ReduxService.error (app/core/redux/ReduxService.ts:25:14)
+      at ReduxService.get store [as store] (app/core/redux/ReduxService.ts:44:9)
+      at store (app/util/haptics/play.ts:32:32)
+      at getHapticGateOptions (app/util/haptics/play.ts:84:27)
+      at app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx:435:20
+      at handler (node_modules/@testing-library/react-native/src/fire-event.ts:122:19)
+      at callback (node_modules/@testing-library/react-native/src/act.ts:32:24)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:814:22)
+      at actImplementation (node_modules/@testing-library/react-native/src/act.ts:31:25)
+      at fireEvent (node_modules/@testing-library/react-native/src/fire-event.ts:121:11)
+      at fireEvent [as press] (node_modules/@testing-library/react-native/src/fire-event.ts:129:3)
+      at Object.press (app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.view.test.tsx:69:15)
+
+    console.warn
+      [MetaMask DEBUG]: Error: Redux store does not exist!
+          at ReduxService._assertReduxStoreExists2 (/Users/deeeed/dev/metamask/metamask-mobile-2/app/core/redux/ReduxService.ts:24:21)
+          at ReduxService.get store [as store] (/Users/deeeed/dev/metamask/metamask-mobile-2/app/core/redux/ReduxService.ts:44:9)
+          at store (/Users/deeeed/dev/metamask/metamask-mobile-2/app/util/haptics/play.ts:32:32)
+          at getHapticGateOptions (/Users/deeeed/dev/metamask/metamask-mobile-2/app/util/haptics/play.ts:84:27)
+          at /Users/deeeed/dev/metamask/metamask-mobile-2/app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx:421:20
+          at handleLeveragePress (/Users/deeeed/dev/metamask/metamask-mobile-2/app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx:634:36)
+          at handler (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/fire-event.ts:122:19)
+          at callback (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/act.ts:32:24)
+          at Object.<anonymous>.process.env.NODE_ENV.exports.act (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/react/cjs/react.development.js:814:22)
+          at actImplementation (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/act.ts:31:25)
+          at fireEvent (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/fire-event.ts:121:11)
+          at fireEvent [as press] (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/fire-event.ts:129:3)
+          at Object.press (/Users/deeeed/dev/metamask/metamask-mobile-2/app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.view.test.tsx:95:15)
+
+      128 |   ): Promise<void> {
+      129 |     if (__DEV__) {
+    > 130 |       console.warn(DEBUG, error); // eslint-disable-line no-console
+          |               ^
+      131 |       return;
+      132 |     }
+      133 |
+
+      at AsyncLogger.warn [as error] (app/util/Logger/index.ts:130:15)
+      at Logger.error (app/util/Logger/index.ts:255:17)
+      at ReduxService.error (app/core/redux/ReduxService.ts:25:14)
+      at ReduxService.get store [as store] (app/core/redux/ReduxService.ts:44:9)
+      at store (app/util/haptics/play.ts:32:32)
+      at getHapticGateOptions (app/util/haptics/play.ts:84:27)
+      at app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx:421:20
+      at handleLeveragePress (app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx:634:36)
+      at handler (node_modules/@testing-library/react-native/src/fire-event.ts:122:19)
+      at callback (node_modules/@testing-library/react-native/src/act.ts:32:24)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:814:22)
+      at actImplementation (node_modules/@testing-library/react-native/src/act.ts:31:25)
+      at fireEvent (node_modules/@testing-library/react-native/src/fire-event.ts:121:11)
+      at fireEvent [as press] (node_modules/@testing-library/react-native/src/fire-event.ts:129:3)
+      at Object.press (app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.view.test.tsx:95:15)
+
+    console.warn
+      [MetaMask DEBUG]: Error: Redux store does not exist!
+          at ReduxService._assertReduxStoreExists2 (/Users/deeeed/dev/metamask/metamask-mobile-2/app/core/redux/ReduxService.ts:24:21)
+          at ReduxService.get store [as store] (/Users/deeeed/dev/metamask/metamask-mobile-2/app/core/redux/ReduxService.ts:44:9)
+          at store (/Users/deeeed/dev/metamask/metamask-mobile-2/app/util/haptics/play.ts:32:32)
+          at getHapticGateOptions (/Users/deeeed/dev/metamask/metamask-mobile-2/app/util/haptics/play.ts:84:27)
+          at /Users/deeeed/dev/metamask/metamask-mobile-2/app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx:435:20
+          at handler (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/fire-event.ts:122:19)
+          at callback (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/act.ts:32:24)
+          at Object.<anonymous>.process.env.NODE_ENV.exports.act (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/react/cjs/react.development.js:814:22)
+          at actImplementation (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/act.ts:31:25)
+          at fireEvent (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/fire-event.ts:121:11)
+          at fireEvent [as press] (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/@testing-library/react-native/src/fire-event.ts:129:3)
+          at Object.press (/Users/deeeed/dev/metamask/metamask-mobile-2/app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.view.test.tsx:101:15)
+
+      128 |   ): Promise<void> {
+      129 |     if (__DEV__) {
+    > 130 |       console.warn(DEBUG, error); // eslint-disable-line no-console
+          |               ^
+      131 |       return;
+      132 |     }
+      133 |
+
+      at AsyncLogger.warn [as error] (app/util/Logger/index.ts:130:15)
+      at Logger.error (app/util/Logger/index.ts:255:17)
+      at ReduxService.error (app/core/redux/ReduxService.ts:25:14)
+      at ReduxService.get store [as store] (app/core/redux/ReduxService.ts:44:9)
+      at store (app/util/haptics/play.ts:32:32)
+      at getHapticGateOptions (app/util/haptics/play.ts:84:27)
+      at app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx:435:20
+      at handler (node_modules/@testing-library/react-native/src/fire-event.ts:122:19)
+      at callback (node_modules/@testing-library/react-native/src/act.ts:32:24)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:814:22)
+      at actImplementation (node_modules/@testing-library/react-native/src/act.ts:31:25)
+      at fireEvent (node_modules/@testing-library/react-native/src/fire-event.ts:121:11)
+      at fireEvent [as press] (node_modules/@testing-library/react-native/src/fire-event.ts:129:3)
+      at Object.press (app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.view.test.tsx:101:15)
+
+PASS app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.view.test.tsx (6.805 s)
+  ● Console
+
+    console.warn
+      InteractionManager has been deprecated and will be removed in a future release. Please refactor long tasks into smaller ones, and  use 'requestIdleCallback' instead.
+
+      13 | import Share from 'react-native-share';
+      14 | import { useSelector } from 'react-redux';
+    > 15 | import ScrollableTabView from '@tommasini/react-native-scrollable-tab-view';
+         | ^
+      16 | import { strings } from '../../../../../../locales/i18n';
+      17 | import {
+      18 |   Button,
+
+      at warn (node_modules/react-native/Libraries/Utilities/warnOnce.js:27:11)
+      at Object.warnOnce [as InteractionManager] (node_modules/react-native/index.js:264:5)
+      at Object.InteractionManager (node_modules/@tommasini/react-native-scrollable-tab-view/index.js:13:3)
+      at Object.require (app/components/UI/Perps/Views/PerpsHeroCardView/PerpsHeroCardView.tsx:15:1)
+      at Object.require (tests/component-view/renderers/perpsViewRenderer.tsx:47:1)
+      at Object.require (app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.view.test.tsx:11:1)
+
+    console.log
+      Creating E2E mock stream manager
+
+      at log (tests/controller-mocking/mock-config/perps-controller-mixin.ts:812:11)
+
+    console.warn
+      [MetaMask DEBUG]: Error: Redux store does not exist!
+          at ReduxService._assertReduxStoreExists2 (/Users/deeeed/dev/metamask/metamask-mobile-2/app/core/redux/ReduxService.ts:24:21)
+          at ReduxService.get store [as store] (/Users/deeeed/dev/metamask/metamask-mobile-2/app/core/redux/ReduxService.ts:44:9)
+          at store (/Users/deeeed/dev/metamask/metamask-mobile-2/tests/component-view/helpers/perpsViewTestHelpers.ts:104:34)
+          at Object.<anonymous> (/Users/deeeed/dev/metamask/metamask-mobile-2/app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.view.test.tsx:63:41)
+          at Promise.then.completed (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/jest-circus/build/utils.js:298:28)
+          at new Promise (<anonymous>)
+          at callAsyncCircusFn (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/jest-circus/build/utils.js:231:10)
+          at _callCircusTest (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/jest-circus/build/run.js:316:40)
+          at processTicksAndRejections (node:internal/process/task_queues:104:5)
+          at _runTest (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/jest-circus/build/run.js:252:3)
+          at _runTestsForDescribeBlock (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/jest-circus/build/run.js:126:9)
+          at _runTestsForDescribeBlock (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/jest-circus/build/run.js:121:9)
+          at run (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/jest-circus/build/run.js:71:3)
+          at runAndTransformResultsToJestFormat (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
+          at jestAdapter (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
+          at runTestInternal (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/jest-runner/build/runTest.js:367:16)
+          at runTest (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/jest-runner/build/runTest.js:444:34)
+          at Object.worker (/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/jest-runner/build/testWorker.js:106:12)
+
+      128 |   ): Promise<void> {
+      129 |     if (__DEV__) {
+    > 130 |       console.warn(DEBUG, error); // eslint-disable-line no-console
+          |               ^
+      131 |       return;
+      132 |     }
+      133 |
+
+      at AsyncLogger.warn [as error] (app/util/Logger/index.ts:130:15)
+      at Logger.error (app/util/Logger/index.ts:255:17)
+      at ReduxService.error (app/core/redux/ReduxService.ts:25:14)
+      at ReduxService.get store [as store] (app/core/redux/ReduxService.ts:44:9)
+      at store (tests/component-view/helpers/perpsViewTestHelpers.ts:104:34)
+      at Object.<anonymous> (app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.view.test.tsx:63:41)
+
+PASS app/components/UI/Perps/components/PerpsMarginModeBottomSheet/PerpsMarginModeBottomSheet.view.test.tsx (9.999 s)
+  ● Console
+
+    console.warn
+      InteractionManager has been deprecated and will be removed in a future release. Please refactor long tasks into smaller ones, and  use 'requestIdleCallback' instead.
+
+      13 | import Share from 'react-native-share';
+      14 | import { useSelector } from 'react-redux';
+    > 15 | import ScrollableTabView from '@tommasini/react-native-scrollable-tab-view';
+         | ^
+      16 | import { strings } from '../../../../../../locales/i18n';
+      17 | import {
+      18 |   Button,
+
+      at warn (node_modules/react-native/Libraries/Utilities/warnOnce.js:27:11)
+      at Object.warnOnce [as InteractionManager] (node_modules/react-native/index.js:264:5)
+      at Object.InteractionManager (node_modules/@tommasini/react-native-scrollable-tab-view/index.js:13:3)
+      at Object.require (app/components/UI/Perps/Views/PerpsHeroCardView/PerpsHeroCardView.tsx:15:1)
+      at Object.require (tests/component-view/renderers/perpsViewRenderer.tsx:47:1)
+      at Object.require (app/components/UI/Perps/components/PerpsMarginModeBottomSheet/PerpsMarginModeBottomSheet.view.test.tsx:11:1)
+
+    console.log
+      Creating E2E mock stream manager
+
+      at log (tests/controller-mocking/mock-config/perps-controller-mixin.ts:812:11)
+
+
+Test Suites: 5 passed, 5 total
+Tests:       47 passed, 47 total
 Snapshots:   0 total
-Time:        11.675 s, estimated 52 s
-Ran all test suites matching /app\/components\/UI\/Perps\/Views\/PerpsProMarketView\/PerpsProCrossMargin.view.test.tsx|app\/components\/UI\/Perps\/Views\/PerpsTPSLView\/PerpsTPSLView.view.test.tsx/i.
+Time:        40.548 s, estimated 43 s
+Ran all test suites matching /app\/components\/UI\/Perps\/Views\/PerpsProMarketView\/PerpsProCrossMargin.view.test.tsx|app\/components\/UI\/Perps\/Views\/PerpsProMarketView\/components\/PerpsProOrderFormPanel.view.test.tsx|app\/components\/UI\/Perps\/Views\/PerpsTPSLView\/PerpsTPSLView.view.test.tsx|app\/components\/UI\/Perps\/components\/PerpsLeverageBottomSheet\/PerpsLeverageBottomSheet.view.test.tsx|app\/components\/UI\/Perps\/components\/PerpsMarginModeBottomSheet\/PerpsMarginModeBottomSheet.view.test.tsx/i.
 Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

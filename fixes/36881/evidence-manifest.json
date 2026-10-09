@@ -1,30 +1,36 @@
 {
   "version": 1,
   "preferred_mode": "screenshots",
-  "summary": "Current rebased branch plus staged editor fixes, mm-2 iOS Hyperliquid testnet: inherited recipe 45/45 PASS. All promoted images inspected. New editor behavior is covered separately by component-view tests.",
-  "before_after_pairs": [],
-  "standalone": [
+  "summary": "Pro BTC market on HyperLiquid testnet with perpsCrossMarginEnabled on.",
+  "before_after_pairs": [
     {
-      "label": "Cross selectable and selected in margin chooser",
+      "label": "Margin mode chooser: Cross disabled with \"Coming soon\" \u2192 selectable and selected",
       "covers": [
         "ac1"
       ],
-      "file": "evidence-ac1-cross-sheet.png"
-    },
+      "before": "before-ac1-cross-sheet.png",
+      "after": "evidence-ac1-cross-sheet.png"
+    }
+  ],
+  "standalone": [
     {
-      "label": "Order form margin control reads Cross",
+      "label": "Order form margin control reads Cross after the pick",
       "covers": [
         "ac1"
       ],
       "file": "evidence-ac1-cross-label.png"
     },
     {
-      "label": "Placed BTC position is tagged Cross",
+      "label": "Placed BTC position shows \"Position margin used\" tagged Cross",
       "covers": [
         "ac2"
       ],
       "file": "evidence-ac2-cross-position.png"
     }
   ],
-  "omit": []
+  "omit": [],
+  "videos": {
+    "preferred": false,
+    "note": "This proof run produced screenshots and trace; no video was produced."
+  }
 }

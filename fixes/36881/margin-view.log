@@ -1,0 +1,17 @@
+PASS app/components/UI/Perps/components/PerpsMarginModeBottomSheet/PerpsMarginModeBottomSheet.view.test.tsx (11.04 s)
+  PerpsMarginModeBottomSheet position locks [ios]
+    ✓ keeps the cross position mode when the opposite option is pressed (440 ms)
+    ✓ keeps the isolated position mode when the opposite option is pressed (261 ms)
+    ✓ allows switching to Cross after the isolated position closes (294 ms)
+    ✓ refreshes and respects a resting-order lock when opening the picker (321 ms)
+  PerpsMarginModeBottomSheet position locks [android]
+    ✓ keeps the cross position mode when the opposite option is pressed (172 ms)
+    ✓ keeps the isolated position mode when the opposite option is pressed (149 ms)
+    ✓ allows switching to Cross after the isolated position closes (230 ms)
+    ✓ refreshes and respects a resting-order lock when opening the picker (146 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       8 passed, 8 total
+Snapshots:   0 total
+Time:        11.231 s, estimated 93 s
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

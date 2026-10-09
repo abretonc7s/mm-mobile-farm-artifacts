@@ -5,25 +5,28 @@
   "status": "pass",
   "exitCode": 0,
   "adapter": "mobile",
-  "target": "/Volumes/FD/dev/metamask/metamask-mobile-2",
+  "target": "/Users/deeeed/dev/metamask/metamask-mobile-2",
   "profile": "fast",
   "fix": false,
   "baseRef": "origin/main",
   "baseSource": "github-pr",
   "baseLabel": "main",
-  "mergeBase": "1bddfa4b3a882e24e6495150622ee3d92d985b5a",
+  "mergeBase": "fc73ef0ef2b681e79e53a9b9ea7bef96738ddd0e",
   "changedFiles": [
     "app/components/UI/Perps/Views/PerpsProMarketView/PerpsProCrossMargin.view.test.tsx",
     "app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts",
     "app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.ts",
     "app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.test.tsx",
     "app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.tsx",
+    "app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.view.test.tsx",
     "app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.tsx",
     "app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.view.test.tsx",
     "app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.test.tsx",
     "app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx",
+    "app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.view.test.tsx",
     "app/components/UI/Perps/components/PerpsMarginModeBottomSheet/PerpsMarginModeBottomSheet.test.tsx",
     "app/components/UI/Perps/components/PerpsMarginModeBottomSheet/PerpsMarginModeBottomSheet.tsx",
+    "app/components/UI/Perps/components/PerpsMarginModeBottomSheet/PerpsMarginModeBottomSheet.view.test.tsx",
     "app/components/UI/Perps/hooks/useHasExistingPosition.test.ts",
     "app/components/UI/Perps/hooks/useHasExistingPosition.ts",
     "app/components/UI/Perps/hooks/usePerpsMarginModeLock.test.ts",
@@ -35,7 +38,10 @@
     "app/components/UI/Perps/utils/orderParams.test.ts",
     "app/components/UI/Perps/utils/orderParams.ts",
     "locales/languages/en.json",
+    "tests/component-view/helpers/perpsMarginModeTestHelpers.ts",
     "tests/component-view/mocks.ts",
+    "tests/component-view/presets/perpsStatePreset.ts",
+    "tests/component-view/renderers/perpsViewRenderer.tsx",
     "tests/integration/harnesses/perps/perps.ts"
   ],
   "fixes": [],
@@ -44,52 +50,52 @@
       "id": "policy-suppressions",
       "label": "New ESLint suppression policy",
       "status": "pass",
-      "logPath": "/Volumes/FD/dev/metamask/metamask-mobile-2/temp/tasks/fix/36881-1001-124447/artifacts/policy-suppressions.log"
+      "logPath": "/Users/deeeed/dev/metamask/metamask-mobile-2/temp/tasks/fix/36881-1009-165029/artifacts/policy-suppressions.log"
     },
     {
       "id": "eslint",
       "label": "Changed-file ESLint",
       "status": "pass",
-      "command": "/Volumes/FD/dev/metamask/metamask-mobile-2/node_modules/.bin/eslint --cache --cache-location /Volumes/FD/dev/metamask/metamask-mobile-2/temp/tasks/fix/36881-1001-124447/artifacts/eslintcache app/components/UI/Perps/Views/PerpsProMarketView/PerpsProCrossMargin.view.test.tsx app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.ts app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.test.tsx app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.tsx app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.tsx app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.view.test.tsx app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.test.tsx app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx app/components/UI/Perps/components/PerpsMarginModeBottomSheet/PerpsMarginModeBottomSheet.test.tsx app/components/UI/Perps/components/PerpsMarginModeBottomSheet/PerpsMarginModeBottomSheet.tsx app/components/UI/Perps/hooks/useHasExistingPosition.test.ts app/components/UI/Perps/hooks/useHasExistingPosition.ts app/components/UI/Perps/hooks/usePerpsMarginModeLock.test.ts app/components/UI/Perps/hooks/usePerpsMarginModeLock.ts app/components/UI/Perps/hooks/usePerpsMarketData.test.ts app/components/UI/Perps/hooks/usePerpsMarketData.ts app/components/UI/Perps/integration/marginModeLock.integration.test.ts app/components/UI/Perps/types/navigation.ts app/components/UI/Perps/utils/orderParams.test.ts app/components/UI/Perps/utils/orderParams.ts tests/component-view/mocks.ts tests/integration/harnesses/perps/perps.ts",
+      "command": "/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/.bin/eslint --cache --cache-location /Users/deeeed/dev/metamask/metamask-mobile-2/temp/tasks/fix/36881-1009-165029/artifacts/eslintcache app/components/UI/Perps/Views/PerpsProMarketView/PerpsProCrossMargin.view.test.tsx app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.ts app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.test.tsx app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.tsx app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.view.test.tsx app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.tsx app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.view.test.tsx app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.test.tsx app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.view.test.tsx app/components/UI/Perps/components/PerpsMarginModeBottomSheet/PerpsMarginModeBottomSheet.tsx app/components/UI/Perps/components/PerpsMarginModeBottomSheet/PerpsMarginModeBottomSheet.view.test.tsx app/components/UI/Perps/hooks/useHasExistingPosition.test.ts app/components/UI/Perps/hooks/useHasExistingPosition.ts app/components/UI/Perps/hooks/usePerpsMarginModeLock.test.ts app/components/UI/Perps/hooks/usePerpsMarginModeLock.ts app/components/UI/Perps/hooks/usePerpsMarketData.test.ts app/components/UI/Perps/hooks/usePerpsMarketData.ts app/components/UI/Perps/integration/marginModeLock.integration.test.ts app/components/UI/Perps/types/navigation.ts app/components/UI/Perps/utils/orderParams.test.ts app/components/UI/Perps/utils/orderParams.ts tests/component-view/helpers/perpsMarginModeTestHelpers.ts tests/component-view/mocks.ts tests/component-view/presets/perpsStatePreset.ts tests/component-view/renderers/perpsViewRenderer.tsx tests/integration/harnesses/perps/perps.ts",
       "exitCode": 0,
-      "logPath": "/Volumes/FD/dev/metamask/metamask-mobile-2/temp/tasks/fix/36881-1001-124447/artifacts/eslint.log",
-      "durationMs": 20738
+      "logPath": "/Users/deeeed/dev/metamask/metamask-mobile-2/temp/tasks/fix/36881-1009-165029/artifacts/eslint.log",
+      "durationMs": 21280
     },
     {
       "id": "prettier",
       "label": "Changed-file Prettier",
       "status": "pass",
-      "command": "/Volumes/FD/dev/metamask/metamask-mobile-2/node_modules/.bin/prettier --check app/components/UI/Perps/Views/PerpsProMarketView/PerpsProCrossMargin.view.test.tsx app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.ts app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.test.tsx app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.tsx app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.tsx app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.view.test.tsx app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.test.tsx app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx app/components/UI/Perps/components/PerpsMarginModeBottomSheet/PerpsMarginModeBottomSheet.test.tsx app/components/UI/Perps/components/PerpsMarginModeBottomSheet/PerpsMarginModeBottomSheet.tsx app/components/UI/Perps/hooks/useHasExistingPosition.test.ts app/components/UI/Perps/hooks/useHasExistingPosition.ts app/components/UI/Perps/hooks/usePerpsMarginModeLock.test.ts app/components/UI/Perps/hooks/usePerpsMarginModeLock.ts app/components/UI/Perps/hooks/usePerpsMarketData.test.ts app/components/UI/Perps/hooks/usePerpsMarketData.ts app/components/UI/Perps/integration/marginModeLock.integration.test.ts app/components/UI/Perps/types/navigation.ts app/components/UI/Perps/utils/orderParams.test.ts app/components/UI/Perps/utils/orderParams.ts locales/languages/en.json tests/component-view/mocks.ts tests/integration/harnesses/perps/perps.ts",
+      "command": "/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/.bin/prettier --check app/components/UI/Perps/Views/PerpsProMarketView/PerpsProCrossMargin.view.test.tsx app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.ts app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.test.tsx app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.tsx app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.view.test.tsx app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.tsx app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.view.test.tsx app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.test.tsx app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.tsx app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.view.test.tsx app/components/UI/Perps/components/PerpsMarginModeBottomSheet/PerpsMarginModeBottomSheet.tsx app/components/UI/Perps/components/PerpsMarginModeBottomSheet/PerpsMarginModeBottomSheet.view.test.tsx app/components/UI/Perps/hooks/useHasExistingPosition.test.ts app/components/UI/Perps/hooks/useHasExistingPosition.ts app/components/UI/Perps/hooks/usePerpsMarginModeLock.test.ts app/components/UI/Perps/hooks/usePerpsMarginModeLock.ts app/components/UI/Perps/hooks/usePerpsMarketData.test.ts app/components/UI/Perps/hooks/usePerpsMarketData.ts app/components/UI/Perps/integration/marginModeLock.integration.test.ts app/components/UI/Perps/types/navigation.ts app/components/UI/Perps/utils/orderParams.test.ts app/components/UI/Perps/utils/orderParams.ts locales/languages/en.json tests/component-view/helpers/perpsMarginModeTestHelpers.ts tests/component-view/mocks.ts tests/component-view/presets/perpsStatePreset.ts tests/component-view/renderers/perpsViewRenderer.tsx tests/integration/harnesses/perps/perps.ts",
       "exitCode": 0,
-      "logPath": "/Volumes/FD/dev/metamask/metamask-mobile-2/temp/tasks/fix/36881-1001-124447/artifacts/prettier.log",
-      "durationMs": 607
+      "logPath": "/Users/deeeed/dev/metamask/metamask-mobile-2/temp/tasks/fix/36881-1009-165029/artifacts/prettier.log",
+      "durationMs": 1194
     },
     {
       "id": "jest",
       "label": "Changed test files",
       "status": "pass",
-      "command": "/Volumes/FD/dev/metamask/metamask-mobile-2/node_modules/.bin/jest --no-coverage app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.test.tsx app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.test.tsx app/components/UI/Perps/components/PerpsMarginModeBottomSheet/PerpsMarginModeBottomSheet.test.tsx app/components/UI/Perps/hooks/useHasExistingPosition.test.ts app/components/UI/Perps/hooks/usePerpsMarginModeLock.test.ts app/components/UI/Perps/hooks/usePerpsMarketData.test.ts app/components/UI/Perps/utils/orderParams.test.ts",
+      "command": "/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/.bin/jest --no-coverage app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.test.tsx app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.test.tsx app/components/UI/Perps/hooks/useHasExistingPosition.test.ts app/components/UI/Perps/hooks/usePerpsMarginModeLock.test.ts app/components/UI/Perps/hooks/usePerpsMarketData.test.ts app/components/UI/Perps/utils/orderParams.test.ts",
       "exitCode": 0,
-      "logPath": "/Volumes/FD/dev/metamask/metamask-mobile-2/temp/tasks/fix/36881-1001-124447/artifacts/jest.log",
-      "durationMs": 15514
+      "logPath": "/Users/deeeed/dev/metamask/metamask-mobile-2/temp/tasks/fix/36881-1009-165029/artifacts/jest.log",
+      "durationMs": 10783
     },
     {
       "id": "jest-integration",
       "label": "Changed integration test files",
       "status": "pass",
-      "command": "/Volumes/FD/dev/metamask/metamask-mobile-2/node_modules/.bin/jest --no-coverage -c jest.config.integration.js app/components/UI/Perps/integration/marginModeLock.integration.test.ts",
+      "command": "/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/.bin/jest --no-coverage -c jest.config.integration.js app/components/UI/Perps/integration/marginModeLock.integration.test.ts",
       "exitCode": 0,
-      "logPath": "/Volumes/FD/dev/metamask/metamask-mobile-2/temp/tasks/fix/36881-1001-124447/artifacts/jest-integration.log",
-      "durationMs": 10511
+      "logPath": "/Users/deeeed/dev/metamask/metamask-mobile-2/temp/tasks/fix/36881-1009-165029/artifacts/jest-integration.log",
+      "durationMs": 4424
     },
     {
       "id": "jest-view",
       "label": "Changed view test files",
       "status": "pass",
-      "command": "/Volumes/FD/dev/metamask/metamask-mobile-2/node_modules/.bin/jest --no-coverage -c jest.config.view.js app/components/UI/Perps/Views/PerpsProMarketView/PerpsProCrossMargin.view.test.tsx app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.view.test.tsx",
+      "command": "/Users/deeeed/dev/metamask/metamask-mobile-2/node_modules/.bin/jest --no-coverage -c jest.config.view.js app/components/UI/Perps/Views/PerpsProMarketView/PerpsProCrossMargin.view.test.tsx app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.view.test.tsx app/components/UI/Perps/Views/PerpsTPSLView/PerpsTPSLView.view.test.tsx app/components/UI/Perps/components/PerpsLeverageBottomSheet/PerpsLeverageBottomSheet.view.test.tsx app/components/UI/Perps/components/PerpsMarginModeBottomSheet/PerpsMarginModeBottomSheet.view.test.tsx",
       "exitCode": 0,
-      "logPath": "/Volumes/FD/dev/metamask/metamask-mobile-2/temp/tasks/fix/36881-1001-124447/artifacts/jest-view.log",
-      "durationMs": 20471
+      "logPath": "/Users/deeeed/dev/metamask/metamask-mobile-2/temp/tasks/fix/36881-1009-165029/artifacts/jest-view.log",
+      "durationMs": 43270
     },
     {
       "id": "typecheck",
@@ -100,8 +106,8 @@
   ],
   "guidance": [],
   "artifacts": {
-    "dir": "/Volumes/FD/dev/metamask/metamask-mobile-2/temp/tasks/fix/36881-1001-124447/artifacts",
-    "summaryJson": "/Volumes/FD/dev/metamask/metamask-mobile-2/temp/tasks/fix/36881-1001-124447/artifacts/validation-summary.json",
-    "summaryMarkdown": "/Volumes/FD/dev/metamask/metamask-mobile-2/temp/tasks/fix/36881-1001-124447/artifacts/validation-summary.md"
+    "dir": "/Users/deeeed/dev/metamask/metamask-mobile-2/temp/tasks/fix/36881-1009-165029/artifacts",
+    "summaryJson": "/Users/deeeed/dev/metamask/metamask-mobile-2/temp/tasks/fix/36881-1009-165029/artifacts/validation-summary.json",
+    "summaryMarkdown": "/Users/deeeed/dev/metamask/metamask-mobile-2/temp/tasks/fix/36881-1009-165029/artifacts/validation-summary.md"
   }
 }

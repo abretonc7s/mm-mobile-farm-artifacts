@@ -1,13 +1,13 @@
 {
   "$schema": "https://farmslot.io/schemas/recipe-v1.schema.json",
   "title": "Cross margin selectable in Pro margin mode chooser when flag is on",
-  "description": "TAT-3524. Data prerequisites: fixture Trading account (currently selected), HyperLiquid testnet, BTC market in Pro with no BTC position or resting order (converged by setup nodes, since an open position locks the margin mode); perpsCrossMarginEnabled pinned on and perpsTerminalBackendEnabled pinned off (Cross is gated off on the Terminal path, TAT-4022) via metamask.feature_flags.set and cleared at teardown.",
+  "description": "TAT-3524. Data prerequisites: fixture Trading account (currently selected), HyperLiquid testnet, BTC market in Pro with no BTC position or resting order (converged by setup nodes, since an open position locks the margin mode); perpsCrossMarginEnabled pinned on via metamask.feature_flags.set and cleared at teardown.",
   "workflow": {
     "entry": "setup-flag",
     "nodes": {
       "setup-flag": {
         "action": "metamask.feature_flags.set",
-        "intent": "Turn the cross margin rollout flag on like the reporter did, and keep the Terminal market backend off since Cross stays unavailable on it until TAT-4022",
+        "intent": "Turn the cross margin rollout flag on like the reporter did",
         "flags": {
           "perpsCrossMarginEnabled": {
             "enabled": true,
@@ -302,7 +302,7 @@
       "ac2-run-order-params-tests": {
         "action": "command",
         "intent": "Prove the picked margin mode reaches the placed order parameters",
-        "cmd": "yarn jest app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts app/components/UI/Perps/utils/orderParams.test.ts -t 'margin mode' --modulePathIgnorePatterns '<rootDir>/temp/' --no-coverage > temp/tasks/feat/tat-3524-0925-174920/artifacts/test-logs/ac2-jest.log 2>&1\nstatus=$?\ntail -50 temp/tasks/feat/tat-3524-0925-174920/artifacts/test-logs/ac2-jest.log\nexit $status",
+        "cmd": "yarn jest app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts app/components/UI/Perps/utils/orderParams.test.ts -t 'margin mode' --modulePathIgnorePatterns '<rootDir>/temp/' --no-coverage --runInBand",
         "timeout_ms": 900000,
         "next": "ac2-assert-tests-pass"
       },
@@ -316,7 +316,7 @@
       "ac3-run-gating-tests": {
         "action": "command",
         "intent": "Prove Cross stays unavailable when the flag is off or the market cannot trade cross",
-        "cmd": "yarn jest app/components/UI/Perps/components/PerpsMarginModeBottomSheet/PerpsMarginModeBottomSheet.test.tsx app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.test.tsx -t 'cross margin' --modulePathIgnorePatterns '<rootDir>/temp/' --no-coverage > temp/tasks/feat/tat-3524-0925-174920/artifacts/test-logs/ac3-jest.log 2>&1\nstatus=$?\ntail -50 temp/tasks/feat/tat-3524-0925-174920/artifacts/test-logs/ac3-jest.log\nexit $status",
+        "cmd": "yarn test:view:one app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderFormPanel.view.test.tsx --runInBand",
         "timeout_ms": 900000,
         "next": "ac3-assert-tests-pass"
       },
@@ -330,7 +330,7 @@
       "ac4-run-cross-position-tests": {
         "action": "command",
         "intent": "Prove an existing cross position no longer blocks trading when Cross is available",
-        "cmd": "yarn jest app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts -t 'existing cross position' --modulePathIgnorePatterns '<rootDir>/temp/' --no-coverage > temp/tasks/feat/tat-3524-0925-174920/artifacts/test-logs/ac4-jest.log 2>&1\nstatus=$?\ntail -50 temp/tasks/feat/tat-3524-0925-174920/artifacts/test-logs/ac4-jest.log\nexit $status",
+        "cmd": "yarn jest app/components/UI/Perps/Views/PerpsProMarketView/components/PerpsProOrderForm/usePerpsProOrderForm.test.ts -t 'existing cross position' --modulePathIgnorePatterns '<rootDir>/temp/' --no-coverage --runInBand",
         "timeout_ms": 900000,
         "next": "ac4-assert-tests-pass"
       },

@@ -1,15 +1,54 @@
 {
   "schemaVersion": 1,
   "command": "call",
+  "context": {
+    "adapter": {
+      "value": "mobile",
+      "source": "flag",
+      "detail": "--adapter"
+    },
+    "target": {
+      "value": "/Users/deeeed/dev/metamask/metamask-mobile-2",
+      "source": "default",
+      "detail": "cwd"
+    },
+    "slot": {
+      "value": "macpro-mm-2",
+      "source": "slot",
+      "detail": "slot-config",
+      "session": "mm-2",
+      "poolFile": "/Users/deeeed/dev/farmslot/pool/macpro.json",
+      "ports": {
+        "port": 8062,
+        "metro_port": 8162,
+        "watcherPort": 8062,
+        "devServerPort": 8062,
+        "metroPort": 8062
+      }
+    },
+    "ports": {
+      "watcher": {
+        "value": 8062,
+        "source": "slot",
+        "filled": true,
+        "via": "env",
+        "names": [
+          "RECIPE_WATCHER_PORT",
+          "WATCHER_PORT",
+          "METRO_PORT"
+        ]
+      }
+    }
+  },
   "adapter": "mobile",
   "action": "metamask.perps.read_positions",
   "resolvedAction": "metamask.perps.read_positions",
   "args": {},
   "status": "fail",
-  "summaryPath": "/Volumes/FD/dev/metamask/metamask-mobile-2/temp/recipe/calls/metamask.perps.read_positions-68866da0-392e-4e8d-9627-b9182edfc4d6/summary.json",
-  "tracePath": "/Volumes/FD/dev/metamask/metamask-mobile-2/temp/recipe/calls/metamask.perps.read_positions-68866da0-392e-4e8d-9627-b9182edfc4d6/trace.json",
-  "artifactManifestPath": "/Volumes/FD/dev/metamask/metamask-mobile-2/temp/recipe/calls/metamask.perps.read_positions-68866da0-392e-4e8d-9627-b9182edfc4d6/artifact-manifest.json",
-  "diagnosticsPath": "/Volumes/FD/dev/metamask/metamask-mobile-2/temp/recipe/calls/metamask.perps.read_positions-68866da0-392e-4e8d-9627-b9182edfc4d6/diagnostics.json",
+  "summaryPath": "/Users/deeeed/dev/metamask/metamask-mobile-2/temp/recipe/calls/metamask.perps.read_positions-96b5071c-25e5-46f8-90fd-3271f625c190/summary.json",
+  "tracePath": "/Users/deeeed/dev/metamask/metamask-mobile-2/temp/recipe/calls/metamask.perps.read_positions-96b5071c-25e5-46f8-90fd-3271f625c190/trace.json",
+  "artifactManifestPath": "/Users/deeeed/dev/metamask/metamask-mobile-2/temp/recipe/calls/metamask.perps.read_positions-96b5071c-25e5-46f8-90fd-3271f625c190/artifact-manifest.json",
+  "diagnosticsPath": "/Users/deeeed/dev/metamask/metamask-mobile-2/temp/recipe/calls/metamask.perps.read_positions-96b5071c-25e5-46f8-90fd-3271f625c190/diagnostics.json",
   "sideFindings": {
     "status": "clean",
     "note": "No application warnings or errors were emitted during the recipe run.",
@@ -17,7 +56,8 @@
       "total": 0,
       "warning": 0,
       "error": 0,
-      "exception": 0
+      "exception": 0,
+      "info": 0
     }
   },
   "recovered": [],
@@ -26,6 +66,6 @@
   "error": {
     "code": "ACTION_EXECUTION_FAILED",
     "message": "metamask.perps.read_positions failed; inspect the persisted result and evidence paths",
-    "userAction": "mm-harness last --target '/Volumes/FD/dev/metamask/metamask-mobile-2' --json"
+    "userAction": "mm-harness last --target '/Users/deeeed/dev/metamask/metamask-mobile-2' --json"
   }
 }

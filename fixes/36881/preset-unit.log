@@ -1,0 +1,12 @@
+PASS tests/component-view/presets/perpsStatePreset.test.ts
+  initialStatePerps
+    ✓ returns a builder with build method (1 ms)
+    ✓ builds state with PerpsController and perps feature flag enabled
+    ✓ builds state with NetworkController and PreferencesController overrides
+    ✓ builds Pro state with layout preferences
+
+Test Suites: 1 passed, 1 total
+Tests:       4 passed, 4 total
+Snapshots:   0 total
+Time:        2.343 s
+Ran all test suites matching /tests\/component-view\/presets\/perpsStatePreset.test.ts/i.
